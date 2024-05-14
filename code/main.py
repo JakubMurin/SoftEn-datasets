@@ -34,13 +34,13 @@ class Context:
 
 if __name__ == "__main__":
 
-    context = Context("selenium")
+    context = Context()
     
-    query = "generate use case"
-    multi_query = ["introduce yourself", "what is pyhton"]
+    query = "Generate longer usecase XML and plantuml source code for corresponding sequence diagram without any your comments"
+    multi_query = ["introduce self", "what is pyhton"]
     
     result = context.execute_query(query)
     print("Single query:", repr(result))
     
-    result = context.execute_query(multi_query)
-    print("Multiple query:", result)
+    # result = context.execute_query(multi_query)
+    # print("Multiple query:", result)
