@@ -55,3 +55,5 @@ User --> OnlineStore: Enter shipping and billing info
 User -> OnlineStore: Confirm order
 @enduml
 ```
+
+![sequence diagram](plantuml.png)
