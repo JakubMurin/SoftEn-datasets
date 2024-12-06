@@ -1,0 +1,18 @@
+@startuml
+
+actor Usuario as Usuario
+actor CadastrarAutorMB as Controle
+actor CadastrarAutor as Fachada
+actor MensagensMB as Mensagens
+
+== First Message ==
+Usuario -> Controle : cadastrar()
+Controle -> Fachada : cadastrarAutor(autor)
+Fachada -> Mensagens : mensagemSucesso(mensagem)
+
+== Second Message ==
+Usuario <- Controle : cadastrar() (response)
+Fachada <- Controle : cadastroAutor(autor) (response)
+Mensagens <- Controle : mensagemSucesso(mensagem) (response)
+
+@enduml

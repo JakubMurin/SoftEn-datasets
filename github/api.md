@@ -13,13 +13,18 @@ gh api search/code?q=participant+extension:uml
 ```  
 Other keywords in plantuml sequence diagrams:
 - participant
-- actor
-- boundary
-- control
-- entity
-- database
-- collections
-- queue
+
+-------
+conditions
+- alt, opt, loop, par, group
+-------
+activations
+- activate, deactivate
+-------
+lifespan terminations
+- destroy
+
+(can be used also for categorization sequence diagrams by flags + sync/async)
 
 But this is also sequence diagram. Difference from class diagram is missing class typing on beggining eg. _class Bob_
 ```plantuml
@@ -29,7 +34,12 @@ Bob <- Alice : Authentication Response
 @enduml
 ```
 
-## URLs to .uml sequence diagrams
+- not containing "class" keyword
+
+### Keyword in xml/xmi files for sequence diagram
+Element has argument `<packagedElement xmi:type="uml:Interaction"`
+
+## URLs for .uml sequence diagrams
 ```sh
 gh api search/code?q=participant+extension:uml --jq ".items[].html_url" --paginate
 ```
@@ -42,3 +52,11 @@ Prints by pages, problem with limit.
 gh api search/code?q=participant+@startuml+extension:uml --jq ".items[].html_url" --paginate
 ```
 [Current result](github_plantuml_seq.txt)
+
+## URLs for .uml files from repo swmuir/fhims
+```sh
+gh api search/code?q=repo:swmuir/fhims+extension:uml --jq ".items[].html_url"
+```
+
+# Raw file url
+Replace https://github.com with https://raw.githubusercontent.com and delete /blob from url
