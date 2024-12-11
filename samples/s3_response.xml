@@ -1,0 +1,13 @@
+<useCase id="1">
+   <description>Client requests access to application through Envoy</description>
+   <mainSequence>
+      <step>Envoy forwards HTTP request to Authorization Server</step>
+      <step>Authorization Server checks request</step>
+      <step>Authorization Server sends authorization request to Authorization Provider</step>
+      <step>Authorization Provider authorizes request and sends approval to Authorization Server</step>
+      <step>Authorization Server verifies approval and sends response to Envoy</step>
+      <step>Envoy forwards HTTP request to Application Server</step>
+      <step>Application Server processes request and sends HTTP response to Envoy</step>
+      <step>Envoy returns HTTP response to Client</step>
+   </mainSequence>
+</useCase>

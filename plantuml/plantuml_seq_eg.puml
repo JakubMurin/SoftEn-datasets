@@ -1,0 +1,24 @@
+@startuml
+' skinparam dpi 300
+
+autoactivate on
+hide footbox
+
+actor User
+participant System
+participant "Database" as DB
+
+User -> System : Request Data
+System -> DB : Query Data
+alt Data Found
+    return Return Data
+    loop Process Data
+        System -> System : Process Data
+    end
+    System --> User : Display Data
+else Data Not Found
+    activate DB
+    System <-- DB : Return Error
+    User <-- System : Display Error
+end
+@enduml

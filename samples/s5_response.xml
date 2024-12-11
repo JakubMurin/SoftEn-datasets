@@ -1,0 +1,29 @@
+<useCase id="1">
+   <mainSequence>
+      <step>create trip</step>
+      <step>view -> trip: currentTrip</step>
+      <step>create location</step>
+      <step>trip -> location</step>
+      <step>controller -> service: getActiveTrips</step>
+      <step>controller -> service: getStops</step>
+      <step>controller -> view: trip</step>
+      <step>controller -> template: data(currentTrip, activeTrips, stops)</step>
+   </mainSequence>
+   <alternativeSteps>
+      <astep>[-> template: rendered</astep>
+      <astep>template -> view: showMap</astep>
+      <astep>template -> google: addAutocomplete(input, view.setCurrentTripTo)</astep>
+      <astep>[-> view: setCurrentTripFrom(latlng, null)</astep>
+      <astep>view -> view: clarifyLocation(latlng, null)</astep>
+      <astep>view -\ google: geocode(latlng, trip.from.setAddress)</astep>
+      <astep>location \-- google: setAddress</astep>
+      <astep>[-> google: typeahead toAddress</astep>
+      <astep>view <- google: setCurrentTripTo(latlng, address)</astep>
+      <astep>view -> view: clarifyLocation(latlng, address)</astep>
+      <astep>view -> location: setLatLng</astep>
+      <astep>view -> location: address</astep>
+      <astep>view -> view: setCurrentTripTo(latlng, null)</astep>
+      <astep>view -> view: clarifyLocation(latlng, null)</astep>
+      <astep>view -\ google: geocode(latlng, trip.to.setAddress)</astep>
+   </alternativeSteps>
+</useCase>

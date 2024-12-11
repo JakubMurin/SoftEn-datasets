@@ -8,6 +8,7 @@ In the software engineering area there is a lot of research on effective methods
 
 ## Master thesis
 WiP [Overleaf](https://www.overleaf.com/read/btbtqghrjjnn#80d464)
+[Seminar presentation](https://docs.google.com/presentation/d/1njNP4Jr4Cx877ivBmfJBWN9ynODnD8RUXU_g1uV-QcY)
 
 ## Data collection
 - Artificial inteligence (OpenAI - ChatGPT)
