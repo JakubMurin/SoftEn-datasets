@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC6">
+    <name>Flight authorization from Aviation Regulators</name>
+    <description>Request flight authorization.</description>
+
+    <primaryActors>
+        <actor>Remote Pilot in Command (RPIC)</actor>
+    </primaryActors>
+    <supportingActors>
+        <actor>Semi-autonomous UAV</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>Authorization service is available.</precondition>
+        <precondition>Flight routes and regions are known.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV is authorized to fly or authorization is denied for a valid reason.</condition>
+    </successEndConditions>
+
+    <failureEndConditions>
+        <condition>The UAV flies without authorization.</condition>
+        <condition>The UAV flies outside of authorized limits.</condition>
+    </failureEndConditions>
+
+    <trigger>Flight routes are planned for current or future missions.</trigger>
+
+    <mainSequence>
+        <step id="S1">The RPIC visually inspects all UAVs prior to takeoff to ensure their flight-worthiness.</step>
+        <step id="S2">The RPIC checks weather conditions for visibility (3 miles), temperature (must be within operating range of the UAV), and other conditions such as wind and precipitation to ensure safe flight.</step>
+        <step id="S3">For each UAV flying in FAA controlled airspace, DroneResponse prepares an authorization request containing the UAV's registration, flight time, and flight region.</step>
+        <step id="S4">DroneResponse connects to an authorization service provider (e.g., AirMap) and requests authorization for a UAV's valid flight plan.</step>
+        <step id="S5">The authorization service provider returns permission to fly, including airspace constraints such as altitude limits and no-fly zones.</step>
+        <step id="S6">DroneResponse marks all airspace restrictions on the map. All subsequent flight paths are checked against these restrictions prior to, and during, each flight.</step>
+        <step id="S7">DroneResponse establishes a geofence that matches the outer boundary of the region for which flight authorization has been received.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>The RPIC deems that a UAV is not flight-worthy.</description>
+            <step id="E1S1">Where feasible, corrections are made to the UAV so that it passes the flight-worthiness test.</step>
+            <step id="E1S2">Any UAV that is not deemed flight-worthy is removed from the mission.</step>
+        </esteps>
+        <esteps id="E2" start="S2">
+            <description>The RPIC deems weather conditions are unsafe for flight.</description>
+            <step id="E2S1">The mission is aborted.</step>
+        </esteps>
+        <esteps id="E3" start="S3">
+            <description>Flight authorization is requested for an invalid flight plan (e.g., nighttime flight without a waiver, flying in prohibited airspace).</description>
+            <step id="E3S1">Flight authorization is denied.</step>
+            <step id="E3S2">The RPIC either aborts the mission or replans a valid mission and resubmits a new flight plan.</step>
+        </esteps>
+        <esteps id="E4" start="S4">
+            <description>The authorization service provider fails to respond.</description>
+            <step id="E4S1">Steps S3 and S4 are repeated at one-minute intervals until a response is received or three attempts have been made.</step>
+            <step id="E4S2">If no response is received after three attempts, the RPIC manually calls the local Air Traffic Control (ATC) tower to seek flying permission.</step>
+            <step id="E4S3">If permission is received verbally, the RPIC records this note in the DroneResponse system, and the flight proceeds as authorized.</step>
+            <step id="E4S4">If permission is not granted by ATC or the authorization service provider, the flight is aborted.</step>
+        </esteps>
+        <esteps id="E5" start="S3">
+            <description>The RPIC has a waiver to fly without prior authorization, typically due to an emergency response authorization.</description>
+            <step id="E5S1">Steps S3 to S6 are executed in parallel to launching the mission.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

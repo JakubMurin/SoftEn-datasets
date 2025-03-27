@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-UC3">
+    <name>Provide surveillance and information about a traffic accident</name>
+    <description>
+        One or more UAVs are dispatched to a traffic accident scene in order to provide information to the emergency responders.
+    </description>
+
+    <primaryActors>
+        <actor>UAV's</actor>
+        <actor>Drone Commander</actor>
+    </primaryActors>
+
+    <supportingActors>
+        <actor>Firefighters</actor>
+        <actor>Police</actor>
+        <actor>Medical crews</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>DroneResponse system is active</precondition>
+        <precondition>Multiple UAVs are equipped with cameras and are placed on the ground and activated</precondition>
+        <precondition>Approximate GPS coordinates of the accident are provided to DroneResponse</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The accident is precisely located, the scene is described using onboard vision, and directions are generated for emergency responders</condition>
+    </successEndConditions>
+
+    <failureEndConditions>
+        <condition>An accident is not found even though it has occurred</condition>
+        <condition>The accident site is not streamed to operators</condition>
+    </failureEndConditions>
+
+    <trigger>
+        A 911 call operator receives a call reporting an accident
+    </trigger>
+
+    <mainSequence>
+        <step id="S1">An accident report is received.</step>
+        <step id="S2">The route is planned and flight authorization is obtained.</step>
+        <step id="S3">The DroneResponse commander issues a command to start the mission.</step>
+        <step id="S4">The UAV(s) perform a synchronized takeoff.</step>
+        <step id="S5">The UAVs lease airspace and fly to the location of the accident.</step>
+        <step id="S6">The UAVs reach the target area and perform image capture and analysis to pinpoint the accident site and stream video.</step>
+        <step id="S7">A human operator inspects the video and confirms that the accident site has been correctly identified.</step>
+        <step id="S8">The precise GPS coordinate of the accident and the surroundings of the road are sent to the emergency responders.</step>
+        <step id="S9">DroneResponse generates a route to the correct location, ensuring arrival on the correct side of the highway.</step>
+        <step id="S10">The UAVs continue onboard vision and detection to infer details of the scene (i.e., number of cars, presence of fire, victims on the ground, toxic material leakage).</step>
+        <step id="S11">Specific information gathered by UAV's is processed and classified into specific emergency categories and sent to related emergency services (Traffic information sent to the police, accident structure information sent to the firefighters, human-related information sent to medical staff).</step>
+        <step id="S12">Emergency responders arrive on the scene.</step>
+        <step id="S13">The Drone Commander ends the mission.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>After scanning the vicinity of the reported accident three times, the UAVs are unable to locate the accident.</description>
+            <step id="E1S1">An alert is raised that the accident can't be located.</step>
+            <step id="E1S2">DroneResponse displays images from the camera of each drone.</step>
+            <step id="E1S3">The operator checks the images.</step>
+            <step id="E1S3.1">If the operator identifies the accident, they mark it manually on the map and the UAVs stream video for the marked region. The use case continues with step S8.</step>
+            <step id="E1S3.2">If the operator cannot identify the accident, then the use case continues with step S13.</step>
+        </esteps>
+
+        <esteps id="E2" start="S7">
+            <description>The UAV detects a possible accident site at a confidence level below 'victim_detected' threshold but above the lowest ignore level.</description>
+            <step id="E2S1">The UAV logs the alert, including saved imagery.</step>
+            <step id="E2S2">DroneResponse saves the GPS coordinates of the sighting.</step>
+            <step id="E2S3">The UAV continues to scan the location of the accident.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

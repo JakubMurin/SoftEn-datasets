@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC9">
+    <name>Item Drop</name>
+    <description>A UAV delivers an item such as a flotation device or defibrillator.</description>
+
+    <primaryActors>
+        <actor>Semi-Autonomous UAV</actor>
+    </primaryActors>
+    <supportingActors>
+        <actor>Mission Commander</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>The UAV is equipped with a carry-release mechanism based on either a parachute or a reel device.</precondition>
+        <precondition>The weight of the item to be delivered is within the safe operating payload of the UAV.</precondition>
+        <precondition>The item to be delivered has been attached to the UAV's carry mechanism.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV successfully delivers the item to the assigned location.</condition>
+    </successEndConditions>
+
+    <failureEndConditions>
+        <condition>The UAV fails to deliver the device to the assigned location.</condition>
+        <condition>The UAV drops the item in an incorrect position or onto a person.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV receives a command to deliver the item.</trigger>
+
+    <mainSequence>
+        <step id="S1">The UAV takes-off and flies to the designated delivery coordinates.</step>
+        <step id="S2">The UAV starts streaming video.</step>
+        <step id="S3">The video is displayed in the UI for a human operator.</step>
+        <step id="S4">The UAV uses image capture and analysis to determine a safe drop point appropriate for the task at hand.</step>
+        <step id="S5">The UAV positions itself at the targeted drop point.</step>
+        <step id="S6">The UAV requests permission from the human operator to drop the item.</step>
+        <step id="S7">The human operator gives permission for the drop.</step>
+        <step id="S8">The UAV lowers the item at the drop point.</step>
+        <step id="S9">The human operator confirms that the drop is completed.</step>
+        <step id="S10">The UAV moves to a safe observation point and awaits further instructions.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>The carry mechanism fails to activate when commanded.</description>
+            <step id="E1S1">The operator attempts a manual command.</step>
+            <step id="E1S2">If the carry mechanism continues to fail, the operator recalls the UAV.</step>
+        </esteps>
+
+        <esteps id="E2" start="S4">
+            <description>The UAV is unable to find a safe drop point in the vicinity of the coordinates.</description>
+            <step id="E2S1">The human operator uses the video stream to manually identify the drop point.</step>
+        </esteps>
+
+        <esteps id="E3" start="S7">
+            <description>The operator refuses permission for the drop point proposed by the UAV.</description>
+            <step id="E3S1">The operator suggests an alternate drop position or aborts the drop.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

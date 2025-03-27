@@ -13,7 +13,7 @@ class APIChatGPT(Strategy):
         completion = self.client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             messages=[
-                {"role": "user", "content": """Here is XML scheme for future tasks
+                {"role": "user", "content": """Here is DTD scheme for future tasks
 <!ELEMENT useCase (description?, mainSequence, alternativeSteps?, errorSteps?)>
    <!ATTLIST useCase id CDATA   #REQUIRED>
 

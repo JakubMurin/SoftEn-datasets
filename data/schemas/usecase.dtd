@@ -1,0 +1,29 @@
+<!ELEMENT useCase (name, description?, primaryActors?, supportingActors?, preconditions?, successEndConditions?, failureEndConditions?, trigger?, mainSequence, alternativeSteps?, errorSteps?)>
+<!ATTLIST useCase id CDATA   #REQUIRED>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT primaryActors (actor+)>
+<!ELEMENT actor (#PCDATA)>
+<!ELEMENT supportingActors (actor+)>
+<!ELEMENT preconditions (precondition+)>
+<!ELEMENT precondition (#PCDATA)>
+<!ELEMENT successEndConditions (condition+)>
+<!ELEMENT condition (#PCDATA)>
+<!ELEMENT failureEndConditions (condition+)>
+<!ELEMENT trigger (#PCDATA)>
+
+<!ELEMENT mainSequence (step+)>
+<!ELEMENT alternativeSteps (asteps+)>
+<!ELEMENT errorSteps (esteps+)>
+
+<!ELEMENT asteps (step+)>
+<!ATTLIST asteps id ID #REQUIRED start IDREF #REQUIRED continue IDREF #IMPLIED>
+
+<!ELEMENT esteps (description, step+)>
+<!ATTLIST esteps id ID #REQUIRED start IDREF #REQUIRED>
+
+<!ELEMENT step (#PCDATA)>
+<!ATTLIST step id ID #REQUIRED>
+
+<!ELEMENT description (#PCDATA)>

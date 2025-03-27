@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC10">
+    <name>Lease Airspace for Planned Flight Path</name>
+    <description>All UAVs must receive airspace authorization prior to commencing flight to a waypoint. Collisions are prevented through a multi-faceted approach of collision avoidance for unplanned violations of minimum separation distance, and just-in-time airspace reservations from the UAVs current coordinates to a target coordinate.</description>
+
+    <primaryActors>
+        <actor>Semi-Autonomous UAV</actor>
+    </primaryActors>
+    <supportingActors>
+        <actor>Air Traffic Control</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>The UAV is either armed and ready-to-fly or already in the air.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>UAVs always receive permission from ATC before commencing flight to a waypoint.</condition>
+    </successEndConditions>
+
+    <failureEndConditions>
+        <condition>UAVs fly to a waypoint without authorization creating the potential for a mid-air collision.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV needs to fly to a waypoint or needs some space to perform an action.</trigger>
+
+    <mainSequence>
+        <step id="S1">The UAV calculates the airspace needed for its next action.</step>
+        <step id="S2">The UAV requests permission from ATC to reserve the airspace identified.</step>
+        <step id="S3">ATC determines that the airspace can be reserved.</step>
+        <step id="S4">ATC reserves the airspace.</step>
+        <step id="S5">ATC releases any airspace reservations previously held by the UAV.</step>
+        <step id="S6">ATC grants the UAV an exclusive lease of the airspace.</step>
+        <step id="S7">The UAV completes its action and goes to step 1.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>ATC determines that the airspace is not currently available.</description>
+            <step id="E1S1">ATC finds all reservations held by other UAVs that share some altitude with the requested airspace.</step>
+            <step id="E1S2">ATC finds all restricted airspace that shares some altitude and is less than 1000 meters from the requested airspace.</step>
+            <step id="E1S3">ATC denies the request for airspace and attaches both the list of other reservations and the list of restricted airspaces.</step>
+            <step id="E1S4">The UAV analyzes the attached lists and selects an alternative action among:</step>
+            <step id="E1S5">If the action is impossible because of restricted airspace:</step>
+            <step id="E1S6">If the next action is to fly to a waypoint, and the UAV determines that meaningful progress is possible then:</step>
+            <step id="E1S7">The UAV picks a new waypoint that moves it closer to the target.</step>
+            <step id="E1S8">The use case continues at step 1.</step>
+            <step id="E1S9">If progress on the next action is possible, then:</step>
+            <step id="E1S10">The UAV decides on a new next action.</step>
+            <step id="E1S11">The use case continues at step 1.</step>
+            <step id="E1S12">If progress is not possible, and the UAV is in the air, then:</step>
+            <step id="E1S13">The UAV requests a small amount of airspace to wait within. This new airspace must fit inside the airspace that the UAV has already reserved. The UAV is guaranteed to get a lease on the new airspace in case it fits within its current airspace.</step>
+            <step id="E1S14">The UAV waits for a random time interval (&lt; 5 seconds) and repeats its request for airspace.</step>
+            <step id="E1S15">The use case continues at step 3.</step>
+            <step id="E1S16">If the UAV is on the ground, awaiting takeoff, and progress is not possible, then:</step>
+            <step id="E1S17">The UAV waits for a random time interval (&lt; 5 seconds) and repeats its request for airspace.</step>
+            <step id="E1S18">The use case continues at step 3.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

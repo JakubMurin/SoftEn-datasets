@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC12">
+    <name>Victim Confirmation</name>
+    <description>UAV requests and receives victim confirmation or refutation from a human operator.</description>
+
+    <primaryActors>
+        <actor>Semi-Autonomous UAV</actor>
+    </primaryActors>
+    <supportingActors>
+        <actor>Human Operator</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>The UAV has detected a victim with confidence greater or equal to _minimum_detection_confidence_.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>A human operator correctly confirms or refutes the sighting of the victim.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>A human operator either fails to respond to the request for confirmation or incorrectly confirms or refutes the sighting of the victim.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV detects a possible victim using its onboard image detection.</trigger>
+
+    <mainSequence>
+        <step id="S1">The drone generates a [victim_found] alert which is transmitted to DroneResponse.</step>
+        <step id="S2">DroneResponse acknowledges receipt of the alert via a message to the UAV.</step>
+        <step id="S3">DroneResponse raises the [victim_found] alert on the UI for inspection by a human operator.</step>
+        <step id="S4">The Drone Commander inspects the video stream.</step>
+        <step id="S5">The Drone Commander confirms that a victim has been found.</step>
+        <step id="S6">DroneResponse sends a [victim_found] confirmation message to the UAV.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>The user refutes the victim sighting.</description>
+            <step id="E1S1">The drone commander refutes that the sighting is of a victim.</step>
+            <step id="E1S2">DroneResponse sends a [victim_NOT_found] message to the UAV.</step>
+        </esteps>
+        <esteps id="E2" start="S4">
+            <description>The user is unable to confirm or refute the sighting.</description>
+            <step id="E2S1">The drone commander is uncertain whether the imagery is of a victim and requests additional imagery.</step>
+            <step id="E2S2">The UAV autonomously flies around the location of the victim sighting and collects additional imagery.</step>
+            <step id="E2S3">The operator either confirms the victim has been found (resume from step 5) or refutes the sighting, in which case the UAV continues its previous search plan.</step>
+        </esteps>
+        <esteps id="E3" start="S2">
+            <description>No acknowledgment is received from the operator within a specified time period.</description>
+            <step id="E3S1">The UAV attempts to resend the alert and routes the alert and associated images through other participating drones.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

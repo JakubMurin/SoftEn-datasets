@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC1">
+    <name>Activate and Arm</name>
+    <description>The UAV is prepped for flight, activated by turning 'safety' off, and finally armed.</description>
+
+    <primaryActors>
+        <actor>RPIC</actor>
+    </primaryActors>
+    <supportingActors>
+        <actor>Technicians</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>UAV has been prepped for flight with batteries, propellers, etc., and is airworthy</precondition>
+        <precondition>UAV has been placed at its launching location</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV passes arming checks and is armed for flight</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The UAV takes off without adequate arming checks</condition>
+        <condition>The UAV fails to arm</condition>
+    </failureEndConditions>
+
+    <trigger>An arming command is issued</trigger>
+
+    <mainSequence>
+        <step id="S1">The RPIC deactivates the UAV's safety switch.</step>
+        <step id="S2">DroneResponse issues an arming command.</step>
+        <step id="S3">The UAV executes all pre-arming tests.</step>
+        <step id="S4">The UAV passes pre-arming tests.</step>
+        <step id="S5">The UAV arms.</step>
+        <step id="S6">The UAV's status is set to MISSION mode (PX4=MISSION, Ardupilot=GUIDED/STABILIZED).</step>
+        <step id="S7">The UAV's automated pilot notifies DroneResponse that the UAV is armed for flight.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>The RPIC fails to deactivate the safety switch</description>
+            <step id="E1S1">The UAV issues a warning sound and raises an error when the arming command is attempted.</step>
+            <step id="E1S2">The use case continues from Step 1.</step>
+        </esteps>
+        <esteps id="E2" start="S4">
+            <description>The UAV fails to pass its pre-arming tests</description>
+            <step id="E2S1">The system reports specific reasons for pre-arming failure.</step>
+            <step id="E2S2">The RPIC reactivates the UAV's safety switch.</step>
+            <step id="E2S3">A technician attempts to fix the root cause of the pre-arming failure (e.g., recalibrating the UAV).</step>
+            <step id="E2S3.1">If the technician fixes the problem, the use case restarts from Step 1.</step>
+            <step id="E2S3.2">If the technician fails to fix the problem, the UAV is removed from service.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC3">
+    <name>Generate Flight Routes for Area Coverage</name>
+    <description>Define a coverage area and allocate routes to UAV(s).</description>
+
+    <primaryActors>
+        <actor>Drone Commander</actor>
+    </primaryActors>
+    <supportingActors>
+        <actor>Semi-autonomous UAV</actor>
+    </supportingActors>
+
+    <preconditions>
+        <precondition>UAVs are active and armed</precondition>
+        <precondition>DroneResponse is active</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>Search routes are planned and allocated to UAVs for efficient coverage.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Ineffective search routes provide low coverage or inefficient search.</condition>
+    </failureEndConditions>
+
+    <trigger>User selects the option to mark a region and generate routes dynamically.</trigger>
+
+    <mainSequence>
+        <step id="S1">A user selects the feature to mark a region on the currently displayed map.</step>
+        <step id="S2">The user marks a polygon shape on the map.</step>
+        <step id="S3">DroneResponse analyzes the shape and size of the drawn polygon for feasibility of generating routes and accepts the polygon as viable for route generation.</step>
+        <step id="S4">The user specifies the number of UAVs (N) that will participate in the mission.</step>
+        <step id="S5">DroneResponse dynamically generates an efficient set of N flight routes that optimize coverage of the marked area while minimizing flight times.</step>
+        <step id="S6">DroneResponse assigns the flight routes to N available UAVs.</step>
+        <step id="S7">The use case ends once flight routes have been generated and assigned.</step>
+    </mainSequence>
+
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Instead of optimizing for area coverage, the algorithm optimizes the routes for a sampling mission.</step>
+            <step id="A1S2">The user specifies the number of samples (S) to be collected by each UAV.</step>
+            <step id="A1S3">The algorithm optimizes the flight paths such that S sampling locations are distributed as evenly as possible over the marked area, locations are clustered into N flight paths, and each UAV's flight path is optimized to reduce power consumption.</step>
+        </asteps>
+    </alternativeSteps>
+
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>The user wishes to mark a search area that is not entirely covered by the currently displayed map view.</description>
+            <step id="E1S1">If the search area is in the vicinity of the current map view, the user pans and rescales the map until the planned search area is encompassed by the view.</step>
+            <step id="E1S2">If the search area is not in the vicinity of the current map view, the user recenters the map by entering GPS coordinates.</step>
+        </esteps>
+        <esteps id="E2" start="S3">
+            <description>The polygon is deemed infeasible for route generation.</description>
+            <step id="E2S1">If the polygon has insufficient width or height, it is rejected.</step>
+            <step id="E2S2">If the polygon includes unsupportable indentations or appendages, these will be ignored during flight route generation, and an alert will be raised.</step>
+        </esteps>
+        <esteps id="E3" start="S4">
+            <description>There are fewer than N UAVs available for assignment to the designated flight plans.</description>
+            <step id="E3S1">The user reduces the number of designated UAVs to a number for which viable UAVs are available.</step>
+            <step id="E3S2">Alternatively, a technician activates and arms additional UAVs for inclusion in the mission.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -4,8 +4,10 @@
 while IFS= read -r line; do
 
     repo=$(echo "$line" | sed 's/[[:space:]]*$//')
-    # gh api search/code?q=repo:$repo+extension:uml --jq ".items[:1] | .[].html_url" | \
-    gh api search/code?q=repo:$repo+extension:uml --jq ".items[].html_url" | \
+    # gh api search/code?q=participant+@startuml+extension:uml --jq ".items[:1] | .[].html_url" | \
+    gh api search/code?q=participant+@startuml+extension:uml --jq ".items[].html_url" | \
+    # gh api search/code?q=participant+@startuml+repo:$repo+extension:uml --jq ".items[:1] | .[].html_url" | \
+    # gh api search/code?q=participant+@startuml+repo:$repo+extension:uml --jq ".items[].html_url" | \
     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
     sed 's|/blob||' >> output.txt
 

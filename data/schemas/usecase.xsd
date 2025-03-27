@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Define the root element -->
+	<xs:element name="useCase">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+				<!-- Define primaryActors element -->
+				<xs:element name="primaryActors" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="actor" type="xs:string" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define supportingActors element -->
+				<xs:element name="supportingActors" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="actor" type="xs:string" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define preconditions element -->
+				<xs:element name="preconditions" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="precondition" type="xs:string" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define successEndConditions element -->
+				<xs:element name="successEndConditions" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="condition" type="xs:string" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define failureEndConditions element -->
+				<xs:element name="failureEndConditions" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="condition" type="xs:string" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define trigger element -->
+				<xs:element name="trigger" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+				<!-- Define mainSequence element -->
+				<xs:element name="mainSequence">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="step" maxOccurs="unbounded" type="Step" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define alternativeSteps element -->
+				<xs:element name="alternativeSteps" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="asteps" type="OtherSteps" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<!-- Define errorSteps element -->
+				<xs:element name="errorSteps" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="esteps" type="OtherSteps" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="OtherSteps">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="step" maxOccurs="unbounded" type="Step" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required" />
+		<xs:attribute name="start" type="xs:string" />
+		<xs:attribute name="continue" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="Step">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="id" type="xs:string" />
+				<xs:attribute name="description" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+</xs:schema>
