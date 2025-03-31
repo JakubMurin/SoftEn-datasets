@@ -2,9 +2,9 @@ from lxml import etree
 from io import StringIO
 import os
 
-data_path = r""
-dtd_scheme_path = r""
-xsd_scheme_path = r""
+data_path = r"C:\Users\Jakub\SoftEn-datasets\data"
+dtd_scheme_path = r"C:\Users\Jakub\SoftEn-datasets\data\schemas\usecase.dtd"
+xsd_scheme_path = r"C:\Users\Jakub\SoftEn-datasets\data\schemas\usecase.xsd"
 
 class XmlValidation:
     
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     
     validator = XmlValidation(dtd_scheme_path)
     validator.set_custom_scheme()
-    validator.validate_file(r"")
+    validator.validate_file(r"C:\Users\Jakub\SoftEn-datasets\data\usecases\04.xml")
 
     # for file_path in get_all_files(data_path, "usecases"):
     #     validator.validate_file(file_path)

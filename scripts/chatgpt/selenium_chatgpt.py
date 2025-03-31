@@ -5,10 +5,10 @@ from strategy import Strategy
 class SeleniumChatGPT(Strategy):
     def __init__(self):
         # Define the path where the chrome driver is installed on your computer
-        self.chrome_driver_path = r""
+        self.chrome_driver_path = r"C:\Users\Jakub\Desktop\Diplomovka\code\driver\chromedriver.exe"
 
         # the sintax r'"..."' is required because the space in "Program Files" in the chrome path
-        self.chrome_path = r'""'
+        self.chrome_path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'
     
     def execute_query(self, query: str) -> dict:
         chatgpt = ChatGPTAutomation(self.chrome_path, self.chrome_driver_path)
