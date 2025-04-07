@@ -12,7 +12,7 @@ odhad: (8 * 8) * (5 * 5 * 3 * 2 * 2) * (3 * 2 * 2 * 2) = 460 800
     - Verejné služby
     - Bezpečnosť
     - Hry
-- **Temperature**
+- **Náhodnosť** Temperature vs top_p (0-1)
 - Spôsob získania
     - Reálne
     - Semi-syntetické
@@ -21,8 +21,8 @@ odhad: (8 * 8) * (5 * 5 * 3 * 2 * 2) * (3 * 2 * 2 * 2) = 460 800
 - Dátum promtu
 
 ## Prípad použitia
-- **Počet krokov**
-- **Počet aktérov**
+- **Počet krokov** 4-15 (overiť)
+- **Počet aktérov** 0-2, neurčené
 - **Notácia**
     - Jacobson
     - Cockburn
@@ -38,3 +38,7 @@ odhad: (8 * 8) * (5 * 5 * 3 * 2 * 2) * (3 * 2 * 2 * 2) = 460 800
 - **Vznik inštancie** (flag)
 - **Zánik inštancie** (flag)
 - **Synchrónny/Asynchrónny** (flag)
+
+
+do promtu:
+- notacia

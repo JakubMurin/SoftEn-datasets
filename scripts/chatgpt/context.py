@@ -1,8 +1,8 @@
 from dotenv import load_dotenv
 from os import environ
 
-from api_chatgpt import APIChatGPT
-from selenium_chatgpt import SeleniumChatGPT
+from .api_chatgpt import APIChatGPT
+from .selenium_chatgpt import SeleniumChatGPT
 
 
 class Context:
@@ -26,9 +26,9 @@ class Context:
         
         self.strategy = strategy_class
 
-    def execute_query(self, query: str | list[str]):
+    def execute_query(self, query: str | list[str]) -> list[dict]:
         if isinstance(query, str):
-            return self.strategy.execute_query(query)
+            return [self.strategy.execute_query(query)]
         
         return self.strategy.execute_multiple_query(query)
 
@@ -67,9 +67,9 @@ end note
 """
     multi_query = ["introduce self", "what is pyhton"]
     
-    result = context.execute_query(query)
+    result = context.execute_query(query)[0]
     # print("Single query:", repr(result))
-    print(result["response"].choices[0].message.content)
+    print(result.choices[0].message.content)
     
     # result = context.execute_query(multi_query)
     # print("Multiple query:", result)

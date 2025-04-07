@@ -1,8 +1,8 @@
 from openai import OpenAI
 
-from strategy import Strategy
+from . import strategy
 
-class APIChatGPT(Strategy):
+class APIChatGPT(strategy.Strategy):
     def __init__(self, api_key):
 
         self.client = OpenAI(
@@ -34,10 +34,7 @@ class APIChatGPT(Strategy):
             # max_tokens=10
         )
 
-        return {
-            "query": query,
-            "response" : completion
-        }
+        return completion.model_dump_json()
     
     def execute_multiple_query(self, query: list[str]) -> list[dict]:
         completions = []

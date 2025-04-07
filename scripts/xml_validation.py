@@ -51,14 +51,13 @@ class XmlValidation:
     def set_custom_scheme(self, mainSteps=None):
 
         dtd_template=f"""
-            <!ELEMENT useCase (name, description?, primaryActors?, supportingActors?, preconditions?, successEndConditions?, failureEndConditions?, trigger?, mainSequence, alternativeSteps?, errorSteps?)>
+            <!ELEMENT useCase (name, description?, actors?, preconditions?, successEndConditions?, failureEndConditions?, trigger?, mainSequence, alternativeSteps?, errorSteps?)>
             <!ATTLIST useCase id CDATA   #REQUIRED>
 
             <!ELEMENT name (#PCDATA)>
             <!ELEMENT description (#PCDATA)>
-            <!ELEMENT primaryActors (actor+)>
+            <!ELEMENT actors (actor+)>
             <!ELEMENT actor (#PCDATA)>
-            <!ELEMENT supportingActors (actor+)>
             <!ELEMENT preconditions (precondition+)>
             <!ELEMENT precondition (#PCDATA)>
             <!ELEMENT successEndConditions (condition+)>
@@ -95,7 +94,7 @@ def get_all_files(path: str, folder_name: str) -> list[str]:
 if __name__ == "__main__":
     
     validator = XmlValidation(dtd_scheme_path)
-    validator.set_custom_scheme()
+    # validator.set_custom_scheme()
     validator.validate_file(r"C:\Users\Jakub\SoftEn-datasets\data\usecases\04.xml")
 
     # for file_path in get_all_files(data_path, "usecases"):
