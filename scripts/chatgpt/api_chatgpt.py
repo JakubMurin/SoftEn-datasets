@@ -9,37 +9,27 @@ class APIChatGPT(strategy.Strategy):
             api_key=api_key
         )
     
-    def execute_query(self, query: str) -> dict:        
+    def execute_query(self, query: str, promt_ctx: list[dict[str, str]]=[], temperature: float=1, top_p: float=1) -> dict:
         completion = self.client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             messages=[
-                {"role": "user", "content": """Here is DTD scheme for future tasks
-<!ELEMENT useCase (description?, mainSequence, alternativeSteps?, errorSteps?)>
-   <!ATTLIST useCase id CDATA   #REQUIRED>
-
-   <!ELEMENT mainSequence (step+)>
-   <!ELEMENT alternativeSteps (astep+)>
-   <!ELEMENT errorSteps (estep+)>
-   <!ELEMENT step (#PCDATA)>
-   <!ATTLIST step id CDATA   #REQUIRED>
-   <!ELEMENT astep (#PCDATA)>
-   <!ATTLIST astep id CDATA   #REQUIRED>
-   <!ELEMENT estep (#PCDATA)>
-   <!ATTLIST estep id CDATA   #REQUIRED>"""},
+                *promt_ctx,
                 {"role": "user", "content": query},
             ],
             # number of alternative completions
             n=1,
             # limitation for testing
             # max_tokens=10
+            temperature=temperature,
+            top_p=top_p
         )
 
-        return completion.model_dump_json()
+        return completion.model_dump()
     
-    def execute_multiple_query(self, query: list[str]) -> list[dict]:
+    def execute_multiple_query(self, query: list[str], promt_ctx: list[dict[str, str]]=[]) -> list[dict]:
         completions = []
         
         for q in query:
-            completions.append(self.execute_query(q))
+            completions.append(self.execute_query(q, promt_ctx))
             
         return completions

@@ -2,9 +2,10 @@ from lxml import etree
 from io import StringIO
 import os
 
-data_path = r"C:\Users\Jakub\SoftEn-datasets\data"
-dtd_scheme_path = r"C:\Users\Jakub\SoftEn-datasets\data\schemas\usecase.dtd"
-xsd_scheme_path = r"C:\Users\Jakub\SoftEn-datasets\data\schemas\usecase.xsd"
+WORKING_DIR = os.getcwd()
+DATA_PATH = os.path.join(WORKING_DIR, "data")
+DTD_SCHEME_PATH = os.path.join(WORKING_DIR, "data\\schemas\\usecase.dtd")
+XSD_SCHEME_PATH = os.path.join(WORKING_DIR, "data\\schemas\\usecase.xsd")
 
 class XmlValidation:
     
@@ -28,7 +29,7 @@ class XmlValidation:
             raise ValueError(f"Wrong file type! Expected dtd or xsd, got {file_extension}.")
 
 
-    def validate_file(self, file_path: str, custom_validation: bool = False) -> bool:
+    def validate_file(self, file_path: str, custom_validation: bool=False) -> bool:
         try:
             print("\nValidating file:", file_path)
             xml_tree = etree.parse(file_path)
@@ -93,9 +94,9 @@ def get_all_files(path: str, folder_name: str) -> list[str]:
 
 if __name__ == "__main__":
     
-    validator = XmlValidation(dtd_scheme_path)
+    validator = XmlValidation(DTD_SCHEME_PATH)
     # validator.set_custom_scheme()
-    validator.validate_file(r"C:\Users\Jakub\SoftEn-datasets\data\usecases\04.xml")
+    validator.validate_file(os.path.join(WORKING_DIR, "data\\usecases\\01.xml"))
 
-    # for file_path in get_all_files(data_path, "usecases"):
+    # for file_path in get_all_files(DATA_PATH, "usecases"):
     #     validator.validate_file(file_path)

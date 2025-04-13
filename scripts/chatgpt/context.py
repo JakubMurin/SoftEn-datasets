@@ -26,11 +26,11 @@ class Context:
         
         self.strategy = strategy_class
 
-    def execute_query(self, query: str | list[str]) -> list[dict]:
+    def execute_query(self, query: str | list[str], promt_ctx: list[dict[str, str]]=[], temperature: float=1, top_p: float=1) -> list[dict]:
         if isinstance(query, str):
-            return [self.strategy.execute_query(query)]
+            return [self.strategy.execute_query(query, promt_ctx, temperature, top_p)]
         
-        return self.strategy.execute_multiple_query(query)
+        return self.strategy.execute_multiple_query(query, promt_ctx, temperature, top_p)
 
 if __name__ == "__main__":
 

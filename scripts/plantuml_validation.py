@@ -1,14 +1,12 @@
 import httpx
 import asyncio
 import plantuml
-import time
-import requests
 from enum import Enum
 
-class DiagramType(Enum):
-    SEQUENCE = "participants"
-    USE_CASE = "entities" #class, component, state, object, deployment
-    ACTIVITY = "activity"
+class ResponseStatus(Enum):
+    BAD_REQUEST = 0
+    EMPTY_DIAGRAM = -1
+    NOT_SEQUENCE = -2
     
 
 class PlantUMLValidation:
@@ -21,47 +19,83 @@ class PlantUMLValidation:
         self.show_log = show_log
         
     async def async_validate(self, plantuml_code):
-        start = time.perf_counter()
         encoded_diagram = plantuml.deflate_and_encode(plantuml_code)
-        end = time.perf_counter()
-        print("plantuml encoding time:", end - start)
                 
         async with httpx.AsyncClient() as client:
             response = await client.get(f"{self.server_url}/map/{encoded_diagram}")
-            
-            final_end = time.perf_counter()
-            print("total time async:", final_end - start)
-            
-            if response.status_code == 200:
-                if self.show_log:
-                    print("Valid diagram", response.status_code, response.headers['x-plantuml-diagram-description'])
-                return
-            
-            if self.show_log:
-                print("Wrong diagram", response.status_code)
-            return False
-
-    def validate(self, plantuml_code:str):
-        start = time.perf_counter()
-        encoded_diagram = plantuml.deflate_and_encode(plantuml_code)
-        end = time.perf_counter()
-        print("plantuml encoding time:", end - start)
-        
-        response = requests.get(f"{self.server_url}/map/{encoded_diagram}")
-        
-        if response.status_code == 200:
-            print("Valid diagram", response.status_code, response.headers['x-plantuml-diagram-description'])
-        else:
-            print("Wrong diagram", response.status_code)
+            response_status = self.handle_response(response)
                 
-        final_end = time.perf_counter()
-        print("total time:", final_end - start)
+            if isinstance(response_status, int):
+                return response_status
+
+            if response_status is ResponseStatus.EMPTY_DIAGRAM or response_status is ResponseStatus.NOT_SEQUENCE:
+                return False
+            
+            encoded_response = await client.post(f"{self.server_url}/coder", content=plantuml_code)
+            if not encoded_response.text:
+                return False
+            
+            response = await client.get(f"{self.server_url}/map/{encoded_response.text}")
+            status = self.handle_response(response)
+            return status if isinstance(status, int) else False
+
+
+    def validate(self, plantuml_code: str):
+        encoded_diagram = plantuml.deflate_and_encode(plantuml_code)
+        
+        response = httpx.get(f"{self.server_url}/map/{encoded_diagram}")
+        response_status = self.handle_response(response)
+                
+        if isinstance(response_status, int):
+            return response_status
+
+        if response_status is ResponseStatus.EMPTY_DIAGRAM or response_status is ResponseStatus.NOT_SEQUENCE:
+            return False
+        
+        encoded_response = httpx.post(f"{self.server_url}/coder", content=plantuml_code)
+        if not encoded_response.text:
+            return False
+        
+        response = httpx.get(f"{self.server_url}/map/{encoded_response.text}")
+        status = self.handle_response(response)
+        return status if isinstance(status, int) else False
+        
+    
+    def handle_response(self, response: httpx.Response) -> ResponseStatus | int:
+        if response.status_code == 200:
+            if self.show_log:
+                print("Valid diagram", response.status_code)
+            return self.is_sequence_diagram(response.headers)
+                
+        if self.show_log:
+            print("Wrong diagram", response.status_code)
+        return ResponseStatus.BAD_REQUEST
+                
+    def is_sequence_diagram(self, headers: object) -> bool | int:
+        """Check if it is sequence diagram by header from response and if it is returns number of participants, otherwise False."""
+        
+        try:
+            header_arg = headers['x-plantuml-diagram-description']
+        except KeyError:
+            if self.show_log:
+                print("Diagram is empty")
+            return ResponseStatus.EMPTY_DIAGRAM
+        
+        if "participants" not in header_arg:
+            if self.show_log:
+                print("This is not sequence diagram!", header_arg)
+            return ResponseStatus.NOT_SEQUENCE
+        
+        count = header_arg.split()[0].lstrip("(")
+        if self.show_log:
+            print(f"Sequence diagram with {count} participats")
+        return int(count)
         
 
 if __name__ == "__main__":
     plantuml_code = "@startuml\nAlice -> Bob: Hello\n@enduml"
     
-    plantuml_validator = PlantUMLValidation()
+    plantuml_validator = PlantUMLValidation(show_log=True)
     
     asyncio.run(plantuml_validator.async_validate(plantuml_code))
     plantuml_validator.validate(plantuml_code)
