@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC5">
+    <name>End Mission</name>
+    <description>Recall UAV(s) back to their home-bases.</description>
+
+    <actors>
+        <actor>Drone Commander</actor>
+        <actor>Semi-autonomous UAV</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>UAVs are active and registered with DroneResponse.</precondition>
+        <precondition>DroneResponse is active.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>All UAVs safely returned to launch and deactivated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>One or more UAVs fail to return to a safe landing base.</condition>
+    </failureEndConditions>
+
+    <trigger>An emergency responder decides to abort the mission or the mission is complete and an end mission command is initiated.</trigger>
+
+    <mainSequence>
+        <step id="S1">The mission is completed and UAVs are recalled home.</step>
+        <step id="S2">The system checks that all recalled UAVs have unique home coordinates.</step>
+        <step id="S3">UAVs each plan their own routes back to their unique home coordinates.</step>
+        <step id="S4">Each UAV leases airspace for the next leg of its planned route and awaits clearance.</step>
+        <step id="S5">Upon receiving clearance, the UAV flies to the target waypoint.</step>
+        <step id="S6">Steps S4-S5 are repeated until the UAV returns to its launch coordinates and lands safely.</step>
+    </mainSequence>
+
+    <alternativeSteps>
+        <asteps id="A1" start="S1" continue="S2">
+            <step id="A1S1">The mission commander decides to end the mission before the intended tasks are completed and recalls all UAVs back to their base.</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">While a UAV is returning to base, the mission commander assigns it a new task.</step>
+            <step id="A2S2">The END_MISSION command is cancelled for this UAV.</step>
+            <step id="A2S3">The UAV commences its new mission.</step>
+        </asteps>
+    </alternativeSteps>
+
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Multiple UAVs have been assigned the same home coordinates.</description>
+            <step id="E1S1">For any group of UAVs with home coordinates that violate minimum separation distance, the system removes the home coordinates for all except one of them.</step>
+            <step id="E1S2">UAVs without assigned home coordinates are assigned new in-air temporary coordinates.</step>
+            <step id="E1S3">UAVs with in-air home coordinates follow steps S3-S5 until reaching the in-air coordinates and then hover in place.</step>
+            <step id="E1S4">The Remote Pilot in Command (RPIC) manually controls the landing of any UAV with in-air home coordinates.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-UC5">
+    <name>Environmental Sampling and Analysis</name>
+    <description>UAVs collect and analyze water samples from an open body of water.</description>
+
+    <actors>
+        <actor>Environmental Scientist</actor>
+        <actor>RPIC (Remote Pilot in Command)</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>DroneResponse is running</precondition>
+        <precondition>Multiple UAVs are equipped with water sampling mechanisms (and onboard analytics capabilities if required)</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The samples are collected successfully from the targeted coordinates</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>UAVs fail to collect and/or analyze water samples</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV operator activates the water sampling mission.</trigger>
+
+    <mainSequence>
+        <step id="S1">UAVs are activated and armed.</step>
+        <step id="S2">Operators dynamically generate flight routes, including sample collection points for the targeted area.</step>
+        <step id="S3">DroneResponse requests and receives flight authorization.</step>
+        <step id="S4">The operator issues a command to start the mission.</step>
+        <step id="S5">UAVs perform synchronized takeoff.</step>
+        <step id="S6">The UAVs fly their assigned routes and collect and analyze samples at their assigned collection points.</step>
+        <step id="S7">When a UAV has completed its collection assignment, it returns home.</step>
+        <step id="S8">The operator removes samples and replaces and/or replenishes onboard sampling supplies.</step>
+        <step id="S9">Steps 4-8 are repeated until all needed samples have been collected.</step>
+        <step id="S10">The Drone Commander ends the mission.</step>
+    </mainSequence>
+</useCase>
+

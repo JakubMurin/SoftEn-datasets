@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC4">
+    <name>Collect Environmental Sample</name>
+    <description>UAV collects an environmental sample (e.g., air or water) and optionally performs a dynamic analysis. A targeted collection point can be either on the surface (e.g., water collection) or at a designated altitude (e.g., air sampling).</description>
+
+    <actors>
+        <actor>Semi-Autonomous UAV</actor>
+        <actor>Mission Operator</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>The UAV has arrived at a predefined sampling location.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>Samples are collected and analyzed from all targeted coordinates.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The UAV fails to collect samples.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV reaches the GPS coordinates of the first sample collection waypoint.</trigger>
+
+    <mainSequence>
+        <step id="S1">The UAV arrives at its designated collection coordinates.</step>
+        <step id="S2">The UAV positions itself to collect a water sample.</step>
+        <step id="S2.1">The UAV uses its onboard vision capabilities to find an unobstructed route (e.g., free of tree branches) to the water.</step>
+        <step id="S2.2">The UAV begins its descent while using image capture and analysis and altitude sensors to position itself correctly above the water.</step>
+        <step id="S3">The UAV activates its onboard collection device and collects a water sample.</step>
+        <step id="S3.1">The UAV lowers its collection apparatus (typically a rubber hose, powered by a pump).</step>
+        <step id="S3.2">The UAV collects the water sample.</step>
+        <step id="S3.3">The UAV stores the water sample for carrying home.</step>
+        <step id="S4">Steps S1-S3 are repeated until all planned collection points have been visited or the UAV has used all of its collection resources.</step>
+        <step id="S5">The use case finishes when the UAV commences its flight home.</step>
+    </mainSequence>
+
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">The UAV is tasked with collecting an air sample instead of a water sample. Step S2 is skipped, and the use case continues with step S3.</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">The UAV not only collects a sample (air or water) but also performs onboard analysis.</step>
+            <step id="A2S2">The UAV performs onboard analysis of the sample.</step>
+            <step id="A2S3">Targeted pollutants are identified in the sample.</step>
+            <step id="A2S3.1">The UAV dynamically plans a new collection route (e.g., to collect additional samples from the local area).</step>
+            <step id="A2S3.2">The use case resumes at Step S1 using the dynamically planned collection points instead of preplanned ones.</step>
+            <step id="A2S4">If no pollutants are identified in the sample, then the use case continues with Step S1 using the preplanned collection points.</step>
+        </asteps>
+    </alternativeSteps>
+
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>The UAV is unable to find an unobstructed route to the water in the vicinity of the target waypoints and requests advice from the user.</description>
+            <step id="E1S1">The user directs the UAV to skip the current waypoint.</step>
+            <step id="E1S2">The user leverages the UAV's onboard camera controls to manually identify an unobstructed route to the water. The user either manually flies the UAV through the new route or marks the route for the UAV to perform automatically.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

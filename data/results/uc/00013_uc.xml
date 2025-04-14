@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC8">
+    <name>Image Capture and Analysis</name>
+    <description>UAV collects imagery using an onboard camera and analyzes that imagery in real-time to identify specific objects and raise detection events.</description>
+
+    <actors>
+        <actor>Semi-Autonomous UAV</actor>
+        <actor>Mission Commander</actor>
+        <actor>Onboard vision model</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>The UAV is in the air.</precondition>
+        <precondition>The UAV has a functioning RGB or thermal camera.</precondition>
+        <precondition>The UAV has a trained vision model onboard that is capable of detecting objects of interest.</precondition>
+        <precondition>The videostream server is active and the UAV is registered with the videostream server.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV detects and annotates objects of interest within the region of interest at high degrees of accuracy (metric needed).</condition>
+        <condition>Annotated video is streamed to the videostream server.</condition>
+    </successEndConditions>
+
+    <failureEndConditions>
+        <condition>Target objects within the UAV's field of view are not detected.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV receives a command to collect and analyze imagery.</trigger>
+
+    <mainSequence>
+        <step id="S1">If the camera is not activated, the UAV activates it.</step>
+        <step id="S2">Whilst in flight, the UAV streams imagery to its onboard companion computer.</step>
+        <step id="S3">Onboard compute processes streamed imagery and annotates objects of interest to depict their bounding boxes and confidence scores.</step>
+        <step id="S4">When an object is detected with confidence greater than the current [VisionDetection_Threshold] value, an event is raised and forwarded to the DroneResponse Event Manager.</step>
+        <step id="S5">All collected image streams (with and without annotations) are transmitted to the videostream server.</step>
+        <step id="S6">Steps 2-5 are continually repeated until the UAV is commanded to stop collecting imagery.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>At anytime that the camera's battery supply is depleted, the UAV raises an alert.</description>
+            <step id="E1S1">The UAV raises an alert notifying the operator of the camera's battery depletion.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

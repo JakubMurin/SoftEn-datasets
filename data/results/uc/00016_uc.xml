@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC11">
+    <name>Synchronized Takeoff</name>
+    <description>A cohort of UAVs take off and fly to initial waypoints using coordinated flight paths.</description>
+
+    <actors>
+        <actor>Semi-Autonomous UAV</actor>
+        <actor>Drone Commander</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>Each UAV is on the ground ready to take off.</precondition>
+        <precondition>Each UAV has been assigned a unique starting waypoint with a minimum separation distance to all other UAVs.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>Each UAV reaches its initial waypoint without collision.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Collision occurs at takeoff or during flight to initial waypoints.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAVs receive the start mission command.</trigger>
+
+    <mainSequence>
+        <step id="S1">DroneResponse assigns each UAV an altitude between 20 feet and the maximum allowed altitude of the current flight area. Each altitude is separated by _minimum_separation_distance_ from all other UAVs.</step>
+        <step id="S2">Each UAV leases airspace for its designated route.</step>
+        <step id="S3">Each UAV takes off to its prescribed altitude and waits for all other UAVs to reach their altitudes.</step>
+        <step id="S4">Each UAV flies at its unique altitude to the longitude and latitude coordinates of its first waypoints. It waits for confirmation that all other UAVs have reached their designated coordinates.</step>
+        <step id="S5">Each UAV then descends or ascends to the designated altitude of its first waypoint and awaits confirmation that all other UAVs have reached their designated altitudes.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>One or more UAVs fail to lease airspace for their route.</description>
+            <step id="E1S1">The UAVs lease airspace incrementally for each leg of the synchronized takeoff.</step>
+        </esteps>
+        <esteps id="E2" start="S3">
+            <description>One or more UAVs fail to take off.</description>
+            <step id="E2S1">Any UAVs that fail to take off are ignored during all subsequent synchronizations.</step>
+        </esteps>
+        <esteps id="E3" start="S4">
+            <description>One UAV flies outside its designated flight path during synchronized takeoff.</description>
+            <step id="E3S1">The monitoring system detects the violation and raises an alarm.</step>
+            <step id="E3S2">DroneResponse issues a hover-in-place command to the rogue UAV.</step>
+            <step id="E3S3">All UAVs activate high-alert collision avoidance tactics.</step>
+            <step id="E3S4">The RPIC decides whether to abort the entire mission by sending a global hover_in_place command.</step>
+            <step id="E3S5">If the mission is aborted, the RPIC issues RTL commands or manually assumes control over each UAV one-by-one.</step>
+        </esteps>
+        <esteps id="E4" start="S1">
+            <description>There is insufficient flying altitude to create safe separation between lanes for the number of UAVs involved in the synchronized takeoff.</description>
+            <step id="E4S1">UAVs are divided into take-off groups, and steps 1-3 are repeated for each group of UAVs with the constraint that the reserved altitude band is not used.</step>
+            <step id="E4S2">Once all groups have been processed and all UAVs are positioned at the reserved altitude at their longitude and latitude, Step 4 is executed.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

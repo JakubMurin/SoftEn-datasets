@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-EC3">
+    <name>Low Battery</name>
+    <description>Most UAVs are equiped with Lithium polymer batteries (LiPo) - varying in terms of number of cells, voltage and capacity. Depending on the size, weight, and the payload a UAV is carrying, typical flying areas range from 15-40 minutes.</description>
+
+    <actors>
+        <actor>Ground Control System</actor>
+        <actor>RPIC</actor>
+        <actor>Unmanned Aerial Vehicle</actor>
+        <actor>Air Traffic Control</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>The UAV is in the air and has a command and control link to one or more ground control stations.</precondition>
+        <precondition>A failsafe action has been pre-established to automatically activate RTL or land in place if the battery level drops below `[CRITICAL_BATTERY_THRESHOLD]`.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV is landed safely when the low battery warning occurs.</condition>
+        <condition>The UAV completes its mission as planned despite a low battery warning.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The UAV crashes or lands in an unsafe area.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV is in flight and a low battery alarm is raised when the battery level is below `[LOW_BATTERY_THRESHOLD]`.</trigger>
+
+    <mainSequence>
+        <step id="S1">DroneResponse responds to the `[LOW_BATTERY_THRESHOLD]` alarm.</step>
+        <step id="S1.1">The runtime monitoring system detects a low battery event for the UAV.</step>
+        <step id="S1.2">The runtime monitoring system raises an alert.</step>
+        <step id="S1.3">The alert is displayed in the UI to notify the RPIC of the low battery warning for the UAV.</step>
+
+        <step id="S2">The UAV detects a battery level below `[CRITICAL_BATTERY_THRESHOLD]`.</step>
+        <step id="S2.1">The failsafe mechanism is activated according to the UAV's preconfiguration (e.g., RTL or land in place).</step>
+
+        <step id="S3">The RPIC maintains visual line of sight with the UAV and observes that it has transitioned to RTL state.</step>
+        <step id="S4">If necessary, the UAV suspends the remainder of the mission or manually moves other UAVs out of the way of the returning UAV.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S1.3">
+            <description>The RPIC decides that the current task cannot be continued by the UAV.</description>
+            <step id="E1S1">The RPIC decides that the UAV cannot complete its designated task during the mission and is relieved from its task.</step>
+            <step id="E1S2">The RPIC manually activates RTL for the UAV.</step>
+            <step id="E1S3">DroneResponse provides an option to assign another UAV with the task.</step>
+            <step id="E1S4">The RPIC assigns a new UAV with the task, and the mission continues.</step>
+        </esteps>
+
+        <esteps id="E2" start="S2">
+            <description>No failsafe mechanism has been established onboard the UAV.</description>
+            <step id="E2S1">The runtime monitoring system raises a critical battery alarm.</step>
+            <step id="E2S2">The RPIC immediately lands the UAV in place or manually activates RTL for the UAV.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

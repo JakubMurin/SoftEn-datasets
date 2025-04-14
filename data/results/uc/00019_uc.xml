@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-EC2">
+    <name>Geofence Incursion</name>
+    <description>
+        A Geofence establishes a virtual boundary around a geographical location. Most UAV provide support for establishing a geofence based on GPS coordinates and maximum altitude. Geofences can be established over rectangular, circular, or polygonic regions of a map. If a UAV breaches its geofence then a failsafe mechanism will activate causing the UAV to RTL or LAND in place.
+        In many cases, the UAV supports a measured response with at least two trigger points associated with[APPROACHING_GEOFENCE] and [GEOFENCE_BREACH].
+    </description>
+
+    <actors>
+        <actor>RPIC</actor>
+        <actor>Unmanned Aerial Vehicle</actor>
+        <actor>Air Traffic Control</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>A failsafe action has been pre-configured to activate RTL (Return to Launch) or land in place if the UAV breaches the geofence.</precondition>
+        <precondition>The UAV was launched from within the geofence.</precondition>
+        <precondition>The geofence has been correctly established around the UAV's intended flight path.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV does not breach the geofence during its mission.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The UAV breaches the geofence.</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV is armed and a geofence alert (either `[APPROACHING_GEOFENCE]` or `[GEOFENCE_BREACH]`) is triggered.</trigger>
+
+    <mainSequence>
+        <step id="S1">DroneResponse responds to the `[APPROACHING_GEOFENCE]` alarm.</step>
+        <step id="S1.1">The runtime monitoring system detects that the UAV is approaching the geofence.</step>
+        <step id="S1.2">The runtime monitoring system raises an alert.</step>
+        <step id="S1.3">The current flight route is canceled.</step>
+        <step id="S1.4">The alert is displayed in the UI to notify the RPIC of the geofence warning.</step>
+        <step id="S1.5">The system either:</step>
+        <step id="S1.5.1">Reroutes the UAV so that it avoids flying close to the geofence.</step>
+        <step id="S1.5.2">The RPIC intervenes and issues a new flight command to the UAV.</step>
+
+        <step id="S2">The UAV detects a `[GEOFENCE_BREACH]`.</step>
+        <step id="S2.1">The failsafe mechanism is activated, based on the UAV's preconfiguration (e.g., RTL or land in place).</step>
+
+        <step id="S3">The RPIC maintains visual line of sight with the UAV until it completes RTL or lands.</step>
+        <step id="S4">If necessary, the UAV suspends the remainder of the mission or manually moves other UAVs out of the way of the returning UAV.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S1.3">
+            <description>The RPIC decides that the current task cannot be continued by the UAV.</description>
+            <step id="E1S1">The RPIC decides that the UAV cannot complete its task and is relieved from the task.</step>
+            <step id="E1S2">The RPIC manually activates RTL for the UAV.</step>
+            <step id="E1S3">DroneResponse provides an option to assign another UAV with the task.</step>
+            <step id="E1S4">The RPIC assigns a new UAV with the task, and the mission continues.</step>
+        </esteps>
+
+        <esteps id="E2" start="S2">
+            <description>No failsafe mechanism has been established onboard the UAV.</description>
+            <step id="E2S1">The runtime monitoring system raises a `[GEOFENCE_BREACH]` alert.</step>
+            <step id="E2S2">The RPIC immediately lands the UAV in place or manually activates RTL for the UAV.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

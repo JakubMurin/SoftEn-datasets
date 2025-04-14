@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<useCase id="dronology-SC2">
+    <name>Active Tracking</name>
+    <description>A UAV actively tracks a victim.</description>
+
+    <actors>
+        <actor>Semi-Autonomous UAV</actor>
+        <actor>Mission Commander</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>UAV is within near vision-range of the victim</precondition>
+        <precondition>UAV has actively tagged the victim</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>The UAV remains within near vision-range of the victim and streams video imagery to Emergency Responders</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>UAV fails to actively track the victim</condition>
+    </failureEndConditions>
+
+    <trigger>The UAV is assigned or assumes the task of tracking a person</trigger>
+
+    <mainSequence>
+        <step id="S1">The UAV positions itself in tracking_position, i.e., in the near vicinity of the victim but not directly overhead.</step>
+        <step id="S2">The UAV uses image capture and analysis to continually tag the victim in the image stream.</step>
+        <step id="S3">Based on the UAV's position (pitch, roll, yaw), the onboard tracker continually calculates the relative position of the victim with respect to the UAV.</step>
+        <step id="S4">The onboard tracker generates appropriate velocity vectors to fly towards the victim, without flying directly over the victim and maintaining victim_separation_distance and always flying at an altitude greater than minimum_altitude.</step>
+        <step id="S5">The velocity vector is sent to the UAV's autopilot and executed to enable the UAV to track the victim.</step>
+        <step id="S6">Steps 2-5 are repeated until the UAV receives a stop_tracking command.</step>
+    </mainSequence>
+
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>The UAV loses track of the victim</description>
+            <step id="E1S1">The UAV attempts to re-tag the victim by changing altitude and performing a localized search.</step>
+        </esteps>
+    </errorSteps>
+</useCase>
+

@@ -1,0 +1,105 @@
+@startuml
+scale 2000 width
+
+participant "RLOG server" as server #ffc
+participant "RLOG agent" as agent #ffc
+participant "RLOG bootstrapper" as boot_serv #ffc
+
+participant "RLOG replica" as repl #ccf
+participant "RLOG replica\nimporter worker" as repl_imp #ccf
+participant "bootstrap client" as boot_client #ccf
+
+activate server
+activate repl
+activate repl_imp
+
+group Agent initialization
+== Probe the connection to minimize risk of double-subscription and negotiate protocol version ==
+  repl -> server : probe
+  repl <- server : {true, 0}
+  note over repl: The protocol version\nshould be the same,\nabort connection if different
+
+== Initiate connection ==
+  repl -> server : {connect, LocalCheckpointTS}
+  note over server : Spawn a new agent process\nunder the shard supervisor
+  server -\\ agent : spawn(now() - SafeInterval)
+
+  activate agent
+
+  repl <- server : {need_bootstrap, AgentPID}
+end
+
+== Bootstrapping ==
+
+group Bootstraper initialization
+  hnote over repl : bootstrap
+
+  repl -\\ boot_client : spawn()
+  activate boot_client
+
+  boot_client -> server : {bootstrap, self()}
+  server -\\ boot_serv : spawn(RemotePid)
+  activate boot_serv
+
+  boot_serv -> boot_serv : mnesia:dirty_all_keys\nfor each table in shard
+
+  server -> boot_client : {ok, Pid}
+end
+
+group Bootstrap
+  note over boot_serv : Iterate through the\ncached keys
+  loop
+    boot_serv -> boot_client : {batch, [{Tab, Record}]}
+    boot_client -> boot_client : import batch to the\ntable replica
+    boot_serv <- boot_client : ok
+  end
+
+  note over agent : At the same time...
+
+  loop
+    server -> agent : {trans, SeqNo, TLOG}
+    agent -> repl : '#entry{}'
+    repl -> repl : cache batch to the local rlog
+  end
+
+  boot_serv -> boot_client : bootstrap_complete
+  deactivate boot_serv
+  boot_client -> repl : bootstrap_complete
+  deactivate boot_client
+end
+
+group local_replay
+  hnote over repl : local_replay
+
+  note over repl : Iterate through the\ncached transactions
+
+  loop
+    server -> agent : {trans, SeqNo, TLOG}
+    agent -> repl : '#entry{}'
+    repl -> repl : cache batch in the local rlog
+
+    repl -> repl : Import ops from the local rlog\nto the local replica
+  end
+
+  note over repl : Reached the end of\nthe local rlog
+end
+
+
+== Normal operation ==
+
+hnote over repl : normal
+
+loop
+  server -> agent : {trans, SeqNo, TLOG}
+  agent -> repl : '#entry{SeqNo}'
+  server -> agent : {trans, SeqNo + 1, TLOG}
+  agent -> repl : '#entry{SeqNo + 1}'
+  server -> agent : {trans, SeqNo + 2, TLOG}
+  agent -> repl : '#entry{SeqNo + 2}'
+  repl -> repl_imp : {import_batch, [Entries 1 2 3]}
+  repl_imp -> repl_imp : Import batch to the\nlocal replica
+  repl <- repl_imp : ok
+end
+
+@enduml
+

@@ -1,0 +1,37 @@
+@startuml
+
+participant App
+create ViewFactory
+App -> ViewFactory
+create ViewController
+App -> ViewController : new(viewFactory)
+App -> ViewController : run()
+activate ViewController
+
+loop until not quit
+
+ViewController -> ViewFactory : getViewA()
+create ViewA
+ViewFactory -> ViewA
+ViewController -> ViewA : show()
+activate ViewA
+ViewA-->ViewController
+deactivate ViewA
+destroy ViewA
+
+ViewController -> ViewFactory : getViewB()
+create ViewB
+ViewFactory -> ViewB
+ViewController -> ViewB : show()
+activate ViewB
+ViewB-->ViewController
+deactivate ViewB
+destroy ViewB
+
+end
+
+ViewController --> App
+deactivate ViewController
+
+
+@enduml
