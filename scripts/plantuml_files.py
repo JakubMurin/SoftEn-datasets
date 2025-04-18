@@ -34,11 +34,11 @@ class PlantumlFiles:
         
         return response.text
         
-    def prepare_object(self, origin: Origin, source_url: str | None, title: str="", participants: int=0, num_of_actors: int=0, fragments: list[str]=[], temperature: float=1, top_p: float=1) -> dict:
+    def prepare_object(self, origin: Origin, source_url: str | None, title: str="", participants: int=0, num_of_actors: int=0, fragments: dict[str, int]={}, ai_model: str="", temperature: float=1, top_p: float=1) -> dict:
         
-        file_categ = FileNames.GENERATED_SEQUENCE_DIAGRAM.value if Origin is Origin.CHAT_GPT else FileNames.SEQUENCE_DIAGRAM.value
+        file_categ = FileNames.GENERATED_SEQUENCE_DIAGRAM.value if origin is Origin.CHAT_GPT else FileNames.SEQUENCE_DIAGRAM.value
         id = get_next_file_index(os.path.join(self.working_dir, file_categ))
-        file = f"{id:0{5}}_{file_categ}.puml"
+        file = f"{file_categ}\{id:0{5}}_{file_categ}.puml"
         current_date = str(date.today())
         github_repository = self.get_repo_name_github(source_url) if source_url is not None else ""
         
@@ -49,31 +49,32 @@ class PlantumlFiles:
                          "origin": origin.value,
                          "source_url": source_url,
                          "repo": github_repository,
+                         "ai_model": ai_model,
                          "temperature": temperature,
                          "top_p": top_p,
                          "actors": num_of_actors,
                          "num_of_participats": participants,
                          "title": title,
-                         "fragments": fragments,
+                         **fragments,
                         }
         
         return return_object
     
-    def prosess_diagram(self, diagram: str, origin: Origin=Origin.GITHUB, url="", temperature: float=1, top_p: float=1):
+    def process_diagram(self, diagram: str, origin: Origin=Origin.GITHUB, url="", ai_model: str="", temperature: float=1, top_p: float=1):
         num_of_participats = self.validation.validate(diagram)
                 
         if not num_of_participats:
             return
         
         # pouzit regex na medzery
-        num_of_actors = diagram.count("\nactor ")
+        num_of_actors = len(re.findall(r"^ *actor ", diagram))
         title = self.get_diagram_title(diagram)
         fragments = self.get_diagram_fragments(diagram)
         
-        seq_data = self.prepare_object(origin, url, title, num_of_participats, num_of_actors, fragments, temperature, top_p)
+        seq_data = self.prepare_object(origin, url, title, num_of_participats, num_of_actors, fragments, ai_model, temperature, top_p)
         
-        file_categ = FileNames.GENERATED_SEQUENCE_DIAGRAM.value if Origin is Origin.CHAT_GPT else FileNames.SEQUENCE_DIAGRAM.value
-        seq_file_path = os.path.join(self.working_dir, file_categ, seq_data["file"])
+        file_categ = FileNames.GENERATED_SEQUENCE_DIAGRAM.value if origin is Origin.CHAT_GPT else FileNames.SEQUENCE_DIAGRAM.value
+        seq_file_path = os.path.join(self.working_dir, seq_data["file"])
         with open(seq_file_path, "w", encoding="utf-8") as seq_file:
             print(diagram, file=seq_file)
         
@@ -89,7 +90,7 @@ class PlantumlFiles:
                 if not diagram:
                     continue
                 
-                json_object = self.prosess_diagram(diagram, url=url)
+                json_object = self.process_diagram(diagram, url=url)
                 
                 if not json_object:
                     continue
@@ -105,9 +106,15 @@ class PlantumlFiles:
         line = re.search(r"^title .*", diagram, flags=re.MULTILINE)
         return line.group().lstrip("title").strip().strip('"') if line else ""
     
-    def get_diagram_fragments(self, diagram: str) -> list[str]:
-        # TODO
-        return []
+    def get_diagram_fragments(self, diagram: str) -> dict[str, str]:
+        num_of_alt = len(re.findall(r"^ *alt ", diagram, re.MULTILINE))
+        num_of_opt = len(re.findall(r"^ *opt ", diagram, re.MULTILINE))
+        num_of_loop = len(re.findall(r"^ *loop ", diagram, re.MULTILINE))
+        return {
+            "num_of_alt": num_of_alt,
+            "num_of_opt": num_of_opt,
+            "num_of_loop": num_of_loop
+        }
         
 if __name__ == "__main__":
     WORKING_DIR = os.getcwd()

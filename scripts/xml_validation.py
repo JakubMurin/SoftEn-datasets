@@ -73,9 +73,7 @@ class XmlValidation:
             return False
                 
         except etree.XMLSyntaxError as e:
-            if self.show_log:
-                print(f"Error while parsing XML: {e}")
-            raise etree.XMLSyntaxError()
+            print(f"Error while parsing XML: {e}")
                 
     def get_params(self, xml_tree: etree.ElementBase) -> XmlParams:
         title_el = xml_tree.find("name")
@@ -134,9 +132,40 @@ class XmlValidation:
 
 if __name__ == "__main__":
     
-    validator = XmlValidation(DTD_SCHEME_PATH)
+    validator = XmlValidation(DTD_SCHEME_PATH, True)
     # validator.set_custom_scheme()
-    print(validator.validate_file(os.path.join(WORKING_DIR, "data\\usecases\\07.xml")))
+    # print(validator.validate_file(os.path.join(WORKING_DIR, "data\\usecases\\07.xml")))
+    
+    a="""<useCase id="1">
+    <name>Resource Management</name>
+    <description>Manage resources in the system</description>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Resource Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>System must be running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Resources managed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to manage resources</condition>
+    </failureEndConditions>
+    <trigger>Resource request received</trigger>
+    <mainSequence>
+        <step>RegisterResourceRequest</step>
+        <step>RegisterResourceEvent</step>
+        <step>CheckRequest</step>
+        <step>CheckResponse</step>
+        <step>DiffRequest</step>
+        <step>DiffResponse</step>
+        <step>SameStep</step>
+        <step>done</step>
+        <step>RegisterResourceResponse</step>
+    </mainSequence>
+</useCase>"""
+    print(validator.validate(a))
 
     # for file_path in get_all_files(DATA_PATH, "usecases"):
     #     validator.validate_file(file_path)

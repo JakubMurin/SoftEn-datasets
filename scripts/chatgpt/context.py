@@ -14,8 +14,9 @@ class Context:
         
         if strategy == "api":
             api_key = environ["OPENAI_API_KEY"]
-            strategy_class = APIChatGPT(api_key)
-            print("Used method: API")
+            self.ai_model = environ["AI_MODEL"]
+            strategy_class = APIChatGPT(api_key, self.ai_model)
+            print(f"Used method: API\t\tmodel:{self.ai_model}")
             
         elif strategy == "selenium":
             strategy_class = SeleniumChatGPT()

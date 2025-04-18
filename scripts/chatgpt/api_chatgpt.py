@@ -3,7 +3,8 @@ from openai import OpenAI
 from . import strategy
 
 class APIChatGPT(strategy.Strategy):
-    def __init__(self, api_key):
+    def __init__(self, api_key, model="gpt-3.5-turbo-0125"):
+        self.model = model
 
         self.client = OpenAI(
             api_key=api_key
@@ -11,7 +12,7 @@ class APIChatGPT(strategy.Strategy):
     
     def execute_query(self, query: str, promt_ctx: list[dict[str, str]]=[], temperature: float=1, top_p: float=1) -> dict:
         completion = self.client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
+            model=self.model,
             messages=[
                 *promt_ctx,
                 {"role": "user", "content": query},
