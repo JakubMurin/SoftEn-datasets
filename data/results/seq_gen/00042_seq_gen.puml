@@ -1,0 +1,24 @@
+@startuml
+title "Environmental Sampling and Analysis"
+
+participant "Environmental Scientist"
+participant "RPIC (Remote Pilot in Command)"
+participant "DroneResponse"
+
+group Main Sequence
+    "RPIC (Remote Pilot in Command)" -> "DroneResponse": Sends activation signal
+    "DroneResponse" -> "RPIC (Remote Pilot in Command)": Confirms activation
+    "RPIC (Remote Pilot in Command)" -> "DroneResponse": Generates flight routes
+    "DroneResponse" -> "RPIC (Remote Pilot in Command)": Sends flight authorization
+    "RPIC (Remote Pilot in Command)" -> "DroneResponse": Requests mission start
+    "DroneResponse" -> "UAVs": Activate and arm
+    "UAVs" -> "Control Center": Perform synchronized takeoff
+    "Control Center" -> "UAVs": Assign flight routes
+    "UAVs" -> "Open Body of Water": Collect and analyze samples
+    "UAVs" -> "Base Station": Return home
+    "RPIC (Remote Pilot in Command)" -> "UAVs": Replace sampling supplies
+end
+
+"Drone Commander" -> "Control Center": End mission
+
+@enduml

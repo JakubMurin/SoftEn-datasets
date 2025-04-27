@@ -1,0 +1,21 @@
+@startuml "Synchronized Takeoff Sequence Diagram"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Drone Commander" as Commander
+
+UAV -> Commander: Start mission command
+activate Commander
+Commander -> DroneResponse: Assign altitude
+activate DroneResponse
+DroneResponse --> Commander: Altitude assigned
+Commander -> UAV: Lease airspace
+UAV --> Commander: Airspace leased
+Commander -> UAV: Take off
+UAV --> Commander: UAV took off
+Commander -> UAV: Fly to waypoint coordinates
+UAV --> Commander: Reached waypoint coordinates
+Commander -> UAV: Descend/ascend to designated altitude
+UAV --> Commander: Reached designated altitude
+deactivate DroneResponse
+deactivate Commander
+@enduml

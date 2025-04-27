@@ -1,0 +1,55 @@
+@startuml
+title River Search and Rescue
+
+participant "Drone Commander" as DC
+participant "Semi-autonomous UAV" as UAV
+participant "Emergency responders" as ER
+participant "DroneResponse" as DR
+participant "Human operator" as HO
+participant "UIs" as UI
+participant "Mobile_rescue system" as MR
+participant "Human responders" as HR
+participant "Backup operator" as BO
+
+DC -> UAV: Activate search
+UAV -> ER: Place UAVs in launch positions
+ER -> UAV: Activate and arm UAVs
+ER -> DR: Initiate flight routes generation
+DR -> DC: Start mission command
+UAV -> UAV: Perform synchronized takeoff
+UAV -> UAV: Fly assigned flight routes
+UAV -> UAV: Perform image capture and analysis
+UAV -> DR: Raise victim_detection event
+DR -> UI: Forward event
+UAV -> UAV: Switch to active tracking mode
+DR -> HO: Request victim confirmation
+HO -> UAV: Confirm victim sighting
+DR -> MR: Send GPS coordinates
+UAV -> UAV: Deliver flotation device
+HR -> UAV: Deliver flotation device
+DC -> UAV: End mission
+
+alt Manual delivery
+UAV -> HR: Manual delivery of flotation device
+end
+
+opt Victim not found
+UAV -> DR: Raise notification
+UAV -> DR: Save GPS coordinates
+UAV -> UAV: Continue route
+BO -> UAV: Review imagery
+BO -> UAV: Confirm not a victim
+end
+
+opt Invalid sighting
+HO -> UAV: Refute sighting
+UAV -> UAV: Resume search
+end
+
+opt No permission for tracking
+UAV -> UAV: Continue search
+HO -> HO: Confirm sighting
+UAV -> UAV: Relocate and start tracking
+end
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml "End Mission Sequence Diagram"
+
+actor "Drone Commander" as DC
+participant "Semi-autonomous UAV" as UAV
+participant "DroneResponse" as DR
+participant "Emergency Responder" as ER
+
+note right of DC: Recall command\n initiated
+
+DC -> UAV: Recall command
+UAV -> UAV: Plan route
+UAV -> DR: Request clearance
+DR -> UAV: Provide clearance
+UAV -> UAV: Fly to\n target waypoint
+note over UAV: Repeat until\nlanding safely
+
+@enduml

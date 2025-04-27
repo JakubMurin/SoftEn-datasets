@@ -1,0 +1,21 @@
+@startuml "Sequence Diagram - Geofence Incursion"
+
+actor "RPIC" as RPIC
+actor "Unmanned Aerial Vehicle" as UAV
+actor "Air Traffic Control" as ATC
+
+RPIC -> UAV: Arm UAV
+UAV -> UAV: Monitor geofence alert
+note over UAV: Triggered by approaching\nor breaching geofence
+
+alt [APPROACHING_GEOFENCE]
+    RPIC -> UAV: Issue new\nflight command
+else [GEOFENCE_BREACH]
+    UAV -> UAV: Activate failsafe mechanism
+    note over UAV: RTL or land in place
+end
+
+RPIC -> UAV: Maintain visual line of sight
+UAV -> UAV: Complete RTL or land
+
+@enduml

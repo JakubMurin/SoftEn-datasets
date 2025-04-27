@@ -1,0 +1,23 @@
+@startuml "Fly to Destination"
+
+actor "Semi-Autonomous UAV" as UAV
+participant "DroneResponse" as DR
+
+UAV -> DR: decompose flight path
+DR --> UAV: flight legs with waypoints
+UAV -> DR: set initial altitude
+DR --> UAV: starting altitude
+UAV -> DR: check prohibited airspace
+DR --> UAV: pass through airspace
+UAV -> DR: check terrain altitude
+DR --> UAV: maintain minimum altitude
+UAV -> DR: check battery power
+DR --> UAV: sufficient power
+UAV -> DR: lease airspace
+DR --> UAV: airspace leased
+UAV -> DR: ascend/descend to target altitude
+DR --> UAV: reach target altitude
+UAV -> DR: fly to destination waypoint
+DR --> UAV: report arrival
+UAV -> DR: assume task at destination
+@enduml

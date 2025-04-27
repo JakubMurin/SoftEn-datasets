@@ -1,0 +1,32 @@
+@startuml "End Mission Sequence Diagram"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+
+DC -> UAV: End Mission Command
+UAV -> UAV: Recall to Home Base
+UAV -> UAV: Check Unique Home Coordinates
+UAV -> UAV: Plan Route to Home
+UAV -> UAV: Lease Airspace
+UAV -> UAV: Fly to Waypoint
+UAV -> UAV: Repeat Steps until Safe Landing
+
+alt Mission Aborted
+    UAV -> UAV: Return to Base
+else New Task Assigned
+    UAV -> UAV: Assign New Task
+    UAV -> UAV: Cancel End Mission
+    UAV -> UAV: Commence New Mission
+end
+
+opt Error Handling
+    UAV -> UAV: Check Home Coordinates
+    alt Multiple UAVs with Same Coordinates
+        UAV -> UAV: Remove Duplicate Coordinates
+        UAV -> UAV: Assign New Temporary Coordinates
+        UAV -> UAV: Follow Temporary Coordinates
+        UAV -> UAV: Manual Landing
+    end
+end
+
+@enduml

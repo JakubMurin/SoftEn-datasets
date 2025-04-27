@@ -1,0 +1,29 @@
+@startuml
+title Surveillance and Information about a Traffic Accident
+
+participant "911 Call Operator"
+participant "DroneResponse System"
+participant "DroneResponse Commander"
+participant "UAV's"
+participant "Firefighters"
+participant "Police"
+participant "Medical Crews"
+
+note right of "911 Call Operator": A 911 call is received\nreporting an accident
+
+"911 Call Operator" -> "DroneResponse System": An accident report is received.
+"DroneResponse System" -> "DroneResponse Commander": Route planning\nFlight authorization
+"DroneResponse Commander" -> "UAV's": Start mission
+"UAV's" -> "UAV's": Synchronized takeoff
+"UAV's" -> "UAV's": Fly to accident location
+"UAV's" -> "UAV's": Image capture and analysis
+"UAV's" -> "DroneResponse System": Confirm accident site
+"DroneResponse System" -> "Emergency Responders": Send GPS coordinates
+"DroneResponse System" -> "Emergency Responders": Generate route
+"UAV's" -> "UAV's": Onboard vision\nDetection
+"UAV's" -> "Police": Traffic info
+"UAV's" -> "Firefighters": Accident structure info
+"UAV's" -> "Medical Crews": Human-related info
+"Emergency Responders" -> "Firefighters": Arrival on scene
+"DroneCommander" -> "DroneCommander": End mission
+@enduml

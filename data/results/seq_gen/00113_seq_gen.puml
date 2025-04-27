@@ -1,0 +1,20 @@
+@startuml
+title "Image Capture and Analysis"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Commander" as Commander
+actor "Onboard vision model" as VisionModel
+
+UAV -> UAV: Activate camera if not activated
+UAV -> UAV: Stream imagery to companion computer
+UAV -> VisionModel: Process and annotate imagery
+VisionModel -> UAV: Raise detection event
+UAV -> UAV: Transmit image streams to videostream server
+UAV -> UAV: Repeat steps until commanded to stop
+
+note right of UAV
+At anytime camera's battery is depleted,
+raise alert
+end note
+
+@enduml

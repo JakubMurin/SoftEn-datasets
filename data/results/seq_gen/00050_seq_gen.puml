@@ -1,0 +1,23 @@
+@startuml
+title "Activate and Arm"
+
+RPIC -> DroneResponse: The RPIC deactivates the UAV's safety switch.
+DroneResponse -> UAV: DroneResponse issues an arming command.
+UAV -> UAV: The UAV executes all pre-arming tests.
+UAV -> UAV: The UAV passes pre-arming tests.
+UAV -> UAV: The UAV arms.
+UAV -> AutomatedPilot: The UAV's status is set to MISSION mode
+AutomatedPilot -> DroneResponse: The UAV's automated pilot notifies DroneResponse
+
+RPIC -> UAV: The RPIC fails to deactivate the safety switch
+UAV -> UAV: The UAV issues a warning sound and raises an error
+UAV -> RPIC: The use case continues from Step 1
+
+UAV -> UAV: The UAV fails to pass its pre-arming tests
+UAV -> System: The system reports specific reasons for pre-arming failure
+RPIC -> UAV: The RPIC reactivates the UAV's safety switch
+Technician -> UAV: A technician attempts to fix the root cause of the pre-arming failure
+Technician -> Technician: If the technician fixes the problem, the use case restarts from Step 1
+Technician -> UAV: If the technician fails to fix the problem, the UAV is removed from service
+
+@enduml

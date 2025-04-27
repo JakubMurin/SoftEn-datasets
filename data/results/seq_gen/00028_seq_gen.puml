@@ -1,0 +1,25 @@
+@startuml
+title "Structural Fire Fighting"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+
+DC -> UAV: Firefighters request flight authorization
+UAV -> UAV: Activate and arm
+UAV -> UAV: Perform synchronized takeoff
+UAV -> UAV: Create initial mapping of building
+UAV -> UAV: Plan surveillance flights
+UAV -> UAV: Lease necessary airspace
+UAV -> UAV: Perform image capture and analysis
+UAV -> UAV: Stream and aggregate imagery
+UAV -> UAV: Repeat steps 4-7
+UAV -> DC: End mission once fire is controlled
+
+UAV -> UAV: Detect possible victim
+UAV -> UAV: Raise alert and request confirmation
+UAV -> UAV: Stream imagery
+UAV -> UAV: Inspect video stream
+UAV -> UAV: Plan and execute rescue mission
+UAV -> UAV: Continue assigned route
+
+@enduml

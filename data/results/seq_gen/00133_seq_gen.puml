@@ -1,0 +1,36 @@
+@startuml
+title "Lease Airspace for Planned Flight Path"
+
+participant "Semi-Autonomous UAV" as UAV
+participant "Air Traffic Control" as ATC
+
+UAV -> ATC: Calculate airspace needed
+UAV -> ATC: Request permission to reserve airspace
+ATC -> UAV: Determine airspace availability
+ATC -> UAV: Reserve airspace
+ATC -> UAV: Release previous airspace reservations
+ATC -> UAV: Grant exclusive lease of airspace
+UAV -> UAV: Complete action and repeat
+
+group Error Steps
+    ATC -> ATC: Find other reservations and restricted airspaces
+    ATC --> UAV: Deny request and provide lists
+    UAV -> UAV: Analyze lists and select alternative action
+    alt Action is impossible
+        UAV -> UAV: Pick new waypoint
+        UAV --> UAV: Continue at step 1
+    else Progress is possible
+        UAV -> UAV: Decide on new action
+        UAV --> UAV: Continue at step 1
+    end
+    alt UAV in the air
+        UAV -> UAV: Request small airspace to wait
+        UAV -> UAV: Wait and repeat request
+        UAV --> UAV: Continue at step 3
+    else UAV on the ground
+        UAV -> UAV: Wait and repeat request
+        UAV --> UAV: Continue at step 3
+    end
+end
+
+@enduml

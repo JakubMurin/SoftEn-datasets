@@ -1,0 +1,30 @@
+@startuml
+title "Low Battery Use Case"
+
+participant "DroneResponse" as DroneResponse
+participant "Runtime Monitoring System" as RMS
+participant "UI" as UI
+participant "RPIC" as RPIC
+participant "UAV" as UAV
+
+RPIC -> DroneResponse: responds to the `[LOW_BATTERY_THRESHOLD]` alarm
+RMS -> RPIC: The runtime monitoring system detects a low battery event for the UAV
+RMS -> UI: The runtime monitoring system raises an alert
+UI -> RPIC: The alert is displayed in the UI to notify the RPIC of the low battery warning for the UAV
+
+UAV -> RPIC: The UAV detects a battery level below `[CRITICAL_BATTERY_THRESHOLD]`
+UAV -> UAV: The failsafe mechanism is activated according to the UAV's preconfiguration (e.g., RTL or land in place)
+
+RPIC -> UAV: The RPIC maintains visual line of sight with the UAV and observes that it has transitioned to RTL state
+UAV -> UAV: If necessary, the UAV suspends the remainder of the mission or manually moves other UAVs out of the way of the returning UAV
+
+RPIC -> DroneResponse: The RPIC decides that the current task cannot be continued by the UAV
+RPIC -> UAV: The RPIC decides that the UAV cannot complete its designated task during the mission and is relieved from its task
+RPIC -> UAV: The RPIC manually activates RTL for the UAV
+DroneResponse -> RPIC: DroneResponse provides an option to assign another UAV with the task
+RPIC -> UAV: The RPIC assigns a new UAV with the task, and the mission continues
+
+RMS -> RPIC: No failsafe mechanism has been established onboard the UAV
+RMS -> RPIC: The runtime monitoring system raises a critical battery alarm
+RPIC -> UAV: The RPIC immediately lands the UAV in place or manually activates RTL for the UAV
+@enduml

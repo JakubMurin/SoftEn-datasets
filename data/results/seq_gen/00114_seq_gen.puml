@@ -1,0 +1,16 @@
+@startuml "Image Capture and Analysis Sequence Diagram"
+
+"Mission Commander" -> "Semi-Autonomous UAV": Command to collect and analyze imagery
+"Mission Commander" <- "Semi-Autonomous UAV": Command acknowledgement
+
+activate "Semi-Autonomous UAV"
+"UAV" -> "UAV Camera": Activate camera
+"UAV" -> "Onboard vision model": Stream imagery
+"Onboard vision model" -> "UAV": Annotate objects
+note right: Process and annotate\nstreamed imagery
+"UAV" --> "UAV Camera": Stop streaming
+"UAV" --> "Onboard vision model": Raise detection event
+"UAV" -> "Videostream server": Transmit annotated images
+deactivate "Semi-Autonomous UAV"
+
+@enduml

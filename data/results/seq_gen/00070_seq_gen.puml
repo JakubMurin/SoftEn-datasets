@@ -1,0 +1,18 @@
+@startuml
+title "Generate Flight Routes for Area Coverage"
+actor "Drone Commander" as Commander
+participant "Semi-autonomous UAV" as UAV
+participant "User" as User
+participant "DroneResponse" as Response
+
+User -> User: Select feature to mark a region
+User -> User: Mark polygon shape on map
+User -> Response: Analyze polygon shape
+Response -> User: Accept viable polygon
+User -> User: Specify number of UAVs (N)
+Response -> Response: Generate N flight routes
+Response -> UAV: Assign flight routes
+note right: Loop for each UAV
+UAV -> UAV: Follow assigned route
+User -> User: End use case
+@enduml

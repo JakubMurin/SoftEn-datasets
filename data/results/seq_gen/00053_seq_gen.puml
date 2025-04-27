@@ -1,0 +1,21 @@
+@startuml Activate_and_Arm
+
+actor "RPIC" as RPIC
+actor "Technicians" as Technicians
+participant "UAV" as UAV
+participant "DroneResponse" as DroneResponse
+
+RPIC -> UAV: Deactivate safety switch
+DroneResponse -> UAV: Arming command
+UAV -> UAV: Execute pre-arming tests
+UAV -> UAV: Pass pre-arming tests
+UAV -> UAV: Arm
+UAV -> UAV: Set status to MISSION mode
+UAV -> DroneResponse: Notify armed for flight
+
+UAV -> RPIC: Issue warning sound and error
+
+RPIC -> UAV: Reactivate safety switch
+Technicians -> UAV: Fix pre-arming failure
+
+@enduml

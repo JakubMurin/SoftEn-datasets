@@ -1,0 +1,17 @@
+@startuml
+title Flight Authorization from Aviation Regulators
+
+participant "Remote Pilot in Command (RPIC)" as RPIC
+participant "Semi-autonomous UAV" as UAV
+participant DroneResponse
+participant "Authorization Service Provider" as Provider
+
+RPIC -> RPIC: Visual inspection of UAVs
+RPIC -> RPIC: Weather check for safe flight
+RPIC -> DroneResponse: Request authorization for UAVs
+DroneResponse -> Provider: Get authorization request
+Provider --> DroneResponse: Authorization response
+DroneResponse -> DroneResponse: Mark airspace restrictions
+DroneResponse -> DroneResponse: Establish geofence
+
+@enduml

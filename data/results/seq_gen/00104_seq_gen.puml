@@ -1,0 +1,18 @@
+@startuml "Fly to Destination"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Air Traffic Control" as ATC
+
+UAV -> DroneResponse: Decompose flight path
+DroneResponse -> DroneResponse: Establish initial altitude
+DroneResponse -> DroneResponse: Check prohibited airspace
+DroneResponse -> DroneResponse: Check terrain altitude
+DroneResponse -> UAV: Check battery power
+UAV -> UAV: Lease airspace
+UAV -> UAV: Ascend/Descend to target altitude
+UAV -> UAV: Fly to destination waypoint
+UAV -> UAV: Report arrival
+UAV -> UAV: Repeat until final destination
+UAV -> UAV: Complete task at final destination
+
+@enduml

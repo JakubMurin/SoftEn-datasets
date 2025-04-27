@@ -1,0 +1,13 @@
+@startuml Synchronized Takeoff Sequence Diagram
+
+actor "Semi-Autonomous UAV" as SAU
+actor "Drone Commander" as DC
+
+SAU -> DC: start mission command
+DC -> DroneResponse: assign altitude
+DroneResponse -> SAU: assign altitude
+SAU -> SAU: take off
+SAU -> SAU: fly to first waypoints
+SAU -> SAU: descend/ascend to designated altitude
+
+@enduml

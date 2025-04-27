@@ -1,0 +1,19 @@
+@startuml
+title "End Mission"
+
+"Drone Commander" -> "Semi-autonomous UAV" : An emergency responder decides to abort the mission or the mission is complete and an end mission command is initiated
+"Drone Commander" -> "Semi-autonomous UAV" : The mission is completed and UAVs are recalled home
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : The system checks that all recalled UAVs have unique home coordinates
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : UAVs each plan their routes back to their unique home coordinates
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Each UAV leases airspace for the next leg of its planned route and awaits clearance
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Upon receiving clearance, the UAV flies to the target waypoint
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Steps S4-S5 are repeated until the UAV returns to its launch coordinates and lands safely
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : While a UAV is returning to base, the mission commander assigns it a new task
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : The END_MISSION command is cancelled for this UAV
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : The UAV commences its new mission
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Multiple UAVs have been assigned the same home coordinates
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : For any group of UAVs with home coordinates that violate minimum separation distance, the system removes the home coordinates for all except one of them
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : UAVs without assigned home coordinates are assigned new in-air temporary coordinates
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : UAVs with in-air home coordinates follow steps S3-S5 until reaching the in-air coordinates and then hover in place
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : The Remote Pilot in Command (RPIC) manually controls the landing of any UAV with in-air home coordinates
+@enduml

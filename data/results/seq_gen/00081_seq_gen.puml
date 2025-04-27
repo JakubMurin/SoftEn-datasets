@@ -1,0 +1,36 @@
+@startuml "Collect Environmental Sample"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Operator" as Operator
+
+== Main Sequence ==
+UAV -> UAV: The UAV arrives at its designated collection coordinates.
+UAV -> UAV: The UAV positions itself to collect a water sample.
+UAV -> UAV: The UAV uses its onboard vision\ncapabilities to find an unobstructed route.
+UAV -> UAV: The UAV begins its descent while using image\ncapture and analysis and altitude sensors.
+UAV -> UAV: The UAV activates its onboard collection device and collects a water sample.
+UAV -> UAV: The UAV lowers its collection apparatus.
+UAV -> UAV: The UAV collects the water sample.
+UAV -> UAV: The UAV stores the water sample for carrying home.
+UAV --> UAV: Steps S1-S3 are repeated until all planned\ncollection points have been visited.
+
+UAV --> UAV: The use case finishes when the UAV commences its flight home.
+
+== Alternative Steps ==
+UAV -[#blue]> UAV: The UAV is tasked with collecting an air sample instead
+
+UAV --> UAV: The UAV not only collects a sample (air or water)\nbut also performs onboard analysis.
+UAV --> UAV: The UAV performs onboard analysis of the sample.
+UAV --> UAV: Targeted pollutants are identified in the sample.
+UAV --> UAV: The UAV dynamically plans a new collection route.
+UAV -> Operator: The user directs the UAV to skip the current waypoint.
+Operator -> UAV: The user manually identifies an unobstructed route.
+UAV -> Operator: The user manually flies the UAV or marks the route.
+
+== Error Steps ==
+group Errors
+UAV -> Operator: UAV unable to find an unobstructed route to the water.
+Operator -> UAV: User directs UAV to skip current waypoint.
+UAV -> Operator: Operator manually identifies route for UAV.
+end
+@enduml

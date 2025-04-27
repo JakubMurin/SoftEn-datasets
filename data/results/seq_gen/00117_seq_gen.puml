@@ -1,0 +1,32 @@
+@startuml ItemDrop
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Commander" as Commander
+
+UAV -> Commander: The UAV is equipped with a carry-release mechanism
+UAV -> Commander: The weight of the item is within safe payload
+UAV -> Commander: The item is attached to carry mechanism
+
+UAV -> Commander: Command to deliver item
+UAV -> UAV: Takes-off and flies to delivery coordinates
+UAV -> UAV: Starts streaming video
+UAV --> Commander: Video displayed in UI
+UAV -> UAV: Determines safe drop point
+UAV -> UAV: Positions at drop point
+UAV --> Commander: Requests permission to drop
+Commander -> UAV: Gives permission
+UAV -> UAV: Lowers item at drop point
+Commander --> UAV: Confirms drop completion
+UAV -> UAV: Moves to safe observation point
+
+UAV -> Commander: Carry mechanism fails to activate
+Commander -> UAV: Attempts manual command
+Commander -> UAV: Recalls UAV if mechanism fails
+
+UAV -> Commander: Unable to find safe drop point
+Commander -> UAV: Manually identifies drop point from video
+
+Commander -> UAV: Refuses permission for proposed drop point
+Commander -> UAV: Suggests alternate drop position or aborts
+
+@enduml

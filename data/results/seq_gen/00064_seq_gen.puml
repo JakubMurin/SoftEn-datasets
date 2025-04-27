@@ -1,0 +1,33 @@
+@startuml "Generate Flight Routes for Area Coverage"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+participant "User" as U
+participant "DroneResponse" as DR
+
+U -> DR: A user selects the feature to mark a region on the currently displayed map
+U -> DR: The user marks a polygon shape on the map
+DR -> DR: DroneResponse analyzes the shape and size of the drawn polygon
+DR -> U: The polygon is viable for route generation
+U -> DR: The user specifies the number of UAVs (N)
+DR -> DR: DroneResponse generates efficient set of N flight routes
+DR -> DR: DroneResponse assigns flight routes to N available UAVs
+DR -> U: Flight routes generated and assigned
+
+alt Instead of optimizing for area coverage
+    DR -> DR: Algorithm optimizes routes for a sampling mission
+    U -> DR: The user specifies the number of samples (S)
+    DR -> DR: Algorithm optimizes flight paths for sampling locations
+end
+
+opt Error Handling
+    U -> DR: User wishes to mark a search area not entirely covered by map view
+    DR -> U: User adjusts map view to encompass planned search area
+    U -> DR: Polygon deemed infeasible for route generation
+    DR -> DR: Polygon rejected if insufficient width or height
+    DR -> DR: Unsupported indentations or appendages ignored
+    U -> DR: Fewer than N UAVs available for assignment
+    DR -> U: User reduces number of designated UAVs or activates additional UAVs
+end
+
+@enduml

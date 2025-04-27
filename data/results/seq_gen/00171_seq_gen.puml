@@ -1,0 +1,20 @@
+@startuml
+title "Low Battery Use Case"
+
+actor "Ground Control System" as GCS
+actor "RPIC" as RPIC
+actor "Unmanned Aerial Vehicle" as UAV
+actor "Air Traffic Control" as ATC
+
+RPIC -> DroneResponse: responds to `[LOW_BATTERY_THRESHOLD]` alarm
+DroneResponse -> RuntimeMonitoringSystem: detects low battery event
+RuntimeMonitoringSystem -> RuntimeMonitoringSystem: raises alert
+RuntimeMonitoringSystem -> RPIC: displays alert in UI
+UAV -> UAV: detects battery level below `[CRITICAL_BATTERY_THRESHOLD]`
+UAV -> FailsafeMechanism: activates failsafe mechanism
+RPIC -> UAV: maintains visual line of sight
+RPIC -> UAV: observes transition to RTL state
+UAV -> UAV: suspends mission if necessary
+UAV -> UAV: moves out of the way if necessary
+
+@enduml

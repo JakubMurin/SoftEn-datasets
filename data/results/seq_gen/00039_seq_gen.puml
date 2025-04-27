@@ -1,0 +1,17 @@
+@startuml
+title "Environmental Sampling and Analysis"
+
+actor "Environmental Scientist" as Scientist
+actor "RPIC (Remote Pilot in Command)" as RPIC
+
+RPIC -> DroneResponse: Activate
+RPIC -> DroneResponse: Generate flight routes
+RPIC -> DroneResponse: Request flight authorization
+RPIC -> DroneResponse: Start mission
+RPIC -> UAVs: Perform synchronized takeoff
+UAVs -> OpenBodyOfWater: Collect and analyze samples
+UAVs -> Base: Return home
+RPIC -> Base: Remove samples and replenish supplies
+RPIC -> DroneResponse: End mission
+
+@enduml

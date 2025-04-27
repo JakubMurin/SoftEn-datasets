@@ -1,0 +1,10 @@
+@startuml
+title Synchronized Takeoff
+
+Semi_Autonomous_UAV -> Drone_Commander: Start mission command
+Drone_Response -> Semi_Autonomous_UAV: Assign altitude
+Semi_Autonomous_UAV -> Airspace_Controller: Lease airspace for route
+Semi_Autonomous_UAV -> Ground_Control: Take off
+Semi_Autonomous_UAV -> Waypoint_System: Fly to first waypoints
+
+@enduml

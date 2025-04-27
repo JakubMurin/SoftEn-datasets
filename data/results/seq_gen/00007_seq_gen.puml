@@ -1,0 +1,23 @@
+@startuml
+title "River Search and Rescue"
+
+actor "Drone Commander"
+actor "Semi-autonomous UAV"
+
+"Drone Commander" -> "Semi-autonomous UAV" : Activate search process
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Place UAVs in launch positions
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Activate and arm UAVs
+"Semi-autonomous UAV" -> "DroneResponse" : Initiate flight routes generation
+"DroneResponse" -> "Semi-autonomous UAV" : Start mission command
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Perform synchronized takeoff
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Lease airspace and fly routes
+"Semi-autonomous UAV" -> "Semi-autonomous UAV" : Perform image capture and analysis
+"Semi-autonomous UAV" -> "DroneResponse" : Raise victim detection event
+"DroneResponse" -> "UIs" : Forward victim detection alert
+"Semi-autonomous UAV" -> "Human Operator" : Confirm victim sighting
+"Human Operator" --> "DroneResponse" : Confirmation
+"DroneResponse" --> "mobile_rescue System" : Send GPS coordinates
+"Semi-autonomous UAV" -> "Mobile System" : Deliver flotation device
+"Semi-autonomous UAV" -> "Human Responders" : Inform arrival
+"Drone Commander" -> "Semi-autonomous UAV" : End mission
+@enduml

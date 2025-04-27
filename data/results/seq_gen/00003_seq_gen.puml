@@ -1,0 +1,45 @@
+@startuml "River Search and Rescue Sequence Diagram"
+
+title River_Search_and_Rescue
+
+Drone_Commander -> Semi_autonomous_UAV: Activate search
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Place in launch positions
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Activate and arm
+Semi_autonomous_UAV -> Dynamic_Generation: Initiate flight routes
+DroneResponse_Commander -> DroneResponse: Start mission
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Synchronized takeoff
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Fly assigned routes
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Image capture and analysis
+Semi_autonomous_UAV -> DroneResponse: Raise victim_detection event
+DroneResponse -> UI: Forward event
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Switch to active tracking mode
+DroneResponse -> Human_Operator: Request victim confirmation
+Human_Operator -> Semi_autonomous_UAV: Confirm victim sighting
+DroneResponse -> Mobile_Rescue_System: Send GPS coordinates
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Deliver flotation device
+Human_Responders -> Scene: Arrive
+Drone_Commander -> Drone_Commander: End mission
+
+alt Human responders deliver manually
+Human_Responders -> Scene: Deliver flotation device manually
+end
+
+opt UAV detects possible victim
+Semi_autonomous_UAV -> DroneResponse: Raise notification
+DroneResponse -> DroneResponse: Save GPS coordinates
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Continue current route
+DroneResponse -> Backup_Operator: Review imagery
+Backup_Operator -> Backup_Operator: Confirm not a victim
+end
+
+opt Human operator refutes sighting
+Human_Operator -> Semi_autonomous_UAV: Resume search
+end
+
+opt UAV does not have permission to track
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Continue search
+Human_Operator -> Semi_autonomous_UAV: Confirm sighting
+Semi_autonomous_UAV -> Semi_autonomous_UAV: Relocate and start tracking
+end
+
+@enduml

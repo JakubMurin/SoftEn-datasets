@@ -1,0 +1,14 @@
+@startuml
+title "Synchronized Takeoff"
+
+"Semi-Autonomous UAV" -> "DroneResponse": Assign altitude
+"DroneResponse" -> "Semi-Autonomous UAV": Confirm altitude assignment
+"Semi-Autonomous UAV" -> "DroneResponse": Lease airspace
+"DroneResponse" -> "Semi-Autonomous UAV": Confirm airspace leasing
+"Semi-Autonomous UAV" -> "DroneResponse": Take off
+"DroneResponse" -> "Semi-Autonomous UAV": Confirm takeoff
+"Semi-Autonomous UAV" -> "DroneResponse": Fly to waypoints
+"DroneResponse" -> "Semi-Autonomous UAV": Confirm waypoint reached
+"Semi-Autonomous UAV" -> "DroneResponse": Descend/Ascend to waypoint altitude
+"DroneResponse" -> "Semi-Autonomous UAV": Confirm altitude adjustment
+@enduml

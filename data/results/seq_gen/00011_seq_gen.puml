@@ -1,0 +1,17 @@
+@startuml "Deliver item to a specific location"
+
+actor "Drone Commander" as DC
+actor "Dispatcher" as D
+actor "Emergency Responders" as ER
+
+DC -> D: The delivery UAVs are activated and armed.
+DC -> D: The Drone Commander selects target GPS coordinates from a map.
+D -> DC: The UAV requests flight authorization.
+DC -> D: The DroneResponse commander issues a command to start the delivery mission.
+DC -> D: The UAV performs synchronized takeoff.
+DC -> D: The UAV flies to the target destination.
+DC -> D: The UAV drops the item.
+DC -> D: The UAV establishes a safe flying altitude and sets its target destination to its home coordinates, then flies to the target destination.
+DC -> D: Once the UAV arrives at its home coordinates, it lands
+
+@enduml

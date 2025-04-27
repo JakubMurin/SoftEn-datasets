@@ -1,0 +1,38 @@
+@startuml "Activate and Arm Sequence Diagram"
+
+participant "RPIC" as RPIC
+participant "Technicians" as Technicians
+participant DroneResponse
+
+RPIC -> DroneResponse: Deactivates safety switch
+DroneResponse -> Drone: Issues arming command
+UAV -> UAV: Executes pre-arming tests
+UAV -> UAV: Passes pre-arming tests
+UAV -> UAV: Arms
+UAV -> UAV: Sets status to MISSION mode
+UAV -> DroneResponse: Notifies armed status
+
+alt Safety switch deactivation fail
+  DroneResponse -> UAV: Issues warning sound
+  DroneResponse -> UAV: Raises error
+end
+
+alt Pre-arming tests fail
+  UAV -> System: Reports specific reasons
+  RPIC -> UAV: Reactivates safety switch
+  Technicians -> UAV: Attempts to fix root cause
+  alt Technician fixes problem
+    loop
+      RPIC -> DroneResponse: Reactivates safety switch
+      DroneResponse -> UAV: Issues arming command
+      UAV -> UAV: Executes pre-arming tests
+      UAV -> UAV: Passes pre-arming tests
+      UAV -> UAV: Arms
+      UAV -> UAV: Sets status to MISSION mode
+      UAV -> DroneResponse: Notifies armed status
+    end
+  else Technician fails to fix problem
+    UAV --> OutOfService: Removed from service
+end
+
+@enduml

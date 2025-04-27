@@ -1,0 +1,22 @@
+@startuml "Provide surveillance and information about a traffic accident"
+
+actor "911 call operator" as Operator
+participant "UAV's" as UAVs
+participant "Drone Commander" as Commander
+participant "Emergency Responders" as Responders
+
+Operator -> UAVs: An accident report is received.
+UAVs -> UAVs: Plan route\nand obtain authorization
+UAVs -> Commander: Issue command\nto start mission
+Commander -> UAVs: Perform\nsynchronized takeoff
+UAVs -> UAVs: Fly to\naccident location
+UAVs -> UAVs: Perform image\ncapture and analysis
+UAVs --> Commander: Video\ninspection
+Commander -> Responders: Send GPS coordinates
+Commander -> UAVs: Generate route
+UAVs -> UAVs: Obtain onboard vision\nand detect details
+UAVs --> UAVs: Classify and send\ninformation to related services
+Responders -> Responders: Arrive at scene
+Commander -> Commander: End mission
+
+@enduml

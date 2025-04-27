@@ -1,0 +1,22 @@
+@startuml "Activate and Arm Use Case"
+
+RPIC -> DroneResponse: The RPIC deactivates the UAV's safety switch.
+DroneResponse -> UAV: DroneResponse issues an arming command.
+UAV -> UAV: The UAV executes all pre-arming tests.
+UAV -> UAV: The UAV passes pre-arming tests.
+UAV -> UAV: The UAV arms.
+UAV -> AutomatedPilot: The UAV's status is set to MISSION mode (PX4=MISSION, Ardupilot=GUIDED/STABILIZED).
+AutomatedPilot -> DroneResponse: The UAV's automated pilot notifies DroneResponse that the UAV is armed for flight.
+
+RPIC -> UAV: The RPIC fails to deactivate the safety switch
+UAV -> UAV: The UAV issues a warning sound and raises an error when the arming command is attempted.
+UAV -> RPIC: The use case continues from Step 1.
+
+UAV -> UAV: The UAV fails to pass its pre-arming tests
+UAV -> System: The system reports specific reasons for pre-arming failure.
+UAV -> RPIC: The RPIC reactivates the UAV's safety switch.
+RPIC -> Technicians: A technician attempts to fix the root cause of the pre-arming failure (e.g., recalibrating the UAV).
+Technicians --> UAV: If the technician fixes the problem, the use case restarts from Step 1.
+Technicians --> UAV: If the technician fails to fix the problem, the UAV is removed from service.
+
+@enduml

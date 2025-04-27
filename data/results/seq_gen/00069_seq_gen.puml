@@ -1,0 +1,16 @@
+@startuml "Generate Flight Routes for Area Coverage"
+
+actor "Drone Commander"
+actor "Semi-autonomous UAV"
+
+"Drone Commander" -> "Semi-autonomous UAV": User selects the option to mark a region and generate routes dynamically
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": User selects the feature to mark a region on the currently displayed map
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": User marks a polygon shape on the map
+"Semi-autonomous UAV" -> "DroneResponse": DroneResponse analyzes the shape and size of the drawn polygon for feasibility of generating routes
+"DroneResponse" -> "Semi-autonomous UAV": Accepts the polygon as viable for route generation
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": User specifies the number of UAVs (N) for the mission
+"Semi-autonomous UAV" -> "DroneResponse": DroneResponse dynamically generates an efficient set of N flight routes
+"DroneResponse" -> "Semi-autonomous UAV": Assigns the flight routes to N available UAVs
+"DroneResponse" -> "Drone Commander": Use case ends once flight routes have been generated and assigned
+
+@enduml

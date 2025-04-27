@@ -1,0 +1,28 @@
+@startuml
+title "Item Drop"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Commander" as Commander
+
+UAV -> Commander: The UAV receives a command to deliver the item
+UAV -> UAV: The UAV takes-off and flies to the designated delivery coordinates
+UAV -> UAV: The UAV starts streaming video
+UAV -> Commander: The video is displayed in the UI for a human operator
+UAV -> UAV: The UAV uses image capture and analysis to determine a safe drop point appropriate for the task at hand
+UAV -> UAV: The UAV positions itself at the targeted drop point
+UAV -> Commander: The UAV requests permission from the human operator to drop the item
+Commander -> UAV: The human operator gives permission for the drop
+UAV -> UAV: The UAV lowers the item at the drop point
+Commander -> UAV: The human operator confirms that the drop is completed
+UAV -> UAV: The UAV moves to a safe observation point and awaits further instructions
+
+UAV -> Commander: The carry mechanism fails to activate when commanded
+Commander -> UAV: The operator attempts a manual command
+Commander -> UAV: If the carry mechanism continues to fail, the operator recalls the UAV
+
+UAV -> Commander: The UAV is unable to find a safe drop point in the vicinity of the coordinates
+Commander -> UAV: The human operator uses the video stream to manually identify the drop point
+
+Commander -> UAV: The operator refuses permission for the drop point proposed by the UAV
+Commander -> UAV: The operator suggests an alternate drop position or aborts the drop
+@enduml

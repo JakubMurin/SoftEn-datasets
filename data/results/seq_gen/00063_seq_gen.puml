@@ -1,0 +1,13 @@
+@startuml
+title "Active Tracking"
+
+"Mission Commander" -> "Semi-Autonomous UAV" : The UAV is assigned or assumes the task of tracking a person
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV" : The UAV positions itself in tracking_position
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV" : The UAV uses image capture and analysis
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV" : The onboard tracker continually calculates relative position
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV" : The onboard tracker generates velocity vectors
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV" : The velocity vector is sent to autopilot
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV" : Steps 2-5 are repeated
+"Mission Commander" -> "Semi-Autonomous UAV" : stop_tracking command
+
+@enduml

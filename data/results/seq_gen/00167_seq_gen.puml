@@ -1,0 +1,15 @@
+@startuml
+title Geofence Incursion
+
+RPIC -> DroneResponse: `[APPROACHING_GEOFENCE]` alarm
+DroneResponse -> RuntimeMonitoringSystem: Detect approaching geofence
+RuntimeMonitoringSystem -> RuntimeMonitoringSystem: Raise alert
+RuntimeMonitoringSystem -> RuntimeMonitoringSystem: Cancel current flight route
+RuntimeMonitoringSystem -> UserInterface: Display geofence warning
+UserInterface -> RuntimeMonitoringSystem: Reroute UAV or RPIC intervention
+DroneResponse -> UAV: Detect `[GEOFENCE_BREACH]`
+UAV -> UAV: Activate failsafe mechanism
+RPIC -> UAV: Maintain visual line of sight
+UAV -> UAV: Suspend mission if necessary
+UAV -> UAV: Move other UAVs if needed
+@enduml

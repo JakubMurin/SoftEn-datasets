@@ -1,0 +1,10 @@
+@startuml "Generate Flight Routes for Area Coverage"
+
+DroneCommander -> SemiAutonomousUAV: Select feature to mark region
+SemiAutonomousUAV -> DroneResponse: Mark polygon shape
+DroneResponse -> DroneResponse: Analyze shape and size
+DroneResponse -> DroneResponse: Generate flight routes
+DroneResponse -> SemiAutonomousUAV: Assign flight routes
+SemiAutonomousUAV -> SemiAutonomousUAV: Complete mission
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml "Fly to Destination Sequence Diagram"
+
+actor "Semi-Autonomous UAV" as UAV
+participant DroneResponse
+participant "Air Traffic Control" as ATC
+
+UAV -> DroneResponse: "Map Flight Path"
+DroneResponse -> DroneResponse: "Check Prohibited Airspace"
+DroneResponse -> DroneResponse: "Check Terrain Altitude"
+UAV -> DroneResponse: "Check Battery Power"
+AVC -> DroneResponse: "Confirm Airspace Lease"
+UAV -> DroneResponse: "Ascend/Descend to Altitude"
+UAV -> DroneResponse: "Fly to Waypoint"
+UAV -> UAV: "Report Arrival at Waypoint"
+DroneResponse-> UAV: "Finish Task"
+@enduml

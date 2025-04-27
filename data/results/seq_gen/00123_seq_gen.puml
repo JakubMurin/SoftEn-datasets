@@ -1,0 +1,30 @@
+@startuml
+title Item Drop Sequence Diagram
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Commander" as Commander
+
+UAV -> Commander: The UAV receives a command to deliver the item
+activate Commander
+
+UAV -> UAV: Take-off and fly to designated delivery coords
+UAV -> UAV: Start streaming video
+UAV -> Commander: Display video in UI
+UAV -> UAV: Capture and analyze images for safe drop point
+UAV -> UAV: Position at targeted drop point
+UAV -> Commander: Request permission to drop item
+activate Commander
+Commander -> UAV: Give permission for drop
+deactivate Commander
+UAV -> UAV: Lower item at drop point
+UAV -> Commander: Confirm drop completion
+activate Commander
+UAV -> UAV: Move to safe observation point
+deactivate Commander
+UAV -> UAV: Await further instructions
+
+Commander -> UAV: Recall UAV (E1) if carry mechanism fails
+Commander -> UAV: Identify drop point manually (E2) if unable to find safe point
+UAV -> Commander: Suggest alternate drop position or abort (E3) if permission refused
+
+@enduml

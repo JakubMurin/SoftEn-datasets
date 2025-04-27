@@ -1,0 +1,31 @@
+@startuml "End Mission Use Case"
+
+actor "Drone Commander" as DroneCommander
+participant "Semi-autonomous UAV" as UAV
+participant "DroneResponse" as DroneResponse
+
+DroneCommander -> DroneResponse: Recall UAVs
+DroneCommander --> UAV: End Mission Command
+UAV -> UAV: Plan route to home base
+UAV -> UAV: Request airspace clearance
+UAV --> UAV: Fly to target waypoint
+UAV --> UAV: Repeat until safely landed
+
+alt "Mission Commander decides to end mission"
+    DroneCommander -> UAV: Recall UAVs
+    DroneCommander --> UAV: End Mission Command
+else "Mission Commander assigns new task"
+    UAV -> UAV: New task assignment
+    UAV -> UAV: Cancel end mission command
+    UAV -> UAV: Commence new mission
+end
+
+opt "Multiple UAVs have same home coordinates"
+    UAV --> DroneResponse: Error report
+    DroneResponse -> UAV: Update home coordinates
+    UAV --> UAV: Plan route to new home base
+    UAV --> UAV: Hover in place upon reaching new coordinates
+    UAV --> DroneCommander: Request manual landing control
+end
+
+@enduml

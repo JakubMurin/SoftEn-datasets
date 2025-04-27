@@ -1,0 +1,11 @@
+@startuml "Flight authorization from Aviation Regulators"
+
+RemotePilotInCommand -> SemiAutonomousUAV: Inspects UAVs
+RemotePilotInCommand -> RemotePilotInCommand: Checks weather conditions
+RemotePilotInCommand -> DroneResponse: Prepares authorization request
+DroneResponse -> AuthorizationServiceProvider: Requests authorization
+AuthorizationServiceProvider -> DroneResponse: Returns permission
+DroneResponse -> DroneResponse: Marks airspace restrictions
+DroneResponse -> DroneResponse: Establishes geofence
+
+@enduml

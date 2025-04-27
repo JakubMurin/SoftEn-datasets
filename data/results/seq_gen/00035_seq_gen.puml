@@ -1,0 +1,24 @@
+@startuml "Structural Fire Fighting"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+
+DC -> UAV: Firefighters request flight authorization
+DC -> UAV: The Drone Commander activates the fire support mission
+UAV -> UAV: UAVs are activated and armed
+UAV -> UAV: The UAVs perform synchronized takeoff
+UAV -> UAV: The UAVs use their onboard vision to create an initial mapping of the building
+UAV -> UAV: The UAVs plan optimized and coordinated surveillance flights around the building
+UAV -> UAV: Prior to each leg of the surveillance flight, each UAV leases the necessary airspace
+UAV -> UAV: Each UAV performs image capture and analysis using thermal imagery
+UAV -> UAV: Imagery from each UAV is continuously streamed and aggregated to create a current heatmap of the building
+UAV -> DC: The Incident Commander ends the mission once the fire has been controlled
+
+DC -> UAV: The UAV detects a possible victim at a confidence level below the 'victim_detected' threshold but above the lowest 'ignore_level'
+DC -> UAV: The UAV raises an alert and requests victim confirmation from the human operator
+DC -> UAV: The UAV continues to stream imagery
+DC -> UAV: The human operator inspects the video stream
+DC -> DC: If the human operator believes that a victim may have been found, firefighters plan and execute a rescue mission
+DC -> UAV: If the human operator rejects the candidate sighting, the UAV continues its currently assigned route
+
+@enduml

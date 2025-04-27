@@ -1,0 +1,19 @@
+@startuml LossOfSignal
+
+actor "Ground Control System" as GCS
+actor RPIC
+actor "Unmanned Aerial Vehicle" as UAV
+actor "Air Traffic Control" as ATC
+participant DroneResponse
+
+UAV -> UAV: Loss-of-signal detected
+UAV -> UAV: Activates failsafe mechanism\nReturns to RTL
+
+DroneResponse -> DroneResponse: Detects loss-of-signal event
+DroneResponse -> DroneResponse: Raises alert
+DroneResponse -> RPIC: Display alert in UI
+
+RPIC -> UAV: Observes transition to RTL
+UAV -> UAV: Suspend mission or\nMove other UAVs
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+title Environmental Sampling and Analysis
+
+participant "Environmental Scientist" as ES
+participant "RPIC (Remote Pilot in Command)" as RPIC
+participant DroneResponse
+
+ES -> DroneResponse: DroneResponse is running
+ES -> RPIC: Multiple UAVs are equipped with water sampling mechanisms
+DroneResponse --> ES: All UAVs active and armed
+
+RPIC -> DroneResponse: Activate water sampling mission
+RPIC --> DroneResponse: Generate flight routes with sample collection points
+RPIC -> RPIC: Request flight authorization
+RPIC -> RPIC: Issue command to start mission
+RPIC -> DroneResponse: Perform synchronized takeoff
+RPIC -> RPIC: Collect and analyze samples at assigned points
+RPIC -> RPIC: Return back on completion
+RPIC -> RPIC: Replace onboard sampling supplies
+RPIC -> RPIC: Repeat steps 4-8 until all samples collected
+RPIC -> DroneResponse: End the mission
+@enduml

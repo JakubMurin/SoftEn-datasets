@@ -1,0 +1,18 @@
+@startuml FlightAuthorizationFromAviationRegulators
+
+actor "Remote Pilot in Command (RPIC)" as RPIC
+actor "Semi-autonomous UAV" as UAV
+participant DroneResponse
+participant "Authorization Service Provider" as ASP
+
+RPIC -> DroneResponse: The RPIC visually inspects all UAVs
+RPIC -> DroneResponse: The RPIC checks weather conditions
+loop for each UAV
+    RPIC -> DroneResponse: DroneResponse prepares an authorization request
+    DroneResponse -> ASP: Request authorization
+    ASP --> DroneResponse: Return permission to fly
+end
+DroneResponse -> DroneResponse: Mark airspace restrictions on map
+DroneResponse -> DroneResponse: Establish geofence
+
+@enduml

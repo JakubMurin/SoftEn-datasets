@@ -1,0 +1,24 @@
+@startuml
+title "Collect Environmental Sample"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Operator" as Operator
+
+UAV -> Operator: The UAV reaches the GPS coordinates of the first sample collection waypoint
+
+activate UAV
+Operator -> UAV: The user directs the UAV to skip the current waypoint
+UAV -> Operator: The UAV arrives at its designated collection coordinates
+UAV -> Operator: The UAV positions itself to collect a water sample
+UAV -> Operator: The UAV uses its onboard vision capabilities to find an unobstructed route to the water
+UAV -> Operator: The UAV begins its descent while using image capture and analysis
+UAV -> Operator: The UAV activates its onboard collection device and collects a water sample
+UAV -> Operator: The UAV lowers its collection apparatus
+UAV -> Operator: The UAV collects the water sample
+UAV -> Operator: The UAV stores the water sample for carrying home
+UAV -> Operator: Steps S1-S3 are repeated until all planned collection points have been visited
+Operator -> UAV: The use case finishes when the UAV commences its flight home
+
+deactivate UAV
+
+@enduml

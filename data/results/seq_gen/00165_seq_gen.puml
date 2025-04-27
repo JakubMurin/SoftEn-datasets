@@ -1,0 +1,25 @@
+@startuml "Geofence Incursion Sequence Diagram"
+
+RPIC -> DroneResponse: Responds to `[APPROACHING_GEOFENCE]` alarm
+DroneResponse -> RuntimeMonitoringSystem: Detects UAV approaching geofence
+RuntimeMonitoringSystem -> RuntimeMonitoringSystem: Raises alert
+RuntimeMonitoringSystem -> RuntimeMonitoringSystem: Cancels current flight route
+RuntimeMonitoringSystem -> UI: Displays geofence warning alert
+UI -> RPIC: Notifies RPIC
+RuntimeMonitoringSystem -> UAV: Reroutes UAV
+RPIC -> UAV: Issues new flight command
+
+UAV -> RuntimeMonitoringSystem: Detects `[GEOFENCE_BREACH]`
+RuntimeMonitoringSystem -> UAV: Activates failsafe mechanism
+
+RPIC -> UAV: Maintains visual line of sight
+UAV -> RPIC: Completes RTL or lands
+UAV -> UAV: Suspends mission or moves other UAVs
+
+RPIC -> DroneResponse: Decides task cannot continue
+DroneResponse -> RPIC: Assigns new UAV
+
+RuntimeMonitoringSystem -> RPIC: Raises `[GEOFENCE_BREACH]` alert
+RPIC -> UAV: Lands UAV or activates RTL
+
+@enduml

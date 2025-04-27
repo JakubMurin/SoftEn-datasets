@@ -1,0 +1,25 @@
+@startuml "Provide surveillance and information about a traffic accident"
+
+actor "UAV's" as UAVs
+actor "Drone Commander" as Commander
+actor "Firefighters" as Firefighters
+actor "Police" as Police
+actor "Medical crews" as MedicalCrews
+
+UAVs -> Commander: An accident report is received.
+Commander -> UAVs: The route is planned and flight authorization is obtained.
+Commander -> UAVs: The DroneResponse commander issues a command to start the mission.
+UAVs -> UAVs: The UAV(s) perform a synchronized takeoff.
+UAVs -> UAVs: The UAVs lease airspace and fly to the location of the accident.
+UAVs -> UAVs: The UAVs reach the target area and perform image capture and analysis to pinpoint the accident site and stream video.
+UAVs -> Commander: A human operator inspects the video and confirms that the accident site has been correctly identified.
+Commander -> UAVs: The precise GPS coordinate of the accident and the surroundings of the road are sent to the emergency responders.
+Commander -> UAVs: DroneResponse generates a route to the correct location, ensuring arrival on the correct side of the highway.
+UAVs -> UAVs: The UAVs continue onboard vision and detection to infer details of the scene.
+UAVs -> Police: Traffic information sent to the police.
+UAVs -> Firefighters: Accident structure information sent to the firefighters.
+UAVs -> MedicalCrews: Human-related information sent to medical staff.
+Firefighters -> Firefighters: Emergency responders arrive on the scene.
+Commander -> UAVs: The Drone Commander ends the mission.
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml "Generate Flight Routes for Area Coverage"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+participant "DroneResponse" as DR
+
+DC -> DR: A user selects the feature to mark a region on the currently displayed map.
+DC -> DR: The user marks a polygon shape on the map.
+DR -> DR: DroneResponse analyzes the shape and size of the drawn polygon for feasibility of generating routes and accepts the polygon as viable for route generation.
+DC -> DR: The user specifies the number of UAVs (N) that will participate in the mission.
+DR -> DR: DroneResponse dynamically generates an efficient set of N flight routes that optimize coverage of the marked area while minimizing flight times.
+DR -> DR: DroneResponse assigns the flight routes to N available UAVs.
+DC -> DR: The use case ends once flight routes have been generated and assigned.
+
+alt Instead of optimizing for area coverage
+    DR -> DR: The algorithm optimizes the routes for a sampling mission.
+    DC -> DR: The user specifies the number of samples (S) to be collected by each UAV.
+    DR -> DR: The algorithm optimizes the flight paths such that S sampling locations are distributed as evenly as possible over the marked area, locations are clustered into N flight paths, and each UAV's flight path is optimized to reduce power consumption.
+end
+
+opt The user wishes to mark a search area that is not entirely covered by the currently displayed map view
+    DC -> DR: If the search area is in the vicinity of the current map view, the user pans and rescales the map until the planned search area is encompassed by the view.
+    DC -> DR: If the search area is not in the vicinity of the current map view, the user recenters the map by entering GPS coordinates.
+end
+
+opt The polygon is deemed infeasible for route generation
+    DR -> DR: If the polygon has insufficient width or height, it is rejected.
+    DR -> DR: If the polygon includes unsupportable indentations or appendages, these will be ignored during flight route generation, and an alert will be raised.
+end
+
+opt There are fewer than N UAVs available for assignment to the designated flight plans
+    DC -> DR: The user reduces the number of designated UAVs to a number for which viable UAVs are available.
+    DC -> DR: Alternatively, a technician activates and arms additional UAVs for inclusion in the mission.
+end
+
+@enduml

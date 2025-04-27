@@ -1,0 +1,28 @@
+@startuml
+title "Deliver item to a specific location"
+
+Drone_Commander -> Dispatcher: Activate delivery UAVs
+Dispatcher -> Drone_Commander: Select target GPS coordinates
+Drone_Commander -> UAV: Request flight authorization
+Drone_Response_Commander -> UAV: Start delivery mission
+UAV -> UAV: Synchronized takeoff
+UAV -> Target_destination: Fly to target destination
+UAV -> Target_destination: Drop item
+UAV -> Home_coordinates: Establish safe flying altitude
+UAV -> Alternate_landing_location: Fly to home coordinates
+UAV -> Alternate_landing_location: Land
+
+group Alternative Steps
+    Drone_Commander -> UAV: Generate coordinates based on onboard vision
+    UAV -> UAV: Synchronized takeoff
+
+    Drone_Commander -> Alternate_landing_location: Provide alternate landing location
+    UAV -> Alternate_landing_location: Land
+end
+
+group Error Steps
+    Drone_Commander -> UAV: Manually enter GPS coordinates
+    UAV -> UAV: Request flight authorization
+end
+
+@enduml

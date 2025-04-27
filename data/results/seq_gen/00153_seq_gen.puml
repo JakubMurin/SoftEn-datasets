@@ -1,0 +1,18 @@
+@startuml "Loss of Signal Sequence Diagram"
+
+actor "Ground Control System" as GCS
+actor "RPIC" as RPIC
+actor "Unmanned Aerial Vehicle" as UAV
+actor "Air Traffic Control" as ATC
+
+UAV -> DroneResponse: The UAV detects and responds to loss-of-signal
+DroneResponse -> RuntimeMonitoringSystem: The runtime monitoring system detects the loss of signal event for the UAV
+RuntimeMonitoringSystem -> RuntimeMonitoringSystem: Raise alert
+RuntimeMonitoringSystem -> RPIC: Display alert in UI
+
+RPIC -> UAV: RPIC maintains visual line of sight and observes RTL mode
+UAV -> UAV: Activate failsafe mechanism and return to RTL
+
+RPIC -> UAV: Suspend mission or move other UAVs if needed
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+title "Provide surveillance and information about a traffic accident"
+
+participant "911 Call Operator" as Operator
+participant "DroneResponse System" as DroneResponse
+participant "Drone Commander" as Commander
+participant "UAV(s)" as UAV
+participant "Emergency Responders" as Responders
+participant "Police" as Police
+participant "Firefighters" as Firefighters
+participant "Medical Crews" as MedicalCrews
+
+Operator -> DroneResponse: An accident report is received.
+DroneResponse -> DroneResponse: Plan route and obtain authorization
+DroneResponse -> Commander: Issue command to start mission
+Commander -> UAV: Perform synchronized takeoff
+UAV -> UAV: Lease airspace and fly to accident location
+UAV -> UAV: Perform image capture and analysis
+UAV -> Operator: Stream video for inspection
+Operator -> Operator: Confirm accident site
+Operator -> Responders: Send GPS coordinates
+DroneResponse -> Responders: Generate route
+UAV -> Responders: Provide details of the scene
+UAV -> Police: Send traffic information
+UAV -> Firefighters: Send accident structure info
+UAV -> MedicalCrews: Send human-related info
+Responders -> Responders: Arrive on scene
+Commander -> DroneResponse: End mission
+
+@enduml

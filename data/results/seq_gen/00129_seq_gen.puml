@@ -1,0 +1,19 @@
+@startuml
+title Lease Airspace for Planned Flight Path
+
+"Semi-Autonomous UAV" -> "Air Traffic Control": The UAV calculates the airspace needed for its next action
+"Semi-Autonomous UAV" -> "Air Traffic Control": The UAV requests permission from ATC to reserve the airspace identified
+"Air Traffic Control" -> "Semi-Autonomous UAV": ATC determines that the airspace can be reserved
+"Air Traffic Control" -> "Semi-Autonomous UAV": ATC reserves the airspace
+"Air Traffic Control" -> "Semi-Autonomous UAV": ATC releases any airspace reservations previously held by the UAV
+"Air Traffic Control" -> "Semi-Autonomous UAV": ATC grants the UAV an exclusive lease of the airspace
+"Semi-Autonomous UAV" -> "Air Traffic Control": The UAV completes its action and goes to step 1
+"Air Traffic Control" -> "Air Traffic Control": ATC determines that the airspace is not currently available
+"Air Traffic Control" -> "Semi-Autonomous UAV": ATC denies the request for airspace and attaches both the list of other reservations and the list of restricted airspaces
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": The UAV picks a new waypoint that moves it closer to the target
+"Semi-Autonomous UAV" -> "Air Traffic Control": The UAV decides on a new next action
+"Air Traffic Control" -> "Air Traffic Control": ATC finds all reservations held by other UAVs that share some altitude with the requested airspace
+"Air Traffic Control" -> "Air Traffic Control": ATC finds all restricted airspace that shares some altitude and is less than 1000 meters from the requested airspace
+"Air Traffic Control" -> "Semi-Autonomous UAV": The UAV requests a small amount of airspace to wait within
+"Semi-Autonomous UAV" -> "Air Traffic Control": The UAV waits for a random time interval (< 5 seconds) and repeats its request for airspace
+@enduml

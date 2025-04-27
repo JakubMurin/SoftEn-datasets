@@ -1,0 +1,25 @@
+@startuml
+title "River Search and Rescue"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+
+DC -> UAV: Activate search
+UAV -> UAV: Place in launch positions
+UAV -> UAV: Activate and arm
+UAV -> UAV: Initiate flight routes
+UAV -> DC: Start mission
+UAV -> UAV: Synchronized takeoff
+UAV -> UAV: Fly assigned routes
+UAV -> UAV: Perform image capture and analysis
+UAV -> DC: Raise victim detection event
+DC -> DC: Forward event to UIs
+UAV -> UAV: Switch to tracking mode
+DC -> UAV: Confirm victim sighting
+UAV -> DC: Send GPS coordinates
+UAV -> UAV: Deliver flotation device
+UAV -> UAV: Human responders arrive
+DC -> UAV: End mission
+UAV -> UAV: Human responders deliver flotation device manually
+
+@enduml

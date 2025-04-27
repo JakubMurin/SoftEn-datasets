@@ -1,0 +1,21 @@
+@startuml
+title Loss of Signal
+
+participant "Ground Control System" as GCS
+participant RPIC
+participant "Unmanned Aerial Vehicle" as UAV
+participant "DroneResponse" as DR
+participant "Air Traffic Control" as ATC
+
+activate UAV
+
+UAV -> UAV: Detects and responds to loss-of-signal
+UAV -> UAV: Detects loss of communication
+UAV -> UAV: Activates failsafe mechanism for RTL
+UAV -> DR: Notifies loss-of-signal event
+DR -> RPIC: Displays alert in UI
+RPIC -> UAV: Observes transition to RTL mode
+UAV -> ATC: Reserves airspace during RTL
+
+deactivate UAV
+@enduml

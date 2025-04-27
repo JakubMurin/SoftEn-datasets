@@ -1,0 +1,32 @@
+@startuml Item_Drop
+
+actor "Semi-Autonomous UAV"
+actor "Mission Commander"
+
+"Semi-Autonomous UAV" -> "Mission Commander": The UAV receives a command to deliver the item
+
+autonumber
+
+participant "Semi-Autonomous UAV"
+participant "Mission Commander"
+participant UI
+participant Human_Operator
+
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Takes-off and flies to coordinates
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Starts streaming video
+"Semi-Autonomous UAV" -> UI: Video streaming
+UI -> Human_Operator: Display video in UI
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Determine safe drop point
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Position at drop point
+"Semi-Autonomous UAV" -> Human_Operator: Requests permission to drop
+Human_Operator -> "Semi-Autonomous UAV": Gives permission to drop
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Lowers item at drop point
+Human_Operator -> "Semi-Autonomous UAV": Confirms drop completion
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Moves to safe observation point
+
+note right of "Semi-Autonomous UAV": Failure Steps
+"Semi-Autonomous UAV" -> UI: Graphical indication of possible drop
+"Semi-Autonomous UAV" -> "Semi-Autonomous UAV": Unable to find safe drop point, manual identification attempt
+"Human_Operator" -> "Semi-Autonomous UAV": Refuses UAV proposed drop point
+
+@enduml

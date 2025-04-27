@@ -1,0 +1,24 @@
+@startuml Synchronized_Takeoff
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Drone Commander" as Commander
+
+UAV -> Commander: Receive start mission command
+activate Commander
+
+Commander -> DroneResponse: Assign altitude and separation
+activate DroneResponse
+
+DroneResponse -> UAV: Lease airspace
+Note left: Step 2
+
+UAV -> UAV: Take off and reach altitude
+Note left: Step 3
+
+UAV -> UAV: Fly to first waypoints
+Note left: Step 4
+
+UAV -> UAV: Descend/ascend to designated\naltitude of first waypoint
+Note left: Step 5
+
+@enduml

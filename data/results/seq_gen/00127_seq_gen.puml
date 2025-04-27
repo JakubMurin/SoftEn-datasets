@@ -1,0 +1,14 @@
+@startuml "Lease Airspace for Planned Flight Path"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Air Traffic Control" as ATC
+
+UAV -> ATC: Calculate airspace needed
+UAV -> ATC: Request permission to reserve airspace
+ATC --> UAV: Determine airspace availability
+ATC --> UAV: Reserve airspace
+ATC --> UAV: Release previous reservations
+ATC --> UAV: Grant exclusive lease
+UAV -> UAV: Complete action and repeat
+
+@enduml

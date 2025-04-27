@@ -1,0 +1,20 @@
+@startuml
+title "Active Tracking"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Commander" as Commander
+
+UAV -> UAV: Position in tracking_position
+UAV -> UAV: Use image capture and analysis to tag victim
+UAV -> UAV: Calculate relative position of victim
+UAV -> UAV: Generate velocity vectors towards victim
+UAV -> UAV: Send velocity vector to autopilot
+UAV -> UAV: Repeat steps until stop_tracking command
+
+note right of UAV
+Error Handling:
+- UAV loses track of victim
+- Attempt re-tagging
+end note
+
+@enduml

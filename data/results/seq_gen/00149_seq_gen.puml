@@ -1,0 +1,27 @@
+@startuml "Victim Confirmation Sequence Diagram"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Human Operator" as Operator
+participant DroneResponse
+participant "Drone Commander" as Commander
+
+UAV -> DroneResponse: generate [victim_found] alert
+DroneResponse -> UAV: acknowledge receipt
+DroneResponse -> Operator: raise [victim_found] alert on UI
+Operator -> Commander: inspect video stream
+Commander --> Commander: confirm victim found
+DroneResponse --> UAV: send [victim_found] confirmation
+
+note over Operator: If user refutes\nthe victim sighting
+Operator --> Commander: refute sighting
+DroneResponse --> UAV: send [victim_NOT_found] message
+
+note over Operator: If user is unable\nto confirm or refute
+Operator --> Commander: uncertain, request additional imagery
+UAV --> UAV: fly around, collect additional imagery
+Operator --> Operator: confirm victim found or refute sighting
+
+note over UAV: If no acknowledgment\nwithin specified time
+UAV --> UAV: resend alert, route through other drones
+
+@enduml

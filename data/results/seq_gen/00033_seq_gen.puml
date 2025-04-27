@@ -1,0 +1,23 @@
+@startuml "Structural Fire Fighting Sequence Diagram"
+
+actor "Drone Commander" as DC
+actor "Semi-autonomous UAV" as UAV
+
+DC -> UAV: Firefighters request flight authorization
+DC -> UAV: Activate and arm UAVs
+DC -> UAV: Perform synchronized takeoff
+UAV -> UAV: Create initial mapping of building
+UAV -> UAV: Plan optimized surveillance flights
+UAV -> UAV: Lease necessary airspace
+UAV -> UAV: Perform image capture and analysis
+UAV -> UAV: Stream and aggregate imagery to create heatmap
+UAV -> UAV: Repeat steps 4-7
+DC -> UAV: End mission once fire is controlled
+
+UAV -> UAV: Detect possible victim\nat confidence level > 'ignore_level'
+UAV -> DC: Raise alert and request confirmation
+DC -> UAV: Inspect video stream
+DC -> UAV: Plan and execute \nrescue mission
+DC -> UAV: Reject candidate sighting
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+title "Sequence Diagram for Collect Environmental Sample Use Case"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Mission Operator" as Operator
+
+UAV -> Operator: The UAV reaches the GPS coordinates\nof the first sample collection waypoint
+Operator -> UAV: The UAV arrives at its designated\ncollection coordinates
+
+activate UAV
+UAV -> UAV: The UAV positions itself to collect a\nwater sample
+UAV -> UAV: The UAV uses its onboard vision\ncapabilities to find an unobstructed route\nto the water
+UAV -> UAV: The UAV begins its descent while using\nimage capture and analysis and altitude sensors\nto position itself correctly above the water
+UAV -> UAV: The UAV activates its onboard collection device\nand collects a water sample
+UAV -> UAV: The UAV lowers its collection apparatus\n(typically a rubber hose, powered by a pump)
+UAV -> UAV: The UAV collects the water sample
+UAV -> UAV: The UAV stores the water sample for carrying home
+UAV -> UAV: Steps S1-S3 are repeated until all planned\n collection points have been visited or the UAV\n has used all of its collection resources
+UAV -> UAV: The use case finishes when the UAV commences\nits flight home
+deactivate UAV
+
+@enduml
