@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant "Web UI/API" as WebUI
+participant "Dataset Management\nSystem" as DMS
+participant "Schema Storage" as SS
+database "Dataset Storage" as DS
+
+User -> WebUI : Request to define explore schema
+WebUI -> DMS : Validate user request
+alt Validation Success
+    DMS -> SS : Store explore schema
+    SS -> DMS : Confirm schema stored
+    DMS -> DS : Link explore schema with dataset
+    DS -> DMS : Confirmation
+    DMS -> WebUI : Success response to user
+    WebUI -> User : Acknowledge schema specification
+else Validation Failure
+    DMS -> WebUI : Error response
+    WebUI -> User : Show error
+end
+@enduml

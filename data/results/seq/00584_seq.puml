@@ -1,0 +1,42 @@
+@startuml
+Actor Admin
+participant CustomExceptionHandler
+participant SubjectController
+participant SubjectService
+participant SubjectRepository
+database MySQL
+
+autonumber 1.0
+Admin -> SubjectController: add assessment of subject
+activate Admin
+activate SubjectController
+SubjectController -> SubjectService: add mark type to subject
+
+activate SubjectService
+SubjectService -> SubjectRepository: add mark type to subject
+activate SubjectRepository
+SubjectRepository -> MySQL: insert
+activate MySQL
+
+autonumber 2.0
+alt Mark Type exists in subject's assessment
+    MySQL --> SubjectRepository: throw DataIntegrityViolationException
+    SubjectRepository --> CustomExceptionHandler: throw ActionNotAllowedException
+    CustomExceptionHandler --> Admin: display error
+autonumber 3.0
+else Mark Type doesn't exist in subject's assessment
+    MySQL --> SubjectRepository: return response
+    SubjectRepository -> MySQL: get assessment by subject id
+    MySQL -> SubjectRepository: return response
+    deactivate MySQL
+    SubjectRepository --> SubjectService: return list of tuple
+    deactivate SubjectRepository
+    SubjectService --> SubjectController: return map of mark type and no marks
+    deactivate SubjectService
+    SubjectController --> Admin: display assessment
+    deactivate SubjectController
+    deactivate Admin
+end
+
+
+@enduml

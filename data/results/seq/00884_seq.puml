@@ -1,0 +1,14 @@
+@startuml
+actor User
+User -> MainUI: Configure a house.
+MainUI -> HouseConfigurationUI: Configure a house.
+
+HouseConfigurationUI --> User: request data (latitude, longitude, zipcode, address)
+User -> HouseConfigurationUI: insert data (latitude, longitude, zipcode, address)
+HouseConfigurationUI -> HouseConfigurationController: set house
+HouseConfigurationController -> House: reconfigure house
+House -> House: validate data
+House --> User: display house
+
+
+@enduml

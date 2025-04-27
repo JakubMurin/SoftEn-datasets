@@ -1,0 +1,39 @@
+@startuml
+
+actor Usuario
+participant AngularApp
+participant AngularService
+participant SpringBootApp
+database MySQL
+participant ExpressServer
+
+User -> AngularApp: Ingresar credenciales
+activate AngularApp
+AngularApp -> AngularService: Solicitar autenticación
+activate AngularService
+AngularService -> ExpressServer: Solicitar autenticación
+activate ExpressServer
+ExpressServer -> MySQL: Verificar credenciales
+MySQL --> ExpressServer: Credenciales válidas
+ExpressServer --> AngularService: Generar token de acceso
+deactivate ExpressServer
+AngularService --> AngularApp: Generar token de acceso
+deactivate AngularService
+AngularApp --> User: Iniciar sesión exitosa
+deactivate AngularApp
+
+User -> AngularApp: Acceder a ruta protegida
+activate AngularApp
+AngularApp -> AngularService: Enviar token de acceso
+activate AngularService
+AngularService -> ExpressServer: Verificar token de acceso
+activate ExpressServer
+ExpressServer --> AngularService: Token válido
+deactivate ExpressServer
+AngularService --> AngularApp: Token válido
+deactivate AngularService
+AngularApp --> User: Acceso permitido
+deactivate AngularApp
+
+@enduml
+

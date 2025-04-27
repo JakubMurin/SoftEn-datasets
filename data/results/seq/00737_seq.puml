@@ -1,0 +1,44 @@
+@startuml
+actor User as user
+participant "ALFRED System" as alfred
+participant "Database" as db
+actor MedicalCaregiver as caregiver
+
+== User Sets Data Access Permissions ==
+user -> alfred: Opens data privacy settings
+activate alfred
+
+alfred -> db: Retrieve current settings
+activate db
+db --> alfred: Display settings
+deactivate db
+
+alfred --> user: Show data privacy settings
+user -> alfred: Modify permissions \nfor MedicalCaregiver
+activate alfred
+
+alfred -> db: Update permissions
+activate db
+db --> alfred: Confirm update
+deactivate db
+
+alfred --> user: Display update confirmation
+deactivate alfred
+
+== MedicalCaregiver Access Attempt ==
+caregiver -> alfred: Request user data access
+activate alfred
+
+alfreed -> db: Check permissions for MedicalCaregiver
+activate db
+db --> alfreed: Return access status
+deactivate db
+
+alt If Access Granted
+    alfred --> caregiver: Provide requested user data
+else If Access Denied
+    alfred --> caregiver: Deny access with \nreason "Insufficient Permissions"
+end
+deactivate alfred
+
+@enduml

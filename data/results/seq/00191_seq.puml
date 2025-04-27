@@ -1,0 +1,14 @@
+@startuml
+actor "Job Seeker" as JS
+participant "Job Portal System" as JPS
+participant "AI Service" as AI
+
+JS -> JPS: Quản lý hồ sơ cá nhân
+JPS -> JPS: Cập nhật thông tin cá nhân
+JPS -> JPS: Cập nhật CV
+JPS -> JPS: Cập nhật kỹ năng
+JPS -> AI: Gợi ý tối ưu hồ sơ bằng AI
+AI -> JPS: Kết quả gợi ý
+JPS -> JS: Hoàn tất quản lý hồ sơ
+
+@enduml

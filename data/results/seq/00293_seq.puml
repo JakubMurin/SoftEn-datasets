@@ -1,0 +1,94 @@
+@startuml
+
+actor "CustomerManager" as cm
+participant "PublishJobOpeningUI" as ui
+participant "JobOpening" as jo
+participant "PublishJobOpeningController" as ctrl
+participant "JobOpeningRepository" as jr
+participant "FollowUpServerProxy" as proxy
+participant "ClientSocket" as socket
+participant "FollowUpServer" as srv
+participant "FollowUpMessageParser" as parser
+participant "ResultEmailRequest" as rer
+participant "CandidateSelectionService" as cs
+participant "EmailService" as es
+participant "Notification" as n
+participant "NotificationRepository" as nr
+
+
+
+activate cm
+cm -> ui : asks to display job openings in the results phase
+activate ui
+ui -> ctrl : getJobOpenings()
+activate ctrl
+ctrl -> jr : getJobOpenings()
+activate jr
+jr --> ctrl : jobOpenings
+deactivate jr
+ctrl --> ui : jobOpenings
+deactivate ctrl
+ui --> cm : Displays job Openings
+deactivate ui
+cm -> ui : selects job opening to pusblish results
+activate ui
+ui -> ctrl : publishJobOpeningResults(jobOpening)
+activate ctrl
+ctrl -> proxy : sendResultEmailRequest(jobOpening)
+activate proxy
+proxy -> socket** : create()
+proxy -> socket : connect()
+activate socket
+deactivate socket
+proxy -> socket : send(request)
+activate socket
+socket -> srv : write(request)
+activate srv
+srv -> parser : parse(request)
+activate parser
+parser -> parser : parse(request)
+activate parser
+parser -> rer** : create()
+deactivate parser
+parser -> srv : ResultEmailRequest
+deactivate parser
+
+srv -> rer : execute()
+activate rer
+rer -> cs : selectCandidates(jobOpening)
+activate cs
+cs -> rer : returns lists of selected candidates and rejected candidates
+deactivate cs
+rer -> es : sendEmailToSelectedCandidates(selectedCandidates)
+activate es
+es -> n** : create()
+es -> nr : save(notification)
+activate nr
+nr -> nr : save(notification)
+nr -> es : notification
+deactivate nr
+es -> rer : emails sent
+deactivate es
+rer -> srv : emails sent
+deactivate rer
+srv -> socket : write(response)
+deactivate srv
+socket -> socket : recv()
+activate socket
+deactivate socket
+socket -> srv : close()
+activate srv
+srv -> socket :connection closed
+deactivate srv
+socket -> proxy : response
+deactivate socket
+proxy -> ctrl : response
+deactivate proxy
+ctrl -> ui : response
+deactivate ctrl
+ui -> cm : confirms operation success
+
+deactivate es
+deactivate cm
+
+@enduml

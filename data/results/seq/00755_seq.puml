@@ -1,0 +1,69 @@
+@startuml
+actor FacultyMember
+participant "Upload Interface" as UI
+participant "Repository System" as RS
+participant "File Processing" as FP
+participant "Storage" as S
+participant "Compliance Checker" as CC
+participant "Access Management" as AM
+participant "Download Interface" as DI
+
+== Upload Process ==
+FacultyMember -> UI : Navigate to upload section
+activate UI
+UI -> RS : Initiate file upload (>1GB)
+activate RS
+
+RS -> FP : Check file size & type
+activate FP
+alt file size > 1GB
+    FP -> FP : Split file into chunks
+else smaller file
+    FP -> FP : Proceed without splitting
+end
+FP -> S : Stores file chunks/data
+activate S
+S --> FP : Confirm storage
+deactivate S
+FP --> RS : File processing complete
+deactivate FP
+
+== Compliance and Access Management ==
+RS -> CC : Verify compliance with funder requirements
+activate CC
+CC --> RS : Compliance confirmed
+deactivate CC
+
+RS -> AM : Set access permissions ('Downloadable' by users)
+activate AM
+AM --> RS : Permissions set
+deactivate AM
+
+RS -> UI : Upload success message
+deactivate RS
+UI --> FacultyMember : Display success & access details
+deactivate UI
+
+== Download Process ==
+FacultyMember -> FacultyMember : Share download link with intended users
+
+User -> DI : Navigate to shared link
+activate DI
+DI -> RS : Request to download file (>1GB)
+activate RS
+
+RS -> AM : Check access permissions
+activate AM
+AM --> RS : Permissions validated
+deactivate AM
+
+RS -> FP : Prepare file for download
+activate FP
+FP -> FP : Reassemble file (if split)
+FP -> DI : Provide file
+deactivate FP
+
+DI -> User : Start file download
+deactivate DI
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+actor Administrator as admin
+participant "Admin UI" as ui
+participant "Backend System" as backend
+participant "Statistics Module" as stats
+database "Database" as db
+participant "Report Generation Service" as reportGen
+
+admin -> ui : Requests statistics
+ui -> backend : Fetch statistics
+backend -> stats : Retrieve comprehensive stats
+stats -> db : Query faculty work data
+db -> stats : Return data
+stats -> backend : Process data into statistics
+backend -> reportGen : Generate digestible report
+reportGen -> backend : Return generated report
+backend -> ui : Display report
+ui -> admin : Show comprehensive tracking statistics
+@enduml

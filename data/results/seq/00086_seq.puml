@@ -1,0 +1,16 @@
+@startuml
+actor UserAccount
+participant AppointmentServicePage
+participant GetBookingActivity
+database Booking
+database Appointment
+
+UserAccount -> AppointmentServicePage : GET Request
+AppointmentServicePage -> GetBookingActivity : GetBookingRequest
+GetBookingActivity -> Booking : get Booking[]
+GetBookingActivity <-- Booking : Booking ID
+GetBookingActivity -> Appointment : get Appointment[]
+GetBookingActivity <-- Appointment : Appointment ID
+AppointmentServicePage <-- GetBookingActivity : GetBookingResult
+UserAccount <-- AppointmentServicePage : Successfully retrieved Bookings with  Appointments
+@enduml

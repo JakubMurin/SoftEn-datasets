@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Service-Template" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-template-disable()
+CLI -> S : template/disable()
+A -> Web : template/disable()
+Web -> S : template/disable()
+end box
+
+@enduml
+

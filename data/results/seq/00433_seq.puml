@@ -1,0 +1,36 @@
+@startuml
+actor AppDeveloper as "App Developer"
+participant DatasetManagementSystem as "Dataset Management System"
+participant App1Artifact as "Application 1 Artifact"
+participant App2Artifact as "Application 2 Artifact"
+participant SharedDatasetTypeRepo as "Shared Dataset Type Repository"
+
+== Include Dataset Type in Application 1 Artifact ==
+AppDeveloper -> DatasetManagementSystem : Include Dataset Type
+DatasetManagementSystem -> App1Artifact : Deploy Dataset Type
+
+== Share Dataset Type Across Applications ==
+AppDeveloper -> DatasetManagementDatastore : Share Dataset Type
+activate DatasetManagementSystem
+DatasetManagementSystem -> SharedDatasetTypeRepo : Upload Dataset Type
+SharedDatasetTypeRepo --> DatasetManagementSystem : Confirm Upload
+deactivate DatasetManagementSystem
+
+== Include Shared Dataset Type in Application 2 Artifact ==
+AppDeveloper -> DatasetManagementSystem : Request Shared Dataset Type
+activate DatasetManagementSystem
+DatasetManagementSystem -> SharedDatasetTypeRepo : Fetch Shared Dataset Type
+SharedDatasetTypeRepo --> DatasetManagementSystem : Return Shared Dataset Type
+DatasetManagementSystem -> App2Artifact : Deploy Shared Dataset Type in Artifact
+deactivate DatasetManagementSystem
+
+alt If Version Conflict Exists
+    DatasetManagementSystem -> App2Artifact : Notify Version Conflict
+    AppDeveloper -> DatasetManagementSystem : Resolve Conflict
+    DatasetManagementSystem -> App2Artifact : Update Dataset Type Version
+end
+
+== Confirmation to App Developer ==
+DatasetManagementSystem -> AppDeveloper : Confirm Dataset Type Sharing & Deployment
+
+@enduml

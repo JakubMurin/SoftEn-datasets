@@ -1,0 +1,66 @@
+@startuml
+
+actor "VisualDesigner" as vd
+entity "ProjectTeam" as pt
+entity "UserResearch" as ur
+entity "DesignTools" as dt
+database "DesignRepository" as dr
+entity "CMS" as cms
+
+== Demonstration Preparation ==
+vd -> ur : Gather user research findings
+activate ur
+ur --> vd : Insights and Preferences
+deactivate ur
+
+vd -> dt : Create design concepts
+activate dt
+dt --> vd : Draft Designs
+deactivate dt
+
+vd -> dt : Develop social media wireframe
+activate dt
+dt --> vd : Social Media Wireframe
+deactivate dt
+
+vd -> dr : Upload designs and wireframes
+activate dr
+deactivate dr
+
+== Validation and Refinement ==
+vd -> pt : Present initial concepts
+activate pt
+pt --> vd : Feedback and Suggestions
+
+vd -> dt : Refine designs based on feedback
+activate dt
+dt --> vd : Refined Designs
+deactivate dt
+
+vd -> dr : Update design repository with refined designs
+activate dr
+deactivate dr
+
+== Final Demonstration ==
+vd -> pt : Showcase final designs and wireframe
+activate pt
+pt --> vd : Approval and Appreciation
+
+== Integration ==
+vd -> cms : Provide final designs for CMS integration
+activate cms
+cms --> vd : Confirmation of Integration
+deactivate cms
+
+pt -> cms : Review integrated designs in CMS
+activate cms
+cms --> pt : Preview of Design Implementation
+deactivate cms
+
+== Training ==
+vd -> pt : Conduct design training session
+activate pt
+pt -> pt : Acknowledge the value of visual design
+deactivate pt
+
+@enduml

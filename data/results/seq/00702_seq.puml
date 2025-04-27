@@ -1,0 +1,31 @@
+@startuml
+
+actor "User" as user
+participant "gateway" as gw
+boundary "Keycloak" as kk
+participant "catalog" as catalog
+database "Postgres" as pg
+
+user -> gw: PUT /api/v1/books/{id}/rate
+gw -> kk: verify jwt
+kk --> gw
+alt #lightgreen jwt is valid
+    gw -> catalog: PUT /api/v1/books/{id}/rate
+    catalog -> pg: find book by id
+    pg --> catalog
+    alt #lightgreen book exists
+        catalog -> pg: save|update user rate for the book
+        pg --> catalog
+        catalog --> gw: HttpStatus 200
+        gw --> user: HttpStatus 200
+    else #coral book does not exist
+        catalog --> gw: HttpStatus 404
+        gw --> user: HttpStatus 404
+    end
+else #coral jwt is absent
+    gw --> user: HttpStatus 401
+else #coral jwt is not valid
+    gw --> user: HttpStatus 403
+end
+
+@enduml

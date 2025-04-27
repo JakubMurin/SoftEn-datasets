@@ -1,0 +1,43 @@
+@startuml
+
+actor User
+box Presentation Layer
+participant SubscriptionController << (C,#ADD1B2) @Controller >>
+end box
+box Service Layer
+participant SubscriptionService << (C,#ADD1B2) @Bean >>
+end box
+box Data Layer
+participant SubscriptionRepository << (I,#ADD1B2) @Repository >>
+end box
+database Datastore
+
+activate User
+
+User --> SubscriptionController
+activate SubscriptionController
+
+SubscriptionController --> SubscriptionService
+activate SubscriptionService
+
+SubscriptionService --> SubscriptionRepository
+activate SubscriptionRepository
+
+SubscriptionRepository --> Datastore
+activate Datastore
+
+Datastore --> SubscriptionRepository
+deactivate Datastore
+
+SubscriptionRepository --> SubscriptionService
+deactivate SubscriptionRepository
+
+SubscriptionService --> SubscriptionController
+deactivate SubscriptionService
+
+SubscriptionController --> User
+deactivate SubscriptionController
+
+deactivate User
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+actor AppDeveloper as developer
+participant "Deployment Module" as deployment
+participant "Version Control" as vcontrol
+participant "Dataset Management" as management
+participant "App Artifact Repository" as repository
+
+== Deployment of a New Dataset Type Version ==
+
+developer -> deployment: initiate deployment
+deployment -> vcontrol: check for existing versions
+vcontrol -> management: retrieve current versions of dataset type
+management --> vcontrol: list of current versions
+vcontrol --> deployment: confirmation of existing versions
+deployment -> vcontrol: create new version
+vcontrol -> management: register new dataset type version
+management --> vcontrol: version registered successfully
+vcontrol --> deployment: new version created
+deployment -> repository: include new dataset type in app artifact
+repository --> deployment: app artifact updated
+deployment --> developer: deployment successful
+
+@enduml

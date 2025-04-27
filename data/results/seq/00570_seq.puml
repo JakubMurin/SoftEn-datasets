@@ -1,0 +1,20 @@
+@startuml
+actor "Reader" as reader
+participant "Library System" as system
+database "Book Database" as db
+
+reader -> system : Chọn sách từ danh sách tìm kiếm
+system -> db : Lấy thông tin chi tiết sách (ID sách)
+db --> system : Trả về thông tin sách (Tên sách, tác giả, ảnh bìa, trạng thái)
+system -> reader : Hiển thị thông tin sách chi tiết
+
+alt Sách có sẵn
+    system -> reader : Hiển thị trạng thái "Có sẵn"
+else Sách không có sẵn
+    system -> reader : Hiển thị trạng thái "Không có sẵn"
+end
+
+note right of system : Người đọc có thể quay lại giao diện chính nếu không muốn mượn sách.
+
+@enduml
+

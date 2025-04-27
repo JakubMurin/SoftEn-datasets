@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Clouds" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-cloud-create(name, type)
+CLI -> S : cloud/create(name, type)
+A -> Web : cloud/create(name, type)
+Web -> S : cloud/create(name, type)
+end box
+
+@enduml
+

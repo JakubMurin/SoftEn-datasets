@@ -1,0 +1,21 @@
+@startuml
+
+
+actor User
+
+User -> UI ++ #application: I want to create a Post
+UI -> PostController --++ #application : Send PostDto
+PostController -> PostController #application: validate(PostDto)
+PostController -> PostController #application: getUserFromSecurityContext()
+PostController -> PostService --++ #application: createPost(PostDto, UserId)
+PostService -> PostMapper --++ #application: toEntity(PostDto)
+PostMapper --> PostService --++ #application: transform PostDto into Post
+PostService -> PostRepository --++ #application: createPost(post)
+PostRepository -> PostRepository #application: save(post)
+PostRepository --> PostService --++ #application: Optional<Post>
+PostService --> PostController --++ #application: Optional<Post>
+PostController --> UI --++ #application: ResponseEntity 201 code!
+UI --> User -- #application: Post created!
+
+
+@enduml

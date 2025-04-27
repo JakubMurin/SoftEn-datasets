@@ -1,0 +1,17 @@
+@startuml
+actor Buyer
+participant "UI" as UI
+participant "Web Server" as Web
+participant "App Server" as App
+participant "Database" as DB
+
+Buyer -> UI: Update\n Profile Info
+UI -> Web: PUT /user/profile
+Web -> App: Validate and save\n profile changes
+App -> DB: UPDATE User\n SET fields=updatedData\n WHERE userId={id};
+DB --> App: Acknowledgment
+App --> Web: Profile\n updated
+Web --> UI: Update\n confirmation
+UI --> Buyer: Profile updated\n successfully
+@enduml
+

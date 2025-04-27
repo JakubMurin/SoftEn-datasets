@@ -1,0 +1,21 @@
+@startuml
+actor AuthenticatedUser as user
+participant "Web Interface" as web
+database "Session Database" as db
+entity "Session Review System" as review
+participant "Notification Service" as notify
+
+user -> web : Navigate to 'Submit Session'
+web -> user : Display 'Session Submission Form'
+user -> web : Fill in and Submit Form
+web -> db : Save Session Details
+db -> review : Trigger Session Review Process
+review -> db : Session Status: Under Review
+db -> notify : Trigger Notification to User
+notify -> user : Email Notification: 'Session Submitted'
+user -> notify : Refresh/Check Email
+review -> db : Update Session Status: Approved/Rejected
+db -> notify : Trigger Notification to User: 'Session Evaluated'
+notify -> user : Email Notification: 'Session Approved' or 'Session Rejected'
+
+@enduml

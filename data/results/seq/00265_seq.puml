@@ -1,0 +1,31 @@
+@startuml
+
+actor "Atendente" as A
+actor "Sistema" as S
+participant "Banco: Leitor" as L
+participant "Banco: Emprestimo/Devolucao" as ED
+
+A -> S : iniciarEmprestimo(id_leitor)
+activate S
+
+S --> L : identificarLeitor(id_leitor)
+activate L
+L --> S : leitorIdentificado()
+deactivate L
+
+S -> ED : criarObjetoEmprestimo()
+activate ED
+ED --> S : objetoCriado()
+deactivate ED
+
+S -> ED : associarEmprestimoAoLeitor()
+activate ED
+ED --> S : associacaoConcluida()
+deactivate ED
+
+S --> A : informarInicioEmprestimo()
+
+deactivate S
+
+@enduml
+

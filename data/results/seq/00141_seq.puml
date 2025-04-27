@@ -1,0 +1,27 @@
+@startuml
+actor NSF_Employee as Employee
+entity Training_Resource as Resource
+entity Github_Documentation as  Documentation
+entity Github as Github
+entity Github_Issue_Tracker as Issue_Tracker
+
+== Identify Learning Needs ==
+Employee -> Resource : Identify need for \nGithub training
+Resource -> Employee : Provide access to \nGithub Documentation and Tutorials
+
+== Access Learning Resources ==
+Employee -> Documentation : Access Documentation
+Documentation -> Employee : Provide Guidelines and Tutorials
+
+== Learn and Understand Github ==
+Employee -> Github : Explore Github functionalities\nthrough guided tutorials
+Github -> Employee : Demonstrate issue tracking,\nrepository management
+
+== Apply Knowledge ==
+Employee -> Issue_Tracker : Navigate to assigned issues
+Issue_Tracker -> Github : Query for issues tagged to Employee
+Github -> Issue_Tracker : Return list of assigned issues
+Issue_Tracker -> Employee : Display assigned issues
+Employee -> Issue_Tracker : Participate in issues\n(comment, update status)
+
+@enduml

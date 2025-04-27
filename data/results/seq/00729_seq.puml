@@ -1,0 +1,24 @@
+@startuml
+actor    User
+control	 Django.Router		as Router
+control  Django.Template	as Template
+boundary post_detail     	as View
+boundary CommentForm     	as Form
+entity   Post				as Model
+entity   Comment			as Comment
+database database			as DB
+
+User -> Router : url: /blog/  (post_detail)
+Router -> View : post_detail(request, year, month, day, post)
+View -> Model : get_object_or_404(Post, slug=post, \n status='published', publish__year=year, \n publish__month=month, publish__day=day)
+Model -> DB : sql_query()
+DB --> Model : post
+Model --> View : post
+View -> Comment: post.comments.filter(active=True)
+Comment --> View: comments
+View -> Form: CommentForm()
+Form --> View: form
+View --> Template: render(request, \n uri_of_template, \n {post, comments, form})
+Template --> User: /blog/post/list.html
+@enduml
+

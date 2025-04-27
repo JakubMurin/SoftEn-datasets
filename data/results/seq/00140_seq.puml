@@ -1,0 +1,39 @@
+@startuml
+actor Recipient
+participant "MailController" as MC
+participant "IMailService\nMailService" as MS
+participant "IMailRepository\nMailRepository" as MR
+participant "IUserRepository\nUserRepository" as UR
+participant "IEmailNotificationRepository\nEmailNotificationRepository" as ENR
+participant "UnitOfWork" as UoW
+
+Recipient -> MC : POST /Mail/{id}/Claim
+activate MC
+MC -> MC : IsAuthorized("Receptionist")
+MC -> MS : ClaimMail(mailId)
+activate MS
+MS -> UoW : Begin Transaction
+activate UoW
+MS -> MR : GetById(mailId)
+activate MR
+MR --> MS : Mail
+deactivate MR
+MS -> UR : GetById(mail.RecipientId)
+activate UR
+UR --> MS : User
+deactivate UR
+MS -> MR : Update(mail, connection, transaction)
+activate MR
+MR --> MS : (void)
+deactivate MR
+MS -> ENR : Create(notification, connection, transaction)
+activate ENR
+ENR --> MS : EmailNotification
+deactivate ENR
+MS -> UoW : Commit
+deactivate UoW
+MS --> MC : true
+deactivate MS
+MC --> Recipient : 200 OK
+deactivate MC
+@enduml

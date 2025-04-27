@@ -1,0 +1,29 @@
+@startuml
+
+Actor "Customer Manager" as U
+Participant "System" as S
+
+activate U
+
+U -> S: selects option to edit a job opening
+activate S
+
+S --> U : Requests to input a job reference
+U -> S : Inputs Job Reference
+S -> U : shows Job Opening details and asks user if he wants to update the description
+U --> S : Inputs option (yes/no)
+S -> U : Asks if user wants to update address
+U --> S : Inputs option (yes/no)
+S -> U: Asks if user wants to update the Mode
+U --> S : Inputs option (yes/no)
+S -> U : Asks if user wants to update the Contract Type
+U --> S : Inputs option (yes/no)
+S -> U: Asks if user wants to update the job title
+U --> S : Inputs option (yes/no)
+S -> U: Asks if user wants to update the number of vacancies
+U --> S: Inputs option (yes/no)
+S -> U: Requests user for new values to update
+U --> S: Inputs values
+S -> U : Displays updated Job Opening and shows operation success
+
+@enduml

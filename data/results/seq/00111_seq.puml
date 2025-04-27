@@ -1,0 +1,27 @@
+@startuml
+actor Archivist
+entity "Archival Management System" as AMS
+database "Record Status Database" as RSD
+
+== Check for Concurrent Edits Before Saving a Record ==
+
+Archivist -> AMS: Request to edit Record [X]
+AMS -> RSD: Query last edit timestamp for Record [X]
+RSD --> AMS: Last edit timestamp
+AMS --> Archivist: Display Record [X] and last edit info
+note right: Archivist makes changes to the record
+
+Archivist -> AMS: Attempt to save changes
+AMS -> RSD: Check if Record [X] has been edited since last timestamp
+alt Record has been edited
+    RSD --> AMS: Record [X] has been modified
+    AMS --> Archivist: Error Message: Record has been modified by another user
+    note right: Archivist reviews the changes or retries later
+else Record not edited
+    RSD --> AMS: No changes detected
+    AMS -> RSD: Update Record [X] with new data and timestamp
+    RSD --> AMS: Record [X] updated successfully
+    AMS --> Archivist: Success Message: Your changes have been saved
+end
+
+@enduml

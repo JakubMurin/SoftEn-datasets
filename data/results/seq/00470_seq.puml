@@ -1,0 +1,16 @@
+@startuml
+
+actor Utilisateur
+
+participant "AuthGuard" as AuthGuard order 1
+participant "Produit [A]" as ProduitA order 2
+participant "Portail" as Portail order 3
+
+Utilisateur -> AuthGuard: Accède au produit A
+alt authentifié
+    AuthGuard -> ProduitA: Redirigé vers le produit A
+else non authentifié
+    AuthGuard -> Portail: Redirigé vers le Portail
+end
+@enduml
+

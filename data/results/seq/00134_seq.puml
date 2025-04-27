@@ -1,0 +1,25 @@
+@startuml
+actor ArchiveManager as AM
+participant "DMPTool" as DMT
+participant "Repository API" as RAPI
+participant "Data Manager" as DM
+participant "IT System" as ITS
+
+AM -> DMT : Request data volume information
+DMT -> RAPI: Query planned data submissions
+RAPI -> DMT: Return data submission estimates
+DMT -> ITS: Request current storage capacity
+ITS -> DMT: Return current storage capacity details
+DMT -> DM: Request additional data preservation details
+DM -> DMT: Provide data format, size, and period
+DMT -> AM: Show comprehensive storage needs analysis
+
+note over DMT, AM: Analysis includes\n- Data volume estimates\n- Current storage capacity\n- Required preservation duration\n- Data format and size details
+
+AM -> ITS: Plan for storage expansion
+note right of ITS: ITS plans infrastructure\nupdates based on analysis
+
+ITS -> AM: Confirm storage infrastructure plan
+AM -> DMT : Confirm storage planning completion
+
+@enduml

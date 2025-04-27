@@ -1,0 +1,136 @@
+@startuml
+actor WarehouseEmployee as adm
+participant "//<<presentation>>//\nJsonImporterUI" as ui
+participant "//<<application>>//\nJsonImporterController" as cc
+participant "//<<domain>>//\nJsonImporter" as JsonImporter
+participant "//<<builder>>//\nWarehouseBuilder" as WhBuilder
+participant "//<<builder>>//\nAisleBuilder" as AisleBuilder
+participant "//<<builder>>//\nAGVDockBuilder" as AGVDockBuilder
+participant "//<<builder>>//\nSectionBuilder" as RowBuilder
+participant "//<<builder>>//\nShelfBuilder" as ShelfBuilder
+participant "//<<domain>>//\nwarehouse:Warehouse" as Warehouse
+participant "//<<domain>>//\naisle:Aisle" as Aisle
+participant "//<<domain>>//\nsection:Section" as Section
+participant "//<<domain>>//\nshelf:Shelf" as Shelf
+participant "//<<domain>>//\nagvDock:AGVDock" as AGVDock
+database "//<<repository>>//\nWarehouseRepository" as WhRepository
+database "//<<repository>>//\nAisleRepository" as AisleRepository
+database "//<<repository>>//\nSectionRepository" as SectionRepository
+database "//<<repository>>//\nShelfRepository" as ShelfRepository
+database "//<<repository>>//\nAGVDockRepository" as AGVDockRepository
+
+
+autonumber
+
+adm-->ui: Import a Json File
+
+activate ui
+
+ui-->cc: create
+
+
+ui-->adm: asks user information
+
+deactivate ui
+
+
+adm-->ui: Filename
+activate ui
+
+
+ui-->cc: jsonImporter(filename)
+
+
+activate cc
+
+cc--> JsonImporter: create
+
+cc-->JsonImporter: importer(filename)
+
+activate JsonImporter
+
+JsonImporter-->JsonImporter: warehouse= parsewarehousePlant()
+
+activate JsonImporter
+
+JsonImporter-->WhBuilder: create()
+
+activate WhBuilder
+
+WhBuilder-->Warehouse: warehouse = create()
+WhBuilder-->JsonImporter:warehouse
+
+deactivate WhBuilder
+
+JsonImporter-->WhRepository: save(warehouse)
+activate WhRepository
+deactivate WhRepository
+
+JsonImporter-->AisleBuilder: create()
+
+
+activate AisleBuilder
+
+AisleBuilder-->Aisle:aisle= create()
+AisleBuilder-->JsonImporter:aisle
+
+
+deactivate AisleBuilder
+
+JsonImporter-->AisleRepository: save(aisle)
+activate AisleRepository
+deactivate AisleRepository
+
+
+JsonImporter-->RowBuilder: create()
+
+activate RowBuilder
+
+RowBuilder-->Section:section= create()
+RowBuilder-->JsonImporter:section
+
+
+deactivate RowBuilder
+
+JsonImporter-->SectionRepository: save(section)
+activate SectionRepository
+deactivate SectionRepository
+
+JsonImporter-->ShelfBuilder: create()
+
+activate ShelfBuilder
+
+ShelfBuilder-->Shelf:shelf= create()
+ShelfBuilder-->JsonImporter:shelf
+
+
+deactivate ShelfBuilder
+
+JsonImporter-->ShelfRepository: save(shelf)
+activate ShelfRepository
+deactivate ShelfRepository
+
+JsonImporter-->AGVDockBuilder: create()
+
+activate AGVDockBuilder
+
+AGVDockBuilder-->AGVDock:agvDock= create()
+AGVDockBuilder-->JsonImporter:agvDock
+
+deactivate AGVDockBuilder
+
+JsonImporter-->AGVDockRepository: save(agvDock)
+activate AGVDockRepository
+deactivate AGVDockRepository
+
+deactivate JsonImporter
+
+
+deactivate JsonImporter
+
+deactivate cc
+
+ui-->adm: displayUserInfo
+
+deactivate ui
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+actor MRI_Operator as operator
+participant "Digital Form Interface" as formInterface
+participant "Subject Responses API" as responsesAPI
+database "Neurohub Database" as database
+
+operator -> formInterface : access digital form
+formInterface -> operator : display form
+operator -> formInterface : enter subject responses
+formInterface -> responsesAPI : post responses
+responsesAPI -> database : save responses
+database --> responsesAPI : confirm saved
+responsesAPI --> formInterface : confirm success
+formInterface -> operator : display success message
+@enduml

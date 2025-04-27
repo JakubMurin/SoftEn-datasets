@@ -1,0 +1,34 @@
+@startuml
+
+actor Médecin
+actor Infirmier
+actor PersonnelAdministratif
+actor Patient
+actor Système
+
+Médecin -> Système: S'identifier
+Système -> Médecin: Authentification réussie
+Médecin -> Système: Accéder aux informations du patient
+Système -> Médecin: Retourne les informations du patient
+Médecin -> Système: Consulter les comptes-rendus de visite
+Système -> Médecin: Retourne les comptes-rendus
+Médecin -> Système: Consulter les soins délivrés
+Système -> Médecin: Retourne les soins délivrés
+Médecin -> Système: Saisir un nouveau rapport
+Système -> Médecin: Confirmation de la saisie
+
+Infirmier -> Système: Enregistrer un soin délivré
+Système -> Infirmier: Confirmation de l'enregistrement
+
+PersonnelAdministratif -> Système: S'identifier
+Système -> PersonnelAdministratif: Authentification réussie
+PersonnelAdministratif -> Système: Consulter les lits disponibles
+Système -> PersonnelAdministratif: Retourne les lits disponibles
+PersonnelAdministratif -> Système: Ajouter un nouveau patient
+Système -> PersonnelAdministratif: Confirmation de l'ajout
+
+Patient -> Système: Occuper un lit
+Système -> Patient: Confirmation de l'occupation
+
+@enduml
+

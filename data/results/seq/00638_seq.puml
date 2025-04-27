@@ -1,0 +1,20 @@
+@startuml
+actor Funder
+participant "DMPTool" as DMP
+participant "SecurityAssessmentModule" as SAM
+participant "ComplianceDatabase" as CD
+participant "ProjectData" as PD
+participant "ReportGenerator" as RG
+
+Funder -> DMP : Request security details\nfor specific project
+DMP -> SAM : Assess security measures\nand standards
+activate SAM
+SAM -> PD : Fetch relevant data\nsecurity protocols
+PD -> SAM : Return security protocols
+SAM -> CD : Verify compliance\nwith legal standards
+CD -> SAM : Return compliance status
+deactivate SAM
+SAM -> RG : Compile security\nassessment report
+RG -> DMP : Generate and format\nreport
+DMP -> Funder : Provide report on\ndata security and compliance
+@enduml

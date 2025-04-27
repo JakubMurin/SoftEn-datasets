@@ -1,0 +1,26 @@
+@startuml
+actor Customer as customer
+participant "Portal UI" as portal
+participant "Authentication System" as auth
+database "Accounts Database" as db
+
+customer -> portal : Request to Create Account
+portal -> customer : Display Account Creation Form
+customer -> portal : Submit Account Details (username, email, password)
+portal -> auth : Validate Account Details
+alt Details Valid
+    auth -> portal : Confirm Details Valid
+    portal -> db : Create New User Account
+    db -> portal : Confirm Account Created
+    portal -> customer : Display Account Creation Success
+    portal -> auth : Initiate First-Time Login Sequence
+    auth -> customer : Request Authentication (Login)
+    customer -> auth : Provide Credentials
+    auth -> db : Validate Credentials
+    db -> auth : Confirm Credentials Valid
+    auth -> customer : Authentication Successful
+else Details Invalid
+    auth -> portal : Error (Details Invalid)
+    portal -> customer : Display Error (Invalid Details)
+end
+@enduml

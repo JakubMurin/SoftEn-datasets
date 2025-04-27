@@ -1,0 +1,51 @@
+@startuml ActorPickupItem
+skinparam headerFontSize 20
+skinparam HeaderFontColor #000000
+skinparam HeaderFontStyle bold
+header Actor Pickup Item
+
+hide footbox
+
+actor A as "Controller"
+participant B as "a : Actor"
+participant C as "state : ActionState"
+participant D as "item : Item"
+participant E as "room : Room"
+participant I as "inventory : Inventory"
+
+A -> B ++: pickUp(item)
+B -> C ++: pickUp(item)
+C -> B ++: getLocation()
+return room
+C -> E ++: removeItem(item)
+alt isSticky == true
+    E --> C : Null 
+    C --> B : false
+    B --> A : false
+else isSticky == false
+    return item
+    C -> B ++ : getInventory()
+    return inventory
+    C -> I ++: addItem(item)
+    I -> I : isFull()
+    return success
+
+    alt success == false
+        C -> E ++: addItem(item)
+        return true
+        C --> B : false
+        B --> A : false
+    else success == true
+        C -> D ++: onPickup(a)
+        return
+        return true
+        return true
+    end
+end
+
+/'
+Lehet ez így iszonyat komplikált, de így működik
+¯\_(ツ)_/¯
+'/
+
+@enduml

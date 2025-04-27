@@ -1,0 +1,25 @@
+@startuml
+actor User
+participant "UI: PrimaryController" as UI
+participant "Core: BookingService" as Core
+participant "Persistence: BookingRepository" as Persistence
+participant "REST: BookingRestService" as REST
+
+User -> UI: Select treatment, date, and enter contact info
+UI -> Core: createBooking(name, email, treatment, date)
+Core -> Persistence: saveBooking(Booking)
+Persistence -> Persistence: Save booking to file
+Persistence -> Core: Booking saved
+Core -> UI: Booking created
+
+User -> UI: Submit booking
+UI -> REST: POST /bookings
+REST -> Core: addBooking(Booking)
+Core -> Persistence: saveBooking(Booking)
+Persistence -> Persistence: Save booking to file
+Persistence -> Core: Booking saved
+Core -> REST: Booking added
+REST -> UI: Booking confirmed
+
+UI -> User: Display confirmation message
+@enduml

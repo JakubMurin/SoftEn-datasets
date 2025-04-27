@@ -47,19 +47,72 @@
 
 # Script to find plantuml files
 
-for i in {1..10}; do
-    # gh api --method=GET search/code -f q="@startuml extension:uml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
-    #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
-    #     sed 's|/blob||' >> output_uml_all.txt
+# for i in {1..10}; do
+#     # gh api --method=GET search/code -f q="@startuml extension:uml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
+#     #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#     #     sed 's|/blob||' >> output_uml_all.txt
 
-    # gh api --method=GET search/code -f q="@startuml actor extension:uml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
-    #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
-    #     sed 's|/blob||' >> output_uml_actor.txt
+#     # gh api --method=GET search/code -f q="@startuml actor extension:uml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
+#     #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#     #     sed 's|/blob||' >> output_uml_actor.txt
 
-    gh api --method=GET search/code -f q="@startuml actor extension:uml" -f per_page=2 -f page=$i --jq ".items[].html_url"| \
-        sed 's|https://github.com|https://raw.githubusercontent.com|' | \
-        sed 's|/blob||' >> a.txt
+#     # gh api --method=GET search/code -f q="@startuml actor extension:uml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
+#     #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#     #     sed 's|/blob||' >> a.txt
 
-    echo "$i"
+#     # gh api --method=GET search/code -f q="@startuml actor extension:uml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
+#     #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#     #     sed
+
+#     # gh api --method=GET search/code -f q="@startuml actor -usecase extension:puml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
+#     #     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#     #     sed 's|/blob||' >> aa.txt
+
+#     gh api --method=GET search/code -f q="@startuml actor extension:puml" -f per_page=100 -f page=$i --jq ".items[].html_url"| \
+#         sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#         sed 's|/blob||' >> actor_puml.txt
+
+#     echo "$i"
+#     sleep 7s
+# done
+
+
+# Process each URL
+while IFS= read -r url; do
+    url=$(echo "$url" | sed 's/[[:space:]]*$//')
+    owner=""
+    repo=""
+    filepath=""
+    date=""
+
+    # Commit sha
+    if [[ "$url" =~ https://raw.githubusercontent.com/([^/]+)/([^/]+)/[a-f0-9]{40}/(.*) ]]; then
+        owner="${BASH_REMATCH[1]}"
+        repo="${BASH_REMATCH[2]}"
+        filepath="${BASH_REMATCH[3]}"
+
+    # Branch name
+    elif [[ "$url" =~ https://raw.githubusercontent.com/([^/]+)/([^/]+)/refs/heads/([^/]+)/(.*) ]]; then
+        owner="${BASH_REMATCH[1]}"
+        repo="${BASH_REMATCH[2]}"
+        filepath="${BASH_REMATCH[4]}"
+
+    else
+        echo "INVALID_URL $url"
+        
+    fi
+
+    # Fetch date and format
+    if [ ! -z "$owner" ]; then
+        filepath=$(echo "$filepath" | sed 's|%20| |')
+        date=$(gh api --method=GET repos/$owner/$repo/commits \
+                -f path="$filepath" \
+                -f per_page=1 \
+                --jq '.[0].commit.committer.date' | cut -d'T' -f1)
+    fi
+
+    echo "$url $date" >> "github/new_seq_url_date.txt"
+    # echo "$url $date" >> "github/uc_url_date.txt"
     sleep 7s
-done
+# done < "github/uc_urls.txt"
+done < "github/scripts/new_uniq.txt"

@@ -1,0 +1,20 @@
+@startuml
+
+actor Actor as Actor
+participant "SPA" as Container <<Container (C4)>>
+participant "GestaoInfoAPI" as API <<Container (C4)>>
+
+Actor -> Container:  Pretende listar pisos de edifícios com passagens para outros edifícios
+
+Container -> API: get(/api/floors/withpass)
+
+API --> Container: status code
+
+alt 200
+    Container --> Actor: Devolve pisos com passagens
+else 400 
+    Container --> Actor: Devolve mensagem de erro
+end
+
+@enduml
+

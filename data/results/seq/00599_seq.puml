@@ -1,0 +1,51 @@
+@startuml
+actor TeamMember
+participant "UX/Content Team" as UX
+participant "Design Team" as Design
+participant "Front-End Development Team" as FE
+database "CMS" as CMS
+database "Design System" as DesignSys
+database "Version Control" as VC
+
+== Sprint Planning ==
+TeamMember -> UX : Define requirements\nand user stories
+activate UX
+UX -> CMS : Identify content needs
+activate CMS
+CMS --> UX : Content Inventory\n& Gap Analysis
+deactivate CMS
+UX -> UX : Create wireframes\n& content strategy
+UX --> TeamMember : Wireframes\n& Content Strategy
+deactivate UX
+
+== Wireframe Review & User Testing ==
+TeamMember -> UX : Conduct user testing\nwith wireframes
+activate UX
+UX -> UX : Iterate based on\nfeedback
+UX --> TeamMember : Finalized wireframes
+
+== Visual Design Phase ==
+TeamMember -> Design : Initiate visual design
+activate Design
+Design -> DesignSys : Utilize/review design tokens
+activate DesignSys
+DesignSys --> Design : Design tokens\n& guidelines
+deactivate DesignSys
+Design -> Design : Create visual designs\nbased on wireframes
+Design --> TeamMember : Visual Design Mockups
+deactivate Design
+
+== Development Handoff ==
+TeamMember -> FE : Hand off designs for development
+activate FE
+FE -> VC : Checkout new branch
+activate VC
+VC --> FE : Branch created
+FE -> DesignSys : Integrate visual designs & tokens
+FE -> FE : Implement design in code
+FE -> VC : Commit changes
+VC --> FE : Changes committed
+FE --> TeamMember : Sprint Work Completed
+deactivate FE
+
+@enduml

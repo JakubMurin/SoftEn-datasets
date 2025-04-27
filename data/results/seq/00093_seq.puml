@@ -1,0 +1,25 @@
+@startuml
+actor User
+participant API_Controller
+participant AllergyService
+participant Repository
+database Database
+
+User -> API_Controller: GET /medicalCondition/{name}
+API_Controller -> API_Controller: Validate Path Parameter
+alt Invalid Name
+    API_Controller -> User: 400 Bad Request
+else Valid Name
+    API_Controller -> AllergyService: GetAllMedicalConditions(name)
+    AllergyService -> Repository: Fetch medical conditions
+    alt Allergy Not Found
+        AllergyService -> API_Controller: Exception: "Medical Condition not found"
+        API_Controller -> User: 404 Not Found
+    else
+        Repository -> AllergyService: List of medical conditions
+        AllergyService -> API_Controller: List of medical conditions
+        API_Controller -> User: 200 OK with medicalCondition data
+    end
+end
+@enduml
+

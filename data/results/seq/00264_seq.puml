@@ -1,0 +1,15 @@
+@startuml
+
+actor Chef as chef
+participant "UI Interface" as UI
+participant "Server/Controller" as controller
+participant "Database" as db
+
+chef -> UI : Request expiry dates of ingredients
+UI -> controller : Fetch expiry dates
+controller -> db : Query ingredients with expiry dates
+db -> controller : Return expiry dates data
+controller -> UI : Display expiry dates
+UI -> chef : Show expiry dates of ingredients
+
+@enduml

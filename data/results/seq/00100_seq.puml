@@ -1,0 +1,38 @@
+@startuml
+
+actor "ApplicationDeveloper"
+
+
+entity EventBus
+
+box Sentient Agent Bundle Manager #ffcc88
+    boundary sabm #white
+end box
+
+
+box Sentient Agent Bundle Resources #bbaaff
+    end box
+
+
+"ApplicationDeveloper" -> sabm: Create SABR
+
+    sabm -> "sentient agent bundle resources": create (name: mySABR1,file: ./templates/bundle1.js)
+
+    "sentient agent bundle resources" --/ EventBus: bundle.create
+
+    sabm -> "sentient agent bundle resources": create (name: mySABR2,file: ./templates/bundle2.js)
+
+    "sentient agent bundle resources" --/ EventBus: bundle.create
+
+    sabm -> "sentient agent bundle resources": create (name: mySABR3,file: ./templates/bundle3.js)
+
+    "sentient agent bundle resources" --/ EventBus: bundle.create
+
+    sabm -> "sentient agent bundle resources": create (name: mySABR4,file: ./templates/bundle4.js)
+
+    "sentient agent bundle resources" --/ EventBus: bundle.create
+
+
+
+@enduml
+

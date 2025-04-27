@@ -1,0 +1,16 @@
+@startuml
+actor       User              as Foo1
+boundary    AnalyticsPage     as Foo2
+control     AnalyticsControl  as Foo3
+entity      URLAnalytics      as Foo4
+database    AnalyticsDB       as Foo5
+
+Foo1 -> Foo2 : Masukkan URL atau pilih URL dari daftar
+Foo2 -> Foo3 : Kirim permintaan data analitik
+Foo3 -> Foo4 : Ambil data analitik untuk URL
+Foo4 -> Foo5 : Query data analitik dari database
+Foo5 -> Foo4 : Kembalikan data analitik
+Foo4 -> Foo3 : Berikan hasil data analitik
+Foo3 -> Foo2 : Kirim data analitik ke halaman
+Foo2 -> Foo1 : Tampilkan data analitik URL
+@enduml

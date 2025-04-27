@@ -1,0 +1,28 @@
+@startuml
+actor Customer
+
+Customer -> a_customer: statement
+    activate a_customer
+      a_customer -> a_customer: total charge
+      activate a_customer
+        a_customer -> a_rental:*[for all rentals] charge
+        activate a_rental
+           a_rental -> a_movie: charge(days_rented)
+           activate a_movie
+             a_movie -> a_price: charge(days_rented)
+           deactivate a_movie
+        deactivate a_rental
+      deactivate a_customer
+      a_customer -> a_customer: total_frequent_renter_points
+      activate a_customer
+        a_customer -> a_rental:*[for all rentals] frequent_renter_points
+        activate a_rental
+           a_rental -> a_movie: frequent_renter_points(days_rented)
+           activate a_movie
+             a_movie -> a_price: frequent_renter_points(days_rented)
+           deactivate a_movie
+        deactivate a_rental
+      deactivate a_customer
+    deactivate a_customer
+
+@enduml

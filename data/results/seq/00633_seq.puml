@@ -1,0 +1,19 @@
+@startuml
+actor UserResearcher as UR
+entity "User Research\nManagement System" as URMS
+database "NSF Staff\nDatabase" as NSFD
+entity EmailSystem
+participant NSFPerson as NSFP
+
+UR -> URMS : Searches for potential participants\nbased on interview topic
+URMS -> NSFD : Query for staff with relevant expertise
+NSFD --> URMS : Returns list of potential NSF participants
+URMS --> UR : Presents potential participants
+UR -> URMS : Selects NSF participants for interviews
+URMS -> EmailSystem : Sends invitation emails\nwith interview details
+EmailSystem --> NSFP : Receives interview invitation
+NSFP -> EmailSystem : RSVPs to invitation
+EmailSystem -> URMS : Logs RSVP status
+URMS --> UR : Confirms NSF participant RSVPs
+
+@enduml

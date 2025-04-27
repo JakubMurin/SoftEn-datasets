@@ -1,0 +1,24 @@
+@startuml
+actor admin
+control ga as "gateway-agent"
+control apiserver
+database db
+
+==Initial setup==
+admin -> ga: provision server thru terraform/ansible
+
+==If not enrolled==
+admin -> admin: generate password and wireguard private key
+admin -> apiserver: EnrollGateway(pb.EnrollGatewayRequest)
+note right: passhash\nwg public key\npublic ip
+apiserver -> apiserver: allocate private ip
+apiserver -> db: insert/update gateway
+apiserver --> admin: pb.EnrollGatewayResponse
+admin -> admin: generate pb.GatewayConfiguration
+admin -> ga: ssh
+ga -> ga: insert configuration as env into file
+
+==When enrolled==
+ga -> apiserver: establish secure connection
+
+@enduml

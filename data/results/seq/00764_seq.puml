@@ -1,0 +1,34 @@
+@startuml
+actor FacultyMember as FM
+participant "Authentication Service" as Auth
+participant "Search Interface" as SI
+participant "Database" as DB
+participant "Collection" as Coll
+
+FM -> Auth: Enter credentials
+Auth -> FM: Validate credentials
+activate Auth
+Auth --> FM: Authentication Successful
+deactivate Auth
+
+FM -> SI: Access Search Interface
+activate SI
+SI --> FM: Display Search Options
+
+FM -> SI: Input search criteria for collection
+activate DB
+SI -> DB: Query database with search criteria
+DB --> SI: Return search results
+deactivate DB
+
+SI --> FM: Display list of matching collections
+
+FM -> SI: Select desired collection
+SI -> DB: Request selected collection details
+activate Coll
+DB --> SI: Retrieve collection details
+deactivate DB
+SI --> Coll: Access Collection
+Coll --> FM: Display Collection Content
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+actor Curator as curator
+participant "UI Interface" as UI
+participant "Mapping Controller" as mappingController
+database "Collections Database" as collectionsDB
+
+curator -> UI : Select item(s) for mapping
+UI -> mappingController : Initiate mapping request(itemIDs, sourceCollection, targetCollection)
+mappingController -> collectionsDB : Validate itemIDs and collections
+collectionsDB -> mappingController : Validation response
+alt Validation Success
+    mappingController -> collectionsDB : Map item(s) to target collection
+    collectionsDEBUG -> mappingController : Mapping confirmation
+    mappingController -> UI : Display mapping success message
+    curator -> UI : Confirm & close
+else Validation Failure
+    mappingController -> UI : Display error message (Invalid items/collections)
+    curator -> UI : Review & retry
+end
+@enduml

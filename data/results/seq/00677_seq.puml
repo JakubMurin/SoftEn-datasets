@@ -1,0 +1,22 @@
+@startuml
+actor Waiter
+participant "Frontend UI" as Frontend
+participant "Backend Server" as Backend
+database "Restaurant DB" as Database
+
+Waiter -> Frontend : Selects 'Update Table Status'
+activate Waiter
+activate Frontend
+Frontend -> Backend : Request to update waiting time for table
+activate Backend
+Backend -> Database : Update table status to 'Available'
+activate Database
+Database --> Backend : Confirmation of status update
+deactivate Database
+Backend --> Frontend : Confirm waiting time cleared
+deactivate Backend
+Frontend --> Waiter : Display confirmation message
+deactivate Frontend
+deactivate Waiter
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+actor Curator as curator
+participant "Dashboard" as dashboard
+participant "Database" as db
+participant "SubmissionService" as service
+participant "CollectionWidget" as widget
+
+== Curator Requests Dashboard ==
+
+curator -> dashboard: Request Dashboard View
+dashboard -> service: Fetch Recent Submissions
+service -> db: Query Submissions by Date
+
+== Database Processes Request ==
+
+db --> service: Return Submission Data
+service --> dashboard: Process Submission Summary
+dashboard -> widget: Prepare Collection Widget
+widget --> dashboard: Display Recent Submissions
+
+== Curator Views Dashboard ==
+
+dashboard --> curator: Show Dashboard with Widget
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+actor "Repository Manager" as RM
+participant "DIMS Interface" as DI
+participant "Central Repository Info Management" as CRIM
+database "DAMS" as DAMS
+participant "DAMS Sync Service" as DSS
+
+== Update Repository Information ==
+RM -> DI : Initiate Update
+activate DI
+DI -> CRIM : Submit Update Request
+activate CRIM
+CRIM -> DAMS : Check Current Info
+activate DAMS
+DAMS --> CRIM : Current Repository Info
+deactivate DAMS
+CRIM -> DAMS : Update Repository Info
+activate DAMS
+DAMS --> CRIM : Update Confirmation
+deactivate DAMS
+CRIM --> DI : Update Success
+deactivate CRIM
+
+== Propagate Updates ==
+DI -> DSS : Trigger Sync
+activate DSS
+DSS -> DAMS : Retrieve Updated Info
+activate DAMS
+DAMS --> DSS : Provide Updated Info
+deactivate DAMS
+DSS -> DAMS : Propagate Updates to Relevant Areas
+activate DAMS
+DAMS --> DSS : Propagation Confirmation
+deactivate DAMS
+DSS --> DI : Sync Complete
+deactivate DSS
+DI --> RM : Update & Propagation Confirmation
+deactivate DI
+
+@enduml

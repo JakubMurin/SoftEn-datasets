@@ -1,0 +1,21 @@
+@startuml
+actor Curator as curator
+participant "EDRMS Interface" as edrms
+participant "Database" as db
+participant "Analytics Engine" as analytics
+participant "Resolver Service" as resolver
+
+curator -> edrms : Request item referrer data
+edrms -> db : Query for item ID
+db -> edrms : Return item ID
+edrms -> analytics : Request referrer stats for item ID
+analytics -> db : Query referrer logs
+db -> analytics : Return referrer data
+analytics -> edrms : Provide summarized referrer info
+edrms -> curator : Display referrer data
+
+note over curator, resolver: Resolver Service redirects visitors\nto the repository item using abstracted links.\nIt logs the referrer URL for each visitor.
+
+note over analytics: Analytics Engine processes and aggregates\nreferrer data for easy interpretation by the curator.
+
+@enduml

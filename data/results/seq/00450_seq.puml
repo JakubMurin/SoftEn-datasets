@@ -1,0 +1,65 @@
+@startuml
+actor User as User order 0 #00ff41
+participant MUKTA_ADAPTER as MUKTA_ADAPTER order 1 #DDA45f
+participant PROGRAM_SERVICE as PROGRAM_SERVICE order 2 #DAD45f
+participant Expense_Service as Expense_Service order 3 #DAFADA
+participant MDMS as MDMS order 4 #DAFADA
+participant ORG_SERVICE as ORG_SERVICE order 4 #DAFADA
+participant IND_SERVICE as IND_SERVICE order 4 #DAFADA
+participant BANK_ACC_SERVICE as BANK_ACC_SERVICE order 4 #DAFADA
+participant KAFKA as KAFKA order 5 #DAFADA
+participant SCHEDULER as SCHEDULER order 6 #DAFADA
+
+== Create Payments in Adapter ==
+SCHEDULER -> MUKTA_ADAPTER: Call Payment Create Scheduler
+activate MUKTA_ADAPTER #FFCD00
+MUKTA_ADAPTER -> MDMS: Request for tenents
+activate MDMS
+MUKTA_ADAPTER <-- MDMS: tenants list
+deactivate MDMS
+MUKTA_ADAPTER -> Expense_Service: Search bills where \nbills are not created
+activate Expense_Service
+MUKTA_ADAPTER <-- Expense_Service: return list of bills
+deactivate Expense_Service
+MUKTA_ADAPTER -> MUKTA_ADAPTER: Process bills and \ngenerate payment
+MUKTA_ADAPTER -> Expense_Service: create payments
+activate Expense_Service
+MUKTA_ADAPTER <-- Expense_Service: return payment response
+deactivate Expense_Service
+MUKTA_ADAPTER -> KAFKA: Push payment details to create topic
+deactivate MUKTA_ADAPTER
+
+
+== Create Disburse for Payments ==
+
+MUKTA_ADAPTER <- KAFKA: Listen payment create topic
+activate MUKTA_ADAPTER #AAFF90
+MUKTA_ADAPTER -> MUKTA_ADAPTER: process payment
+MUKTA_ADAPTER -> Expense_Service: Fetch bills details
+MUKTA_ADAPTER <-- Expense_Service: return bill details
+MUKTA_ADAPTER -> MUKTA_ADAPTER: Process Bill
+group Process for each bill lineitem
+note right: For each beneficiary generate
+    MUKTA_ADAPTER -> ORG_SERVICE: Fetch organisation details
+    activate ORG_SERVICE
+    MUKTA_ADAPTER <-- ORG_SERVICE: Return organisation details
+    deactivate ORG_SERVICE
+    MUKTA_ADAPTER -> IND_SERVICE: Fetch individual details
+    activate IND_SERVICE
+    MUKTA_ADAPTER <-- IND_SERVICE: Return individual details
+    deactivate IND_SERVICE
+    MUKTA_ADAPTER -> BANK_ACC_SERVICE: Fetch bank account details
+    activate BANK_ACC_SERVICE
+    MUKTA_ADAPTER <-- BANK_ACC_SERVICE: return bank account details
+    deactivate BANK_ACC_SERVICE
+end
+MUKTA_ADAPTER -> MUKTA_ADAPTER: Create disburse request
+note right: Generate one disbursement \nrequest for one bill
+MUKTA_ADAPTER -> PROGRAM_SERVICE: /program/disbuse/_create
+activate PROGRAM_SERVICE #00FFa0
+MUKTA_ADAPTER <-- PROGRAM_SERVICE: return ACK
+deactivate PROGRAM_SERVICE
+deactivate MUKTA_ADAPTER
+
+
+@enduml

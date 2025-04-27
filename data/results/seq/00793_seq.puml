@@ -1,0 +1,30 @@
+@startuml
+actor ContentDesigner as "Content Designer"
+participant "CMS" as CMS
+participant Documentation as Docs
+participant "Project Team" as Team
+participant "Content Strategy Meeting" as Meeting
+participant Recommendations as Recs
+
+ContentDesigner -> CMS : Explore existing content types
+CMS --> ContentDesigner : Display content types
+
+ContentDesigner -> Docs : Request content guidelines and editorial plan
+Docs --> ContentDesigner : Provide guidelines and plan
+
+ContentDesigner -> Team : Request participation in strategy meetings
+Team --> Meeting : Schedule meeting for content strategy
+
+ContentDesigner -> Meeting : Participate and contribute
+Meeting --> ContentDesigner : Gather insights on content needs
+
+ContentDesigner -> Recs : Formulate recommendations
+Recs --> Team : Present recommendations for approval
+
+Team -> CMS : Update CMS based on recommendations
+CMS --> ContentDesigner : Confirm CMS updates
+
+ContentDesigner -> Docs : Update documentation
+Docs --> ContentDesigner : Confirm documentation is updated
+
+@enduml

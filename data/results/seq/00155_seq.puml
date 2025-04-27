@@ -1,0 +1,21 @@
+@startuml
+actor Chef as chef
+participant "Restaurant Management \nSystem" as RMS
+database "Database" as DB
+participant "Menu Management \nSubsystem" as MMS
+
+chef -> RMS : Select dish to update
+RMS -> MMS : Request dish details
+MMS -> DB : Query dish ingredients
+DB -> MMS : Return dish ingredients
+MMS -> RMS : Display ingredients with allergy info
+RMS -> chef : Show ingredients and current allergy list
+
+chef -> RMS : Add/remove allergens to/from list
+RMS -> MMS : Update allergy information
+MMS -> DB : Update dish ingredient allergy info
+DB -> MMS : Confirm update
+MMS -> RMS : Confirm update to chef
+RMS -> chef : Display update confirmation
+
+@enduml

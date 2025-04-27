@@ -1,0 +1,35 @@
+@startuml
+actor User
+
+participant "Home Component\n(Home.tsx)" as Home
+participant "Internal API\n(/api/searchUsers)" as InternalAPI
+participant "GitHub API" as GitHubAPI
+
+User -> Home : Input Search Query
+
+Home -> Home : Debounce Delay (e.g., 300ms)
+
+Home -> InternalAPI : Request Search Query (GET /api/searchUsers?query=:query)
+InternalAPI -> GitHubAPI : GET /search/users?q=:query
+
+alt Success with Data
+    GitHubAPI -> InternalAPI : Return User List
+    
+    alt Users Found
+        InternalAPI -> GitHubAPI : GET /users/:user.login (for each user)
+        GitHubAPI -> InternalAPI : Return User Details (for each user)
+        InternalAPI -> Home : Return User Data
+        
+        Home -> User : Display Search Results
+    else No Users Found
+        InternalAPI -> Home : Return No Data
+        Home -> User : Display "Nenhum usuário encontrado."
+    end
+else API Error
+    GitHubAPI -> InternalAPI : Error Response
+    InternalAPI -> Home : Return Error
+    Home -> User : Display "Falha ao pesquisar usuários."
+end
+
+@enduml
+

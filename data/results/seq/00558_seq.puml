@@ -1,0 +1,26 @@
+@startuml
+actor Borrower
+participant FrontEnd
+participant LoanController
+participant LoanService
+participant LoanRepository
+
+Borrower -> FrontEnd: Request Book Renewal
+FrontEnd -> LoanController: Forward Renewal Request
+LoanController -> LoanService: Process Renewal Request
+LoanService -> LoanRepository: Check Renewal Eligibility
+LoanRepository -> LoanService: Renewal Eligibility Status
+
+alt Renewal Allowed
+    LoanService -> LoanRepository: Update Loan Record
+    LoanRepository -> LoanService: Renewal Confirmation
+    LoanService -> LoanController: Notify About Renewal
+    LoanController -> FrontEnd: Send Renewal Confirmation
+    FrontEnd -> Borrower: Display Confirmation Message
+else Renewal Not Allowed
+    LoanService -> LoanController: Notify About Renewal Rejection
+    LoanController -> FrontEnd: Send Rejection Notification
+    FrontEnd -> Borrower: Display Rejection Message
+end
+@enduml
+

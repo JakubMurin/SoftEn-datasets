@@ -1,0 +1,24 @@
+@startuml
+actor User
+actor Manager
+participant "Giao diện chính" as MainUI
+participant "Hệ thống Quản lý Phiên" as SessionManager
+
+alt Người dùng hoặc Quản lý thực hiện đăng xuất
+    User -> MainUI: Nhấn nút "Đăng xuất"
+    Manager -> MainUI: Nhấn nút "Đăng xuất"
+end
+
+MainUI -> SessionManager: Yêu cầu kết thúc phiên
+SessionManager -> SessionManager: Xác thực phiên hiện tại
+alt Phiên hợp lệ
+    SessionManager -> MainUI: Xác nhận kết thúc phiên
+    MainUI -> User: Hiển thị thông báo đăng xuất thành công
+    MainUI -> Manager: Hiển thị thông báo đăng xuất thành công
+else Phiên không hợp lệ
+    SessionManager -> MainUI: Thông báo lỗi
+    MainUI -> User: Hiển thị thông báo lỗi
+    MainUI -> Manager: Hiển thị thông báo lỗi
+end
+@enduml
+

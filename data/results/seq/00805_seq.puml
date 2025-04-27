@@ -1,0 +1,17 @@
+@startuml
+actor User
+participant "UI Component" as UI
+participant "API Gateway" as API
+participant "Schema Management Service" as SMS
+database "Schema Database" as DB
+
+User -> UI : Specify schema\n(JSON string)
+UI -> API : POST /schema\n{jsonString: "..."}
+API -> SMS : createSchema(jsonString)
+SMS -> DB : Save Schema
+DB --> SMS : Confirmation
+SMS --> API : Schema ID
+API --> UI : Schema ID
+UI --> User : Display confirmation\n(Schema ID)
+
+@enduml

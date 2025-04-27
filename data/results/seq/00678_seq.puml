@@ -1,0 +1,15 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage-Environments" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-env-destroy(name)
+CLI -> S : env/destroy(name)
+A -> Web : env/destroy(name)
+Web -> S : env/destroy(name)
+end box
+
+@enduml
+

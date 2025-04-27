@@ -1,0 +1,16 @@
+@startuml
+actor Curator as curator
+participant "UI Dashboard" as UI
+participant "Authorization Module" as Auth
+participant "Item Retrieval Module" as Retrieval
+participant "Database" as DB
+
+curator -> UI : Access item/component page
+UI -> Auth : Validate access
+Auth -> UI : Access granted
+UI -> Retrievel : Request item/component details
+Retrieval -> DB : Query for item/component details and deletion date
+DB -> Retrieval : Return requested data
+Retrieval -> UI : Display item/component details and deletion date
+UI -> curator : Show item/component page with deletion date
+@enduml

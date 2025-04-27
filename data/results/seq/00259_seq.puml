@@ -1,0 +1,17 @@
+@startuml
+
+actor "Utente" as Actor
+participant "robDroneGo:robDroneGo" as Container <<Container (C4)>>
+
+Actor -> Container: requisitar uma tarefa
+Container --> Actor: requisita o ponto inicial e final da tarefa
+Actor -> Container: insere os dados
+
+alt sucesso na criação da tarefa
+    Container --> Actor: devolve mensagem de sucesso
+else falha na criação da tarefa
+    Container --> Actor: devolve mensagem de erro
+end
+
+@enduml
+

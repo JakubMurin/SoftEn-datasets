@@ -1,0 +1,48 @@
+@startuml
+actor Admin
+boundary list_settings_view
+control SettingsController
+entity SettingsModel
+
+Admin -> list_settings_view : yêu cầu xem danh sách cài đặt
+activate Admin
+deactivate Admin
+
+activate list_settings_view
+list_settings_view -> SettingsController: gửi yêu cầu
+deactivate list_settings_view
+activate SettingsController
+SettingsController -> SettingsController : kiểm tra dữ liệu
+SettingsController -> SettingsModel : lấy danh sách cài đặt
+activate SettingsModel
+SettingsModel --> SettingsController : trả danh sách cài đặt
+deactivate SettingsModel
+SettingsController --> list_settings_view: trả kết qủa danh sách cài đặt
+deactivate SettingsController
+activate list_settings_view
+list_settings_view --> Admin: Hiển thị danh sách cài đặt
+deactivate list_settings_view
+activate Admin
+Admin -> list_settings_view: chỉnh sửa cài đặt, bấm nút lưu
+deactivate Admin
+activate list_settings_view
+list_settings_view -> SettingsController : gửi dữ liệu cài đặt mới
+deactivate list_settings_view
+activate SettingsController
+SettingsController -> SettingsController : kiểm tra dữ liệu
+SettingsController -> SettingsModel : lưu cài đặt
+activate SettingsModel
+SettingsModel --> SettingsController : trả kết quả lưu cài đặt
+deactivate SettingsModel
+SettingsController --> list_settings_view: trả kết qủa danh sách cài đặt
+deactivate SettingsController
+activate list_settings_view
+list_settings_view --> Admin: Hiển thị danh sách cài đặt
+activate Admin
+deactivate Admin
+deactivate list_settings_view
+
+
+
+
+@enduml

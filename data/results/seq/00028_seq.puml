@@ -1,49 +1,68 @@
 @startuml
+actor Staff as "Staff Member"
+participant "User Authentication" as Auth
+participant "Staff Dashboard" as Dashboard
+participant "Affidavit Management System" as AMS
+participant "Database" as DB
+participant "Compliance Module" as Compliance
 
-title RetryRPC Send - Happy Path
+== Authenticate Staff Member ==
+Staff -> Auth: Access Portal
+Auth -> Staff: Request Credentials
+Staff -> Auth: Provide Credentials
+Auth -> Auth: Validate Credentials
+Auth -> Staff: Grant Access
 
-autonumber
+== Navigate to Affidavit Management ==
+Staff -> Dashboard: Select Manage Affidavits
+Dashboard -> AMS: Open Affidavit Management
 
-box Client
-participant Send
-participant sendToServer
-participant notifyReply
-participant readReplies
-end box
-box Server
-participant run
-participant serviceClient
-participant processRequest
-end box
+== View Pending Affidavits ==
+AMS -> DB: Query Pending Affidavits
+DB -> AMS: Return Pending Affidavits
+AMS -> Staff: Display Pending Affidavits
 
-Send -> run:dial() server
-run -> run:Accept connection
-run -> run:Wait for uniqueID on socket
-Send -> run:Send uniqueID on socket
-Send -> readReplies:Start readReplies goroutine
+loop For Each Affidavit
+    == Review Affidavit Details ==
+    Staff -> AMS: Select Affidavit
+    AMS -> DB: Retrieve Affidavit Details
+    DB -> AMS: Affidavit Details
+    AMS -> Staff: Show Affidavit Details
+    
+    == Verify Compliance ==
+    Staff -> Compliance: Check Requirements
+    Compliance -> DB: Validate Compliance
+    DB -> Compliance: Compliance Status
+    Compliance -> Staff: Show Status
+    
+    alt If Affidavit Compliant
+        Staff -> AMS: Mark as Compliant
+        AMS -> DB: Update Status
+        DB -> AMS: Confirmation
+        AMS -> Staff: Show Confirmation
+        
+        == Generate Compliance Notice ==
+        Staff -> Compliance: Generate Notice
+        Compliance -> DB: Save Notice
+        DB -> Compliance: Confirmation
+        Compliance -> Staff: Notice Generated
+        
+    else If Affidavit Not Compliant
+        Staff -> AMS: Mark as Non-Compliant
+        AMS -> DB: Update Status
+        DB -> AMS: Confirmation
+        AMS -> Staff: Show Confirmation
+    
+        == Request Additional Information ==
+        Staff -> AMS: Request Info
+        AMS -> DB: Update Request
+        DB -> AMS: Confirmation
+        AMS -> Staff: Info Requested
+    end
+end
 
-run -> run:Read uniqueID of new client
-run -> run:Call getClientIDAndWait()\nif new uniqueID create entry in perClientInfo\notherwise drain RPCs on old connection
-run -> serviceClient:Start serviceClient goroutine for new client connection
-
-Send -> sendToServer:Pkg request, assign\nrequestID goroutine to send.\nWait on channel for\nresponse
-
-sendToServer -> serviceClient: Write hdr and then write\npayload on socket to server
-note left: retransmit() if write of\nhdr or payload fails
-
-serviceClient -> processRequest: Read hdr and payload.\nGoroutine to process RPC
-
-processRequest -> processRequest: Unmarshal RPC, call RPC,\nmarshal response.
-
-processRequest -> readReplies: Write header\nand then payload to client
-note left: retransmit() if write of\nhdr or payload fails
-
-readReplies -> readReplies: Read header and then\npayload off socket.\nCall goroutine to notify\nsender
-
-readReplies -> notifyReply:Unmarshal response.\nWrite response on\nchannel to sender.
-note left: retransmit() if unmarshal of\nhdr or payload fails
-
-Send -> Send:See response on channel and\nreturn response to caller.
+== Log Out ==
+Staff -> Auth: Log Out
+Auth -> Staff: Confirm Log Out
 
 @enduml
-

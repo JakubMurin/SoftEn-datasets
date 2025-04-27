@@ -1,0 +1,90 @@
+@startuml
+actor Administrator as Adm
+participant ":TestTypeUI" as UI
+participant ":TestTypeController" as TTC
+participant ":Company" as ML
+participant "pcStore\n:ParameterCategoryStore" as PCS
+participant "listPC\n:List<ParameterCategory> " as LPC
+participant ":listPCMapper" as MAP
+participant "ttStore\n:TestTypeStore" as TTS
+participant "tt\n:TestType" as TT
+participant "listPCDto\n:List<ParameterCategoryDto>" as DTO
+autonumber
+
+
+autonumber
+
+
+activate Adm
+Adm -> UI: asks to create a new type of test
+activate UI
+UI --> TTC: listPCDto = getParameterCategories()
+activate TTC
+TTC --> ML: pcStore = getParameterCategoryStore()
+activate ML
+deactivate ML
+TTC -> PCS: pcs = getParameterCategories()
+activate PCS
+deactivate PCS
+TTC -> MAP: listPCDto = toDTO(pcs)
+activate MAP
+deactivate MAP
+deactivate TTC
+loop
+UI --> Adm: shows parameter category list and ask to select one
+deactivate ML
+deactivate UI
+
+
+Adm -> UI: selects a parameter category
+activate UI
+UI -> TTC: cat = getParameterCategoryByCode(code)
+activate TTC
+TTC -> PCS: cat = getParameterCategoryByCode(code)
+activate PCS
+deactivate PCS
+end
+
+deactivate TTC
+UI --> Adm: requests data(description, \ncollectingMethod, code)
+deactivate UI
+
+
+Adm -> UI: types requested data
+activate UI
+UI -> TTC: createTestType(description, \n collectingMethod, code, categories)
+activate TTC
+TTC -> ML: ttStore = getTestTypeStore()
+activate ML
+deactivate ML
+TTC -> TTS: tt = createTestType(description, \n collectingMethod, code, cat)
+activate TTS
+TTS -> TT**: create (description, \n collectingMethod, code, cat)
+deactivate TTS
+TTC -> TTS: validateTestType (tt)
+activate TTS
+deactivate TTS
+deactivate TTC
+UI --> Adm: shows all data and requests confirmation
+deactivate UI
+
+
+Adm -> UI: confirms all data
+activate UI
+UI -> TTC: saveTestType()
+activate TTC
+TTC -> TTS: saveTestType(tt)
+activate TTS
+TTS -> TTS: validateTestType(tt)
+activate TTS
+deactivate TTS
+TTS -> TTS: addTestType(tt)
+activate TTS
+deactivate TTS
+deactivate TTC
+deactivate TTS
+UI --> Adm: informs operation success
+
+
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+actor Researcher
+participant "DMPTool" as DMP
+database "Institutional Repository or CRIS" as Repo
+participant "Reporting Module" as Report
+
+Researcher -> DMP: Log in
+Researcher -> DMP: Navigate to project DMP
+DMP -> DMP: Fetch DMP record details
+Researcher -> DMP: Select "Add Publication"
+Researcher -> DMP: Enter publication details
+DMP -> Repo: Check if publication is in Repo
+alt publication not in Repo
+  DMP -> Repo: Add publication to Repo
+  Repo -> DMP: Confirm publication added
+else publication exists
+  DMP -> Repo: Update publication record
+  Repo -> DMP: Confirm publication updated
+end
+DMP -> Repo: Link publication with DMP record
+Repo -> DMP: Confirm linkage
+Researcher -> DMP: Request research output report
+DMP -> Repo: Fetch all publications linked to DMP
+Repo -> DMP: Return publications data
+DMP -> Report: Generate report based on publications
+Report -> DMP: Report generated
+DMP -> Researcher: Display/download report
+
+@enduml

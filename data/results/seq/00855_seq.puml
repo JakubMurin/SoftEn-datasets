@@ -1,0 +1,126 @@
+'@startuml
+'actor       m       as c order 0
+'participant s1        as s1 order 1
+'participant s2        as s2 order 2
+'participant s3        as s3 order 3
+'participant s4        as s4 order 4
+'database    s     as s order 5
+'collections 目录服务器   as ml order 6
+'group register
+'s1 -> ml : restart auto register
+'s2 -> ml : restart auto register
+'s3 -> ml : restart auto register
+'s4 -> ml : restart auto register
+'s -> ml : server manual register
+'end
+'group service
+'group ml select manually or randomly
+'end
+'group client request
+'end
+'group UDP message transmission
+'end
+'group update services after 1 day
+'group ml select manually
+'end
+'group client request
+'end
+'group UDP message transmission
+'end
+'end
+'end
+'
+'newpage
+'
+'group ml select manually or randomly
+'ml -> s4 : select first node
+'s4 o<->o s1 : IPSec start
+'s4 --> s1 : wait for forward
+'s4 o-> ml : auto upload data by gRPC async
+'ml -> ml : update and \nshow all paths async
+'activate ml
+'ml -> s1 : select last node and start forward
+'s1 o<->o s : IPSec start
+'s1 --> s : wait for forward
+'s1 o-> ml : auto upload data by gRPC async
+'deactivate ml
+'ml -> ml : update and \nshow all paths async
+'activate ml
+'end
+'
+'group client request
+'c ->x ml : request service [serverID]
+'c -> ml : request service again[serverID]
+'ml -> c : response [sor4-IP:PORT]
+'c --> s4 : build UDP connection!
+'end
+'group UDP message transmission
+'c <-->(10) s4 : send UDP message
+'s4 <-->(10) s1 : forward ESP(UDP) message
+'s1 <-->(10) s : deliver ESP(UDP) message
+'end
+'deactivate ml
+'
+'
+''group service
+''group ml select manually
+''ml -> s4 : manual select first node
+''s4 o<->o s1 : IPSec start
+''s4 --> s1 : wait for forward
+''s4 o-> ml : auto upload data by gRPC async
+''ml -> ml : update and \nshow all paths async
+''activate ml
+''ml -> s1 : manual select last node and start forward
+''s1 o<->o s : IPSec start
+''s1 --> s : wait for forward
+''s1 o-> ml : auto upload data by gRPC async
+''deactivate ml
+''ml -> ml : update and \nshow all paths async
+''activate ml
+''end
+''group client request
+''c ->x ml : request service [serverID]
+''c -> ml : request service again[serverID]
+''ml -> c : response [sor4-IP:PORT]
+''c --> s4 : build UDP connection!
+''end
+''group UDP message transmission
+''c <-->(10) s4 : send UDP message
+''s4 <-->(10) s1 : forward ESP(UDP) message
+''s1 <-->(10) s : deliver ESP(UDP) message
+''end
+''deactivate ml
+''
+''group update services after 1 day
+''group ml select manually
+''end
+''group client request
+''end
+''group UDP message transmission
+''end
+''end
+''end
+
+
+@startuml
+actor    SOR     as z
+participant 目录服务器   as ml
+ml -> ml : 初始化存储文件。
+== 初始化 ==
+z -> ml : 服务注册，上报当前节点的网络状态（带宽、时延）、节点配置（CPU、内存）等信息。
+ml -> ml: 识别上传的设备信息，\n并将其存储。
+ml -[#red]> z: 返回SOR待执行的转发任务。
+alt  流式推送
+    z -> ml : 逐行上报点对点通信关系，上报当前节点的网络状态。
+
+    alt 节点状态信息
+    ml -> ml: 识别上传的设备信息，\n并将其存储。
+    else 点对点链路信息
+    ml -> ml: 识别上传的设备信息，\n并将其存储。
+    ml -> ml: 调用可视化程序，\n刷新视图。
+    end
+end
+z -> z : 逐行执行转发任务。
+== 等待下次任务 ==
+@enduml
+

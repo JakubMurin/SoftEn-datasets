@@ -1,0 +1,73 @@
+@startuml
+actor Navegador
+boundary vacationModify.ejs
+boundary vacation.routes
+control vacation.controller
+entity vacation.model
+database mysql
+
+autonumber
+' Inicio del flujo
+activate Navegador
+Navegador -> vacation.routes : GET /vacation/check/modify:vacationID
+deactivate Navegador
+activate vacation.routes
+
+vacation.routes -> vacation.controller : getModifyVacation(req, res)
+deactivate vacation.routes
+activate vacation.controller
+
+vacation.controller ->> vacation.model : fetchOneVacation(vacation_id)
+activate vacation.model
+
+vacation.model ->> mysql : SELECT * FROM vacation WHERE vacation_id = ?
+activate mysql
+mysql -->> vacation.model : Datos de la solicitud de vacaciones
+deactivate mysql
+
+vacation.model -->> vacation.controller : Retorna solicitud de vacaciones
+deactivate vacation.model
+
+vacation.controller -> vacationModify.ejs : render(modifyVacation)
+deactivate vacation.controller
+activate vacationModify.ejs
+vacationModify.ejs -> Navegador : Mostrar formulario de modificación de solicitud de vacaciones
+deactivate vacationModify.ejs
+activate Navegador
+
+
+
+' Navegador modifica la solicitud de vacaciones
+Navegador -> vacation.routes : POST /update/:vacationID
+deactivate Navegador
+activate vacation.routes
+
+vacation.routes -> vacation.controller : updateVacation(req, res)
+deactivate vacation.routes
+activate vacation.controller
+
+
+vacation.controller ->> vacation.model : updateVacation()
+activate vacation.model
+deactivate vacation.controller
+
+vacation.model ->> mysql : UPDATE vacation SET ... WHERE vacation_id = ?
+activate mysql
+mysql -->> vacation.model : Solicitud de vacaciones actualizada
+deactivate mysql
+
+vacation.model -->> vacation.controller : Retorna éxito
+deactivate vacation.model
+activate vacation.controller
+
+
+vacation.controller -> vacationModify.ejs : mensaje de actualización exitosa
+deactivate vacation.controller
+activate vacationModify.ejs
+vacationModify.ejs -> Navegador : Mostrar mensaje de éxito
+deactivate vacationModify.ejs
+activate Navegador
+deactivate Navegador
+
+@enduml
+

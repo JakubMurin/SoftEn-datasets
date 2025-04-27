@@ -1,0 +1,15 @@
+@startuml
+actor TemplateAdmin as "Template Admin"
+
+
+TemplateAdmin->ReportTemplateFactory: createReportTemplate
+ReportTemplateFactory->ReportTemplate: create
+ReportTemplate->RowTemplateFactory: createRowTemplate
+RowTemplateFactory->RowTemplate: create
+RowTemplate-->RowTemplateFactory: return the instance
+RowTemplateFactory-->ReportTemplate: return the row template instance
+ReportTemplate-->ReportTemplateFactory: return the instance
+ReportTemplateFactory-->TemplateAdmin: return the report template instance
+
+@enduml
+

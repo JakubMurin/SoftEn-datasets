@@ -1,0 +1,53 @@
+@startuml
+actor SBAappUser as user
+participant ViewBoardsUI as ui
+participant ViewBoardsController as ctrl
+participant SBProtocol as protocol
+participant ServerAJAX as svAJAX
+
+
+user -> ui : view Boards
+activate ui
+    ui --> ctrl : create(serverIp,serverPort)
+        note right : create instance of socket with serverIp and serverPort,\na input stream(inS) and output Stream(outS)
+
+    activate ctrl
+    deactivate ctrl
+
+    ui --> ctrl : boardsToView()
+    activate ctrl
+        ctrl -> protocol : create()
+        ctrl -> protocol : setCode(VIEW_BOARDS)
+        ctrl -> protocol : setToken(AUTH_TOKEN)
+        ctrl -> protocol : send(outS)
+        note right of ctrl :  check viewBoardHandler sv
+        ctrl -> protocol : create(inS)
+        ctrl -> protocol : getContentAsString(inS)
+        ctrl <-- protocol : content
+        ctrl --> ui : content.split("\0")
+
+    deactivate ctrl
+    ui --> user : show boards
+    user -> ui : choose board
+    ui -> ctrl : requestHistory(board)
+    activate ctrl
+            ctrl -> protocol : create()
+            ctrl -> protocol : setCode(LIST_HISTORY)
+            ctrl -> protocol : setContentFromString(board)
+            ctrl -> protocol : setToken(AUTH_TOKEN)
+            ctrl -> protocol : send(outS)
+            note right of ctrl :  check viewBoardHandler sv
+            ctrl -> protocol : create(inS)
+            ctrl -> protocol : getContentAsString(inS)
+            ctrl <-- protocol : content
+            ctrl -> ctrl : content.split("\\r")
+
+            ctrl --> ui : history
+    deactivate ctrl
+    ui --> user : show history
+deactivate ui
+
+@enduml
+
+
+

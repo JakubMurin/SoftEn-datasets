@@ -1,0 +1,10 @@
+@startuml
+actor "Arquiteto da Solução" as actor
+participant SistemaRobDroneGo as srdg
+actor -> srdg: Autorizar todos os serviços
+alt sucesso
+srdg --> actor : Mensagem de Sucesso
+else insucesso
+srdg -->actor : Mensagem de Erro
+end
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+actor Researcher
+participant "Web Interface" as Web
+participant "Search Service" as Search
+database "Archive Database" as DB
+
+Researcher -> Web: Accesses digital archive
+activate Web
+
+Web -> Search: Request to view item
+activate Search
+
+Search -> DB: Query item metadata
+activate DB
+
+DB -> Search: Return metadata including digitization date
+deactivate DB
+
+Search -> Web: Display item details
+deactivate Search
+
+Web -> Researcher: Show item details including digitization date
+deactivate Web
+
+@enduml

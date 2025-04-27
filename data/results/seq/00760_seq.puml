@@ -1,0 +1,36 @@
+@startuml
+actor Researcher
+entity "Recruitment\nPlatform" as RecruitmentPlatform
+database "User Database" as UserDb
+actor Participant
+entity "Research Analysis\nSystem" as AnalysisSystem
+
+Researcher -> RecruitmentPlatform : define criteria for participant selection
+RecruitmentPlatform -> UserDb : query potential participants based on criteria
+UserDb -> RecruitmentPlatform : return list of potential participants
+RecruitmentPlatform -> Participant : send recruitment invitations
+Participant -> RecruitmentPlatform : respond to invitation
+RecruitmentPlatform -> Researcher : provide list of participating users
+
+alt successful recruitment
+    Researcher -> Participant : conduct user research sessions
+    Participant -> Researcher : provide feedback and data
+else recruitment failure
+    Researcher -> RecruitmentPlatform : adjust criteria/republish invitation
+    RecruitmentPlatform -> UserDb : re-query potential participants
+    loop on failure
+        UserDb -> RecruitmentPlatform : return updated list of potential participants
+        RecruitmentPlatform -> Participant : resend invitations
+        Participant -> RecruitmentPlatform : respond to invitations
+        RecruitmentPlatform -> Researcher : update on participant status
+    end 
+end
+
+Researcher -> AnalysisSystem : input user research data
+AnalysisSystem -> Analysisystem : analyze and summarize findings
+AnalysisSystem-> Researcher : provide synthesized results
+
+Researcher -> RecruitmentPlatform : update project status to "Complete"
+Researcher -> AnalysisSystem : archive project data and findings
+
+@enduml

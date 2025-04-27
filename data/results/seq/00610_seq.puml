@@ -1,0 +1,17 @@
+@startuml
+actor Administrator as admin
+participant "Camp Management\nSystem" as CMS
+participant "Database" as DB
+
+== Modify Group Information Flow ==
+
+admin -> CMS : Select Group to Modify
+CMS -> DB : Retrieve Selected Group Information
+DB -> CMS : Return Group Information
+CMS -> admin : Display Group Information
+admin -> CMS : Modify Group Information
+CMS -> DB : Update Group Information in Database
+DB -> CMS : Confirm Update
+CMS -> admin : Display Update Confirmation
+
+@enduml

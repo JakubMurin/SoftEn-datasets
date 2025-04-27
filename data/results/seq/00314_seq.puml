@@ -1,0 +1,75 @@
+@startuml
+actor "User" as user
+participant ":listPassageBetween2BuildingsComponentHTML" as ui
+participant "listPassageBetween2BuildingsComponent" as component
+
+participant ":BuildingServiceFE" as buildingservicefe
+participant ":FloorServiceFE" as floorservicefe
+participant ":BuildingController" as buildingctrl
+participant ":FloorController" as floorcontroller
+participant ":BuildingServiceBE" as buildingservicebe
+participant ":FloorServiceBE" as floorservicebe
+
+
+
+
+
+
+database "Database" as db
+
+activate user
+
+user -> ui: List Passage Between 2 Buildings
+activate ui
+ui -> component
+activate component
+component -> buildingservicefe: getBuildings()
+activate buildingservicefe
+buildingservicefe -> buildingctrl: HTTP GET /buildings/list
+activate buildingctrl
+buildingctrl -> buildingservicebe: findAll()
+activate buildingservicebe
+buildingservicebe -> db : Query get Buildings
+activate db
+db -> buildingservicebe: List of Buildings
+deactivate db 
+buildingservicebe -> buildingctrl: List of Buildings
+deactivate buildingservicebe
+buildingctrl --> buildingservicefe: HTTP 200 OK with List of Buildings
+deactivate buildingctrl
+buildingservicefe -> component: Console.log Buildings
+deactivate buildingservicefe
+component -> ui: Buildings 
+deactivate component
+
+
+ui -> user: Asks for 2 buildings
+user -> ui: Select 2 building
+ui -> component :ListPassageBetween2Buildings()
+activate component
+component -> floorservicefe: ListFloorsFromBuilding()
+activate floorservicefe
+floorservicefe -> component
+component -> floorservicefe: checkPassage()
+floorservicefe -> floorcontroller
+activate floorcontroller
+floorcontroller -> floorservicebe
+activate floorservicebe
+floorservicebe -> db: querry to find passage
+activate db
+
+db -> floorservicebe
+deactivate db
+floorservicebe -> floorcontroller
+deactivate floorservicebe
+floorcontroller -> floorservicefe
+deactivate floorcontroller
+floorservicefe -> component
+deactivate floorservicefe
+component -> ui : Passage
+deactivate component
+ui -> user: Show Passage Between Buildings
+deactivate ui
+deactivate user
+
+@enduml

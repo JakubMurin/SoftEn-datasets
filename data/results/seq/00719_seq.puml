@@ -1,0 +1,25 @@
+@startuml
+actor User
+participant "UI Interface" as UI
+participant "API Gateway" as API
+participant "DatasetManagementService" as DMS
+participant "DatasetInstanceService" as DIS
+participant "PropertyManagementService" as PMS
+database "DatasetStore" as DS
+
+User -> UI : Selects dataset instance and specifies\nproperty to remove
+UI -> API : Request to remove property from dataset instance
+API -> DMS : Validate dataset instance ID
+DMS -> DIS : Retrieves dataset instance details
+DIS -> DS : Fetch current properties of the instance
+DS --> DIS : Return instance details
+DIS --> DMS : Provide dataset instance metadata
+DMS -> PMS : Request to remove specified property
+PMS -> DS : Remove property from dataset store
+DS --> PMS : Confirm removal
+PMS --> DMS : Return success message
+DMS --> API : Acknowledge successful property removal
+API --> UI : Display success message to user
+UI --> User : Shows confirmation of property removal
+
+@enduml

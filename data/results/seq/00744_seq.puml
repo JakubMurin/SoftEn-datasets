@@ -1,0 +1,17 @@
+@startuml
+actor Librarian as librarian
+participant "Web Interface" as web
+database "Database" as db
+participant "Notification System" as notify
+
+librarian -> web : Select "Late Returns" option
+web -> db : Query overdue books
+db -> web : Return list of overdue books
+web -> librarian : Display overdue books list
+librarian -> web : Request to send reminders
+web -> notify : Trigger overdue notices
+notify -> db : Lookup borrower contact info
+db -> notify : Return contact info
+notify -> librarian : Confirm notifications sent
+
+@enduml

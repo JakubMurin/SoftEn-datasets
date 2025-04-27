@@ -1,0 +1,27 @@
+@startuml
+actor User
+participant "Authentication Service" as Auth
+participant "Help Link Service" as HelpService
+participant "Database" as DB
+
+User -> Auth : Authenticate
+activate Auth
+Auth -> DB : Validate Credentials
+activate DB
+DB --> Auth : Credentials Valid
+deactivate DB
+
+Auth --> User : Authentication Success
+deactivate Auth
+
+User -> HelpService : Request Help Links
+activate HelpService
+HelpService -> DB : Fetch Contextual Links
+activate DB
+DB --> HelpService : Return Links
+deactivate DB
+
+HelpService --> User : Display Help Links
+deactivate HelpService
+
+@enduml

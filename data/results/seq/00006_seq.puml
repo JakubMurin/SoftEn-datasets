@@ -1,34 +1,30 @@
 @startuml
+actor Librarian
+autonumber
 
-actor Client
-participant Envoy
-participant "Authorization Server"
-participant "Authorization Provider"
-participant "Application Server"
+Librarian -> LendingController: GET /api/lendings/average-per-book
+activate LendingController
 
-Client -> Envoy: HTTP request
-activate Envoy
+LendingController -> LendingService: getAverageLendingDurationPerBook()
+activate LendingService
 
-Envoy -> "Authorization Server": Check request
-activate "Authorization Server"
+LendingService -> LendingRepository: findAverageLendingDurationPerBook()
+activate LendingRepository
+LendingRepository --> LendingService: List<Object[]> results
+deactivate LendingRepository
 
-"Authorization Server" -> "Authorization Provider": Authorization request
-activate "Authorization Provider"
-"Authorization Provider" -> "Authorization Provider": Authorize request
-"Authorization Provider" -> "Authorization Server": Authorization response (approved)
-deactivate "Authorization Provider"
+LendingService -> LendingAvgPerBookViewMapper: toLendingAvgPerBookViewList(results)
+activate LendingAvgPerBookViewMapper
 
-"Authorization Server" -> Envoy: Check response (approved)
-deactivate "Authorization Server"
+LendingAvgPerBookViewMapper -> LendingAvgPerBookViewMapper: toLendingAvgPerBookView(result)
+LendingAvgPerBookViewMapper --> LendingService: Iterable<LendingAvgPerBookView> views
+deactivate LendingAvgPerBookViewMapper
 
-Envoy -> "Application Server": HTTP request
-activate "Application Server"
-"Application Server" -> "Application Server": Process request
-"Application Server" -> Envoy: HTTP response
-deactivate "Application Server"
+LendingService --> LendingController: Iterable<LendingAvgPerBookView> views
+deactivate LendingService
 
-Envoy -> Client: HTTP response
-deactivate Envoy
+LendingController --> Librarian: HTTP 200 OK (Iterable<LendingAvgPerBookView> views)
+deactivate LendingController
 
 @enduml
 

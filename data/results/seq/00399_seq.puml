@@ -1,0 +1,19 @@
+@startuml
+
+actor Administrator
+participant "System" as LibrarySystem
+
+Administrator -> LibrarySystem: signIn(adminUsername, adminPassword)
+LibrarySystem --> Administrator: Validate credentials
+LibrarySystem --> Administrator: Login successful
+
+Administrator -> LibrarySystem: createAnnouncement(title, content)
+LibrarySystem -> LibrarySystem: Validate announcement details
+LibrarySystem -> LibrarySystem: Save announcement to database
+LibrarySystem --> Administrator: Announcement created successfully
+
+Administrator -> LibrarySystem: viewAnnouncements()
+LibrarySystem --> Administrator: Display list of announcements
+
+@enduml
+

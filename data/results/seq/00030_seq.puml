@@ -1,0 +1,17 @@
+@startuml
+actor Customer
+activate Customer
+activate Bike
+Customer -> Bike: startLease()
+Bike -> Lease : startLease()
+activate Lease
+Customer -> Bike: unlock()
+Customer -> Bike: endLease()
+Bike -> Lease : endLease()
+Lease -> InvoiceGenerator : addInvoice()
+activate InvoiceGenerator
+deactivate InvoiceGenerator
+deactivate Lease
+Customer -> Bike: lock()
+@enduml
+

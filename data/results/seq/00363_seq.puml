@@ -1,0 +1,34 @@
+@startuml
+actor OlderPerson as User
+participant "User Interface" as UI
+participant "ALFRED System" as Alfred
+participant "Design Team" as Design
+participant "Production Team" as Production
+
+User -> UI : Choose to customize wearable
+UI -> Alfred : Request wearable customization options
+Alfred -> Design : Fetch stylish design templates
+Design --> Alfred : Return design templates
+Alfred --> UI : Display design templates
+UI -> User : Show templates
+User -> UI : Select preferred design
+UI -> Alfred : Send selected design
+Alfred -> Design : Initiate wearable prototype
+Design -> Production : Create prototype with selected design
+Production --> Design : Return prototype status
+Design --> Alfred : Confirm prototype creation
+Alfred -> UI : Notify User of progress
+UI -> User : Show progress update
+User -> UI : Request progress
+UI -> Alfred : Query progress
+Alfred -> Production : Check production status
+Production --> Alfred : Return status
+Alfred --> UI : Display status to User
+UI -> User : Show status
+User --> UI : Confirm receipt once delivered
+UI --> Alfred : Log delivery confirmation
+Alfred -> Design : Feedback loop for user satisfaction
+Design --> User : Receive feedback request
+User -> Design : Provide feedback
+
+@enduml

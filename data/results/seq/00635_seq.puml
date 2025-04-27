@@ -1,0 +1,16 @@
+@startuml
+actor Curator as curator
+participant "UI Dashboard" as dashboard
+participant "Dashboard\nBackend Service" as backendService
+participant "Replication\nService" as replicationService
+participant Database as db
+
+curator -> dashboard : Requests replication status summary
+dashboard -> backendService : Fetches replication summary request
+backendService -> replicationService : Queries replication statuses
+replicationService -> db : Retrieves replication data
+db --> replicationService : Returns replication data
+replicationService --> backendService : Sends collected statuses
+backendService --> dashboard : Returns summary of replication statuses
+dashboard --> curator : Displays replication status summary
+@enduml

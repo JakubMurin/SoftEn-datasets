@@ -1,0 +1,22 @@
+@startuml
+actor "Devloper" as Dev
+actor "Application Analyzer" as AA
+participant "Application Orchestrator" as AM
+participant bin
+participant sailsjs
+
+Dev -> AM : Launch Application
+AM -> bin: app-launch(name,env,confg)
+bin -> sailsjs : stack/select(name,env,config)
+
+Dev -> AM : Check Application Health
+AA -> AM : Check Application Health
+AM -> bin: app-check(name,env)
+bin -> sailsjs: app/check(name)
+
+AA -> AM : Rebalance Application Instance
+AM -> bin: app-rebalance(appInstance)
+bin -> sailsjs : env/select(appInstance)
+
+@enduml
+

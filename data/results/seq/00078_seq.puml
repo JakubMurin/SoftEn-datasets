@@ -1,0 +1,26 @@
+@startuml
+actor Designer as D
+participant "Team Member" as TM
+participant "Guide Repository\n(GitHub)" as GR
+database CMS
+
+D -> TM : Request existing guides and standards
+TM --> D : Share link to Guide Repository\nand CMS access
+D -> GR : Access repository
+activate GR
+GR -> D : Display available guides\n(Style, Design, Content)
+deactivate GR
+D -> D : Review and compile relevant information
+D -> CMS : Apply guides in design process
+activate CMS
+CMS -> D : Confirm application of guides
+deactivate CMS
+D -> GR : Update repository with new/modified guides
+activate GR
+GR -> D : Confirm update
+deactivate GR
+D --> TM : Share updated guides
+TM -> TM : Review and provide feedback
+TM --> D : Confirm adoption of guides
+
+@enduml

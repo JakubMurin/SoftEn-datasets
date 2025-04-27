@@ -1,0 +1,66 @@
+@startuml
+
+actor User
+
+box "Frontend" #LightBlue
+    participant HomepageScreen as HS
+    participant ModifyPasswordScreen as MPS
+    participant AuthService as AS
+end box
+
+box "Backend" #LightYellow
+    participant UsersRouter as UR
+    participant UsersService as US
+    participant Database as DB
+end box
+
+User -> HS: Open application
+activate HS
+HS -> User: Display "Account Settings"
+User -> HS: Navigate to Account Settings
+HS -> MPS: Display Modify Password Page
+deactivate HS
+activate MPS
+MPS -> User: Prompt for updated password
+User -> MPS: Enter updated password
+User -> MPS: Press "Modify" button
+MPS -> AS: Submit updated password
+deactivate MPS
+activate AS
+AS -> UR: API Call for Modify Password
+deactivate AS
+activate UR
+UR -> US: Forward updated password
+deactivate UR
+activate US
+US -> US: Validate updated password
+alt Validation failed
+    US -> UR: Send validation error
+    UR -> AS: Send validation error
+    AS -> MPS: Display validation error
+    deactivate US
+    deactivate UR
+    deactivate AS
+    activate MPS
+else Validation succeeded
+    US -> DB: Update password
+    activate DB
+    DB -> US: Confirm password updated
+    deactivate DB
+    US -> UR: Confirm update success
+    activate UR
+    UR -> AS: Send update confirmation
+    deactivate US
+    deactivate UR
+    activate AS
+    AS -> MPS: Display update success message
+    deactivate AS
+    activate MPS
+    MPS -> HS: Navigate back to Homepage
+    deactivate MPS
+    activate HS
+    HS -> User: Display confirmation message
+    deactivate HS
+end
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+actor Actor as Actor
+participant "SPA" as Container <<Container (C4)>>
+participant "GestaoInfoAPI" as API <<Container (C4)>>
+
+Actor -> Container: Criar novo tipo de robo
+Container --> Actor: Requisita dados do novo tipo de robo
+
+Actor -> Container: Envia dados do novo tipo de robo
+
+Container -> API: POST(/api/robotType)
+
+alt sucesso na criação
+    API --> Container: Retorna sucesso na criação
+    Container --> Actor: Retorna sucesso na criação
+else falha na criação
+    API --> Container: Retorna falha na criação
+    Container --> Actor: Retorna falha na criação
+end
+
+@enduml
+

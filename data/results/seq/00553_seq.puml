@@ -1,0 +1,22 @@
+@startuml
+actor Admin as ADM
+ADM -> EletricGo: Inicia criação de um novo utilizador
+activate EletricGo
+EletricGo --> ADM : Solicita dados (primeiro nome, último nome, email, \npassword, confirmação de password, número de telemóvel, tipo de utilizador)
+deactivate
+
+alt login default
+ADM -> EletricGo: Introduz dados (primeiro nome, último nome, email, \npassword, confirmação de password, número de telemóvel, tipo de utilizador)
+activate EletricGo
+deactivate EletricGo
+else login com SSO
+ADM -> EletricGo: Introduz dados (primeiro nome, último nome, email (a terminar com @gmail.com),\n número de telemóvel, tipo de utilizador)
+activate EletricGo
+deactivate
+end
+EletricGo --> ADM : Mostra dados e solicita confirmação
+ADM -> EletricGo: Confirma
+activate EletricGo
+EletricGo --> ADM : Informa o sucesso da operação
+deactivate EletricGo
+@enduml

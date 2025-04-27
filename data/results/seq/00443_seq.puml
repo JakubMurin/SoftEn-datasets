@@ -1,0 +1,9 @@
+@startuml
+actor User
+
+User -> BackupManager: startBackup()
+BackupManager -> Schedule: getNextExecution()
+BackupManager -> Logger: logSuccess("Backup started")
+BackupManager -> NotificationService: sendNotification("Backup started")
+@enduml
+

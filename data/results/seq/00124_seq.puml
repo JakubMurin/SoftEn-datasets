@@ -1,0 +1,23 @@
+@startuml
+actor ProblemSolver
+boundary DataServer
+
+ProblemSolver -> DataServer: POST /numbers (encrypted_session_key, encrypted_data)
+activate DataServer
+
+DataServer -> DataServer: decrypt encrypted_session_key
+DataServer -> DataServer: decrypt encrypted_data
+DataServer -> DataServer: json.loads(decrypted_data)
+DataServer -> DataServer: random.choice((0,1))
+alt desc_random == 0
+    DataServer -> UniformRandomDistribution: get_numbers(MinNumber, MaxNumber, CantData)
+else desc_random == 1
+    DataServer -> NormalRandomDistribution: get_numbers(MinNumber, MaxNumber, CantData)
+end
+DataServer -> DataServer: encrypt_with_session_key(response_data, session_key)
+DataServer -> DataServer: get_encrpyted_session_key(session_key)
+
+DataServer -> ProblemSolver: 200 OK (encrypted_session_key, encrypted_data)
+deactivate DataServer
+@enduml
+

@@ -1,0 +1,37 @@
+@startuml
+actor NSF_Employee as employee
+entity "GitHub Website" as github
+database "NSF GitHub Repository" as nsf_repo
+
+== Joining GitHub ==
+employee -> github : Navigate to GitHub Signup Page
+github -> employee : Display Signup Form
+employee -> github : Submit Signup Form with Details
+github -> github : Validate Details
+alt Successful Validation
+    github -> employee : Send Confirmation Email
+    employee -> github : Click Confirmation Link
+    github -> employee : Display Success & Prompt to Join Organization
+else Validation Failed
+    github -> employee : Display Error
+    employee -> github : Correct Details & Resubmit
+end
+
+== Joining NSF Organization on GitHub ==
+employee -> github : Search for NSF Organization
+github -> employee : Display NSF Organization and Join Button
+employee -> github : Request to Join
+github -> nsf_repo : Send Join Request Notification
+nsf_repo -> GitHub_Admin : Notify Admin of Join Request
+GitHub_Admin -> github : Approve Join Request
+github -> employee : Confirm NSF Organization Membership
+
+== Participate in Issues ==
+employee -> nsf_repo : Navigate to Issues
+nsf_repo -> employee : Display Open Issues
+employee -> nsf_repo : Select an Issue
+nsf_repo -> employee : Display Issue Details
+employee -> nsf_repo : Comment or Update Issue
+nsf_repo -> employee : Confirm Update
+
+@enduml

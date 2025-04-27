@@ -1,0 +1,19 @@
+@startuml
+actor Depositor as depositor
+participant "Web Interface" as web
+participant "Backend Server" as backend
+database "DOI Information" as doiDB
+participant "Metadata Service" as metadata
+
+depositor -> web : Access DOI Information Page
+web -> backend : Request DOI Info
+backend -> doiDB : Query DOI Assignment Process
+doiDB -> backend : Return DOI Process Info
+backend -> metadata : Request Required Metadata Fields
+metadata -> backend : Return Metadata Fields
+backend -> web : Respond with DOI and Metadata Info
+web -> depositor : Display DOI and Metadata Information
+
+note over depositor, metadata : This flow includes querying required\n metadata for DOI assignment and\n presenting it to the Depositor.
+
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+actor Researcher as res
+entity "EDRMS System" as edrms
+database "Repository Database" as repo
+
+res -> edrms : Login()
+activate edrms
+edrms -> edrms : Authenticate()
+edrms --> res : Authentication Success
+
+res -> edrms : Navigate to My Deposited Items
+activate edrms
+edrms -> repo : Fetch Items(res.ID)
+activate repo
+repo --> edrms : Deposited Items
+deactivate repo
+edrms --> res : Display Items
+deactivate edrms
+
+res -> edrms : Select Item to Edit
+activate edrms
+edrms -> edrms : Check Edit Permission(res.ID, Item.ID)
+edrms --> res : Permission Granted
+
+res -> edrms : Edit Metadata(Form Data)
+activate edrms
+edrms -> repo : Update Metadata(Item.ID, New Metadata)
+activate repo
+repo --> repo : Save Changes
+repo --> edrms : Update Success
+deactivate repo
+edrms --> res : Confirmation Message
+deactivate edrms
+
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+
+actor Admin as Admin
+
+participant FrontEnd as FE
+participant MD as MD
+
+activate Admin
+Admin -> FE : requests to adds a new user
+
+activate FE
+FE -> Admin : requests data for new user
+deactivate FE
+
+Admin -> FE : sends data for new user
+
+activate FE
+FE -> MD : sends data for new user and token of Admin
+
+activate MD
+MD -> MD : checks token of Admin
+
+alt token is valid
+    MD -> MD : validates data for new user
+    MD -> MD : adds new user
+    MD -> FE : sends message of success
+else token is invalid
+    MD -> FE : sends message of error
+end
+
+deactivate MD
+FE -> Admin : show message
+
+deactivate FE
+@enduml

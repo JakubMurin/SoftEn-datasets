@@ -1,0 +1,18 @@
+@startuml
+actor Researcher as res
+participant "DPIE App" as app
+database "Data Sources" as ds
+participant "Data Package\nTooling" as dpt
+database "DataPackage Repository" as dpr
+
+== Proxy Data Package Creation ==
+res -> app : Request creation\nof proxy Data Package
+app -> ds : Identify authoritative\ndata sources
+ds -> app : Return list of sources
+app -> app : Select appropriate sources\nbased on reliability & quality
+app -> dpt : Generate proxy Data Package\nspecification
+dpt -> dpr : Store proxy Data Package
+dpt -> app : Return proxy Data Package\nURL & metadata
+app -> res : Provide proxy Data Package\ndetails & access instructions
+
+@enduml

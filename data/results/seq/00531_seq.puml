@@ -1,0 +1,23 @@
+@startuml
+actor Manager as m
+participant "UI Interface" as ui
+participant "Authorization" as auth
+participant "Book Category Management" as bcm
+database "Database" as db
+
+m -> ui : Selects "Manage Book Categories"
+ui -> auth : Validate Manager Role
+alt Authorized
+    auth -> ui : Access Granted
+    ui -> m : Display Book Categories
+    m -> ui : Selects Categories to Delete
+    ui -> bcm : Request Category Deletion
+    bcm -> db : Delete Category Records
+    db -> bcm : Confirm Deletion
+    bcm -> ui : Display Success Message
+    ui -> m : Show Update
+else Unauthorized
+    auth -> ui : Access Denied
+    ui -> m : Display Error Message
+end
+@enduml

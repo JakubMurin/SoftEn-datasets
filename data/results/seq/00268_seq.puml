@@ -1,0 +1,17 @@
+@startuml
+actor Waiter
+entity "Restaurant Management\n & Operations System" as System
+actor Cook
+
+Waiter -> System : Enter customer order
+activate System
+
+System -> Cook : Notify new order
+activate Cook
+Cook -> System : Acknowledge receipt
+deactivate Cook
+
+System -> Waiter : Confirmation\n(Order in preparation)
+deactivate System
+
+@enduml

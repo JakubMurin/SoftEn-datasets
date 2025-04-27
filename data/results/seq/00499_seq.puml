@@ -1,0 +1,14 @@
+@startuml
+actor User as U
+participant ConsoleUI as UI
+participant RequestController as RC
+participant DBManager as DB
+
+U -> UI: Request to view requests
+UI -> RC: Call view_requests(user_id)
+RC -> DB: Execute SELECT query for pending requests
+DB --> RC: Return list of requests
+RC --> UI: Return request data
+UI --> U: Display requests
+@enduml
+

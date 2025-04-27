@@ -1,0 +1,23 @@
+@startuml
+actor Player as player
+participant Guide as guide
+participant Snipe as snipe
+participant FoodItems as foodItems
+
+player -> guide : queryThePlayer()
+guide -> player : return SnipeType
+
+player -> player : startTheHunt()
+player -> snipe : encounterSnipe()
+
+snipe -> player : damage(Player)
+player -> player : getHealthPoints()
+player -> player : getWarnings()
+
+alt health > 0
+    player -> foodItems : heal(FoodItems)
+    foodItems -> player : restore health
+else health == 0
+    player -> player : die()
+end
+@enduml

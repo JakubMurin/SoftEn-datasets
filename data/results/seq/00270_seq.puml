@@ -1,0 +1,20 @@
+@startuml
+actor Curator as curator
+participant "User Interface" as UI
+participant "Collection Management\nSystem" as CMS
+database Database
+
+curate -> UI : Chooses 'Move Item'
+UI -> CMS : Request form to move item
+CMS -> UI : Display form
+curate -> UI : Submits form\n(Item ID, Source Collection,\nTarget Collection)
+UI -> CMS : Validate and process move request
+CMS -> Database : Fetch item from Source Collection
+Database -> CMS : Item Details
+CMS -> Database : Remove item from Source Collection
+Database -> CMS : Confirm removal
+CMS -> Database : Add item to Target Collection
+Database -> CMS : Confirm addition
+CMS -> UI : Display success message
+UI -> Curator : Confirm item moved
+@enduml

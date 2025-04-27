@@ -1,0 +1,21 @@
+@startuml
+actor User as user
+participant "UI" as ui
+participant "SearchController" as controller
+database "DAMS Database" as db
+
+user -> ui : Enter search terms and role (Illustrator, Photographer, etc.)
+ui -> controller : Send search request (name, role)
+activate controller
+
+controller -> db : Query digital assets by name and role
+activate db
+db -> db : Filter assets by specific role
+db --> controller : Return search results
+deactivate db
+
+controller -> ui : Display search results
+ui --> user : Show search results (assets by illustrator, photographer, etc.)
+deactivate controller
+
+@enduml

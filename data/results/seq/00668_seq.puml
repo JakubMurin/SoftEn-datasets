@@ -1,0 +1,37 @@
+@startuml
+
+actor User
+participant "System" as System
+actor Admin
+
+User -> System : Fournir les informations d'identification
+
+alt Vérification des informations
+    System -> System : Vérifier les informations
+    loop Tentatives incorrectes
+        System -> User : Notifier des erreurs
+        User -> System : Soumettre à nouveau les informations
+    end
+end
+
+alt Authentification réussie
+    System -> User : Confirmation de l'authentification
+else Authentification échouée
+    System -> User : Échec de l'authentification
+end
+
+
+
+Admin -> System : Demande de radiation d'un compte
+
+alt Vérification du compte ciblé
+    System -> System : Vérifier le compte ciblé
+    alt Compte valide
+        System -> Admin : Confirmer la radiation
+    else Compte invalide
+        System -> Admin : Notifier l'échec de la radiation
+    end
+end
+
+@enduml
+

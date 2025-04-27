@@ -1,0 +1,80 @@
+@startuml
+
+actor User
+
+box "Frontend" #LightBlue
+    participant HomepageScreen as HS
+    participant CameraScreen as CS
+    participant DisplayPictureScreen as DPS
+    participant ApiService as AS
+end box
+
+box "Backend" #LightYellow
+    participant MaterialsRouter as MR
+    participant PredictionRouter as PR
+    participant MaterialsService as MS
+    participant Database as DB
+end box
+
+User -> HS: Open application
+activate HS
+HS -> User: Display list of materials
+User -> HS: Select camera button
+HS -> User: Display dialog (Take photo / Upload)
+User -> HS: Select "Take photo"
+HS -> CS: Activate camera
+deactivate HS
+activate CS
+CS -> User: Prompt to capture photo
+User -> CS: Capture photo
+CS -> DPS: Display captured photo
+deactivate CS
+activate DPS
+DPS -> User: Review photo quality
+alt User approves photo
+    User -> DPS: Confirm selection
+    DPS -> AS: Upload photo
+    deactivate DPS
+    activate AS
+    AS -> MR: API Call to add material
+    deactivate AS
+    activate MR
+    MR -> PR: Process photo
+    deactivate MR
+    activate PR
+    PR -> MS: Analyze photo
+    deactivate PR
+    activate MS
+    MS -> DB: Save material data
+    activate DB
+    DB -> MS: Confirm data saved
+    deactivate DB
+    MS -> MR: Confirm material added
+    activate MR
+    MR -> AS: Confirm material added
+    deactivate MS
+    deactivate MR
+    activate AS
+    AS -> DPS: Display success message
+    deactivate AS
+    activate DPS
+    DPS -> HS: Update materials list
+    deactivate DPS
+    activate HS
+    HS -> User: Display updated materials list
+else User disapproves photo
+    User -> DPS: Reject photo
+    DPS -> User: Prompt to retake or cancel
+    alt User retakes photo
+        User -> DPS: Select retake
+        DPS -> CS: Reactivate camera
+        deactivate DPS
+        activate CS
+    else User cancels process
+        User -> DPS: Select cancel
+        deactivate DPS
+    end
+end
+deactivate HS
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+actor Administrator as admin
+participant "Web Interface" as web
+participant "Server" as server
+participant "Database" as db
+
+admin -> web : Selects activity/task to delete
+web -> server : Requests deletion of the selected task/activity
+server -> db : Query to delete the task/activity
+db -> server : Confirm deletion
+server -> web : Confirm task/activity deleted
+web -> admin : Display deletion confirmation message
+
+@enduml

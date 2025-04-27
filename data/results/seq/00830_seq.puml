@@ -1,0 +1,89 @@
+@startuml
+actor User
+participant Main
+participant DepartmentComposite as Company
+participant DepartmentComposite as HR
+participant DepartmentComposite as IT
+participant DepartmentComposite as Development
+participant DepartmentComposite as QA
+participant EmployeeLeaf as Employee1
+participant EmployeeLeaf as Employee2
+participant EmployeeLeaf as Employee3
+participant EmployeeLeaf as Employee4
+participant EmployeeLeaf as Employee5
+participant EmployeeLeaf as Employee6
+
+User -> Main: запускає main()
+Main -> Main: викликає runDepartments()
+Main -> Company: new DepartmentComposite("Company")
+Main -> HR: new DepartmentComposite("HR")
+Main -> Employee1: new EmployeeLeaf(1000)
+Main -> Employee2: new EmployeeLeaf(1000)
+HR -> HR: add(Employee1)
+HR -> HR: add(Employee2)
+Company -> Company: add(HR)
+Main -> IT: new DepartmentComposite("IT")
+Main -> Development: new DepartmentComposite("Development")
+Main -> Employee3: new EmployeeLeaf(2000)
+Main -> Employee4: new EmployeeLeaf(2000)
+Development -> Development: add(Employee3)
+Development -> Development: add(Employee4)
+IT -> IT: add(Development)
+Main -> QA: new DepartmentComposite("Quality Assurance")
+Main -> Employee5: new EmployeeLeaf(1500)
+Main -> Employee6: new EmployeeLeaf(1500)
+QA -> QA: add(Employee5)
+QA -> QA: add(Employee6)
+IT -> IT: add(QA)
+Company -> Company: add(IT)
+Main -> Main: System.out.println("Company: " + company.getName())
+Main -> Company: getName()
+Company --> Main: "Company"
+Main -> Main: System.out.println("Company budget: " + company.getBudget())
+Main -> Company: getBudget()
+Company -> HR: getBudget()
+HR -> Employee1: getBudget()
+Employee1 --> HR: 1000
+HR -> Employee2: getBudget()
+Employee2 --> HR: 1000
+HR --> Company: 2000
+Company -> IT: getBudget()
+IT -> Development: getBudget()
+Development -> Employee3: getBudget()
+Employee3 --> Development: 2000
+Development -> Employee4: getBudget()
+Employee4 --> Development: 2000
+Development --> IT: 4000
+IT -> QA: getBudget()
+QA -> Employee5: getBudget()
+Employee5 --> QA: 1500
+QA -> Employee6: getBudget()
+Employee6 --> QA: 1500
+QA --> IT: 3000
+IT --> Company: 7000
+Company --> Main: 9000
+Main -> Main: System.out.println("Company workers: " + company.countOfWorkers())
+Main -> Company: countOfWorkers()
+Company -> HR: countOfWorkers()
+HR -> Employee1: countOfWorkers()
+Employee1 --> HR: 1
+HR -> Employee2: countOfWorkers()
+Employee2 --> HR: 1
+HR --> Company: 2
+Company -> IT: countOfWorkers()
+IT -> Development: countOfWorkers()
+Development -> Employee3: countOfWorkers()
+Employee3 --> Development: 1
+Development -> Employee4: countOfWorkers()
+Employee4 --> Development: 1
+Development --> IT: 2
+IT -> QA: countOfWorkers()
+QA -> Employee5: countOfWorkers()
+Employee5 --> QA: 1
+QA -> Employee6: countOfWorkers()
+Employee6 --> QA: 1
+QA --> IT: 2
+IT --> Company: 4
+Company --> Main: 6
+@enduml
+

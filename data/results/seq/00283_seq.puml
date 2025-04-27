@@ -1,0 +1,16 @@
+@startuml
+actor AppDeveloper as "App Developer"
+participant DeploymentSystem as "Deployment System"
+participant DatasetManagement as "Dataset Management"
+participant DatasetType as "Dataset Type"
+participant DatasetInstances as "Dataset Instances"
+
+AppDeveloper -> DeploymentSystem : deploy new app version with updated dataset type
+DeploymentSystem -> DatasetManagement : check for updated dataset type
+DatasetManagement -> DatasetType : deploy new version
+DatasetType -> DatasetManagement : version deployed successfully
+DatasetManagement -> DatasetInstances : update instances to new dataset type version
+DatasetInstances -> DatasetManagement : instances updated successfully
+DatasetManagement -> DeploymentSoft : confirm app and dataset deployment success
+DeploymentSystem --> AppDeveloper : deployment success confirmation
+@enduml

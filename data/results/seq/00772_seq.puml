@@ -1,0 +1,41 @@
+@startuml
+actor Manager
+participant "Interface: UI" as UI
+participant "Backend Service" as Backend
+participant "Database" as DB
+
+Manager -> UI : Access inventory management
+activate UI
+
+UI -> Backend : Request current inventory list
+activate Backend
+
+Backend -> DB : Query inventory items
+activate DB
+
+DB --> Backend : Return inventory items
+deactivate DB
+
+Backend --> UI : Display inventory items
+deactivate Backend
+
+Manager -> UI : Select item to update
+activate UI
+
+Manager -> UI : Enter new inventory details
+UI -> Backend : Update inventory request with details
+activate Backend
+
+Backend -> DB : Update item in database
+activate DB
+
+DB --> Backend : Confirm update
+deactivate DB
+
+Backend --> UI : Confirm success to Manager
+deactivate Backend
+
+UI --> Manager : Display update confirmation
+deactivate UI
+
+@enduml

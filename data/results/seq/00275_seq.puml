@@ -1,0 +1,20 @@
+@startuml
+
+actor Archivist as A
+participant "Web Interface" as W
+participant "Authorization Service" as Auth
+participant "Database" as DB
+participant "FileManagementSystem" as FMS
+
+A -> W : Requests to restrict file
+W -> Auth : Validate Archivist credentials
+Auth --> W : Credentials valid
+W -> W : Display restriction options form
+A -> W : Submits restriction details
+W -> DB : Update file metadata with restriction details
+DB --> W : Confirmation of metadata update
+W -> FMS : Apply access restrictions
+FMS --> W : Confirmation of restriction application
+W --> A : Display success message
+
+@enduml

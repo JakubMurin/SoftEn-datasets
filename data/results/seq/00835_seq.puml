@@ -1,0 +1,14 @@
+@startuml
+actor User as "Library Member"
+participant "Frontend Interface" as Frontend
+participant "Backend System" as Backend
+database "Database" as DB
+
+User -> Frontend : Request to view book details
+Frontend -> Backend : Fetch book details and reservation count
+Backend -> DB : Query reservation count for book
+DB -> Backend : Return reservation count
+Backend -> Frontend : Display book details with reservation count
+Frontend -> User : Show book details and reservation popularity
+
+@enduml

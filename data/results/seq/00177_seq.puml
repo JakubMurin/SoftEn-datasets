@@ -1,0 +1,58 @@
+@startuml
+actor Archivist as "DigitalRecords Archivist"
+participant "User & Group Management" as UGM
+database "Data Storage" as DS
+
+== Add a Person to a Deposit Group ==
+Archivist -> UGM : AddPersonToGroup(personId, groupId)
+activate UGM
+UGM -> DS : CheckGroupExists(groupId)
+activate DS
+DS --> UGM : GroupExistsResult
+deactivate DS
+
+UGM -> DS : CheckPersonNotInGroup(personId, groupId)
+activate DS
+DS --> UGM : PersonNotInGroupResult
+deactivate DS
+
+alt If GroupExists and PersonNotInGroup
+    UGM -> DS : AddPersonToGroup(personId, groupId)
+    activate DS
+    DS --> UGM : AdditionSuccess
+    deactivate DS
+    UGM --> Archivist : SuccessMessage("Person added")
+else If GroupDoesNotExist
+    UGM --> Archivist : ErrorMessage("Group does not exist")
+else If PersonAlreadyInGroup
+    UGM --> Archact: ErrorMessage("Person already in group")
+end
+
+== Remove a Person from a Deposit Group ==
+Archivist -> UGM : RemovePersonFromGroup(personId, groupId)
+activate UGM
+UGM -> DS : CheckGroupExists(groupId)
+activate DS
+DS --> UGM : GroupExistsResult
+deactivate DS
+
+UGM -> DS : CheckPersonInGroup(personId, groupId)
+activate DS
+DS --> UGM : PersonInGroupResult
+deactivate DS
+
+alt If GroupExists and PersonInGroup
+    UGM -> DS : RemovePersonFromGroup(personId, groupId)
+    activate DS
+    DS --> UGM : RemovalSuccess
+    deactivate DS
+    UGM --> Archivist : SuccessMessage("Person removed")
+else If GroupDoesNotExist
+    USM --> Minority : ErrorMessage("Group does not exist")
+else If PersonNotInGroup
+    DS --> UGM: ErrorMessage("Person not in group")
+    deactivate DS
+    UGM --> Archivist : ErrorMessage("Person not in group")
+end
+
+@enduml

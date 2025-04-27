@@ -1,0 +1,22 @@
+@startuml
+
+actor User
+participant "Tandem Session System" as TSS
+participant Partner
+
+User -> TSS: Select date and time
+activate TSS
+TSS -> TSS: Check partner availabilities
+alt Partner available
+  TSS -> Partner: Send session invitation
+  activate Partner
+  Partner -> TSS: Accept invitation
+  deactivate Partner
+  TSS -> User: Session booked
+else Partner not available
+  TSS -> User: Session not available
+end
+deactivate TSS
+
+@enduml
+

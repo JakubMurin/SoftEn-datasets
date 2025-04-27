@@ -1,0 +1,35 @@
+@startuml
+actor "Repository Manager" as manager
+boundary "EDRMS API" as EDRMS
+boundary "Symplectic Elements API" as Symplectic
+entity "Data Mapping Service" as Mapper
+database "EDRMS Database" as DB
+database "Symplectic Database" as SDB
+
+== Bidirectional Update Flow ==
+
+manager -> EDRMS: Request Data Sync
+EDRMS -> Mapper: Initiate Sync Process
+Mapper -> Symplectic: Fetch Changes
+Symplectic -> SDB: Query Changed Data
+SDB -> Symplectic: Return Changed Data
+Symplectic -> Mapper: Provide Updates
+Mapper -> EDRMS: Send Updates to EDRMS
+EDRMS -> DB: Update Records
+DB -> EDRMS: Confirm Update Success
+EDRMS -> manager: Sync Complete
+
+== Reverse Sync Flow ==
+
+manager -> EDRMS: Request Reverse Data Sync
+EDRMS -> Mapper: Initiate Reverse Sync
+Mapper -> DB: Fetch EDRMS Changes
+DB -> Mapper: Return Changed Data from EDRMS
+Mapper -> Symplectic: Send Updates to Symplectic
+Symplectic -> SDB: Update Records
+SDB -> Symplectic: Confirm Update Success
+Symplectic -> Mapper: Acknowledge Update
+Mapper -> EDRMS: Reverse Sync Complete
+EDRMS -> manager: Reverse Sync Success Notification
+
+@enduml

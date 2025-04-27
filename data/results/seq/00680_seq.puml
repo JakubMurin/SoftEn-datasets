@@ -1,0 +1,82 @@
+@startuml
+
+actor Usuario
+actor Administrador
+participant "ServicioSalaChat" as ServicioSalaChat
+participant "RepositorioSalaChat" as RepositorioSalaChat
+participant "SalaChat" as SalaChat
+participant "ServicioMensajePublico" as ServicioMensajePublico
+participant "RepositorioMensajePublico" as RepositorioMensajePublico
+participant "Usuario" as UsuarioClass
+participant "Invitación" as Invitacion
+
+== Caso de uso: Crear Sala de Chat (Administrador) ==
+Administrador -> ServicioSalaChat : Crear sala(nombreSala, usuarioCreadorId)
+ServicioSalaChat -> RepositorioSalaChat : guardar(SalaChat)
+RepositorioSalaChat --> ServicioSalaChat : Confirmación de sala creada
+ServicioSalaChat --> Administrador : Sala creada con éxito
+
+== Caso de uso: Ver Mensajes de una Sala (Usuario) ==
+Usuario -> ServicioMensajePublico : Ver mensajes(salaId)
+ServicioMensajePublico -> RepositorioMensajePublico : obtenerTodosPorSala(salaId)
+RepositorioMensajePublico --> ServicioMensajePublico : Mensajes obtenidos
+ServicioMensajePublico --> Usuario : Mostrar mensajes
+
+== Caso de uso: Publicar Mensaje en Sala (Usuario) ==
+Usuario -> ServicioMensajePublico : Enviar mensaje(salaId, mensaje)
+ServicioMensajePublico -> RepositorioMensajePublico : guardar(MensajePublico)
+RepositorioMensajePublico --> ServicioMensajePublico : Confirmación de mensaje guardado
+ServicioMensajePublico --> Usuario : Mensaje publicado
+
+== Caso de uso: Unirse a Sala (Usuario) ==
+Usuario -> ServicioSalaChat : Unirse a sala(salaId, usuarioId)
+ServicioSalaChat -> RepositorioSalaChat : obtenerPorNombre(nombreSala)
+RepositorioSalaChat --> ServicioSalaChat : SalaChat
+ServicioSalaChat -> SalaChat : verificarUsuarioEnSala(usuarioId)
+SalaChat --> ServicioSalaChat : Verificación completa
+ServicioSalaChat -> Invitacion : verificarUsuarioInvitado(usuarioId)
+Invitacion --> ServicioSalaChat : Usuario invitado
+ServicioSalaChat -> SalaChat : agregarUsuario(usuarioId)
+SalaChat --> ServicioSalaChat : Usuario agregado
+ServicioSalaChat --> Usuario : Confirmación de unirse a sala
+
+== Caso de uso: Salir de Sala (Usuario) ==
+Usuario -> ServicioSalaChat : Salir de sala(salaId, usuarioId)
+ServicioSalaChat -> SalaChat : eliminarUsuario(usuarioId)
+SalaChat --> ServicioSalaChat : Usuario eliminado
+ServicioSalaChat --> Usuario : Confirmación de salida
+
+== Caso de uso: Eliminar Sala (Administrador) ==
+Administrador -> ServicioSalaChat : Eliminar sala(salaId)
+ServicioSalaChat -> RepositorioSalaChat : eliminar(salaId)
+RepositorioSalaChat --> ServicioSalaChat : Confirmación de eliminación
+ServicioSalaChat --> Administrador : Sala eliminada
+
+== Caso de uso: Invitar Usuario a Sala (Administrador) ==
+Administrador -> ServicioSalaChat : Invitar usuario(salaId, usuarioId)
+ServicioSalaChat -> Invitacion : crearInvitacion(salaId, usuarioId)
+Invitacion --> ServicioSalaChat : Confirmación de invitación
+ServicioSalaChat --> Administrador : Usuario invitado
+
+== Caso de uso: Eliminar Usuario de Sala (Administrador) ==
+Administrador -> ServicioSalaChat : Eliminar usuario(salaId, usuarioId)
+ServicioSalaChat -> SalaChat : eliminarUsuario(usuarioId)
+SalaChat --> ServicioSalaChat : Usuario eliminado
+ServicioSalaChat --> Administrador : Usuario eliminado de sala
+
+== Caso de uso: Ver Listado de Salas (Administrador, Usuario) ==
+Usuario -> ServicioSalaChat : Consultar salas disponibles()
+Administrador -> ServicioSalaChat : Consultar salas disponibles()
+ServicioSalaChat -> RepositorioSalaChat : obtenerTodas()
+RepositorioSalaChat --> ServicioSalaChat : Listado de salas
+ServicioSalaChat --> Usuario : Mostrar salas
+ServicioSalaChat --> Administrador : Mostrar salas
+
+== Caso de uso: Ver Listado de Usuarios (Administrador) ==
+Administrador -> ServicioSalaChat : Consultar usuarios en sala(salaId)
+ServicioSalaChat -> SalaChat : obtenerUsuarios(salaId)
+SalaChat --> ServicioSalaChat : Listado de usuarios
+ServicioSalaChat --> Administrador : Mostrar usuarios
+
+@enduml
+

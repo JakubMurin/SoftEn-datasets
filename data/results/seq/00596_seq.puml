@@ -1,0 +1,23 @@
+@startuml
+
+actor Usuario
+participant PlantaNuclear
+collections Operadores
+participant ReactorNuclear
+participant Reportador
+participant Sensor
+participant EstadoReactor
+
+
+Usuario --> PlantaNuclear: Inicializa los componentes
+Usuario --> PlantaNuclear: Inicia la simulacion
+PlantaNuclear --> Sensor: Peticiona medir la teperatura
+Sensor --> ReactorNuclear: Pide el estado mas reciente
+Sensor --> EstadoReactor: Chequea el estado
+Sensor --> Operadores: Notifica del estado
+Operadores --> EstadoReactor: Manejan la situacion
+EstadoReactor --> Reportador: Envia un reporte de la situacion
+Reportador --> Duenio: Envia el reporte con la temperatura
+
+
+@enduml

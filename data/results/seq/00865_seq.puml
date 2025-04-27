@@ -1,0 +1,40 @@
+@startuml
+actor "Користувач" as User
+control UI
+database "Файлова система" as FS
+participant "Список 1" as List1
+participant "Список 2" as List2
+
+activate UI
+User -> UI : Натискання «Відкрити»
+UI -> FS : Запит до файлу
+activate FS
+FS --> UI : Вміст CSV
+destroy FS
+UI -> List1 : Задання моделі
+activate List1
+activate List2
+UI -> List2 : Задання моделі
+User -> UI : Натискання Ctrl + N
+UI -> UI : Отримання\nфокусованого\nелемента
+UI -> List1 : Додавання рядка
+UI -> List1 : Створення редактора рядка
+List1 -> User : Запит на введення
+User --> List1 : Текст
+User -> UI : Завершити редагування
+UI -> List1 : Знищення редактора
+User -> UI : Перетягування задачі
+UI -> List1 : Запит на переміщення
+List1 <-> List2 : Drag & drop елемента
+User -> UI : Натискання «Зберегти»
+UI -> User : Вибір файлу
+User --> UI : Шлях до файлу
+UI -> FS : Запит до файлу
+activate FS
+destroy FS
+User -> UI : Натискання «Вийти»
+deactivate List1
+deactivate List2
+deactivate UI
+@enduml
+

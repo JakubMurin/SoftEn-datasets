@@ -1,0 +1,42 @@
+@startuml
+actor Student
+participant Monitor
+participant Authentication
+participant Reservation
+participant BookManagement
+participant Book
+
+Student -> Monitor: open Login page
+activate Monitor
+Monitor -> Authentication: login(username, password)
+activate Authentication
+Authentication -> Monitor: login success
+deactivate Authentication
+Monitor -> Student: display library page
+
+Student -> Monitor: submit book details
+Monitor -> BookManagement: searchBook(bookDetails)
+activate BookManagement
+BookManagement -> Book: getBookData(bookDetails: String)
+activate Book
+Book -> BookManagement: book data
+deactivate Book
+BookManagement -> Monitor: list of book
+deactivate BookManagement
+Monitor -> Student: display books
+
+Student -> Monitor: click reserve book
+Monitor -> Reservation: reserveBook(bookID)
+activate Reservation
+Reservation -> BookManagement: createReservation(studentID, bookID,  reservationType)
+activate BookManagement
+BookManagement -> Book: updateBook(book: Book)
+activate Book
+deactivate Book
+BookManagement -> Reservation: confirm update
+deactivate BookManagement
+Reservation -> Monitor: reservation created
+deactivate Reservation
+Monitor -> Student: display reservation confirmation
+@enduml
+

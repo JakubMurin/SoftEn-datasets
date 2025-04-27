@@ -1,0 +1,17 @@
+@startuml
+actor Visitor
+participant "Library System Interface" as Interface
+participant "Book Management Module" as BookModule
+database "Library Database" as Database
+
+Visitor -> Interface : Enter/Search Book Title
+alt book found
+    Interface -> BookModule : Request Book Details(BookID)
+    BookModule -> Database : Query Book Condition(BookID)
+    Database --> BookModule : Book Condition
+    BookModule --> Interface : Display Book Condition
+    Interface --> Visitor : Show Book Condition
+else book not found
+    Interface --> Visitor : Display "Book Not Found"
+end
+@enduml

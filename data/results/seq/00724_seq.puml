@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant Spring
+
+note over Spring: user open ..TimeReport
+
+User -> Spring: Username (FnNn) \nPassword
+Spring -> Lewensportal: Username \nPassword
+alt User ist guiltig
+	Lewensportal --> Spring: Ok
+	Spring -> DB: Save user (Username)
+	DB --> Spring: Authorities (USER by default)
+else
+	Lewensportal --> Spring: nicht angemeldet
+	Spring --> User: Bad creditantials...
+end
+
+
+
+
+@enduml

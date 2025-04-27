@@ -1,0 +1,29 @@
+@startuml
+actor user as u
+
+participant "ump" as ump
+participant "retail-ump" as rump
+participant "c" as c
+
+u -> ump : 1改变营销活动
+activate ump
+
+ump ->o rump : 2发送消息
+
+rump o-> rump : 3处理营销活动改变类型
+note left
+    add, invalidate, delete, edit
+end note
+activate rump
+
+rump ->x c : 4同步/异步发送消息
+note left
+    待同步门店数量 > 50 走异步
+end note
+activate c
+return 4.1返回
+
+rump --> ump : 5返回
+ump --> u : 6返回
+
+@enduml

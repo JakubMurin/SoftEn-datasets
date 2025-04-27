@@ -1,6 +1,27 @@
 @startuml
-participant Last order 30
-participant Middle order 20
-participant First order 10
+
+
+actor "Data Steward"
+
+
+entity EventBus
+
+box Common Data Service #ffcc88
+    boundary cds #white
+end box
+
+
+group Given [A Data Steward needs to move specific data]
+
+"Data Steward" --/ cds: they use the &#39;data/move&#39; method
+"cds" -> cds: Move Data
+
+
+
+"Data Steward" /-- cds: the specified data should be successfully moved
+
+
+end
+
 @enduml
 

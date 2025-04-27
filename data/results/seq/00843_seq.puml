@@ -1,0 +1,47 @@
+@startuml
+actor User
+participant "CoffeeFactory" as CF
+participant "make_coffee" as MC
+participant "CoffeeHandlerBase" as CHB
+participant "Coffee" as CH
+participant "Milk" as MH
+participant "Chocolate" as ChH
+participant "Cinnamon" as CiH
+participant "Sweetener" as SH
+participant "StirringStrategyFactory" as SSF
+participant "StirringStrategy" as SS
+participant "CoffeeRequest" as CR
+
+User -> MC: make_coffee(coffee_requests, sweetener_requests)
+MC -> CF: create_coffee(coffee_requests, sweetener_requests)
+CF -> CR: CoffeeRequest(coffee_type, ...)
+return CR
+CF --> MC: CR
+
+MC -> CH: set_next(MH)
+CH -> MH: set_next(ChH)
+MH -> ChH: set_next(CiH)
+ChH -> CiH: set_next(SH)
+CiH -> SH: set_next(null)
+
+MC -> CH: handle(CR)
+CH -> CHB: handle(CR)
+CHB -> MH: handle(CR)
+MH -> CHB: handle(CR)
+CHB -> ChH: handle(CR)
+ChH -> CHB: handle(CR)
+CHB -> CiH: handle(CR)
+CiH -> CHB: handle(CR)
+CHB -> SH: handle(CR)
+SH -> SSF: create_strategy(sweetener_type)
+SSF -> SS: StirringStrategy
+return SS
+SS -> SH: stir()
+SH --> CHB: return
+CHB --> CiH: return
+CiH --> ChH: return
+ChH --> MH: return
+MH --> CH: return
+CH --> MC: return
+MC --> User: return CR.ingredients
+@enduml

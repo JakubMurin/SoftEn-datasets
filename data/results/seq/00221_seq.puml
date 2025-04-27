@@ -1,0 +1,49 @@
+@startuml
+
+actor "Client" as client
+participant "Load Balancer/ECS" as loadBalancer
+participant "RemoveBookFromCatalogActivity" as RemoveBookFromCatalogActivity
+participant "RemoveBookFromCatalogRequest" as request
+participant "CatalogDao" as CatalogDao
+database "DynamoDB" as dynamoDB
+
+title Remove Book from Catalog
+
+client -> loadBalancer : HTTP Request
+activate loadBalancer
+
+loadBalancer -> RemoveBookFromCatalogActivity : execute(removeBookRequest)
+activate RemoveBookFromCatalogActivity
+
+RemoveBookFromCatalogActivity -> CatalogDao : RemoveBookFromCatalog(bookId)
+activate CatalogDao
+
+CatalogDao -> dynamoDB : query for latest version of book
+activate dynamoDB
+
+alt if book does not exist or book is not active
+CatalogDao --> RemoveBookFromCatalogActivity: throw BookNotFoundException
+RemoveBookFromCatalogActivity --> loadBalancer: transform to KindlePublishingClientException
+loadBalancer --> client: return 400 response
+else else continue
+end
+
+dynamoDB --> CatalogDao: return book data
+deactivate dynamoDB
+
+CatalogDao --> RemoveBookFromCatalogActivity : removeBookFromCatalog (String bookId)
+deactivate CatalogDao
+
+RemoveBookFromCatalogActivity -->RemoveBookFromCatalogActivity : convert CatalogItemVersion to Coral Model Book
+RemoveBookFromCatalogActivity --> RemoveBookFromCatalogActivity : create RemoveBookFromCatalogResponse
+
+RemoveBookFromCatalogActivity --> RemoveBookFromCatalogActivity : set book
+
+RemoveBookFromCatalogActivity --> loadBalancer : return RemoveBookFromCatalogResponse
+deactivate RemoveBookFromCatalogActivity
+
+loadBalancer --> client: 200 response w/ data
+deactivate loadBalancer
+
+@enduml
+

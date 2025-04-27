@@ -1,0 +1,38 @@
+/'
+ ' Scribble, Join scribble rooms sequence diagram.
+ '
+ ' @author giuliobosco
+ ' @author jarinaeser
+ ' @version 1.0 (2019-03-18 - 2019-03-18)
+ '/
+
+@startuml
+
+actor user
+
+user->client:start app
+activate client
+
+client->user:ask nickname
+activate user
+
+user->client:write(nickname)
+deactivate user
+
+client->server:join(nickname, ip, port)
+activate server
+
+opt is nickname ok
+    server->server:addNickname(nickname, ip)
+    server->client:joined()
+    server->server:updateChat(JOINED, nickname)
+    client->client:enableReadyToPlayButton()
+    client->client:enableChat()
+    client->user:OK
+else
+    server->client:error(message)
+    client->user:error(message)
+end
+
+@enduml
+

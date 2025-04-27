@@ -1,0 +1,34 @@
+@startuml
+
+actor RepositoryOwner as "Repository Owner"
+participant "DMPTool Interface" as Interface
+participant "DMP Database" as DMPDB
+participant "Provenance Checker" as Provenance
+participant "Fee Calculator" as Calculator
+
+== Checking Planned Provenance & Calculating Submission Fees ==
+
+RepositoryOwner -> Interface : Accesses DMPTool
+Interface -> DMPDB : Retrieve project DMP
+DMPDB --> Interface : Return DMP data
+Interface --> RepositoryOwner : Show DMP data including provenance
+
+RepositoryOwner -> Interface : Request provenance check
+Interface -> Provenance : Validate provenance data
+Provenance -> DMPDB : Access relevant metadata
+DMPDB --> Provenance : Provide metadata
+Provenance --> Interface : Return check results
+
+alt Provenance is Valid
+  Provenance --> RepositoryOwner : Confirm data is within target group
+  RepositoryOwner -> Interface : Request submission fee calculation
+  Interface -> Calculator : Calculate fees based on DMP data
+  Calculator -> DMPDB : Retrieve additional data if needed
+  DMPDB --> Calculator : Provide data
+  Calculator --> Interface : Return calculated fees
+  Interface --> RepositoryOwner : Display submission fees
+else Provenance is Invalid
+  Provenance --> RepositoryOwner : Data not within target group
+end
+
+@enduml

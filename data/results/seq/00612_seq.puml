@@ -1,0 +1,21 @@
+@startuml
+actor OlderPerson as User
+participant "GUI/Voice Interface" as GUI
+participant "PrivacySettingsService" as Settings
+database "SettingsStorage" as Storage
+
+User -> GUI : Request to access privacy settings
+GUI -> Settings : Fetch current privacy preferences
+Settings -> Storage : Retrieve settings
+Storage -> Settings : Return current settings
+Settings -> GUI : Display current privacy settings
+GUI -> User : Shows privacy settings options
+
+User -> GUI : Adjust privacy and data settings
+GUI -> Settings : Update settings as per request
+Settings -> Storage : Save new settings
+Storage -> Settings : Confirm settings saved
+Settings -> GUI : Confirm update to User
+GUI -> User : Display success message
+
+@enduml

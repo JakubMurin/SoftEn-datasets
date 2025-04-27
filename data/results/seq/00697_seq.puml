@@ -1,0 +1,31 @@
+@startuml
+
+Actor User
+participant "bot/channel"
+participant henrietta
+database elasticsearch
+participant paratranz2es
+database paratranz
+Actor translators
+
+
+henrietta <-> "bot/channel" : websocket
+activate henrietta
+
+paratranz <- translators: trans texts
+paratranz2es <- paratranz : get data
+
+note over paratranz2es: by github-actions\nper 3 hour
+
+
+elasticsearch <- paratranz2es : bulk insert
+
+User -> "bot/channel" : call out henrietta
+"bot/channel" -> henrietta : input text and user info
+henrietta -> elasticsearch : query
+henrietta <- elasticsearch : response
+"bot/channel" <- henrietta
+User <- "bot/channel"
+
+@enduml
+

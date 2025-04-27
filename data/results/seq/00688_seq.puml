@@ -1,0 +1,61 @@
+@startuml
+
+actor User as user<<interface>> 
+participant View as view<<component>>
+participant Component as comp<<component>> 
+participant Service as service<<component>> 
+participant HTTPDriver as http<<component>> 
+
+autonumber
+activate user
+
+user -> view: Fills and submits the {resource}
+
+activate view
+
+view -> comp: send {resource} create data
+
+activate comp
+
+comp -> service : requests the creation of {resource}
+
+activate service
+
+service -> http : requests POST
+
+activate http
+
+http ->  : POST {resources}
+
+http <--  : HTTP response
+
+http --> service: response
+
+deactivate http
+
+alt [successfull]
+service --> comp: response
+
+comp --> view: informs that the {resource} was created
+
+view --> user: displays success
+
+else [unsuccessfull]
+service --> comp: informs that an error occurred
+
+deactivate service
+
+comp --> view: informs that an error occurred
+
+deactivate comp
+
+view --> user: display error
+
+deactivate view
+
+end
+
+deactivate user
+
+
+@enduml

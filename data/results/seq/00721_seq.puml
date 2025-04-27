@@ -1,0 +1,35 @@
+@startuml
+actor Admin
+Admin -> MainUI: Display rooms list of an EnergyGrid
+MainUI -> HouseConfigurationUI:Display rooms list of an EnergyGrid
+HouseConfigurationUI --> Admin: Request Geographic Area Name
+Admin -> MainUI: insert data (Geographic Area name)
+MainUI -> HouseConfigurationUI: set data (Geographic Area name)
+HouseConfigurationUI ->HouseConfigurationController: check if name is contained in list
+HouseConfigurationController -> GeographicAreaList: check if name is contained in list
+GeographicAreaList -> GeographicArea: match by name
+GeographicArea -> GeographicArea: validate data
+GeographicArea --> HouseConfigurationUI: set data (Geographic Area)
+HouseConfigurationUI --> Admin: Request House Name
+Admin -> MainUI: insert data (House name)
+MainUI -> HouseConfigurationUI: set data (House name)
+HouseConfigurationUI -> HouseConfigurationController: check if name is contained in list
+HouseConfigurationController -> HouseList: check if name is contained in list
+HouseList -> House: match by name
+House -> House: validate data
+House --> HouseConfigurationUI: set data (House)
+HouseConfigurationUI --> Admin: Request Energy Grid Name
+Admin -> MainUI: insert data(Energy Grid Name)
+MainUI -> HouseConfigurationUI: set data (Energy Grid Name)
+HouseConfigurationUI -> HouseConfigurationController: check if name is contained in list
+HouseConfigurationController -> EnergyGridList: check if name is contained in list
+EnergyGridList -> EnergyGrid: match by name
+EnergyGrid -> EnergyGrid: validate data
+EnergyGrid --> HouseConfigurationUI: set data (EnergyGrid)
+HouseConfigurationUI -> HouseConfigurationController: get data from EnergyGrid (Room list)
+HouseConfigurationController -> EnergyGrid: getRoomList()
+EnergyGrid->RoomList:getRoomList
+RoomList->RoomList: validate data and Build String
+RoomList-->HouseConfigurationUI:return RoomList as String
+HouseConfigurationUI->Admin: Display list of rooms of the EnergyGrid
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+actor User
+User -> PaymentController: 결제 요청
+PaymentController -> PaymentFacade: 결제 처리 요청
+PaymentFacade -> UserReader: 유저 존재 확인
+UserReader -> UserRepository: 유저 정보 DB에서 조회
+
+PaymentFacade -> ReservationFacade: 좌석 임시 예약 확인
+ReservationFacade -> ReservationRepository: 예약 상태 확인
+
+PaymentFacade -> PaymentService: 결제 처리 요청
+PaymentService -> UserRepository: 유저 잔액 차감
+PaymentService -> PaymentRepository: 결제 내역 저장
+
+PaymentFacade -> ReservationFacade: 좌석 최종 배정
+ReservationFacade -> SeatRepository: 좌석 상태 업데이트
+PaymentFacade -> PaymentController: 결제 성공 응답
+PaymentController -> User: 결제 완료
+@enduml
+

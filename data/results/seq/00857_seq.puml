@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Policies" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "cloudlet" as S
+A -> CLI : cloudlet-policy-create()
+CLI -> S : policy/create()
+A -> Web : policy/create()
+Web -> S : policy/create()
+end box
+
+@enduml
+

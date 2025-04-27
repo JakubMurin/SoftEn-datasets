@@ -1,0 +1,29 @@
+@startuml
+
+actor Administrator
+boundary surat_lapas
+control welcome
+control BimbinganController
+control NapiController
+entity Model_Bimbingan
+entity Model_Napi
+
+Administrator->surat_lapas:Klik menu surat lapas
+surat_lapas->welcome : suratpengantar()
+welcome->surat_lapas : redirect()
+surat_lapas->Administrator : redirect()
+Administrator->surat_lapas : input nomor dan tanggal surat
+surat_lapas->BimbinganController : cari(nomor,tanggal)
+alt Surat tersedia
+	BimbinganController -> NapiController: keteranganNapi()
+	NapiController->Model_Napi : get_one(nomor,tanggal)
+	Model_Napi->NapiController:redirect()
+	NapiController->surat_lapas :redirect()
+    surat_lapas->Administrator :redirect()
+else Surat tidak ada
+    BimbinganController->surat_lapas : redirect()
+    surat_lapas->Administrator :Pesan Surat tidak tersedia
+
+end
+
+@enduml

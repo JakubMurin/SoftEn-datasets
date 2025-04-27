@@ -1,0 +1,29 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+participant TechReport
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onTechERPReviewCompleted(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : checkTechTicketCategory(ticket)
+alt Category is invalid
+    TicketTransitions -->> User : "Please select a category"
+else Category is valid
+    TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+    alt Report quality != 100 && no comments
+        TicketTransitions -->> User : "Please enter Technical Image Quality Comments"
+    else Report quality valid
+        TicketTransitions -> ProfessionalTicket : getTechReport()
+        TicketTransitions -> ProfessionalTicket : setReportQuality()
+        TicketTransitions -> ProfessionalTicket : setReportCompletedTime()
+        TicketTransitions -> ProfessionalTicket : setERP(user)
+        TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.TECH_COMPLETED)
+        ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+        ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+        TicketTransitions -> ClientRestService : generateTRERPResponseLetter(clientService, ticket, user)
+        TicketTransitions -->> User : null
+    end
+end
+@enduml

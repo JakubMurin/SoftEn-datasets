@@ -1,0 +1,20 @@
+@startuml
+actor 用户
+用户 -> CountryTourScreenController: 表单参数
+activate CountryTourScreenController
+CountryTourScreenController -> TbCountryTourService: page()
+activate TbCountryTourService
+CountryTourScreenController -> TbCountryTourService: statistic()
+activate TbCountryTourMapper
+TbCountryTourService -> TbCountryTourMapper: 查询
+
+TbCountryTourMapper -> TbCountryTourService: 成功返回
+TbCountryTourService -> TbCountryTourService: 失败返回
+deactivate TbCountryTourService
+
+deactivate TbCountryTourMapper
+deactivate TbCountryTourService
+TbCountryTourService -> CountryTourScreenController: 返回数据
+CountryTourScreenController -> 用户: 数据传输前端
+deactivate CountryTourScreenController
+@enduml

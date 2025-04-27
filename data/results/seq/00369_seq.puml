@@ -1,0 +1,29 @@
+@startuml
+actor Depositor
+participant "User Interface" as UI
+participant "Authentication Service" as Auth
+participant "System Integration" as SI
+participant "University Systems\n(Pure, Opus)" as UnivSys
+participant "Data Management\nPlatform" as DMP
+
+Depositor -> UI: Access platform
+UI -> Auth: Request authentication
+Auth -> Depositor: Authenticate
+Depositor -> Auth: Provide credentials
+Auth -> UI: Authentication successful
+
+Depositor -> UI: Request familiar interface
+UI -> SI: Fetch user preferences
+SI -> UnivSys: Request user-specific settings
+UnivSys --> SI: User settings
+SI --> UI: Apply settings & customization
+
+UI -> SI: Request integration features
+SI -> UnivSys: Fetch integration capabilities
+UnivSys --> SI: Capabilities (APIs, data formats, etc.)
+SI --> UI: Integrate with Univ. Systems
+UI -> DMP: Unified management interface rendered
+DMP --> UI: Interface ready
+
+UI --> Depositor: Display familiar, integrated interface
+@enduml

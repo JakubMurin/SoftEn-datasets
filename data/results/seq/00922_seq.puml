@@ -1,0 +1,34 @@
+@startuml
+actor Developer
+participant "Project Manager" as PM
+participant "User Research Team" as URT
+participant "Github" as GH
+database "CMS" as CMS
+
+== Hypothesis Identification ==
+Developer -> PM : Request for initial hypotheses
+PM -> URT : Consolidate findings for initial hypotheses
+URT -> PM : Provides 3 initial hypotheses based on user research
+PM -> Developer : Communicates the 3 hypotheses
+
+== Prototype Planning ==
+Developer -> GH : Query for existing insights on hypotheses
+GH -> Developer : Returns related discussions and documents
+Developer -> PM : Discusses feasibility and resources
+PM -> Developer : Confirms prototype development for the hypotheses
+
+== Prototype Development ==
+Developer -> Developer: Determine technology stack based on hypotheses
+Developer -> CMS : Assess CMS capabilities for prototype
+Developer -> GH : Create new branch for prototype development
+Developer -> Developer: Develops prototypes based on each hypothesis
+Developer -> GH : Commits prototypes for team review
+
+== Review and Feedback ==
+Developer -> PM : Notify on prototype completion
+PM -> URT : Organize prototype review session
+URT -> GH : Provides feedback via Github issues
+GH -> Developer : Notify about feedback
+Developer -> Developer : Refines prototypes based on feedback
+
+@enduml

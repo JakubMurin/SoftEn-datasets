@@ -1,0 +1,31 @@
+@startuml
+actor Researcher
+participant "DMPTool Interface" as DMPTool
+participant "IT Resources Estimation" as ITRE
+participant "Cost Calculation Module" as CCM
+participant "Institutional Systems" as IS
+
+Researcher -> DMPTool: Access DMPTool
+activate DMPTool
+
+DMPTool -> ITRE: Request resource requirements input
+activate ITRE
+Researcher --> ITRE : Input project details (data volume, processing power, etc.)
+ITRE --> DMPTool : Return resource estimates
+deactivate ITRE
+
+DMPTool -> CCM: Initiate cost calculation
+activate CCM
+
+CCM -> IS: Request institutional pricing data
+activate IS
+IS --> CCM: Return pricing data
+deactivate IS
+
+CCM --> DMPTool : Return cost estimate
+deactivate CCM
+
+DMPTool -> Researcher: Display cost estimate and resource needs
+deactivate DMPTool
+
+@enduml

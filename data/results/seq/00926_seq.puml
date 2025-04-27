@@ -1,0 +1,29 @@
+@startuml
+actor Curator as curator
+participant "User Interface" as UI
+participant "Authorization Service" as AuthService
+participant "Item Management" as ItemManage
+participant "Database" as DB
+
+== Change Permissions on Items ==
+
+curator -> UI: Select items for permission change
+UI -> AuthService: Validate curator's credentials
+AuthService --> UI: Credentials validated
+
+UI -> ItemManage: Request current permissions of selected items
+ItemManage -> DB: Query current permissions
+DB --> ItemManage: Return current permissions
+ItemManage --> UI: Display current permissions
+
+curator -> UI: Input new permissions for items
+UI -> ItemManage: Send new permissions request
+ItemManage -> AuthService: Checks if curator has rights to change permissions
+AuthService --> ItemManage: Authorization confirmed
+
+ItemManage -> DB: Update permissions
+DB --> ItemManage: Confirmation of permission update
+ItemManage --> UI: Display success message
+UI --> curator: Permissions changed successfully
+
+@enduml

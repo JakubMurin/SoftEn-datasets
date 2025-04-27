@@ -1,0 +1,17 @@
+@startuml
+actor "Site Administrator" as admin
+actor "Research Team" as team
+database "Design Guidelines Repository" as repo
+collections "External Websites" as sites
+
+== Understanding Visual Designs from Similar Organizations ==
+
+admin -> team : Request visual design overview
+team -> sites : Research visual designs
+activate sites
+sites --> team : Data on visual designs
+deactivate sites
+team -> repo : Update with research findings
+admin -> repo : Review updated guidelines
+
+@enduml

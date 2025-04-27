@@ -1,0 +1,27 @@
+@startuml
+
+actor "Faculty Data Steward" as steward
+participant "DMPTool Interface" as interface
+database "Project Data" as projectData
+participant "Costing Module" as costing
+
+== Accessing the Costing Section ==
+steward -> interface : Access DMPTool
+interface -> steward : Display Dashboard
+
+steward -> interface : Navigate to Costing Section
+interface -> costing : Request Costing Data
+costing -> projectData : Fetch Costing Information
+projectData -> costing : Return Costing Data
+costing -> interface : Display Costing Information
+interface -> steward : Show Costing Section
+
+== Interaction with Costing Section ==
+steward -> interface : Modify/Review Costing Details
+interface -> costing : Update Request
+costing -> projectdata : Modify Costing Info
+projectData -> costing : Confirm Update
+costing -> interface : Update Confirmation
+interface -> steward : Display Update Confirmation
+
+@enduml

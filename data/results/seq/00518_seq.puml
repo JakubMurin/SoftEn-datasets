@@ -1,0 +1,19 @@
+@startuml
+
+actor Photographer
+participant System
+
+activate Photographer
+Photographer -> System: Opens a portfolio
+System --> Photographer : Retrives Portfolio's photos
+Photographer -> System: Clicks on "Add photo" in the portfolio
+activate System
+System --> Photographer: Asks for the details of the photo
+deactivate System
+Photographer -> System: Sends photo details
+activate System
+System --> Photographer: Retrieves updated Portfolio's photos
+deactivate System
+deactivate Photographer
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+actor Client as client
+actor Server as server
+
+
+client -> server : canCreatePostIt()
+client <-- server :boardsUserCanWrite
+client -> server : createPostIt(info)
+note right of server : sends a string with:\n-board title\n-position in board to create Post-It\n-content of Post-It
+client <-- server: sends ACK code
+@enduml

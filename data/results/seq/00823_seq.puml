@@ -1,0 +1,17 @@
+
+@startuml
+actor User
+participant HomeRock
+participant GameMode
+
+User -> HomeRock : Render HomeRock component
+HomeRock -> User : Display title "Piedra, Papel, Tijera"
+User -> HomeRock : Click "Un Jugador" button
+HomeRock -> GameMode : setGameMode('single')
+User -> HomeRock : Click "Dos Jugadores" button
+HomeRock -> GameMode : setGameMode('multi')
+User -> HomeRock : Click "Back to Home" button
+HomeRock -> User : onBackToHome
+
+@enduml
+

@@ -1,0 +1,51 @@
+@startuml
+actor User
+participant "LibrarySystem" as LibrarySystem
+
+activate User
+User -> LibrarySystem: Click on "Login"
+activate Librarysystem
+
+LibrarySystem -> LibrarySystem: Enter username and password
+     alt (Login details correct?)
+     Librarysystem -> User: User logged in
+     LibrarySystem -> User: Show welcome message
+else (No)
+     Librarysystem -> User: Show error message "Incorrect login details"
+end
+
+deactivate Librarysystem
+deactivate User
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+@startuml
+actor Gebruiker
+participant "Bibliotheeksysteem" as Bibliotheeksysteem
+
+activate Gebruiker
+Gebruiker -> Bibliotheeksysteem: Klikt op "Inloggen"
+activate Bibliotheeksysteem
+
+Bibliotheeksysteem -> Bibliotheeksysteem: Voer gebruikersnaam en wachtwoord in
+    alt (Inloggegevens correct?)
+    Bibliotheeksysteem -> Gebruiker: Gebruiker ingelogd
+    Bibliotheeksysteem -> Gebruiker: Toon welkomstbericht
+else (Nee)
+    Bibliotheeksysteem -> Gebruiker: Toon foutmelding "Onjuiste inloggegevens"
+end
+
+deactivate Bibliotheeksysteem
+deactivate Gebruiker
+@enduml
+
+

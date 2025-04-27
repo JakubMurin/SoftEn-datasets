@@ -1,0 +1,15 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage-Policies" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-policy-create(name,cloud,env,filename)
+CLI -> S : policy/create(name,cloud,env,filename)
+A -> Web : policy/create(name,cloud,env,filename)
+Web -> S : policy/create(name,cloud,env,filename)
+end box
+
+@enduml
+

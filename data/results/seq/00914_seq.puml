@@ -1,0 +1,37 @@
+@startuml
+actor TeamMember as "Team Member"
+actor Designer
+actor Engineer
+database CMS as "CMS/Backlog"
+collections "Prioritization \nCriteria" as Criteria
+
+TeamMember -> CMS : Access Feature Backlog
+CMS --> TeamMember : List of Proposed Features
+TeamMember -> TeamMember : Review Features
+
+TeamMember -> Criteria : Consult Prioritization Criteria
+Criteria --> TeamMember : Criteria Guidelines
+
+TeamMember -> TeamMember : Apply Criteria to Features
+TeamMember -> Designer : Share Filtered Features
+Designer --> TeamMember : Provide Design Feasibility
+TeamMember -> Engineer : Consult on Technical Feasibility
+Engineer --> TeamMember : Provide Technical Assessment
+
+TeamMember -> CMS : Update Prioritized Features List
+TeamMember -> Engineer : Share Prioritized Features List
+TeamMember -> Designer : Share Prioritized Features List
+
+Designer -> CMS : Input Design Requirements
+Engineer -> CMS : Update Technical Details
+
+TeamMember <- Engineer : Receive Feasibility Confirmation
+TeamMember <- Designer : Receive Design Confirmation
+
+alt Successful Feasibility and Design Confirmation
+    TeamMember -> TeamMember : Finalize Feature Prioritization
+else Feasibility or Design Issues
+    TeamMember -> TeamMember : Re-evaluate and Update Priorities
+end
+
+@enduml

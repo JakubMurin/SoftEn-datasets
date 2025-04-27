@@ -1,0 +1,51 @@
+@startuml
+actor  "One Consumer" as OC
+collections "Consumers" as C
+participant "Consumer Server" as CSer
+participant "Consumer Supervisor" as CS
+
+participant "Publisher Supervisor" as PS
+
+
+
+participant "Topic Supervisor" as TS
+collections "Topics" as T
+collections "Publishers" as P
+participant "Exchanger" as E
+
+collections "Publishers" as P
+participant "Publisher Supervisor" as PS
+participant "Publisher Server" as PSer
+actor  "One Publisher" as OP
+
+OC -> CSer: Start connection
+CSer -> CS: New Consumer
+CS -> C: Create Consumer
+
+
+OC -> C: Log Username
+C -> OC: Succes
+OC -> C: Subscribe
+C -> E: Subscribe
+E -> TS: Create topic if not present
+TS -> T: Create Topic
+E -> T: Add or check subscriber pointer
+
+
+OP -> PSer: Start connection
+PSer -> PS: New Publisher
+PS -> P: Create Publisher
+OP -> P: Send topic and message
+P -> E:  Send topic and message
+
+
+E -> T: Send Message
+
+T -> C: Message to each Subscriber
+
+
+OC -> C: Unsubscribe
+C -> E: Unsubscribe 
+E -> T: Move subscriber pointer to Unsubscribe list
+
+@enduml

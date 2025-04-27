@@ -1,0 +1,16 @@
+@startuml
+actor "User" as Staff
+participant "Application Detail Page" as ApplicationDetailPage
+participant "Notification System" as NotificationSystem
+participant "Backend Server" as BackendServer
+database Database
+
+Staff -> ApplicationDetailPage: Identify missing documents
+ApplicationDetailPage -> BackendServer: Fetch missing documents
+BackendServer -> Database: Query missing documents
+Database --> BackendServer: Return missing documents
+BackendServer -> NotificationSystem: Notify missing documents
+NotificationSystem --> BackendServer: Confirm notifications sent
+BackendServer --> ApplicationDetailPage: Confirm notifications sent
+ApplicationDetailPage --> Staff: Display confirmation
+@enduml

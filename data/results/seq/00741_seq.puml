@@ -1,0 +1,35 @@
+@startuml
+actor Librarian
+autonumber
+
+Librarian -> LendingController: GET /api/lendings/monthly-lending
+activate LendingController
+
+LendingController -> ReaderService: getAllReaders()
+activate ReaderService
+
+ReaderService -> ReaderRepository: findAll()
+activate ReaderRepository
+ReaderRepository -> ReaderService: List<Reader> readers
+deactivate ReaderRepository
+
+loop for each reader
+    ReaderService -> ReaderRepository: getMonthlyLending(reader.getId(), startDate, endDate)
+    activate ReaderRepository
+    ReaderRepository -> ReaderService: int lents
+    deactivate ReaderRepository
+
+    ReaderService -> Reader: setLents(lents)
+end
+deactivate ReaderService
+
+LendingController -> ReaderLentsViewMapper: toReaderLentsView(readers)
+activate ReaderLentsViewMapper
+ReaderLentsViewMapper -> LendingController: Iterable<ReaderLentsView> readerLentsViews
+deactivate ReaderLentsViewMapper
+
+LendingController -> Librarian: HTTP 200 OK (Iterable<ReaderLentsView> readerLentsViews)
+deactivate LendingController
+
+@enduml
+

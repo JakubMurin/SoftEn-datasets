@@ -1,0 +1,26 @@
+@startuml
+actor Usuario
+boundary "ProgramarTutoriaView" as View
+control "ReservaController" as Controller
+entity "Reserva" as Tutoria
+database "Reservas" as Repository
+
+== Flujo principal ==
+Usuario -> View --++: Acceder a la sección de programación de tutorías
+View -> Controller --++: Solicitar formulario de programación
+Controller -> View --++: Mostrar formulario de programación
+View -> Controller --++: Enviar datos de programación
+Controller -> Tutoria --++: Validar datos de programación
+Tutoria -> Controller --++: Datos válidos
+Controller -> Repository --++: Registrar sesión de tutoría
+Repository -> Controller --++: Confirmación de registro
+Controller -> View --++: Confirmación de tutoría programada
+
+== Flujo alternativo ==
+alt [U Usuario decide cancelar la programación]
+    Usuario -> View --++: Cancelar programación
+    View -> Controller --++: Solicitar cancelación
+    Controller -> View --++: Confirmación de cancelación
+end
+@enduml
+

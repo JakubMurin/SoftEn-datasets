@@ -1,0 +1,22 @@
+@startuml
+actor SalesClerk as adm
+participant "//<<presentation>>//\nSpecifyNewProductUI" as ui
+
+autonumber
+
+adm-->ui: Specify new product
+
+activate ui
+
+ui-->adm: asks user information
+
+adm-->ui: Category, Photo, Short description, Extended description,\n Technical description, Brand, Reference, Internal code, Price,\n Barcode, Height, Width, Weight, Shelf
+
+ui-->adm: Show list of categories
+
+adm-->ui: Category
+
+ui-->adm: displayProductInfo
+
+deactivate ui
+@enduml

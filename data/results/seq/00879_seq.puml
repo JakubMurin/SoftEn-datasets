@@ -1,0 +1,20 @@
+@startuml
+actor User as user
+participant "User Interface" as UI
+participant "API Gateway" as API
+participant "Dataset Management Service" as DMS
+participant "Dataset Type Registry" as DTR
+participant "Dataset Instance" as DI
+
+user -> UI : Select dataset to explore
+UI -> API : GET /datasets/{id}/properties
+API -> DMS : fetchDatasetProperties(id)
+DMS -> DTR : getDatasetType(datasetId)
+DTR --> DMS : datasetType
+DMS -> DI : getProperties(datasetType)
+DI --> DMS : datasetProperties
+DMS --> API : datasetProperties
+API --> UI : Show updatable properties to user
+UI --> user : Display properties
+
+@enduml

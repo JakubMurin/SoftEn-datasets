@@ -1,0 +1,23 @@
+@startuml
+actor Manager
+participant FrontEnd
+participant TeacherController
+participant TeacherService
+participant TeacherRepository
+participant ArchiveService
+participant ArchiveRepository
+
+Manager -> FrontEnd: Request to Delete Teacher
+FrontEnd -> TeacherController: Forward Delete Teacher Request
+TeacherController -> TeacherService: Process Delete Teacher Request
+TeacherService -> TeacherRepository: Mark Teacher as Deleted
+TeacherRepository -> TeacherService: Confirmation of Deletion
+TeacherService -> ArchiveService: Archive Teacher Data
+ArchiveService -> ArchiveRepository: Save Teacher Data
+ArchiveRepository -> ArchiveService: Confirmation of Archiving
+ArchiveService -> TeacherService: Notify About Archived Teacher Data
+TeacherService -> TeacherController: Notify About Deletion and Archiving
+TeacherController -> FrontEnd: Send Confirmation Message
+FrontEnd -> Manager: Display Confirmation
+@enduml
+

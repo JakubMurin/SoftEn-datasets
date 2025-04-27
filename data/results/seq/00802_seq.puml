@@ -1,0 +1,65 @@
+@startuml
+actor Professor
+participant UIDocument as "UIDocument (MainGui.uxml)" #AAAAFF
+participant ConnectBoxManager #AAFFAA
+participant TestRelay #AAFFAA
+participant UnityTransport #AAFFAA
+participant NetworkManager #AAFFAA
+participant RelayService #AAFFAA
+participant UnityServers #FFAAAA
+participant AllocatedRelayServer #FFAAAA
+
+Professor -> UIDocument : Click on "connect as host" button
+activate UIDocument
+UIDocument -> ConnectBoxManager : click event -> connectHost()
+deactivate UIDocument
+
+activate ConnectBoxManager
+ConnectBoxManager  -> TestRelay: createRelay(roomSize)
+activate TestRelay
+'Request to allocate a server for our room
+TestRelay -> RelayService : Create allocation(roomSize)
+activate RelayService
+RelayService -> UnityServers : Create allocation
+activate UnityServers
+UnityServers -> AllocatedRelayServer : Reserve
+activate AllocatedRelayServer
+UnityServers <-- AllocatedRelayServer : Ip & Port
+deactivate AllocatedRelayServer
+RelayService <-- UnityServers : allocation(Ip & Port)
+deactivate UnityServers
+TestRelay <-- RelayService : allocation
+deactivate RelayService
+
+'Get it´s code
+TestRelay -> RelayService : GetJoinCodeAsync(allocationId)
+activate RelayService
+
+RelayService -> UnityServers : GetJoinCodeAsync(allocationId)
+activate UnityServers
+RelayService <-- UnityServers : joinCode
+deactivate UnityServers
+
+TestRelay <-- RelayService : joinCode
+deactivate RelayService
+
+'Set the transport to use the IP and port allocated to our room
+TestRelay -> UnityTransport : SetRelayData(ip & port)
+activate UnityTransport
+TestRelay <-- UnityTransport
+deactivate UnityTransport
+'Join the room
+TestRelay -> NetworkManager : StartHost()
+activate NetworkManager
+TestRelay <-- NetworkManager
+deactivate NetworkManager
+
+ConnectBoxManager <-- TestRelay : joinCode
+deactivate TestRelay
+
+ConnectBoxManager -> UIDocument : set joinCode in textbox
+deactivate ConnectBoxManager
+activate UIDocument
+deactivate UIDocument
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+actor Employee as E
+participant "Frontend Interface" as F
+participant "Backend Server" as B
+participant "Database" as DB
+
+E -> F : Selects the order to delete
+F -> B : Sends delete request (orderId)
+alt Order is found and can be deleted
+    B -> DB : Query to delete order from database (orderId)
+    DB --> B : Confirm deletion
+    B -> F : Return success message
+    F -> E : Display success message
+else Order cannot be deleted
+    B -> F : Return error message
+    F -> E : Display error message
+end
+@enduml

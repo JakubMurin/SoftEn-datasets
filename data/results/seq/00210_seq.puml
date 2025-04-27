@@ -1,0 +1,21 @@
+@startuml
+actor client
+client -> MassMessageController: send mass message request
+activate MassMessageController #FFBBBB
+
+MassMessageController ->MassMessageController: valid
+note right: parameter valid
+
+MassMessageController -> wechat: get access token
+activate wechat #FFBBBB
+MassMessageController <-- wechat: response access token
+
+MassMessageController -> wechat: call tencent mass send interface
+MassMessageController <-- wechat: tencent response
+deactivate wechat
+
+MassMessageController -> mongo: save message to mongo
+
+client <-- MassMessageController: send mass message response
+deactivate MassMessageController
+@enduml

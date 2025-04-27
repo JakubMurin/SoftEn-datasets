@@ -1,0 +1,26 @@
+@startuml
+actor User
+participant "SingUpController" as Controller
+participant "SingUpService" as Service
+participant "UserRepository" as Repository
+database Database
+
+User -> Controller: Send POST request to /sign-up
+Controller -> Service: Execute business logic
+Service -> Repository: Validate user exist
+Repository -> Database: Get user
+Database --> Repository: Return user if exist
+Repository --> Service: Validate response
+alt User already exist
+Service --> Controller: Response error
+Controller --> User: Response error
+end
+Service -> Repository: Create user
+Repository -> Database: Save user
+Repository --> Service: Create response
+note right
+    generate token
+end note
+Service --> Controller: Response success
+Controller --> User: Response user data
+@enduml

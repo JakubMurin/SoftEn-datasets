@@ -1,0 +1,20 @@
+@startuml
+actor Manager
+participant "Management Interface" as Interface
+participant "Inventory Management Module" as Inventory
+database "Database" as DB
+
+Manager -> Interface : requests inventory list
+activate Interface
+Interface -> Inventory : retrieve inventory data
+activate Inventory
+Inventory -> DB : query inventory list
+activate DB
+DB --> Inventory : inventory list data
+deactivate DB
+Inventory --> Interface : return inventory list
+deactivate Inventory
+Interface --> Manager : display inventory list
+deactivate Interface
+
+@enduml

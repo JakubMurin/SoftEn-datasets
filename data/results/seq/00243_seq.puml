@@ -1,0 +1,36 @@
+@startuml
+actor User
+entity TenantsController
+entity TenantService
+entity TenantDbContext
+entity ApplicationDbContext
+entity ITenantContextService
+entity IConfiguration
+entity IServiceProvider
+
+User -> TenantsController : POST /createTenant (Tenant data)
+TenantsController -> TenantService : Validate model
+TenantsController -> TenantService : TenantExistsAsync(Id)
+TenantService -> TenantDbContext : Check if tenant exists in DB
+TenantDbContext -> TenantDbContext : Query Tenants (Id)
+alt Tenant does not exist
+    TenantService -> TenantService : Create new Tenant
+    TenantService -> TenantDbContext : Insert new Tenant
+    TenantDbContext -> TenantDbContext : Save changes
+    alt Isolated == true
+        TenantService -> IConfiguration : Get connection string
+        TenantService -> IServiceProvider : Get ApplicationDbContext
+        IServiceProvider -> ApplicationDbContext : Resolve instance
+        ApplicationDbContext -> ApplicationDbContext : SetConnectionString
+        ApplicationDbContext -> ApplicationDbContext : Check for pending migrations
+        ApplicationDbContext -> ApplicationDbContext : Apply migrations
+    end
+    TenantService -> ITenantContextService : Update Tenant context
+    ITenantContextService -> ITenantContextService : SetTenantAsync(Id)
+    TenantService -> TenantsController : Return created Tenant
+else Tenant already exists
+    TenantService -> TenantsController : Return error (Tenant already exists)
+end
+TenantsController -> User : 201 Created (Tenant created)
+@enduml
+

@@ -1,0 +1,41 @@
+@startuml
+actor DatasetDeveloper as developer
+participant "Dataset Management System" as DMS
+participant "Version Control" as VC
+participant "Dataset Instance" as DI
+participant "Migration Tool" as MT
+
+== Upgrade Dataset Instance ==
+developer -> DMS: Request dataset type version upgrade
+DMS -> VC: Check latest version
+VC --> DMS: Return latest version info
+DMS -> DI: Perform upgrade to new version
+DI --> DMS: Upgrade success confirmation
+DMS --> developer: Upgrade success notice
+
+== Implement Migration Procedure ==
+developer -> DMS: Request to implement migration procedure
+activate DMS
+DMS -> MT: Provide current and new version details
+activate MT
+MT --> DMS: Migration procedure template
+DMS --> developer: Migration procedure template
+deactivate DMS
+
+developer -> MT: Define migration steps based on template
+activate MT
+MT -> MT: Validate migration steps
+MT --> developer: Confirm migration steps valid
+deactivate MT
+
+== Run Migration Procedure ==
+developer -> DMS: Initiate migration procedure
+DMS -> MT: Execute migration steps
+activate MT
+MT -> DI: Apply migration steps to dataset instance
+DI --> MT: Migration success confirmation
+MT --> DMS: Migration completed
+DMS --> developer: Migration success notice
+deactivate MT
+
+@enduml

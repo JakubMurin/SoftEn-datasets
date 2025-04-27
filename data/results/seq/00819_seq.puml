@@ -1,0 +1,39 @@
+@startuml
+actor Depositor
+entity "Enhanced\nResearch Data\nManagement\nPlatform" as ERDMP
+entity "Data Management\nPlan Tool" as DMPT
+entity "Dataset\nRepository" as DatasetRepo
+entity "DMP Repository" as DMPRepo
+
+Depositor -> ERDMP : Initiate dataset deposit
+activate ERDMP
+ERDMP -> DatasetRepo : Save dataset information
+activate DatasetRepo
+DatasetRepo --> ERDMP : Confirm dataset saved
+deactivate DatasetRepo
+
+ERDMP --> Depositor : Prompt to link with DMP
+Depositor -> ERDMP : Provide DMP reference
+activate ERDMP
+
+ERDMP -> DMPT : Request DMP details
+activate DMPT
+DMPT -> DMPRepo : Query DMP by reference
+activate DMPRepo
+DMPRepo --> DMPT : Return DMP details
+deactivate DMPRepo
+DMPT --> ERDMP : Provide DMP details
+deactivate DMPT
+
+ERDMP -> DatasetRepo : Link dataset with DMP
+activate DatasetRepo
+DatasetRepo -> DMPRepo : Update DMP with dataset link
+activate DMPRepo
+DMPRepo --> DatasetRepo : Confirm linkage
+deactivate DMPRepo
+DatasetRepo --> ERDMP : Confirm dataset-DMP linkage
+deactivate DatasetRepo
+
+ERDMP --> Depositor : Confirm dataset linked with DMP
+deactivate ERDMP
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+actor Trainer
+participant "Authentication System" as Auth
+participant "Trainer Dashboard" as Dashboard
+participant "Training Edit Form" as EditForm
+participant "Database" as DB
+
+Trainer -> Auth: Access Platform
+Auth -> Trainer: Authentication Success
+
+Trainer -> Dashboard: Select My Trainings
+Dashboard -> Trainer: Display List of Trainings
+
+Trainer -> EditForm: Select Edit on Training Node
+EditForm -> Trainer: Display Edit Form with Training Details
+
+Trainer -> EditForm: Modify Training Information\nAdd Links to Slides
+EditForm -> Trainer: Display Updated Information Preview
+
+Trainer -> EditForm: Submit Updated Training Information
+EditForm -> DB: Update Training Node Information
+DB -> EditForm: Confirm Update
+EditForm -> Trainer: Display Update Successful Message
+
+@enduml

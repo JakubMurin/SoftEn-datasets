@@ -1,0 +1,19 @@
+@startuml
+actor Admin as A
+participant "UI (Backend Panel)" as UI
+participant "UserController" as UC
+participant "UserService" as US
+participant "UserRepository" as UR
+
+A -> UI: Click "Block User"
+UI -> UC: blockUser(userId)
+UC -> US: blockUser(userId)
+US -> UR: findById(userId)
+UR --> US: User
+US -> US: set status = BLOCKED
+US -> UR: save(User)
+UR --> US: updated User
+US --> UC: updated UserDTO
+UC --> UI: UserDTO (BLOCKED)
+@enduml
+

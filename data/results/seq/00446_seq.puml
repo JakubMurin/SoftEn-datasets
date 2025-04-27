@@ -1,0 +1,31 @@
+@startuml
+actor User
+participant "UI Interface" as UI
+participant "User Profile Service" as UserProfile
+participant "Email Service" as Email
+participant "Database" as DB
+
+User -> UI: Select "Link Email"
+UI -> UserProfile: RequestEmailLinking()
+activate UserProfile
+
+UserProfile -> DB: CheckIfEmailExists(email)
+activate DB
+DB --> UserProfile: EmailNotFound
+deactivate DB
+
+UserProfile -> DB: LinkEmailToUser(email, userID)
+activate DB
+DB --> UserProfile: EmailLinked
+deactivate DB
+
+UserProfile -> Email: SendConfirmation(email)
+activate Email
+Email --> UserProfile: ConfirmationSent
+deactivate Email
+UserProfile --> UI: ShowSuccessMessage()
+deactivate UserProfile
+
+UI --> User: Display "Email linked successfully"
+
+@enduml

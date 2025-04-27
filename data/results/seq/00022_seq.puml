@@ -1,32 +1,18 @@
 @startuml
+actor Trainee
+participant "Authentication Service" as Auth
+participant "User Database" as UserDB
+participant "Training Service" as Training
+participant "Training Database" as TrainingDB
 
-participant main
-participant GameWorld
-participant Map
-participant HumanPlayer
-participant Bomberman
+Trainee -> Auth: Request to login
+Auth -> UserDB: Validate user credentials
+UserDB -> Auth: Return user validation
+Auth -> Trainee: Authentication Success
 
-participant RenderingEngine
-participant PhysicsEngine
-
-main --> RenderingEngine : create
-main --> PhysicsEngine : create
-main --> GameWorld : create
-GameWorld --> Map : create
-
-Map --> Map : create_background
-Map --> RenderingEngine : register
-
-Map --> BoundaryWallsGenerator : create_boundary_walls
-loop walls
-  Map --> RenderingEngine : register
-  Map --> PhysicsEngine : register
-end
-
-GameWorld --> HumanPlayer : create
-GameWorld --> Bomberman : create
-Bomberman --> PhysicsEngine : register
-Bomberman --> RenderingEngine : register
+Trainee -> Training: Request signed up trainings
+Training -> TrainingDB: Fetch trainings for user
+TrainingDB -> Training: Return list of trainings
+Training -> Trainee: Display signed up trainings
 
 @enduml
-

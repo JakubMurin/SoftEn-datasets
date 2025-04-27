@@ -1,0 +1,17 @@
+@startuml
+actor Customer
+participant "Frontend\n(React/Angular)" as FrontEnd
+participant "Backend\n(Node.js + Express)" as BackEnd
+database "Database\n(MongoDB/PostgreSQL)" as Database
+
+Customer -> FrontEnd : Request to view menu
+FrontEnd -> BackEnd : Fetch menu items
+activate BackEnd
+BackEnd -> Database : Query menu items
+activate Database
+Database --> BackEnd : Return menu items
+deactivate Database
+BackEnd --> FrontEnd : Menu items data
+deactivate BackEnd
+FrontEnd --> Customer : Display menu
+@enduml

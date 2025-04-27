@@ -1,0 +1,60 @@
+@startuml
+actor User
+participant "Клавиатура" as keyboard
+participant "JavaScript" as JS
+participant "HTML DOM" as DOM
+participant "Fishtext API" as fish
+participant "Server" as Server
+participant "Database" as Database
+
+User -> fish : GET запрос на генерацию текста (тип: слово, предложение, абзац; кол-во)
+fish -> JS : возрват статуса и при успехе текст
+JS -> DOM : вывод текста на экран
+DOM -> User 
+User -> keyboard : Нажатие на клавишу
+keyboard -> DOM : вывод символа
+DOM --> JS: Получение введённого символа
+JS -> JS: Проверка длины всех введённых символов
+alt length < 2
+    JS -> JS: Если длина меньше 2, то старт времени
+else
+    JS -> JS: Записываем текущую дату
+    alt current time - start_time >= last_time - start_time
+        JS -> JS: если прошла секунда, то записываем текущую скорость
+        JS -> JS: Вносим скорость в speedList
+        JS -> JS: Обновляем last_time
+JS -> JS: вызов функции checkLetter, которая вернёт статус корректности ввода
+JS -> JS: если -1 (ожидался пробел), то добавить класс incorrect_space
+JS -> JS: если 0 (ожидался другой символ), то добавить класс incorrect
+JS -> JS: если 1 (правильно введённый символ), то добавить класс correct
+JS -> JS: если 2 (правильно введённый пробел), то добавить класс correct_space
+JS -> JS: если 3 (нажат backspace), то убрать все классы с текущего символа
+JS -> DOM: Устанавливаем нужный класс
+DOM --> JS: Статус
+JS -> User
+User -> keyboard : Нажатие на клавишу
+keyboard -> DOM : вывод последнего символа
+DOM -> JS : получение введённого символа
+JS -> JS : остановка времени на попытку
+JS -> JS : подсчёт кол-ва очков полученных за игру
+JS -> JS :Создание объекта с полями: id, name, time, speed, accuracy,points
+JS -> Server : POST запрос с данными о текущей попытке по адресу /api/endgame
+Server -> Database : Получаем последний id пользователя
+Database -> Server : id
+Server -> Server : Текущее время
+Server -> Database : Обновление данных в таблице Users 
+Database -> Server : Статус
+Server -> Database : Добавление попытки в таблицу Attempts
+Database -> Server : Статус
+Server -> JS : Статус
+JS -> JS : вызов функции setUi 
+JS -> DOM : вывод окна конца игры
+DOM -> JS : Статус
+JS -> JS : формирование массивов данных для графика скорости
+JS -> JS : Вызов функции drawDiagram 
+JS -> DOM : вывод диаграммы скорости
+DOM -> JS : Статус
+JS -> JS : Запись данных в localStorage
+JS -> User 
+@enduml
+

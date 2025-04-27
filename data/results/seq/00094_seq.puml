@@ -1,0 +1,36 @@
+@startuml
+actor AgencyUser as "Agency User"
+participant "Web Interface" as UI
+participant "Broker Backend" as Backend
+participant "Data Validator" as Validator
+participant "Data Deriver" as Deriver
+participant "Database" as DB
+
+== User Initiates Data Submission ==
+AgencyUser -> UI: Submit data\nfor processing
+UI -> Backend: Initiate data\nsubmission
+Backend -> Validator: Validate\nsubmission data
+alt Validation Success
+    Validator --> Backend: Validation passed
+    Backend -> Deriver: Derive data\nelements
+    Deriver -> Deriver: Process\nderivation rules
+    Deriver -> DB: Save derived\nelements
+    DB --> Deriver: Confirmation
+    Deriver --> Backend: Derivation\nSuccess
+    Backend --> UI: Display submission\nsuccess message
+    UI --> AgencyUser: Display success\nmessage
+else Validation Failure
+    Validator --> Backend: Validation\nerrors
+    Backend --> UI: Display error\nmessages
+    UI --> AgencyUser: Show validation\nerrors
+end
+
+== User Views Derived Data ==
+AgencyUser -> UI: Request derived\ndata view
+UI -> Backend: Fetch derived\ndata
+Backend -> DB: Query derived\ndata elements
+DB --> Backend: Return derived\ndata
+Backend --> UI: Display derived\ndata
+UI --> AgencyUser: Show derived\ndata elements
+
+@enduml

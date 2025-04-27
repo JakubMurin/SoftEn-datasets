@@ -1,0 +1,16 @@
+@startuml
+actor Member
+participant "Genre Selection Interface" as Selection
+participant "User Profile Service" as UserProfile
+participant "Database" as DB
+
+== Choose Book Genres ==
+
+Member -> Selection : Selects preferred genres
+Selection -> UserProfile : Sends selected genres
+UserProfile -> DB : Query to update member preferences
+DB -> UserProfile : Confirm preferences updated
+UserProfile -> Selection : Confirm update to user
+Selection -> Member : Shows update confirmation
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+
+actor Employee as e
+participant "Employee Interface" as ui
+participant "Backend Server" as server
+database "Database" as db
+
+e -> ui: Selects Order
+ui -> server: Request to Mark Order as Completed
+server -> db: Update Order Status
+db --> server: Confirmation
+server --> ui: Order Marked as Completed
+ui --> e: Display Success Message
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+actor Admin
+boundary list_blogs_view
+control BlogController
+entity BlogModel
+
+Admin -> list_blogs_view : yêu cầu xem danh sách bài viết
+activate Admin
+activate list_blogs_view
+list_blogs_view -> BlogController: gửi yêu cầu
+deactivate list_blogs_view
+activate BlogController
+BlogController -> BlogController : kiểm tra dữ liệu
+BlogController -> BlogModel : lấy danh sách bài viết
+activate BlogModel
+BlogModel --> BlogController : trả danh sách bài viết
+deactivate BlogModel
+BlogController --> list_blogs_view: trả kết qủa danh sách bài viết
+deactivate BlogController
+activate list_blogs_view
+list_blogs_view --> Admin: Hiển thị danh sách bài viết
+deactivate list_blogs_view
+deactivate Admin
+
+@enduml

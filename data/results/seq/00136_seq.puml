@@ -1,0 +1,29 @@
+@startuml
+actor Archivist as ARCH
+participant "File Selection Interface" as FILE_UI
+participant "Upload Service" as UPLOAD
+participant "Database" as DB
+participant "FileManager" as FM
+participant "MetadataService" as META
+participant "UserNotificationService" as NOTIFY
+database "Digital Archive" as ARCHIVE
+
+== File Upload Process ==
+ARCH -> FILE_UI: Select files
+FILE_UI -> UPLOAD: Initiate upload
+UPLOAD -> FM: Validate files
+alt Files are valid
+  FM -> META: Extract metadata
+  META -> DB: Store metadata
+  DB --> META: Confirm metadata stored
+  META -> UPLOAD: Metadata stored confirmation
+  UPLOAD -> ARCHIVE: Save files
+  ARCHIVE --> UPLOAD: Confirm files saved
+  UPLOAD -> NOTIFY: Send success notification
+  NOTIFY -> ARCH: Display success message
+else Files are invalid
+  FM -> UPLOAD: Return error message
+  UPLOAD -> NOTIFY: Send failure notification
+  NOTIFY -> ARCH: Display error message
+end
+@enduml

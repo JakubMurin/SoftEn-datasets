@@ -1,0 +1,46 @@
+@startuml
+
+actor Client
+participant "InterfaceUtilisateur" as IU
+participant "CatalogueProduits" as CP
+participant "Panier" as Pan
+participant "SystèmePaiement" as Pai
+participant "SystèmeNotification" as Notif
+
+Client -> IU: Parcourir et sélectionner les produits
+IU -> CP: Récupérer les détails produits
+Client -> IU: Ajouter produit au panier
+IU -> Pan: Mettre à jour le panier
+
+Client -> IU: Passer commande
+IU -> Pan: Récupérer contenu du panier
+IU -> Pai: Traiter le paiement
+alt Paiement réussi
+    Pai -> IU: Confirmation de paiement
+    IU -> Notif: Envoyer confirmation de commande
+    Notif -> Client: Recevoir email de confirmation
+else Paiement échoué
+    Pai -> IU: Alerter utilisateur de l'échec
+    IU -> Client: Afficher options de paiement alternatives
+end
+@enduml
+
+
+'actor Utilisateur
+'participant "PageConnexion" as PC
+'participant "SystèmeAuthentification" as Auth
+'participant "InterfaceUtilisateur" as IU
+'
+'Utilisateur -> PC: Accéder à la page de connexion
+'Utilisateur -> PC: Entrer nom d'utilisateur et mot de passe
+'PC -> Auth: Soumettre informations d'identification
+'Auth -> Auth: Vérifier informations
+'alt Authentification réussie
+'    Auth -> PC: Validation réussie
+'    PC -> IU: Afficher l'interface utilisateur
+'else Authentification échouée
+'    Auth -> PC: Échec de la validation
+'    PC -> Utilisateur: Afficher message d'erreur
+'end
+@enduml
+

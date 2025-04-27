@@ -1,0 +1,27 @@
+@startuml
+actor PowerUser
+PowerUser -> EnergyConsumptionUI: runUS705
+EnergyConsumptionUI -> inputHelperUI: getInputGrid
+inputHelperUI --> EnergyConsumptionUI: return EnergyGrid
+EnergyConsumptionUI -> PowerUser: display selection options
+alt
+PowerUser -> EnergyConsumptionUI: selectRooms
+ref over EnergyConsumptionUI
+selectRooms
+end ref
+else
+PowerUser -> EnergyConsumptionUI: selectDevices
+ref over EnergyConsumptionUI
+selectDevices
+end ref
+end
+PowerUser -> EnergyConsumptionUI: getSelectionNominalPower(selectedDevices)
+EnergyConsumptionUI -> PowerUser: display selected subset
+EnergyConsumptionUI -> EnergyConsumptionController: getSelectionNominalPower(selectedDevices)
+EnergyConsumptionController -> DeviceList: getNominalPower
+loop getNominalPower
+DeviceList -> Device: getNominalPower
+end
+DeviceList --> EnergyConsumptionUI: return nominal power
+EnergyConsumptionUI -> PowerUser: displays subset's nominal power
+@enduml

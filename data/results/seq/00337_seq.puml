@@ -1,0 +1,44 @@
+@startuml
+actor DatasetDeveloper as Developer
+participant "Dataset Management System" as DMS
+participant "Version Control" as VC
+participant "Dataset Type Registry" as DTR
+participant "Dataset Instance Manager" as DIM
+
+Developer -> DMS : Deploy new dataset type version
+activate DMS
+
+DMS -> VC : Check current version
+activate VC
+VC --> DMS : Return current version details
+deactivate VC
+
+DMS -> DTR : Register new version
+activate DTR
+DTR --> DMS : Version registered successfully
+deactivate DTR
+
+DMS -> DIM : Update available versions list
+activate DIM
+DIM --> DMS : List updated
+deactivate DIM
+
+DMS -> DTR : Isolate new version impact
+activate DTR
+DTR --> DMS : Impact isolation confirmed
+deactivate DTR
+
+DMS -> VC : Create version branch
+activate VC
+VC --> DMS : Branch created successfully
+deactivate VC
+
+DMS -> DIM : Assign new version to new instances
+activate DIM
+DIM --> DMS : New instances will use new version
+deactivate DIM
+
+DMS --> Developer : New version deployed successfully
+deactivate DMS
+
+@enduml

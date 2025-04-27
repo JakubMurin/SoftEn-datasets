@@ -1,0 +1,15 @@
+@startuml
+
+actor Depositor as depositor
+participant "Web Interface" as web
+database "EDRMS" as edrms
+participant "Format and Type Management" as ftm
+
+depositor -> web : Access repository information
+web -> edrms : Request accepted items & formats
+edrms -> ftm : Retrieve item types & formats
+ftm -> edrms : Return types & recommended formats
+edrms -> web : Display information
+web -> depositor : Show accepted item types & formats
+
+@enduml

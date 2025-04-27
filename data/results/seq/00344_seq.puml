@@ -1,0 +1,20 @@
+@startuml
+actor Publisher
+participant "CLI Tool" as CLI
+participant "Validation Service" as Validator
+participant "Preview Service" as Preview
+participant "Data Package Registry" as Registry
+
+Publisher -> CLI : run preview command with data package path
+CLI -> Validator : validate JSON schema of data package
+alt if validation fails
+    Validator -> CLI : return validation errors
+    CLI -> Publisher : display errors
+else if validation succeeds
+    Validator -> CLI : validation success
+    CLI -> Preview : generate preview of data package views
+    Preview -> CLI : display generated preview
+    CLI -> Publisher : show preview output
+end
+
+@enduml

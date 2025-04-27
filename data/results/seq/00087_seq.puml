@@ -1,0 +1,28 @@
+@startuml
+actor Publisher
+participant "Signup Page" as Signup
+participant "Profile Management" as Profile
+participant "Data Publishing Guide" as Guide
+participant "Dataset Publishing" as Dataset
+
+Publisher -> Signup: Completes sign-up
+activate Signup
+Signup -> Profile: Redirect to Profile Management
+deactivate Signup
+
+activate Profile
+Publisher -> Profile: Edits Profile Information\n(manage organization, roles)
+Publisher -> Profile: Reviews Post-sign-up Guide
+Profile -> Guide: Generates Guide for Publishing Datasets
+deactivate Profile
+
+activate Guide
+Publisher -> Guide: Reads through Guide
+Guide -> Dataset: Redirects to Dataset Publishing
+deactivate Guide
+
+activate Dataset
+Publisher -> Dataset: Starts Dataset Publishing Process
+deactivate Dataset
+
+@enduml

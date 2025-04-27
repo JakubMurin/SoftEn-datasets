@@ -1,0 +1,25 @@
+@startuml
+actor Consumer
+participant "Search Interface" as SI
+participant "Platform Backend" as PB
+database "Data Registry" as DR
+
+Consumer -> SI: Enter search query
+activate SI
+
+SI -> PB: Send search request(query)
+activate PB
+
+PB -> DR: Query data packages
+activate DR
+
+DR --> PB: Return search results
+deactivate DR
+
+PB --> SI: Display search results
+deactivate PB
+
+SI --> Consumer: Show search results
+deactivate SI
+
+@enduml

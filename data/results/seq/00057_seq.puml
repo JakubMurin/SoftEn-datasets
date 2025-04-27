@@ -1,0 +1,25 @@
+@startuml
+actor HydratorUser as user
+participant "Web UI" as UI
+participant "Pipeline Service" as Pipeline
+participant "Dataset Management \nService" as DatasetService
+participant "Dataset Instance \nCreator" as Creator
+participant "Version Control" as VersionControl
+
+user -> UI: Select option to create new pipeline
+UI -> Pipeline: Display pipeline creation form
+user -> UI: Fill in pipeline details\nand specify new dataset instance
+UI -> Pipeline: Initiate pipeline and dataset creation
+Pipeline -> DatasetService: Request dataset type check
+DatasetService -> VersionControl: Verify dataset type and version
+VersionControl --> Dataset: Provides dataset type specifications
+DatasetService --> Pipeline: Dataset type confirmed
+Pipeline -> Creator: Request creation of new dataset instance
+Creator -> DatasetService: Create new dataset instance
+DatasetService -> VersionControl: Register new dataset instance version
+VersionControl --> DatasetService: Confirmation and version details
+Creator --> Pipeline: Dataset instance created successfully
+Pipeline --> UI: Pipeline and dataset instance creation successful
+UI --> user: Display success message and pipeline details
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+actor User
+
+participant TodoList
+participant TodoWrapper
+participant Backend
+
+User -> TodoList : Clica no ícone de lixeira
+
+TodoList -> TodoWrapper : deleteTodo()
+TodoWrapper -> Backend : deleteTodo()
+Backend --> TodoWrapper : Retorna confirmação
+
+TodoWrapper -> TodoList : Remove a tarefa da lista
+TodoWrapper -> User : Atualiza a lista de tarefas
+@enduml
+

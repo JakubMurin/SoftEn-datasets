@@ -1,0 +1,20 @@
+@startuml
+actor "Buyer \n(Algo Owner)" as Buyer
+actor "Seller \n(ASA Escrow Owner)" as Seller
+control "ASA Escrow (Sell Order)\nStateless" as ASAEscrow
+database "ASA Order Book\nStateful" as ASAOB
+note over ASAEscrow: Min .5 Algo bal.\n+ ASA to sell
+
+group "ASA Escrow Pay (Order Exec)\nWith Closeout - Initiated by ASA Buyer"
+autonumber 0
+ASAEscrow -> ASAOB: app call
+note left: TEAL attached\nfor approval
+Buyer -> Seller: Algo payment\nof partial order amount
+Buyer -> Buyer: [if necessary] Opt-in to ASA to buy
+ASAEscrow -> Buyer: Asset closeout\nof full sell amount\nto buyer
+note right: Closes out remaining\n ASA balance to Seller
+ASAEscrow -> Seller: Closeout of escrow algo balance
+end
+
+@enduml
+

@@ -1,0 +1,52 @@
+@startuml
+actor User
+participant Browser
+participant WeatherController
+participant WeatherServiceImpl
+participant WeatherRepository
+participant RestTemplate
+participant SimpMessagingTemplate
+
+== User Requests Weather Data ==
+User -> Browser: Enter city and submit
+activate Browser
+Browser -> WeatherController: getWeatherData(city)
+activate WeatherController
+WeatherController -> WeatherServiceImpl: fetchAndSaveWeather(city)
+activate WeatherServiceImpl
+WeatherServiceImpl -> RestTemplate: fetchWeatherData(url)
+activate RestTemplate
+RestTemplate --> WeatherServiceImpl: weather data
+deactivate RestTemplate
+WeatherServiceImpl -> WeatherModel: parseWeatherData(jsonObject, city)
+WeatherServiceImpl -> WeatherRepository: save(weatherModel)
+activate WeatherRepository
+WeatherRepository --> WeatherServiceImpl: saved weatherModel
+deactivate WeatherRepository
+WeatherServiceImpl -> Observer: notifyObservers(weatherData)
+WeatherServiceImpl --> WeatherController: weatherData
+deactivate WeatherServiceImpl
+WeatherController --> Browser: List<WeatherDTO>
+deactivate WeatherController
+Browser -> User: Display weather data on homepage
+deactivate Browser
+
+== Scheduler Fetches Weather Data ==
+WeatherScheduler -> WeatherServiceImpl: fetchAndSaveWeather(city)
+activate WeatherServiceImpl
+WeatherServiceImpl -> RestTemplate: fetchWeatherData(url)
+activate RestTemplate
+RestTemplate --> WeatherServiceImpl: weather data
+deactivate RestTemplate
+WeatherServiceImpl -> WeatherModel: parseWeatherData(jsonObject, city)
+WeatherServiceImpl -> WeatherRepository: save(weatherModel)
+activate WeatherRepository
+WeatherRepository --> WeatherServiceImpl: saved weatherModel
+deactivate WeatherRepository
+WeatherServiceImpl -> Observer: notifyObservers(weatherData)
+WeatherServiceImpl --> WeatherScheduler: weatherData
+deactivate WeatherServiceImpl
+WeatherScheduler -> SimpMessagingTemplate: convertAndSend("/topic/weather/" + city, weatherData)
+deactivate WeatherScheduler
+@enduml
+

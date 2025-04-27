@@ -1,0 +1,33 @@
+@startuml Exchange Asset
+autonumber
+
+actor org1_client as 1c
+
+participant frontend as f
+participant org1_backend as 1b
+participant hlf_org1_sdk as 1s
+participant hlf_org1_peer as 1p
+
+participant org2_backend as 2b
+participant hlf_org2_sdk as 2s
+participant hlf_org2_peer as 2p
+
+participant hlf_orderer as o
+
+1c -> f: Exchange assets request
+f -> 1b: Asset exchange request received
+1b -> 1s: Asset exchange request parsed and forwarded 
+1s -> 1p: Request forwarded to Org1 peer for endorsement
+1s -> 2p: Request forwarded to Org2 peer for endorsement
+1p -> 1p: Endorse and generate Read Write set
+2p -> 2p: Endorse and generate Read Write set
+1p -> 1s: Endorsed transaction
+2p -> 1s: Endorsed transaction
+1s -> o: Order transaction into block
+o -> 1p: Process transaction and commit to ledger
+o -> 2p: Process transaction and commit to ledger
+1p -> 1s: Commit event captured by sdk
+2p -> 1s: Commit event captured by sdk
+1s -> 1b: Event relayed to client
+1b -> f: Informs client the appropriate status
+@enduml

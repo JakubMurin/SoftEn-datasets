@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Services" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "cloudlet" as S
+A -> CLI : cloudlet-service-list()
+CLI -> S : service/list()
+A -> Web : service/list()
+Web -> S : service/list()
+end box
+
+@enduml
+

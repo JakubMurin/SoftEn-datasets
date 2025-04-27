@@ -1,0 +1,32 @@
+@startuml
+actor Member as member
+participant "Search Interface" as search
+participant "Library Database" as db
+participant "Book Details" as bookDetails
+participant "Availability Checker" as availability
+participant "Reservation System" as reservation
+
+member -> search : enters search query\n(title, author, or category)
+search -> db : fetch matching books
+db -> search : return list of books
+search -> member : display books
+member -> bookDetails : select a book to check availability
+bookDetails -> availability : request availability status
+db -> availability : check status for the selected book
+availability -> db : query current borrowings & reservations
+db -> availability : return availability data
+availability -> bookDetails : show availability status
+bookDetails -> member : display if book is available or reserved
+alt If book is available
+    member -> reservation : request to borrow book
+    reservation -> db : update book status to "on loan"
+    db -> reservation : confirm update
+    reservation -> member : confirmation & due date
+else If book is reserved
+    member -> reservation : place reservation request
+    reservation -> db : add to reservation queue
+    db -> reservation : confirm reservation
+    reservation -> member : confirmation & estimated wait time
+end
+
+@enduml

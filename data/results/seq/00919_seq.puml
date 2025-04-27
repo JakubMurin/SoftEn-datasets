@@ -1,0 +1,17 @@
+@startuml
+actor Repoadmin as admin
+participant "EDRMS Portal" as portal
+database "SLA Database" as SLADB
+participant "Data Contributor" as contributor
+
+== Provide Server SLA to Data Contributors ==
+
+admin -> portal : Access SLA management section
+portal -> SLADB : Retrieve SLA details
+SLADB --> portal : SLA Data
+portal --> admin : Display SLA details
+admin -> portal : Select SLA details to share
+admin -> contributor : Provide SLA details
+contributor --> admin : Acknowledge receipt
+
+@enduml

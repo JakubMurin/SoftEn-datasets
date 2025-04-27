@@ -1,0 +1,34 @@
+@startuml
+
+actor Archivist
+participant "UI: Archival Management" as UI
+participant "Controller: Instance Management" as Controller
+participant "Service: Instance Association" as Service
+participant "Model: Instance" as ModelInstance
+participant "Model: Container" as ModelContainer
+participant "Database" as DB
+
+== Associate an Instance with a Container ==
+
+Archivist -> UI : select "Associate Instance"
+UI -> Controller : requestAssociateInstance(instanceId, containerId)
+Controller -> Service : associateInstanceWithContainer(instanceId, containerId)
+Service -> ModelInstance : getInstance(instanceId)
+ModelInstance -> DB : queryInstanceDetails(instanceId)
+DB --> ModelInstance : instanceDetails
+Service -> ModelContainer : getContainer(containerId)
+ModelContainer -> DB : queryContainerDetails(containerStore)
+DB --> ModelContainer : containerDetails
+
+note right of Service: Verify instance and container compatibility
+
+Service -> ModelInstance : setContainer(containerId)
+ModelInstance -> DB : updateInstanceContainer(instanceId, containerId)
+DB --> ModelInstance : confirmation
+ModelInstance --> Service : associationSuccess
+Service --> Controller : associationResult
+Controller --> UI : displayAssociationResult(associationResult)
+
+Archivist <-- UI : view "Association Successful" message
+
+@enduml

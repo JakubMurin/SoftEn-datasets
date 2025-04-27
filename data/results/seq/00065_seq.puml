@@ -1,0 +1,95 @@
+@startuml
+actor navegador
+boundary faultAdd.ejs
+boundary fault.routes
+control fault.controller
+entity faultModelInstance
+database mysql
+
+autonumber
+' Inicio del flujo
+activate navegador
+navegador -> fault.routes : GET /fault/add
+deactivate navegador
+
+activate fault.routes
+
+fault.routes -> fault.controller : getAdd(req,res)
+deactivate fault.routes
+activate fault.controller
+fault.controller -> faultAdd.ejs: render(faultAdd)
+deactivate fault.controller
+activate faultAdd.ejs
+faultAdd.ejs -> navegador : Mostrar formulario de falta
+deactivate faultAdd.ejs
+activate navegador
+deactivate fault.routes
+
+navegador -> navegador: validar campos
+
+' Envío de datos de la falta
+navegador -> fault.routes : POST /fault/add
+deactivate navegador
+activate fault.routes
+
+fault.routes -> fault.controller : postAdd(req, res)
+deactivate fault.routes
+activate fault.controller
+
+' Validación de campos
+fault.controller -> fault.controller : Validar campos
+
+alt Campos incompletos
+    fault.controller -> fault.routes : redirect(/error)
+     deactivate fault.controller
+
+    
+
+
+else Campos completos
+    ' Crear instancia del modelo
+
+    fault.controller -> faultModelInstance : new FaultModel(req.body.email, req.body.reason, req.body.doneDate)
+    activate fault.controller
+    ' Verificar si el colaborador existe
+    activate faultModelInstance
+    fault.controller ->> faultModelInstance : save()
+    deactivate fault.controller
+    
+    
+
+    faultModelInstance -->> mysql : db.execute(SELECT userID FROM user WHERE mail = ? [this.email]);
+    activate mysql
+    mysql -->> faultModelInstance : Resultado
+    
+    deactivate mysql
+
+    alt Colaborador no existe
+        
+        faultModelInstance -->> fault.controller : Error
+        activate fault.controller
+        fault.controller -> fault.routes : redirect(/faults, warning)
+        deactivate fault.controller
+        deactivate fault.controller
+        deactivate fault.routes
+
+    else Colaborador existe
+
+        faultModelInstance ->> mysql : db.execute(INSERT INTO fault (faultID, summary, doneDate, faultUserIDFK)  VALUES (?, ?, ?, ?),[faultID, this.reason, this.doneDate, rows[0].userID]);
+        activate mysql
+        mysql -->> faultModelInstance : Insert OK
+        deactivate mysql
+        faultModelInstance -->> fault.controller : Falta registrada
+         deactivate faultModelInstance
+        activate fault.controller
+      
+
+        ' Notificación de éxito
+        fault.controller -> fault.routes : redirect(/fault, info)
+        deactivate fault.controller
+        deactivate fault.controller
+        deactivate fault.routes
+    end
+end
+@enduml
+

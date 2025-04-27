@@ -1,0 +1,35 @@
+@startuml
+actor DatasetDeveloper as developer
+participant "Dataset Management \nSystem" as DMS
+participant "Dataset Type Interface" as DTI
+participant "Specific Dataset \nImplementation" as SDI
+database DataSetDB as DB
+
+== Custom Administrative Operation Execution ==
+
+developer -> DMS : Request Custom Operation (Compaction/Rebalance)
+activate DMS
+
+DMS -> DTI : Determine Operation Support
+activate DTI
+
+DTI -> SDI : Invoke Custom Operation
+activate SDI
+
+SDI -> SDI : Validate Operation
+SDI -> DB : Execute Operation on Dataset
+activate DB
+
+DB --> SDI : Operation Success/Failure
+deactivate DB
+
+SDI --> DTI : Return Status
+deactivate SDI
+
+DTI --> DMS : Confirm Execution & Status
+deactivate DTI
+
+DMS --> developer : Operation Completion Notification
+deactivate DMS
+
+@enduml

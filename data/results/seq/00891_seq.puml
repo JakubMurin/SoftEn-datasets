@@ -1,0 +1,39 @@
+@startuml
+actor User
+participant "Client Application" as ClientApp
+participant "API Gateway" as APIGW
+participant "Auth Service" as AuthSvc
+participant "OAuth Provider" as OAuthProv
+database "Auth DB" as AuthDB
+
+User -> ClientApp: Choose OAuth login
+ClientApp -> OAuthProv: Redirect to authorization
+User -> OAuthProv: Authorize and grant access
+OAuthProv -> ClientApp: Return with OAuth token
+ClientApp -> APIGW: POST /oauth/login (OAuth token)
+APIGW -> AuthSvc: POST /oauth/login (OAuth token)
+AuthSvc -> OAuthProv: Verify OAuth token
+OAuthProv --> AuthSvc: User info (email)
+AuthSvc -> AuthDB: Verify email
+AuthDB --> AuthSvc: Email found
+AuthSvc -> APIGW: Login successful, token
+APIGW -> ClientApp: Login successful, token
+ClientApp -> User: Display successful login message
+
+alt OAuth token verification error
+    AuthSvc -> OAuthProv: Verify OAuth token
+    OAuthProv --> AuthSvc: Verification error
+    AuthSvc -> APIGW: Error: Invalid OAuth token
+    APIGW -> ClientApp: Error: Invalid OAuth token
+    ClientApp -> User: Display error message
+end
+
+alt Email not found
+    AuthSvc -> AuthDB: Verify email
+    AuthDB --> AuthSvc: Email not found
+    AuthSvc -> APIGW: Error: Email not found
+    APIGW -> ClientApp: Error: Email not found
+    ClientApp -> User: Display error message
+end
+@enduml
+

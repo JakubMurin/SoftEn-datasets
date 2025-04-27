@@ -5,7 +5,6 @@ import json
 import time
 import re
 import os
-import csv
 
 from chatgpt.context import Context
 from xml_validation import XmlValidation
@@ -50,24 +49,6 @@ def merge_metadata(uc_data: dict, seq_data: dict) -> dict:
         **uc_data,
         **seq_data,
     }
-    
-def jsonl_to_csv(jsonl_file_path: str, csv_file_name: str):
-    csv_file = open(csv_file_name, "x", newline="", encoding="utf-8")
-    writer = csv.DictWriter(csv_file, [])
-    
-    header_required = True
-    with open(jsonl_file_path, "r", encoding="utf-8") as jsonl_file:
-        for line in jsonl_file:
-            json_data = json.loads(line.strip())
-            
-            if header_required:
-                writer.fieldnames = json_data.keys()
-                writer.writeheader()
-                header_required = False
-            
-            writer.writerow(json_data)
-    
-    csv_file.close()
             
 
 ############### SEQUENCE -> USECASE ###############
@@ -96,121 +77,123 @@ def jsonl_to_csv(jsonl_file_path: str, csv_file_name: str):
 # sequence_git.close()
 
 ###### FINAL ######
-# xml_files = XmlFiles("uc.jsonl", DTD_SCHEME_PATH, RESULT_DATA_PATH)
-# seq_data_path = os.path.join(RESULT_DATA_PATH, "seq.jsonl")
-# output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
-# usecase_file = open(os.path.join(RESULT_DATA_PATH, "uc.jsonl"), "a", encoding="utf-8")
+def seq_uc():
+    xml_files = XmlFiles("uc.jsonl", DTD_SCHEME_PATH, RESULT_DATA_PATH)
+    seq_data_path = os.path.join(RESULT_DATA_PATH, "seq.jsonl")
+    output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
+    usecase_file = open(os.path.join(RESULT_DATA_PATH, "uc.jsonl"), "a", encoding="utf-8")
 
-# with open(DTD_SCHEME_PATH, "r") as file:
-#     dtd = file.read()
+    with open(DTD_SCHEME_PATH, "r") as file:
+        dtd = file.read()
 
-# with open(seq_data_path, "r", encoding="utf-8") as seq_entry:
-#     price = 0
-#     for seq in seq_entry:
-#         seq_data = json.loads(seq)
-#         if seq_data["origin"] == Origin.CHAT_GPT:
-#             continue
-        
-#         start = time.perf_counter()
-        
-#         for value, is_temp in product(*params.values()):
+    with open(seq_data_path, "r", encoding="utf-8") as seq_entry:
+        price = 0
+        for seq in seq_entry:
+            seq_data = json.loads(seq)
+            if seq_data["origin"] == Origin.CHAT_GPT:
+                continue
             
-#             if is_temp:
-#                 temp, top_p = round(value + 0.4, 1), 1
-#             else:
-#                 temp, top_p = 1, value
+            start = time.perf_counter()
             
-#             seq_path = os.path.join(RESULT_DATA_PATH, "seq", seq_data["file"])
-#             with open(seq_path, "r", encoding="utf-8") as file:
-#                 sequence_diag = file.read()
-
-#             promt_ctx = [{"role": "user", "content": "Based on the following sequence diagram, create a usecase in xml for following DTD scheme and return it without any comments."},
-#                         {"role": "user", "content": f"Here is DTD scheme {dtd} and dont mention DOCTYPE in response."},
-#                         {"role": "user", "content": "For mainSequence steps use id in format S1, for asteps A1 and steps inside A1S1, for esteps E1 and steps inside E1S1"},
-#                         {"role": "developer", "content": "Make sure the actor is visible in each step and try write full sentences with active verb phrases that describe the sub-goals getting completed."}, #Cockburn 117 steps 5.-6.
-#                         ]
-#             query = f"Here is sequence diagram in plantuml {sequence_diag}"
-            
-#             result = context.execute_query(query, promt_ctx, temp, top_p)[0]
-#             content = result["choices"][0]["message"]["content"]
-            
-#             price += calculate_price(result["usage"]["prompt_tokens"], result["usage"]["completion_tokens"])
-            
-#             # domain = re.search(r"\{\{(.*)\}\}", content).group(1)
-#             usecase = content.replace("```xml", "").replace("```", "").replace('<!DOCTYPE useCase SYSTEM "usecase.dtd">', "")
-                        
-#             uc_data = xml_files.process_usecase(usecase, Origin.CHAT_GPT, "", context.ai_model, temp, top_p)
-            
-#             if uc_data is None:
-#                 with open(os.path.join(RESULT_DATA_PATH, "wrong_uc.jsonl"), "a", encoding="utf-8") as wrong_file:
-#                     data = {"seq": seq_data, "temperature": temp, "top_p": top_p, "content": content}
-#                     print(json.dumps(data), file=wrong_file)
-#                 continue
+            for value, is_temp in product(*params.values()):
                 
-#             print(json.dumps(uc_data), file=usecase_file)
-#             print(json.dumps(merge_metadata(uc_data, seq_data)), file=output_file)
-            
-#         print(time.perf_counter() - start, f"price: {price}$")
-#         break
-    
-# output_file.close()
-# usecase_file.close()
+                if is_temp:
+                    temp, top_p = round(value + 0.4, 1), 1
+                else:
+                    temp, top_p = 1, value
+                
+                seq_path = os.path.join(RESULT_DATA_PATH, "seq", seq_data["file"])
+                with open(seq_path, "r", encoding="utf-8") as file:
+                    sequence_diag = file.read()
+
+                promt_ctx = [{"role": "user", "content": "Based on the following sequence diagram, create a usecase in xml for following DTD scheme and return it without any comments."},
+                            {"role": "user", "content": f"Here is DTD scheme {dtd} and dont mention DOCTYPE in response."},
+                            {"role": "user", "content": "For mainSequence steps use id in format S1, for asteps A1 and steps inside A1S1, for esteps E1 and steps inside E1S1"},
+                            {"role": "developer", "content": "Make sure the actor is visible in each step and try write full sentences with active verb phrases that describe the sub-goals getting completed."}, #Cockburn 117 steps 5.-6.
+                            ]
+                query = f"Here is sequence diagram in plantuml {sequence_diag}"
+                
+                result = context.execute_query(query, promt_ctx, temp, top_p)[0]
+                content = result["choices"][0]["message"]["content"]
+                
+                price += calculate_price(result["usage"]["prompt_tokens"], result["usage"]["completion_tokens"])
+                
+                # domain = re.search(r"\{\{(.*)\}\}", content).group(1)
+                usecase = content.replace("```xml", "").replace("```", "").replace('<!DOCTYPE useCase SYSTEM "usecase.dtd">', "")
+                            
+                uc_data = xml_files.process_usecase(usecase, Origin.CHAT_GPT, "", context.ai_model, temp, top_p)
+                
+                if uc_data is None:
+                    with open(os.path.join(RESULT_DATA_PATH, "wrong_uc.jsonl"), "a", encoding="utf-8") as wrong_file:
+                        data = {"seq": seq_data, "temperature": temp, "top_p": top_p, "content": content}
+                        print(json.dumps(data), file=wrong_file)
+                    continue
+                    
+                print(json.dumps(uc_data), file=usecase_file)
+                print(json.dumps(merge_metadata(uc_data, seq_data)), file=output_file)
+                
+            print(time.perf_counter() - start, f"price: {price}$")
+            break
+        
+    output_file.close()
+    usecase_file.close()
 
 ############### USECASE -> SEQUENCE ###############
-plantumlfiles = PlantumlFiles("seq.jsonl", RESULT_DATA_PATH)
-# usecase_data_path = os.path.join(RESULT_DATA_PATH, "uc.jsonl")
-# output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
-# seq_file = open(os.path.join(RESULT_DATA_PATH, "seq.jsonl"), "a", encoding="utf-8")
+def uc_seq():
+    plantumlfiles = PlantumlFiles("seq.jsonl", RESULT_DATA_PATH)
+    usecase_data_path = os.path.join(RESULT_DATA_PATH, "uc.jsonl")
+    output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
+    seq_file = open(os.path.join(RESULT_DATA_PATH, "seq.jsonl"), "a", encoding="utf-8")
 
-# with open(usecase_data_path, "r", encoding="utf-8") as usecases_data_file:
-#     price = 0
-#     for uc in usecases_data_file:
-#         uc_data = json.loads(uc)
-#         if uc_data["origin"] == Origin.CHAT_GPT:
-#             continue
-        
-#         start = time.perf_counter()
-        
-#         for value, is_temp in product(*params.values()):
+    with open(usecase_data_path, "r", encoding="utf-8") as usecases_data_file:
+        price = 0
+        for uc in usecases_data_file:
+            uc_data = json.loads(uc)
+            if uc_data["origin"] == Origin.CHAT_GPT:
+                continue
             
-#             if is_temp:
-#                 temp, top_p = round(value + 0.4, 1), 1
-#             else:
-#                 temp, top_p = 1, value
+            start = time.perf_counter()
             
-#             uc_path = os.path.join(RESULT_DATA_PATH, "uc", uc_data["file"])
-#             with open(uc_path, "r", encoding="utf-8") as file:
-#                 useCase = file.read()
-
-#             promt_ctx = [{"role": "user", "content": "Based on the following use case, create a sequence diagram in plantuml without any comments."},
-#                         {"role": "user", "content": "In sequence diagram if name of element is multiple words, put it in quotation marks and give diagram title"}]
-#             query = f"Here is use case {useCase}"
-            
-#             result = context.execute_query(query, promt_ctx, temp, top_p)[0]
-#             content = result["choices"][0]["message"]["content"]
-            
-#             price += calculate_price(result["usage"]["prompt_tokens"], result["usage"]["completion_tokens"])
-            
-#             # domain = re.search(r"\{\{(.*)\}\}", content).group(1)
-#             seq_diag = re.search(r"(@startuml.*@enduml)", content, re.DOTALL)
-            
-#             if seq_diag is None:
-#                 with open(os.path.join(RESULT_DATA_PATH, "wrong.jsonl"), "a", encoding="utf-8") as wrong_file:
-#                     data = {"uc": uc_data, "temperature": temp, "top_p": top_p, "content": content}
-#                     print(json.dumps(data), file=wrong_file)
-#                 continue
-            
-#             seq_data = plantumlfiles.process_diagram(seq_diag.group(1), Origin.CHAT_GPT, "", context.ai_model, temp, top_p)
+            for value, is_temp in product(*params.values()):
                 
-#             if seq_data is not None:
-#                 print(json.dumps(seq_data), file=seq_file)
-#                 print(json.dumps(merge_metadata(uc_data, seq_data)), file=output_file)
-            
-#         print(time.perf_counter() - start, f"price: {price}$")
-#         break
-    
-# output_file.close()
-# seq_file.close()
+                if is_temp:
+                    temp, top_p = round(value + 0.4, 1), 1
+                else:
+                    temp, top_p = 1, value
+                
+                uc_path = os.path.join(RESULT_DATA_PATH, "uc", uc_data["file"])
+                with open(uc_path, "r", encoding="utf-8") as file:
+                    useCase = file.read()
+
+                promt_ctx = [{"role": "user", "content": "Based on the following use case, create a sequence diagram in plantuml without any comments."},
+                            {"role": "user", "content": "In sequence diagram if name of element is multiple words, put it in quotation marks and give diagram title"}]
+                query = f"Here is use case {useCase}"
+                
+                result = context.execute_query(query, promt_ctx, temp, top_p)[0]
+                content = result["choices"][0]["message"]["content"]
+                
+                price += calculate_price(result["usage"]["prompt_tokens"], result["usage"]["completion_tokens"])
+                
+                # domain = re.search(r"\{\{(.*)\}\}", content).group(1)
+                seq_diag = re.search(r"(@startuml.*@enduml)", content, re.DOTALL)
+                
+                if seq_diag is None:
+                    with open(os.path.join(RESULT_DATA_PATH, "wrong.jsonl"), "a", encoding="utf-8") as wrong_file:
+                        data = {"uc": uc_data, "temperature": temp, "top_p": top_p, "content": content}
+                        print(json.dumps(data), file=wrong_file)
+                    continue
+                
+                seq_data = plantumlfiles.process_diagram(seq_diag.group(1), Origin.CHAT_GPT, "", None, context.ai_model, temp, top_p)
+                    
+                if seq_data is not None:
+                    print(json.dumps(seq_data), file=seq_file)
+                    print(json.dumps(merge_metadata(uc_data, seq_data)), file=output_file)
+                
+            print(time.perf_counter() - start, f"price: {price}$")
+            break
+        
+    output_file.close()
+    seq_file.close()
 
 # Using temperature
 # with open(os.path.join(WORKING_DIR, "data\\usecases\\01.xml"), "r", encoding="utf-8") as file:
@@ -294,4 +277,4 @@ end
 # jsonl_to_csv(os.path.join(RESULT_DATA_PATH, "all.jsonl"), os.path.join(RESULT_DATA_PATH, "all.csv"))
 
 
-print(plantumlfiles.process_diagram(example_diagam, Origin.CHAT_GPT, "", context.ai_model))
+# print(plantumlfiles.process_diagram(example_diagam, Origin.CHAT_GPT, "", context.ai_model))

@@ -1,0 +1,42 @@
+@startuml
+actor NSF_Employee as Employee
+participant "User Research Team" as URT
+participant "Technical Team" as TT
+participant "CMS System" as CMS
+participant "Documentation" as Docs
+
+== Initiation ==
+Employee -> URT: Request for CMS Strategy
+URT -> URT: Define research objectives
+URT -> TT: Communicate research needs for CMS
+
+== User Research and Testing ==
+loop User Testing
+    URT -> CMS: Conduct usability testing
+    CMS -> URT: Provide feedback data
+end
+
+== Analysis and Strategy Development ==
+URT -> URT: Analyze user data
+URT -> TT: Recommend CMS features based on analysis
+TT -> TT: Evaluate technical feasibility
+TT -> URT: Present technical constraints
+
+== Strategy Finalization ==
+URT -> URT: Adjust recommendations based on technical input
+URT -> Docs: Document high-level CMS strategy
+Docs -> Docs: Create training materials
+
+== Communication ==
+Docs -> Employee: Provide CMS strategy documentation
+Employee -> Employee: Review documentation
+Employee -> URT: Request clarification (if needed)
+URT -> Employee: Provide additional details
+
+== Implementation ==
+Employee -> TT: Initiate CMS implementation based on strategy
+TT -> CMS: Configure CMS according to strategy
+CMS -> TT: Confirm completion
+TT -> Employee: Notify CMS setup completion
+
+@enduml

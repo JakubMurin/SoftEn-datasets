@@ -1,0 +1,70 @@
+@startuml
+actor OlderPerson as user
+participant "ALFRED Interface" as interface
+participant "PrivacySettings" as settings
+participant "DataManagement" as dataManager
+participant "ExternalServices" as services
+
+user -> interface: "How is my personal data used?"
+activate interface
+
+interface -> settings: retrievePrivacyInfo()
+activate settings
+
+settings --> interface: displayDataUsageInfo()
+deactivate settings
+
+interface --> user: showDataUsageInfo()
+deactivate interface
+
+user -> interface: "Update data sharing permissions"
+activate interface
+
+interface -> settings: navigateToPrivacySettings()
+activate settings
+
+settings --> interface: displayPrivacyOptions()
+deactivate settings
+
+user -> interface: selectPrivacyOptions(permissions)
+activate settings
+
+settings -> dataManager: updatePermissions(permissions)
+activate dataManager
+
+dataManager --> settings: confirmUpdate()
+deactivate dataManager
+
+settings --> interface: showConfirmationMessage()
+deactivate settings
+
+interface --> user: displayConfirmation()
+deactivate interface
+
+group Optional Sharing
+    user -> interface: initiateDataSharing(serviceName)
+    activate interface
+
+    interface -> settings: verifyPermissionFor(serviceName)
+    activate settings
+
+    settings --> interface: permissionGranted()
+    deactivate settings
+
+    interface -> dataManager: requestData(serviceName)
+    activate dataCollection
+
+    dataManager -> services: shareData(serviceName, userData)
+    activate services
+
+    services --> dataManager: confirmReception()
+    deactivate services
+
+    dataManager --> interface: displaySharingSuccess()
+    deactivate dataCollection
+
+    interface --> user: showSharingConfirmation()
+    deactivate interface
+end
+
+@enduml

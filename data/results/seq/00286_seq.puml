@@ -1,0 +1,30 @@
+@startuml
+
+actor User as user
+participant "Dataset Management\nSystem" as DMS
+participant "Version Control" as VC
+participant "Dataset Instance" as DI
+participant "Migration Tool" as MT
+
+== Trigger Dataset Migration Process ==
+
+user -> DMS : requests property update\nfor dataset
+DMS -> DI : validate property\nupdate requirements
+alt Property Update Requires Migration
+    DI -> VC : check current version
+    VC --> DI : current version details
+    DI -> DMS : migration required
+    DMS --> user : confirmation required\nto proceed with migration
+    user -> DMS : confirms migration
+    DMS -> MT : initiate migration
+    MT -> DI : perform migration\n(update properties, version)
+    DI --> MT : migration success
+    MT --> DMS : migration completed
+    DMS --> user : migration successful\nproperties updated
+else Property Update Does Not Require Migration
+    DI -> DI : update properties
+    DI --> DMS : properties updated
+    DMS --> user : update successful\nno migration needed
+end
+
+@enduml

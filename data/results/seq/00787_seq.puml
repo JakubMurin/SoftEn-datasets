@@ -1,0 +1,18 @@
+@startuml
+
+actor "Admin" as Actor
+participant "robDroneGo:robDroneGo" as Container <<Container (C4)>>
+
+Actor -> Container: requisita lista de utilizadores para aprovar
+Container --> Actor: retorna lista de utilizadores
+Actor -> Container: aprova ou recusa registo de utilizador
+
+alt sucesso
+    Container --> Actor: retorna mensagem de sucesso
+else falha
+    Container --> Actor: devolve mensagem de erro
+end
+
+
+@enduml
+

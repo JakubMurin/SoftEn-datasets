@@ -1,12 +1,15 @@
 @startuml
+actor Shipper
 
-title TKEY Exchange (GSS-TSIG hook)
-
-participant "Kea D2 server" as Kea
-participant "DNS server" as DNS
-
-Kea -> DNS: TKEY request
-DNS -> Kea: TKEY response (signed)
-
+Shipper -> ShipperDashboard: View list of orders being delivered
+ShipperDashboard -> ShipperController: getOrdersBeingDelivered()
+ShipperController -> ShipperService: getOrdersByStatus("IN_TRANSIT")
+ShipperService -> ShipperRepository: findOrdersByStatus("IN_TRANSIT")
+ShipperRepository -> Database: Query orders with status "IN_TRANSIT"
+Database --> ShipperRepository: Return order data
+ShipperRepository --> ShipperService: Return order data
+ShipperService --> ShipperController: Return order data
+ShipperController --> ShipperDashboard: Return order data
+ShipperDashboard --> Shipper: Display list of orders being delivered
 @enduml
 

@@ -1,0 +1,85 @@
+@startuml
+actor Client
+participant AccountController
+participant AccountService
+participant Account
+participant EventStore
+participant AccountProjection
+participant AccountViewRepository
+
+== 계정 생성 ==
+Client -> AccountController : 1. POST /accounts (createAccount)
+activate AccountController
+AccountController -> AccountService : 2. createAccount(accountId, owner)
+activate AccountService
+AccountService -> Account : 3. new Account(accountId, owner)
+activate Account
+Account --> Account : 4. 생성 이벤트 생성
+Account -> AccountService : 5. 반환: AccountCreatedEvent
+deactivate Account
+AccountService -> EventStore : 6. saveEvent(AccountCreatedEvent)
+activate EventStore
+EventStore --> EventStore : 7. 이벤트 저장
+EventStore --> AccountService : 8. 저장 완료
+deactivate EventStore
+AccountService -> AccountProjection : 9. handleEvent(AccountCreatedEvent)
+activate AccountProjection
+AccountProjection -> AccountViewRepository : 10. save(새 AccountView)
+activate AccountViewRepository
+AccountViewRepository --> AccountProjection : 11. 저장 완료
+deactivate AccountViewRepository
+AccountProjection --> AccountService : 12. 프로젝션 완료
+deactivate AccountProjection
+AccountService --> AccountController : 13. 계정 생성 완료
+deactivate AccountService
+AccountController --> Client : 14. 201 Created
+deactivate AccountController
+
+== 입금 처리 ==
+Client -> AccountController : 15. POST /accounts/{accountId}/deposit
+activate AccountController
+AccountController -> AccountService : 16. depositMoney(accountId, amount)
+activate AccountService
+AccountService -> EventStore : 17. getEvents(accountId)
+activate EventStore
+EventStore --> AccountService : 18. 반환: 모든 계정 이벤트
+deactivate EventStore
+AccountService -> Account : 19. replayEvents(events)
+activate Account
+Account --> Account : 20. 이벤트 재생 및 상태 복원
+Account --> AccountService : 21. 현재 상태의 Account
+AccountService -> Account : 22. deposit(amount)
+Account --> Account : 23. 입금 이벤트 생성
+Account -> AccountService : 24. 반환: MoneyDepositedEvent
+deactivate Account
+AccountService -> EventStore : 25. saveEvent(MoneyDepositedEvent)
+activate EventStore
+EventStore --> EventStore : 26. 이벤트 저장
+EventStore --> AccountService : 27. 저장 완료
+deactivate EventStore
+AccountService -> AccountProjection : 28. handleEvent(MoneyDepositedEvent)
+activate AccountProjection
+AccountProjection -> AccountViewRepository : 29. findById(accountId)
+activate AccountViewRepository
+AccountViewRepository --> AccountProjection : 30. 반환: 현재 AccountView
+AccountProjection --> AccountProjection : 31. 뷰 상태 업데이트
+AccountProjection -> AccountViewRepository : 32. save(업데이트된 AccountView)
+AccountViewRepository --> AccountProjection : 33. 저장 완료
+deactivate AccountViewRepository
+AccountProjection --> AccountService : 34. 프로젝션 완료
+deactivate AccountProjection
+AccountService --> AccountController : 35. 입금 처리 완료
+deactivate AccountService
+AccountController --> Client : 36. 200 OK
+deactivate AccountController
+
+== 계정 조회 ==
+Client -> AccountController : 37. GET /accounts/{accountId}
+activate AccountController
+AccountController -> AccountViewRepository : 38. findById(accountId)
+activate AccountViewRepository
+AccountViewRepository --> AccountController : 39. 반환: AccountView
+deactivate AccountViewRepository
+AccountController --> Client : 40. 200 OK, AccountView
+deactivate AccountController
+@enduml

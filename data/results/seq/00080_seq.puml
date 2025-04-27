@@ -1,0 +1,37 @@
+@startuml
+
+actor navegador as nav
+boundary routes
+boundary "Vista list.ejs" as list
+control controller
+entity absence as ab
+database mysql
+
+autonumber
+
+activate nav
+nav -> routes: GET /absence
+deactivate nav
+activate routes
+routes -> controller: getRoot(req, res)
+deactivate routes
+
+activate controller
+controller ->> ab: fetchAllByID(req.session.ID)
+activate ab
+ab ->> mysql: execute(´SELECT a.*, am.mediaLink \nFROM absence a \nLEFT JOIN absenceMedia am \nON a.absenceID = am.absenceIDFK \nWHERE a.absenceUserIDFK = ? \nORDER BY a.startDate DESC´, [id])
+activate mysql
+mysql -->> ab: rows
+deactivate mysql
+ab -->> controller: rows
+deactivate ab
+
+controller -> list: res.render("list.ejs", rows)
+deactivate controller
+activate list
+list -> nav: HTML
+deactivate list
+activate nav
+
+@enduml
+

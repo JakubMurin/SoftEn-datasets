@@ -1,0 +1,71 @@
+@startuml
+
+actor User
+
+participant ":GameApp" as App
+participant "startScreen:StartScreen" as StartScreen
+participant ":StartButtonEventHandler" as StartButtonEventHandler
+participant ":ConfirmButtonHandler" as ConfirmButton
+participant ":NamesInputButtonHandler" as NamesButton
+participant "inputScreen:PlayersInputScreen" as PlayersInputScreen
+participant ":Game" as Game
+participant ":PlayersNamesInputScreen" as PlayersNamesInputScreen
+participant ":QuestionScreen" as QuestionScreen
+participant "player:Player" as Player
+
+
+User -> App: " Click 'Comenzar' "
+activate App
+App -> StartScreen: handle(event)
+activate StartScreen
+StartScreen -> StartButtonEventHandler: handle(event)
+activate StartButtonEventHandler
+StartScreen <- StartButtonEventHandler: setVisible(false)
+activate PlayersInputScreen
+PlayersInputScreen <- StartButtonEventHandler: setVisible(true)
+deactivate StartScreen
+deactivate StartButtonEventHandler
+PlayersInputScreen -> App: the screen is displayed to select and confirm inputs
+deactivate PlayersInputScreen
+
+User -> App: " Seleciona y confirma inputs "
+
+App -> PlayersInputScreen: handle(event)
+activate PlayersInputScreen
+PlayersInputScreen -> ConfirmButton: handle(event)
+activate ConfirmButton
+PlayersInputScreen <- ConfirmButton: request select data
+PlayersInputScreen --> ConfirmButton: select data
+deactivate PlayersInputScreen
+ConfirmButton -> Game: select data
+activate Game
+Game -> Game: load received data
+deactivate Game
+create PlayersNamesInputScreen
+ConfirmButton -> PlayersNamesInputScreen: <<create>>
+ConfirmButton --> App: shows the screen that asks for the names of the players
+deactivate ConfirmButton
+
+User -> App: "Ingresa y confirma los nombres de los jugadores"
+App -> PlayersNamesInputScreen: handle(event)
+activate PlayersNamesInputScreen
+PlayersNamesInputScreen -> NamesButton: handle(event)
+activate NamesButton
+PlayersNamesInputScreen <- NamesButton: execute(event)
+NamesButton -> Game: registerUsers(userNameInputs)
+activate Game
+loop for each userNameInput in userNameInputs
+create Player
+Game -> Player: new Player(userNameInput, 0)
+Game -> Game: players.add(player)
+end loop
+deactivate Game
+create QuestionScreen
+NamesButton -> QuestionScreen: <<create>>
+NamesButton --> App: shows the screen showing the questions and options
+deactivate NamesButton
+deactivate PlayersNamesInputScreen
+
+App -> QuestionScreen: show question for each player
+
+@enduml

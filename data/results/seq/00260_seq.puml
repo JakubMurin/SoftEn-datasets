@@ -1,0 +1,14 @@
+@startuml
+actor PowerUser
+
+-> InputUtils: selectGrid
+activate InputUtils
+InputUtils -> PowerUser: display list of available grids
+PowerUser -> InputUtils: select Grid by index
+InputUtils -> EnergyGridList: getGrid(index)
+activate EnergyGridList
+EnergyGridList --> InputUtils: return EnergyGrid
+deactivate EnergyGridList
+<-- InputUtils : return EnergyGrid
+deactivate InputUtils
+@enduml

@@ -1,0 +1,153 @@
+@startuml
+actor main
+
+alt accion buscar tesoro
+
+main->Juego: siguienteTurno(Acciones accion, String codigoPlaneta ): void
+activate Juego
+    loop busca planeta segun codigo
+        alt codigo de planeta valido
+
+            activate Juego
+                Juego -> Planeta: visitarPlaneta(String codigoPlaneta): Planeta
+            activate Planeta
+                Planeta --> Juego: Planeta
+            deactivate Planeta
+
+            Juego -> Jugador : getNave():NaveAliada
+            activate Jugador
+            Jugador -->Juego: NaveAliada
+            deactivate Jugador
+
+        else el planeta no existe o fue destruido.
+                Juego --> main : RuntimeException
+            deactivate Juego
+    end
+
+Juego -> Hostil: combate(NaveAliada naveAliada): boolean
+activate Hostil
+    loop verifica si nave enemiga y nave aliada tienen vida.
+
+        Hostil -> NaveAliada: getVida(): double
+        activate NaveAliada
+        NaveAliada --> Hostil: double
+        deactivate NaveAliada
+
+        Hostil -> NavePirata: getVida(): double
+        activate NavePirata
+        NavePirata --> Hostil: double
+        deactivate NavePirata
+
+            loop Verifica ataque enemigo ≤ escudo aliado y enemigo con este con vida
+
+                Hostil -> NavePirata: getPoder(): double
+                activate NavePirata
+                alt si el poderDeAtaque de una nave enemiga es 0
+                    NavePirata -> NavePirata: crear instancia de Random
+                    NavePirata --> NavePirata: número aleatorio
+                end
+                NavePirata --> Hostil: double
+                deactivate NavePirata
+
+                Hostil -> NavePirata: getVida(): double
+                activate NavePirata
+                NavePirata --> Hostil: double
+                deactivate NavePirata
+
+                Hostil -> NaveAliada: getPoder(): double
+                activate NaveAliada
+                NaveAliada --> Hostil: double
+                deactivate NaveAliada
+
+                Hostil -> NaveAliada: getPoder(): double
+                activate NaveAliada
+                NaveAliada --> Hostil: double
+                deactivate NaveAliada
+
+                Hostil -> NaveAliada: agregarEscudo(double cantDeEscudo): void
+                activate NaveAliada
+                deactivate NaveAliada
+                Hostil -> NavePirata: setVida(double vida): void
+                activate NavePirata
+                deactivate NavePirata
+            end
+            alt si escudo de nave aliada es destruido
+
+                Hostil -> NavePirata: getPoder(): double
+                activate NavePirata
+                    alt si el poderDeAtaque de una nave enemiga es 0
+                        NavePirata -> NavePirata: crear instancia de Random
+                        NavePirata --> NavePirata: número aleatorio
+                    end
+                    NavePirata --> Hostil: double
+                deactivate NavePirata
+
+                Hostil -> NaveAliada: getPoder(): double
+                activate NaveAliada
+                NaveAliada --> Hostil: double
+                deactivate NaveAliada
+                Hostil -> NaveAliada: setVida(double vida): void
+                activate NaveAliada
+                deactivate NaveAliada
+                Hostil -> NavePirata: setVida(double vida): void
+                activate NavePirata
+
+                deactivate NavePirata
+            end
+    end
+    alt si la nave enemiga fue destruida
+        Hostil -> NavePirata: getPoder(): double
+        activate NavePirata
+        NavePirata --> Hostil: double
+        deactivate NavePirata
+        Hostil -> NaveAliada: setRecompensa(double cantDeRecompenza): Void
+        activate NaveAliada
+        Hostil --> Juego : true
+        deactivate NaveAliada
+    else si la nave aliada fue destruida
+        Hostil --> Juego : false
+    end
+    end
+deactivate Hostil
+
+Juego -> Hostil: isTesoro():boolean
+    activate Hostil
+    alt tiene tesoro
+        Hostil-->Juego: true
+    else no tienen tesoro
+        Hostil-->Juego: false
+    end
+    deactivate Hostil
+
+Juego->Juego: mostrarDatosDelJugador(): Void
+Juego->Juego: finDelJuego(boolean naveDestruida, boolean tesoroEncontrado): Void
+activate Juego
+    alt tu nave fue destruida
+        Juego --> main: Tu nave fue destruida
+        Juego -> Juego: salir del juego
+
+    else tesoroEncontrado y nave enemiga es destruida
+        Juego --> main: Has encontrado el tesoro y has ganado el juego.
+        Juego -> Juego: salir del juego
+
+    else tesoro no es Encontrado o nave enemiga es Destruida
+        Juego -> main: tesoro no encontrado
+        Juego -> Jugador : getNave():NaveAliada
+        activate Jugador
+        Jugador -->Juego: NaveAliada
+        deactivate Jugador
+
+        Juego -> NaveAliada: getRecompensa(): double
+        activate NaveAliada
+        NaveAliada --> Juego: double
+        deactivate NaveAliada
+        Juego -> Jugador: agregarUadeCoins(double uadeCoins): void
+        activate Jugador
+        Juego -> Juego: remove(): Planeta
+        deactivate Jugador
+    end
+deactivate Juego
+deactivate Juego
+end
+@enduml
+

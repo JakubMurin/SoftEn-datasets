@@ -1,0 +1,49 @@
+@startuml
+actor       User       as user
+participant StoryDetailView as view
+participant StoriesController as story
+participant AuthorsController as author
+participant ChaptersController as chapter
+participant CommentsController as comment
+participant MsgService as msgService
+database    Database as db
+
+user -> view ++: 1. Click story cover
+view -> story ++ : 2. Request API
+story -> story ++ : 3. Process GetStoryDetail()
+story -> story --++ : 3. Process GetStoryDetailRelate()
+story -> db ++ : 4.Query data
+db --> story -- : 5. Return data
+story -> msgService ++-- : 6. MsgReturn()
+deactivate story
+msgService --> view -- : 7. Response Payload Format
+
+view -> author ++ : 2. Request API
+author -> author ++ : 3. Process GetStoryRelateAuthor()
+author -> db ++ : 4.Query data
+db --> author -- : 5. Return data
+author -> msgService ++-- : 6. MsgReturn()
+deactivate author
+msgService --> view -- : 7. Response Payload Format
+
+view -> chapter ++ : 2. Request API
+chapter -> chapter ++ : 3. Process GetStoryChapters()
+chapter -> db ++ : 4.Query data
+db --> chapter -- : 5. Return data
+chapter -> msgService ++-- : 6. MsgReturn()
+deactivate chapter
+msgService --> view -- : 7. Response Payload Format
+
+view -> comment ++ : 2. Request API
+comment -> comment ++ : 3. Process GetStoryComments()
+comment -> db ++ : 4.Query data
+db --> comment -- : 5. Return data
+comment -> msgService ++-- : 6. MsgReturn()
+deactivate comment
+msgService --> view -- : 7. Response Payload Format
+
+view --> user -- : 8. Display Story Detail Page
+@enduml
+
+
+

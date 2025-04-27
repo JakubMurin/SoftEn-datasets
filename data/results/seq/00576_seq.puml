@@ -1,0 +1,21 @@
+
+@startuml
+actor User
+participant ViewAllClasses
+participant ModelClass
+participant Attribute
+
+User -> ViewAllClasses: Request display of attributes
+ViewAllClasses -> ModelClass: getAttributes()
+ModelClass --> ViewAllClasses: Return ArrayList<Attribute>
+
+loop For each attribute
+    ViewAllClasses -> Attribute: Retrieve attribute details
+    Attribute --> ViewAllClasses: Return attribute properties
+end
+
+ViewAllClasses -> ViewAllClasses: Process attributes for display
+ViewAllClasses -> ViewAllClasses: Render attributes in the UI
+User <-- ViewAllClasses: Display complete
+@enduml
+

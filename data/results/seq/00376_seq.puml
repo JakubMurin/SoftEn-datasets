@@ -1,0 +1,25 @@
+@startuml
+actor User as user
+participant "Web Interface" as web
+participant "API Gateway" as api
+participant "Authorization Service" as auth
+participant "Dataset Management" as dm
+participant "Explore Service" as es
+
+== Disable Dataset Explore Feature ==
+user -> web: Select dataset to update
+web -> user: Display dataset details
+
+user -> web: Request to disable explore
+web -> api: API call to disable explore for dataset
+api -> auth: Validate user permission
+auth --> api: Permission granted
+
+api -> dm: Request dataset update
+dm -> es: Disable explore for specified dataset
+es --> dm: Explore disabled
+dm --> api: Update confirmation
+api --> web: Display success message
+web --> user: Explore disabled successfully
+
+@enduml

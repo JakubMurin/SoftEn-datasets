@@ -1,0 +1,39 @@
+@startuml
+actor Manager
+entity "Employee Management System" as EMS
+database "Database" as DB
+
+Manager -> EMS : Log in
+activate EMS
+EMS -> DB : Validate Manager Credentials
+activate DB
+DB --> EMS : Credentials Valid
+deactivate DB
+EMS --> Manager : Log in Success
+deactivate EMS
+
+Manager -> EMS : Request Employee Check-In Records
+activate EMS
+EMS -> DB : Query Check-In Records
+activate DB
+DB --> EMS : Return Check-In Records
+deactivate DB
+EMS --> Manager : Display Check-In Records
+deactivate EMS
+
+Manager -> EMS : Analyze Working Hours
+activate EMS
+EMS -> EMS : Calculate Total Working Hours
+EMS --> Manager : Display Working Hours Analysis
+deactivate EMS
+
+Manager -> EMS : Generate Efficiency Report
+activate EMS
+EMS -> EMS : Compile Efficiency Metrics
+EMS -> DB : Save Report
+activate DB
+DB --> EMS : Report Saved
+deactivate DB
+EMS --> Manager : Display Report
+deactivate EMS
+@enduml

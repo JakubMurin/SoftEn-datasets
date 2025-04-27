@@ -1,0 +1,27 @@
+@startuml
+actor "Team Member" as TM
+actor "Project Manager" as PM
+actor "User Research Coordinator" as URC
+database "Calendar System" as CS
+
+== Time Off Request ==
+TM -> PM : Request time off
+PM -> CS : Check team schedule
+alt Time off overlaps with user research
+    CS --> PM : Notify about overlap
+    PM -> URC : Consult on reshuffling user research tasks
+    URC -> PM : Propose new schedule
+    PM -> CS : Update team schedule
+    CS --> PM : Confirmation
+    PM -> TM : Inform about the overlap and new schedule
+else Time off does not overlap
+    CS --> PM : No overlap
+    PM -> TM : Approve time off
+end
+
+== Adjusted User Research Planning ==
+URC -> PM : Adjusted user research plan
+PM -> CS : Update user research schedule
+CS --> URC : Confirmation
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+actor User as Actor
+participant LoginUI as UI <<presentation>>
+participant AuthenticationService as AuthServ <<application>>
+
+Actor --> UI: login
+activate UI
+
+UI -> AuthServ: create(role,\nmaxAttempts)
+UI -> UI: show()
+
+loop attempts <= maxAttempts \n|| Authentication Succeeded
+    UI --> Actor: Ask user information
+    Actor --> UI: E-Mail, Password
+    UI -> AuthServ: autenticate(E-Mail, \nPassword, onlyWithThis)
+    activate AuthServ
+    AuthServ -> UI: UserSession
+    note right: implemented in: \neapli.base.framework
+    deactivate AuthServ
+end
+
+UI -> Actor: Operation Success
+deactivate UI
+@enduml

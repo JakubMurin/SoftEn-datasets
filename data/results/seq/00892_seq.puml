@@ -1,0 +1,30 @@
+@startuml
+
+actor DigitalRecordsArchivist as archivist
+boundary AuthenticationSystem as auth
+control "EDRMS Core" as core
+database "User Management DB" as userDB
+boundary "Access Control Module" as accessControl
+
+== Grant Embargo Privileges ==
+
+archivist -> auth : Authenticate
+auth -> archivist : Authentication Success
+
+archivist -> core : Access User Management
+
+core -> userDB : Retrieve User List
+userDB -> core : Users Data
+
+core -> archivist : Display Users
+
+archivist -> core : Select Repository Administrator(s)
+core -> accessControl : Request to Update Privileges
+
+accessControl -> userDB : Grant Embargo Privileges
+userDB -> accessControl : Privileges Updated
+
+accessControl -> core : Update Confirmation
+core -> archivist : Display Confirmation
+
+@enduml

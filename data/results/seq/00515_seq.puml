@@ -1,0 +1,20 @@
+@startuml
+actor "Warehouse Employee" as WE
+participant ":System" as System
+
+autonumber
+activate WE
+WE -> System: asks to configure the AGVs available on the warehouse
+activate System
+System --> WE: request data(agvDock)
+deactivate System
+WE -> System: types requested data
+activate System
+System --> WE: request data(shortDescription,model,maximumWeight,maximumVolume,baseLocation,status,currentTask)
+deactivate System
+WE -> System: types requested data
+activate System
+System --> WE: informs operations success
+deactivate System
+deactivate WE
+@enduml

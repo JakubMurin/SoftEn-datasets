@@ -1,0 +1,31 @@
+@startuml
+actor Archivist as archivist
+participant "Digital Archive\nManagement System" as DAMS
+participant "Database" as DB
+participant "File Storage" as FS
+participant "User Interface" as UI
+
+== Uploading Loan Documentation ==
+archivist -> DAMS: Selects 'Upload Documentation'
+DAMS -> UI: Display Upload Form
+archivist -> UI: Fills form with metadata, selects files (photos, forms, correspondence)
+UI -> DAMS: Submit metadata and files
+DAMS -> DB: Save metadata
+activate DB
+DB --> DAMS: Metadata saved
+deactivate DB
+DAMS -> FS: Store files
+activate FS
+FS --> DAMS: Files stored successfully
+deactivate FS
+DAMS --> archivist: Confirm upload success
+
+== Retrieving Loan Documentation ==
+archivist -> DAMS: Search for loan documentation
+DAMS -> DB: Query metadata based on search
+DB -> DAMS: Return search results
+DAMS -> FS: Retrieve associated files
+FS -> DAMS: Return files
+DAMS -> UI: Display search results & files
+UI -> archivist: Show documentation and files
+@enduml

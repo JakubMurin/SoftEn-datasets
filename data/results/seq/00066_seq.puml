@@ -1,0 +1,299 @@
+@startuml
+!pragma layout smetana
+'skinparam defaultFontSize 29
+
+'https://plantuml.com/sequence-diagram
+box "(community)" #LightYellow
+actor Alice_novice as alice
+actor Bob as bob
+end box
+
+box "(offchain)" #Coral
+actor Forum as forum
+end box
+
+box "(community)" #LightGray
+actor Communities_novice as community
+actor Guarantors_expert as guarantor
+end box
+
+box "(multisig)" #Peru
+actor BitDAOAdmins_expert as bitdaoadmin
+end box
+
+box "(token)" #OliveDrab
+actor TokenHolders_novice as tokenholders
+endbox
+
+box "(offchain)" #Coral
+database Snapshot as snapshot
+end box
+
+box "(onchain)" #Lavender
+collections Executor as executor
+collections Token as token
+collections BondContract as bondcontract
+collections RewardsContract as rewardscontract
+collections InsuranceContract as insurancecontract
+collections GrantsTreasury as grantstreasury
+collections BitDAOTreasury as bitdaotreasury
+collections BitDAOGovernanceV2 as bitdaogovernance
+end box
+
+autonumber "Current:[00]"
+
+== Current ==
+
+alice -> grantstreasury: create grants treasury
+alice <-- grantstreasury: treasury address
+
+alice -> forum: create forum proposal
+activate forum
+community -> forum: get proposals
+community <-- forum: list of proposals
+community -> forum: put positive/negative feedback
+alice <-- forum: get positive/negative feedback
+deactivate forum
+
+community -> community: delegate votes
+
+alice -> snapshot: submit proposal
+activate snapshot
+tokenholders -> snapshot: get proposals
+tokenholders <-- snapshot: list of proposals
+tokenholders -> snapshot: vote on open proposals
+tokenholders <-- snapshot: vote confirmation
+
+'alice -> snapshot: get Alice's proposal result
+'alice <-- snapshot: Alice's proposal pass/fail result
+
+bitdaoadmin -> snapshot: get Alice's proposal result
+bitdaoadmin <-- snapshot: Alice's proposal pass/fail result
+deactivate snapshot
+
+bitdaoadmin -> bitdaotreasury: transfer funds to grants treasury
+bitdaotreasury -> grantstreasury: funds transfer
+
+alt#Gold #DarkSeaGreen trace
+  alice <-- grantstreasury: transfer confirmation
+end
+
+alice --> alice: execute proposal
+
+newpage
+
+autonumber "Bond:[00]"
+
+== Bond ==
+
+
+alice -> grantstreasury: create grants treasury
+alice <-- grantstreasury: treasury address
+
+' bond
+
+alice -> forum: create forum proposal
+activate forum
+guarantor -> forum: get proposals
+guarantor <-- forum: list of proposals
+guarantor -> forum: put positive/negative feedback
+
+alice -> bondcontract: create bond
+guarantor -> bondcontract: contribute BIT tokens
+guarantor <-- bondcontract: ERC20 Fungible bond tokens (1:1 swap)
+
+' treasury
+
+community -> forum: get proposals
+community <-- forum: list of proposals
+community -> forum: put positive/negative feedback
+alice <-- forum: get positive/negative feedback
+deactivate forum
+
+community --> community: delegate votes
+
+alice -> snapshot: submit proposal
+activate snapshot
+tokenholders -> snapshot: get proposals
+tokenholders <-- snapshot: list of proposals
+tokenholders -> snapshot: vote on open proposals
+tokenholders <-- snapshot: vote confirmation
+deactivate snapshot
+
+bitdaoadmin -> bitdaotreasury: allow funds transfer
+bitdaotreasury -> grantstreasury: transfer funds
+
+' execution
+
+alice --> alice: execute proposal
+
+
+' tranche request
+
+'alice -> forum: create tranche release request forum proposal
+'activate forum
+'guarantor -> forum: get proposals
+'guarantor <-- forum: list of proposals
+'guarantor -> forum: put positive/negative feedback
+'
+'community -> forum: get proposals
+'community <-- forum: list of proposals
+'community -> forum: put positive/negative feedback
+'
+'alice <-- forum: get positive/negative feedback
+'deactivate forum
+'
+'community --> community: delegate votes
+
+' bond release
+
+alice -> forum: create bond release request forum proposal
+activate forum
+
+guarantor -> forum: get proposals
+guarantor <-- forum: list of proposals
+guarantor -> forum: put positive/negative feedback
+
+community -> forum: get proposals
+community <-- forum: list of proposals
+community -> forum: put positive/negative feedback
+
+alice <-- forum: get positive/negative feedback
+deactivate forum
+
+community --> community: delegate votes
+
+alice -> snapshot: submit bond release request proposal
+activate snapshot
+guarantor -> snapshot: get proposals
+guarantor <-- snapshot: list of proposals
+guarantor -> snapshot: vote to release or proportional slash
+
+tokenholders -> snapshot: get proposals
+tokenholders <-- snapshot: list of proposals
+tokenholders -> snapshot: vote on open proposals
+tokenholders <-- snapshot: vote confirmation
+deactivate snapshot
+
+bitdaoadmin -> snapshot: get vote result
+bitdaoadmin <-- snapshot: pass/fail proposal result
+
+alt#Gold #LightBlue pass
+    bitdaoadmin -> bondcontract: release bond
+    bitdaoadmin <-- bondcontract: release confirmation
+    guarantor -> bondcontract: submit and redeem bond tokens
+    guarantor <-- bondcontract: transfer BIT tokens
+else #Pink fail
+    bitdaoadmin -> bondcontract: slash bond
+    bondcontract -> bitdaotreasury: transfer any slashed BIT tokens
+    guarantor -> bondcontract: submit and redeem bond tokens (relative to non-slashed portion)
+    guarantor <-- bondcontract: transfer BIT tokens
+end
+
+alt#Gold #DarkSeaGreen trace
+  bitdaoadmin <-- bondcontract: TxHash
+end
+
+newpage
+
+autonumber "Roles:[00]"
+
+== Roles ==
+
+alice -> forum: submit create role proposal
+community -> forum: list role proposals
+community <-- forum: role proposals
+community -> forum: positive/negative feedback
+alice <-- forum: get positive/negative feedback
+
+community -> community: delegate votes
+
+alice -> snapshot: create admin role
+
+bitdaoadmin -> snapshot: list role proposals
+bitdaoadmin <-- snapshot: role proposals
+bitdaoadmin -> snapshot: get results
+bitdaoadmin <-- snapshot: list of results
+
+bitdaoadmin -> bitdaogovernance: create role
+
+alt#Gold #DarkSeaGreen trace
+  bitdaoadmin <-- bitdaogovernance: TxHash
+end
+
+newpage
+
+autonumber "Insurance:[00]"
+
+== Insurance ==
+
+alice -> insurancecontract: create insurance ticket
+
+
+alice -> insurancecontract: pay for insurance daily / monthly
+
+
+alice -> insurancecontract: compensate
+
+community -> community: delegate votes
+
+alice -> snapshot: submit proposal
+guarantor -> snapshot: get proposals
+guarantor <-- snapshot: list of proposals
+guarantor -> snapshot: vote on proposal
+guarantor <-- snapshot: vote confirmation
+
+bitdaoadmin -> snapshot: get vote result
+bitdaoadmin <-- snapshot: pass/fail vote result
+
+bitdaoadmin -> bitdaotreasury: allow funds transfer
+bitdaotreasury -> insurancecontract: transfer funds
+
+alice <-- insurancecontract: execute proposal
+
+
+bitdaoadmin -> insurancecontract: if (high debt) terminate alice insurance
+
+community -> community: delegate votes
+
+bitdaoadmin -> snapshot: submit proposal
+guarantor -> snapshot: get all proposals
+guarantor <-- snapshot: list of proposals
+guarantor -> snapshot: vote on proposal
+
+bitdaoadmin -> snapshot: get vote result
+bitdaoadmin <-- snapshot: pass/fail vote result
+
+bitdaoadmin -> insurancecontract: terminate insurance
+bitdaoadmin <-- insurancecontract: execute proposal
+
+newpage
+
+autonumber "Rewards:[00]"
+
+== Rewards ==
+
+alice -> forum: create forum proposal
+alice <- guarantor: positive/negative feedback
+alice -> rewardscontract: create rewards program
+
+community -> community: delegate votes
+
+alice -> snapshot: submit proposal
+
+bitdaoadmin -> bitdaotreasury: allow funds
+bitdaotreasury -> rewardscontract: transfer funds for rewards
+
+alice <-- rewardscontract: execute proposal
+
+
+bob -> forum: create forum proposal
+bob <- guarantor: positive/negative feedback
+
+bob -> snapshot: submit release request
+community -> community: delegate votes
+community -> snapshot: vote
+community -> rewardscontract: claim reward
+
+
+@enduml

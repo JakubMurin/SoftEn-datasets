@@ -1,0 +1,38 @@
+@startuml
+
+actor "Repository Manager" as RM
+participant "DIMS Interface" as DI
+participant "Component Management\nSystem" as CMS
+database "DIMS Database" as DB
+
+== Indicate Component Name ==
+RM -> DI : Access component update form
+activate DI
+
+DI -> CMS : Request current component details
+activate CMS
+
+CMS -> DB : Query current component information
+activate DB
+DB --> CMS : Return component information
+deactivate DB
+
+CMS --> DI : Display current component information
+deactivate CMS
+
+RM -> DI : Input new component name
+DI -> CMS : Validate new name\nand prepare update
+activate CMS
+
+CMS -> DB : Update component name
+activate DB
+DB --> CMS : Confirm name update
+deactivate DB
+
+CMS --> DI : Confirm update to RM
+deactivate CMS
+
+DI --> RM : Display update confirmation
+deactivate DI
+
+@enduml

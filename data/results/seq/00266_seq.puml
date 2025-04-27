@@ -1,0 +1,127 @@
+/' 
+# TI-Messenger 1.1
+# TI-Messenger-Dienst
+# UC - 10060
+# Sequence Diagram
+# Name: Bereitstellung eines Messenger-Service für eine Organisation
+'/
+
+@startuml
+skinparam sequenceMessageAlign direction
+skinparam WrapWidth 300
+skinparam minClassWidth 150
+skinparam BoxPadding 1
+skinparam sequenceReferenceHeaderBackgroundColor palegreen
+scale max 2048 width
+
+skinparam sequence {
+ArrowColor black
+ArrowFontSize 17
+ActorBorderColor black
+LifeLineBorderColor black
+LifeLineBackgroundColor Gainsboro
+
+ParticipantBorderColor Motivation
+ParticipantBackgroundColor Motivation
+ParticipantFontSize 20
+ParticipantFontColor black
+ParticipantBorderColor Black
+ParticipantBackgroundColor MOTIVATION
+
+ActorBackgroundColor Gainsboro
+ActorFontColor black
+ActorFontSize 20
+}
+
+autonumber
+
+    actor U as "Akteur in der Rolle\nOrg-Admin"
+    box <size:18>Endgerät</size> #WhiteSmoke
+      participant C as "Frontend des\nRegistrierungs-Dienstes"
+    end box
+    participant R as "Registrierungs-Dienst"
+    box <size:18>VZD-FHIR-Directory</size> #WhiteSmoke
+    participant Auth as "OAuth-Service"
+    participant AuthService as "Auth-Service"
+    participant FP as "FHIR-Proxy"
+    participant VZD as "FHIR-Directory"
+    end box
+
+|||
+ref over U, R: <size:17>**AF: 10103** - Authentisieren einer Organisation am TI-Messenger-Dienst</size>\n 
+|||
+
+loop <size:16>1..n</size>
+  |||
+  U->C: Mit einem Admin-Account \nam Registrierungs-Dienst \nanmelden
+    Activate C
+  C->R: POST /login (Client-Credential)
+  note right: <size:16>Schnittstelle wird nicht \n<size:16>durch die gematik spezifiziert</size>
+    Activate R
+  R->R: prüfe \nClient-Credential
+  R-->C: status
+    Deactivate R
+  C-->U: Erfolgreich angemeldet
+  |||
+  U->C: Messenger Service erstellen
+  C->R: POST /create (Matrix-Domain)
+    Activate R
+    
+    |||
+    group <size:16>Messaging-Service erstellen</size>
+    |||
+      R->R: Prüfung auf zulässigen Domainnamen
+      |||
+      R->R: Starte neuen Messenger-Service \nfür die Organisation mit Matrix-Domain
+      |||
+        create "Messenger-Service"
+          R-->"Messenger-Service" : Messenger-Service erstellen 
+        Activate "Messenger-Service"
+      |||
+      "Messenger-Service"->"Messenger-Service": initial \neinrichten
+      "Messenger-Service"-->R: status
+      |||
+        Deactivate "Messenger-Service"
+    |||
+    end
+    
+    |||
+    
+    group <size:16>Messenger-Service in die Föderation aufnehmen</size>
+    |||
+      R->Auth: POST /auth/realms/TI-Provider/protocol/openid-connect/token \n(client_id, client_secret) 
+        Activate Auth
+      Auth->Auth: prüfe client_id und \nclient_secret
+      Auth-->R: ti-provider-accesstoken
+        Deactivate Auth
+      |||
+      R->AuthService: GET /ti-provider-authenticate(ti-provider-accesstoken)
+        Activate AuthService
+      AuthService->AuthService: prüfe ti-provider-accesstoken
+      AuthService-->R: provider-accesstoken
+        Deactivate AuthService
+      |||
+      R->FP: POST /tim-provider-services/federation \n(provider-accesstoken, Matrix-Domain, TelematikID, isEnsurance)
+        Activate FP
+      FP->FP: prüfe \nprovider-accesstoken
+      FP->VZD: HTTPS Forward
+        Activate VZD
+      VZD-->VZD: Föderationsliste\naktualisieren
+      VZD-->FP: status
+        Deactivate VZD
+      FP-->R: HTTPS Forward
+        Deactivate FP
+
+    |||
+    end
+
+  |||
+  R->C: status
+    Deactivate R
+  C->U: Messenger Service \nerfolgreich erstellt
+    Deactivate C
+  |||
+end
+|||
+@enduml
+

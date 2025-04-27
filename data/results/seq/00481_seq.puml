@@ -1,0 +1,54 @@
+@startuml
+actor PlanningStaff as "Planning Staff"
+participant UserAuthentication as "User Auth"
+participant Dashboard as "Staff Dashboard"
+participant ApplicationDB as "Application Database"
+participant ComplianceTool as "Compliance Checking Tool"
+participant ComprehensivePlanDB as "Comprehensive Plan Database"
+participant ReviewNotes as "Review Notes Interface"
+participant NotificationService as "Notification Service"
+
+== Authenticate ==
+PlanningStaff -> UserAuthentication: LogIn()
+activate UserAuthentication
+UserAuthentication --> PlanningStaff: AuthenticationSuccess()
+deactivate UserAuthentication
+
+== Navigate to Dashboard ==
+PlanningStaff -> Dashboard: AccessDashboard()
+activate Dashboard
+Dashboard --> ApplicationDB: FetchApplications()
+activate ApplicationDB
+ApplicationDB --> Dashboard: ListApplications()
+deactivate ApplicationDB
+Dashboard --> PlanningStaff: ShowApplications()
+deactivate Dashboard
+
+== Select Application to Review ==
+PlanningStaff -> Dashboard: SelectApplication(ID)
+activate Dashboard
+Dashboard --> ApplicationDB: GetApplicationDetails(ID)
+activate ApplicationDB
+ApplicationDB --> Dashboard: ApplicationDetails()
+deactivate ApplicationDB
+Dashboard --> ComplianceTool: LoadApplicationDetails()
+deactivate Dashboard
+ComplianceTool --> ComprehensivePlanDB: CheckConsistency(ApplicationDetails)
+activate ComprehensivePlanDB
+ComprehensivePlanDB --> ComplianceTool: ConsistencyResult()
+deactivate ComprehensivePlanDB
+
+== Review and Document ==
+ComplianceTool --> PlanningStaff: ShowConsistencyResult()
+activate ReviewNotes
+PlanningStaff -> ReviewNotes: DocumentReview(ApplicationID, ConsistencyResult)
+ReviewNotes --> ApplicationDB: UpdateReviewStatus(ApplicationID, ReviewStatus)
+deactivate ReviewicingTool
+ApplicationDB --> ReviewNotes: StatusUpdated()
+ReviewNotes --> NotificationService: SendNotification(ApplicantID, ReviewUpdate)
+activate NotificationService
+NotificationService --> PlanningStaff: NotificationSent()
+deactivate NotificationService
+deactivate ReviewNotes
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+
+actor User
+
+User -> Main: displayItems()
+activate Main
+
+Main -> ItemController: getItems()
+activate ItemController
+
+ItemController -> ItemModel: getItems()
+activate ItemModel
+
+ItemModel -> ItemModel: loadItemsFromFile()
+activate ItemModel
+ItemModel --> ItemModel: items
+deactivate ItemModel
+
+ItemController <-- ItemModel: List<Item>
+deactivate ItemModel
+
+Main <-- ItemController: String (formatted items)
+deactivate ItemController
+
+Main -> Main: display items in TextArea
+deactivate Main
+
+@enduml

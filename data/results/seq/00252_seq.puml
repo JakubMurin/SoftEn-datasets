@@ -1,0 +1,33 @@
+@startuml
+actor "Repository Manager" as RM
+participant "Registration Interface" as RI
+participant "Central Repository Database" as CRD
+participant "Identity Management Module" as IMM
+participant "DAMS Core System" as DAMS
+
+RM -> RI : Access Registration Interface
+activate RI
+RI -> CRD : Request existing identities
+activate CRD
+CRD -> RI : Return list of identities
+deactivate CRD
+RI -> RM : Display identities
+RM -> RI : Provides new identity details
+RI -> IMM : Validate & Prepare new identity record
+activate IMM
+IMM -> CRD : Check for duplicate
+CRD -> IMM : Duplicate check result
+deactivate CRD
+IMM -> DAMS : Register new identity if unique
+activate DAMS
+DAMS -> CRD : Store new identity record
+activate CRD
+CRD -> DAMS : Confirmation & ID for new record
+deactivate CRD
+DAMS -> IMM : New identity registration confirmed
+deactivate DAMS
+IMM -> RI : Registration success message
+deactivate IMM
+RI -> RM : Display success & new identity ID
+deactivate RI
+@enduml

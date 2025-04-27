@@ -1,0 +1,43 @@
+@startuml
+
+actor DatasetDeveloper as "Dataset Developer"
+participant DatasetManager as "Dataset Management System"
+participant Database as "Database"
+participant App as "Application"
+
+== Dataset Type Deployment ==
+DatasetDeveloper -> DatasetManager : Deploy dataset type
+activate DatasetManager
+DatasetManager -> Database : Register dataset type
+activate Database
+Database --> DatasetManager : Confirmation
+deactivate Database
+DatasetManager --> DatasetDeveloper : Deployment Success
+deactivate DatasetManager
+
+== App Creating Dataset Instance ==
+App -> DatasetManager : Request to create dataset instance
+activate DatasetManager
+DatasetManager -> Database : Check dataset type exists
+activate Database
+Database --> DatasetManager : Dataset type confirmed
+deactivate Database
+DatasetManager -> Database : Create dataset instance
+activate Database
+Database --> DatasetManager : Instance Creation Confirmation
+deactivate Database
+DatasetManager --> App : Dataset instance ready
+deactivate DatasetManager
+
+== App Using Dataset Instance ==
+App -> DatasetManager : Request access to dataset instance
+activate DatasetGlobals
+DatasetManager -> Database : Validate access rights
+activate Database
+Database --> DatasetManager : Access Granted
+deactivate Database
+DatasetManager --> App : Provide dataset instance access
+deactivate DatasetManager
+
+
+@enduml

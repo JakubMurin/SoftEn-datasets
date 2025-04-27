@@ -1,0 +1,19 @@
+@startuml
+actor Archivist as A
+participant "User Interface" as UI
+participant "Authorization System" as Auth
+participant "Object Management System" as OMS
+participant "Derivative Creation System" as DCS
+participant "Metadata System" as MS
+participant "Notification System" as NS
+
+A -> UI: Select digital objects for derivative creation
+UI -> Auth: Check authorization
+Auth --> A: Authorization confirmed
+UI -> OMS: Process selected digital objects
+OMS -> DCS: Create access derivatives
+DCS -> MS: Update metadata with derivative details
+MS -> DCS: Metadata updated
+DCS -> NS: Send success notification
+NS --> A: Notify archivist of successful creation
+@enduml

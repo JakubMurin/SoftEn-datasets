@@ -1,0 +1,29 @@
+@startuml
+actor Designer as D
+participant "Project Team" as PT
+participant "User Research" as UR
+participant "Design Guidelines" as DG
+participant "CMS" as CMS
+
+== Request for Social Media Wireframe ==
+D -> PT: Request design requirements
+PT -> UR: Query user needs & preferences
+UR --> PT: Provide user insights
+PT -> DG: Request brand guidelines
+DG --> D: Provide brand guidelines
+
+== Design Wireframe Creation ==
+D -> D: Analyze user insights & brand guidelines
+D -> D: Create wireframe draft
+D -> PT: Submit wireframe for feedback
+
+== Feedback & Revision ==
+PT -> D: Provide feedback
+D -> D: Revise wireframe based on feedback
+D -> PT: Resubmit revised wireframe
+PT --> D: Approve wireframe
+
+== Implement Design ==
+D -> CMS: Start design implementation based on approved wireframe
+
+@enduml

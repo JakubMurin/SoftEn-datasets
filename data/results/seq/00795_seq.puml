@@ -1,0 +1,19 @@
+@startuml
+actor Developer as "Dataset Developer"
+participant "Dataset Management\nSystem" as DMS
+database "Dataset Repository" as Repo
+
+== Attempt to Delete Dataset Type Version ==
+
+Developer -> DMS : Request to delete dataset type version
+DMS -> Repo : Check for dataset instances of that version
+alt Dataset Instances Found
+    Repo --> DMS : Instances exist, cannot delete
+    DMS --> Developer : Deletion failed; Instances exist
+else No Instances Found
+    Repo --> DMS : No instances found
+    DMS -> Repo : Delete dataset type version
+    Repo --> DMS : Deletion successful
+    DMS --> Developer : Deletion successful; Version deleted
+end
+@enduml

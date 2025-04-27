@@ -1,0 +1,37 @@
+@startuml
+actor User
+
+participant "ProducerController" as PC
+participant "ProducerService" as PS
+participant "MovieService" as MS
+participant "ProducerMapper" as PM
+participant "ProducerResponseBuilder" as PRB
+participant "MovieRepository" as MR
+
+User -> PC: GET /v1/api/producers/min-max-winners
+PC -> PS: findMinAndMaxWinners()
+PS -> MS: findWinners()
+MS -> MR: findByWinnerTrue()
+MR --> MS: List<Movie>
+MS --> PS: Set<ProducerWinnerDto>
+
+PS -> PM: mapToProducerYears(Set)
+PM --> PS: Map<String, List<Integer>>
+
+PS -> PRB: buildResponse(Map)
+PRB --> PS: List<ProducerResponseDto>
+
+PS -> PRB: buildWinnerResponse(List)
+PRB --> PS: ProducerWinnerResponse
+
+PS --> PC: ProducerWinnerResponse
+PC --> User: 200 OK, ProducerWinnerResponse
+
+
+actor SpringBoot
+
+SpringBoot -> MS: ApplicationReadyEvent
+MS -> CsvReader: importCsv()
+CsvReader --> MS: List<MovieDto>
+MS -> MR: saveAll(List<Movie>)
+@enduml

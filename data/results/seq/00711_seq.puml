@@ -1,0 +1,23 @@
+﻿@startuml
+
+actor "Gestor de Logística" as gl
+
+participant "<<System (C4)>>\nEletricGo" as c4
+
+activate gl
+gl -> c4: Inicia o processo de registo de um percurso
+activate c4
+c4 --> gl: Solicita os dados necessários para o registo
+deactivate c4
+gl -> c4 : Introduz os dados solicitados
+activate c4
+c4 --> gl : Solicita a confirmação dos dados de registo
+deactivate c4
+gl -> c4 : Confirma os dados do registo
+activate c4
+c4 --> gl : Informa o sucesso da operação
+deactivate c4
+deactivate gl
+
+
+@enduml

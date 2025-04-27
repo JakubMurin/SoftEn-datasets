@@ -1,0 +1,27 @@
+@startuml
+actor "DAMS Manager" as DAMSManager
+participant "DIMS Interface" as Interface
+participant "Policy Management Module" as PolicyModule
+participant "Object/Component Database" as Database
+participant "Event and Integrity Monitoring" as EventMonitor
+participant "Notification System" as Notification
+
+== Check Policy Modification for Object or Component ==
+
+DAMSManager -> Interface : Request policy modification status
+Interface -> PolicyModule : Query modification status for object/component
+PolicyModule -> Database : Retrieve current policy data
+Database -> PolicyModule : Return policy data
+PolicyModule -> EventMonitor : Request last modification details
+EventMonitor -> PolicyModule : Return modification events (manual/automatic)
+PolicyModule -> Interface : Provide modification status and details
+Interface -> DAMSManager : Display policy modification status and details
+
+== Notification on Policy Change ==
+
+EventMonitor -> Database : Monitor policy changes
+Database -> EventMonitor : Notify policy update event
+EventMonitor -> Notification : Trigger policy change notification
+Notification -> DAMSManager : Send policy change alert
+
+@enduml

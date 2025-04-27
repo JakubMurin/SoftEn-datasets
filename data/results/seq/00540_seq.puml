@@ -1,0 +1,41 @@
+@startuml
+actor       User     as U
+participant Server   as S
+database    Database as DB
+
+note over U, DB: User must be logged in
+
+
+U -> S : Request profile page
+S --> U : Render profile page
+
+U -> S: Submit password change form
+activate S
+
+S -> S : Check inputs length and whether\npassword and retyped password match
+
+break Validation failed
+    S --> U : 422, rendered login page\nwith error message
+end
+
+S -> DB : Fetch the user document
+activate DB
+
+DB --> S : user document
+deactivate DB
+S -> S : Verify current password hash
+
+break Hashes do not match
+    S --> U : rendered profile page\nwith error message
+end
+
+S -> S : Calculate new password hash
+
+S -> DB : Update the "hash" field in the user document
+activate DB
+DB --> S : UpdateResult
+deactivate DB
+
+S --> U : Redirect to profile page\nwith a success message
+deactivate S
+@enduml

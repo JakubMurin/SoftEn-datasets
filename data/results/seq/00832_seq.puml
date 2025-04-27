@@ -1,0 +1,20 @@
+@startuml
+
+actor User
+
+participant TodoForm
+participant TodoWrapper
+participant Backend
+
+User -> TodoForm : Entra a descrição da tarefa
+User -> TodoForm : Clica em "Adicionar Tarefa"
+
+TodoForm -> TodoWrapper : handleSubmit()
+TodoWrapper -> Backend : addTodo()
+Backend --> TodoWrapper : Retorna confirmação
+
+TodoWrapper -> TodoForm : Atualiza a lista de tarefas
+TodoWrapper -> User : Exibe nova tarefa na lista
+
+@enduml
+

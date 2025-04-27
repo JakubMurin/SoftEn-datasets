@@ -1,0 +1,17 @@
+@startuml
+actor Manager
+participant "UI Dashboard" as Dashboard
+participant "Backend API" as Backend
+participant "Database" as DB
+
+Manager -> Dashboard: Request to view product prices
+Dashboard -> Backend: GET /products/prices
+activate Backend
+Backend -> DB: Fetch prices of products
+activate DB
+DB --> Backend: Return prices
+deactivate DB
+Backend --> Dashboard: Product prices data
+deactivate Backend
+Dashboard --> Manager: Display product prices
+@enduml

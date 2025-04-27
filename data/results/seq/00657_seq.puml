@@ -1,0 +1,23 @@
+@startuml
+actor Publisher
+participant "UI Interface" as UI
+participant "Publisher Account" as Account
+participant "Data Package Service" as DataService
+participant "Validation Service" as ValidationService
+participant "Preview Service" as PreviewService
+database "Data Storage" as Storage
+
+== Preview Data Package Process ==
+Publisher -> UI : Request Preview of Data Package
+UI -> Account : Verify Publisher Identity
+Account -> UI : Identity Confirmed
+UI -> DataService : Prepare Data Package for Preview
+DataService -> ValidationService : Validate Data Package
+ValidationSection -> DataService : Validation Results
+note right of DataService : Package is Validated\nand Ready for Preview
+DataService -> PreviewService : Send Validated Data Package for Preview
+PreviewService -> DataService : Generate Preview Link
+DataService --> UI : Preview Link
+UI --> Publisher : Display Preview Link
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+actor User
+
+participant "Token Entry Component" as TEC
+participant "Token Service" as TS
+participant "GitHub Service" as GS
+participant "Route Guard" as RG
+participant "Repository List Component" as RLC
+participant "Repository Detail Component" as RDC
+participant "Pagination Component" as PC
+participant "Header" as H
+
+User -> TEC: Enter API token
+TEC -> TS: Validate token
+TS -> GS: Send test query
+GS --> TS: Return validation result
+TS --> TEC: Return token validation result
+
+alt Token is valid
+    TEC -> RG: Navigate to /repositories
+    RG -> RLC: Allow navigation
+    RLC -> GS: Fetch public repositories (sorted by stars)
+    GS --> RLC: Return repository list
+    RLC -> PC: Render pagination for repositories
+    User -> RLC: Select a repository
+    RLC -> RDC: Navigate to repository detail view
+    RDC -> GS: Fetch repository details & issues (sorted by creation date)
+    GS --> RDC: Return repository details & issues
+    RDC -> PC: Render pagination for issues
+else Token is invalid
+    TEC -> User: Display error message
+end
+
+User -> H: Click "Change API Token"
+H -> TS: Clear token
+H -> TEC: Navigate back to token entry page
+
+@enduml
+

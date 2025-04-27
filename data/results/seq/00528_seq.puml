@@ -1,0 +1,25 @@
+@startuml
+actor Chef
+participant "Restaurant Management\nand Operations System" as System
+database InventoryDB
+participant Supplier
+
+Chef -> System : access inventory management
+System -> InventoryDB : check current backup food stock
+InventoryDB -> System : return current stock levels
+System -> Chef : show current backup food list with stock levels
+Chef -> System : identify items for renewal
+System -> InventoryDB : update backup food list
+InventoryDB -> System : confirm updated list
+System -> Chef : display confirmation of renewed list
+
+alt if items need restocking
+    Chef -> System : initiate restock request for items
+    System -> Supplier : place order for restock
+    Supplier -> System : confirm restock order
+    System -> InventoryDB : update pending deliveries
+    InventoryDB -> System : confirm update
+    System -> Chef : display restock order confirmation
+end
+
+@enduml

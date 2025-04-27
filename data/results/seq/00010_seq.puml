@@ -1,28 +1,24 @@
-/' -*- mode: plantuml; -*- '/
-
 @startuml
 
-participant Equivocator
-participant Node as "Honest Node"
-database State as "Protocol State"
+actor "User" as user
+participant "gateway" as gw
+boundary "Keycloak" as kk
+participant "subscription" as sub
+database "Mongo" as mongo
 
-Equivocator -> Node: Vote Spam #1
-Node -> State: Vote Spam #1 (Stored)
-
-Equivocator -> Node: Vote Spam #2
-Node -> State: Vote Spam #2 (Stored)
-
-Equivocator -> Node: Vote Spam #3
-Node -> State: Vote Spam #3 (Stored)
-
-... ...
-
-Equivocator -> Node: Vote Spam #10000000000
-Node -> State: Vote Spam #10000000000 (Stored)
+user -> gw: GET /api/v1/subscriptions
+gw -> kk: verify jwt
+kk --> gw
+alt #lightgreen jwt is valid
+    gw -> sub: GET /api/v1/subscriptions
+    sub -> mongo: get user subscription config by user id
+    mongo --> sub: subscription config
+    sub --> gw: subscription config
+    gw --> user: subscription config
+else #coral jwt is absent
+    gw --> user: HttpStatus 401
+else #coral jwt is not valid
+    gw --> user: HttpStatus 403
+end
 
 @enduml
-
-/' Local Variables: '/
-/' plantuml-output-type: png '/
-/' End: '/
-

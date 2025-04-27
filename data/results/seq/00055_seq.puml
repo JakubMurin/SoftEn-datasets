@@ -1,0 +1,24 @@
+@startuml
+actor       User       as user
+participant ChapterContentView as view
+
+participant TransactionsController as controller
+
+participant MsgService as msgService
+database    Database as db
+
+user -> view ++: 1. Click chapter title
+user -> view : 2. Click purchase one
+view -> controller ++ : 3. Request API
+controller -> controller ++ : 4. Process AddTransactionBuyChapter()
+controller -> db ++ : 5.Query data
+db --> controller -- : 6. Return
+controller -> msgService ++-- : 7. MsgActionReturn()
+deactivate controller
+msgService --> view -- : 8. Response Payload Format
+view --> user -- : 9. Display Chapter Content Page
+
+@enduml
+
+
+

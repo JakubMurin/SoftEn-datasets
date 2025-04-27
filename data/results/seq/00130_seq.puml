@@ -1,0 +1,70 @@
+@startuml
+actor Navegador
+boundary "oneToOne.routes" as Routes
+boundary "error.routes" as Error
+boundary "oneToOneCheck.ejs" as Ejs
+control "oneToOne.controller" as Controller
+entity "oneToOne.model" as OneToOne
+entity "question.model" as Question
+entity "measurable.model" as Measurable
+database "mysql" as MySQL
+
+autonumber
+
+activate Navegador
+Navegador -> Routes : GET /oneToOne/:sessionID
+deactivate Navegador
+
+activate Routes
+Routes -> Controller : getCheck(request, response)
+deactivate Routes
+
+activate Controller
+Controller ->> OneToOne : fetchSessionData(request.params.sessionID)
+activate OneToOne
+OneToOne ->> MySQL : execute(...)
+activate MySQL
+MySQL -->> OneToOne : rows
+deactivate MySQL
+OneToOne -->> Controller : rows
+deactivate OneToOne
+
+alt rows.length == 0
+    Controller -> Error : response.redirect("/error")
+end
+
+alt request.session.role != "Human Resources"\n&& rows[0].oneOnOneUserIDFK != request.session.userID
+    Controller -> Error : response.redirect("/error")
+end
+
+Controller ->> Question : fetchSessionData(request.params.sessionID)
+activate Question
+Question ->> MySQL : execute(...)
+activate MySQL
+MySQL -->> Question : answers
+deactivate MySQL
+Question -->> Controller : answers
+deactivate Question
+
+alt answers.length == 0
+    Controller -> Ejs : response.render("oneToOneCheck", {...})
+    activate Ejs
+    Ejs -> Navegador : HTML
+    deactivate Ejs
+end
+
+Controller ->> Measurable : fetchSessionData(request.params.sessionID)
+activate Measurable
+Measurable ->> MySQL : execute(...)
+activate MySQL
+MySQL -->> Measurable : measures
+deactivate MySQL
+Measurable -->> Controller : measures
+deactivate Measurable
+
+Controller -> Ejs : response.render("oneToOneCheck", {...})
+deactivate Controller
+activate Ejs
+Ejs -> Navegador : HTML
+deactivate Ejs
+

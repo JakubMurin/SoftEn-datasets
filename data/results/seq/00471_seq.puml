@@ -1,0 +1,26 @@
+@startuml
+actor Bruker
+participant Kitchenmanager
+participant Fridge
+participant Cookbook
+participant RecipeManager
+participant FilterCriteria
+
+Bruker -> Kitchenmanager: Velg "Foreslå oppskrift"
+Kitchenmanager -> Fridge: Hent innhold
+Fridge --> Kitchenmanager: Returner innhold
+
+Kitchenmanager -> FilterCriteria: Opprett filter basert på innhold
+Kitchenmanager -> Cookbook: Hent oppskrifter
+Cookbook -> RecipeManager: Filtrer oppskrifter mot innhold og kriterier
+RecipeManager -> Cookbook: Returner treff
+
+alt Ingen treff funnet
+    Cookbook -> Kitchenmanager: Ingen oppskrifter funnet
+    Kitchenmanager -> Bruker: Vis "Ingen treff funnet"
+else Treff funnet
+    Cookbook -> Kitchenmanager: Returner foreslåtte oppskrifter
+    Kitchenmanager -> Bruker: Vis resultater
+end
+@enduml
+

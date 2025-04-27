@@ -1,0 +1,29 @@
+
+@startuml
+actor User
+participant "GuessNumber" as Game
+participant "useState" as State
+
+User -> Game : Input number
+Game -> State : setGuess(guess)
+User -> Game : Click "Adivinar"
+Game -> State : parseInt(guess)
+Game -> State : setMessage(condition)
+alt guess < targetNumber
+    Game -> State : setMessage('Demasiado bajo')
+else guess > targetNumber
+    Game -> State : setMessage('Demasiado alto')
+else guess == targetNumber
+    Game -> State : setMessage('¡Correcto! Has adivinado el número.')
+end
+Game -> User : Display message
+
+User -> Game : Click "Reiniciar"
+Game -> State : setTargetNumber(generateRandomNumber())
+Game -> State : setGuess('')
+Game -> State : setMessage('')
+
+User -> Game : Click "Back to Home"
+Game -> User : Invoke onBackToHome()
+@enduml
+

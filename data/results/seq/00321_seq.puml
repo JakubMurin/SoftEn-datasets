@@ -1,0 +1,26 @@
+@startuml
+
+actor User
+
+User -> ConnectionView: selects port
+ConnectionView -> SonicController: property binding
+SonicController -> ConnectionModel: set_port(port: str)
+ConnectionModel --> ConnectionView: updates view
+User -> ConnectionView: presses "Connect"
+ConnectionView -> SonicController: event_generate(CONNECTION_ATTEMPT): None
+SonicController -> ConnectionModel: get_port(): str
+ConnectionModel --> SonicController: port: str
+SonicController -> CommunicationBuilder: generate_connection(endpoint: str): Communicator
+CommunicationBuilder -> Communicator: builds
+Communicator --> CommunicationBuilder
+CommunicationBuilder --> SonicController: communicator: Communicator
+SonicController -> SonicDeviceBuilder: build_amp(communicator: Communicator)
+SonicDeviceBuilder -> Communicator: get SonicDevice data
+Communicator --> SonicDeviceBuilder: SonicDevice data
+SonicDeviceBuilder --> SonicController: returns SonicDevice
+SonicController -> ConnectionModel: updates
+ConnectionModel --> MainView 
+
+@enduml
+
+

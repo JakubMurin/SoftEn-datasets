@@ -1,0 +1,24 @@
+@startuml
+actor       Customer    as 1
+boundary    ChangePasswordView    as 2
+control     System     as 3
+entity      AccountClass     as 4
+database    Database    as 5
+
+1->2 : Nhap thong tin 
+activate 1
+2->3 : Gui thong tin
+activate 2 
+3->4 : Gui thong tin
+activate 3
+4->5 : Luu tru
+activate 4
+5-->4 : return
+deactivate 4
+4-->3:return
+3-->2 : Thong bao thay doi thanh cong 
+deactivate 3
+2-->1 : return
+deactivate 2
+deactivate 1
+@enduml

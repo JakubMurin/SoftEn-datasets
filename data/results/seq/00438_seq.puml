@@ -1,0 +1,19 @@
+@startuml
+actor Researcher
+participant "Repository Interface" as UI
+participant "SearchSystem" as Search
+participant "FacultyProfiles" as Profiles
+participant "CollaborationModule" as Collab
+
+Researcher -> UI: Access Repository
+UI -> Search: Initiate Search for Faculty
+Search -> Profiles: Query Faculty Data
+Profiles -> Search: Return Results
+Search -> UI: Display Results
+Researcher -> UI: Review Faculty Interests/Expertise
+UI -> Profiles: Request Detailed Info
+Profiles -> UI: Provide Detailed Info
+Researcher -> UI: Select Faculty Members
+UI -> Collab: Save/Note for Collaboration
+Collab -> Researcher: Confirmation & Next Steps
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+actor "Batch Submitter" as submitter
+participant "EDRMS Website" as website
+participant "Authentication Service" as auth
+participant "Documentation Server" as docs
+participant "Ingest Process Documentation" as ingestDocs
+
+== Accessing Ingest Process Documentation ==
+submitter -> website: Navigate to EDRMS Documentation Section
+website -> auth: Request Authentication
+auth -->> submitter: Authenticate User
+submitter -> auth: Provide Credentials
+auth -->> website: User Authenticated
+website -> docs: Request Ingest Process Docs
+docs -> ingestDocs: Retrieve Documentation
+ingestDocs -->> docs: Return Documentation
+docs -->> website: Send Documentation Link
+website -->> submitter: Display Documentation Link
+submitter -> website: Click Documentation Link
+website -> ingestDocs: Redirect to Documentation
+ingestDocs -->> submitter: Display Ingest Process Documentation
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+
+actor Operator as User
+boundary "ListApplicationsUI" as UI
+control "ListApplicationController" as Controller
+database "JobOpeningRepository" as Repository
+entity "JobOpening" as JobOpening
+
+
+
+activate User
+User -> UI : asks to see Job Openings
+activate UI
+UI -> Controller** : create()
+UI -> Controller : listJobOpenings()
+activate Controller
+Controller -> Repository : findAll()
+activate Repository
+Repository --> Controller : list of JobOpenings
+deactivate Repository
+Controller --> UI : list of JobOpenings
+deactivate Controller
+UI -> UI : displayJobOpenings()
+activate UI
+deactivate UI
+UI --> User : display JobOpenings
+deactivate UI
+
+User -> UI : selects a Job Opening
+activate UI
+UI -> Controller : listApplications(JobOpening)
+activate Controller
+Controller -> JobOpening : getApplications() 
+activate JobOpening
+JobOpening --> Controller : list of JobApplications
+deactivate JobOpening
+Controller --> UI : list of JobApplications
+deactivate Controller
+UI -> UI : showApplications(JobOpening)
+activate UI
+deactivate UI
+UI --> User : display JobApplications
+deactivate UI
+deactivate User
+@enduml

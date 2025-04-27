@@ -1,0 +1,26 @@
+@startuml
+actor SummitCoordinator as SC
+participant "Authentication System" as Auth
+participant "Summit Management Module" as SMM
+participant "Database" as DB
+participant "Email System" as Email
+
+SC -> Auth : Authenticate
+Auth --> SC : Authentication Success
+
+SC -> SMM : Request list of attendees for summit
+SMM -> DB : Query attendee details for summit
+DB --> SMM : Return attendee list
+
+SMM --> SC : Display attendee list
+
+SC -> SMM : Select attendees to email
+SC -> Email : Compose email
+SC -> SMM : Request to send email to selected attendees
+SMM -> Email : Send email request with attendee emails
+Email -> DB : Log email activity
+DB --> Email : Confirm logging
+Email --> SMM : Confirm email sent
+SMM --> SC : Confirm email sent to attendees
+
+@enduml

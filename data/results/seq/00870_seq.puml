@@ -1,0 +1,27 @@
+@startuml
+actor User
+participant FrontEnd as FE
+participant MD as MD
+
+activate User
+User -> FE: requests to register
+activate FE
+FE -> User: show registration form
+deactivate FE
+User -> FE: fills in registration form
+activate FE
+FE -> User: shows consent form
+deactivate FE
+User -> FE: accepts consent
+
+activate FE
+FE -> FE: validate form
+FE -> MD: post(register)
+activate MD
+MD -> FE: resolve(success)
+deactivate MD
+FE -> User: shows success message
+deactivate FE
+
+
+@enduml

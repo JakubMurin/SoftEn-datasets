@@ -1,0 +1,32 @@
+@startuml
+
+actor "User" as user
+participant "gateway" as gw
+boundary "Keycloak" as kk
+participant "books" as books
+database "Postgres" as pg_books
+boundary "Minio" as minio
+
+user -> gw: GET /api/v1/books/{bookId}/files/{fileId}
+gw -> kk: verify jwt
+kk --> gw
+alt #lightgreen jwt is valid
+    gw -> books: GET /api/v1/books/{bookId}/files/{fileId}
+    books -> pg_books: get file link by id
+    pg_books --> books: file link
+    alt #lightgreen file data exists
+        books -> minio: get file by link
+        minio --> books: file
+        books -> gw: file
+        gw --> user: file
+    else #coral file data does not exist
+        books --> gw: HttpStatus 404
+        gw --> user: HttpStatus 404
+    end
+else #coral jwt is absent
+    gw --> user: HttpStatus 401
+else #coral jwt is not valid
+    gw --> user: HttpStatus 403
+end
+
+@enduml

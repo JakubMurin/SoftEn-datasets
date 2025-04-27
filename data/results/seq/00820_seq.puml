@@ -1,0 +1,44 @@
+@startuml
+actor User
+participant "DisplayApplicationDataUI" as UI
+participant "DisplayApplicationDataController" as Controller
+participant "ApplicationRepository" as Repository
+
+User -> UI: Request Display All Data of an Application
+activate UI
+
+UI -> Controller: doShow()
+activate Controller
+
+Controller -> Repository: allApplications()
+activate Repository
+
+Repository --> Controller: Iterable<jobApplication>
+deactivate Repository
+
+Controller --> UI: List<jobApplication>
+deactivate Controller
+
+UI -> User: Display List of Applications
+
+User -> UI: Select Application
+activate UI
+
+UI -> Controller: Select Application
+activate Controller
+
+Controller -> Repository: fetchApplicationData(selectedApplication)
+activate Repository
+
+Repository --> Controller: jobApplicationData
+deactivate Repository
+
+Controller --> UI: jobApplicationData
+deactivate Controller
+
+UI -> User: Display Application Data
+
+deactivate UI
+@enduml
+
+

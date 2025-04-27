@@ -1,0 +1,20 @@
+@startuml
+
+actor "Gestor de campus" as Actor
+participant "SPA" as Container <<Container (C4)>>
+participant "GestaoInfoAPI" as API <<Container (C4)>>
+
+Actor -> Container: carregar mapa de piso
+Container --> Actor: requisita os dados do mapa de piso
+Actor -> Container: insere os dados do mapa de piso
+Container -> API: patch(/api/floorMap)
+
+API --> Container: status code
+alt sucesso na requisição
+    Container --> Actor: devolve o mapa de piso criado
+else falha na requisição
+    Container --> Actor: devolve mensagem de erro
+end
+
+@enduml
+

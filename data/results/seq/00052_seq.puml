@@ -1,0 +1,38 @@
+@startuml
+actor PipelineDeveloper as Developer
+participant "Dataset Management\nSystem" as ManagementSystem
+participant "Dataset Version\nControl" as VersionControl
+participant "Application\nDeployment" as AppDeployment
+participant Database as DB
+participant Pipeline as Pipeline
+
+Developer -> ManagementSystem : Request dataset instance upgrade information
+ManagementSystem -> VersionControl : Query available dataset type versions
+VersionControl --> ManagementSystem : Return available versions
+ManagementSystem --> Developer : Display versions with upgrade impacts
+
+Developer -> ManagementSystem : Select new version for upgrade
+ManagementSystem -> VersionControl : Initiate upgrade process for dataset instance
+activate VersionControl
+
+VersionControl -> AppDeployment : Check application dependencies
+activate AppDeployment
+AppDeployment -> VersionControl : Confirm compatibility
+deactivate AppDeployment
+
+VersionControl -> DB : Prepare dataset instance upgrade
+DB --> VersionControl : Upgrade readiness confirmation
+VersionControl -> DB : Execute upgrade to new version
+DB --> VersionControl : Upgrade success
+deactivate VersionControl
+
+VersionControl -> Pipeline : Update pipeline configuration
+activate Pipeline
+Pipeline -> Pipeline : Validate new dataset version compatibility
+Pipeline --> VersionControl : Configuration validated
+deactivate Pipeline
+
+VersionControl --> ManagementSystem : Upgrade completion status
+ManagementSystem --> Developer : Upgrade success notification
+
+@enduml

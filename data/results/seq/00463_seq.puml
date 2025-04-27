@@ -1,0 +1,29 @@
+@startuml
+actor User as user
+participant "Frontend" as webapp
+boundary "API Gateway" as gateway
+box "Matching Service"
+participant "Controller" as controller
+participant "Service" as service
+end box
+box "Matching Database"
+collections Questions as questions
+collections MatchRequests as matchrequests
+
+webapp -> gateway: PUT /api/find/match\npayload: {requestId}
+gateway -> controller: PUT /api/find/match\npayload: {requestId}
+controller -> service: checkForMatch(requestId)
+service -> matchrequests: find user's MatchRequest with requestId
+matchrequests -> service: user's MatchRequest
+service -> matchrequests: find another MatchRequest
+matchrequests -> service: another MatchRequest
+service -> questions: get a random question
+questions -> service: Question
+service -> service : create sessionInfo and attach to each MatchRequest
+service -> matchrequests: update the 2 MatchRequests
+matchrequests -> service
+service -> controller: user's MatchRequest
+controller -> gateway: 200 OK\npayload: {user's MatchRequest}
+gateway -> webapp: 200 OK\npayload: {user's MatchRequest}
+webapp-> webapp: switch to session page
+@enduml

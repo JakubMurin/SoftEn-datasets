@@ -1,0 +1,21 @@
+@startuml
+actor Player
+note right of Player: Игрок
+
+Player -> StartGameMenu : запуск игры
+note right of StartGameMenu : Меню проверяет выбор пользователя
+
+StartGameMenu -> Player : нажимает кнопку \nвыхода из игры
+StartGameMenu -> GameFrame : начать игру
+GameFrame -> GameEndMenu : если проиграл
+GameEndMenu --> StartGameMenu : вернуться в меню
+GameEndMenu --> GameFrame : начать новую игру
+database MyDataBase as db
+StartGameMenu -> db: удалить результаты из бд
+db --> StartGameMenu : удалены
+StartGameMenu -> ResultsFrame : посмотреть лучшие результаты игры
+ResultsFrame --> db : получает результаты
+db -> ResultsFrame : показывает
+ResultsFrame --> StartGameMenu : вернуться в меню
+
+@enduml

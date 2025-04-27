@@ -1,0 +1,16 @@
+@startuml
+actor Consumer
+participant "Search Interface" as Interface
+database "Data Registry" as Registry
+participant "Data Package" as Package
+
+Consumer -> Interface: Input search keywords
+Interface -> Registry: Request matching data packages
+Registry -> Interface: Return list of matching packages
+Interface -> Consumer: Display search results
+Consumer -> Interface: Select a data package based on description
+Interface -> Registry: Request selected data package details
+Registry -> Interface: Return selected data package details
+Interface -> Consumer: Display data package details
+
+@enduml

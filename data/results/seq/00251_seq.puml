@@ -1,0 +1,30 @@
+@startuml
+actor Curator as "Collection Curator"
+participant UI as "Web Interface"
+participant Server as "EDRMS Server"
+database DB as "Repository Database"
+
+Curator -> UI : select item(s) for expiration
+UI -> Server : send item(s) and expiration parameters
+activate Server
+Server -> DB : query to update item(s) with expiration date
+activate DB
+DB --> Server : confirm update
+deactivate DB
+Server -> Server : schedule task for item(s) expiration
+Server --> UI : confirm expiration date set
+UI --> Curator : display confirmation message
+deactivate Server
+
+loop Every Night at 12:00 AM
+    Server -> Server : check for expired items
+    Server -> DB : query for items to hide/delete
+    activate DB
+    DB --> Server : return expired items
+    deactivate DB
+    Server -> DB : update item(s) status to hidden or delete item(s)
+    activate DB
+    DB --> Server : confirm item(s) updated/removed
+    deactivate DB
+end
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+actor Visitor
+
+Visitor -> UserInterface: Ask tricks list page
+activate UserInterface
+UserInterface -> Domain: Execute use-case
+activate Domain
+Domain -> Infrastructure: Fetch tricks list from database
+Infrastructure -> Domain: Figures list
+UserInterface -> Domain: Presents response
+deactivate Domain
+UserInterface -> Visitor: Render page with tricks
+@enduml
+

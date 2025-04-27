@@ -1,0 +1,22 @@
+@startuml
+actor "HRM" as USER
+
+participant "RegisterMaintenanceUI" as RegisterMaintenanceUI
+participant ":RegisterMaintenanceController" as RegisterMaintenanceController
+
+group Register a maintenance
+activate USER
+USER -> RegisterMaintenanceUI : Requeste to register a vehicles maintenance
+activate RegisterMaintenanceUI
+RegisterMaintenanceUI -> RegisterMaintenanceController** : Create
+RegisterMaintenanceUI -> USER : requests maintenance data
+deactivate RegisterMaintenanceUI
+USER -> RegisterMaintenanceUI : Types maintenance details (name)
+activate RegisterMaintenanceUI
+RegisterMaintenanceUI -> RegisterMaintenanceUI : Keeps and stores that data
+RegisterMaintenanceUI -> USER : Shows the typed data and a confirmation requests
+deactivate RegisterMaintenanceUI
+end
+
+
+@enduml

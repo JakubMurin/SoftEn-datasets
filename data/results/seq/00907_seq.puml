@@ -1,0 +1,40 @@
+@startuml
+actor repoadmin as "RepoAdmin"
+participant SymplecticElements as "Symplectic \nElements"
+participant FedoraConnector as "Fedora \nConnector"
+database FedoraInstance as "Fedora \nInstance (Hidden)"
+participant Hydra as "Hydra"
+
+== Initialization ==
+repoadmin -> SymplecticElements : request data sync
+activate SymplecticElements
+
+== Symplectic Elements to Fedora Connector ==
+SymplecticElements -> FedoraConnector : initiate bidirectional \ncommunication
+activate FedoraConnector
+
+FedoraConnector -> FedoraInstance : verify access to \nhidden Fedora instance
+activate FedoraInstance
+FedoraInstance --> FedoraConnector : confirmation & \ndata provision
+deactivate FedoraInstance
+
+== Fedora Connector to Hydra ==
+FedoraConnector -> Hydra : request object \ncollection from Fedora
+activate Hydra
+
+Hydra -> FedoraInstance : collect objects
+activate FedoraInstance
+FedoraInstance --> Hydra : provide objects
+deactivate FedoraInstance
+
+Hydra --> FedoraConnector : objects collected
+deactivate Hydra
+
+== Completing Sync ==
+FedoraConnector --> SymplecticElements : update with \nnew and modified objects
+deactivate FedoraConnector
+
+SymplecticElements --> repoadmin : sync complete
+deactivate SymplecticElements
+
+@enduml

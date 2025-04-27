@@ -1,0 +1,16 @@
+@startuml
+actor "Content Provider" as CS
+participant "Document Source" as DS
+participant "Document Repository" as DR
+participant "Document Registry" as DReg
+
+CS -> DS: Initiate submission
+DS -> DS: Collect document(s) and metadata
+DS -> DR: Submit document(s) and metadata (ITI-41)
+DR -> DR: Process request
+DR -> DR: Store document(s)
+DR -> DReg: Submit metadata  (ITI-42)
+DReg -> DReg: Validate metadata
+DReg -> DR: Error response (ITI-42)
+DR -> DS: Error response (ITI-41)
+@enduml

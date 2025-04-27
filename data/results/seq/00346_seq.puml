@@ -1,0 +1,13 @@
+@startuml
+Actor "Developer" as A
+
+box "Manage Applications" #lightblue
+participant "fleet" as S
+A -> S : fleet-service-inc
+participant "Application Stack" as AS
+S -> AS : service/inc
+AS -> AS : sails.helpers.incService()
+end box
+
+@enduml
+

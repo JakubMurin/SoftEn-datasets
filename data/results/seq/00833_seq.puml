@@ -1,0 +1,27 @@
+@startuml
+
+
+actor "IT Operations"
+
+
+entity EventBus
+
+box Environment Management #88cc88
+    boundary em #white
+end box
+
+
+group Given [IT Operations has the ability to manage services]
+
+"IT Operations" --/ em: IT Operations enables an environment
+"em" -> em: Enable Environment
+
+
+
+"IT Operations" /-- em: The environment should be ready to manage services
+
+
+end
+
+@enduml
+

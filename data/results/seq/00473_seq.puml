@@ -1,0 +1,57 @@
+@startuml
+actor "Caller\n(anyone or anything)" as CPS
+participant CityMap as CM
+participant DeliveryGraph as DG
+participant "startWaypoint : AbstractWaypoint" as SWP
+participant "successor : Intersection" as S
+participant "minimalGreyIntersection : Intersection" as MGI
+
+
+CPS -> CM : computeDeliveryGraph(**request**: DeliveryRequest)
+activate CM
+CM -> CM : mappedRoutes = new TreeMap<AbstractWaypoint, Map<AbstractWaypoint, Route>>();
+loop for (AbstractWaypoint startPoint : pointsContainedInRequest)
+    CM -> SWP : getIntersection()
+    activate SWP
+    CM <- SWP : startWaypointIntersection
+    deactivate SWP
+    CM -> CM : predecessors = new Intersection[intersections.size()]
+    CM -> CM : durations = new int[intersections.size()]
+    CM -> CM : greys.add(startWaypointIntersection)
+    loop while (greys.size() != 0)
+        CM -> CM : minimalGreyIntersection = getMinimalGreyIntersection(index, greys, durations)
+        loop for (Intersection successor : getNeighbourIntersection(minimalGreyIntersection))
+            CM -> S : getId()
+            activate S
+            CM <- S : successorId
+            deactivate S
+            alt !blacks.containsKey(successorId)
+                CM -> CM : streetSection = getStreetSection(minimalGreyIntersection, successor)
+                CM -> CM : release(index, streetSection, predecessors, durations)
+                note left
+                    durations and predecessors arrays are updated here
+                end note
+                alt whites.containsKey(successorId)
+                    CM -> CM : whites.remove(successorId)
+                    CM -> CM : greys.add(successor)
+                end
+            end
+        end
+        CM -> CM : greys.remove(minimalGreyIntersection)
+        CM -> MGI : getId()
+        activate MGI
+        CM <- MGI : minimalGreyIntersectionId
+        deactivate MGI
+        CM -> CM : blacks.put(minimalGreyIntersectionId, minimalGreyIntersection)
+    end
+    note left of CM
+        use predecessors array to fill mappedRoutes
+    end note
+end
+create DG
+CM -> DG : <<create>>(mappedRoutes)
+CPS <- CM : deliveryGraph
+deactivate CM
+
+@enduml
+

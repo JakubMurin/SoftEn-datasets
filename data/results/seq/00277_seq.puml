@@ -1,0 +1,15 @@
+@startuml
+actor Manager as mgr
+participant "Manager Interface" as UI
+participant "Server Back-end" as server
+database "Database" as db
+participant "Waiters' Schedule\nModule" as schedule
+
+mgr -> UI : Request waiter schedules
+UI -> server : Fetch waiter schedules
+server -> db : Query waiter schedules
+db -> server : Return waiter schedules
+server -> UI : Return waiter schedules data
+UI -> mgr : Display waiter schedules
+
+@enduml

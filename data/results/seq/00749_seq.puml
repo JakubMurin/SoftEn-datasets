@@ -1,0 +1,87 @@
+@startuml
+
+actor SBPServerApp as server
+
+
+participant ArchiveBoardHandler as handler
+participant SBProtocol as sbp
+participant BoardService as svc
+participant Client as c_user
+participant Board as b
+database BoardRepository as b_repository
+
+
+activate server
+server ->  handler: create(sock,codeRequest)
+    note right : receives a socket and\nSBProtocol codeRequest
+    activate handler
+        handler -> svc : create()
+        activate svc
+        deactivate svc
+    deactivate handler
+    server -> handler : run()
+    note right : create DataInputStream as "inS"\ncreate DataOutputStream as "outS"
+
+    activate handler
+        handler -> c_user : owner = getUserLoggedIn()
+
+        activate c_user
+        deactivate c_user
+
+        handler -> svc :listBoardsUserOwnsNotArchived(owner)
+        activate svc
+            svc -> handler : boards
+        deactivate svc
+
+
+
+
+        handler -> handler : sendBoardOwned(builder, boards)
+        handler -> sbp : create()
+        activate sbp
+        note right of handler: append boards into string
+
+        handler -> sbp : send(outS)
+        deactivate sbp
+
+        handler -> sbp : create(inS)
+        activate sbp
+        sbp --> handler : boardName
+        deactivate sbp
+
+        note right of handler: SBPServerApp as boards, get board with "boardName"
+
+        handler -> b : archiveBoard()
+        activate b
+        deactivate b
+
+        handler -> b_repository : save(board)
+        activate b_repository
+        deactivate b_repository
+
+        handler -> svc : listBoardsUserOwnsArchived(owner)
+        activate svc
+            svc -> handler : boards
+        deactivate svc
+
+
+        handler -> handler : sendBoardOwned(builderArchived, boardsArchived)
+        handler -> sbp : create()
+       activate sbp
+        note right of handler: appends boards into string
+
+        handler -> sbp : send(outS)
+
+
+
+deactivate handler
+
+
+
+
+
+
+@enduml
+
+
+

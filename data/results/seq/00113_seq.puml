@@ -1,0 +1,40 @@
+@startuml
+actor Student as Actor
+participant TakeAutomaticExamUI as UI <<presentation>>
+participant TakeAutomaticExamController as Controller <<aplication>>
+participant listAutomaticExamsService as Service1 <<service>>
+participant validadeExamService as Service3 <<service>>
+database AutomaticExamRepository as Repository1 <<repository>>
+database GradesRepository as Repository3 <<repository>>
+
+note right of Controller:Some steps have been skipped in order to facilitate reading \n namely Persistence Context and Repository factor \n for an example with these steps see US1002
+Actor -> UI: Take a exam
+activate UI
+    UI -> Controller: AutomaticExamsUnsolved()
+    Controller -> Service1: AutomaticExamsUnsolved()
+    Service1 -> Repository1: AutomaticExamsUnsolved()
+    Service1 --> Controller: List <AutomaticExam>
+    Controller --> UI: List <AutomaticExam>
+    UI -> UI : Show List Automatic exams
+    UI --> Actor: Select Automatic exam to take
+    Actor -> UI: Selected Automatic exam
+
+    UI -> Controller: buildExamForTaken()
+    Controller -> Service3: buildExam()
+    Service3 -> Controller: exam
+    Controller -> UI: exam
+    loop
+    UI -> Actor: make question
+    Actor -> UI: answer question
+    UI -> Controller: validateQuestion
+    Controller -> Service3: validateQuestion
+    note right of Controller : this validate question can be of type \nisAValidTrueOrFalseAnswer\nvalidateTheAnswerTrueOrFalse\nvalidateTheShortAnswer\nvalidateNumericalQuestion\nvalidateMatchingQuestion\nvalidateMultipleChoiceQuestion\nvalidateMissingWordQuestion
+    end
+    UI -> Controller: getExamGradeOnPercentage()
+    Controller -> Service3:getExamGradeOnPercentage()
+    Service3 -> Controller: grades
+    Controller -> UI: grades
+    UI -> Controller: saveGrade()
+    Controller -> Repository3: saveGrade(student, grade, AutomaticExam)
+    UI -> Actor: show feedback
+@enduml

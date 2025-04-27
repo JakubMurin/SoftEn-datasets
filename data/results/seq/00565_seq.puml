@@ -1,0 +1,26 @@
+@startuml
+actor Manager
+participant "Web Interface" as WebUI
+participant "Server" as Server
+database "Database" as DB
+
+Manager -> WebUI: Select "Delete Employee"
+WebUI -> Server: Request deletion of employee
+Server -> DB: Check if employee exists
+
+alt employee exists
+    DB -> Server: Employee found
+    Server -> WebUI: Ask for confirmation
+    Manager -> WebUI: Confirm deletion
+    WebUI -> Server: Delete command with confirmation
+    Server -> DB: Delete employee record
+    DB -> Server: Confirmation of deletion
+    Server -> WebUI: Deletion successful
+    WebUI -> Manager: Show deletion confirmation
+else employee does not exist
+    DB -> Server: Employee not found
+    Server -> WebUI: Error: Employee does not exist
+    WebUI -> Manager: Show error message
+end
+
+@enduml

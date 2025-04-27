@@ -1,0 +1,23 @@
+@startuml
+actor DataScientist as DS
+participant "UI/CLI" as UI
+participant "Dataset Management\nSystem" as DMS
+database "Dataset Repository" as Repo
+
+DS -> UI : Request to create dataset instance
+UI -> DMS : Parse request parameters\n(Select existing dataset type,\nDefine instance properties)
+activate DMS
+DMS -> DMS : Verify permissions\nand dataset type existence
+alt dataset type exists and user has permissions
+    DMS -> Repo : Create new dataset instance\nwith specified properties
+    activate Repo
+    Repo --> DMS : Instance creation confirmation
+    deactivate Repo
+    DMS --> UI : Display success message\nwith instance details
+else dataset type not found or no permissions
+    DMS --> UI : Display error message
+end
+UI --> DS : Show confirmation/error message
+deactivate DMS
+
+@enduml

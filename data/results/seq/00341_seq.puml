@@ -1,0 +1,38 @@
+@startuml
+actor Depositor
+participant "Web Interface" as WebUI
+participant "Pure Integration Module" as Pure
+participant "Dataset Management System" as DMS
+database "Bath Data Archive" as Archive
+
+Depositor -> WebUI: Access deposit interface
+activate WebUI
+
+WebUI -> Pure: Request authentication
+activate Pure
+Pure --> WebUI: Authenticate depositor
+deactivate Pure
+
+WebUI -> Depositor: Show dataset deposit form
+Depositor -> WebUI: Fill in form \n(Include metadata, files)
+WebUI -> DMS: Process deposit form
+activate DMS
+DMS -> Pure: Check if dataset metadata aligns \nwith Pure requirements
+activate Pure
+Pure --> DMS: Confirm metadata alignment
+deactivate Pure
+
+DMS -> Archive: Deposit dataset and metadata
+activate Archive
+Archive --> DMS: Confirm deposit \nGenerate DOI
+DMS -> Pure: Link dataset DOI with Pure records
+activate Pure
+Pure --> DMS: Update Pure records
+deactivate Pure
+
+DMS --> WebUI: Confirm dataset deposit \nProvide DOI to depositor
+deactivate DMS
+WebUI -> Depositor: Display confirmation \n(Include DOI link)
+
+deactivate WebUI
+@enduml

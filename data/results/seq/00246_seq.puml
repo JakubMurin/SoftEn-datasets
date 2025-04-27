@@ -1,0 +1,67 @@
+'Create new score
+@startuml
+actor User
+participant Score
+participant App
+
+User -> App: Open app
+App -> User: Load app
+
+alt Create new score
+    User -> App: Click "New Score" button
+    App -> User: Display "New Score" dialog
+    User -> App: Select instruments
+    User -> App: Click "Next"
+    App -> User: Display "Additional score information" dialog
+    User -> App: Input title and composer
+    User -> App: Select time signature
+    User -> App: Select key signature
+    User -> App: Select beats per minute
+    User -> App: Select number of initial measures
+    User -> App: Click "Done"
+    App -> Score: Generate blank score
+    Score -> User: Display blank score
+else Open existing score
+    User -> App: Select an existing score file
+    App -> Score: Load score file
+    Score -> User: Display loaded score
+end
+@enduml
+
+'Add note
+@startuml
+actor User
+participant Measure
+participant Note
+participant Score
+participant App
+
+User -> App: Click "Note Input" toggle button
+App -> User: User can input notes
+
+alt Note input toggle ON
+    User -> App: Select duration (quarter, half, etc.)
+    loop Hover over the measure
+        App -> User: Preview note placement
+    end
+    User -> Measure: Click to place the note
+    Measure -> Note: Create note with selected type
+    Note -> Score: Save note to score
+    Score -> App: Save changes to app
+    App -> Measure: Display note to measure
+else Note input toggle OFF
+    alt Click on an existing note
+        User -> Measure: Click on existing note
+        alt Drag
+            User -> Note: Drag note up/down to change pitch
+            Note -> Measure: Update note position in measure
+            Measure -> App: Save changes
+        else Press backspace or delete key
+            User -> Note: Delete note
+            Note -> Measure: Remove note from measure
+            Measure -> App: Save changes
+        end
+    end
+end
+@enduml
+

@@ -1,0 +1,23 @@
+@startuml
+actor Customer
+participant "Reservation System" as RS
+participant "Database" as DB
+
+== Customer Makes a Reservation ==
+Customer -> RS : Request Reservation Page
+RS -> Customer : Display Reservation Form
+
+Customer -> RS : Submit Reservation Details\n(date, time, number of people)
+RS -> DB : Check Availability
+alt If space is available
+    DB -> RS : Confirm Availability
+    RS -> Customer : Show Confirmation Message
+    RS -> DB : Save Reservation Details
+    DB -> RS : Confirmation Status
+    RS -> Customer : Display Reservation ID and Details
+else Space Not Available
+    DB -> RS : Show Unavailability Message
+    RS -> Customer : Suggest Different Time/Date
+end
+
+@enduml

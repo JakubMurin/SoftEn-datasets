@@ -1,0 +1,32 @@
+@startuml
+actor User as user
+participant "Dataset Management\nSystem" as DMS
+participant "Dataset Type\nRegistry" as DTR
+participant "Dataset Storage" as DS
+participant "Exploration\nService" as ES
+database "Dataset\nRepository" as DR
+
+user -> DMS : Request dataset creation\nwith exploration enabled
+DMS -> DTR : Verify dataset type supports\nexploration
+alt Dataset type supports exploration
+  DTR --> DMS : Dataset type verified
+  DMS -> DS : Create dataset instance
+  DS --> DMS : Dataset instance created
+  DMS -> ES : Enable exploration on dataset
+  alt Exploration enabled successfully
+    ES --> DMS : Exploration enabled
+    DMS -> DR : Save dataset details\n(with explore enabled flag)
+    DR --> DMS : Dataset details saved
+    DMS --> user : Dataset creation successful
+  else Exploration enable failed
+    ES --> DMS : Fail to enable exploration
+    DMS -> DS : Rollback dataset creation
+    DS --> DMS : Dataset creation rolled back
+    DMS --> user : Dataset creation failed\ndue to exploration issues
+  end
+else Dataset type does not support exploration
+  DTR --> DMS : Dataset type exploration unsupported
+  DMS --> user : Dataset creation failed\nType doesn't support exploration
+end
+
+@enduml

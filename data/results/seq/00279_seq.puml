@@ -1,0 +1,39 @@
+@startuml
+actor NSF_Employee as "NSF Employee"
+participant User_Research as "User Research Team"
+participant Design_Team as "Design Team"
+participant Stakeholders as "Stakeholders"
+participant Collaboration_Platform as "Collaboration Platform"
+participant Brand_Guidelines as "Brand Guidelines Document"
+
+== Research Phase ==
+NSF_Employee -> User_Research: Request insights and research on users
+User_Research -> User_Research: Gather and analyze data
+User_Research -> Design_Team: Provide user insights
+
+== Design Phase ==
+Design_Team -> Design_Team: Create preliminary design directions
+Design_Team -> Stakeholders: Present design concepts
+Stakeholders -> Design_Team: Provide feedback
+
+== Collaboration and Feedback Phase ==
+Design_Team -> Collaboration_Platform: Share design directions and gather feedback
+NSF_Employee -> Collaboration_Platform: Review design directions
+NSF_Employee -> Design_Team: Provide feedback on designs
+loop Collaboration and Revision
+    Design_Team -> Design_Team: Refine design based on feedback
+end
+
+== Finalization Phase ==
+Design_Team -> Brand_Guidelines: Establish final brand guidelines
+Brand_Guidelines -> NSF_Employee: Communicate brand guidelines
+
+== Maintenance Phase ==
+NSF_Employee -> Brand_Guidelines: Refer to guidelines during project
+alt If updates needed
+    NSF_Employee -> Design_Team: Request updates to brand guidelines
+    Design_Team -> Brand_Guidelines: Update brand guidelines
+    Brand_Guidelines -> NSF_Employee: Communicate updates
+end
+
+@enduml

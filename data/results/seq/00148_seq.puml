@@ -1,0 +1,31 @@
+@startuml
+actor Librarian as librarian
+participant "Web Interface" as webInterface
+participant "Backend Server" as backendServer
+participant "Database" as database
+
+== Track Subscription Status ==
+librarian -> webInterface : Access Subscription Management
+webInterface -> backendServer : Request current subscriptions data
+backendServer -> database : Query subscription details
+database --> backendServer : Return subscription data
+backendServer --> webInterface : Display subscription information
+librarian <-- webInterface : View subscription details
+
+== Update Subscription ==
+librarian -> webInterface : Select subscription to update
+webInterface -> backendServer : Send update request (Change status, renew, etc.)
+backendServer -> database : Update subscription record
+database --> backendServer : Confirm update
+backendServer --> webInterface : Update confirmation
+librarian <-- webInterface : Receive update confirmation
+
+== Generate Subscription Report ==
+librarian -> webInterface : Request subscription report
+webInterface -> backendServer : Query for report data (e.g., expiring soon)
+backendServer -> database : Extract required report data
+database --> backendServer : Report data result
+backendServer --> webInterface : Display report
+librarian <-- webInterface : View generated report
+
+@enduml

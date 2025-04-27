@@ -1,0 +1,45 @@
+@startuml
+actor Librarian
+autonumber
+autoactivate on
+
+Librarian -> LendingController: GET /api/lendings/top-readers/{genreId}
+activate LendingController
+
+LendingController -> GenreService: getGenreById(genreId)
+activate GenreService
+
+GenreService -> GenreRepository: findGenreById(genreId)
+activate GenreRepository
+GenreRepository -> GenreService: Optional<Genre> genre
+deactivate GenreRepository
+
+GenreService -> LendingController: Optional<Genre> genre
+deactivate GenreService
+
+alt genre not found
+    LendingController -> Librarian: HTTP 404 Not Found
+    deactivate LendingController
+else genre found
+    LendingController -> ReaderService: getTopReadersperGenre(5, genre, startDate, endDate)
+    activate ReaderService
+
+    ReaderService -> ReaderRepository: findTopReadersPerGenre(PageRequest.of(0, 5), genre, startDate, endDate)
+    activate ReaderRepository
+    ReaderRepository -> ReaderService: List<Reader> readers
+    deactivate ReaderRepository
+
+    ReaderService -> LendingController: Iterable<Reader> readers
+    deactivate ReaderService
+
+    LendingController -> ReaderViewMapper: toReaderView(readers)
+    activate ReaderViewMapper
+    ReaderViewMapper -> LendingController: Iterable<ReaderView> readerViews
+    deactivate ReaderViewMapper
+
+    LendingController -> Librarian: HTTP 200 OK (Iterable<ReaderView> readerViews)
+    deactivate LendingController
+end
+
+@enduml
+

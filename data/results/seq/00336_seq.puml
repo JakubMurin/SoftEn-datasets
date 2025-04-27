@@ -1,0 +1,33 @@
+@startuml
+actor Attore
+
+participant Command
+participant Logic
+
+Attore -> Command: facesChallenge()
+Command -> Logic: receiveInput(comando)
+
+alt Enigma
+    Logic -> Command: indovinelliTempio()
+    Command -> Logic: verificaRisultato()
+
+    alt Risultato corretto
+        Logic -> Command: canAccess()
+        Command -> Logic: nextRoom(direction)
+    else Risultato errato
+        Logic -> Command: back(previous_room)
+    end
+else Creatura
+    Logic -> Command: fightCreature()
+    Command -> Logic: verificaArma()
+
+    alt Arma posseduta
+        Logic -> Command: canAccess()
+        Command -> Logic: nextRoom(direction)
+    else Arma non posseduta
+        Logic -> Command: back(previous_room)
+    end
+end
+
+@enduml
+

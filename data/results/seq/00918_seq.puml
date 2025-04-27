@@ -1,0 +1,32 @@
+@startuml
+actor AppDeveloper as developer
+participant "CLI Tool" as cli
+participant "REST API" as rest
+database "Dataset Management System" as dms
+participant "UI Application" as ui
+actor "Dataset Instance" as dataset
+
+== CLI-based Operations ==
+developer -> cli : Perform operation (e.g., compaction)
+cli -> dms : Request operation on Dataset Instance
+dms -> dataset : Execute Operation
+dataset -> dms : Operation Successful
+dms -> cli : Confirm Success
+cli -> developer : Display Success Message
+
+== REST/UI-based Operations ==
+developer -> ui : Access UI
+ui -> rest : Fetch Dataset Instances
+rest -> dms : Request Dataset Instances
+dms -> rest : Return Dataset Instances
+rest -> ui : Show Dataset Instances
+developer -> ui : Select Dataset Instance & Operation (e.g., rebalance)
+ui -> rest : POST Operation Request
+rest -> dms : Execute Operation on Dataset Instance
+dms -> dataset : Perform Operation
+dataset -> dms : Operation Successful
+dms -> rest : Operation Success Confirmation
+rest -> ui : Display Success Message to Developer
+ui -> developer : Operation Successful
+
+@enduml

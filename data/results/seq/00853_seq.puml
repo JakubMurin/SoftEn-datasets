@@ -1,0 +1,13 @@
+@startuml
+actor Visitor as V
+participant "UI Interface" as UI
+participant "SearchController" as SC
+database "ArticlesDatabase" as ADB
+
+V -> UI: Enters search keywords
+UI -> SC: Invokes search(query)
+SC -> ADB: queryDatabase(searchTerm)
+ADB -> SC: Returns search results
+SC -> UI: Display search results
+UI -> V: Shows articles matching criteria
+@enduml

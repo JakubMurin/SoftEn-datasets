@@ -1,0 +1,117 @@
+@startuml
+actor User
+
+participant "Angular\nAccount Details Component" as Frontend <<Frontend>>
+participant "AuthService" as AuthService <<Frontend>>
+participant "AuthInterceptorService" as AuthInterceptor <<Frontend>>
+participant "HTTP Client" as HttpClient <<Frontend>>
+participant "MessageService" as MessageService <<Frontend>>
+participant "LocalStorage" as LocalStorage <<Frontend>>
+participant "Login Component" as LoginComponent <<Frontend>>
+
+participant "UserController" as Controller <<Backend>>
+participant "IUserAppService" as IUserAppService <<Backend>>
+participant "UserAppService" as UserAppService <<Backend>>
+participant "UserManager<ApplicationUser>" as UserManager <<Backend>>
+database "MongoDB" as Database <<Database>>
+
+User -> Frontend: Clicks delete account
+note right of User: User must be logged in
+activate Frontend
+
+Frontend -> AuthService: getUserFromToken()
+activate AuthService
+AuthService --> Frontend: User (name, email)
+deactivate AuthService
+
+Frontend -> AuthService: onDeleteAccount(User.email)
+activate AuthService
+
+AuthService -> AuthInterceptor: Prepare HTTP DELETE request to /User/DeleteAcc?email={User.email}
+activate AuthInterceptor
+AuthInterceptor -> LocalStorage: Retrieve JWT Token
+activate LocalStorage
+LocalStorage --> AuthInterceptor: JWT Token
+deactivate LocalStorage
+
+AuthInterceptor -> HttpClient: Forward request with Authorization header
+deactivate AuthInterceptor
+activate HttpClient
+
+alt HTTP request successful
+    HttpClient -> Controller: DeleteAcc(AccountDeletionDto)
+    activate Controller
+    note right of Controller: Check if user exists in database
+    Controller -> IUserAppService: DeleteAccount(user.Email)
+    activate IUserAppService
+    IUserAppService -> UserAppService: DeleteAccount(Email)
+    activate UserAppService
+    UserAppService -> UserManager: FindByEmailAsync(Email)
+    activate UserManager
+
+    UserManager -> Database: Query User by Email
+    activate Database
+    Database --> UserManager: ApplicationUser / null
+    deactivate Database
+
+    alt appUser != null
+        UserManager -> UserAppService: appUser
+        deactivate UserManager
+
+        UserAppService -> UserManager: DeleteAsync(appUser)
+        activate UserManager
+
+        UserManager -> Database: Delete User
+        activate Database
+        Database --> UserManager: Deletion Result
+        deactivate Database
+
+        UserManager --> UserAppService: IdentityResult(Success / Fail)
+        deactivate UserManager
+
+        UserAppService --> IUserAppService: IdentityResult
+    else user not found
+        UserManager --> UserAppService: User not found
+        deactivate UserManager
+
+        UserAppService --> IUserAppService: IdentityResult(Failed)
+    end
+    deactivate UserAppService
+
+    IUserAppService --> Controller: IdentityResult
+    deactivate IUserAppService
+
+    Controller --> HttpClient: IdentityResult
+    deactivate Controller
+
+    HttpClient --> AuthService: response / error
+    deactivate HttpClient
+
+    alt response successful
+        AuthService -> MessageService: Add "Account deleted successfully"
+        activate MessageService
+
+        MessageService -> Frontend: Display success message
+        deactivate MessageService
+
+        AuthService -> AuthService: logout()
+        AuthService -> LocalStorage: Clear data
+        AuthService -> LoginComponent: Redirect to login
+        deactivate AuthService
+        deactivate LocalStorage
+    else error
+        AuthService -> MessageService: Add error message
+        activate MessageService
+
+        MessageService -> Frontend: Display error message
+        deactivate MessageService
+
+        deactivate AuthService
+    end
+else HTTP request failed
+    note over HttpClient: Handle network or server error
+    deactivate HttpClient
+end
+deactivate Frontend
+@enduml
+

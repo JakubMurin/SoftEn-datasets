@@ -1,0 +1,25 @@
+@startuml file
+actor EEP
+participant DocumentService
+participant Database
+
+EEP -> DocumentService: Soumettre un document
+DocumentService -> Database: Enregistre le document
+Database --> DocumentService: Confirmation de l'enregistrement
+DocumentService --> EEP: Document soumis avec succès
+
+alt EEP souhaite sauvegarder un document
+    EEP -> DocumentService: Demande de télécharger un document
+    DocumentService -> Database: Recherche le document par identifiant
+    Database --> DocumentService: Document trouvé
+    DocumentService --> EEP: Document téléchargé avec succès
+end
+
+alt EEP souhaite supprimer un document
+    EEP -> DocumentService: Demande de suppression le document
+    DocumentService -> Database: Recherche le document par identifiant
+    Database --> DocumentService: Confirmation de la suppression
+    DocumentService --> EEP: Document supprimé avec succès
+end
+@enduml
+

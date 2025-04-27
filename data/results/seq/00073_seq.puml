@@ -1,0 +1,22 @@
+@startuml
+actor User
+entity "Website UI" as UI
+entity "Payment Gateway" as Gateway
+database "Database and Backend" as Database
+entity "Transaction Monitoring" as Monitor
+entity "Blockchain Interface" as Blockchain
+
+User -> UI: Decide to pay with USDT
+UI -> Gateway: Request payment information
+Gateway -> User: Provides USDT deposit address and amount\nIncludes QR code
+User -> Blockchain: Transfers USDT
+Blockchain -> Monitor: Detects transaction
+Monitor -> Blockchain: Requests transaction confirmation
+loop 6 confirmations
+    Blockchain -> Monitor: Updates transaction status
+end
+Monitor -> Gateway: Notification of final transaction approval
+Gateway -> Database: Stores transaction and user information
+Database -> UI: Confirms payment and converts to points
+@enduml
+

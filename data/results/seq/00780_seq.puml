@@ -1,0 +1,27 @@
+@startuml
+Actor C as "client" order 1
+participant A as "appcenter" order 2
+title: 客户端升级流程
+== 准备流程 ==
+C->C: 读取本地的config、update文件的配置,处理本地已有插件
+C->A: 获取bucket信息（api/bucket/list）
+return
+== 检测流程 ==
+C->A: 检测是否需要升级（api/client/version）,
+note right
+已升级，deviceCode+appName做调用次数限制
+end note
+return 最新的升级配置json
+C->C: 把json中的版本version和插件version与本地的update文件进行，\n 不同就需要升级，把最新的json覆盖本地update文件
+
+== 下载流程 ==
+C->C: 读取config、update文件，再对比本地已有插件，本地不存在的插件进行下载
+C->A: 获取插件下载地址（api/filekey/plugin）
+note right
+需升级，直接返回拼接好的下载地址，
+并且需要用deviceCode+appName+fileName做调用次数限制
+end note
+return 拼接好的下载地址
+C->C: 通过准备流程中的bucket信息拼出下载地址进行下载
+
+@enduml

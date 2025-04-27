@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant HelloController
+participant Bankomat
+participant SignIn_UpController
+
+User -> HelloController: onAcceptButton(ActionEvent)
+HelloController -> HelloController: createBankomatInstance()
+HelloController -> Bankomat: new Bankomat(selectedBank, selectedLocation, 100000.0)
+HelloController -> Bankomat: addUser(new UserAdmin("admin", bankomat), 5555)
+HelloController -> SignIn_UpController: setBankomat(bankomat)
+HelloController -> SignIn_UpController: show()
+HelloController -> HelloController: close()
+@enduml

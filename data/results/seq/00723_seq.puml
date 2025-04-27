@@ -1,0 +1,31 @@
+@startuml
+actor AuthenticatedUser as User
+participant "Authentication System" as Auth
+participant "User Dashboard" as Dashboard
+participant "Session Management" as SessionMgmt
+participant "Database" as DB
+
+User -> Auth: Access platform
+activate Auth
+Auth --> User: Authentication successful
+deactivate Auth
+
+User -> Dashboard: Navigate to My Schedule
+activate Dashboard
+Dashboard --> User: Display registered sessions
+deactivate Dashboard
+
+User -> SessionMgmt: Select Edit on session
+activate SessionMgmt
+SessionMgmt --> User: Display session details form
+deactivate SessionMgmt
+
+User -> SessionMgmt: Submit updated session details
+activate SessionMgmt
+SessionMgmt -> DB: Validate & update session details
+activate DB
+DB --> SessionMgmt: Update confirmation
+deactivate DB
+SessionMgmt --> User: Display success message
+deactivate SessionMgmt
+@enduml

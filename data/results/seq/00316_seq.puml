@@ -1,0 +1,55 @@
+@startuml
+
+actor "User" as User
+participant "UserController" as UC
+participant "TenantDbContext" as TDC
+participant "UserManager" as UM
+participant "SignInManager" as SIM
+participant "TokenService" as TS
+
+== User Registration ==
+
+User -> UC : Send registration request (UserName, Email, Password)
+UC -> UC : Get Tenant from Header
+UC -> TDC : Check if Tenant exists
+TDC -> UC : Response (Tenant found or not)
+UC -> UM : Check if email exists in the Tenant
+UM -> UC : Response (Email found or not)
+UC -> UM : Create new user (AppUser)
+UM -> UC : Response (User created or error)
+UC -> UM : Assign role to user (ADMIN or MEMBER)
+UM -> UC : Response (Role assigned)
+UC -> TS : Create JWT token for the user
+TS -> UC : Response (Token generated)
+UC -> User : Respond with UserDto (Token, Email, UserName)
+
+== User Login ==
+
+User -> UC : Send login request (Email, Password)
+UC -> UC : Get Tenant from Header
+UC -> TDC : Check if Tenant exists
+TDC -> UC : Response (Tenant found or not)
+UC -> UM : Check if email exists
+UM -> UC : Response (Email found or not)
+UC -> SIM : Validate user credentials
+SIM -> UC : Response (User authenticated or error)
+UC -> TS : Create JWT token for the user
+TS -> UC : Response (Token generated)
+UC -> User : Respond with UserDto (Token, Email, UserName)
+
+== Check if Email Exists ==
+
+User -> UC : Request email verification (Email)
+UC -> UC : Get Tenant from Header
+UC -> TDC : Check if Tenant exists
+TDC -> UC : Response (Tenant found or not)
+UC -> UM : Check if email exists in the Tenant
+UM -> UC : Response (Email found or not)
+alt Email already registered
+    UC -> User : Respond with error (Email already registered)
+else Email not registered
+    UC -> User : Respond with result (Email not registered)
+end
+
+@enduml
+

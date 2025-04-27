@@ -1,0 +1,27 @@
+@startuml
+actor User as user
+participant "User Interface" as UI
+participant "Data Management System" as DMS
+participant "Database" as DB
+participant "Access Control" as AC
+
+== Data Privacy Management ==
+user -> UI : Decide data privacy settings
+UI -> DMS : Request privacy update
+DMS -> DMS : Validate request
+DMS -> DB : Update privacy settings
+DB -> DMS : Confirm update
+DMS -> UI : Display success message
+UI -> user : Notify of privacy setting update
+
+== Data Sharing ==
+user -> UI : Select data to share
+UI -> DMS : Request share permissions
+DMS -> AC : Evaluate share conditions
+AC -> DB : Update share settings
+DB -> AC : Confirm share settings update
+AC -> DMS : Share settings update successful
+DMS -> UI : Display success message
+UI -> user : Notify of successful data sharing
+
+@enduml

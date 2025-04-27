@@ -1,0 +1,37 @@
+@startuml
+actor "Reader" as reader
+participant "Library System" as system
+database "Book Database" as db
+entity "Payment Gateway" as payment
+
+== Nhắc nhở trả sách ==
+system -> reader : Gửi nhắc nhở trả sách (1 ngày trước hạn)
+
+alt Quá hạn
+    system -> reader : Gửi nhắc nhở trả sách ngay từ ngày hôm sau
+end
+
+== Trả sách ==
+reader -> system : Đưa sách vào quét mã tự động hoặc nhập mã sách
+system -> db : Kiểm tra mã sách
+db --> system : Trả về thông tin sách (mã sách)
+
+alt Trả sách đúng hạn
+    system -> reader : Hiển thị thông báo "Trả sách thành công"
+else Trả muộn
+    system -> reader : Hiển thị số ngày trễ và phí phạt ($0.3/ngày)
+    system -> reader : Display Library's QR for Payment
+    reader -> payment : Late-fee payment
+    payment --> system : Xác nhận thanh toán hoàn tất
+    system -> reader : Hiển thị thông báo "Đã hoàn tất trả sách"
+end
+
+== Cập nhật lịch sử ==
+system -> db : Cập nhật lịch sử mượn sách (Tên sách, trạng thái đúng hạn/ quá hạn)
+db --> system : Xác nhận cập nhật lịch sử
+
+== Chuyển sang màn hình voting ==
+system -> reader : Chuyển sang màn hình voting
+
+@enduml
+

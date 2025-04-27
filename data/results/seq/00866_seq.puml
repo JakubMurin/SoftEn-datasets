@@ -1,0 +1,32 @@
+@startuml
+actor "Camp Administrator" as Admin
+participant "Camp Management\nPlatform" as Platform
+database "Database" as DB
+
+== View Medical Forms for Allergy Preparedness ==
+
+Admin -> Platform: Request to view medical forms
+activate Platform
+
+Platform -> DB: Query medical forms
+activate DB
+
+DB --> Platform: Return medical forms
+deactivate DB
+
+Platform --> Admin: Display medical forms
+deactivate Platform
+
+Admin -> Platform: Select specific camper
+activate Platform
+
+Platform -> DB: Query camper medical form
+activate DB
+
+DB --> Platform: Return selected camper's medical form
+deactivate DB
+
+Platform --> Admin: Display selected camper's medical form
+deactivate Platform
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+actor DataManager as "Institutional Data Manager"
+participant DMPToolInterface as "DMPTool Interface"
+participant SecurityModule as "Security & Privacy Module"
+participant MetadataDatabase as "Metadata Database"
+participant ComplianceChecker as "Compliance Checker"
+participant StoragePlanner as "Storage Planner"
+
+DataManager -> DMPToolInterface : Access DMPTool
+DMPToolInterface -> SecurityModule : Request security requirements for data
+SecurityModule -> MetadataDatabase : Retrieve data types and sensitivity
+MetadataDatabase --> SecurityModule : Data types and sensitivity levels
+SecurityModule -> ComplianceChecker : Check compliance with legal standards
+ComplianceChecker --> SecurityModule : Compliance status and requirements
+SecurityModule --> DMPToolInterface : Display security and privacy requirements
+DMPToolInterface -> DataManager : Show security and privacy requirements
+DataManager -> DMPToolInterface : Request storage and permission planning tools
+DMPToolInterface -> StoragePlanner : Initiate storage system planning
+StoragePlanner -> SecurityModule : Refer to security requirements
+SecurityModule --> StoragePlanner : Provide required security levels
+StoragePlanner --> DMPToolInterface : Present storage and permission options
+DMPToolInterface --> DataManager : Options for storage systems and sharing permissions
+DataManager -> DMPToolInterface : Select preferred storage and permissions setup
+DMPToolInterface -> MetadataDatabase : Update project with selected storage and permissions
+MetadataDatabase --> DMPToolInterface : Confirm update
+DMPToolInterface --> DataManager : Confirm storage and permissions setup
+
+@enduml

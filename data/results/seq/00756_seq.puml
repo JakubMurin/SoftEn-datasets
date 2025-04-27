@@ -1,0 +1,27 @@
+@startuml
+
+title Diagrama de Secuencia - Búsqueda de un Camino en un Grafo
+
+actor Usuario
+participant Principal
+participant Graph
+
+Usuario -> Principal: Ejecutar búsqueda de camino
+Principal -> Graph: Crear grafo con vértices y aristas
+Usuario -> Principal: Solicitar camino entre v1 y v2
+Principal -> Graph: Llamar a onePath(v1, v2)
+Graph -> Graph: Inicializar traza y pila abierta
+loop Mientras pila no esté vacía y no se encuentre destino
+    Graph -> Graph: Extraer vértice actual
+    Graph -> Graph: Comprobar si es el destino
+    alt Si es destino
+        Graph -> Graph: Reconstruir camino desde la traza
+        Graph -> Principal: Devolver camino encontrado
+    else
+        Graph -> Graph: Agregar vecinos a la pila y registrar en traza
+    end
+end
+Principal -> Usuario: Mostrar resultado del camino
+Usuario -> Principal: Finalizar ejecución
+
+@enduml

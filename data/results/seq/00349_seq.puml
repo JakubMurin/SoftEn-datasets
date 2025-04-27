@@ -1,0 +1,27 @@
+@startuml
+
+
+actor "DevOps Engineer"
+
+
+entity EventBus
+
+box Application Management Layer #88cccc
+    boundary aml #white
+end box
+
+
+group Given [DevOps Engineer has access to workload/destroy method]
+
+"DevOps Engineer" --/ aml: DevOps Engineer uses workload/destroy method
+"aml" -> aml: Destroy Workload
+
+
+
+"DevOps Engineer" /-- aml: The workload should be destroyed
+
+
+end
+
+@enduml
+

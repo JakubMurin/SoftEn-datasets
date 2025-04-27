@@ -1,0 +1,25 @@
+@startuml
+actor "Dataset Developer" as developer
+participant "Version Control UI" as ui
+participant "Version Control Service" as service
+database "Version Metadata Store" as store
+
+== Version Assignment ==
+developer -> ui : Accesses Version Control UI
+ui -> service : Request to Assign Version
+activate service
+
+service -> store : Fetch Current Version Info
+activate store
+store --> service : Return Current Version Data
+deactivate store
+
+service -> store : Increment Version / Assign New Version
+activate store
+store --> service : Version Assigned Successfully
+deactivate store
+
+service --> ui : Version Assignment Successful
+ui --> developer : Display Success Message
+
+@enduml

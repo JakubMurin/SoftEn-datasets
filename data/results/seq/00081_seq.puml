@@ -1,0 +1,29 @@
+@startuml
+actor User as user
+participant "Dataset Management\nSystem" as DMS
+database "Explore Table" as ExploreDB
+
+== User Initiates Dataset Reconfiguration ==
+
+user -> DMS : Reconfigure Dataset Request
+activate DMS
+
+DMS -> ExploreDB : Validate Explore Table Update
+activate ExploreDB
+
+alt Explore Table Update Successful
+    ExploreDB --> DMS : Update Success
+    deactivate ExploreDB
+    
+    DMS -> DMS : Proceed with Dataset Reconfiguration
+    DMS --> user : Reconfiguration Success
+    deactivate DMS
+else Explore Table Update Fails
+    ExploreDB --> DMS : Update Fail
+    deactivate ExploreDB
+    
+    DMS --> user : Reconfiguration Failed
+    DMS -> DMS : Rollback Any Changes
+    deactivate DMS
+end
+@enduml

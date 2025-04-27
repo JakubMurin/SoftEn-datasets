@@ -1,0 +1,25 @@
+@startuml
+
+actor Usuario
+participant "Plataforma EduTech IA" as Plataforma
+participant "Sistema de Recomendación IA" as IA
+participant "Base de Datos" as BD
+
+Usuario -> Plataforma: Iniciar sesión
+Plataforma -> BD: Verificar credenciales
+BD --> Plataforma: Respuesta (éxito o error)
+Plataforma -> Usuario: Confirmación de inicio de sesión
+
+Usuario -> Plataforma: Solicitar contenido personalizado
+Plataforma -> IA: Analizar perfil del usuario
+IA -> BD: Obtener historial de aprendizaje
+BD --> IA: Enviar historial
+IA -> Plataforma: Enviar recomendaciones
+Plataforma -> Usuario: Mostrar contenido recomendado
+
+Usuario -> Plataforma: Completar actividad
+Plataforma -> BD: Guardar progreso
+BD --> Plataforma: Confirmación de guardado
+
+@enduml
+

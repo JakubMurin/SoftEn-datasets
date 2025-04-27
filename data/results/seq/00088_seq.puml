@@ -1,0 +1,14 @@
+@startuml
+actor "Repository Manager" as RepoManager
+participant "DIMS UI" as UI
+participant "DIMS Backend" as Backend
+database "DAMS Database" as Database
+
+RepoManager -> UI : Selects an object to list components
+UI -> Backend : Request to list components
+Backend -> Database : Query for components of the object
+Database --> Backend : Returns components data
+Backend -> Backend : Sort components in their appropriate order
+Backend --> UI : Shows sorted components
+UI --> RepoManager : Displays components in order
+@enduml

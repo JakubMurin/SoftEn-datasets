@@ -1,0 +1,40 @@
+@startuml
+actor DatasetDeveloper as developer
+participant "Dataset Version Control" as DVC
+participant "Dataset Instance" as DI
+database "Dataset Registry" as DR
+
+== Check Upgrade Compatibility for Dataset Instance ==
+
+developer -> DVC : requestUpgradeCheck(datasetInstanceId, newVersion)
+activate DVC
+
+DVC -> DR : getDatasetTypeInfo(newVersion)
+activate DR
+DR --> DVC : datasetTypeDetails
+deactivate DR
+
+DVC -> DI : getExistingVersionDetails(datasetInstanceId)
+activate DI
+DI --> DVC : existingVersionDetails
+deactivate DI
+
+DVC -> DVC : compareVersions(datasetTypeDetails, existingVersionDetails)
+DVC -> DR : getUpgradeCompatibilityRules(datasetTypeID)
+activate DR
+DR --> DVC : compatibilityRules
+deactivate DR
+
+DVC -> DVC : applyCompatibilityRules(compatibilityRules, existingVersionDetails, newVersion)
+alt If Upgrade is Compatible
+  DVC --> developer : upgradeIsCompatible()
+  developer -> DVC : confirmUpgrade(datasetInstanceId, newVersion)
+  DVC -> DI : upgradeInstance(newVersion)
+  DI --> DVC : upgradeSuccess()
+  DVC --> developer : upgradeComplete()
+else If Upgrade is Not Compatible
+  DVC --> developer : upgradeIncompatible(reason)
+end
+
+deactivate DVC
+@enduml

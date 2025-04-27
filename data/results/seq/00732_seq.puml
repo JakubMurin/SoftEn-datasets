@@ -1,0 +1,20 @@
+@startuml
+actor User
+participant "Browser" as Browser
+participant "Web Server" as WebServer
+participant "Django Application" as DjangoApp
+participant "View" as View
+participant "Database" as Database
+
+User -> Browser: Open Acadsync Application
+Browser -> WebServer: Send HTTP Request
+WebServer -> DjangoApp: Forward Request
+DjangoApp -> View: Call Appropriate View
+View -> Database: Query/Update Data
+Database --> View: Return Data
+View -> DjangoApp: Render Template with Data
+DjangoApp -> WebServer: Return Response
+WebServer -> Browser: Send HTTP Response
+Browser -> User: Display Response
+
+@enduml

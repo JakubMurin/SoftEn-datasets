@@ -1,0 +1,24 @@
+@startuml
+actor "Faculty Data Steward" as steward
+participant "UI Interface" as UI
+participant "Authentication Service" as Auth
+participant "Role Management Module" as Roles
+participant "Data Management Planning Tool (DMPTool)" as DMPTool
+participant "Database" as DB
+
+== Authentication ==
+steward -> UI : Access DMPTool
+UI -> Auth : Request login
+Auth -->> UI : Authentication Success
+
+== View Roles ==
+steward -> UI : Select "View Roles"
+UI -> Roles : Fetch Roles data
+Roles -> DMPTool : Request Roles information
+DMPTool -> DB : Query Roles data
+DB -->> DMPTool : Roles data
+DMPTool -->> Roles : Return Roles info
+Roles -->> UI : Display Roles
+UI -->> steward : Shows Roles sections
+
+@enduml

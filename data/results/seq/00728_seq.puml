@@ -1,0 +1,40 @@
+@startuml
+actor Inspector
+participant "Inspection Portal" as Portal
+database "Inspection Database" as DB
+participant "Customer Account" as Customer
+
+== Inspection Assignment ==
+Inspector -> Portal : Log in
+Portal -> DB : Validate Inspector credentials
+DB -> Portal : Credentials Validated
+Portal -> Inspector : Show Dashboard
+
+Inspector -> Portal : Select Assigned Inspections
+Portal -> DB : Retrieve Assigned Inspections
+DB -> Portal : List of Assigned Inspections
+Portal -> Inspector : Display Assigned Inspections
+
+== Conducting Inspection ==
+Inspector -> Portal : Select Inspection
+Portal -> Inspector : Display Inspection Details & Checklist
+
+loop Inspection Item
+    Inspector -> Portal : Validate Compliance for each item
+    Portal -> Inspector : Record Compliance Status
+end
+
+Inspector -> Portal : Submit Inspection Results
+Portal -> DB : Update Inspection Record
+DB -> Portal : Confirmation of Update
+
+== Providing Results to Customer ==
+Portal -> Customer : Notify of Inspection Completion
+Customer -> Portal : Log in to view results
+Portal -> Customer : Display Inspection Results
+
+Customer -> Portal : Acknowledge Receipt
+Portal -> DB : Update Acknowledgement Status
+DB -> Portal : Acknowledgement Recorded
+
+@enduml

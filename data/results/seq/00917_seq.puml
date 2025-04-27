@@ -1,0 +1,19 @@
+@startuml
+actor Attendee
+participant "Workshop Platform" as WP
+participant "CMS" as CMS
+participant "Database" as DB
+participant "Content Editor" as CE
+participant "Summary Page" as SP
+
+Attendee -> WP: Requests summary
+WP -> CMS: Fetch request for summary
+CMS -> DB: Query workshop data
+DB -> CMS: Return workshop data
+CMS -> CE: Generate summary content
+CE -> CMS: Submit summary
+CMS -> DB: Update with summary
+DB -> CMS: Confirmation
+CMS -> SP: Publish summary
+SP -> Attendee: Display summary content
+@enduml

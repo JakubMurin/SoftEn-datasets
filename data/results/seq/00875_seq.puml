@@ -1,0 +1,24 @@
+@startuml
+actor CampWorker
+
+participant "Camp Management\nSystem" as CMS
+database "Camper Profiles" as CP
+database "Scheduling Service" as SS
+
+CampWorker -> CMS : Log in
+activate CMS
+
+CMS -> CP : Fetch assigned campers
+activate CP
+CP --> CMS : List of campers
+deactivate CP
+
+CMS -> SS : Get schedule/location for each camper
+activate SS
+SS --> CMS : Schedule and locations
+deactivate SS
+
+CMS --> CampWorker : Display campers and their schedule/location
+deactivate CMS
+
+@enduml

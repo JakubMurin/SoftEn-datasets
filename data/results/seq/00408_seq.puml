@@ -1,0 +1,20 @@
+@startuml
+actor Client as Client
+participant HealthMonitorAPI as Health
+participant IpHandler as IP
+participant ServiceRemovalHandler as SRH
+
+Client -> Health: checkHealth(senderIp:string, requestedIp:string)
+Health -> IP: denyServiceCheck(senderIp:string)
+IP -> IP: addRequestCount(senderIp:string, requestCount:int)
+
+alt requestCount > 5
+    IP -> SRH: blockRequest(senderIp:string)
+    SRH --> IP: deny message
+    IP --> Health: deny message 
+    Health --> Client: deny message
+else
+    IP -> Health: acceptRequest(senderIp:string)
+    Health --> Client: api health status
+end
+@enduml

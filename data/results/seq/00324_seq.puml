@@ -1,0 +1,40 @@
+@startuml
+actor User
+participant "Web Interface" as Web
+participant "Tagging System" as Tagging
+participant "Controlled Vocabulary DB" as VocabularyDB
+
+User -> Web : Initiates tagging process
+activate Web
+
+Web -> Tagging : Request available tags
+activate Tagging
+
+Tagging -> VocabularyDB : Query controlled vocabulary
+activate VocabularyDB
+
+VocabularyDB --> Tagging : Return vocabulary list
+deactivate VocabularyDB
+
+Tagging --> Web : Display vocabulary tags
+deactivate Tagging
+
+User -> Web : Selects tags from controlled vocabulary
+activate Web
+
+Web -> Tagging : Assign selected tags to dataset/file
+activate Tagging
+
+Tagging -> VocabularyDB : Validate and save tags
+activate VocabularyDB
+
+VocabularyDB --> Tagging : Confirmation of tag assignment
+deactivate VocabularyDB
+
+Tagging --> Web : Confirm successful tagging to user
+deactivate Tagging
+
+Web --> User : Display tagging success message
+deactivate Web
+
+@enduml

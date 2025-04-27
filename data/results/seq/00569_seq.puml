@@ -1,0 +1,44 @@
+@startuml
+actor User
+participant "gym_tracker_x::screens::workout_edit_screen.dart::WorkoutEditScreen" as WorkoutEditScreen
+participant "gym_tracker_x::services::workout_service.dart::WorkoutService" as WorkoutService
+participant "gym_tracker_x::models::workout.dart::Workout" as Workout
+participant "gym_tracker_x::services::database_service.dart::DatabaseService" as DatabaseService
+
+activate User
+User -> WorkoutEditScreen: öffnet Workout-Bearbeitungsseite
+activate WorkoutEditScreen
+
+WorkoutEditScreen -> WorkoutService: ladeWorkoutDetails(workoutId)
+activate WorkoutService
+
+WorkoutService -> Workout: Workout-Daten abrufen
+activate Workout
+Workout --> WorkoutService: Workout-Daten zurückgeben
+deactivate Workout
+
+WorkoutService --> WorkoutEditScreen: Workout-Daten anzeigen
+deactivate WorkoutService
+
+User -> WorkoutEditScreen: bearbeitet Workout-Daten
+WorkoutEditScreen -> WorkoutService: speichere Änderungen(workoutId, updatedData)
+activate WorkoutService
+
+WorkoutService -> Workout: aktualisiere Workout-Daten
+activate Workout
+Workout --> WorkoutService: Änderungen übernommen
+deactivate Workout
+
+WorkoutService -> DatabaseService: speichere aktualisierte Workout-Daten
+activate DatabaseService
+DatabaseService --> WorkoutService: Bestätigung "Änderungen gespeichert"
+deactivate DatabaseService
+
+WorkoutService --> WorkoutEditScreen: Erfolgsmeldung anzeigen
+deactivate WorkoutService
+
+WorkoutEditScreen -> User: Bestätigung "Workout gespeichert"
+deactivate WorkoutEditScreen
+deactivate User
+@enduml
+

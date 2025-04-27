@@ -1,0 +1,45 @@
+@startuml
+actor Curator as curator
+participant "UI Dashboard" as dashboard
+participant "Authentication Service" as auth
+participant "Access Control Module" as acm
+participant "Repository Database" as db
+participant "Networking Service" as net
+
+curator -> dashboard : Initiate restriction settings
+activate dashboard
+
+dashboard -> auth : Authenticate curator
+activate auth
+auth -->> dashboard : Authentication successful
+deactivate auth
+
+dashboard -> acm : Request to restrict access
+activate acm
+acm -> db : Fetch collection details
+activate db
+db -->> acm : Collection information
+deactivate db
+
+acm -> acm : Define IP restriction rule\n(Duke IP addresses only)
+acm -> db : Update collection with access rule
+activate db
+db -->> acm : Update confirmation
+deactivate db
+
+acm -->> dashboard : Restriction applied
+deactivate acm
+
+dashboard -->> curator : Display success message
+deactivate dashboard
+
+curator -> net : User tries to access collection
+activate net
+net -> acm : Check access for user IP
+activate acm
+acm -> acm : Validate IP against rule
+acm -->> net : Access granted/denied based on IP
+deactivate acm
+net -> net : Serve/deny collection based on ACM decision
+
+@enduml

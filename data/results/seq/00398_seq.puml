@@ -1,0 +1,32 @@
+@startuml
+actor olderPerson as "OlderPerson"
+participant ALFRED as "ALFRED Device"
+title ALFRED Device Voice Recognition Sequence
+
+== Activation ==
+olderPerson -> ALFRED: Activate Device
+ALFRED -> ALFRED: Check if voice recognition is set up
+
+alt Voice recognition not set up
+    ALFRED -> olderPerson: Prompt for voice recognition setup
+    olderPerson -> ALFRED: Start voice recognition setup
+    loop Record Voice Samples
+        olderPerson -> ALFRED: Provides voice samples
+    end
+    ALFRED -> ALFRED: Process & Setup Voice Recognition
+    ALFRED -> olderPerson: Confirm successful setup
+else Voice recognition already set up
+    ALFRED -> ALFRED: Proceed with voice verification
+end
+
+== Voice Command ==
+olderPerson -> ALFRED: Issues voice command
+ALFRED -> ALFRED: Verify voice
+alt Voice Verified
+    ALFRED -> ALFRED: Perform requested action
+    ALFRED -> olderPerson: Confirm action performed
+else Verification Failed
+    ALFRED -> olderPerson: Inform about failed verification
+end
+
+@enduml

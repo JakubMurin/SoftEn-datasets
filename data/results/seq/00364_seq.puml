@@ -1,0 +1,25 @@
+@startuml
+actor Estudiante
+boundary "ComprarCursoView" as View
+control "CompraController" as Controller
+entity "Curso" as Curso
+database "ComprasRepository" as Repository
+
+== Flujo principal ==
+Estudiante -> View --++: Acceder al curso que desea comprar
+View -> Controller --++: Solicitar detalles del curso
+Controller -> Curso --++: Obtener detalles del curso
+Curso -> Controller --++: Detalles del curso
+Controller -> View --++: Mostrar detalles del curso y el precio
+View -> Controller --++: Enviar datos de la compra
+Controller -> Repository --++: Registrar compra
+Repository -> Controller --++: Confirmación de compra
+Controller -> View --++: Confirmación de compra realizada
+
+== Flujo alternativo ==
+
+alt   [Error Error durante el procesamiento de la compra]
+    Controller -> View --++: Mostrar mensaje de error
+end
+@enduml
+

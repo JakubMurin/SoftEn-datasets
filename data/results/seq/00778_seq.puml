@@ -1,0 +1,23 @@
+@startuml
+actor Curator as curator
+participant "Deposit Interface" as depositInterface
+participant "Validation Service" as validationService
+participant "EDRMS Database" as database
+participant "Notification Service" as notificationService
+
+curator -> depositInterface : select collection
+curator -> depositInterface : initiate deposit
+depositInterface -> curator : request deposit details
+curator -> depositInterface : provides deposit details\n(including embargo date)
+depositInterface -> validationService : validate details\n(including embargo date)
+alt validation success
+    validationService --> depositInterface : validation passed
+    depositInterface -> database : save deposit details
+    database --> depositInterface : confirm save
+    depositInterface -> notificationService : send confirmation to curator
+    notificationService -> curator : deposit successful
+else validation failure
+    validationService --> depositInterface : validation failed
+    depositInterface -> curator : show validation error
+end
+@enduml

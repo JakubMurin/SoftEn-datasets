@@ -1,0 +1,50 @@
+@startuml
+actor User as Actor
+participant CreateCourseUI as UI <<presentation>>
+participant CreateCourseController as Controller <<aplication>>
+participant CourseBuilder as Builder <<builder>>
+participant Course as Domain <<domain>>
+participant PersistenceContext as Persistence <<persistence>>
+participant RepositoryFactory as Factory <<factory>>
+database CourseRepository as Repository <<repository>>
+
+Actor -> UI: Create course
+activate UI
+    UI -> Controller: create
+    UI --> Actor: Ask course information
+    Actor --> UI: name, description,edition
+    Controller--> UI
+
+    UI -> Controller: CreateCourse(id, name, description,\n edition)
+    activate Controller
+        note right of Builder:CourseBuilder is used for create \n entity of type course on valid state
+        Controller -> Builder: create
+
+        note right of Controller: Set the rest of the information
+        Controller -> Builder: CreateCourse()
+        activate Builder
+            Builder -> Domain: create (name\ndescription,edition)
+            Domain -> Builder: Course
+            Builder -> Controller: Course
+        deactivate builder
+
+        Controller -> Persistence: repositories()
+        activate Persistence
+            note right of Persistence: pode criar repositório em memória ou JPA
+            Persistence -> Factory: create
+            Persistence -> Controller: factory
+        deactivate Persistence
+
+        Controller -> Factory: Course()
+        activate Factory
+            Factory -> Repository: create
+            Factory -> Controller: CourseRepository
+        deactivate Factory
+
+        Controller->Repository:save(Course)
+        Controller->UI: Course
+    deactivate Controller
+
+    UI-->Actor:
+deactivate UI
+@enduml

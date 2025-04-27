@@ -1,0 +1,17 @@
+@startuml
+actor DonorRepresentative as DR
+participant "User Interface" as UI
+participant "Authorization System" as Auth
+participant "File Management" as FM
+participant "Database" as DB
+
+DR -> UI : Access Website
+UI -> Auth : Request Access
+Auth -> DR : Authenticate
+DR -> UI : Request Image Descriptive Info
+UI -> FM : Query for Images
+FM -> DB : Fetch Image Metadata
+DB -> FM : Return Metadata
+FM -> UI : Display Descriptive Info
+UI -> DR : Show Descriptive Information about Images
+@enduml

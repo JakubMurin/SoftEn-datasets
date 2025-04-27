@@ -1,0 +1,71 @@
+@startuml
+actor Trabajador
+entity Posicion
+entity Turno
+entity Departamento
+entity Ausencia
+entity Preferencia
+entity GestorTurnos
+database BaseDeDatos
+
+Trabajador -> GestorTurnos: Solicita asignacion
+activate GestorTurnos
+
+GestorTurnos -> BaseDeDatos: Busca departamento del trabajador
+activate BaseDeDatos
+
+BaseDeDatos -> Departamento: Busca departamento del trabajador
+activate Departamento
+
+Departamento --> BaseDeDatos: Retorna departamento
+deactivate Departamento
+
+BaseDeDatos --> GestorTurnos: Retorna departamento
+deactivate BaseDeDatos
+
+GestorTurnos -> BaseDeDatos: Busca posicion disponible en el departamento
+activate BaseDeDatos
+
+BaseDeDatos -> Posicion: Busca posicion disponible
+activate Posicion
+
+Posicion --> BaseDeDatos: Retorna posicion
+deactivate Posicion
+
+BaseDeDatos --> GestorTurnos: Retorna posicion
+deactivate BaseDeDatos
+
+GestorTurnos -> BaseDeDatos: Busca turno disponible
+activate BaseDeDatos
+
+BaseDeDatos -> Turno: Busca turno disponible
+activate Turno
+
+Turno --> BaseDeDatos: Retorna turno
+deactivate Turno
+
+BaseDeDatos --> GestorTurnos: Retorna turno
+deactivate BaseDeDatos
+
+GestorTurnos -> BaseDeDatos: Verifica ausencias y preferencias del trabajador
+activate BaseDeDatos
+
+BaseDeDatos -> Ausencia: Verifica ausencias
+activate Ausencia
+
+Ausencia --> BaseDeDatos: Retorna ausencias
+deactivate Ausencia
+
+BaseDeDatos -> Preferencia: Verifica preferencias
+activate Preferencia
+
+Preferencia --> BaseDeDatos: Retorna preferencias
+deactivate Preferencia
+
+BaseDeDatos --> GestorTurnos: Retorna ausencias y preferencias
+deactivate BaseDeDatos
+
+GestorTurnos --> Trabajador: Asigna posicion y turno
+deactivate GestorTurnos
+
+@enduml

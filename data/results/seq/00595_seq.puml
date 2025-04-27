@@ -1,0 +1,23 @@
+@startuml
+actor User as u
+participant "UI Interface" as ui
+participant "Speech Recognition Module" as srm
+participant "Content Query Processor" as cqp
+database "Content Database" as db
+
+u -> ui : Speaks into device
+ui -> srm : Captures audio input
+srm -> srm : Processes and converts speech to text
+srm -> cqp : Sends converted text
+activate cqp
+
+cqp -> db : Queries for matching content items
+activate db
+db --> cqp : Returns matched content items
+deactivate db
+
+cqp --> ui : Displays search results
+ui --> u : Shows search results to user
+deactivate cqp
+
+@enduml

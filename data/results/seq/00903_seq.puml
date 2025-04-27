@@ -1,0 +1,32 @@
+@startuml
+actor Curator as "Collection Curator"
+participant "EDRMS System" as EDRMS
+database "Repository" as Repo
+participant "Embargo Management" as Embargo
+participant "Search Module" as Search
+
+Curator -> EDRMS : Requests to set embargo on an item
+EDRMS -> Repo : Verifies item exists
+EDRMS -> Embargo : Sets embargo on the item
+Embargo -> Repo : Updates item status to "Under Embargo"
+EDRMS --> Curator : Confirms embargo set
+
+activate Embargo
+Curator -> EDRMS : Requests to make metadata discoverable
+EDRMS -> Embargo : Verifies item is under embargo
+Embargo -> Search : Updates to allow metadata visibility
+deactivate Embargo
+
+Search -> Repo : Ensures metadata is indexed & Searchable
+EDRMS --> Curator : Confirms metadata is discoverable while item is embargoed
+
+actor User as "External User/System"
+User -> Search : Searches for item
+Search -> Repo : Retrieves item metadata
+alt item under embargo
+    Search -> User : Returns item metadata without access to the item
+else item not under embargo
+    Search -> User : Returns item metadata and access
+end
+
+@enduml

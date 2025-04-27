@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Policies" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-policy-update(name,cloud,env)
+CLI -> S : policy/update(name,cloud,env)
+A -> Web : policy/update(name,cloud,env)
+Web -> S : policy/update(name,cloud,env)
+end box
+
+@enduml
+

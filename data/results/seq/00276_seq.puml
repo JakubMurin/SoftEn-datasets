@@ -1,0 +1,33 @@
+@startuml
+actor Publisher
+participant "User Account Management" as UAM
+participant "Dataset Publishing" as DP
+database "Access Control" as AC
+
+Publisher -> UAM : log in via GitHub or Google
+activate UAM
+UAM --> Publisher : authentication successful
+deactivate UAM
+
+Publisher -> DP : initiate data package creation
+activate DP
+DP -> DP : prepare package metadata
+DP -> AC : set package visibility to private
+activate AC
+AC --> DP : visibility set
+deactivate AC
+
+DP -> DP : import dataset
+DP -> DP : validate dataset
+DP -> DP : save dataset package
+
+Publisher -> DP : publish package to team
+DP -> AC : verify team access rights
+activate AC
+AC --> DP : access verified
+deactivate AC
+
+DP -> DP : notify team members
+DP --> Publisher : package published successfully
+deactivate DP
+@enduml

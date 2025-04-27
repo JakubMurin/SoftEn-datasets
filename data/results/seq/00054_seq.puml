@@ -1,0 +1,79 @@
+@startuml
+actor User
+participant "UserInterface" as UI
+participant "LikeController" as LikeController
+participant "LikeService" as LikeService
+participant "LikeRepository" as LikeRepo
+database "LikesDatabase" as LikesDB
+database "PostsDatabase" as PostsDB
+database "CommentsDatabase" as CommentsDB
+database "EventsDatabase" as EventsDB
+
+User -> UI: Go to entity page (post, comment, event)
+UI -> User: Display entity details and like button
+User -> UI: Click "Like/Dislike" button
+UI -> LikeController: toggleLike(EntityID entityID, EntityType entityType)
+
+alt Entity is Already Liked
+    LikeController -> LikeService: processDislike(EntityID entityID, EntityType entityType)
+    LikeService -> LikeRepo: removeLike(EntityID entityID, EntityType entityType)
+
+    alt Remove Operation Fails
+        LikeRepo --> LikeService: Return failure
+        LikeService --> LikeController: Return failure response
+        LikeController --> UI: Return error message
+        UI -> User: Display "Failed to remove like from the entity" message
+    else Remove Operation Succeeds
+        LikeRepo -> LikesDB: Remove like data (EntityID entityID, UserID userID, EntityType entityType)
+        LikesDB --> LikeRepo: Return success
+
+        alt EntityType is Post
+            LikeRepo --> PostsDB: Update post like count (EntityID entityID, decrement count)
+            PostsDB --> LikeRepo: Return updated post
+        else EntityType is Comment
+            LikeRepo --> CommentsDB: Update comment like count (EntityID entityID, decrement count)
+            CommentsDB --> LikeRepo: Return updated comment
+        else EntityType is Event
+            LikeRepo --> EventsDB: Update event like count (EntityID entityID, decrement count)
+            EventsDB --> LikeRepo: Return updated event
+        end
+
+        LikeRepo --> LikeService: Return success
+        LikeService --> LikeController: Return success response
+        LikeController --> UI: Return success message
+        UI -> User: Display "Like removed successfully"
+        UI -> User: Update like count on entity
+    end
+else Entity is Not Yet Liked
+    LikeController -> LikeService: processLike(EntityID entityID, EntityType entityType)
+    LikeService -> LikeRepo: saveLike(EntityID entityID, EntityType entityType)
+
+    alt Save Operation Fails
+        LikeRepo --> LikeService: Return failure
+        LikeService --> LikeController: Return failure response
+        LikeController --> UI: Return error message
+        UI -> User: Display "Failed to like the entity" message
+    else Save Operation Succeeds
+        LikeRepo -> LikesDB: Insert like data (EntityID entityID, UserID userID, EntityType entityType)
+        LikesDB --> LikeRepo: Return success
+
+        alt EntityType is Post
+            LikeRepo --> PostsDB: Update post like count (EntityID entityID, increment count)
+            PostsDB --> LikeRepo: Return updated post
+        else EntityType is Comment
+            LikeRepo --> CommentsDB: Update comment like count (EntityID entityID, increment count)
+            CommentsDB --> LikeRepo: Return updated comment
+        else EntityType is Event
+            LikeRepo --> EventsDB: Update event like count (EntityID entityID, increment count)
+            EventsDB --> LikeRepo: Return updated event
+        end
+
+        LikeRepo --> LikeService: Return success
+        LikeService --> LikeController: Return success response
+        LikeController --> UI: Return success message
+        UI -> User: Display "Entity liked successfully"
+        UI -> User: Update like count on entity
+    end
+end
+@enduml
+

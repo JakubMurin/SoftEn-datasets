@@ -1,0 +1,20 @@
+@startuml
+actor Manager
+participant "Management Interface" as MI
+participant "Backend Server" as BS
+database "Database" as DB
+
+Manager -> MI: Access Menu Management
+MI -> BS: Request current menu items
+BS -> DB: Fetch menu items
+DB --> BS: Menu items data
+BS --> MI: Display menu items
+Manager -> MI: Select items to update
+Manager -> MI: Submit updated menu items
+MI -> BS: Update menu items request
+BS -> DB: Update menu items in Database
+DB --> BS: Confirmation of updated items
+BS --> MI: Confirm successful update
+MI --> Manager: Display success message
+
+@enduml

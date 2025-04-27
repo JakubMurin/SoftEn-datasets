@@ -1,0 +1,31 @@
+@startuml
+actor FacultyMember as "Cornell Faculty Member"
+participant BrowserGUI as "Web Browser Interface"
+participant UploadService as "File Upload Service"
+participant DRMService as "Digital Rights Management Service"
+participant Repository as "Digital Repository"
+participant LicenseService as "Licensing Service"
+participant DB as "Database"
+
+== Upload Process ==
+FacultyMember -> BrowserGUI : Selects data file for upload
+BrowserGUI -> UploadService : Initiates file upload process
+UploadService -> Repository : Stores data file
+Repository --> DB : Saves file metadata\n(including uploader info)
+DB --> Repository : Confirm metadata storage
+Repository --> UploadService : Confirm file storage
+UploadService -> BrowserGUI : Display file upload success
+UploadService --> FacultyMember : Provides file ID and upload confirmation
+
+== Licensing Process ==
+FacultyMember -> BrowserGUI : Choose licensing option (CC-By or CC0)
+BrowserGUI -> LicenseService : Send license choice and file ID
+LicenseService -> DRMService : Apply chosen license to file
+DRMService -> Repository : Updates file metadata with license info
+Repository --> DB : Update file record with license metadata
+DB --> Repository : Confirm license update
+Repository -> LicenseService : Confirm license application to file
+LicenseService -> BrowserGUI : Display license application success
+BrowserGUI --> FacultyMember : Confirm license has been set
+
+@enduml

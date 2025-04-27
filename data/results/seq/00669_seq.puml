@@ -1,0 +1,57 @@
+@startuml
+
+actor User
+box User Interfaces Layer
+participant SubscriptionController << (C,#ADD1B2) @Controller >>
+end box
+box Application Layer
+participant SubscriptionFacadeImpl << (C,#ADD1B2) @Bean >>
+end box
+box Domain Model Layer
+participant SubscriptionRepository << (I,#ADD1B2) @Bean >>
+end box
+box Infrastructure Layer
+participant SubscriptionJpaPersistenceAdapter << (C,#ADD1B2) @Bean >>
+participant SubscriptionJpaRepository << (I,#ADD1B2) @Repository >>
+end box
+database Datastore
+
+activate User
+
+User --> SubscriptionController
+activate SubscriptionController
+
+SubscriptionController --> SubscriptionFacadeImpl
+activate SubscriptionFacadeImpl
+
+SubscriptionFacadeImpl --> SubscriptionRepository
+activate SubscriptionRepository
+
+SubscriptionRepository --> SubscriptionJpaPersistenceAdapter
+activate SubscriptionJpaPersistenceAdapter
+
+SubscriptionJpaPersistenceAdapter --> SubscriptionJpaRepository
+activate SubscriptionJpaRepository
+
+SubscriptionJpaRepository --> Datastore
+activate Datastore
+
+Datastore --> SubscriptionJpaRepository
+deactivate Datastore
+
+SubscriptionJpaRepository --> SubscriptionJpaPersistenceAdapter
+deactivate SubscriptionJpaRepository
+
+SubscriptionJpaPersistenceAdapter --> SubscriptionRepository
+deactivate SubscriptionJpaPersistenceAdapter
+
+SubscriptionRepository --> SubscriptionFacadeImpl
+deactivate SubscriptionRepository
+
+SubscriptionFacadeImpl --> SubscriptionController
+deactivate SubscriptionFacadeImpl
+
+SubscriptionController --> User
+deactivate SubscriptionController
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+actor       User        as Foo
+Foo -> "~#userNameInput: TextField": write username
+PacManController-> PacManController: updateGui()
+"~#userNameInput: TextField" <- PacManController: getText()
+"~#userNameInput: TextField" -> PacManController: username
+
+PacManController-> PacManUser: validateUserName(username)
+PacManUser -> PacManController: true
+PacManController -> "~#Button: startButton": enable  
+Foo -> "~#Button: startButton": click
+"~#Button: startButton" -> PacManController: handleStartButton()
+
+PacManController -> PacManUser: setUserName(username)
+PacManController -> PacManUser: setScore(score)
+
+==game start==
+==game over==
+
+PacManController ->PacManPersistence: saveHighscore(username, score)
+PacManPersistence -> FileReader: FileReader(path)
+FileReader -> PacManPersistence: scores
+PacManPersistence -> PacManUser: PacManUser(username,score)
+PacManUser -> PacManPersistence: pacManUser
+PacManPersistence -> FileWriter: FileWriter(scores + pacManUser)
+
+
+@enduml

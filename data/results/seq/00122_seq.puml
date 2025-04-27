@@ -1,0 +1,40 @@
+@startuml
+actor FacultyMember as Faculty
+entity "Upload Interface" as UploadUI
+database "Repository System" as Repo
+entity "Metadata Service" as Metadata
+entity "Publication Management" as PubManage
+database "Database" as DB
+
+== Upload Data and Associate with Publication ==
+
+Faculty -> UploadUI : Select data to upload
+UploadUI -> Repo : Upload data file
+activate Repo
+Repo -> DB : Store data file
+DB --> Repo : Confirm storage
+deactivate Repo
+
+Repo -> Metadata : Request metadata entry form
+Metadata --> Faculty : Display form
+Faculty -> Metadata : Enter metadata, including publication details
+Metadata -> Repo : Update metadata in DB
+Repo --> Faculty : Confirm data and publication association
+
+== Process Publication Details ==
+
+Faculty -> PubManage : Enter publication details
+activate PubManage
+PubManage -> Repo : Verify data association
+Repo --> PubManage : Confirm association
+PubManage -> DB : Store publication details
+DB --> PubManage : Confirm storage
+deactivate PubManage
+PubManage --> Faculty : Acknowledge data and publication linkage
+
+== Attribution Process ==
+
+Repo -> Metadata : Generate citation
+Metadata --> Faculty : Display citation with data and publication
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+actor RepositoryManager as RM
+participant "DIMS System" as DIMS
+participant "Digital Repository" as Repo
+database "Checksum Database" as DB
+
+RM -> DIMS : Request checksum status
+DIMS -> Repo : Query latest content file details
+Repo -> DIMS : Return file details
+DIMS -> DB : Retrieve stored checksums
+DB -> DIMS : Checksum data
+DIMS -> DIMS : Compare latest and stored checksums
+alt Checksum changed
+    DIMS -> RM : Notify of checksum change
+else Checksum unchanged
+    DIMS -> RM : Confirm no changes
+end
+@enduml

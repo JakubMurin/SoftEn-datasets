@@ -1,0 +1,25 @@
+@startuml
+actor Researcher as res
+participant "DMPTool Interface" as ui
+participant "Data Storage\nPlanning Module" as dsp
+participant "Metadata Repository" as meta
+participant "Institutional Systems\n(Integration)" as inst
+
+== Data Storage Indication Process ==
+
+res -> ui : Access DMPTool
+ui -> dsp : Choose to document data storage plans
+dsp -> dsp : Display data storage plan form
+
+res -> dsp : Input data storage locations\n(during and after the project)
+dsp -> meta : Store data storage plans
+meta -> meta : Update metadata with data locations
+
+dsp -> dsp : Confirm data storage plan saved
+dsp -> inst : Send storage plan details\n(Optional integration)
+inst -> inst : Update institutional repository/system
+
+dsp -> ui : Display confirmation message
+ui -> res : Display success and next steps
+
+@enduml

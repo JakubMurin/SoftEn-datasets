@@ -1,0 +1,18 @@
+@startuml
+actor Admin
+participant "Front-End System" as FrontEnd
+participant "Back-End System" as BackEnd
+
+Admin -> FrontEnd: Request Robot State Change
+activate FrontEnd
+
+FrontEnd -> BackEnd: Process State Change
+activate BackEnd
+
+BackEnd --> FrontEnd: State Change Result
+deactivate BackEnd
+
+FrontEnd -> Admin: Display Outcome
+deactivate FrontEnd
+@enduml
+

@@ -1,0 +1,27 @@
+@startuml
+actor "DigitalRecords Archivist" as archivist
+participant "UI" as ui
+participant "Embargo Management\nSystem" as embargoSystem
+database "Database" as db
+
+== Edit Embargo Length ==
+
+archivist -> ui : Selects embargoed item
+ui -> embargoSystem : Request embargo details
+embargoSystem -> db : Retrieve embargo info
+db -> embargoSystem : Return embargo info
+embargoSystem -> ui : Display embargo details
+
+alt Edit Length
+  archivist -> ui : Inputs new embargo length
+  ui-> embargoSystem : Update embargo length request
+  embargoSystem -> db : Update embargo info in database
+  db -> embargoSystem : Confirm update
+  embargoSystem -> ui : Display success message
+  ui -> archivist : Show confirmation
+else Cancel
+  archivist -> ui : Cancels operation
+  ui -> archivist : Operation canceled
+end
+
+@enduml

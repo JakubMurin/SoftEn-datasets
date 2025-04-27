@@ -1,0 +1,34 @@
+@startuml
+actor "End-User" as endUser
+actor CS as CS
+
+participant Application as Application #A1CFA9
+participant Signicat as "Signicat Authentication API" #A1CFA9
+participant IDP as "IDP (e.g BankID via Signicat)" #A1CFA9
+
+endUser -> CS : help needed
+endUser -> CS : provide NIN
+CS -> Application : NIN
+CS -[#red]> endUser : inform end user to\n start Swedish BankID
+Application -> Signicat : POST /sessions ("flow":"headless", "NIN" "PHONE", "USER")'
+Application <- Signicat : 200 OK ([id])
+
+activate endUser #73FA79
+endUser --> endUser : start BankID
+endUser --> IDP : authenticate with BankID
+deactivate endUser
+
+note over endUser, IDP #FFAAAA: End user authenticated successfully
+IDP --> Signicat : Information on authentication
+note over Signicat #FFAAAA: Signicat process the authentication
+note over Application #FFAAAA : Customer now need to get the\nauthentication result from Signicat
+
+group Poll
+
+Application -> Signicat : GET /sessions/[Id]
+Signicat --> Application : 200 OK {"SUCCESS", "subject", etc}
+end 
+note over endUser, IDP #FFAAAA: Now you are done - use the data how you want!
+CS <- Application : provide result of end-user authentication
+CS -> endUser : help out the authenticated end-user 
+@enduml

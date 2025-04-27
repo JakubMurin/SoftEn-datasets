@@ -1,0 +1,31 @@
+@startuml
+actor Customer
+Customer -> ConfirmOrderPanel : Place Order
+activate ConfirmOrderPanel
+ConfirmOrderPanel -> SubscriptionService : create()
+activate SubscriptionService
+SubscriptionService -> IntegrationService : publish()
+activate IntegrationService
+IntegrationService -> Connector : publishNonInteractiveEvent()
+activate Connector
+Connector -> ISV : e.g. <GET /isv/asyncSubscription>
+activate ISV
+Connector <- ISV : <GET /integration/v1/events/{TOKEN}>
+Connector --> ISV : 200: Event info
+Connector <-- ISV : 202: Accepted
+deactivate ISV
+IntegrationService <-- Connector : ISV notified
+deactivate Connector
+SubscriptionService <-- IntegrationService : Pending Provisioning
+deactivate IntegrationService
+SubscriptionService -> JBillingApi : generateAndPayInvoices()
+activate JBillingApi
+SubscriptionService <-- JBillingApi : NOT generated
+note right: as OrderStatus <> ACTIVE its not\ngoing to generate the invoice
+deactivate JBillingApi
+ConfirmOrderPanel <-- SubscriptionService : pending subscription
+deactivate SubscriptionService
+Customer <-- ConfirmOrderPanel : pending subscription
+deactivate ConfirmOrderPanel
+@enduml
+

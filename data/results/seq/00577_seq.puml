@@ -1,0 +1,25 @@
+@startuml
+
+actor Usuario
+participant AngularApp
+participant SpringBootApp
+database MySQL
+participant ExpressServer
+participant EmailServer
+
+User -> AngularApp: Solicitar recuperación de contraseña
+activate AngularApp
+AngularApp -> ExpressServer: Enviar solicitud de recuperación
+activate ExpressServer
+ExpressServer -> MySQL: Verificar correo electrónico
+MySQL --> ExpressServer: Correo electrónico válido
+ExpressServer -> EmailServer: Enviar correo de recuperación
+activate EmailServer
+EmailServer --> ExpressServer: Correo enviado
+deactivate EmailServer
+ExpressServer --> AngularApp: Confirmación de envío
+deactivate ExpressServer
+AngularApp --> User: Correo de recuperación enviado
+
+@enduml
+

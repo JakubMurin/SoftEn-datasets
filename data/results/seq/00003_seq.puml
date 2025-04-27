@@ -1,10 +1,13 @@
 @startuml
-participant Publisher
-participant Broker
-participant Subscriber
+Actor "Ops Manager" as A
 
-Subscriber -> Broker : SUBSCRIBE
-Broker -> Subscriber : SUBSCRIBED or ERROR
-Subscriber -> Broker : UNSUBSCRIBE
-Broker -> Subscriber : UNSUBSCRIBED or ERROR
+box "Manage-Clouds" #lightblue
+participant "fleet" as S
+A -> S : fleet-trigger-add(name, event, condition, action)
+participant "Cloud Stack" as CS
+S -> CS : trigger/add(name, event, condition, action)
+CS -> CS : Trigger.create(name, event, condition, action)
+end box
+
 @enduml
+

@@ -1,0 +1,42 @@
+@startuml
+actor Colaborador
+boundary myprofile.ejs
+boundary user.routes
+control user.controller
+entity user.model
+database mysql
+
+autonumber
+' Inicio del flujo
+activate Colaborador
+Colaborador -> user.routes : GET /myprofile
+deactivate Colaborador
+activate user.routes
+
+user.routes -> user.controller : getProfile(req, res)
+deactivate user.routes
+activate user.controller
+
+user.controller ->> user.model : fetchProfile(id)
+activate user.model
+
+user.model ->> mysql : SELECT * FROM users WHERE userId = ?
+activate mysql
+mysql -->> user.model : Datos del perfil
+deactivate mysql
+
+user.model -->> user.controller : Datos
+deactivate user.model
+
+user.controller -> myprofile.ejs : render(myprofile)
+deactivate user.controller
+activate myprofile.ejs
+myprofile.ejs -> Colaborador : HTML
+deactivate myprofile.ejs
+activate Colaborador
+deactivate Colaborador
+
+
+@enduml
+
+modificalo

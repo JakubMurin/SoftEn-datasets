@@ -1,0 +1,38 @@
+@startuml
+actor User as U
+participant "Authorization Service" as AS
+participant "Validation Service" as VS
+participant "Email Service" as ES
+participant "Data Service" as DS
+
+U -> AS: Start Registration (provides email/password or social login)
+AS -> VS: Validate Email Format and Password Strength
+VS --> AS: Return Validation Result (valid/invalid)
+
+alt Invalid Email/Password
+    AS --> U: Display Error Message (invalid email format or weak password)
+end
+
+AS -> DS: Check for Existing User
+DS --> AS: User Exists? (yes/no)
+
+alt User Already Exists
+    AS --> U: Display Error Message (user already registered)
+end
+
+AS -> DS: Save Initial User Data (status: unverified)
+DS --> AS: Data Saved Confirmation
+
+AS -> ES: Send Confirmation Email (includes verification link)
+ES --> U: Confirmation Email Sent
+
+== User Confirms Email ==
+
+U -> ES: Clicks on Confirmation Link
+ES -> AS: Email Confirmation Received
+AS -> DS: Update User Status to Verified
+DS --> AS: Confirmation of Status Update
+
+AS --> U: Registration Completed (user status: verified)
+
+@enduml

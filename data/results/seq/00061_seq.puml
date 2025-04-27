@@ -1,0 +1,39 @@
+@startuml
+actor Librarian
+participant "Library Management \n Interface" as LMI
+participant "Book Management \n System" as BMS
+participant Database
+
+Librarian -> LMI : Access book editing section
+activate LMI
+
+LMI -> BMS : Request book details
+activate BMS
+
+BMS -> Database : Query book details
+activate Database
+Database --> BMS : Return book details
+deactivate Database
+
+BMS --> LMI : Show book details
+deactivate BMS
+
+LMI --> Librarian : Display book details
+Librarian -> LMI : Edit book and location information
+activate LMI
+
+LMI -> BMS : Send updated details
+activate BMS
+
+BMS -> Database : Update book details and location
+activate Database
+Database --> BMS : Confirm update success
+deactivate Database
+
+BMS --> LMI : Confirm update success
+deactivate BMS
+
+LMI --> Librarian : Display update confirmation
+deactivate LMI
+
+@enduml

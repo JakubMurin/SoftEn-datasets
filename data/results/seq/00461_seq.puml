@@ -1,0 +1,26 @@
+@startuml
+actor User
+participant Main
+participant Labyrinthe
+participant Monstre
+title: Initialisation d'un monstre
+User -> Main: main()
+activate Main
+Main -> Labyrinthe: Labyrinthe("labySimple/laby0.txt")
+activate Labyrinthe
+Labyrinthe -> Labyrinthe: lireFichier()
+activate Labyrinthe
+Labyrinthe -> Monstre: Monstre(x, y)
+activate Monstre
+Monstre -> Monstre: setPositionInitiale(x, y)
+Monstre --> Labyrinthe: return Monstre
+deactivate Monstre
+Labyrinthe--> Labyrinthe
+deactivate Labyrinthe
+Labyrinthe --> Main: return Labyrinthe
+deactivate Labyrinthe
+Main -> Main: afficherLabyrinthe()
+note across
+Lorsque dans le fichier il y a un M on créé un monstre avec cette position
+end note
+@enduml

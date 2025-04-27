@@ -1,0 +1,38 @@
+@startuml
+actor Guest as guest
+actor "POS System" as pos
+
+participant "Event Booking System" as system
+
+== Pre-condition: Guest is logged in and has a room ==
+
+guest -> system: Visit "Hotel Events" Page
+system --> guest: Display list of events
+
+guest -> system: Choose an Event
+alt No tickets available
+    system --> guest: Display available events
+    guest -> system: Choose another event or decline
+end
+
+guest -> system: Buy Ticket
+system --> guest: Prompt for ticket quantity and payment details
+
+guest -> system: Provide Ticket Details and Payment
+alt Missing fields
+    system --> guest: Highlight missing fields
+    guest -> system: Complete fields and resubmit
+end
+
+system -> pos: Process Payment
+alt Payment issues
+    pos --> system: Notify payment issue
+    system --> guest: Notify issue, prompt to retry
+else Successful payment
+    pos --> system: Confirm payment
+    system --> guest: Confirm successful booking
+end
+
+== Post-condition: Ticket is booked for the user ==
+@enduml
+

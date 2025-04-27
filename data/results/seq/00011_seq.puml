@@ -1,16 +1,56 @@
 @startuml
+'https://plantuml.com/sequence-diagram
 
-participant Reader
-participant Builder
-participant ResolutionManager
-participant SectorModel
+title **Advanced Staking: early exit**
 
-Builder --> Reader : get_model_inputs()
-Reader --> Builder : model_inputs
-loop for (name, spatial_name, temporal_name) in model_inputs
-    Builder --> ResolutionManager : get_spatial_resolution(spatial_name)
-    Builder --> ResolutionManager : get_temporal_resultion(temporal_name)
-    ResolutionManager --> Builder : spatial_temporal_resolution
-    Builder --> SectorModel : add_model_input(ModelInput)
-end
+'autonumber
+
+<style>
+</style>
+
+hide footbox
+actor "Staker" as staker
+
+box
+  database "Staking\n" as staking
+  database "RewardMaster\n" as rMaster
+  database "AdvancedStakeController\n" as aCtrl
+  database "MASP v.1\n(w/ proxy)" as pool
+  database "PublicLeaf\n" as pLeaf
+  database "$ZKP\nToken" as zkp
+end box
+
+note over staking
+  ""treeId, leafId, privSpendKey""
+end note
+staker -> staking ++ : ""unstake(unstakeInfo)""
+  staking -> zkp ++ : ""transfer(staker, stakedAmount)""
+    staking --> staker : ""stakedAmount""
+  deactivate zkp
+  staking -> rMaster ++ : ""onAction()""
+    rMaster -> aCtrl ++ : ""getRewardAdvice()""
+      aCtrl -> pool ++ : ""earlyUnstake(unstakeInfo)""
+        pool -> pLeaf ++ : ""genLeaf({...preimage...})""
+        return leafHash
+        pool -> pLeaf ++ : ""genNullifier({...preimage...})""
+        return nullifierHash
+        note over pool
+          Verify Merkle proof,
+          check nullifier unspent,
+          mark nullifier spent,
+        end note
+        pool -> zkp ++ : ""transfer(staker, rewardAmount)""
+          pool --> staker : ""rewardAmount""
+        deactivate zkp
+      note over aCtrl
+      ""emit EarlyUnstake(...)""
+      end note
+      aCtrl -> aCtrl
+      deactivate pool
+    deactivate aCtrl
+  deactivate rMaster
+deactivate staking
+
+staker -> aCtrl : read ""EarlyUnstake"" events
 @enduml
+

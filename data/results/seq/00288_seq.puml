@@ -1,0 +1,35 @@
+@startuml
+actor TeamMember as TM
+entity "Recruitment Coordinator\n(RC)" as RC
+database "Template Database" as DB
+entity "Approval Authority" as AA
+
+== Preparation ==
+TM -> RC : Request for email templates
+RC -> DB : Check existing templates
+alt Templates not available
+    DB -> RC : Inform non-availability
+    RC -> TM : Request template specifics
+    TM -> RC : Provides specifics
+    RC -> RC : Create template draft
+    RC -> AA : Submit draft for approval
+    AA -> AA : Review template draft
+    loop Revision Needed
+        AA -> RC : Request revisions
+        RC -> RC : Revise template
+        RC -> AA : Resubmit for approval
+    end
+    AA -> RC : Approve template
+    RC -> DB : Store new template in database
+    RC -> TM : Inform about availability
+else Templates available
+    DB -> RC : Provide existing templates
+    RC -> TM : Share templates
+end
+
+== Recruitment ==
+TM -> TM : Select appropriate template
+TM -> TM : Customize template for current need
+TM -> TM : Initiate recruitment using template
+
+@enduml

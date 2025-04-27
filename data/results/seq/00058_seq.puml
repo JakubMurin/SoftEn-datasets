@@ -1,0 +1,32 @@
+@startuml
+
+actor Client
+participant "API Gateway/Lambda"
+participant CreateTranslationClientActivity
+participant TranslationClientDao
+database    DynamoDB
+
+Client -> "API Gateway/Lambda" : HTTP Request
+"API Gateway/Lambda" -> CreateTranslationClientActivity : CreateTranslationClientRequest
+
+CreateTranslationClientActivity -> TranslationClientDao : createTranslationClient(customerId, translationClientName, \ntranslationClientType)
+TranslationClientDao -> DynamoDB : load(DynamoDBQueryExpression - customer ID)
+DynamoDB --> TranslationClientDao: PaginatedQueryList of all cases for customer ID
+TranslationClientDao --> TranslationClientDao : Check for existing client
+
+
+alt if translationClientName / ClientType pair is identical to existing translationClientName
+    TranslationClientDao --> CreateTranslationClientActivity: throw DuplicateTranslationClientException
+    CreateTranslationClientActivity --> "API Gateway/Lambda": propagate DuplicateTranslationClientException
+    "API Gateway/Lambda" --> Client : return 400 response
+else else continue
+end
+
+TranslationClientDao -> DynamoDB : save(newTranslationClient)
+
+DynamoDB --> TranslationClientDao : return 200 response
+TranslationClientDao --> CreateTranslationClientActivity : return newTranslationClient object
+CreateTranslationClientActivity --> "API Gateway/Lambda" : return CreateTranslationClientResult
+"API Gateway/Lambda" --> Client : return 200 response with CreateTranslationClientResult data
+
+@enduml

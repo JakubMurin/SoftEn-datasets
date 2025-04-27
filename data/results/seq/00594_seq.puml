@@ -1,0 +1,34 @@
+@startuml
+actor NSF_Employee
+entity "Project Management\nSystem" as PMS
+actor Stakeholder
+
+== Schedule In-Person Check-ins ==
+
+NSF_Employee -> PMS: Access meeting scheduling feature
+activate PMS
+
+PMS -> PMS: Display scheduling options
+PMS --> NSF_Employee: Show available time slots
+deactivate PMS
+activate NSF_Employee
+
+NSF_Employee -> NSF_Employee: Select preferred time slots
+NSF_Employee -> PMS: Submit selected time slots
+deactivate NSF_Employee
+activate PMS
+
+PMS -> PMS: Check availability
+PMS -> Stakeholder: Send meeting invites
+activate Stakeholder
+
+Stakeholder -> PMS: Confirm availability
+deactivate Stakeholder
+
+PMS -> PMS: Finalize meeting details
+PMS --> NSF_Employee: Confirm meeting scheduled
+deactivate PMS
+
+NSF_Employee -> NSF_Employee: Prepare meeting agenda
+
+@enduml

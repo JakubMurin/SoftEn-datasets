@@ -1,0 +1,100 @@
+@startuml Link
+'https://plantuml.com/sequence-diagram
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+title
+ <u>Connect to LN Node By LN Link Protocol</u>
+end title
+actor User
+
+box "LN Link" #green
+activate "Client"
+end box
+
+box "Nostr Relay" #Grey
+activate "Relay"
+end box
+
+box "LN Node" #green
+activate "Link"
+activate "Tapd"
+activate "lnd"
+end box
+
+Link -> Relay : "Boadcast LN Node info"
+User -> Link : "Request Link Url"
+Link -> User : "Return Link Url"
+User -> Client: "Config Link Url"
+Client -> Relay: "Request LN Node info"
+Relay -> Client: "Return LN Node info"
+
+@enduml
+
+
+@startuml Lnd
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+title
+ <u>How To Make A Lightning Invoice</u>
+end title
+actor User
+
+box "LN Link" #green
+activate "Client"
+end box
+
+box "Nostr Relay" #Grey
+activate "Relay"
+end box
+
+box "LN Node" #green
+activate "Link"
+activate "Tapd"
+activate "Lnd"
+end box
+
+User -> Client: "Create Lightning Invoice"
+Client -> Relay : "Send Request to LN Node"
+Relay -> Link : "Send Request to LN Node"
+Link -> Lnd : "Request Invoice"
+Lnd -> Link : "Return Invoice"
+Link -> Relay: "Return Invoice"
+Relay -> Client: "Return Invoice"
+Client -> User: "Show Invoice"
+@enduml
+
+@startuml Tapd
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+title
+ <u>How To Generate a Taproot Assets Address</u>
+end title
+actor User
+
+box "LN Link" #green
+activate "Client"
+end box
+
+box "Nostr Relay" #Grey
+activate "Relay"
+end box
+
+box "LN Node" #green
+activate "Link"
+activate "Tapd"
+activate "Lnd"
+end box
+
+User -> Client: "Create Taproot Assets Address"
+Client -> Relay : "Send Request to LN Node"
+Relay -> Link : "Send Request to LN Node"
+Link -> Tapd : "Request Address"
+Tapd -> Link : "Return Address"
+Link -> Relay: "Return Address"
+Relay -> Client: "Return Address"
+Client -> User: "Show Address"
+@enduml
+

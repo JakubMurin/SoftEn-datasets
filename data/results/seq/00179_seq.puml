@@ -1,0 +1,40 @@
+@startuml
+actor "Dataset Developer" as developer
+participant "Archetype Tool" as archetype
+participant "Dataset Repository" as repo
+participant "Build System" as build
+participant "Application Ecosystem" as ecosystem
+
+== Packaging Process ==
+developer -> archetype : Request to create dataset package
+activate archetype
+
+archetype -> archetype : Generate dataset template
+archetype --> developer : Provide dataset template
+deactivate archetype
+
+developer -> developer : Define dataset type\n(Schemas, Configurations, Code)
+developer -> build : Upload dataset package
+activate build
+
+build -> build : Validate package integrity and compatibility
+alt Validation Successful
+  build -> repo : Store validated dataset package
+  activate repo
+  repo --> build : Acknowledge storage
+  deactivate repo
+
+  build --> developer : Notify successful packaging and storage
+else Validation Fails
+  build --> developer : Return error message
+end
+deactivate build
+
+developer -> ecosystem : Deploy dataset type for app integration
+activate ecosystem
+
+ecosystem -> ecosystem : Integrate dataset type
+ecosystem --> developer : Confirm successful deployment and integration
+deactivate ecosystem
+
+@enduml

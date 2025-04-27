@@ -1,0 +1,20 @@
+@startuml
+actor User
+participant "Repository Interface" as Interface
+participant "Access Control System" as ACS
+participant "Email Notification System" as Email
+participant "Collection Curator" as Curator
+
+User -> Interface: Search and Select Restricted Object
+Interface -> ACS: Request Access Details
+ACS -> Interface: Display "Contact Curator" Option
+User -> Interface: Click "Contact Curator"
+Interface -> Email: Generate Email Template
+User -> Email: Fill in and Send Request
+Email -> Curator: Forward User Request
+Curator -> Email: Review Request
+Curator -> ACS: Update Access Permissions (If approved)
+ACS -> Email: Notify User of Decision
+Email -> User: Display Access Decision Notification
+
+@enduml

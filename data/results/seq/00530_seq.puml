@@ -1,0 +1,31 @@
+@startuml
+actor Sponsor as S
+participant "Authentication System" as AS
+participant "Sponsorship Management\nSystem" as SMS
+participant "Payment System" as PS
+participant "Summit Coordination\nSystem" as SCS
+
+S -> AS : Enter credentials
+AS --> S : Authentication Successful
+
+S -> SMS : Request available summits
+SMS -> SCS : Fetch Summits matching brand criteria
+SCS --> SMS : Summit details
+SMS --> S : List of Summits
+
+S -> SMS : Select Summit to sponsor
+SMS -> S : Display sponsorship levels & benefits
+
+S -> SMS : Choose sponsorship level
+SMS --> S : Sponsorship details & Payment information form
+
+S -> PS : Submit Payment information
+PS -> PS : Process Payment
+PS --> S : Payment Confirmation
+
+PS -> SMS : Notify Payment Success
+SMS -> SCS : Assign Sponsor to Summit
+SCS --> SMS : Confirmation
+
+SMS --> S : Sponsorship Confirmation & Receipt
+@enduml

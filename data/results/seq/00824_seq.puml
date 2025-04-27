@@ -1,0 +1,19 @@
+@startuml
+actor Archivist as archivist
+participant "UI Interface" as UI
+participant "Search Controller" as controller
+database "Digital Archive Database" as DB
+participant "Indexing Service" as indexer
+participant "Results Formatter" as formatter
+
+archivist -> UI : Inputs keyword
+UI -> controller : Sends search request (keyword)
+controller -> indexer : Queries keyword
+indexer -> DB : Fetches matching files
+DB --> indexer : Returns files
+indexer -> formatter : Formats matching files
+formatter --> controller : Sends formatted results
+controller --> UI : Displays search results
+UI --> archivist : Shows files matching keyword
+
+@enduml

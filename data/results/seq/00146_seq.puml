@@ -1,0 +1,16 @@
+@startuml
+actor "User" as OE
+
+activate OE
+OE -> ":UI" : 1 : starts the node creation process
+activate ":UI"
+":UI" --> OE : 1.1 : requests data (floorID, designation, name, localization)
+deactivate ":UI"
+OE -> ":UI" : 2 : inserts the data (floorID, designation, name, localization)
+activate ":UI"
+":UI" --> OE : 2.1 : Shows data of the room
+
+
+deactivate ":UI"
+
+@enduml

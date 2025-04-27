@@ -1,0 +1,42 @@
+@startuml
+actor ContentEditor as "Content Editor"
+participant SearchInterface as "CMS Search Interface"
+database CMSDatabase as "CMS Database"
+participant ContentPage as "Content Page"
+
+ContentEditor -> SearchInterface : enters search query\n(keywords/tags)
+activate SearchInterface
+
+SearchInterface -> CMSDatabase : query for content
+activate CMSDatabase
+
+CMSDatabase --> SearchInterface : search results
+deactivate CMSDatabase
+
+SearchInterface --> ContentEditor : display search results
+deactivate SearchInterface
+
+ContentEditor -> SearchInterface : select content from results
+activate SearchInterface
+
+SearchInterface -> CMSDatabase : request selected content
+activate CMSDatabase
+
+CMSDatabase --> SearchInterface : retrieve content details
+deactivate CMSDatabase
+
+SearchInterface --> ContentPage : display content in editor
+deactivate SearchInterface
+activate ContentPage
+
+ContentEditor -> ContentPage : edits content
+ContentPage --> CMSDatabase : save changes
+activate CMSDatabase
+
+CMSDatabase --> ContentPage : confirm changes saved
+deactivate CMSDatabase
+
+ContentEditor <-- ContentPage : display confirmation\n(edit successful)
+deactivate ContentPage
+
+@enduml

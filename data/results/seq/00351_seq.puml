@@ -1,0 +1,86 @@
+@startuml
+
+actor "Customer Manager" as Agent
+participant ":OrderedCandidatesUI" as ui <<UI>>
+participant ":OrderedCandidatesController" as ctrl <<Application>>
+participant ":ApplicationService" as appServ <<Service>>
+participant ":CandidateManagementService" as appServ <<Service>>
+participant ":JobOpeningRepository" as jobRepo <<Persistence>>
+participant ":JobOpeningApplicationRepository" as candRepo <<Persistence>>
+participant ":InterviewRepository" as inteRepo <<Persistence>>
+autonumber
+
+
+activate Agent
+
+Agent -> ui: Request to see an ordered list of candidates, using the job interview points (grades)
+
+activate ui
+ui -> ctrl: findAllJobOpeningInResult()
+activate ctrl
+ctrl -> appServ: findAllJobOpeningInResult()
+activate appServ
+appServ -> jobRepo: getJobOpenings()
+activate jobRepo
+jobRepo --> appServ: openings
+deactivate
+appServ --> ctrl: openings
+deactivate
+ctrl --> ui: openings
+deactivate
+ui --> Agent: Show list of job openings
+deactivate
+Agent -> ui : Select a job opening
+activate ui
+ui -> ctrl: listCandidatesForOpening(opening)
+activate ctrl
+
+ctrl -> appServ: getApplicationsByJobOpening(opening)
+
+activate appServ
+
+appServ -> candRepo: findAll()
+
+activate candRepo
+
+candRepo --> appServ: candidates
+deactivate
+appServ --> ctrl : candidates
+deactivate
+
+
+ctrl -> appServ : getAllJobInterviewsOfApplications(candidates)
+
+activate appServ
+
+appServ -> inteRepo: findAll()
+
+activate inteRepo
+
+inteRepo --> appServ: interviews
+
+deactivate
+
+
+appServ --> ctrl: interviews
+
+
+
+deactivate
+
+ctrl --> ctrl : sort()
+
+ctrl --> ui: sorted interviews
+
+
+
+
+deactivate
+
+ui --> Agent : Show list of candidates related to the selected job opening with their grades
+
+deactivate
+
+
+
+@enduml

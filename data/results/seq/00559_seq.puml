@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant "Applications Page" as ApplicationsPage
+participant "Backend Server" as BackendServer
+database Database
+
+User -> ApplicationsPage: Request list of applications
+ApplicationsPage -> BackendServer: Fetch list of applications
+BackendServer -> Database: Query list of applications
+Database --> BackendServer: Return list of applications
+BackendServer --> ApplicationsPage: Return list of applications
+ApplicationsPage --> User: Display list of applications
+@enduml
+

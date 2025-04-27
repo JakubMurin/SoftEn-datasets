@@ -1,0 +1,34 @@
+@startuml
+actor "Repository Manager" as manager
+participant "UI Dashboard" as ui
+participant "Messaging System" as msgSystem
+participant "Schedule Manager" as scheduler
+database "Repository Database" as db
+
+manager -> ui : Access Message Schedule Option
+ui -> msgSystem : Request Message Input Form
+msgSystem --> ui : Display Form
+activate msgSystem
+
+manager -> ui : Submit Message Details\n(Timeframe & Content)
+ui -> scheduler : Schedule Message Display
+activate scheduler
+
+scheduler -> db : Save Scheduled Message
+db --> scheduler : Acknowledge Save
+scheduler -> msgSystem : Confirm Message Scheduled
+deactivate scheduler
+msgSystem --> ui : Show Confirmation to Manager
+deactivate msgSystem
+
+ui --> manager : Display Success Confirmation
+
+alt Display Message at Scheduled Times
+    scheduler -> msgSystem : Trigger Message Display
+    activate msgSystem
+    msgSystem -> ui : Display Message on Pages
+    ui -> db : Log Display Event
+    deactivate msgSystem
+end
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+
+actor Member as member
+participant "Web Interface" as webUI
+participant "Authentication System" as authSys
+participant "Reservation System" as resSys
+participant "Database" as db
+
+== Authentication ==
+member -> webUI : Navigate to Login Page
+webUI -> authSys : Prompt for Credentials
+member -> authSys : Enter Credentials
+authSys -> db : Validate Credentials
+db -> authSys : Credentials Valid
+authSys -> webUI : Access Granted
+webUI -> member : Display Dashboard
+
+== Book Reservation ==
+member -> webUI : Navigate to Reserve Book
+webUI -> resSys : Display Search Interface
+member -> resSys : Input Search Parameters
+resSys -> db : Query Books by Parameters
+db -> resSys : Return Query Results
+resSys -> webUI : Display Available Books
+member -> webUI : Choose Book and Reserve
+webUI -> resSys : Process Reservation Request
+resSys -> db : Update Reservation Status
+db -> resSys : Reservation Success
+resSys -> webUI : Display Reservation Confirmation
+webUI -> member : Display Success Message
+
+@enduml

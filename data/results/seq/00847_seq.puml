@@ -1,0 +1,36 @@
+@startuml
+actor Counselor
+participant "Camp Platform" as Platform
+database "Camp Database" as DB
+
+Counselor -> Platform : Login()
+activate Platform
+
+Platform -> DB : Fetch Counselor's Assigned Campers()
+activate DB
+DB --> Platform : List of Assigned Campers
+deactivate DB
+
+Platform --> Counselor : Display Campers List
+Counselor -> Platform : Select "Take Attendance"
+activate Platform
+
+loop For each Camper
+    Counselor -> Platform : Mark Attendance(CamperID, Status)
+    activate Platform
+    Platform -> DB : Update Attendance(CamperID, Status)
+    activate DB
+    DB --> Platform : Confirmation
+    deactivate DB
+    Platform --> Counselor : Display Confirmation
+    deactivate Platform
+end
+
+Platform -> DB : Save Attendance Records
+activate DB
+DB --> Platform : Confirmation of Saving
+deactivate DB
+
+Platform --> Counselor : Display Final Confirmation
+deactivate Platform
+@enduml

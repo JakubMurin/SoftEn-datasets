@@ -1,0 +1,25 @@
+@startuml
+actor Admin as A
+participant "FrontEnd" as web
+participant "Backoffice API" as api
+database "Database" as db
+
+A -> web : Creates Operation Type with its attributes
+activate A
+activate web
+
+web -> api : Creates Operation Type with its attributes
+activate api
+
+api -> api : Validate Operation Type attributes
+api -> db : Save New Operation Type
+activate db
+deactivate db
+api -> api : Log Operation Type creation
+api -> web : Return Confirmation
+deactivate api
+web -> A : Return Confirmation
+deactivate web
+deactivate A
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+actor Archivist as A
+participant UI as UI
+participant WebServer as WS
+participant "Image Search\nService" as ISS
+participant Database as DB
+participant "Results\nHandler" as RH
+
+A -> UI : Uploads search image
+UI -> WS : Sends image data
+WS -> ISS : Initiates image search
+ISS -> DB : Queries for similar images
+DB -> ISS : Returns matching images
+ISS -> RH : Prepares search results
+RH -> UI : Sends results back
+UI -> A : Displays search results
+
+@enduml

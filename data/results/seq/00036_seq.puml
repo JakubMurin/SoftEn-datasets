@@ -1,0 +1,28 @@
+@startuml
+actor Customer
+actor Developer
+participant "ALFRED App" as App
+participant "Feedback System" as FeedbackSys
+participant "Developer Dashboard" as DevDash
+
+== Feedback Submission ==
+Customer -> App : Select "Provide Feedback"
+App -> FeedbackSys : Initiate Feedback Form
+FeedbackSys --> Customer : Display Feedback Form
+Customer -> FeedbackSys : Submit Feedback Details
+FeedbackSys -> App : Confirm Submission
+App --> Customer : Display Submission Confirmation
+
+== Feedback Monitoring ==
+Developer -> DevDash : Login
+DevDash -> FeedbackSys : Request Latest Feedback
+FeedbackSys -> DevDash : Return Feedback Data
+loop Each Feedback Item
+    DevDash -> Developer : Display Feedback Item
+end
+Developer -> DevDash : Select Feedback for Details
+DevDash -> FeedbackSys : Request Feedback Details
+FeedbackSys -> DevDash : Return Feedback Details
+DevDash --> Developer : Show Feedback Details
+
+@enduml

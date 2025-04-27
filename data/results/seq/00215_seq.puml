@@ -1,0 +1,27 @@
+@startuml
+actor Customer
+participant "UI Interface" as UI
+participant "Backend System" as Backend
+database "Database" as DB
+
+== Customer Gives Comment on a Dish ==
+Customer -> UI : Selects "My Orders"
+UI -> Backend : Request list of orders
+Backend -> DB : Fetch customer orders
+DB -> Backend : Return orders
+Backend -> UI : Display orders
+UI -> Customer : Show list of orders
+Customer -> UI : Selects a dish from an order
+UI -> Backend : Request dish details
+Backend -> DB : Fetch dish details
+DB -> Backend : Return dish details
+Backend -> UI : Display dish details
+UI -> Customer : Show dish details
+Customer -> UI : Enter comment and submit
+UI -> Backend : Post comment
+Backend -> DB : Save comment to dish
+DB -> Backend : Confirm save
+Backend -> UI : Display success message
+UI -> Customer : Show confirmation of comment submission
+
+@enduml

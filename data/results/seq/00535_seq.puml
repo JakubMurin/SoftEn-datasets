@@ -1,0 +1,70 @@
+@startuml
+actor Manager as ACTOR
+participant CreateCourseUI as UI <<presentation>>
+control CreateCourseController as CONTROLLER <<application>>
+participant CreateCourseService as SERVICE <<application>>
+participant CourseFactory as COURSE_FAC <<factory>>
+participant Course as COURSE <<domain>>
+participant PersistenceContext as PERS_CONTX <<persistence>>
+participant RepositoryFactory as REPO_FAC <<factory>>
+database CourseRepository as COURSE_REPO <<repository>>
+autonumber
+activate ACTOR
+activate UI
+
+ACTOR -> UI : Manager selects option to create a course
+UI -> CONTROLLER : create()
+activate CONTROLLER
+CONTROLLER -> SERVICE : create()
+activate SERVICE
+deactivate SERVICE
+deactivate CONTROLLER
+UI --> ACTOR : System asks for the course creation data
+
+ACTOR -> UI : Manager inserts the data
+UI --> ACTOR : System ask for confirmation
+ACTOR -> UI : Manager confirms
+UI -> CONTROLLER : createCourse(courseId, courseTitle, courseName, description, maxEnrollments, minEnrollments)
+activate CONTROLLER
+CONTROLLER -> SERVICE : createCourse(courseId, courseTitle, courseName, description, maxEnrollments, minEnrollments)
+activate SERVICE
+SERVICE -> COURSE_FAC : create()
+activate COURSE_FAC
+deactivate COURSE_FAC
+SERVICE -> PERS_CONTX : repositories()
+activate PERS_CONTX
+PERS_CONTX -> REPO_FAC : create()
+activate REPO_FAC
+deactivate REPO_FAC
+PERS_CONTX -->SERVICE : repoFactory
+deactivate PERS_CONTX
+SERVICE -> REPO_FAC : courses()
+activate REPO_FAC
+REPO_FAC -> COURSE_REPO : create()
+activate COURSE_REPO
+deactivate COURSE_REPO
+REPO_FAC --> SERVICE : courseRepo
+deactivate REPO_FAC
+SERVICE -> COURSE_REPO : ofIdentity(courseId)
+activate COURSE_REPO
+COURSE_REPO --> SERVICE : course
+deactivate COURSE_REPO
+alt if no course found
+SERVICE -> COURSE_FAC : buildCourse(courseId, courseTitle, courseName, description, maxEnrollments, minEnrollments)
+activate COURSE_FAC
+COURSE_FAC -> COURSE : create(courseId, courseTitle, courseName, description, enrollmentLimits)
+activate COURSE
+deactivate COURSE
+COURSE_FAC --> SERVICE : newCourse
+deactivate COURSE_FAC
+SERVICE -> COURSE_REPO : save(newCourse)
+activate COURSE_REPO
+deactivate COURSE_REPO
+end alt
+SERVICE --> CONTROLLER : operation success
+deactivate SERVICE
+CONTROLLER --> UI : operation success
+deactivate CONTROLLER
+UI --> ACTOR : operation success
+deactivate ACTOR
+@enduml

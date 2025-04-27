@@ -1,0 +1,53 @@
+@startuml
+actor "Repository Manager" as manager
+participant "EDRMS Interface" as interface
+participant "Replication Policy Module" as policyModule
+participant "Collection Management" as collectionMgmt
+database "EDRMS Database" as database
+participant "Remote Storage Service" as remoteStorage
+
+== Specify Remote Replication Policy for a Collection ==
+
+manager -> interface : Access Replication Policy Settings
+activate interface
+
+interface -> policyModule : Retrieve Current Policy Settings
+activate policyModule
+
+policyModule -> database : Query Existing Policies
+activate database
+
+database -> policyModule : Return Policies
+deactivate database
+
+policyModule -> interface : Show Current Policies
+deactivate policyModule
+
+interface -> manager : Display Policies
+deactivate interface
+
+manager -> interface : Define/Update Policy for Collection
+activate interface
+
+interface -> policyPatch : Process Policy Specifications
+activate policyPatch
+
+policyPatch -> database : Update Policy in DB
+activate database
+
+database -> policyPatch : Confirm Update
+deactivate database
+
+policyPatch -> remoteStorage : Initiate Policy Replication Update
+activate remoteStorage
+
+remoteStorage -> policyPatch : Acknowledge Replication Policy Update
+deactivate remoteStorage
+
+policyPatch -> interface : Confirm Policy Update
+deactivate policyPatch
+
+interface -> manager : Show Update Confirmation
+deactivate interface
+
+@enduml

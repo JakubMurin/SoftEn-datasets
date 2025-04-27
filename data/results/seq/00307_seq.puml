@@ -1,0 +1,29 @@
+@startuml
+title CreateCallBack
+skin rose
+skinparam MaxMessageSize 200
+skinparam sequenceMessageAlign center
+Actor "Пользователь" as user order 10
+participant "Web UI" as web order 20
+participant "Callback GW" as gw order 30
+participant "Token API" as token order 40
+participant "CMA" as cma order 50
+participant "Resource Inventory" as ri order 60
+participant "Action History" as ua order 70
+
+user -> web: клик "Создать коллбек"
+web-> gw: [[https://wiki.office.msk.mtt/display/OL/Create Create]] (callback_name,description)
+gw -> token: [[https://wiki.office.msk.mtt/pages/viewpage.action?pageId=158305244 ValidateAPIKey]] (access_token)
+token -> gw: status= true
+gw -> cma: [[https://wiki.office.msk.mtt/pages/viewpage.action?pageId=175407419 GetCustomerState]] (customer_id)
+cma -> gw: status = активный
+gw -> ri: [[https://wiki.office.msk.mtt/display/OL/3.1.+CreateCallback CreateCallback]] (application_uuid, callback)  
+ri -> gw: callback_resource_id
+gw -> ri: [[https://wiki.office.msk.mtt/display/OL/1.1.+GetAttributes GetAttributes]] (application_uuid)
+ri -> gw: ApplicationResource
+gw -> ua: [[https://wiki.office.msk.mtt/display/OL/AddEntry AddEntry]]
+ua -> gw: 200ok
+gw -> web: callback_resource_id
+web -> user: Вывод информации о новом коллбеке
+@enduml
+

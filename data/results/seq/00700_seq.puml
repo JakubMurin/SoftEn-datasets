@@ -1,0 +1,16 @@
+@startuml
+
+actor "Utente" as Actor
+participant "robDroneGo:robDroneGo" as Container <<Container (C4)>>
+
+Actor -> Container: requisita uma cópia dos dados do utilizador
+
+alt sucesso
+    Container --> Actor: retorna um ficheiro .json com os dados
+else falha
+    Container --> Actor: devolve mensagem de erro
+end
+
+
+@enduml
+

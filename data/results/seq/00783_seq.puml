@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Applications" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "Edgeville" as S
+A -> CLI : Edgeville-analytics-run()
+CLI -> S : analytics/run()
+A -> Web : analytics/run()
+Web -> S : analytics/run()
+end box
+
+@enduml
+

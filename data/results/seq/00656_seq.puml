@@ -1,0 +1,13 @@
+@startuml
+actor Client
+participant website
+participant UpdateProjectActivity
+database projects
+
+Client -> website: submit update form
+website -> UpdateProjectActivity: send update project request
+UpdateProjectActivity -> projects: save updates
+UpdateProjectActivity <-- projects: all projects
+website <-- UpdateProjectActivity: List<ProjectModel>
+Client <-- website: present a list of all projects
+@enduml

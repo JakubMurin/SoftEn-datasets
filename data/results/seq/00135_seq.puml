@@ -1,0 +1,33 @@
+@startuml
+actor Moderator
+participant "Web Interface" as Web
+participant "Backend Server" as Server
+database "Account Database" as DB
+
+Moderator -> Web : Navigates to Account Settings
+activate Web
+Web -> Server : Request to view current account details
+activate Server
+Server -> DB : Fetch account details
+activate DB
+DB --> Server : Return account details
+deactivate DB
+Server --> Web : Display current account details
+deactivate Server
+Web --> Moderator : Shows account details form
+deactivate Web
+
+Moderator -> Web : Inputs updated account details
+activate Web
+Web -> Server : Submit updated account details
+activate Server
+Server -> DB : Update account details
+activate DB
+DB --> Server : Confirm details updated
+deactivate DB
+Server --> Web : Acknowledge successful update
+deactivate Server
+Web --> Moderator : Display update success message
+deactivate Web
+
+@enduml

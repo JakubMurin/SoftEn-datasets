@@ -1,0 +1,18 @@
+@startuml
+actor DataManager as DM
+participant "DMPTool Interface" as UI
+database "Metadata Repository" as MR
+participant "Support Services Module" as SSM
+
+DM -> UI : Requests data type information
+UI -> MR : Queries stored projects metadata
+MR -> UI : Returns metadata including data types
+UI -> DM : Displays data types
+DM -> UI : Selects data type
+UI -> SSM : Queries required support\nservices for selected data type
+SSM -> UI : Returns list of basic\nsupport services and functionalities
+UI -> DM : Displays support services\nand functionalities
+DM -> UI : Confirms understanding\nand requirements
+UI -> MR : Logs interaction and\nrequirements confirmation
+
+@enduml

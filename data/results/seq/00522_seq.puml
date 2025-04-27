@@ -1,0 +1,24 @@
+@startuml
+
+actor Admin
+participant "Admin Interface" as UI
+participant "Server" as Server
+database "Database" as DB
+
+== Add Recycling Center Information ==
+
+Admin -> UI : Access Update Center Form
+UI -> Admin : Display Form
+
+Admin -> UI : Input Recycling Center Data
+UI -> Server : Submit New Center Info
+
+Server -> DB : Validate and Add Info
+DB --> Server : Confirmation
+
+Server -> UI : Display Success Message
+UI -> Admin : Show Confirmation
+
+== End ==
+
+@enduml

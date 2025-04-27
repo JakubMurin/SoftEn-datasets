@@ -1,0 +1,18 @@
+@startuml
+actor "Клиент" as client
+autonumber "<font color=red><b>(0)"
+box "Процесс оформления заказа"
+participant "Сервис заказов" as order
+participant "Сервис биллинга" as billing
+participant "Сервис оповещений" as notification
+end box
+
+client -> order++: Создание заказа
+order -> billing++: Формирование оплаты
+billing -> notification++:  Формирование уведомления
+notification -> notification:  Отправка уведомления (Email, SMS, Push)
+notification --> billing--:  Информация по уведомлению
+billing --> order--:  Информация по оплате
+order --> client--:  Статус заказа
+@enduml
+

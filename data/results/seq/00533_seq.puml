@@ -1,0 +1,20 @@
+@startuml
+actor User
+
+User -> AudioChannel: Right Click
+activate AudioChannel
+AudioChannel -> AudioChannel: contextMenuHandler
+
+activate ContextMenu
+AudioChannel -> ContextMenu: render
+User -> ContextMenu: Click "Delete"
+ContextMenu -> AudioChannel: deleteHandler
+deactivate ContextMenu
+AudioChannel -> ChannelAction: deleteChannel(index)
+deactivate AudioChannel
+ChannelAction -> ChannelSaga: deleteChannelSaga()
+ChannelSaga -> EventEmitter: emit('CHANNEL_DELETE_CHANNEL')
+EventEmitter -> AudioController: removeChannel()
+
+@enduml
+

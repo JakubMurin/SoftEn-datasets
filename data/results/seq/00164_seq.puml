@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant "UserInterface" as UI
+participant "CommentController" as CommentController
+participant "CommentService" as CommentService
+participant "CommentRepository" as CommentRepo
+database "CommentsDatabase" as CommentsDB
+
+User -> UI: Go to post page
+UI -> User: Display post details and comment form
+User -> UI: Enter comment content (text)
+User -> UI: Submit comment
+UI -> CommentController: createComment(CommentDTO commentDTO)
+
+alt Invalid Comment Content
+    CommentController --> UI: Return validation error
+    UI -> User: Display "Invalid comment content" message
+else Valid Comment Content
+    CommentController -> CommentService: validateAndCreateComment(CommentRequest commentRequest)
+    CommentService -> CommentRepo: save(Comment comment)
+
+    alt Save Operation Fails
+        CommentRepo --> CommentService: Return exception
+        CommentService --> CommentController: Return failure response
+        CommentController --> UI: Return error message
+        UI -> User: Display "Failed to create comment" message
+    else Save Operation Succeeds
+        CommentRepo -> CommentsDB: Insert comment data
+        CommentsDB --> CommentRepo: Return success
+        CommentRepo --> CommentService: Return saved Comment
+        CommentService --> CommentController: Return CommentResponse
+        CommentController --> UI: Return success message
+        UI -> User: Display "Comment created successfully"
+        UI -> User: Update post comments section
+    end
+end
+@enduml
+

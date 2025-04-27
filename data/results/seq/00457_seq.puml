@@ -1,0 +1,20 @@
+@startuml
+actor User
+
+participant "Component" as Component
+participant "Redux Store" as Store
+participant "historySlice" as Slice
+participant "Reducer" as Reducer
+
+User -> Component : Dispatch addVisitedUser("user123")
+Component -> Store : dispatch(addVisitedUser("user123"))
+Store -> Reducer : call addVisitedUser reducer
+Reducer -> Slice : Check if user123 is in visitedUsers
+Slice -> Reducer : Update state if not present
+Reducer -> Store : Return updated state
+Store -> Component : Notify state change
+
+note right of Component
+  Component reenderiza e atualiza store
+end note
+@enduml

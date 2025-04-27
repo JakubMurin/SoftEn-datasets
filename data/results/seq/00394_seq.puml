@@ -1,0 +1,55 @@
+@startuml
+actor Collaborator
+participant Collaborator
+participant ":CheckAssignedTasksGUI" as GUI
+participant AgendaController
+participant Repositories
+participant Agenda
+
+activate Collaborator
+Collaborator -> GUI: asks to check assigned tasks
+
+activate GUI
+GUI -> AgendaController: getAssignedEntries()
+activate AgendaController
+
+AgendaController -> Repositories: getInstance()
+activate Repositories
+Repositories --> AgendaController: return instance
+deactivate Repositories
+
+AgendaController -> Repositories: getAgenda()
+activate Repositories
+Repositories --> AgendaController: return agenda
+deactivate Repositories
+
+AgendaController -> Agenda: getAssignedEntries()
+activate Agenda
+Agenda <-- AgendaController: return AssignedEntries
+deactivate Agenda
+
+AgendaController --> GUI: return AssignedEntries
+deactivate AgendaController
+
+GUI --> Collaborator: display returned Entries
+deactivate GUI
+
+Collaborator --> GUI: asks to filter by date or status
+activate GUI
+
+GUI -> AgendaController: filterByDateAndStatus()
+activate AgendaController
+
+AgendaController -> Agenda: filterByDateAndStatus()
+activate Agenda
+
+Agenda --> AgendaController: return filteredEntries
+deactivate Agenda
+
+AgendaController --> GUI: return filteredEntries
+deactivate AgendaController
+
+GUI -> Collaborator: displays updated entries
+deactivate GUI
+
+@enduml

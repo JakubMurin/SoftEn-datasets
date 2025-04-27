@@ -1,0 +1,23 @@
+@startuml
+actor       User       as user
+participant StoryPublishView as view
+
+participant StoriesController as controller
+
+participant MsgService as msgService
+database    Database as db
+
+user -> view ++: 1. Click hide story
+view -> controller ++ : 2. Request API
+controller -> controller ++ : 3. Process DeleteStory()
+controller -> db ++ : 4.Query data
+db --> controller -- : 5. Return
+controller -> view -- : 6. Response Payload Format
+deactivate controller
+
+view --> user -- : 8. Display Stories Management Page
+
+@enduml
+
+
+

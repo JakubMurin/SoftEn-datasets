@@ -1,0 +1,51 @@
+@startuml
+actor Archivist as A
+participant "Authentication System" as Auth
+participant "Upload Interface" as UI
+participant "Database" as DB
+participant "File Storage" as FS
+participant "Notification System" as NS
+database "Archival Collections" as AC
+
+activate A
+A -> Auth: Sign In
+activate Auth
+Auth --> A: Authentication Success
+deactivate Auth
+
+A -> UI: Access Upload Interface
+activate UI
+
+A -> UI: Choose Inventory File(s)
+A -> UI: Provide Metadata
+A -> UI: Define Access Rights
+UI -> DB: Save Metadata & Access Rights
+activate DB
+DB --> UI: Confirmation
+deactivate DB
+
+A -> UI: Upload File(s)
+UI -> FS: Store Files in Archive
+activate FS
+FS --> UI: Upload Success
+deactivate FS
+
+UI -> DB: Update Inventory List
+activate DB
+DB -> AC: Add New Entries
+activate AC
+AC --> DB: Update Successful
+deactivate AC
+DB --> UI: Inventory Updated
+deactivate DB
+
+UI --> A: Display Upload Success Message
+deactivate UI
+
+A -> NS: Send Notification to Donor Representatives
+activate NS
+NS -> A: Notification Sent
+deactivate NS
+deactivate A
+
+@enduml

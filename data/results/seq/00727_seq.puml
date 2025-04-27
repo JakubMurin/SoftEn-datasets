@@ -1,0 +1,17 @@
+@startuml
+actor User
+boundary "views/memos/new.html.erb" as View
+control "MemosController" as Controller
+entity "Memo Model" as Model
+database "Database" as DB
+
+User -> View: Fill out memo form and submit
+View -> Controller: Send POST /memos request
+Controller -> Model: Create new memo object
+Model -> DB: Save memo to database
+DB --> Model: Return success/failure
+Model --> Controller: Return new memo object
+Controller -> View: Redirect to memos show page
+View -> User: Display new memo
+@enduml
+

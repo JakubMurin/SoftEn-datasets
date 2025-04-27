@@ -1,0 +1,35 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+participant CMOReport
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onCMOReviewCompleted(clientService, ticket, user)
+TicketTransitions -> ProfessionalTicket : getCMOReport()
+ProfessionalTicket -> CMOReport : getCategory()
+alt Category is 0
+    TicketTransitions -->> User : "Please select a category"
+else Category != 1 && Report Accuracy Comments are empty
+    TicketTransitions -->> User : "Please enter report accuracy comments"
+else Category is valid
+    TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+    alt Report quality != 100 && no comments
+        TicketTransitions -->> User : "Please enter Report Quality Comments"
+    else Report quality valid
+     TicketTransitions -> ProfessionalTicket : getCMOReport()
+        ProfessionalTicket -> CMOReport : getAdditionalFactFindings()
+        alt No Additional findings exist
+            TicketTransitions -> ProfessionalTicket : setCMO(user)
+            TicketTransitions -> ProfessionalTicket : setReportQuality()
+            TicketTransitions -> ProfessionalTicket : setReportTime()
+            TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+            ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+            ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+            TicketTransitions -> ClientRestService : generatePRCMOResponseLetter(clientService, ticket, user)
+            TicketTransitions -->> User : null
+        end
+    end
+end
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+actor Admin
+participant Frontend
+participant Backend
+participant Database
+
+activate Admin
+Admin -> Frontend: Delete a photo.
+activate Frontend
+Frontend -> Backend: Request delete photo.
+activate Backend
+Backend -> Database: Queries delete photo.
+activate Database
+Database --> Backend: Returns operation success.
+deactivate Database
+Backend --> Frontend: Returns operation success.
+deactivate Backend
+Frontend --> Admin: Informs operation success.
+deactivate Frontend
+deactivate Admin
+
+@enduml

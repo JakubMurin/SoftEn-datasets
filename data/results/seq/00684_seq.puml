@@ -1,0 +1,15 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Infrastructure" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "Edgeville" as S
+A -> CLI : Edgeville-edge-monitor()
+CLI -> S : edge/monitor()
+A -> Web : edge/monitor()
+Web -> S : edge/monitor()
+end box
+
+@enduml
+

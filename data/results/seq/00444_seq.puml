@@ -1,0 +1,30 @@
+@startuml
+
+
+actor       User
+database    Document
+participant TextFactory
+participant Cache
+User -> Document : Type character(s)
+
+Document -> TextFactory : GetText(value)
+
+alt successful case
+TextFactory -> Cache : GetFlyweight(value)
+Cache -> TextFactory : Return Flyweight if exists
+else flyweight doesn't exist
+TextFactory -> TextFactory : Create new Flyweight
+TextFactory -> Cache : Add new Flyweight to cache
+Cache -> TextFactory : Return new Flyweight
+end
+
+note right
+  - If matching flyweight exists, return.
+  - If matching flyweight does not exist, create and return
+end note
+
+TextFactory -> Document : Return Text Flyweight
+
+Document -> User : Render text
+
+@enduml

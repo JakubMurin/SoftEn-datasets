@@ -1,23 +1,27 @@
 @startuml
+actor MLExpert as "Machine Learning Expert"
+participant DPIE as "DPIE System"
+database DataSet as "ML Dataset"
+participant ValidationService as "Data Validation"
+participant PackagingService as "Data Packaging"
+participant MLPlatform as "ML Platform"
 
-Participant "Project Template" as T1
-Participant "Awesome Template" as T2
-Participant "Nth Generated Project" as G
+MLExpert -> DPIE : Request to package ML dataset
+DPIE -> DataSet : Fetch ML dataset
+DataSet -> DPIE : Return ML dataset
+DPIE -> ValidationService : Validate ML dataset
+ValidationService -> DPIE : Return validation results
 
-T1 --> G : yehua generate
-G --> G: development starts
-group continuous templating
-T1 --> T1 : new features added
-T1 --> G : moban synchronize
-G --> G : development continues
-end
-group no limit on the numer of source templates
-G --> G : add another awesome template
-T2 --> G: moban synchronize
-T1 --> T1: bug fix
-T1 --> G: moban synchronize
-T2 --> T2: a typo correction
-T2 --> G: moban synchornize
+alt Validation Successful
+    DPIE -> PackagingService : Initiate packaging process
+    PackagingService -> DPIE : Data package ready
+    DPIE -> MLExpert : Notify data package is ready
+    MLExpert -> DPIE : Request to import data package
+    DPIE -> MLPlatform : Send data package
+    MLPlatform -> DPIE : Confirm receipt
+    DPIE -> MLExpert : Confirm data package is imported
+else Validation Failed
+    DPIE -> MLExpert : Notify validation failed
 end
 
 @enduml

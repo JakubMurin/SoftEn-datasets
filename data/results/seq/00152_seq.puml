@@ -1,0 +1,32 @@
+@startuml
+
+actor User
+participant "System" as S
+
+activate User
+
+User -> S : requests to update job opening
+activate S
+
+S -> User : Shows list of job reference
+
+deactivate S
+User --> S: choses job opening
+activate S
+S -> User: Requests what user wants to update
+deactivate S
+
+User -> S: choses to update the interviewModel
+activate S
+
+S -> User : requests file
+
+deactivate S
+
+User --> S: inputs file path
+activate S
+
+S -> User: displays updated job opening
+S -> User: operation success message
+
+@enduml

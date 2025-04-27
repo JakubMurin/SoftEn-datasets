@@ -1,0 +1,17 @@
+@startuml
+actor User
+participant "Login Page" as LoginPage
+participant "Backend Server" as BackendServer
+database Database
+
+User -> LoginPage: Enter credentials and select "Remember Me"
+LoginPage -> BackendServer: Authenticate user
+BackendServer -> Database: Verify credentials
+Database --> BackendServer: Return authentication result
+BackendServer --> LoginPage: Return authentication result
+LoginPage -> BackendServer: Store "Remember Me" token
+BackendServer -> Database: Save token
+Database --> BackendServer: Confirm token saved
+BackendServer --> LoginPage: Confirm "Remember Me" enabled
+LoginPage --> User: Display login confirmation
+@enduml

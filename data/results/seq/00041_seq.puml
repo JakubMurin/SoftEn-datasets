@@ -1,0 +1,26 @@
+@startuml
+actor Member
+participant uim_UIManager as UIM
+participant FileShareForm as Form
+Membre -> Application : Partager œuvre
+Application -> UIM : getFileShareForm()
+create Form
+UIM -> Form :show()
+Member -> Form : see
+Application -> Membre : Afficher formulaire
+Membre -> Form : fill(content_name, content_type, file)
+Membre -> Form : Ajouter fichier
+Membre -> Application : Envoyer formulaire
+Application -> Application : Analyse fichier
+Application -> Membre : Afficher résultat analyse fichier
+Application -> Membre : Demander confirmation envoi
+Membre -> Application : Valider envoi
+Application -> Application : Copier fichier dans répertoire "À modérer"
+Application -> Application : Créer numéro transaction
+Application -> Application : Enregistrer transaction dans fichier de log
+Application -> Form
+destroy Form
+Application -> Serveur : Transmettre transaction et fichier 
+Serveur -> Bibliothécaire : Notifier de la soumission d'une œuvre
+Application -> Membre : Notifier de l'attente de modération
+@enduml

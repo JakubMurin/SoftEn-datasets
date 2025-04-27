@@ -1,0 +1,22 @@
+@startuml
+actor NSF_Employee as "NSF Employee"
+participant Project_Manager as "Project Manager"
+participant User_Research_Team as "User Research Team"
+participant CMS_Team as "CMS Team"
+participant Web_Development_Team as "Web Development Team"
+
+NSF_Employee -> Project_Manager : Request editorial-planning recommendations
+Project_Manager -> User_Research_Team : Commission user research for CMS/editorial planning insights
+activate User_Research_Team
+User_Research_Team -> CMS_Team : Consult on CMS capabilities and best practices
+activate CMS_Team
+CMS_Team -> User_Research_Team : Provide CMS insights and constraints
+deactivate CMS_Team
+User_Research_Team -> Web_Development_Team : Relay CMS insights and user needs
+activate Web_Development_Team
+Web_Development_Team -> User_Research_Team : Propose editorial-planning recommendations based on technical feasibility
+deactivate Web_Development_Team
+User_Research_Team -> Project_Manager : Deliver compiled recommendations
+deactivate User_Research_Team
+Project_Manager -> NSF_Employee : Present editorial-planning recommendations
+@enduml

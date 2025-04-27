@@ -1,0 +1,19 @@
+@startuml
+
+actor User
+participant "Quiz" as A
+participant "Questions" as B
+participant "Answers" as C
+
+User -> A : take quiz
+activate A
+A-> B: submit questions
+activate B
+B->C: check answers
+C->B: result
+deactivate C
+B->A : quiz results
+
+A-> User : results 
+
+@enduml

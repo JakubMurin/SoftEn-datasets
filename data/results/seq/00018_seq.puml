@@ -1,37 +1,26 @@
 @startuml
+actor "Digital Records Archivist" as archivist
+participant "Web Interface" as UI
+participant "EDRMS Backend" as Backend
+database "Repository Database" as DB
+entity "File Server" as Server
 
-participant App
-create ViewFactory
-App -> ViewFactory
-create ViewController
-App -> ViewController : new(viewFactory)
-App -> ViewController : run()
-activate ViewController
+archivist -> UI: 1. Request embargo metadata for ETDs
+UI -> Backend: 2. Fetch embargo metadata
+Backend -> DB: 3. Query embargo metadata
+DB --> Backend: 4. Return metadata
+Backend --> UI: 5. Display metadata
+UI --> archivist: 6. Shows embargo metadata
 
-loop until not quit
-
-ViewController -> ViewFactory : getViewA()
-create ViewA
-ViewFactory -> ViewA
-ViewController -> ViewA : show()
-activate ViewA
-ViewA-->ViewController
-deactivate ViewA
-destroy ViewA
-
-ViewController -> ViewFactory : getViewB()
-create ViewB
-ViewFactory -> ViewB
-ViewController -> ViewB : show()
-activate ViewB
-ViewB-->ViewController
-deactivate ViewB
-destroy ViewB
-
-end
-
-ViewController --> App
-deactivate ViewController
-
+archivist -> UI: 7. Request download of metadata
+UI -> Backend: 8. Fetch detailed metadata
+Backend -> DB: 9. Query detailed embargo data
+DB --> Backend: 10. Return detailed data
+Backend -> Server: 11. Prepare download file
+Server --> Backend: 12. Download link
+Backend --> UI: 13. Provide download link
+UI --> archivist: 14. Download link provided
+archivist -> Server: 15. Download file by link
+Server --> archivist: 16. Metadata file
 
 @enduml

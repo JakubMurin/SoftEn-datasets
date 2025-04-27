@@ -1,0 +1,30 @@
+@startuml
+hide footbox
+skinparam maxMessageSize 100
+
+title UMA protocol flow
+actor requester as "requesting party" 
+participant client as "client (application)"
+participant authorization as "authorization server"
+participant resource as "resource server"
+actor user as "resource owner"
+
+user --> resource: Set policy conditions (anytime)
+ 
+client -> resource :  Resource Request (no access token)
+return : 401 response with initial permission ticket, authz server location 
+client -> authorization: Access token (RPT) request with \npermission ticket, \nand claim token (push claims) 
+authorization  <---> authorization: Authz assessment ;
+authorization--> client : 403 response with \nnew permission ticket \nneed_info error \nredirect_user hint 
+client --> requester :Redirect user with permission ticket 
+requester -> authorization :Follow redirect to authz server 
+authorization <---> requester: Interactive claims gathering    
+authorization--> requester :Redirect back with new permission ticket     
+requester --> client:Follow redirect to client 
+client -> authorization : RPT request with permission ticket 
+authorization <--> authorization : Authz assessment 
+authorization --> client : Response with RPT and PCT 
+client -> resource : Resource request with RPT 
+resource --> client : Protected Resource
+ @enduml
+

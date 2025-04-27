@@ -1,0 +1,19 @@
+@startuml
+actor Waiter as waiter
+participant "Waiter Interface" as interface
+participant "Order Management System" as orderSystem
+participant "Menu Database" as menuDB
+participant "Allergy Information System" as allergySystem
+
+waiter -> interface : Select order to review
+interface -> orderSystem : Request order details
+orderSystem -> menuDB : Fetch order items
+menuDB -> orderSystem : Return order items
+orderSystem -> allergySystem : Request allergy warnings for items
+allergySystem -> menuDB : Lookup allergy info
+menuDB -> allergySystem : Return allergy data
+allergySystem -> orderSystem : Compile allergy warnings
+orderSystem -> interface : Send compiled warnings
+interface -> waiter : Display allergy warnings
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+
+actor Student as student
+
+participant TakeExamUI as ui
+participant TakeExamController as ctrl
+
+participant RegularExamRepository as repo
+
+participant GrammarContext as ctx
+participant GrammarToolFactory as grepo
+
+participant ParseExamService as svc
+
+participant ExamToBeTakenDTO as taken_dto
+
+student --> ui : chooses exam
+activate ui
+    ui --> ctrl : examToBeTaken(examDTO)
+    activate ctrl
+        ctrl --> repo : ofIdentity()
+        activate repo
+            repo --> ctrl : exam
+        deactivate repo
+
+        ctrl --> ctx : grammarTools()
+        activate ctx
+            ctx --> grepo : examParserService()
+            activate grepo
+                grepo --> svc : create()
+                activate svc
+                deactivate svc
+            deactivate grepo
+        deactivate ctx
+
+        ctrl --> svc : generateExam(exam)
+        activate svc
+            note right: exam generation done \nby an external service
+            svc --> taken_dto : create()
+            activate taken_dto
+            deactivate taken_dto
+            svc --> ctrl : examToBeTakenDTO
+        deactivate svc
+        ctrl --> ui : examToBeTakenDTO
+    deactivate ctrl
+    ui --> student : present exam
+deactivate ui
+
+@enduml
+

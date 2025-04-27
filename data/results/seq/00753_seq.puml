@@ -1,0 +1,16 @@
+@startuml
+actor Owner as owner
+participant "Frontend Interface" as frontend
+participant "Backend System" as backend
+participant "Reporting Module" as reports
+database "Database" as db
+
+owner -> frontend : Request sales report
+frontend -> backend : API call for sales data
+backend -> reports : Query generate sales report
+reports -> db : Fetch sales data
+db --> reports : Sales data
+reports --> backend : Sales report
+backend --> frontend : Display sales report data
+frontend --> owner : Show sales report
+@enduml

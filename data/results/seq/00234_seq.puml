@@ -1,0 +1,21 @@
+@startuml
+actor Manager as M
+participant "UI Dashboard" as UI
+participant "Backend Server" as BS
+database "Database" as DB
+
+M -> UI: Selects "Monthly Popular Dishes" report
+UI -> BS: Request for most frequently ordered food of the month
+BS -> DB: Query ordered food data of the month
+
+alt If data available
+    DB --> BS: Return ordered food data of the month
+    BS -> BS: Process data to find most frequently ordered dishes
+    BS --> UI: Send report of most frequently ordered food
+    UI --> M: Display most frequently ordered food report
+else No data available
+    DB --> BS: Return empty result
+    BS --> UI: Send no data message
+    UI --> M: Display no data available message
+end
+@enduml

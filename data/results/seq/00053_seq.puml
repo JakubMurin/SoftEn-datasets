@@ -1,0 +1,39 @@
+@startuml
+
+actor HydratorUser as user
+participant "Dataset Management\n& Version Control System" as DMVCS
+database "Existing Dataset\nInstance" as Dataset
+participant "Pipeline Creation\nEngine" as PCE
+participant "Dataset Version\nControl" as DVC
+
+== Pipeline Creation for Dataset Read/Write ==
+
+user -> DMVCS : Request to create pipeline
+activate DMVCS
+
+DMVCS -> Dataset : Verify dataset instance exists
+activate Dataset
+Dataset --> DMVCS : Instance details
+deactivate Dataset
+
+DMVCS -> DVC : Check dataset version compatibility
+activate DVC
+DVC --> DMVCS : Version compatibility confirmed
+deactivate DVC
+
+DMVCS -> PCE : Initiate pipeline creation
+activate PCE
+
+PCE -> PCE : Configure source/sink based on Dataset instance
+PCE -> Dataset : Establish read/write connection
+activate Dataset
+Dataset --> PCE : Acknowledge connection
+deactivate Dataset
+
+PCE --> DMVTC : Pipeline ready for use
+deactivate PCE
+
+DMVCS --> user : Pipeline creation successful
+deactivate DMVCS
+
+@enduml

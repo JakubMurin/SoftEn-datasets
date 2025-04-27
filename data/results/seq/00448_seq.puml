@@ -1,0 +1,23 @@
+@startuml
+actor Admin
+participant "Admin Interface" as AI
+participant "Video Management System" as VMS
+participant "A/V Quality Assessment Module" as AVQAM
+participant "Database" as DB
+participant "Ranking Algorithm" as RA
+
+Admin -> AI: Selects A/V Quality Filter Option
+AI -> VMS: Initiates A/V Quality Filtering
+VMS -> AVQAM: Sends Video for A/V Analysis
+loop for each video
+    AVQAM -> AVQAM: Analyzes Video A/V Quality
+    AVQAM -> DB: Stores A/V Quality Scores
+end
+AVQAM -> VMS: A/V Analysis Complete
+VMS -> RA: Sends Scores for Ranking
+RA -> RA: Calculates Rankings based on A/V Quality
+RA -> DB: Updates Rankings
+DB -> VMS: Sends Filtered and Ranked Video List
+VMS -> AI: Displays Ranked Videos to Admin
+AI -> Admin: Shows Filtered & Ranked Videos
+@enduml

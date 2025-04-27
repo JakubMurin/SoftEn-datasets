@@ -1,0 +1,33 @@
+@startuml
+
+actor Developer as D
+box
+participant Throttle as Tr
+participant Queue as Q
+end box
+participant "Throttle\nStrategy" as TrS
+participant Timer as T
+
+group Developer thread
+D -> Tr: execution request
+Tr -> Q: store task
+end
+
+group Loop in throttle thread
+Tr <- Q: get next task
+activate Tr
+Tr -> TrS: ask execution permit
+TrS -> T: ask current time
+TrS <- T: return time
+TrS -> T: wait next execution time
+...
+TrS <-- T
+Tr <-- TrS
+Tr -> Tr: execute task
+activate Tr #DarkSalmon
+deactivate Tr
+
+deactivate Tr
+end
+
+@enduml

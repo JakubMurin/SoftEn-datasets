@@ -1,0 +1,21 @@
+@startuml
+
+actor "Gestor de campus" as Actor
+participant "SPA" as Container <<Container (C4)>>
+participant "GestaoInfoAPI" as API <<Container (C4)>>
+
+Actor -> Container: criar um novo edifício
+Container --> Actor: requisita os dados do edifício
+Actor --> Container: insere os dados do edifício
+Container -> API: post(/api/buildings)
+
+API --> Container: status code
+alt 200
+    Container --> Actor: devolve o edifício criado
+else 400
+    Container --> Actor: devolve mensagem de erro
+end
+
+
+@enduml
+

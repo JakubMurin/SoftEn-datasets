@@ -1,0 +1,14 @@
+@startuml
+actor Reader
+participant "League Alerts System" as LAS
+
+ref over Reader, LAS : Read Article
+
+opt Save Article
+    Reader -> LAS: saveArticle(readerId, articleIdentifier)
+    activate LAS
+        LAS --> Reader: returnSuccessMessage(HttpStatusCode.OK)
+    deactivate LAS
+end opt
+@enduml
+

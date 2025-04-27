@@ -1,0 +1,48 @@
+@startuml
+actor Admin
+Admin -> MainUI: Remove room from Energy Grid.
+MainUI --> HouseConfigurationUI: Remove room from Energy Grid.
+HouseConfigurationUI --> Admin: Request Geographic Area Name or Index from List
+Admin -> MainUI: insert data (Geographic Area name) or Select GA
+MainUI -> HouseConfigurationUI: select Geographic Area by name or from list
+HouseConfigurationUI ->HouseConfigurationController: check if name/index is contained in list
+HouseMonitoringController -> GeographicAreaList: check if name/index is contained in list
+GeographicAreaList -> GeographicArea: match by name or by index
+GeographicArea -> GeographicArea: validate data
+GeographicArea --> HouseConfigurationUI: return Geographic Area
+HouseConfigurationUI -> HouseConfigurationUI: set mGeoArea
+HouseConfigurationUI --> Admin: Request House Name or Index from List
+Admin -> MainUI: insert data (House name) or select House
+MainUI -> HouseConfigurationUI: select House by name or from list
+HouseConfigurationUI -> HouseConfigurationController: check if name/index is contained in list
+HouseConfigurationController -> HouseList: check if name/index is contained in list
+HouseList -> House: match by name or by index
+House -> House: validate data
+House --> HouseConfigurationUI: return House
+HouseConfigurationUI -> HouseConfigurationUI: set mHouse
+HouseConfigurationUI ->  Admin: Request Energy Grid Name or Index from List
+Admin -> MainUI: insert data (Energy Grid name) or select Grid from list.
+MainUI -> HouseConfigurationUI: select Energy Grid by name or from list
+HouseConfigurationUI -> HouseConfigurationController: check if name/index is contained in list
+HouseConfigurationController -> EnergyGridList: check if name/index is contained in list
+EnergyGridList -> EnergyGrid: match by name or by index
+EnergyGrid -> EnergyGrid: validate data
+EnergyGrid --> HouseConfigurationUI: return EnergyGrid
+HouseConfigurationUI  -> HouseConfigurationUI: setMEnergyGrid
+HouseConfigurationUI -> Admin:  Request Room name or Index from list.
+Admin  -> MainUI: insert data (Room name) or select Room from list.
+MainUI -> HouseConfigurationUI: select Room by name or select Room from list.
+HouseConfigurationUI -> HouseConfigurationController: check if name/index is contained in list
+HouseConfigurationController -> RoomList: check if name/index is contained in lis
+RoomList -> Room: match by name or by index
+Room -> Room: validate data
+Room --> HouseConfigurationUI: return Room
+HouseConfigurationUI -> HouseConfigurationUI: set mRoom
+HouseConfigurationUI -> HouseConfigurationController: remove  Room from Energy Grid.
+HouseConfigurationController -> EnergyGrid: remove Room from Energy Grid.
+EnergyGrid -> RoomList: remove Room from list.
+RoomList -> RoomList: validate data and remove Room.
+RoomList -> HouseConfigurationUI: return true if removal successful, or false if not.
+HouseConfigurationUI -> HouseConfigurationUI: Build result string.
+HouseConfigurationUI -> Admin: Display result string.
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+actor GestorCampus as actor
+participant SistemaRobDroneGo as srdg
+actor -> srdg: Criar edificio
+srdg --> actor : Requesita dados
+actor -> srdg: Envia dados de edficio
+alt sucesso
+srdg --> actor : Mensagem de Sucesso
+else insucesso
+srdg -->actor : Mensagem de Erro
+end
+@enduml

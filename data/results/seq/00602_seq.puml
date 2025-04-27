@@ -1,0 +1,26 @@
+@startuml
+
+actor Game
+
+Game -> StatsTrackingSystem: create instance
+StatsTrackingSystem -> StorageManager: loadStats()
+StorageManager --> StatsTrackingSystem: statsStorage
+loop for each stat in statsStorage
+    StatsTrackingSystem -> StatsTrackerFactory: createStatTracker(ofType: numBlocksPlaced, ...)
+    StatsTrackerFactory -> NumBlocksPlacedStatTracker: init(eventManager:, stat:)
+    NumBlocksPlacedStatTracker -> EventManager: registerClosure(for: BlockPlacedEvent, ...)
+    StatsTrackerFactory <-- NumBlocksPlacedStatTracker: statTracker
+    StatsTrackingSystem <-- StatsTrackerFactory: statTracker
+end
+StatsTrackingSystem -> EventManager: registerClosure(for: GameEndedEvent, ...)
+Game -> Game: play game
+Game -> GameEndedEvent: Fire event
+GameEndedEvent -> EventManager: trigger(event: GameEndedEvent)
+EventManager -> StatsTrackingSystem: saveStats()
+StatsTrackingSystem -> StorageManager: saveStats(...)
+StorageManager -> StorageManager: convert StatTrackers to StatStorage
+StorageManager -> StorageManager: write to disk
+
+@enduml
+
+

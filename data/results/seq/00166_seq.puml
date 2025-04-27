@@ -1,0 +1,16 @@
+@startuml
+actor User
+
+participant "ProductList.svelte" as PL
+participant "mitarbeitersupermarkt.svelte" as MS
+participant "sortStore.js" as SortStore
+
+== Sortieren der Produktliste ==
+User -> PL: Klick auf Spaltenüberschrift
+PL -> MS: onSort(column)
+MS -> SortStore: updateSort(column)
+SortStore --> MS: sortColumn und sortDirection aktualisiert
+MS -> PL: Aktualisierte sortierte Produkte (über sortedProductsStore)
+PL --> User: Aktualisierte Tabelle anzeigen
+@enduml
+

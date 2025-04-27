@@ -1,0 +1,21 @@
+@startuml
+actor Archivist as arc
+participant "UI: Archive Management System" as ui
+participant "Backend Server" as server
+participant "Database" as db
+
+== Restrict Access to Files by IP Address ==
+
+arc -> ui : Select files to restrict
+ui -> server : Request restriction options
+server -> db : Retrieve current access settings
+db --> server : Return access settings
+server --> ui : Display current settings + IP restriction option
+arc -> ui : Apply IP restrictions (enters IP range)
+ui -> server : Send update access settings request with IP details
+server -> db : Update file access settings with IP restrictions
+db --> server : Confirm settings updated
+server --> ui : Display success message
+ui --> arc : Confirmation of IP restriction implementation
+
+@enduml

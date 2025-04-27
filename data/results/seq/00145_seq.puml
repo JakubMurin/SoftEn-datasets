@@ -1,0 +1,23 @@
+@startuml
+actor HydratorUser as user
+participant "Hydrator Pipeline" as pipeline
+participant "Dataset Management System" as DMS
+participant "Dataset Version Control" as DVC
+participant "Dataset Exploration Interface" as DEI
+participant Database as DB
+
+== Explore Datasets Created by Pipeline ==
+user -> pipeline: Initiate dataset exploration
+pipeline -> DMS: Request attached datasets
+DMS -> DVC: Fetch dataset instances and versions
+DVC --> DMS: Return dataset instances with versions
+DMS --> pipeline: Send dataset details
+pipeline -> DEI: Request dataset exploration UI
+DEI -> DMS: Retrieve dataset schemas/configurations
+DMS -> DB: Query dataset properties & schemas
+DB --> DMS: Return dataset properties & schemas
+DMS --> DEI: Provide data for UI
+DEI --> pipeline: Display exploration UI
+pipeline --> user: Show dataset exploration interface
+
+@enduml

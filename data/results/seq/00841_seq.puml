@@ -1,0 +1,36 @@
+@startuml
+actor "administrador" as admin
+actor "usuario" as user
+
+
+
+
+admin -> "agenciaVehiculos:Agencia" as agencia ** :Agencia()
+agencia --> admin
+
+
+admin -> "furgoneta:Furgoneta" as furgo ** : new Furgoneta(patente, pma)
+group No pretendemos que muestren esto
+note right: por debajo el constructor de una clase, llama al constructor de la clase madre\n esto no se suele mostrar pero en java por debajo es asi.
+furgo -> ":Vehiculo" ** : new Vehiculo(patente)
+":Vehiculo" --> furgo
+end
+furgo --> admin
+
+
+admin -> "blindaje:Blindado" as blindaje ** : new Blindado
+blindaje --> admin
+admin -> "categoria:Premium" as categoria ** : new Premium()
+categoria --> admin
+admin -> "coche:Coche" as coche ** : new Coche(patente, plazas, categoria, blindaje)
+coche --> admin
+
+admin -> agencia : registrarVehiculo(coche:Vehiculo)
+
+
+agencia -> agencia : this.vehiculos.add(coche:Vehiculo)
+
+
+
+@enduml
+

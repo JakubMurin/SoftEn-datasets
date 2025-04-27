@@ -1,0 +1,32 @@
+@startuml
+actor Repoadmin
+participant "Audit & Reporting Service" as ARS
+database "EDRMS Database" as DB
+participant "Report Generator" as RG
+participant "Audit Log" as AL
+participant "Email Service" as ES
+
+Repoadmin -> ARS: Request Audit Report
+ARS -> DB: Query Audit Data
+DB --> ARS: Audit Data
+ARS -> RG: Generate Report(Audit Data)
+RG --> ARS: Audit Report
+ARS -> AL: Log Report Request
+ARS --> Repoadmin: Audit Report
+
+== Error Log Reporting ==
+Repoadren -> ARS: Request Error Logs
+ARS -> DB: Query Error Logs
+DB --> ARS: Error Log Data
+ARS -> RG: Generate Report(Error Log Data)
+RG --> ARS: Error Logs Report
+ARS -> AL: Log Error Request
+ARS --> Repoadmn: Error Logs Report
+
+== Subscription-Based Notifications ==
+Repoadmin -> ARS: Subscribe to Reports
+ARS -> AL: Log Subscription
+ARS -> ES: Setup Subscription
+note right of ES: Triggered by Report Generation\nor Specific Events
+ES -> Repoadmin: Send Report via Email
+@enduml
