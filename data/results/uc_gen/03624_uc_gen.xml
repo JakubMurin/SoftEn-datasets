@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Create Match Request</name>
+    <description>Allows User to request matches based on preferences.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has preferences set.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User's MatchRequest successfully created and match found.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No matches found for the User.</condition>
+    </failureEndConditions>
+    <trigger>User initiates match finding process.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates match request through the frontend in the app.</step>
+        <step id="S2">Frontend sends the request to the API Gateway with the payload containing the requestId.</step>
+        <step id="S3">API Gateway directs the request to the Controller using PUT /api/find/match.</step>
+        <step id="S4">Controller interacts with the Service to check for matches.</step>
+        <step id="S5">Service finds the User's MatchRequest using the requestId provided thus initiating the matching process.</step>
+        <step id="S6">Service generates a random question from the Matching Database.</step>
+        <step id="S7">Service creates a sessionInfo and attaches it to both MatchRequests involved in the match.</step>
+        <step id="S8">The MatchRequests are updated with the newly generated sessionInfo.</step>
+        <step id="S9">Respond with 200 OK message containing the user's MatchRequest to the frontend.</step>
+        <step id="S10">Frontend receives the response and switches to the session page.</step>
+    </mainSequence>
+</useCase>

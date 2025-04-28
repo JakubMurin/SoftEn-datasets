@@ -1,0 +1,39 @@
+<useCase id="001">
+    <name>Delete a Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>DELETE /api/tasks/{id}</trigger>
+    <mainSequence>
+        <step id="S01">
+            User sends a DELETE request to Task Controller for a specific task id.
+        </step>
+        <step id="S02">
+            Task Controller activates to initiate task deletion.
+        </step>
+        <step id="S03">
+            Task Controller calls Task Service to delete the task from the database.
+        </step>
+        <step id="S04">
+            Task Service activates to process the request to delete a task.
+        </step>
+        <step id="S05">
+            Task Service queries Task Repository to delete the task by id from the database.
+        </step>
+        <step id="S06">
+            Task Repository activates to perform the deletion of the task.
+        </step>
+        <step id="S07">
+            Task Repository responds to Task Service upon successful deletion.
+        </step>
+        <step id="S08">
+            Task Service completes the deletion process and responds with success back to Task Controller.
+        </step>
+        <step id="S09">
+            Task Controller completes the task deletion process successfully.
+        </step>
+        <step id="S10">
+            The response about completed task deletion is transferred back to the User.
+        </step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Process Incoming Connection</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>Server</actor>
+        <actor>ServerHandler</actor>
+        <actor>QThreadPool</actor>
+    </actors>
+    <preconditions>
+        <precondition>Server and ServerHandler instances are created and initialized.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User creates a new connection.</step>
+        <step id="S2">Server creates a new ServerHandler instance.</step>
+        <step id="S3">ServerHandler sets auto delete property to true.</step>
+        <step id="S4">Server starts the ServerHandler in the QThreadPool.</step>
+    </mainSequence>
+</useCase>

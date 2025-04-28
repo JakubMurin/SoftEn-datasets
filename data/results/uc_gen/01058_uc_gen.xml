@@ -1,0 +1,46 @@
+<useCase id="UC001">
+    <name>Manage Events</name>
+    <description>Allows the user to add and manage events</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+        <precondition>User has necessary permissions</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Event details successfully saved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while saving event details</condition>
+    </failureEndConditions>
+    <trigger>User wants to add a new event</trigger>
+    <mainSequence>
+        <step id="S1">User opens the Add Event Page</step>
+        <step id="S2">User enters event details</step>
+        <step id="S3">User selects associated contact</step>
+        <step id="S4">User submits event form</step>
+        <step id="S5">Add Event Page sends event details</step>
+        <step id="S6">Server validates details</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Details are valid</step>
+            <step id="A1S2">Server saves the event</step>
+            <step id="A1S3">Event is successfully saved</step>
+            <step id="A1S4">Server sends success response to Add Event Page</step>
+            <step id="A1S5">Add Event Page shows success message to User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error occurred while validating details</description>
+            <step id="E1S1">Details are invalid</step>
+            <step id="E1S2">Server sends error response to Add Event Page</step>
+            <step id="E1S3">Add Event Page shows error message to User</step>
+            <step id="E1S4">Add Event Page prompts User to re-enter event details</step>
+        </esteps>
+    </errorSteps>
+</useCase>

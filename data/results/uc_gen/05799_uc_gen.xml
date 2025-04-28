@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Change Marketing Campaign</name>
+    <description>Allow user to modify the marketing campaign type</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the marketing campaign module</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Marketing campaign type successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to update marketing campaign type</condition>
+    </failureEndConditions>
+    <trigger>User initiates a request to change marketing campaign type</trigger>
+    <mainSequence>
+        <step id="S1">User requests to change marketing campaign type</step>
+        <step id="S2">UMP receives the request</step>
+        <step id="S3">Retail UMP processes the request</step>
+        <step id="S4">Retail UMP synchronously/asynchronously sends message to C</step>
+        <step id="S5">Retail UMP receives response from C</step>
+        <step id="S6">UMP receives response from Retail UMP</step>
+        <step id="S7">User receives confirmation of marketing campaign type update</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,17 @@
+<useCase id="1">
+    <name>Track User Visits</name>
+    <description>Use case for tracking visited users</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User dispatches addVisitedUser("user123")</step>
+        <step id="S2">Component receives dispatch to addVisitedUser("user123")</step>
+        <step id="S3">Store dispatches addVisitedUser("user123") to Reducer</step>
+        <step id="S4">Reducer calls addVisitedUser reducer</step>
+        <step id="S5">Reducer checks if user123 is in visitedUsers</step>
+        <step id="S6">Slice updates state if user123 is not present</step>
+        <step id="S7">Reducer returns updated state</step>
+        <step id="S8">Store notifies Component of state change</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Resolve File Conflict Use Case</name>
+    <description>User resolves a conflict between files.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>FileService</actor>
+        <actor>FileStorage</actor>
+        <actor>Database</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has conflicts in the files.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Conflict resolution successfully completed.</condition>
+    </successEndConditions>
+    <trigger>User receives a conflict notification.</trigger>
+    <mainSequence>
+        <step id="S1">User receives a conflict notification.</step>
+        <step id="S2">Frontend sends the notification to FileService.</step>
+        <step id="S3">FileService retrieves conflicting files.</step>
+        <step id="S4">FileService analyzes conflicts.</step>
+        <step id="S5">FileService updates files based on resolution.</step>
+        <step id="S6">Database updates file metadata.</step>
+        <step id="S7">NotificationService sends a conflict resolution event.</step>
+        <step id="S8">Frontend confirms conflict resolution.</step>
+        <step id="S9">User is notified of successful conflict resolution.</step>
+    </mainSequence>
+</useCase>

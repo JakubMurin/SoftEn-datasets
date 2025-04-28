@@ -1,0 +1,31 @@
+<useCase id="UC1">
+  <name>Minting TopHat in Hats System</name>
+  <actors>
+    <actor>address1</actor>
+    <actor>address2</actor>
+    <actor>address3</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Address1 mints TopHat in Hats system.</step>
+    <step id="S2">Address1 creates a TimeFrameHatModule in HatsModuleFactory and deploys it.</step>
+    <step id="S3">Address1 creates a Hatter Hat in Hats system.</step>
+    <step id="S4">Address1 mints the Hatter Hat in TimeFrameHatModule.</step>
+    <step id="S5">Address1 creates Role Hat 1 under the Hatter Hat.</step>
+    <step id="S6">Address1 creates Role Hat 2 under the Hatter Hat.</step>
+    <step id="S7">TimeFrameHatModule mints Role Hat 1 to address1.</step>
+    <step id="S8">FractionToken initializes fraction for Role Hat 1 to address1.</step>
+    <step id="S9">FractionToken initializes fraction for Role Hat 2 to address2.</step>
+    <step id="S10">Address2 sends a fraction of the Role Hat 2's FractionToken to address3.</step>
+    <step id="S11">SplitCreator creates a Split with the ratio between HatIDs and wearers.</step>
+    <step id="S12">SplitCreator requests information like balance from FractionToken.</step>
+    <step id="S13">PullSplitsFactory creates PullSplits contract using distribution total hash.</step>
+    <step id="S14">Address1 sends ETH or ERC20 to PullSplit component.</step>
+    <step id="S15">Address1 specifies distribution information for splitting.</step>
+    <step id="S16">Address1 validates and compares hash values in PullSplit component.</step>
+    <step id="S17">Addresses update balances in SplitsWarehouse according to distribution information.</step>
+    <step id="S18">SplitsWarehouse burns ERC6909X from user's balance for withdrawal amounts.</step>
+    <step id="S19">SplitsWarehouse sends ETH or ERC20 (minus rewards) to address1.</step>
+    <step id="S20">ETH or ERC20 is sent to address2.</step>
+    <step id="S21">ETH or ERC20 is sent to address3.</step>
+  </mainSequence>
+</useCase>

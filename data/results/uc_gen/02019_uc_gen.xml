@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Assign Employee Position and Shift</name>
+    <actors>
+        <actor>Trabajador</actor>
+        <actor>GestorTurnos</actor>
+        <actor>BaseDeDatos</actor>
+        <actor>Departamento</actor>
+        <actor>Posicion</actor>
+        <actor>Turno</actor>
+        <actor>Ausencia</actor>
+        <actor>Preferencia</actor>
+    </actors>
+    <trigger>Trabajador solicita asignación de posición y turno</trigger>
+    <mainSequence>
+        <step id="S1">GestorTurnos solicita búsqueda y asignación de posición y turno</step>
+        <step id="S2">BaseDeDatos busca el departamento del Trabajador</step>
+        <step id="S3">BaseDeDatos busca la posición disponible en el departamento</step>
+        <step id="S4">BaseDeDatos busca el turno disponible</step>
+        <step id="S5">BaseDeDatos verifica las ausencias y preferencias del Trabajador</step>
+        <step id="S6">GestorTurnos asigna la posición y turno al Trabajador</step>
+    </mainSequence>
+</useCase>

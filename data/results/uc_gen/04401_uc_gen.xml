@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Handle Ball Collision</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>PegModelable</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>GameEngine receives collision event with a Ball</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Ball collision handled successfully</condition>
+    </successEndConditions>
+    <trigger>GameEngine triggers collision event</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine triggers onCollision event with Ball and deltaTime</step>
+        <step id="S2">PegModelable is activated</step>
+        <step id="S3">PegModelable triggers onCollision event with Ball and deltaTime</step>
+        <step id="S4">Ball is activated</step>
+        <step id="S5">Ball collides with peg</step>
+        <step id="S6">Ball gets safe position from peg</step>
+        <step id="S7">FreeBody triggers onCollision event with collisionPoint, deltaTime, and peg restitutionCoefficient</step>
+        <step id="S8">Ball collision handled successfully</step>
+    </mainSequence>
+</useCase>

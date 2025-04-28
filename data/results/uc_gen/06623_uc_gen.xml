@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Create a Post</name>
+    <description>The user wants to create a Post.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User initiates the creation of a Post.</step>
+        <step id="S2">UI receives the request and sends a PostDto to the PostController.</step>
+        <step id="S3">PostController validates the PostDto.</step>
+        <step id="S4">PostController retrieves the user from the security context.</step>
+        <step id="S5">PostService creates the post using the PostDto and UserId.</step>
+        <step id="S6">PostMapper transforms the PostDto to a Post entity.</step>
+        <step id="S7">PostService saves the created Post in the database.</step>
+        <step id="S8">PostRepository saves the created Post.</step>
+        <step id="S9">PostService returns the newly created Post.</step>
+        <step id="S10">PostController responds with a success response, ResponseEntity 201 code.</step>
+        <step id="S11">UI displays success message "Post created!" to the User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Login and Authentication</name>
+    <description>User logs in and receives authentication token.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Authentication Center</actor>
+        <actor>Cache</actor>
+        <actor>Other Services</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to access protected services.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Authentication token successfully generated and stored.</condition>
+        <condition>User successfully authenticated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Authentication token generation failed.</condition>
+        <condition>User authentication failed.</condition>
+    </failureEndConditions>
+    <trigger>User initiates login operation.</trigger>
+    <mainSequence>
+        <step id="S1">User logs in at Authentication Center.</step>
+        <step id="S2">Authentication Center stores token in Cache.</step>
+        <step id="S3">Authentication Center returns token to User.</step>
+        <step id="S4">User includes token in headers for subsequent authentication.</step>
+        <step id="S5">Cache retrieves token for User from IP.</step>
+        <step id="S6">Other Services verify and redirect User to requested service.</step>
+        <step id="S7">Other Services send information to User.</step>
+    </mainSequence>
+</useCase>

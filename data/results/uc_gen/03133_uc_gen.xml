@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>User Registration</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>ServiceUtilisateur</actor>
+        <actor>Repo</actor>
+        <actor>ServiceEmail</actor>
+        <actor>Redirection</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur accède à la page d'inscription</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Email envoyé avec succès</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email invalide</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Afficher le formulaire d'inscription</step>
+        <step id="S2">Soumettre les informations d'inscription (nom, mot de passe, photo de profil, email)</step>
+        <step id="S3">Vérifier si le nom d'utilisateur est disponible</step>
+        <step id="S4">Vérifier si l'email est déjà utilisé</step>
+        <step id="S5">Enregistrer l'utilisateur dans la base de données</step>
+        <step id="S6">Envoyer email de confirmation</step>
+        <step id="S7">Confirmation d'envoi de l'email</step>
+        <step id="S8">Rediriger vers la page de confirmation</step>
+        <step id="S9">Afficher message de confirmation (vérifiez votre email)</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Erreur d'envoi d'email</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Erreur d'envoi d'email</description>
+            <step id="E1S1">Afficher message d'erreur (échec d'envoi de l'email)</step>
+        </esteps>
+    </errorSteps>
+</useCase>

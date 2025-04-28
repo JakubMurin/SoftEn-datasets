@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Manage Data</name>
+    <description>As a Client, I want to create, read, and update data through the API.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>CommandHandler</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+        <actor>DomainEntity</actor>
+        <actor>QueryHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client is authenticated and authorized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data is successfully created, read, or updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during data manipulation.</condition>
+    </failureEndConditions>
+    <trigger>Client triggers data management operation through API.</trigger>
+    <mainSequence>
+        <step id="S1">Client requests API to create, read, or update data.</step>
+        <step id="S2">API calls CommandHandler to handle the command.</step>
+        <step id="S3">CommandHandler requests data entity from Repository.</step>
+        <step id="S4">Repository executes SQL query on Database.</step>
+        <step id="S5">Database provides raw data to Repository.</step>
+        <step id="S6">Repository maps raw data to Entity using Factory.</step>
+        <step id="S7">Repository sends Entity back to CommandHandler.</step>
+        <step id="S8">CommandHandler applies business logic to the DomainEntity.</step>
+        <step id="S9">CommandHandler instructs Repository to save the Entity.</step>
+        <step id="S10">Repository detects entity changes and updates SQL accordingly.</step>
+        <step id="S11">Repository saves changes in the Database.</step>
+        <step id="S12">Database confirms successful save to Repository.</step>
+        <step id="S13">CommandHandler notifies API with a NotificationObject.</step>
+        <step id="S14">API forwards the data to QueryHandler.</step>
+        <step id="S15">QueryHandler responds with a Data Transfer Object (DTO) to API.</step>
+        <step id="S16">QueryHandler provides the DTO to the Client.</step>
+    </mainSequence>
+</useCase>

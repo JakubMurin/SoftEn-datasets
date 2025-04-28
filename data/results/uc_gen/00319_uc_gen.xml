@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Search Content</name>
+    <description>As a User Agent, I want to search for content in the database through the API.</description>
+    <actors>
+        <actor>User Agent</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User Agent has the necessary permissions to access the API.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The API returns a successful search result in a structured format.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The API returns an error or no search results are found.</condition>
+    </failureEndConditions>
+    <trigger>The User Agent sends a search request through the API containing a single string to search for in the database.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a search request to the API.</step>
+        <step id="S2">API searches content in the database based on the query.</step>
+        <step id="S3">API returns the search results to the User Agent.</step>
+        <step id="S4">User Agent receives the search results in a structured format.</step>
+    </mainSequence>
+</useCase>

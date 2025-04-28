@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Create Payments in Adapter</name>
+    <actors>
+        <actor>User</actor>
+        <actor>MUKTA_ADAPTER</actor>
+        <actor>MDMS</actor>
+        <actor>Expense_Service</actor>
+        <actor>KAFKA</actor>
+        <actor>SCHEDULER</actor>
+        <actor>ORG_SERVICE</actor>
+        <actor>IND_SERVICE</actor>
+        <actor>BANK_ACC_SERVICE</actor>
+        <actor>PROGRAM_SERVICE</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User schedules payment creation</step>
+        <step id="S2">MUKTA_ADAPTER requests tenants from MDMS</step>
+        <step id="S3">MDMS provides tenants list to MUKTA_ADAPTER</step>
+        <step id="S4">MUKTA_ADAPTER searches bills not created</step>
+        <step id="S5">Expense_Service returns list of bills to MUKTA_ADAPTER</step>
+        <step id="S6">MUKTA_ADAPTER processes bills and generates payments</step>
+        <step id="S7">MUKTA_ADAPTER creates payments in Expense_Service</step>
+        <step id="S8">Expense_Service returns payment response to MUKTA_ADAPTER</step>
+        <step id="S9">MUKTA_ADAPTER pushes payment details to KAFKA</step>
+        <step id="S10">MUKTA_ADAPTER listens to payment create topic from KAFKA</step>
+        <step id="S11">MUKTA_ADAPTER processes payment</step>
+        <step id="S12">MUKTA_ADAPTER fetches bill details from Expense_Service</step>
+        <step id="S13">MUKTA_ADAPTER processes bill for each line item</step>
+        <step id="S14">MUKTA_ADAPTER fetches organisation details from ORG_SERVICE</step>
+        <step id="S15">MUKTA_ADAPTER fetches individual details from IND_SERVICE</step>
+        <step id="S16">MUKTA_ADAPTER fetches bank account details from BANK_ACC_SERVICE</step>
+        <step id="S17">MUKTA_ADAPTER creates disburse request</step>
+        <step id="S18">MUKTA_ADAPTER sends disburse request to PROGRAM_SERVICE</step>
+        <step id="S19">PROGRAM_SERVICE returns ACK to MUKTA_ADAPTER</step>
+    </mainSequence>
+</useCase>

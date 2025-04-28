@@ -1,0 +1,22 @@
+<useCase id="UC_001">
+    <name>Perform DCSync Attack</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>Attacker's Computer</actor>
+        <actor>Target Domain Controller</actor>
+        <actor>Domain Environment</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker already has gained access with necessary rights in the domain.</precondition>
+    </preconditions>
+    <trigger>Attacker initiates the DCSync attack by instructing the Attacker's Computer to issue a DCSync Request to impersonate a domain controller.</trigger>
+    <mainSequence>
+        <step id="ATK_S1">Attacker instructs Attacker's Computer to Gain Access with Necessary Rights.</step>
+        <step id="ACL_S1">Attacker's Computer enhances its privileges by obtaining access to a critical account, such as mimicting Domain Admins.</step>
+        <step id="ACB_S1">AttackerClient issues a DCSync Request with administrator-like rights.</step>
+        <step id="DC_S1">Domain Controller receives the DCSync request.</step>
+        <step id="DC_S2">Domain Controller does preliminary security checks.</step>
+        <step id="DC_S3">Upon verification, DC sends the user data to the attacking machine.</step>
+        <step id="DO_S1">Using the acquired credentials, the perpetrator illegitimately gains genuine facilitates entry to sector assets to Domain Environment.</step>
+    </mainSequence>
+</useCase>

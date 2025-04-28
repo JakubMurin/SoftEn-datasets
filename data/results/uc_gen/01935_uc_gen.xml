@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Create Tenant</name>
+    <description>As a User, I want to create a new Tenant in the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TenantsController</actor>
+        <actor>TenantService</actor>
+        <actor>TenantDbContext</actor>
+        <actor>ApplicationDbContext</actor>
+        <actor>ITenantContextService</actor>
+        <actor>IConfiguration</actor>
+        <actor>IServiceProvider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to create a Tenant.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tenant is successfully created and added to the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Tenant creation fails due to an existing Tenant with the same ID.</condition>
+    </failureEndConditions>
+    <trigger>User sends a POST request to create a new Tenant with Tenant data.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to TenantsController with Tenant data.</step>
+        <step id="S2">TenantsController validates the model.</step>
+        <step id="S3">TenantsController checks if the Tenant exists by calling TenantService.</step>
+        <step id="S4">TenantService validates if the Tenant exists in the TenantDbContext.</step>
+        <step id="S5">TenantService creates a new Tenant if it does not exist in the database.</step>
+        <step id="S6">TenantService updates the Tenant context using ITenantContextService.</step>
+        <step id="S7">TenantsController returns the created Tenant to the User.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">TenantService creates a new Tenant.</step>
+            <step id="A1S2">TenantService inserts the new Tenant into the TenantDbContext.</step>
+            <step id="A1S3">TenantDbContext saves the changes.</step>
+            <step id="A1S4">TenantService retrieves the connection string from IConfiguration.</step>
+            <step id="A1S5">TenantService gets the ApplicationDbContext instance from IServiceProvider.</step>
+            <step id="A1S6">ApplicationDbContext sets the connection string.</step>
+            <step id="A1S7">ApplicationDbContext checks for pending migrations and applies them.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

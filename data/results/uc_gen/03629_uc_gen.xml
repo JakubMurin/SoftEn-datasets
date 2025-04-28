@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Option Exercise</name>
+    <actors>
+        <actor>Option Holder</actor>
+        <actor>Option Serie Smart Contract</actor>
+        <actor>Exchange Adapter Contract</actor>
+        <actor>Exchange</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Option Holder initiates operation and transfers option tokens to the smart contract.</step>
+        <step id="S2">Option Serie Smart Contract initiates trade via common interface, checks if price is more than strike, and transfers corresponding amount of underlying tokens.</step>
+        <step id="S3">Exchange Adapter Contract puts underlying tokens.</step>
+        <step id="S4">Exchange gets basis token.</step>
+        <step id="S5">Exchange Adapter Contract checks if the received amount is sufficient.</step>
+        <step id="S6">Exchange Adapter Contract transfers the amount above the strike to the option holder, leaving the rest for later withdrawal by anti-option holders.</step>
+    </mainSequence>
+</useCase>

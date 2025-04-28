@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Authenticate User</name>
+    <description>User authentication process to access secure information.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>LoginPage</actor>
+        <actor>AuthController</actor>
+        <actor>AuthService</actor>
+        <actor>UserRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User provides valid login credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User authentication failed.</condition>
+    </failureEndConditions>
+    <trigger>User attempts to log in.</trigger>
+    <mainSequence>
+        <step id="S1">User enters username and password on the Login Page.</step>
+        <step id="S2">User submits the login form.</step>
+        <step id="S3">Login Page sends an HTTP POST request to AuthController.</step>
+        <step id="S4">AuthController authenticates the user using AuthService.</step>
+        <step id="S5">AuthService checks user credentials in UserRepository.</step>
+        <step id="S6">UserRepository queries user credentials in Database.</step>
+        <step id="S7">Database returns user details to UserRepository.</step>
+    </mainSequence>
+</useCase>

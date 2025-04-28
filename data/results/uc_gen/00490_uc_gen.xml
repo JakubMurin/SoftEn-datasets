@@ -1,0 +1,48 @@
+<useCase id="UC-01">
+  <name>Connect flow</name>
+  <actors>
+    <actor>Invitee</actor>
+    <actor>Inviter</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">
+      Invitee views invitation instructions from Inviter's Agent.
+    </step>
+    <step id="S2">
+      Inviter's Agent generates a new pairwise Peer DID.
+    </step>
+    <step id="S3">
+      Inviter's Agent creates a connection state record with id, invitation, and state.
+    </step>
+    <step id="S4">
+      Inviter packs the connection invitation into a QR code.
+    </step>
+    <step id="S5">
+      Inviter sends the connection invitation to Invitee using the Out-of-band mechanism.
+    </step>
+    <step id="S6">
+      Invitee parses the invitation message (scans QR code).
+    </step>
+    <step id="S7">
+      Invitee reviews and accepts the invitation by sending it to Invitee's Agent.
+    </step>
+    <step id="S8">
+      Invitee's Agent creates a new pairwise DID for Invitee.
+    </step>
+    <step id="S9">
+      Invitee's Agent creates a connection state record with id, invitation, and state.
+    </step>
+    <step id="S10">
+      Invitee's Agent sends the connection request message to the Inviter's Agent.
+    </step>
+    <step id="S11">
+      Inviter's Agent sends an "OK" response to Invitee's connection request.
+    </step>
+    <step id="S12">
+      Inviter's Agent sends the connection response message to Invitee's Agent including the Inviter's Peer DID.
+    </step>
+    <step id="S13">
+      Invitee's Agent responds with an "OK" to Inviter's connection response message.
+    </step>
+  </mainSequence>
+</useCase>

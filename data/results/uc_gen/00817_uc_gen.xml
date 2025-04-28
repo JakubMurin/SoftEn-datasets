@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>Offer a service on behalf of a delegator</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Management UI</actor>
+        <actor>Inway</actor>
+        <actor>Management API</actor>
+        <actor>Management database</actor>
+        <actor>Directory API</actor>
+        <actor>Directory DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator adds a service using an order</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Service is successfully registered with the directory</condition>
+    </successEndConditions>
+    <trigger>Administrator adds a service using an order</trigger>
+    <mainSequence>
+        <step id="S1">Administrator adds a service using an order</step>
+        <step id="S2">Management UI adds service using an order</step>
+        <step id="S3">Management API checks if service name matches with service name in order</step>
+        <step id="S4">Management API stores the service</step>
+        <step id="S5">Inway gets configuration</step>
+        <step id="S6">Management API gets services and orders for inway from Management database</step>
+        <step id="S7">Management API returns services and orders</step>
+        <step id="S8">Inway returns configuration</step>
+        <step id="S9">Inway gets claim for publishing the service</step>
+        <step id="S10">Management API gets claim for publishing the service</step>
+        <step id="S11">Management API gets order from Management database</step>
+        <step id="S12">Management API validates the order</step>
+        <step id="S13">Management API creates publication-claim</step>
+        <step id="S14">Management API returns publication-claim</step>
+        <step id="S15">Inway returns publication-claim</step>
+        <step id="S16">Inway stores publication-claim in memory</step>
+        <step id="S17">Directory API registers service with publication-claim</step>
+        <step id="S18">Directory API gets public key of the municipality from Inway</step>
+        <step id="S19">Directory API validates publication-claim</step>
+        <step id="S20">Directory API registers service in Directory DB</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Create Tenant</name>
+    <description>Create a new tenant in the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TenantsController</actor>
+        <actor>TenantService</actor>
+        <actor>TenantDbContext</actor>
+        <actor>ApplicationDbContext</actor>
+        <actor>ITenantContextService</actor>
+        <actor>IConfiguration</actor>
+        <actor>IServiceProvider</actor>
+    </actors>
+    <preconditions>
+        <precondition>Tenant data is provided for creation.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tenant successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Tenant already exists in the system.</condition>
+    </failureEndConditions>
+    <trigger>POST /createTenant (Tenant data)</trigger>
+    <mainSequence>
+        <step id="S1">User sends POST request to create a new tenant.</step>
+        <step id="S2">TenantsController validates the model.</step>
+        <step id="S3">TenantsController checks if the Tenant already exists.</step>
+        <step id="S4">TenantService validates model.</step>
+        <step id="S5">TenantService checks if the Tenant already exists in the database.</step>
+        <step id="S6">TenantService creates a new Tenant.</step>
+        <step id="S7">TenantService inserts the new Tenant into the database.</step>
+        <step id="S8">TenantService updates the Tenant context.</step>
+        <step id="S9">TenantService returns the created Tenant to TenantsController.</step>
+        <step id="S10">TenantsController sends a 201 Created response to User.</step>
+    </mainSequence>
+</useCase>

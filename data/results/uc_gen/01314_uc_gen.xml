@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Sortieren der Produktliste</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ProductList.svelte</actor>
+        <actor>mitarbeitersupermarkt.svelte</actor>
+        <actor>sortStore.js</actor>
+    </actors>
+    <preconditions>
+        <precondition>Der User klickt auf die Spaltenüberschrift.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Der User klickt auf die Spaltenüberschrift.</step>
+        <step id="S2">ProductList.svelte löst das Event onSort(column) aus.</step>
+        <step id="S3">mitarbeitersupermarkt.svelte ruft updateSort(column) auf.</step>
+        <step id="S4">sortStore.js aktualisiert sortColumn und sortDirection.</step>
+        <step id="S5">sortStore.js sendet die aktualisierten Informationen zurück an mitarbeitersupermarkt.svelte.</step>
+        <step id="S6">mitarbeitersupermarkt.svelte zeigt die aktualisierten sortierten Produkte über sortedProductsStore an.</step>
+        <step id="S7">ProductList.svelte zeigt die aktualisierte Tabelle an.</step>
+    </mainSequence>
+</useCase>

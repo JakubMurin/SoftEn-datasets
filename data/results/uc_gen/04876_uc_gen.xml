@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Workflow Creation</name>
+    <description>Create a new workflow in the system</description>
+    <actors>
+        <actor>Workflow Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Workflow Administrator is authenticated</precondition>
+        <precondition>Workflow details are provided</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New workflow is successfully created</condition>
+    </successEndConditions>
+    <trigger>User initiates the creation of a new workflow</trigger>
+    <mainSequence>
+        <step id="S1">Workflow Administrator sends a POST request to Api Gateway to create a new workflow</step>
+        <step id="S2">Api Gateway forwards the request to Workflow Service to create the workflow</step>
+        <step id="S3">Workflow Service updates the Workflow Db with the new workflow details</step>
+        <step id="S4">Workflow Service publishes a new-workflow-allocated event to NATS Event Relay</step>
+        <step id="S5">Workflow Service responds to Workflow Administrator with a 201 workflowCreateResponse</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Generate Report</name>
+    <actors>
+        <actor>UI</actor>
+        <actor>Reporting Dashboards</actor>
+        <actor>Reporting OpenSearch</actor>
+        <actor>Reporting JobScheduler</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>UI has access to Reporting Dashboards</precondition>
+        <precondition>Reporting Dashboards has access to Notifications OpenSearch Plugin</precondition>
+        <precondition>Reporting JobScheduler is activated</precondition>
+    </preconditions>
+    <trigger>User initiates report generation</trigger>
+    <mainSequence>
+        <step id="S1">UI creates or updates Report Definitions UX information</step>
+        <step id="S2">Reporting Dashboards retrieves Notification Feature Channel List from Notifications OpenSearch Plugin</step>
+        <step id="S3">UI receives UX information with Available Channel list for reporting feature</step>
+        <step id="S4">UI saves Report Definition</step>
+        <step id="S5">Reporting Dashboards saves Report Definition</step>
+        <step id="S6">Reporting Dashboards informs UI about successful Report Definition save</step>
+        <step id="S7">Reporting JobScheduler executes job</step>
+        <step id="S8">Reporting OpenSearch creates Report Instance</step>
+        <step id="S9">Reporting OpenSearch creates notification message</step>
+        <step id="S10">Notifications OpenSearch Plugin sends notification</step>
+        <step id="S11">Reporting OpenSearch updates report instance with status</step>
+        <step id="S12">Reporting JobScheduler completes job execution</step>
+        <step id="S13">UI creates on-demand Report</step>
+        <step id="S14">Reporting Dashboards creates on-demand Report</step>
+        <step id="S15">Reporting OpenSearch creates Report Instance for on-demand Report</step>
+        <step id="S16">Reporting OpenSearch creates notification message for on-demand Report</step>
+        <step id="S17">Notifications OpenSearch Plugin sends notification for on-demand Report</step>
+        <step id="S18">Reporting OpenSearch updates on-demand Report instance with status</step>
+        <step id="S19">Reporting Dashboards informs UI about successful on-demand Report creation</step>
+    </mainSequence>
+</useCase>

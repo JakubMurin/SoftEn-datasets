@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>UMA protocol flow</name>
+    <actors>
+        <actor>requesting party</actor>
+        <actor>client (application)</actor>
+        <actor>authorization server</actor>
+        <actor>resource server</actor>
+        <actor>resource owner</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Set policy conditions anytime.</step>
+        <step id="S2">Resource Request (no access token) sent by the client.</step>
+        <step id="S3">Client receives 401 response with initial permission ticket and authorization server location.</step>
+        <step id="S4">Client requests Access token (RPT) with permission ticket and claim token.</step>
+        <step id="S5">Authorization server assesses the request.</step>
+        <step id="S6">Authorization server sends 403 response with new permission ticket, need_info error, and redirect_user hint to the client.</step>
+        <step id="S7">Client redirects the user with permission ticket.</step>
+        <step id="S8">Requester follows the redirect to the authorization server.</step>
+        <step id="S9">Interactive claims gathering between requester and authorization server.</step>
+        <step id="S10">Authorization server redirects back with a new permission ticket to the requester.</step>
+        <step id="S11">Requester follows the redirect to the client.</step>
+        <step id="S12">Client requests RPT with permission ticket.</step>
+        <step id="S13">Authorization server assesses the request.</step>
+        <step id="S14">Authorization server responds with RPT and PCT to the client.</step>
+        <step id="S15">Client sends a Resource request with RPT to the resource server.</step>
+        <step id="S16">Resource server sends the Protected Resource to the client.</step>
+    </mainSequence>
+</useCase>

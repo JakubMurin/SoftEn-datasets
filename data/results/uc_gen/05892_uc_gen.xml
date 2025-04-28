@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Proceso de creación de identidad</name>
+    <description>El usuario crea su identidad al registrarse en alastria_id</description>
+    <actors>
+        <actor>User</actor>
+        <actor>User_Web</actor>
+        <actor>Associate_Web</actor>
+        <actor>PushMovileManager</actor>
+        <actor>Gateway</actor>
+        <actor>MetaIdentityManager</actor>
+        <actor>Proxy</actor>
+        <actor>Registry</actor>
+        <actor>Repository</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User Instala la aplicación Alastria en el móvil</step>
+        <step id="S2">User solicita el token de sesión a Associate_Web</step>
+        <step id="S3">Associate_Web entrega el token de sesión a User</step>
+        <step id="S4">User  prepara el objeto JSON para el alta en alastria</step>
+        <step id="S5">User recibe la URL de recuperación del JSON desde PushMovileManager</step>
+        <step id="S6">User solicita la recuperación de la clave pública a Gateway</step>
+        <step id="S7">Gateway crea un nuevo Proxy en MetaIdentityManager</step>
+        <step id="S8">User verifica la firma del objeto JSON</step>
+        <step id="S9">User crea claves de asignación</step>
+        <step id="S10">User publica la clave pública en Registry</step>
+        <step id="S11">Associate_Web prepara los atestados y los envía al User</step>
+        <step id="S12">User verifica y firma los atestados, almacenándolos en Repository</step>
+        <step id="S13">User Solicitud de registro de atributos en Gateway</step>
+        <step id="S14">Gateway registra en MetaIdentityManager</step>
+        <step id="S15">MetaIdentityManager reenvía al Proxy</step>
+        <step id="S16">Proxy realiza el registro de atributos en Registry</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>List Questions</name>
+    <description>Provide a list of questions for a specific survey.</description>
+    <actors>
+        <actor>Browser</actor>
+        <actor>HttpServer</actor>
+        <actor>ListQuestionsController</actor>
+        <actor>QuestionDao</actor>
+        <actor>OptionDao</actor>
+        <actor>QUESTION_DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>HttpServer is running and can handle requests.</precondition>
+        <precondition>A valid survey ID is provided in the request.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Response with the list of questions is successfully sent back to the Browser.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error response is sent back in case of any failure during the process.</condition>
+    </failureEndConditions>
+    <trigger>Browser sends a POST request to HttpServer to get a list of questions.</trigger>
+    <mainSequence>
+        <step id="S1">Browser sends a POST request to HttpServer with the endpoint /api/listQuestions.</step>
+        <step id="S2">HttpServer forwards the request to controllers by calling get("/api/listQuestions").</step>
+        <step id="S3">ListQuestionsController gets the request and processes it.</step>
+        <step id="S4">ListQuestionsController parses the survey ID from the request.</step>
+        <step id="S5">ListQuestionsController queries QuestionDao for questions related to the survey ID.</step>
+        <step id="S6">ListQuestionsController queries OptionDao for options related to each question.</step>
+        <step id="S7">QuestionDao accesses QUESTION_DB to get questions based on the survey ID.</step>
+        <step id="S8">OptionDao access QUESTION_DB to get options based on each question.</step>
+        <step id="S9">ListQuestionsController sends an OK response (200) back to HttpServer.</step>
+        <step id="S10">HttpServer writes the response to the socket and sends HTTP/1.1 200 OK back to Browser.</step>
+    </mainSequence>
+</useCase>

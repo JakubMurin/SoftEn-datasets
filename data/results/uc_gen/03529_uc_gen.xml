@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Login with DN Credentials</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Gatekeeper</actor>
+        <actor>LDAP</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client requests with DN credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client successfully receives a response with external (DN) token</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client does not successfully receive a response with external (DN) token</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client requests authentication with DN credentials</step>
+        <step id="S2">Gatekeeper validates DN credentials with LDAP</step>
+        <step id="S3">Gatekeeper generates internal (DN) token</step>
+        <step id="S4">Gatekeeper sends request to PASTA service with internal (DN) token</step>
+        <step id="S5">PASTA service authorizes service, authorizes resource, and performs service</step>
+        <step id="S6">Gatekeeper generates external (DN) token and wraps it</step>
+        <step id="S7">Client receives response with external (DN) token</step>
+    </mainSequence>
+</useCase>

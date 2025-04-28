@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Post-It Creation</name>
+    <description>Create a new Post-It on the board.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>The client requests to create a Post-It.</precondition>
+        <precondition>The server receives the request.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Post-It is successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to create the Post-It.</condition>
+    </failureEndConditions>
+    <trigger>Client sending request to create a Post-It.</trigger>
+    <mainSequence>
+        <step id="S1">Client requests the server if it can create a Post-It.</step>
+        <step id="S2">Server responds with boards the user can write on.</step>
+        <step id="S3">Client sends information regarding the new Post-It to create, including board title, position, and content.</step>
+        <step id="S4">Server creates the Post-It with the provided information.</step>
+        <step id="S5">Server sends an acknowledgment code back to the client.</step>
+    </mainSequence>
+</useCase>

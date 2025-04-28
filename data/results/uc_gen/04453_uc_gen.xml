@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Linking with Target System</name>
+    <description>User links the system with the target system</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is active and connected to the internet</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Target system successfully accepts connection</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Target system fails to accept connection</condition>
+    </failureEndConditions>
+    <trigger>User initiates the linking process</trigger>
+  
+    <mainSequence>
+        <step id="S1">User links to the target system with a provided link</step>
+        <step id="S2">System activates the link and sends an offer message to the target system</step>
+        <step id="S3">Target system accepts the offer message successfully</step>
+        <step id="S4">System sends another offer message to the target system</step>
+        <step id="S5">Target system postpones the action</step>
+        <step id="S6">System consumes the data transmitted by the target system</step>
+        <step id="S7">System completes the linking process</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Execute Application</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User clicks on the application to open</trigger>
+    <mainSequence>
+        <step id="S1">User executes the application</step>
+        <step id="S2">LoadConfig() gets executed by main</step>
+        <step id="S3">InitializeDefaults() is called by config</step>
+        <step id="S4">Parse CLI flags (--file, --source, --language, etc.) by cobra</step>
+        <step id="S5">Determine config file path (either --file or pdfminion.cfg)</step>
+        <step id="S6">Read config file and get Parsed config values from viper</step>
+        <step id="S7">Parse language tag (if applicable) by language</step>
+        <step id="S8">Use MinionConfig for application logic by domain</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Access File by ID</name>
+    <description>User accesses a specific file by providing book ID and file ID.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Books Service</actor>
+        <actor>Postgres Books Database</actor>
+        <actor>Minio</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully receives the requested file.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>File data does not exist or user is not authorized.</condition>
+    </failureEndConditions>
+    <trigger>User requests to access a file by ID.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to access file by providing book ID and file ID.</step>
+        <step id="S2">Gateway forwards request to Keycloak to verify JWT.</step>
+        <step id="S3">Keycloak verifies JWT successfully.</step>
+        <step id="S4">Gateway forwards request to Books Service to get file by ID.</step>
+        <step id="S5">Books Service queries Postgres Books Database for file link.</step>
+        <step id="S6">Postgres Books Database returns file link to Books Service.</step>
+        <step id="S7">Books Service requests file from Minio using the file link.</step>
+        <step id="S8">Minio retrieves the file and sends it to Books Service.</step>
+        <step id="S9">Books Service forwards the file to Gateway.</step>
+        <step id="S10">Gateway sends the file to User.</step>
+    </mainSequence>
+</useCase>

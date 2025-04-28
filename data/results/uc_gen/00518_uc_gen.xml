@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Register Fault</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>fault.routes</actor>
+        <actor>fault.controller</actor>
+        <actor>faultModelInstance</actor>
+        <actor>mysql</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user navigates to the fault registration page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The fault is successfully registered</condition>
+    </successEndConditions>
+    <trigger>User wants to register a fault</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the fault registration page</step>
+        <step id="S2">Fault registration page is displayed</step>
+        <step id="S3">User validates the input fields</step>
+        <step id="S4">User submits fault data</step>
+        <step id="S5">Fault data is processed</step>
+        <step id="S6">Fields are validated</step>
+        <step id="S7">Instance of the fault model is created</step>
+        <step id="S8">User existence is verified</step>
+        <step id="S9">Fault is registered in the database</step>
+        <step id="S10">Notification of success is sent</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">Incomplete fields detected</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Error in user verification</description>
+            <step id="E1S1">User does not exist</step>
+        </esteps>
+    </errorSteps>
+</useCase>

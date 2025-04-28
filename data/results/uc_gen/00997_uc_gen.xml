@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Generate Random Numbers</name>
+    <description>As a ProblemSolver, I want to generate random numbers using different distributions, so that I can use them for analysis.</description>
+    <actors>
+        <actor>ProblemSolver</actor>
+        <actor>DataServer</actor>
+        <actor>UniformRandomDistribution</actor>
+        <actor>NormalRandomDistribution</actor>
+    </actors>
+    <preconditions>
+        <precondition>The ProblemSolver sends a POST request to the DataServer with encrypted session key and data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The DataServer successfully generates random numbers based on the chosen distribution.</condition>
+    </successEndConditions>
+    <trigger>POST /numbers</trigger>
+    <mainSequence>
+        <step id="S1">ProblemSolver sends POST request to DataServer with encrypted session key and data.</step>
+        <step id="S2">DataServer decrypts the encrypted session key.</step>
+        <step id="S3">DataServer decrypts the encrypted data.</step>
+        <step id="S4">DataServer parses the decrypted data.</step>
+        <step id="S5">DataServer randomly chooses between Uniform and Normal distribution.</step>
+        <step id="S6">DataServer generates random numbers based on the chosen distribution.</step>
+        <step id="S7">DataServer encrypts the response data with the session key.</step>
+        <step id="S8">DataServer sends the encrypted session key and data back to the ProblemSolver.</step>
+    </mainSequence>
+</useCase>

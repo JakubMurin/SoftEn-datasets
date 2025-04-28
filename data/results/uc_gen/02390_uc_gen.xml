@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Cache Data Retrieval</name>
+    <actors>
+        <actor>UserX</actor>
+        <actor>UserY</actor>
+        <actor>Server A (Guava Cache)</actor>
+        <actor>Server B (Guava Cache)</actor>
+        <actor>Distributed Cache</actor>
+    </actors>
+    <preconditions>
+        <precondition>Users have access to local cookie or local storage</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Users successfully retrieve and store cache data</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Cache data retrieval fails</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">UserX queries Server A with version as null</step>
+        <step id="S2">Server A queries Distributed Cache for data</step>
+        <step id="S3">Distributed Cache returns data to Server A</step>
+        <step id="S4">Server A provides data to UserX</step>
+        <step id="S5">UserX stores version 12:00 in local storage</step>
+        <step id="S6">UserY queries Server B with version as null</step>
+        <step id="S7">Server B queries Distributed Cache for data</step>
+        <step id="S8">Distributed Cached returns data to Server B</step>
+        <step id="S9">Server B provides data to UserY</step>
+        <step id="S10">UserY stores versions 12:05 in local storage</step>
+        <step id="S11">UserY queries Server B with version as 12:05</step>
+        <step id="S12">Server B checks local cache and provides data to UserY</step>
+        <step id="S13">UserY stores version 12:10 in local storage</step>
+        <step id="S14">UserX queries Server A with version as 12:00</step>
+        <step id="S15">Server A checks local cache and provides data to UserX</step>
+        <step id="S16">UserX stores version 12:10 in local storage</step>
+    </mainSequence>
+</useCase>

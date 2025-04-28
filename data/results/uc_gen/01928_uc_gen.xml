@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>View Dashboard</name>
+    <description>Receptionist requests to view the dashboard.</description>
+    <actors>
+        <actor>Receptionist</actor>
+        <actor>UI/Interface</actor>
+        <actor>DashboardRouter</actor>
+        <actor>DashboardController</actor>
+        <actor>DashboardRepository</actor>
+        <actor>DashboardModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Receptionist requests to view dashboard and triggers viewing action.</step>
+        <step id="S2">UI receives the request and forwards it to DashboardRouter.</step>
+        <step id="S3">Router processes the request by calling getDashboardData() on DashboardController.</step>
+        <step id="S4">Controller communicates with Repository to retrieve dashboard data.</step>
+        <step id="S5">Repository fetches dashboard data through DashboardModel which queries Database for relevant information.</step>
+        <step id="S6">Controller sends back the retrieved dashboard data to Router.</step>
+        <step id="S7">UI gets the response containing dashboard data and displays it for the Receptionist.</step>
+    </mainSequence>
+</useCase>

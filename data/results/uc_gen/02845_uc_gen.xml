@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Generate Clusters from Requirements</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Main</actor>
+        <actor>OpenAI</actor>
+        <actor>Pinecone</actor>
+        <actor>Clustering</actor>
+        <actor>Visualization</actor>
+    </actors>
+    <preconditions>
+        <precondition>The script is initiated by the User.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Clusters are successfully generated and displayed to the User.</condition>
+    </successEndConditions>
+    <trigger>User starts the script.</trigger>
+    <mainSequence>
+        <step id="S1">User starts the script.</step>
+        <step id="S2">Main generates embeddings for each requirement.</step>
+        <step id="S3">OpenAI returns the embeddings.</step>
+        <step id="S4">Main stores the embeddings in the Pinecone vector database.</step>
+        <step id="S5">Main queries the stored embeddings from Pinecone.</step>
+        <step id="S6">Pinecone returns the queried embeddings.</step>
+        <step id="S7">Main groups the embeddings into clusters using K-Means Clustering.</step>
+        <step id="S8">Clustering returns the cluster labels.</step>
+        <step id="S9">Main creates a scatter plot and textual output using the Visualization Module.</step>
+        <step id="S10">Visualization displays the results (plot and text) to the User.</step>
+    </mainSequence>
+</useCase>

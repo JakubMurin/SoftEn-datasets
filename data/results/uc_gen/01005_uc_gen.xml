@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Synchronize Smart Contracts and Deploy</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>AnotherDeveloper</actor>
+        <actor>Reviewer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developers have access to Smart Contracts</precondition>
+        <precondition>Reviewers can approve PRs</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Smart contracts synchronized</condition>
+        <condition>New versions deployed</condition>
+    </successEndConditions>
+    <trigger>Developer initiates process by updating smart contracts</trigger>
+    <mainSequence>
+        <step id="S1">Developer changes, commits smart contracts</step>
+        <step id="S2">Developer creates changeset and commits</step>
+        <step id="S3">Developer opens PR with changeset</step>
+        <step id="S4">Reviewer approves PR</step>
+        <step id="S5">Developer deploys smart contracts to all chains</step>
+        <step id="S6">Smart contracts updated in blockchain</step>
+        <step id="S7">Addresses JSON files updated</step>
+        <step id="S8">Developer pushes updated addresses JSON files</step>
+        <step id="S9">PR updated with addresses JSON files</step>
+        <step id="S10">Developer merges changes to main</step>
+        <step id="S11">Changes applied to main branch</step>
+        <step id="S12">New versions created by Release Github Action</step>
+        <step id="S13">New versions in package.jsons built and published by npm</step>
+    </mainSequence>
+</useCase>

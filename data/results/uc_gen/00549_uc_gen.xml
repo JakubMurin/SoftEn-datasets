@@ -1,0 +1,34 @@
+<useCase id="1">
+    <name>Library Book Reservation</name>
+    <description>Allows students to reserve library books online</description>
+    <actors>
+        <actor>Student</actor>
+        <actor>Monitor</actor>
+        <actor>Authentication</actor>
+        <actor>Reservation</actor>
+        <actor>BookManagement</actor>
+        <actor>Book</actor>
+    </actors>
+    <preconditions>
+        <precondition>Student is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Reservation successfully created and confirmed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Reservation creation failed</condition>
+    </failureEndConditions>
+    <trigger>Student selects a book for reservation</trigger>
+    <mainSequence>
+        <step id="S1">Student opens the login page</step>
+        <step id="S2">Student logs in using username and password</step>
+        <step id="S3">Monitor displays the library page</step>
+        <step id="S4">Student submits book details for reservation</step>
+        <step id="S5">Monitor searches for the book</step>
+        <step id="S6">BookManagement retrieves book data</step>
+        <step id="S7">Monitor displays the list of books</step>
+        <step id="S8">Student clicks to reserve a book</step>
+        <step id="S9">Reservation creates a reservation</step>
+        <step id="S10">Monitor displays the reservation confirmation</step>
+    </mainSequence>
+</useCase>

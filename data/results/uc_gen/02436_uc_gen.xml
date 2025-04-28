@@ -1,0 +1,31 @@
+<useCase id="1">
+    <name>Creating Callback</name>
+    <description>This use case describes the process of creating a new callback.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Web UI</actor>
+        <actor>Callback GW</actor>
+        <actor>Token API</actor>
+        <actor>CMA</actor>
+        <actor>Resource Inventory</actor>
+        <actor>Action History</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on "Create Callback" button in the Web UI.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New callback successfully created and information displayed to the user.</condition>
+    </successEndConditions>
+    <trigger>User action: Click on "Create Callback".</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on "Create Callback" button.</step>
+        <step id="S2">Web UI sends callback_name and description to Callback GW.</step>
+        <step id="S3">Callback GW validates API key with Token API.</step>
+        <step id="S4">Callback GW retrieves customer state from CMA.</step>
+        <step id="S5">Callback GW creates a new callback in Resource Inventory.</step>
+        <step id="S6">Resource Inventory provides the callback resource ID to Callback GW.</step>
+        <step id="S7">Callback GW retrieves attributes for the application from Resource Inventory.</step>
+        <step id="S8">Action History records the new entry.</step>
+        <step id="S9">Web UI displays information about the new callback to the user.</step>
+    </mainSequence>
+</useCase>

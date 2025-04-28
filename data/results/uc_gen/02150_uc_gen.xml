@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Move Item</name>
+    <description>Curator moves an item from one collection to another.</description>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Curator is logged in to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The item is successfully moved to the target collection.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The item could not be moved to the target collection.</condition>
+    </failureEndConditions>
+    <trigger>User chooses 'Move Item' option.</trigger>
+    <mainSequence>
+        <step id="S1">Curator chooses 'Move Item'.</step>
+        <step id="S2">User Interface requests form to move the item.</step>
+        <step id="S3">Collection Management System displays the form.</step>
+        <step id="S4">Curator submits the form with Item ID, Source Collection, and Target Collection.</step>
+        <step id="S5">User Interface validates and processes the move request.</step>
+        <step id="S6">Collection Management System fetches the item from the Source Collection.</step>
+        <step id="S7">Database provides Item Details to Collection Management System.</step>
+        <step id="S8">Collection Management System removes the item from the Source Collection.</step>
+        <step id="S9">Collection Management System confirms the removal.</step>
+        <step id="S10">Collection Management System adds the item to the Target Collection.</step>
+        <step id="S11">Collection Management System confirms the addition.</step>
+        <step id="S12">Collection Management System displays a success message.</step>
+        <step id="S13">User Interface confirms that the item has been moved.</step>
+    </mainSequence>
+</useCase>

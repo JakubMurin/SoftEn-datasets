@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>购买iPhone2017</name>
+    <description>用户老王购买iPhone2017的用例</description>
+    <actors>
+        <actor>老王</actor>
+        <actor>奸商</actor>
+        <actor>支付宝</actor>
+        <actor>无良借款公司</actor>
+        <actor>土</actor>
+    </actors>
+    <preconditions>
+        <precondition>用户老王需要一部新手机</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>老王成功购买iPhone2017</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>老王未能购买iPhone2017</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">老王向奸商提出购买iPhone2017的要求</step>
+        <step id="S2">奸商提供价格为10000元的iPhone2017</step>
+        <step id="S3">根据老王财务情况，选择付款或借款</step>
+        <step id="S4">老王使用支付宝支付10000元</step>
+        <step id="S5">支付宝向奸商打款10000元</step>
+        <step id="S6">奸商确认手机交付给老王</step>
+        <step id="S7">老王成功购买iPhone2017</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">老王选择借款10000元</step>
+            <step id="A1S2">无良借款公司提供月息10%的借款</step>
+            <step id="A1S3">老王向奸商支付购买款项</step>
+            <step id="A1S4">奸商确认手机交付给老王</step>
+            <step id="A1S5">老王成功购买iPhone2017</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1">
+            <description>老王未能支付购买款项，借款失败</description>
+            <step id="E1S1">老王持续半年处于财务困境，无法购买iPhone2017</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC007">
+    <name>Managing Operation Queue</name>
+    <description>This use case involves handling operations within the operation queue by subscribing to the queue, adding operations, publishing and acknowledging them accordingly.</description>
+    <actors>
+        <actor>sidetree-core-go</actor>
+    </actors>
+    <preconditions>
+        <precondition>Operation queue handlers are ready to process requests.</precondition>
+    </preconditions>
+    <trigger>A request from the sidetree-core-go component initiates the handling steps.</trigger>
+    <mainSequence>
+        <step id="S1">sidetree-core-go invokes handler1 to subscribe to the operation queue.</step>
+        <step id="S2">Handler1 successfully subscribes and acknowledges the subscription completion to sidetree-core-go.</step>
+        <step id="S3">sidetree-core-go sends operation op1 to be added by handler1.</step>
+        <step id="S4">Handler1 adds op1 to the queue, publishes it, and acknowledges the addition to sidetree-core-go.</step>
+        <step id="S5">Handler1 processes op2 retrieved from the queue by communicating with opQueueDB.</step>
+        <step id="S6">sidetree-core-go invokes handler2 to subscribe to the operation queue.</step>
+        <step id="S7">Handler2 successfully subscribes and acknowledges the subscription to sidetree-core-go.</step>
+        <step id="S8">sidetree-core-go sends operation op2 to be added by handler2.</step>
+        <step id="S9">Handler2 adds op2 to the queue, publishes it, and acknowledges the addition to sidetree-core-go.</step>
+        <step id="S10">Handler2 processes op1 fetched from the queue by communicating with opQueueDB.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Client interacts with App to set up middleware</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>App</actor>
+        <actor>JSONParser</actor>
+        <actor>URLEncodedParser</actor>
+        <actor>Router</actor>
+    </actors>
+    <preconditions>
+        <precondition>The App and necessary parsers are properly initialized.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client invokes app.use(JSONParser) to set up JSONParser middleware</step>
+        <step id="S2">App registers JSONParser middleware</step>
+        <step id="S3">Client invokes app.use(URLEncodedParser) to set up URLEncodedParser middleware</step>
+        <step id="S4">App registers URLEncodedParser middleware</step>
+        <step id="S5">Client invokes app.use(Router) to set up Router middleware</step>
+        <step id="S6">App registers Router middleware</step>
+    </mainSequence>
+</useCase>

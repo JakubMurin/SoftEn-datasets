@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Battle Between Players</name>
+    <actors>
+        <actor>PlayerA</actor>
+        <actor>PlayerB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both players must be authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Battle results are successfully communicated to both players</condition>
+    </successEndConditions>
+    <trigger>POST battle request from both players</trigger>
+    <mainSequence>
+        <step id="S1">PlayerA sends a POST battle request</step>
+        <step id="S2">BattleController receives the battle request from PlayerA</step>
+        <step id="S3">BattleService processes the battle request for PlayerA</step>
+        <step id="S4">BattleRepository finds open battles for PlayerA</step>
+        <step id="S5">BattleRepository opens a new battle for PlayerA</step>
+        <step id="S6">BattleService waits for the battle to start</step>
+        <step id="S7">PlayerB sends a POST battle request</step>
+        <step id="S8">BattleController receives the battle request from PlayerB</step>
+        <step id="S9">BattleService processes the battle request for PlayerB</step>
+        <step id="S10">BattleRepository finds open battles for PlayerB</step>
+        <step id="S11">BattleLogic calculates the battle results</step>
+        <step id="S12">BattleRepository updates the battle</step>
+        <step id="S13">BattleService communicates the battle results to both players</step>
+    </mainSequence>
+</useCase>

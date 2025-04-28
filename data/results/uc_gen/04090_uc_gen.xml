@@ -1,0 +1,32 @@
+<useCase id="UC1">
+  <name>Development and Deployment</name>
+  <description>Allows developers to edit code, push changes to branches, and deploy to target servers</description>
+  <actors>
+    <actor>Developer</actor>
+    <actor>Reviewer</actor>
+    <actor>User</actor>
+  </actors>
+  <preconditions>
+    <precondition>Developers must have access to code repositories</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Changes are successfully deployed to target servers</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Changes fail to be deployed to target servers</condition>
+  </failureEndConditions>
+  <trigger>Developer initiates code editing process</trigger>
+  <mainSequence>
+    <step id="S1">Developer edits code</step>
+    <step id="S2">Developer pushes changes to dev repository</step>
+    <step id="S3">Developer creates PR from /dev to /calibration</step>
+    <step id="S4">Reviewer approves PR</step>
+    <step id="S5">Developer merges PR</step>
+    <step id="S6">Deployment to calibration server (kubernetes)</step>
+    <step id="S7">Developer creates PR from /dev to /main</step>
+    <step id="S8">Reviewer approves PR</step>
+    <step id="S9">Developer merges PR</step>
+    <step id="S10">Deployment to mainnet server (kubernetes)</step>
+    <step id="S11">Developer checks deployed results</step>
+  </mainSequence>
+</useCase>

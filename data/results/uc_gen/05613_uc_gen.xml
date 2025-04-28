@@ -1,0 +1,33 @@
+<useCase id="UC1">
+	<name>Recover Document Type</name>
+	<description>Recover a document type in the system.</description>
+	<actors>
+		<actor>Frontend</actor>
+	</actors>
+	<preconditions>
+		<precondition>User has ADMIN role.</precondition>
+		<precondition>Document type exists in the database.</precondition>
+		<precondition>Document type state is DELETED.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Document type state changed to ACTIVE.</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Error: Document type already active.</condition>
+		<condition>Error: Document type not found.</condition>
+	</failureEndConditions>
+	<trigger>POST /api/doctype/{id}/recover</trigger>
+	<mainSequence>
+		<step id="S1">Frontend requests to recover a document type.</step>
+		<step id="S2">DocumentController checks user role.</step>
+		<step id="S3">User has ADMIN role.</step>
+		<step id="S4">Controller validates the request.</step>
+		<step id="S5">Document type exists.</step>
+		<step id="S6">Document type is in DELETED state.</step>
+		<step id="S7">Set document type state to ACTIVE.</step>
+		<step id="S8">Document type is saved in the database.</step>
+		<step id="S9">Document type is recovered successfully.</step>
+		<step id="S10">Error: Document type already active.</step>
+		<step id="S11">Error: Document type not found.</step>
+	</mainSequence>
+</useCase>

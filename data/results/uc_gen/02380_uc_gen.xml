@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Välja att visa sjukfallshistorik för patient på Vårdenhet</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet</step>
+        <step id="S2">Rehabstöd listar patientens samtliga intyg över alla VG</step>
+        <step id="S3">Hämta vårdgivarnamn för varje intyg mha GetUnit v1</step>
+        <step id="S4">PU får PersonSvar för patienten</step>
+        <step id="S5">Rehabstöd filtrerar bort intyg som inte ligger på den aktiva enheten (om patienten är sekretssmarkerad)</step>
+        <step id="S6">Spärrtjänsten kontrollerar spärr via CheckBlocks v4 (om patienten ej är sekretssmarkerad)</step>
+        <step id="S7">Rehabstöd uppdaterar intygen med spärrstatus (om patienten ej är sekretssmarkerad)</step>
+        <step id="S8">Sjukfallsmotor skickar in ALLA intyg oavsett spärr/samtyckesstatus</step>
+        <step id="S9">Samtyckestjänsten kontrollerar samtyckesstatus för enheten/läkaren mot patienten för att få visa intyg utanför vårdgivaren via CheckConsent v2</step>
+        <step id="S10">Rehabstöd filtrerar bort intyg från andra vårdgivare (om samtycke saknas)</step>
+        <step id="S11">Rehabstöd filtrerar bort intyg med spärr och utanför den nuvarande enhet där användaren inte aktivt valt att ta med vårdgivaren/enheten (om samtycke saknas)</step>
+        <step id="S12">Rehabstöd sammanställer klientsvar med sjukfall och metadataobjekt</step>
+        <step id="S13">Sjukfallsmotor skickar in nettolistan av intyg för att få verkliga sjukfall</step>
+        <step id="S14">Rehabstöd uppdaterar lista med namn och sekretessstatus</step>
+        <step id="S15">Intygstjänsten får GetCertificateAdditions för varje intyg</step>
+        <step id="S16">Rehabstöd uppdaterar sjukfallens ingående intyg med kompletteringsstatus</step>
+        <step id="S17">SRS-tjänsten får riskprognos för varje intyg (om SRS-stöd är aktiverat)</step>
+        <step id="S18">Loggtjänsten får PDL loggning av faktisk visad information</step>
+        <step id="S19">Läkare visar patientens sjukfallshistorik inkl SJF</step>
+    </mainSequence>
+</useCase>

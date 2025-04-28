@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>View Requests</name>
+    
+    <actors>
+        <actor>User</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">User requests to view requests</step>
+        <step id="S2">ConsoleUI forwards the request to RequestController</step>
+        <step id="S3">RequestController calls view_requests(user_id)</step>
+        <step id="S4">RequestController executes SELECT query for pending requests</step>
+        <step id="S5">DBManager returns a list of requests to RequestController</step>
+        <step id="S6">RequestController returns request data to ConsoleUI</step>
+        <step id="S7">ConsoleUI displays the requests to the User</step>
+    </mainSequence>
+</useCase>

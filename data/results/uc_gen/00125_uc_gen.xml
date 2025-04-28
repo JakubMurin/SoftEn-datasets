@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Update Request Status</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ConsoleUI</actor>
+        <actor>RequestController</actor>
+        <actor>DBManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has selected a request ID and provided status (Accept/Reject).</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects request ID and provides status (Accept/Reject).</step>
+        <step id="S2">ConsoleUI validates and displays the input.</step>
+        <step id="S3">RequestController calls update_request_status(request_id, status).</step>
+        <step id="S4">RequestController executes SELECT query to fetch request details.</step>
+        <step id="S5">DBManager returns request data.</step>
+        <step id="S6">RequestController executes UPDATE queries for requests and books (if accepted).</step>
+        <step id="S7">DBManager returns success/failure message.</step>
+        <step id="S8">RequestController returns result to ConsoleUI.</step>
+        <step id="S9">ConsoleUI shows success or failure message to the User.</step>
+    </mainSequence>
+</useCase>

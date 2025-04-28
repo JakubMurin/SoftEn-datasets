@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>Adding a Group</name>
+
+	<actors>
+		<actor>User</actor>
+		<actor>::AddGroupActivity</actor>
+		<actor>addGroupViewModel:AddGroupViewModel</actor>
+		<actor>::GroupeFirestore</actor>
+		<actor>::FirebaseFirestore</actor>
+	</actors>
+	
+	<preconditions>
+		<precondition>User wants to add a new group.</precondition>
+	</preconditions>
+	
+	<successEndConditions>
+		<condition>New group has been successfully added to the list of groups.</condition>
+	</successEndConditions>
+	
+	<trigger>User presses the "+" button to add a new group.</trigger>
+	
+	<mainSequence>
+		<step id="S1">User taps on "+" sign to add a group.</step>
+		<step id="S2">AddGroupViewModel checks if the group is newly created.</step>
+		<step id="S3">GroupeFirestore retrieves the group using the group's name.</step>
+		<step id="S4">FirebaseFirestore gets the group collection and adds the created group.</step>
+	</mainSequence>
+</useCase>

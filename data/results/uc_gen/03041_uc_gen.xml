@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Upload Video Content</name>
+    <description>As a Content Editor, I want to upload new video content to the NSF Beta Site.</description>
+    <actors>
+        <actor>Content Editor</actor>
+        <actor>CMS</actor>
+        <actor>Video Management Subsystem</actor>
+        <actor>NSF Database</actor>
+        <actor>NSF Beta Site</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Content Editor is logged in to the CMS.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The video is successfully uploaded and appears on the NSF Beta Site.</condition>
+    </successEndConditions>
+    <trigger>User selects option to add new video content in the CMS.</trigger>
+    <mainSequence>
+        <step id="S1">Log in to CMS</step>
+        <step id="S2">Display dashboard</step>
+        <step id="S3">Select option to add new video content</step>
+        <step id="S4">Upload video information (Title, Description, Tags)</step>
+        <step id="S5">API Call: Upload video file</step>
+        <step id="S6">Store video metadata (including Brightcove Video ID)</step>
+        <step id="S7">Confirm video metadata stored</step>
+        <step id="S8">Display success message (Video added)</step>
+        <step id="S9">Verify video appears on the site</step>
+        <step id="S10">Query video details by Brightcove Video ID</step>
+        <step id="S11">Return video details</step>
+        <step id="S12">Display the video content</step>
+    </mainSequence>
+</useCase>

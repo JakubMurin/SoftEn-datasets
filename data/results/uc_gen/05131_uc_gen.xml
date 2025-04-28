@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Play PacMan Game</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Foo</actor>
+        <actor>PacManController</actor>
+        <actor>PacManUser</actor>
+        <actor>PacManPersistence</actor>
+        <actor>FileReader</actor>
+        <actor>FileWriter</actor>
+    </actors>
+    <preconditions>
+        <precondition>Foo is able to interact with the GUI elements.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>PacMan game started successfully.</condition>
+        <condition>Highscore saved successfully.</condition>
+    </successEndConditions>
+    <trigger>User decides to play the PacMan game.</trigger>
+    <mainSequence>
+        <step id="S1">User enters a username in the input field provided.</step>
+        <step id="S2">PacManController updates the GUI with the entered username.</step>
+        <step id="S3">PacManController retrieves the entered username from the input field.</step>
+        <step id="S4">PacManController receives the username from the input field and stores it.</step>
+        <step id="S5">PacManController validates the entered username.</step>
+        <step id="S6">PacManUser confirms the username is valid.</step>
+        <step id="S7">PacManController enables the start button.</step>
+        <step id="S8">User clicks on the start button.</step>
+        <step id="S9">Start button click event handled by PacManController.</step>
+        <step id="S10">PacManController sets the username for the game.</step>
+        <step id="S11">PacManController sets the initial score for the game.</step>
+        <step id="S12">PacManController saves the highscore in the persistence layer.</step>
+        <step id="S13">PacManPersistence creates a FileReader to read existing scores.</step>
+        <step id="S14">FileReader reads the scores from the specified path.</step>
+        <step id="S15">PacManPersistence creates a new PacManUser with the retrieved username and score.</step>
+        <step id="S16">PacManUser is established for the current game.</step>
+        <step id="S17">PacManPersistence writes the updated scores to the file system.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC-001">
+    <name>User Registration</name>
+    <description>Allow a user to register on the platform through a web form</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must have access to the registration process</precondition>
+        <precondition>Frontend application and Middleware service are running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User registration successfully completed</condition>
+    </successEndConditions>
+    <trigger>User wishes to register on the platform</trigger>
+    <mainSequence>
+        <step id="S1">User requests to register</step>
+        <step id="S2">Frontend shows registration form to the User</step>
+        <step id="S3">User fills in the registration form</step>
+        <step id="S4">Frontend shows consent form to the User</step>
+        <step id="S5">User accepts the consent</step>
+        <step id="S6">Frontend validates the form</step>
+        <step id="S7">Frontend forwards the registration data to Middleware</step>
+        <step id="S8">Middleware posts the registration data</step>
+        <step id="S9">Middleware resolves registration (success)</step>
+        <step id="S10">Frontend shows success message to the User</step>
+    </mainSequence>
+        
+</useCase>

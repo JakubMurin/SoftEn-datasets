@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Välja att visa sjukfallshistorik för patient på Vårdenhet</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet</step>
+        <step id="S2">Rehabstöd listar patientens samtliga intyg</step>
+        <step id="S3">Hämta vårdgivarnamn för varje intyg mha GetUnit v1</step>
+        <step id="S4">PU får PersonSvar för patienten</step>
+        <step id="S5">Om patienten är sekretssmarkerad: Filtrera bort intyg som inte ligger på den aktiva enheten</step>
+        <step id="S6">Om patienten ej är sekretssmarkerad: Kontrollera spärr via CheckBlocks v4</step>
+        <step id="S7">Uppdatera intygen med spärrstatus</step>
+        <step id="S8">Skicka in ALLA intyg till Sjukfallsmotor</step>
+        <step id="S9">Kontrollera samtyckesstatus för enheten/läkaren mot patienten via CheckConsent v2</step>
+        <step id="S10">Filtrera bort intyg från andra vårdgivare om samtycke saknas</step>
+        <step id="S11">Sammanställ klientsvar med sjukfall och metadataobjekt</step>
+        <step id="S12">Skicka in nettolistan av intyg för att få verkliga sjukfall</step>
+        <step id="S13">Uppdatera lista med namn och sekretessstatus</step>
+        <step id="S14">GetCertificateAdditions för varje intyg utfärdade på nuvarande VG/VE</step>
+        <step id="S15">Uppdatera sjukfallens ingående intyg med kompletteringsstatus</step>
+        <step id="S16">Om SRS-stöd är aktiverat: getRiskPredictionForCertificate för varje intyg</step>
+        <step id="S17">PDL loggning av faktisk visad information</step>
+        <step id="S18">Läkare visar patientens sjukfallshistorik inkl SJF</step>
+    </mainSequence>
+</useCase>

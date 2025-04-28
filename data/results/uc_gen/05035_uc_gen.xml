@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Gaining Access to Domain Controller</name>
+    <description>The attacker gains access to the domain controller by impersonating a domain controller.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>Attacker's Computer</actor>
+        <actor>Target Domain Controller</actor>
+        <actor>Domain Environment</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker has necessary access rights like "Replicating Directory Changes".</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Attacker successfully obtains user credentials from the domain controller.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Attacker fails to obtain necessary privileges from the domain controller.</condition>
+    </failureEndConditions>
+    <trigger>Gaining Access with Necessary Rights</trigger>
+    <mainSequence>
+        <step id="S1">Attacker gains access with necessary rights.</step>
+        <step id="S2">Attacker's Computer issues a DCSync Request to the Target Domain Controller.</step>
+        <step id="S3">Target Domain Controller validates the request.</step>
+        <step id="S4">Target Domain Controller sends the requested data to the Attacker's Computer.</step>
+        <step id="S5">Attacker uses the obtained credentials for further actions within the domain.</step>
+    </mainSequence>
+</useCase>

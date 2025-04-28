@@ -1,0 +1,24 @@
+<useCase id="example">
+    <name>Example Use Case</name>
+    <description>An example use case for addition of a visited user.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Component receiving request to add a visited user.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>State updated after user addition.</condition>
+        <condition>Process completed successfully.</condition>
+    </successEndConditions>
+    <trigger>User initiates action to addVisitedUser("user123").</trigger>
+    <mainSequence>
+        <step id="S1">User dispatches addVisitedUser("user123") to Component.</step>
+        <step id="S2">Component dispatches addVisitedUser action to Store.</step>
+        <step id="S3">Store calls addVisitedUser reducer in Reducer.</step>
+        <step id="S4">Reducer checks if "user123" is in visitedUsers in Slice.</step>
+        <step id="S5">Slice updates state if "user123" not present in Reducer.</step>
+        <step id="S6">Reducer returns updated state to Store.</step>
+        <step id="S7">Store notifies Component of state change.</step>
+    </mainSequence>
+</useCase>

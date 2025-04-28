@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Trade Option Tokens</name>
+    <description>Initiate the trade of option tokens and transfer underlying tokens based on the price.</description>
+    <actors>
+        <actor>Option Holder</actor>
+        <actor>Option Serie Smart Contract</actor>
+        <actor>Exchange Adapter Contract</actor>
+        <actor>Exchange (e.g. Oasis.Direct)</actor>
+    </actors>
+    <preconditions>
+        <precondition>The option tokens exist and are held in the smart contract.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The correct amount above the strike price is transferred to the option holder.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The transfer of underlying tokens failed, or the price is not above the strike.</condition>
+    </failureEndConditions>
+    <trigger>Initiate trade operation.</trigger>
+    <mainSequence>
+        <step id="S1">Initiate operation: Transfer option tokens to smart contract.</step>
+        <step id="S2">Initiate trade via common interface and check price against strike.</step>
+        <step id="S3">Transfer corresponding amount of underlying tokens.</step>
+        <step id="S4">Put underlying tokens.</step>
+        <step id="S5">Get basis token.</step>
+        <step id="S6">Check if amount is satisfactory.</step>
+        <step id="S7">Transfer amount above strike to option holder.</step>
+        <step id="S8">Retain rest for later withdraw by anti-option holders.</step>
+    </mainSequence>
+</useCase>

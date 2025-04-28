@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Perform Fault Management Provisioning</name>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operator Functionality: Fault Management</actor>
+    </actors>
+    <preconditions>
+        <precondition>Business User and Fault Management System are operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management Job and Report are successfully created and completed</condition>
+    </successEndConditions>
+    <trigger>Business User initiates the Fault Management Provisioning process</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers listeners for Fault Management Job and Report notifications with the Hub</step>
+        <step id="S2">Business User requests the creation of a Fault Management Job</step>
+        <step id="S3">Fault Management System creates the Fault Management Job</step>
+        <step id="S4">Fault Management System responds with the created Fault Management Job</step>
+        <step id="S5">Fault Management Job is activated</step>
+        <step id="S6">Fault Management Job generates necessary data</step>
+        <step id="S7">Fault Management Job creates a Fault Management Report</step>
+        <step id="S8">Fault Management Report is activated</step>
+        <step id="S9">Fault Management Report collects data</step>
+        <step id="S10">Fault Management Report is marked as completed</step>
+        <step id="S11">Fault Management Job receives the completed report</step>
+        <step id="S12">Fault Management Job is marked as completed or scheduled</step>
+        <step id="S13">Business User requests the Fault Management Report</step>
+        <step id="S14">Fault Management System retrieves the Fault Management Report</step>
+        <step id="S15">Fault Management System responds with the retrieved Fault Management Report</step>
+    </mainSequence>
+</useCase>

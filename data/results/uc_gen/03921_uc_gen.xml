@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Book Treatment Use Case</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI: PrimaryController</actor>
+        <actor>Core: BookingService</actor>
+        <actor>Persistence: BookingRepository</actor>
+        <actor>REST: BookingRestService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User selects treatment, date, and enters contact info.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking confirmed and saved successfully.</condition>
+    </successEndConditions>
+    <trigger>User submits booking.</trigger>
+    <mainSequence>
+        <step id="S1">User selects treatment, date, and enters contact info.</step>
+        <step id="S2">UI creates booking with name, email, treatment, and date.</step>
+        <step id="S3">Core saves booking to file.</step>
+        <step id="S4">Core notifies UI that booking is created.</step>
+        <step id="S5">UI displays confirmation message to User.</step>
+    </mainSequence>
+</useCase>

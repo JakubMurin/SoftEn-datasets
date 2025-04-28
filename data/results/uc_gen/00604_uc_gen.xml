@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>removeMember</name>
+    <actors>
+        <actor>Admin_PL</actor>
+        <actor>System</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin_PL initiates the removal of a member from the project by providing signId, projectId, and removeMemberId</step>
+        <step id="S2">System checks if the member to be removed exists</step>
+        <step id="S3">System responds with an error message "존재하지 않는 사용자입니다." if the member is not found</step>
+        <step id="S4">System checks if the project specified exists</step>
+        <step id="S5">System responds with an error message "존재하지 않는 프로젝트입니다." if the project is not found</step>
+        <step id="S6">System checks if the member to be removed exists</step>
+        <step id="S7">System responds with an error message "존재하지 않는 사용자입니다." if the member is not found</step>
+        <step id="S8">System determines if the member to be removed is a Project Leader</step>
+        <step id="S9">System sets project leader to null if the member is a Project Leader</step>
+        <step id="S10">System checks if the action is to remove the Project Leader</step>
+        <step id="S11">System responds with an error message "프로젝트 리더는 프로젝트 리더를 삭제할 수 없습니다." if attempting to remove the Project Leader</step>
+        <step id="S12">System removes the member from the project</step>
+        <step id="S13">System returns the ProjectResponseDto containing project details after removal</step>
+    </mainSequence>
+</useCase>

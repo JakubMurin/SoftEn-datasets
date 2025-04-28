@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Sync Pipeline Workflow</name>
+    <description>Synchronize build data with Firestore using CI integration tool</description>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob pushes a commit to the master branch on GitHub</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Build data successfully exported to Firestore</condition>
+    </successEndConditions>
+    <trigger>Webhook from GitHub repository triggers the pipeline</trigger>
+    <mainSequence>
+        <step id="S1">Perform build</step>
+        <step id="S2">Trigger Sync pipeline</step>
+        <step id="S3">Create integration_config.yml</step>
+        <step id="S4">Run sync command through CI Integration tool</step>
+        <step id="S5">Add new build data to Firestore</step>
+        <step id="S6">Finish sync command in Sync pipeline</step>
+        <step id="S7">Complete build data export</step>
+    </mainSequence>
+</useCase>

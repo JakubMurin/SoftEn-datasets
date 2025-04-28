@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>User Authentication</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Login Page</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User needs to access the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User failed to authenticate.</condition>
+    </failureEndConditions>
+    <trigger>User enters credentials in the login page.</trigger>
+    <mainSequence>
+        <step id="S1">User enters credentials and selects "Remember Me" option.</step>
+        <step id="S2">Login Page sends credentials to Backend Server for authentication.</step>
+        <step id="S3">Backend Server verifies user's credentials with the Database.</step>
+        <step id="S4">Database returns the authentication result to Backend Server.</step>
+        <step id="S5">Backend Server sends the authentication result to the Login Page.</step>
+        <step id="S6">Login Page saves the "Remember Me" token in the Backend Server.</step>
+        <step id="S7">Backend Server stores the token in the Database.</step>
+        <step id="S8">Database confirms the token is saved in the Backend Server.</step>
+        <step id="S9">Backend Server confirms the "Remember Me" option is enabled in the Login Page.</step>
+        <step id="S10">Login Page displays the login confirmation to the User.</step>
+    </mainSequence>
+</useCase>

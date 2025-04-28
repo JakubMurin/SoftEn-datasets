@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Guest Registration</name>
+    <actors>
+        <actor>Guest</actor>
+        <actor>Mail</actor>
+        <actor>Registration Page</actor>
+        <actor>Guild API</actor>
+        <actor>Token Database</actor>
+        <actor>Guild Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Guest clicks on registration link in the email.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Guest has existing valid token within the expiration.</condition>
+    </successEndConditions>
+    <trigger>Guest clicks on the registration link in the email.</trigger>
+    <mainSequence>
+        <step id="S1">Guest clicks on the registration link in the email.</step>
+        <step id="S2">Guest receives token for registration.</step>
+        <step id="S3">Registration Page interacts with Guild API to check registration/token details.</step>
+        <step id="S4">Guild API retrieves pre-registered Guild information based on the provided token.</step>
+        <step id="S5">Guild API retrieves Guild name.</step>
+        <step id="S6">Guild API gets Guild ID, Guild name, and email address returned on the page."</step>
+    </mainSequence>
+</useCase>

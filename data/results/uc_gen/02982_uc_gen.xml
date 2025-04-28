@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Disable Dataset Explore Feature</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Web Interface</actor>
+        <actor>API Gateway</actor>
+        <actor>Authorization Service</actor>
+        <actor>Dataset Management</actor>
+        <actor>Explore Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has permission to disable dataset explore feature.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects dataset to update.</step>
+        <step id="S2">Web Interface displays dataset details to the user.</step>
+        <step id="S3">User requests to disable dataset explore feature.</step>
+        <step id="S4">Web Interface makes an API call to disable explore for the dataset.</step>
+        <step id="S5">API Gateway validates user permission.</step>
+        <step id="S6">Authorization Service grants permission.</step>
+        <step id="S7">API Gateway requests dataset update from Dataset Management.</step>
+        <step id="S8">Dataset Management disables explore for the specified dataset.</step>
+        <step id="S9">Explore Service confirms explore disabled.</step>
+        <step id="S10">Dataset Management updates and confirms.</step>
+        <step id="S11">API Gateway displays success message.</step>
+        <step id="S12">Web Interface informs the user that explore is disabled successfully.</step>
+    </mainSequence>
+</useCase>

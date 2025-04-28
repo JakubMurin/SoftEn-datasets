@@ -1,0 +1,46 @@
+<useCase id="UC001">
+    <name>Researcher interacts with Recruitment Platform and Analysis System</name>
+    <description>Researcher defines criteria for participant selection, sends recruitment invitations, conducts research sessions, inputs data, analyzes findings, and archives project data.</description>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>Recruitment Platform</actor>
+        <actor>User Database</actor>
+        <actor>Participant</actor>
+        <actor>Research Analysis System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher has defined criteria for participant selection.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher has archived project data successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Recruitment failure occurs repeatedly.</condition>
+    </failureEndConditions>
+    <trigger>Researcher initiates the user research project.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher defines criteria for participant selection.</step>
+        <step id="S2">Recruitment Platform queries potential participants based on criteria.</step>
+        <step id="S3">User Database returns list of potential participants.</step>
+        <step id="S4">Recruitment Platform sends recruitment invitations.</step>
+        <step id="S5">Participant responds to invitation.</step>
+        <step id="S6">Recruitment Platform provides list of participating users to Researcher.</step>
+        <step id="S7">Researcher conducts user research sessions with Participant.</step>
+        <step id="S8">Participant provides feedback and data to Researcher.</step>
+        <step id="S9">Researcher inputs user research data to Analysis System.</step>
+        <step id="S10">Analysis System analyzes and summarizes findings.</step>
+        <step id="S11">Analysis System provides synthesized results to Researcher.</step>
+        <step id="S12">Researcher updates project status to "Complete" in Recruitment Platform.</step>
+        <step id="S13">Researcher archives project data and findings in Analysis System.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S8">
+            <step id="A1S1">Researcher adjusts criteria/republishes invitation in case of recruitment failure.</step>
+            <step id="A1S2">Recruitment Platform re-queries potential participants based on updated criteria.</step>
+            <step id="A1S3">User Database returns updated list of potential participants.</step>
+            <step id="A1S4">Recruitment Platform resends invitations to updated list of participants.</step>
+            <step id="A1S5">Participant responds again to updated invitations.</step>
+            <step id="A1S6">Recruitment Platform updates Researcher on participant status.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

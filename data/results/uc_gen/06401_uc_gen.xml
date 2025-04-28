@@ -1,0 +1,18 @@
+<useCase id="UC1">
+  <name>Search Digital Archive</name>
+  <description>Archivist searches for files in the digital archive using a keyword.</description>
+  <actors>
+    <actor>Archivist</actor>
+  </actors>
+  <trigger>Archivist inputs keyword.</trigger>
+  <mainSequence>
+    <step id="S1">Archivist inputs keyword.</step>
+    <step id="S2">UI sends search request with the keyword to Search Controller.</step>
+    <step id="S3">Search Controller queries the keyword to Indexing Service.</step>
+    <step id="S4">Indexing Service fetches matching files from Digital Archive Database.</step>
+    <step id="S5">Indexing Service formats the matching files.</step>
+    <step id="S6">Search Controller receives the formatted results from Results Formatter.</step>
+    <step id="S7">UI displays the search results to the Archivist.</step>
+    <step id="S8">Archivist views the files matching the keyword.</step>
+  </mainSequence>
+</useCase>

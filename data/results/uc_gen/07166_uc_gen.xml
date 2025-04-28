@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Get Top Readers per Genre</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>LendingController</actor>
+        <actor>GenreService</actor>
+        <actor>GenreRepository</actor>
+        <actor>ReaderService</actor>
+        <actor>ReaderRepository</actor>
+        <actor>ReaderViewMapper</actor>
+    </actors>
+    <preconditions>
+        <precondition>Librarian triggers the request to get top readers per genre.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Librarian triggers GET request "/api/lendings/top-readers/{genreId}".</step>
+        <step id="S2">LendingController activates and calls GenreService's getGenreById(genreId) method.</step>
+        <step id="S3">GenreService activates and queries GenreRepository to findGenreById(genreId).</step>
+        <step id="S4">GenreRepository retrieves the genre data.</step>
+        <step id="S5">GenreService returns the genre to LendingController.</step>
+        <step id="S6">If genre is not found, LendingController returns HTTP 404 Not Found to Librarian.</step>
+        <step id="S7">If genre is found, LendingController calls ReaderService to getTopReadersperGenre.</step>
+        <step id="S8">ReaderService activates and queries ReaderRepository for top readers per genre.</step>
+        <step id="S9">ReaderRepository retrieves the top readers.</step>
+        <step id="S10">ReaderService returns the readers to LendingController.</step>
+        <step id="S11">LendingController activates ReaderViewMapper to convert readers into reader views.</step>
+        <step id="S12">ReaderViewMapper returns the reader views to LendingController.</step>
+        <step id="S13">LendingController returns HTTP 200 OK with the reader views to Librarian.</step>
+    </mainSequence>
+</useCase>

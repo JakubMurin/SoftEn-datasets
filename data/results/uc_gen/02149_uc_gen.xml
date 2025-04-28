@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Move Item</name>
+    <description>Curator moves an item from one collection to another</description>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator is authenticated and authorized</precondition>
+        <precondition>Curator has access to both source and target collections</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Item successfully moved from source collection to target collection</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Item could not be moved due to invalid data or lack of permissions</condition>
+    </failureEndConditions>
+    <trigger>User chooses 'Move Item' option in the UI</trigger>
+    <mainSequence>
+        <step id="S1">Curator chooses 'Move Item'</step>
+        <step id="S2">UI requests form to move item</step>
+        <step id="S3">CMS displays form</step>
+        <step id="S4">Curator submits form (Item ID, Source Collection, Target Collection)</step>
+        <step id="S5">UI validates and processes move request</step>
+        <step id="S6">CMS fetches item from Source Collection</step>
+        <step id="S7">Database retrieves Item Details</step>
+        <step id="S8">CMS removes item from Source Collection</step>
+        <step id="S9">CMS confirms removal</step>
+        <step id="S10">CMS adds item to Target Collection</step>
+        <step id="S11">CMS confirms addition</step>
+        <step id="S12">UI displays success message</step>
+        <step id="S13">UI confirms item moved to Curator</step>
+    </mainSequence>
+</useCase>

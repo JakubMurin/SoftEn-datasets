@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Adding File to Dataset</name>
+    <actors>
+        <actor>apiclient</actor>
+    </actors>
+    <preconditions>
+        <precondition>ApiClient makes a request to add a data file to a dataset</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">ApiClient sends a request to /add?datafile&amp;datasetId</step>
+        <step id="S2">Datasets activates and receives the request</step>
+        <step id="S3">Datasets calls AddFileHelper's addFileToDataset() method</step>
+        <step id="S4">AddFileHelper activates and calls FileUtil to createDataFiles</step>
+        <step id="S5">FileUtil determines file type and creates a single data file</step>
+        <step id="S6">AddFileHelper receives a list of Datafiles from FileUtil</step>
+        <step id="S7">AddFileHelper calls ISB to add files to the dataset</step>
+        <step id="S8">AddFileHelper calls ISB to ingest files as tabular data</step>
+        <step id="S9">AddFileHelper returns a JsonObjectBuilder object to Datasets</step>
+        <step id="S10">ApiClient receives a JSON object response from Datasets</step>
+    </mainSequence>
+</useCase>

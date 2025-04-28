@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Account Linking Process</name>
+    <description>Register a chequing account from DFSP A with PISP App.</description>
+    <actors>
+        <actor>Ayeesha</actor>
+        <actor>PISP App</actor>
+        <actor>PISP Server</actor>
+        <actor>Mojaloop Switch</actor>
+        <actor>ALS</actor>
+        <actor>DFSP A</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ayeesha has the PISP App installed.</precondition>
+        <precondition>Ayeesha has a chequing account with DFSP A.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The association between Ayeesha's chequing account and DFSP A has been successfully created.</condition>
+    </successEndConditions>
+    <trigger>Ayeesha initiates the account linking process in the PISP App.</trigger>
+    <mainSequence>
+        <step id="S1">Ayeesha requests to register her chequing account from DFSP A using the PISP App.</step>
+        <step id="S2">DFSP A generates a random UUID and saves it internally.</step>
+        <step id="S3">DFSP A sends the random UUID to PISP: "1111-2222" to refer to Ayeesha's linked account.</step>
+        <step id="S4">PISP associates Ayeesha's chequing account with "1111-2222".</step>
+        <step id="S5">DFSP A sends a POST request to the Switch: "/participants/ASSOCIATION/1111-2222".</step>
+        <step id="S6">Switch responds with "201 Accepted".</step>
+        <step id="S7">Switch creates a new key/value pair: "{'ASSOCIATION/1111-2222': 'DFSPA'}".</step>
+        <step id="S8">ALS confirms the creation of the association.</step>
+        <step id="S9">Switch notifies DFSP A about the successful association creation.</step>
+        <step id="S10">DFSP A informs PISP that the association has been successfully created.</step>
+    </mainSequence>
+</useCase>

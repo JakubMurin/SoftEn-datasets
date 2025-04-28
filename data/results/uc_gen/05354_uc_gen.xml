@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Generate Surat Lapas</name>
+    <description>Allows the Administrator to generate a Surat Lapas.</description>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Surat Lapas is successfully generated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Surat Lapas cannot be generated due to unavailability.</condition>
+    </failureEndConditions>
+    <trigger>Administrator clicks on the Surat Lapas menu.</trigger>
+    <mainSequence>
+        <step id="S1">Administrator clicks on the Surat Lapas menu.</step>
+        <step id="S2">Surat Lapas boundary is displayed.</step>
+        <step id="S3">Administrator inputs the Surat number and date.</step>
+        <step id="S4">System searches for the Surat based on the input.</step>
+        <step id="S5">If the Surat is available:</step>
+        <step id="S6">Retrieve Napi information related to the Surat.</step>
+        <step id="S7">Display Napi information.</step>
+        <step id="S8">If the Surat is not available:</step>
+        <step id="S9">Display message indicating Surat unavailability.</step>
+    </mainSequence>
+</useCase>

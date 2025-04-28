@@ -1,0 +1,49 @@
+<useCase id="UC1">
+   <name>User Error Counting</name>
+   <actors>
+      <actor>User</actor>
+      <actor>UI</actor>
+      <actor>ErrorHandler</actor>
+      <actor>ErrorCounter</actor>
+      <actor>LogManager</actor>
+      <actor>ErrorLog</actor>
+   </actors>
+   <preconditions>
+      <precondition>Users perform operations via the User Interface</precondition>
+      <precondition>Error counting process is functional</precondition>
+   </preconditions>
+   <successEndConditions>
+      <condition>User error count update is completed</condition>
+      <condition>Normal operation notification is successfully sent</condition>
+      <condition>Error count confirmation is successfully obtained</condition>
+   </successEndConditions>
+   <trigger>User performs an action on the User Interface</trigger>
+   <mainSequence>
+      <step id="S1">User executes an action</step>
+      <step id="S2">User Interface detects user error request</step>
+      <step id="S3">Error Handler counts the user error</step>
+      <step id="S4">Error Counter updates the count</step>
+      <step id="S5">Error Handler notifies the user about the error count</step>
+      <step id="S6">Valid operation is executed</step>
+      <step id="S7">User Interface notifies ErrorHandler of the valid operation</step>
+      <step id="S8">ErrorHandler requests a decrease in count from ErrorCounter</step>
+      <step id="S9">Error Log is successfully recorded by LogManager</step>
+      <step id="S10">ErrorHandler processes the recovery request</step>
+      <step id="S11">ErrorHandler conveys the recovery completion to the User</step>
+   </mainSequence>
+   <alternativeSteps>
+      <asteps id="A1" start="S5">
+         <step id="A1S1">ErrorHandler performs threshold check on error count</step>
+         <step id="A1S2">User Interface displays error message</step>
+         <step id="A1S3">LogManager records error message in ErrorLog</step>
+         <step id="A1S4">ErrorHandler requests recovery process</step>
+         <step id="A1S5">ErrorHandler informs User about recovery completion</step>
+      </asteps>
+   </alternativeSteps>
+   <errorSteps>
+      <esteps id="E1" start="A1S4">
+         <description>Error threshold reached, requiring error completion steps</description>
+         <step id="E1S1">ErrorHandler requests error record in LogManager</step>
+      </esteps>
+   </errorSteps>
+</useCase>

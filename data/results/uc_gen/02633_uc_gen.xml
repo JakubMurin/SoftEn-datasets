@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Flow Reroute</name>
+    <actors>
+        <actor>User</actor>
+        <actor>FlowManager</actor>
+        <actor>DAO</actor>
+        <actor>PathComputer</actor>
+        <actor>ResourcePool</actor>
+        <actor>CommandBuilder</actor>
+        <actor>History</actor>
+        <actor>SpeakerWorker</actor>
+        <actor>RulesValidator</actor>
+        <actor>RuleManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to reroute</step>
+        <step id="S2">Reroute the flow</step>
+        <step id="S3">Get the flow from DB</step>
+        <step id="S4">Find a path for the flow</step>
+        <step id="S5">Allocate resources for the found path</step>
+        <step id="S6">Save the found path with IN_PROGRESS status</step>
+        <step id="S7">Update ISLs available bandwidth</step>
+        <step id="S8">Create switch rules and build commands</step>
+        <step id="S9">Install egress/transit rules</step>
+        <step id="S10">Validate installed egress/transit rules</step>
+        <step id="S11">Validate ingress rules</step>
+        <step id="S12">Update the flow to reference the found path as active</step>
+        <step id="S13">Change the found path status to INSTALLED</step>
+        <step id="S14">Change the flow status to UP</step>
+        <step id="S15">Change the status of the old path to IN_PROGRESS</step>
+        <step id="S16">Remove rules of the old flow</step>
+        <step id="S17">Validate removed rules</step>
+        <step id="S18">Release used meter if rule is absent on a switch</step>
+        <step id="S19">Deallocate resources of the old path</step>
+        <step id="S20">Remove the old path</step>
+    </mainSequence>
+</useCase>

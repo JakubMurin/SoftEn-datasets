@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Inibir Robot</name>
+    <description>
+        O Gestor de frota usa a funcionalidade inibir um robot no sistema robDroneGo.
+    </description>
+    <actors>
+        <actor>Gestor de frota</actor>
+    </actors>
+    <trigger>O Gestor de frota opta por inibir um robot.</trigger>
+    <mainSequence>
+        <step id="S1">O Gestor de frota solicita a inibição de um robot ao sistema robDroneGo.</step>
+        <step id="S2">O sistema robDroneGo pede ao Gestor de frota que selecione o robot a ser inibido.</step>
+        <step id="S3">O Gestor de frota escolhe o robot alvo da inibição no sistema robDroneGo.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Se a inibição do robot for bem-sucedida, o sistema robDroneGo retorna o robot inibido para o Gestor de frota.</step>
+            <step id="A1S2">Em caso de falha na requisição, o sistema robDroneGo exibe uma mensagem de erro para o Gestor de frota.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

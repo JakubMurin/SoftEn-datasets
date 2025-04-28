@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Manage Subscription</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SubscriptionController</actor>
+        <actor>SubscriptionFacadeImpl</actor>
+        <actor>SubscriptionRepository</actor>
+        <actor>SubscriptionJpaPersistenceAdapter</actor>
+        <actor>SubscriptionJpaRepository</actor>
+        <actor>Datastore</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User interacts with SubscriptionController.</step>
+        <step id="S2">SubscriptionController forwards request to SubscriptionFacadeImpl.</step>
+        <step id="S3">SubscriptionFacadeImpl communicates with SubscriptionRepository.</step>
+        <step id="S4">SubscriptionRepository interacts with SubscriptionJpaPersistenceAdapter.</step>
+        <step id="S5">SubscriptionJpaPersistenceAdapter communicates with SubscriptionJpaRepository.</step>
+        <step id="S6">SubscriptionJpaRepository accesses Datastore.</step>
+        <step id="S7">Datastore processes the request.</step>
+        <step id="S8">Datastore responds to SubscriptionJpaRepository.</step>
+        <step id="S9">SubscriptionJpaRepository returns response to SubscriptionJpaPersistenceAdapter.</step>
+        <step id="S10">SubscriptionJpaPersistenceAdapter interacts with SubscriptionRepository.</step>
+        <step id="S11">SubscriptionRepository communicates with SubscriptionFacadeImpl.</step>
+        <step id="S12">SubscriptionFacadeImpl forwards response to SubscriptionController.</step>
+        <step id="S13">SubscriptionController provides feedback to User.</step>
+    </mainSequence>
+</useCase>

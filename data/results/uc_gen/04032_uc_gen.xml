@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>User Authentication</name>
+    <description>User wants to authenticate using a verification code sent to their email address.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>Sistema de Autenticación</actor>
+        <actor>Servicio de Correo Electrónico</actor>
+    </actors>
+    <preconditions>       
+        <precondition>User has valid credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User authentication successful.</condition>
+    </successEndConditions>
+    <trigger>User initiates the authentication process by entering their credentials.</trigger>
+    <mainSequence>
+        <step id="S1">User introduces their credentials.</step>
+        <step id="S2">App verifies the credentials.</step>
+        <step id="S3">App requests a verification code from the authentication system.</step>
+        <step id="S4">Authentication system generates a verification code and sends it to the user's email.</step>
+        <step id="S5">App asks the user to enter the verification code.</step>
+        <step id="S6">User enters the verification code.</step>
+        <step id="S7">App checks the verification code.</step>
+        <step id="S8">User authentication is successful.</step>
+    </mainSequence>
+</useCase>

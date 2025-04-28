@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Search Content</name>
+    <actors>
+        <actor>User Agent</actor>
+    </actors>
+    <trigger>Search request (HTTP GET), contains a single string to be searched for in the content db.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a search request to Search Content API.</step>
+        <step id="S2">Search Content API activates and receives the request.</step>
+        <step id="S3">Search Content API runs a search query on Content database.</step>
+        <step id="S4">Content database returns the result of the query to the Search Content API.</step>
+        <step id="S5">Search Content API deactivates.</step>
+        <step id="S6">Search Content API responds to User Agent with HTTP 200 OK, including search results in a structured format.</step>
+    </mainSequence>
+</useCase>

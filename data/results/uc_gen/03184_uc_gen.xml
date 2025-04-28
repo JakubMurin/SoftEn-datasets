@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Read File</name>
+    <description>User wants to read a file stored in the data safe system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to the data safe system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully reads the file content.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User is unauthorized to access the file.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the request to read the file.</trigger>
+    <mainSequence>
+        <step id="S1">User reads the file at /dir1/file.txt</step>
+        <step id="S2">User gets the version directory location</step>
+        <step id="S3">User receives the DFS location of the latest directory (LATEST)</step>
+        <step id="S4">User retrieves the content of /dir1/file.txt (LINK)</step>
+        <step id="S5">User reads the file at LINK (FILE)</step>
+        <step id="S6">User receives the content of FILE</step>
+        <step id="S7">User gets the latest data in /dir1/file.txt</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Renew Book Loan</name>
+    <description>Allow borrowers to renew their book loans.</description>
+    <actors>
+        <actor>Borrower</actor>
+    </actors>
+    <preconditions>
+        <precondition>Borrower must have a valid book loan.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book loan successfully renewed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Book loan renewal not allowed.</condition>
+    </failureEndConditions>
+    <trigger>User requests a book loan renewal.</trigger>
+    <mainSequence>
+        <step id="S1">Borrower requests a book renewal through the front end.</step>
+        <step id="S2">Front end forwards the renewal request to LoanController.</step>
+        <step id="S3">LoanController processes the renewal request.</step>
+        <step id="S4">LoanService checks the renewal eligibility in LoanRepository.</step>
+        <step id="S5">LoanRepository updates the renewal eligibility status.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">LoanService updates the loan record in LoanRepository.</step>
+            <step id="A1S2">LoanRepository confirms the renewal.</step>
+            <step id="A1S3">LoanService notifies LoanController about the renewal.</step>
+            <step id="A1S4">LoanController sends renewal confirmation to FrontEnd.</step>
+            <step id="A1S5">FrontEnd displays a renewal confirmation message to Borrower.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Renewal not allowed due to certain conditions.</description>
+            <step id="E1S1">LoanService notifies LoanController about the renewal rejection.</step>
+            <step id="E1S2">LoanController sends a rejection notification to FrontEnd.</step>
+            <step id="E1S3">FrontEnd displays a rejection message to Borrower.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

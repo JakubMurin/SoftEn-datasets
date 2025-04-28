@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Create Volume</name>
+    <description>Description of how to create a volume dynamically with the provisioner.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Dynamic provisioner is set up successfully.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin creates a storage class.</step>
+        <step id="S2">User creates a persistent volume claim.</step>
+        <step id="S3">Kubernetes calls the CSI plugin to create the volume.</step>
+        <step id="S4">CSI plugin initiates the action to create a volume at the target.</step>
+        <step id="S5">Target storage creates the volume and responds with a unique identifier.</step>
+        <step id="S6">Kubernetes receives the response and finalizes the creation of the volume.</step>
+    </mainSequence>
+</useCase>

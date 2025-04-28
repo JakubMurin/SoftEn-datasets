@@ -1,0 +1,32 @@
+<useCase id="UC-1">
+    <name>Recomendación de Contenido Personalizado</name>
+    <description>Este caso de uso describe el proceso de recomendación de contenido personalizado a un usuario.</description>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>Plataforma EduTech IA</actor>
+        <actor>Sistema de Recomendación IA</actor>
+        <actor>Base de Datos</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario ha iniciado sesión en la plataforma.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>El usuario visualiza el contenido recomendado.</condition>
+    </successEndConditions>
+    <trigger>El usuario solicita contenido personalizado.</trigger>
+    <mainSequence>
+        <step id="S1">El usuario inicia sesión en la plataforma.</step>
+        <step id="S2">La plataforma verifica las credenciales del usuario con la base de datos.</step>
+        <step id="S3">La base de datos responde con éxito o error a la plataforma.</step>
+        <step id="S4">La plataforma confirma la inicio de sesión al usuario.</step>
+        <step id="S5">El usuario solicita contenido personalizado a la plataforma.</step>
+        <step id="S6">La plataforma analiza el perfil del usuario en conjunto con el Sistema de Recomendación IA.</step>
+        <step id="S7">El Sistema de Recomendación IA obtiene el historial de aprendizaje del usuario desde la base de datos.</step>
+        <step id="S8">La base de datos envía el historial al Sistema de Recomendación IA.</step>
+        <step id="S9">El Sistema de Recomendación IA envía las recomendaciones a la plataforma.</step>
+        <step id="S10">La plataforma muestra el contenido recomendado al usuario.</step>
+        <step id="S11">El usuario completa una actividad en la plataforma.</step>
+        <step id="S12">La plataforma guarda el progreso de la actividad en la base de datos.</step>
+        <step id="S13">La base de datos confirma el guardado a la plataforma.</step>
+    </mainSequence>
+</useCase>

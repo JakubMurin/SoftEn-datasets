@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Task Deletion</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User deletes task</step>
+        <step id="S2">FRONTEND sends task to BACKEND</step>
+        <step id="S3">BACKEND sends task to SB_Delete queue</step>
+        <step id="S4">KEDA_Remover removes task from SB_Delete queue</step>
+        <step id="S5">KEDA_Remover removes task from SB_Running queue</step>
+        <step id="S6">KEDA_Remover sends volcano job for deletion to K8S_API</step>
+        <step id="S7">UI reads tasks from SB_Running</step>
+        <step id="S8">UI shows running tasks to User</step>
+    </mainSequence>
+</useCase>

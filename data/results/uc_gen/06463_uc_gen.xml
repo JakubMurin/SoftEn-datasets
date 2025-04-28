@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Handle Bullet Collision</name>
+    <description>Handle the collision between the bullet and the balloon actors.</description>
+    <actors>
+        <actor>Bullet Actor</actor>
+        <actor>Model</actor>
+        <actor>Balloon Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The bullet is updated and in the game environment.</precondition>
+        <precondition>The balloon actor is present in the game environment.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The bullet successfully hits the balloon actor.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No collision occurs between the bullet and the balloon actor.</condition>
+    </failureEndConditions>
+    <trigger>update(entities)</trigger>
+    <mainSequence>
+        <step id="S1">Bullet Actor updates the bullet position.</step>
+        <step id="S2">Bullet Actor checks for collision between the bullet and the balloon actor.</step>
+        <step id="S3">Bullet Actor explodes if collision is detected.</step>
+        <step id="S4">Model starts explosion and registers the hit balloons.</step>
+        <step id="S5">Model processes the hit balloons.</step>
+        <step id="S6">Model registers the bullet as killed.</step>
+        <step id="S7">Bullet Actor informs Model about the bullet collision.</step>
+        <step id="S8">Model handles the hit event.</step>
+    </mainSequence>
+</useCase>

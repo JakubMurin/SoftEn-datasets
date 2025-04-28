@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Advanced Staking: Early Exit</name>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Staker initiates the unstaking process in the Staking contract.</step>
+        <step id="S2">Staking contract triggers the transfer of staked amount to the Staker.</step>
+        <step id="S3">RewardMaster contract executes the onAction function.</step>
+        <step id="S4">AdvancedStakeController retrieves reward advice for the Staker.</step>
+        <step id="S5">AdvancedStakeController triggers early unstaking in the MAS Protocol.</step>
+        <step id="S6">MAS Protocol generates Leaf for preimage data.</step>
+        <step id="S7">MAS Protocol generates Nullifier for preimage data.</step>
+        <step id="S8">MAS Protocol transfers the reward amount to the Staker.</step>
+        <step id="S9">AdvancedStakeController emits EarlyUnstake event.</step>
+    </mainSequence>
+</useCase>

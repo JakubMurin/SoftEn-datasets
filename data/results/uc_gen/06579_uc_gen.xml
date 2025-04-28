@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>Create EventBus Bolt Bundle Resources</name>
+    <description>Create a bundle for AI resources in the application</description>
+    <actors>
+        <actor>Application Developer</actor>
+        <actor>Sentient Agent Bundle Resources</actor>
+    </actors>
+    <preconditions>
+        <precondition>The necessary resources and policies files are available</precondition>
+    </preconditions>
+    <trigger>Application Developer initiates the process</trigger>
+    <mainSequence>
+        <step id="S1">Application Developer sends AIS No Contact request</step>
+        <step id="S2">Sentient Agent Bundle Resources creates a bundle named Ship1 with file location ./projects/AISSimulator/AISShip/bundle.js</step>
+        <step id="S3">Sentient Agent Bundle Resources communicates with EventBus to create Ship1 bundle</step>
+        <step id="S4">Sentient Agent Bundle Resources creates a bundle named NoContact with file location ./projects/AISSimulator/AISNoContact/bundle.js</step>
+        <step id="S5">Sentient Agent Bundle Resources communicates with EventBus to create NoContact bundle</step>
+        <step id="S6">Sentient Agent Bundle Resources creates a bundle named Agg1 with file location ./projects/AISSimulator/AISAgg/bundle.js</step>
+        <step id="S7">Sentient Agent Bundle Resources communicates with EventBus to create Agg1 bundle</step>
+        <step id="S8">Sentient Agent Bundle Resources creates a bundle named Viewer1 with file location ./projects/AISSimulator/AISViewer/bundle.js</step>
+        <step id="S9">Sentient Agent Bundle Resources communicates with EventBus to create Viewer1 bundle</step>
+        <step id="S10">Sentient Agent Bundle Manager creates policy files using ./projects/AISSimulator/AISShip/policies.js</step>
+        <step id="S11">Sentient Agent Bundle Manager communicates with EventBus to create policies</step>
+        <step id="S12">Sentient Agent Bundle Manager deploys Viewer1 bundle with realtime policies</step>
+        <step id="S13">Sentient Agent Bundle Manager communicates with EventBus to deploy Viewer1 bundle</step>
+        <step id="S14">Sentient Agent Bundle Manager deploys NoContact bundle with realtime policies and timeout parameter set to 10000</step>
+        <step id="S15">Sentient Agent Bundle Manager communicates with EventBus to deploy NoContact bundle</step>
+        <step id="S16">Sentient Agent Bundle Manager deploys Agg1 bundle with realtime policies</step>
+        <step id="S17">Sentient Agent Bundle Manager communicates with EventBus to deploy Agg1 bundle</step>
+        <step id="S18">Sentient Agent Bundle Manager deploys Ship1 bundle with realtime policies and sourceFile parameter set to ../AIS_Simulator/ships/215071000A.csv</step>
+        <step id="S19">Sentient Agent Bundle Manager communicates with EventBus to deploy Ship1 bundle</step>
+        <step id="S20">Sentient Agent Bundle Manager deploys Ship1 bundle with realtime policies and sourceFile parameter set to ../AIS_Simulator/ships/215031000A.csv</step>
+        <step id="S21">Sentient Agent Bundle Manager communicates with EventBus to deploy Ship1 bundle</step>
+    </mainSequence>
+</useCase>

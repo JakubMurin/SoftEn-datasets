@@ -1,0 +1,28 @@
+<useCase id="001">
+    <name>Grant Creation Process</name>
+    <actors>
+        <actor>Alice_novice</actor>
+        <actor>Bob</actor>
+        <actor>Forum</actor>
+        <actor>Communities_novice</actor>
+        <actor>Guarantors_expert</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice_novice, Bob, Communities_novice, and Guarantors_expert have access to necessary platform functionalities</precondition>
+    </preconditions>
+    <trigger>New feature request for grant creation</trigger>
+    <mainSequence>
+        <step id="S1">Alice_novice initiates treasury creation process with successful completion response providing treasury address</step>
+        <step id="S2">Alice_novice creates a proposal in the forum for grant creation</step>
+        <step id="S3">Community selects proposals and gives positive/negative feedback through the forum</step>
+        <step id="S4">Alice_novice submits a treasury role proposal to BitDAO governance for further voting</step>
+        <step id="S5">Token holders cast their votes on the treasury role proposal</step>
+        <step id="S6">BitDAO admins confirm the proposal outcome and proceed to execute through funds transfers</step>
+        <step id="S7">Alice_novice receives at-a-glance transfer status information regarding grant funding</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Confirmation received positively</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

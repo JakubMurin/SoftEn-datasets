@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>User Login</name>
+    <description>User enters email, password, and clicks on the Login button.</description>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has an account.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Incorrect password, inactive account, or unverified email.</condition>
+    </failureEndConditions>
+    <trigger>User wants to access the platform.</trigger>
+    <mainSequence>
+        <step id="S1">Customer enters email, password, and clicks on the Login button.</step>
+        <step id="S2">UI sends login data to API Gateway service.</step>
+        <step id="S3">API Gateway service retrieves user data based on email from API Gateway DB.</step>
+        <step id="S4">API Gateway DB returns user-related information to the service.</step>
+        <step id="S5">If password is incorrect, account is inactive, or email is unverified:</step>
+        <step id="S6">Service returns an error message to UI.</step>
+        <step id="S7">UI displays the error message.</step>
+        <step id="S8">Service generates access token and refresh token.</step>
+        <step id="S9">Service saves refresh token in the refresh_token table in the database.</step>
+        <step id="S10">Service provides user information, access token, and refresh token to UI.</step>
+        <step id="S11">UI saves the information in local storage, redirects to the homepage.</step>
+    </mainSequence>
+</useCase>

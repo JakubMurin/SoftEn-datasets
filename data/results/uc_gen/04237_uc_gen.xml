@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Compose Message</name>
+    <actors>
+        <actor>Authenticated User</actor>
+        <actor>New Message UI</actor>
+        <actor>ReST Interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message is successfully composed and sent</condition>
+    </successEndConditions>
+    <trigger>User wants to compose a new message</trigger>
+    <mainSequence>
+        <step id="S1">User writes a new draft with or without participants</step>
+        <step id="S2">Throttle save the draft</step>
+        <step id="S3">API receives POST request to create a new message</step>
+        <step id="S4">API acknowledges creation with status 204</step>
+        <step id="S5">API responds with message details</step>
+        <step id="S6">User edits the draft</step>
+        <step id="S7">Throttle save the edited draft</step>
+        <step id="S8">API receives PATCH request to update the message</step>
+        <step id="S9">API acknowledges patch with status 204</step>
+        <step id="S10">API responds with updated message details</step>
+        <step id="S11">User hits "Send"</step>
+        <step id="S12">API receives POST request to send the message</step>
+        <step id="S13">API validates participants and calculates discussion ID</step>
+        <step id="S14">API acknowledges the send action with status 204</step>
+        <step id="S15">API responds with message and discussion details</step>
+        <step id="S16">Compose UI renders the discussion</step>
+        <step id="S17">Compose UI notifies the user</step>
+    </mainSequence>
+</useCase>

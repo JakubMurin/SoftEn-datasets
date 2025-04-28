@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Complete Tech Report Process</name>
+    <description>Complete the technical report generation process for a ticket.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TicketTransitions</actor>
+        <actor>ProfessionalTicket</actor>
+        <actor>TechReport</actor>
+        <actor>ClientRestService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the completion of the technical report generation process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Technical Report process completed successfully.</condition>
+    </successEndConditions>
+    <trigger>User completes the technical report generation process.</trigger>
+    <mainSequence>
+        <step id="S1">User completes the technical report process using the client service, ticket, and user details.</step>
+        <step id="S2">TicketTransitions triggers technical ERP review completion for the client service, ticket, and user.</step>
+        <step id="S3">TicketTransitions checks the category of the technical ticket.</step>
+        <step id="S4">TicketTransitions calculates the quality of the report.</step>
+        <step id="S5">TicketTransitions prompts the user to enter comments for technical image quality if the report quality is not 100% and no comments are present.</step>
+        <step id="S6">TicketTransitions retrieves the technical report.</step>
+        <step id="S7">TicketTransitions sets the quality of the report.</step>
+        <step id="S8">TicketTransitions sets the completed time for the report.</step>
+        <step id="S9">TicketTransitions sets the ERP for the user.</step>
+        <step id="S10">ClientRestService saves the technical ticket with status TECH_COMPLETED.</step>
+        <step id="S11">ClientRestService creates or updates the DICOM study for the ticket.</step>
+        <step id="S12">ClientRestService creates or updates the professional ticket with ticket and user details.</step>
+        <step id="S13">TicketTransitions generates a response letter for the technical report ERP.</step>
+    </mainSequence>
+</useCase>

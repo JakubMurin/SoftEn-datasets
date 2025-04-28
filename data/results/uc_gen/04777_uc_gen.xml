@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Import JSON File</name>
+    <actors>
+        <actor>WarehouseEmployee</actor>
+    </actors>
+    <preconditions>
+        <precondition>There is a JSON file available for import.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">WarehouseEmployee imports a JSON file.</step>
+        <step id="S2">JsonImporterUI creates the file.</step>
+        <step id="S3">JsonImporterUI asks for user information.</step>
+        <step id="S4">WarehouseEmployee provides the filename.</step>
+        <step id="S5">JsonImporterController processes the filename.</step>
+        <step id="S6">JsonImporter creates an importer for the filename.</step>
+        <step id="S7">JsonImporter parses the warehouse structure from the file.</step>
+        <step id="S8">WarehouseBuilder creates a warehouse from the parsed structure.</step>
+        <step id="S9">WarehouseRepository saves the warehouse data.</step>
+        <step id="S10">AisleBuilder creates aisles for the warehouse.</step>
+        <step id="S11">AisleRepository saves the aisles data.</step>
+        <step id="S12">SectionBuilder creates sections for the aisles.</step>
+        <step id="S13">SectionRepository saves the sections data.</step>
+        <step id="S14">ShelfBuilder creates shelves for the sections.</step>
+        <step id="S15">ShelfRepository saves the shelves data.</step>
+        <step id="S16">AGVDockBuilder creates AGV docks for the warehouse.</step>
+        <step id="S17">AGVDockRepository saves the AGV dock data.</step>
+        <step id="S18">JsonImporter displays user information.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Create Operation Request</name>
+    <description>Allows a Doctor to create a new operation request.</description>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Doctor is authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The operation request is successfully created.</condition>
+    </successEndConditions>
+    <trigger>Doctor navigates to the Create Operation Request page.</trigger>
+    <mainSequence>
+        <step id="S1">Navigate to the Create Operation Request page.</step>
+        <step id="S2">Fill in the operation request information, including Patient ID, Doctor ID, Operation Type ID, Deadline, and Priority.</step>
+        <step id="S3">Submit the form.</step>
+        <step id="S4">Handle the form submission. (handleSubmit)</step>
+        <step id="S5">Create an operation request using the entered data.</step>
+        <step id="S6">Obtain authentication token.</step>
+        <step id="S7">Check the Doctor's role using the token.</step>
+        <step id="S8">Make a POST request to /api/OperationRequest/create-operation-request.</step>
+        <step id="S9">Receive the OperationRequestDto from the API.</step>
+        <step id="S10">Set success message.</step>
+        <step id="S11">Clear the form.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">An error occurs.</step>
+            <step id="A1S2">Throw an error and set error message.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

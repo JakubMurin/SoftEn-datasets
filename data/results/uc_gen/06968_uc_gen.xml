@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Reboot Node</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Host</actor>
+        <actor>DPU</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates a reboot process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Node successfully rebooted.</condition>
+    </successEndConditions>
+    <trigger>User requests a reboot.</trigger>
+    <mainSequence>
+        <step id="S1">User coredons the node.</step>
+        <step id="S2">User initiates the reboot process.</step>
+        <step id="S3">User uncordons the node.</step>
+        <step id="S4">Host detects the need for a reboot and coredons the node.</step>
+        <step id="S5">Host is ready to reboot and informs DPU.</step>
+        <step id="S6">DPU updates PDB and reboots.</step>
+        <step id="S7">Host reconnects to DPU after reboot.</step>
+        <step id="S8">DPU updates PDB after reboot.</step>
+        <step id="S9">Host uncordons the node.</step>
+    </mainSequence>
+</useCase>

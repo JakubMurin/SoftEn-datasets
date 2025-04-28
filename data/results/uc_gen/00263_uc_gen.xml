@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Wybranie listy kont oczekujących</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Zarządca wybiera listę kont oczekujących</step>
+        <step id="S2">Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta</step>
+        <step id="S3">AccountController odbiera żądanie i przekazuje je do AccountEndpoint</step>
+        <step id="S4">AccountEndpoint wykonuje getAccountSearchPreferences</step>
+        <step id="S5">AccountService wykonuje getAccountSearchPreferences</step>
+        <step id="S6">AccountService wykonuje findByLogin w przypadku braku konta</step>
+        <step id="S7">AccountService wykonuje findByLogin w przypadku istnienia konta</step>
+        <step id="S8">AccountService wykonuje findByAccount w przypadku braku preferencji dla konta</step>
+        <step id="S9">AccountService wykonuje findByAccount w przypadku istnienia preferencji dla konta</step>
+        <step id="S10">AccountService zwraca informację zwrotną do AccountEndpoint</step>
+        <step id="S11">AccountEndpoint przekazuje informację zwrotną do AccountController</step>
+        <step id="S12">AccountController przekazuje informację zwrotną do Nawigatora</step>
+        <step id="S13">Nawigator wysyła żądanie pobrania listy</step>
+        <step id="S14">AccountController odbiera żądanie i przekazuje je do AccountEndpoint</step>
+        <step id="S15">AccountEndpoint wykonuje getNotConfirmedAccounts</step>
+        <step id="S16">AccountService wykonuje getNotConfirmedAccounts</step>
+        <step id="S17">AccountService wykonuje findByLogin w przypadku braku konta</step>
+        <step id="S18">AccountService wykonuje findByLogin w przypadku istnienia konta</step>
+        <step id="S19">AccountService wykonuje findByAccount i create w przypadku braku preferencji dla konta</step>
+        <step id="S20">AccountService wykonuje findByAccount i update w przypadku istnienia preferencji dla konta</step>
+        <step id="S21">AccountService wykonuje findNotConfirmedAccounts</step>
+        <step id="S22">AccountService zwraca listę kont do AccountEndpoint</step>
+        <step id="S23">AccountEndpoint przekazuje listę kont do AccountController</step>
+        <step id="S24">AccountController przekazuje listę kont do Nawigatora</step>
+    </mainSequence>
+</useCase>

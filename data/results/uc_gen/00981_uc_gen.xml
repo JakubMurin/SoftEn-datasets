@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>Complete Transaction Using Vipps</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserVippsApp</actor>
+        <actor>Merchant</actor>
+        <actor>Vipps</actor>
+    </actors>
+    <preconditions>
+        <precondition>Users and Merchant have registered and connected their Vipps accounts.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Transaction completed successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Transaction aborted or failed.</condition>
+    </failureEndConditions>
+    <trigger>Initiate transaction request.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the transaction with the Merchant.</step>
+        <step id="S2">Merchant initiates the transaction with Vipps, specifying scopes including name, address, and email.</step>
+        <step id="S3">Vipps establishes a session link with the Merchant.</step>
+        <step id="S4">Merchant triggers the transaction session for UserVippsApp.</step>
+        <step id="S5">UserVippsApp approves the payment and details sharing with Vipps.</step>
+        <step id="S6">Vipps saves the consent and generates a sub (subject).</step>
+        <step id="S7">Vipps performs the payment on behalf of the user.</step>
+        <step id="S8">Vipps sends a response to UserVippsApp.</step>
+        <step id="S9">UserVippsApp sends the response to the Merchant.</step>
+        <step id="S10">Merchant retrieves transaction details from Vipps.</step>
+        <step id="S11">Vipps returns the transaction details, including the sub, to the Merchant.</step>
+        <step id="S12">Merchant retrieves user information based on the sub.</step>
+        <step id="S13">Vipps returns the user information to the Merchant.</step>
+        <step id="S14">Merchant processes the session result.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Consulta Veterinária</name>
+    <actors>
+        <actor>cliente</actor>
+        <actor>secretaria</actor>
+        <actor>veterinario</actor>
+    </actors>
+    <preconditions>
+        <precondition>Cliente deseja marcar uma consulta veterinária.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Cliente marca consulta com a secretaria.</step>
+        <step id="S2">Secretaria confirma a consulta com o cliente.</step>
+        <step id="S3">Cliente informa os sintomas ao veterinário.</step>
+        <step id="S4">Veterinário registra os sintomas.</step>
+        <step id="S5">Veterinário fornece diagnóstico e plano de tratamento ao cliente.</step>
+        <step id="S6">Cliente retorna para consulta com o veterinário.</step>
+        <step id="S7">Veterinário registra pedido de exames.</step>
+        <step id="S8">Veterinário fornece resultados no histórico ao cliente.</step>
+        <step id="S9">Veterinário fornece receitas ao cliente.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Cliente informa dados pessoais à secretaria.</step>
+            <step id="A1S2">Secretaria atualiza cadastro.</step>
+            <step id="A1S3">Secretaria confirma atualização com o cliente.</step>
+        </asteps>
+        <asteps id="A2" start="S7">
+            <step id="A2S1">Veterinário marca exames.</step>
+            <step id="A2S2">Veterinário solicita exames ao cliente.</step>
+        </asteps>
+        <asteps id="A3" start="S7">
+            <step id="A3S1">Veterinário finaliza tratamento.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

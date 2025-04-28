@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>CPS</actor>
+        <actor>CM</actor>
+        <actor>DG</actor>
+        <actor>SWP</actor>
+        <actor>S</actor>
+        <actor>MGI</actor>
+    </actors>
+    <preconditions>
+        <precondition>Caller, CityMap, DeliveryGraph, startWaypoint, successor, and minimalGreyIntersection are initialized.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Caller computes the delivery graph by sending a request to the CityMap.</step>
+        <step id="S2">CityMap initializes a TreeMap for mappedRoutes.</step>
+        <step id="S3">CityMap iterates through pointsContainedInRequest.</step>
+        <step id="S4">CityMap gets the startWaypointIntersection.</step>
+        <step id="S5">CityMap initializes predecessors and durations arrays.</step>
+        <step id="S6">CityMap adds startWaypointIntersection to greys.</step>
+        <step id="S7">CityMap finds the minimalGreyIntersection.</step>
+        <step id="S8">CityMap iterates through the neighbor intersections of minimalGreyIntersection.</step>
+        <step id="S9">CityMap gets the streetSection and updates durations and predecessors arrays.</step>
+        <step id="S10">CityMap removes minimalGreyIntersection from greys.</step>
+        <step id="S11">CityMap puts minimalGreyIntersection into blacks.</step>
+        <step id="S12">CityMap uses predecessors array to fill mappedRoutes.</step>
+        <step id="S13">DeliveryGraph is created.</step>
+        <step id="S14">CityMap creates mappedRoutes in DeliveryGraph.</step>
+        <step id="S15">CityMap sends the deliveryGraph back to the Caller.</step>
+    </mainSequence>
+</useCase>

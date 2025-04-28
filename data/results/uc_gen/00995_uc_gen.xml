@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Generate Random Numbers</name>
+    <description>This use case involves the generation of random numbers based on the specified distribution.</description>
+    <actors>
+        <actor>ProblemSolver</actor>
+        <actor>DataServer</actor>
+        <actor>UniformRandomDistribution</actor>
+        <actor>NormalRandomDistribution</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataServer is activated and able to communicate with ProblemSolver.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Random numbers are successfully generated and sent back to ProblemSolver.</condition>
+    </successEndConditions>
+    <trigger>ProblemSolver sends a POST request to DataServer with encrypted session key and data.</trigger>
+    <mainSequence>
+        <step id="S1">DataServer decrypts the encrypted session key.</step>
+        <step id="S2">DataServer decrypts the encrypted data.</step>
+        <step id="S3">DataServer parses the decrypted data using JSON.</step>
+        <step id="S4">DataServer randomly chooses between two distributions (Uniform or Normal).</step>
+        <step id="S5">DataServer requests random numbers from the selected distribution.</step>
+        <step id="S6">DataServer encrypts the response data using the session key.</step>
+        <step id="S7">DataServer retrieves the encrypted session key.</step>
+        <step id="S8">DataServer sends a response with 200 OK status containing the encrypted session key and data to ProblemSolver.</step>
+    </mainSequence>
+</useCase>

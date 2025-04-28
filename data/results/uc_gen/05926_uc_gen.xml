@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>View list of rooms</name>
+    <actors>
+        <actor>Customers</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customers open the rooms list page.</precondition>
+    </preconditions>
+    <trigger>Request for retrieving all rooms.</trigger>
+    <mainSequence>
+        <step id="S1">Customers opens the rooms list page.</step>
+        <step id="S2">UI receives request for /rooms through router.</step>
+        <step id="S3">Controller calls getAllRooms() method.</step>
+        <step id="S4">Repository executes findAll() method.</step>
+        <step id="S5">Model fetches all rooms from the Database.</step>
+        <step id="S6">All rooms data is passed back from Model to Controller.</step>
+        <step id="S7">List of rooms is successfully sent back for display.</step>
+    </mainSequence>
+</useCase>

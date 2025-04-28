@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Consulta Veterinária</name>
+    <actors>
+        <actor>Cliente</actor>
+        <actor>Secretária</actor>
+        <actor>Veterinário</actor>
+    </actors>
+    <preconditions>
+        <precondition>Cliente precisa ter agendado a consulta</precondition>
+        <precondition>Secretária disponível para confirmar e validar dados</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Consulta realizada com sucesso</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Consulta não realizada devido a falta de confirmação</condition>
+    </failureEndConditions>
+    <trigger>Cliente informa sintomas ao Veterinário</trigger>
+    <mainSequence>
+        <step id="S1">Cliente agenda consulta com a Secretária</step>
+        <step id="S2">Secretária confirmação de consulta com Cliente</step>
+        <step id="S3">Cliente informa sintomas ao Veterinário</step>
+        <step id="S4">Veterinário registra sintomas informados</step>
+        <step id="S5">Veterinário fornece diagnóstico e plano de tratamento ao Cliente</step>
+        <step id="S6">Cliente retorna para consulta com o Veterinário</step>
+        <step id="S7">Veterinário registra pedido de exames solicitados por Cliente</step>
+        <step id="S8">Veterinário fornece resultados de exames no histórico ao Cliente</step>
+        <step id="S9">Veterinário fornece receitas médicas ao Cliente</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Generate Fault Management Report</name>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Fault Management Job is scheduled and in progress.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Report is successfully generated and completed.</condition>
+    </successEndConditions>
+    <trigger>Buyer/Client requests to generate a Fault Management Report.</trigger>
+    <mainSequence>
+        <step id="S1">Buyer/Client sends a POST request to create a Fault Management Job.</step>
+        <step id="S2">Fault Management Job is created and set to in progress state.</step>
+        <step id="S3">Fault Management Job generates necessary data.</step>
+        <step id="S4">Fault Management Report is created causing report creation.</step>
+        <step id="S5">Fault Management Report is set to in progress state.</step>
+        <step id="S6">Fault Management Report collects required data.</step>
+        <step id="S7">Fault Management Report is completed successfully.</step>
+        <step id="S8">Fault Management Job is set to completed state.</step>
+        <step id="S9">Buyer/Client requests to retrieve the Fault Management Report.</step>
+        <step id="S10">Fault Management Report content is sent to the Buyer/Client.</step>
+    </mainSequence>
+</useCase>

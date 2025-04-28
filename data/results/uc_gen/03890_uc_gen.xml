@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Manage Build Creation</name>
+    <description>Allows the DevSecOps Manager to initiate the build creation process.</description>
+    <actors>
+        <actor>DevSecOpsManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The necessary resources for provisioning are available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Build successfully created and triggered in the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Build creation failed or not completed as expected.</condition>
+    </failureEndConditions>
+    <trigger>User requests to create build.</trigger>
+    <mainSequence>
+        <step id="S1">DevSecOps Manager initiates the creation of a build in the system.</step>
+        <step id="S2">DevSecOps Manager provides specifications for the build (name: hello, file: ./templates/build.yml).</step>
+        <step id="S3">The Service Orchestrator receives build creation request from DevSecOps Manager.</step>
+        <step id="S4">The Provisioner creates the build based on provided specifications.</step>
+    </mainSequence>
+</useCase>

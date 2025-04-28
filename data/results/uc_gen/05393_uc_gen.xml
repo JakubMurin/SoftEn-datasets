@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Process Payment Transaction</name>
+    <description>Allow a Member to complete a payment transaction through the CLMS Front End</description>
+    <actors>
+        <actor>Member</actor>
+        <actor>FrontEnd</actor>
+        <actor>PaymentService</actor>
+        <actor>Database</actor>
+        <actor>MobileBanking</actor>
+    </actors>
+    <preconditions>
+        <precondition>Member has selected a payment option</precondition>
+        <precondition>FrontEnd is operational</precondition>
+        <precondition>PaymentService is available</precondition>
+    </preconditions>
+    <trigger>Member initiates a payment transaction</trigger>
+    <mainSequence>
+        <step id="S1">Member selects a payment option</step>
+        <step id="S2">FrontEnd initiates the payment request</step>
+        <step id="S3">PaymentService requests payment processing</step>
+        <step id="S4">MobileBanking processes the transaction</step>
+        <step id="S5">MobileBanking sends transaction authentication to the Member</step>
+        <step id="S6">Member authorizes the transaction</step>
+        <step id="S7">MobileBanking confirms the transaction success</step>
+        <step id="S8">PaymentService updates the payment status in Database</step>
+        <step id="S9">Database confirms the update</step>
+        <step id="S10">PaymentService displays a success message on FrontEnd</step>
+        <step id="S11">FrontEnd shows a confirmation to the Member</step>
+    </mainSequence>
+</useCase>

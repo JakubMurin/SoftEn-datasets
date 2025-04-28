@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Has Keychain Entry Endpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User A initiates transaction by calling Tx HasKeychainEntryV1</step>
+        <step id="S2">API Client sends a request to API Server</step>
+        <step id="S3">API Server sets key and value in AWS Secrets Manager</step>
+        <step id="S4">AWS Secrets Manager gets AWS client</step>
+        <step id="S5">AWS Secrets Manager describes the secret</step>
+        <step id="S6">If successful, API Server responds with True</step>
+        <step id="S7">If an error occurs, API Server responds with an error message</step>
+        <step id="S8">API Server sends a response to API Client</step>
+        <step id="S9">API Client formats the response</step>
+        <step id="S10">API Client sets the keychain entry response</step>
+    </mainSequence>
+</useCase>

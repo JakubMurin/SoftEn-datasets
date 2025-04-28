@@ -1,0 +1,23 @@
+<useCase id="WD1">
+    <name>Resolve Domain Name to IP</name>
+    <description>User needs to successfully convert domain name to IP address.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to online resources</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully receives an IP address</condition>
+    </successEndConditions>
+    <trigger>User queries for IP address</trigger>
+    <mainSequence>
+        <step id="S1">User queries for "www.example.com"</step>
+        <step id="S2">Root DNS Server receives the query</step>
+        <step id="S3">Root DNS Server refers the query to TLD DNS Server (".com")</step>
+        <step id="S4">TLD DNS Server receives the query</step>
+        <step id="S5">TLD DNS Server refers query to Authoritative DNS Server</step>
+        <step id="S6">Authoritative DNS Server receives the query</step>
+        <step id="S7">Authoritative DNS Server responds with IP address "93.184.215.14"</step>
+    </mainSequence>
+</useCase>

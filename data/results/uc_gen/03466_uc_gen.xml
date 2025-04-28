@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Perform Backup</name>
+    <actors>
+        <actor>User</actor>
+        <actor>BackupManager</actor>
+        <actor>Schedule</actor>
+        <actor>Logger</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User starts the backup process</step>
+        <step id="S2">BackupManager requests the next backup execution schedule from Schedule</step>
+        <step id="S3">BackupManager logs a success message indicating backup has started using Logger</step>
+        <step id="S4">BackupManager sends a notification that the backup has started using NotificationService</step>
+    </mainSequence>
+</useCase>

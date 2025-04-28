@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Battle Process</name>
+    <description>Manage the process of initiating and conducting a battle between clients</description>
+    <actors>
+        <actor>Client1</actor>
+        <actor>Client2</actor>
+        <actor>Server</actor>
+        <actor>BattleController</actor>
+        <actor>BattleService</actor>
+        <actor>Battle</actor>
+    </actors>
+    <preconditions>
+        <precondition>Clients are connected to the server</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Battle has been successfully completed</condition>
+    </successEndConditions>
+    <trigger>Clients send Battle Request</trigger>
+    <mainSequence>
+        <step id="S1">Client1 sends Battle Request</step>
+        <step id="S2">Server processes the request</step>
+        <step id="S3">Client2 sends Battle Request</step>
+        <step id="S4">Server processes the request</step>
+        <step id="S5">BattleController finds or creates Battle</step>
+        <step id="S6">BattleService creates a new Battle</step>
+        <step id="S7">BattleService finds an open Battle and Client2 joins</step>
+        <step id="S8">Battle starts</step>
+        <step id="S9">Battle ends</step>
+        <step id="S10">Server sends Response to Client1</step>
+        <step id="S11">Server sends Response to Client2</step>
+    </mainSequence>
+</useCase>

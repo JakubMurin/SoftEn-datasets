@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>User triggers rendering process</name>
+    <description>User initializes the rendering components to create the UI elements.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba, renderC, App, renderLiba, createChildren, and UserCard components are available.</precondition>
+    </preconditions>
+    <trigger>User wants to render the UserCard component.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a create message to Liba with App as an argument.</step>
+        <step id="S2">Liba creates cInstance after receiving the create message from User.</step>
+        <step id="S3">Liba passes cInstance to renderC.</step>
+        <step id="S4">renderC receives cInstance and starts rendering process by passing props and renderLiba to App.</step>
+        <step id="S5">App creates a 'button' element with renderLiba.</step>
+        <step id="S6">renderLiba returns bElement to App.</step>
+        <step id="S7">App creates UserCard component using renderLiba.</step>
+        <step id="S8">UserCard component requests createChildren to create children elements with UserCard, AppCInstance, props, and key as parameters.</step>
+        <step id="S9">createChildren retrieves instances from cache and creates elements if not previously drawn.</step>
+        <step id="S10">Liba creates UserCard with AppCInstance, props, and key.</step>
+        <step id="S11">renderC receives UserCInstance from Liba.</step>
+        <step id="S12">UserCard component starts rendering process - creates 'div' elements.</step>
+        <step id="S13">UserCard creates another 'div' element.</step>
+        <step id="S14">renderLiba returns element to UserCard.</step>
+        <step id="S15">UserCard returns the element to renderC.</step>
+        <step id="S16">renderC assigns element to instance.element.</step>
+    </mainSequence>
+</useCase>

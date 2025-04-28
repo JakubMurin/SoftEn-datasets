@@ -1,0 +1,24 @@
+<useCase id="UC001">
+  <name>List Floors with Passages</name>
+  <description>Allows the user to list floors of buildings with passages to other buildings</description>
+  <actors>
+    <actor>Actor</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user wants to list floors with passages</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Pisos com passagens returned successfully</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Error message returned</condition>
+  </failureEndConditions>
+  <trigger>User requests to list floors with passages</trigger>
+  <mainSequence>
+    <step id="S1">Actor wants to list floors with passages</step>
+    <step id="S2">Container receives request and forwards it to API</step>
+    <step id="S3">API processes the request and returns status code</step>
+    <step id="S4">If status code is 200, Container sends back floors with passages</step>
+    <step id="S5">If status code is 400, Container sends back an error message</step>
+  </mainSequence>
+</useCase>

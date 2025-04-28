@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Listing Questions</name>
+    <description>As a user, I want to list questions for a specific survey.</description>
+    <actors>
+        <actor>Browser</actor>
+        <actor>HttpServer</actor>
+        <actor>controllers</actor>
+        <actor>ListQuestionsController</actor>
+        <actor>QuestionDao</actor>
+        <actor>OptionDao</actor>
+        <actor>QUESTION_DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated and has access to the survey.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The questions and options are successfully retrieved from the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the retrieval process.</condition>
+    </failureEndConditions>
+    <trigger>POST /api/listQuestions</trigger>
+    <mainSequence>
+        <step id="S1">Browser sends a POST request to HttpServer to list questions.</step>
+        <step id="S2">HttpServer forwards the request to controllers.</step>
+        <step id="S3">controllers call ListQuestionsController to handle the request.</step>
+        <step id="S4">ListQuestionsController parses the survey ID from the request.</step>
+        <step id="S5">ListQuestionsController retrieves questions from QuestionDao based on the survey ID.</step>
+        <step id="S6">ListQuestionsController retrieves options from OptionDao based on the question ID.</step>
+        <step id="S7">QuestionDao queries QUESTION_DB for questions related to the survey ID.</step>
+        <step id="S8">OptionDao queries QUESTION_DB for options related to the question ID.</step>
+        <step id="S9">ListQuestionsController responds with OK 200 to HttpServer.</step>
+        <step id="S10">HttpServer writes the response to the socket.</step>
+        <step id="S11">Browser receives HTTP/1.1 200 OK response from HttpServer.</step>
+    </mainSequence>
+</useCase>

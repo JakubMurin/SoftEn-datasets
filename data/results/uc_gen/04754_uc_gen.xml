@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Edit Question</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Course</actor>
+        <actor>UserClass</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authorized</precondition>
+        <precondition>Course, Teacher, Quiz, and Question exist</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Question edited successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Question not found</condition>
+        <condition>QuizQuestion not found</condition>
+        <condition>Quiz not found</condition>
+        <condition>Teacher not found</condition>
+        <condition>User not authorized</condition>
+        <condition>Course not found</condition>
+    </failureEndConditions>
+    <trigger>edit_question(course_id, quiz_id, question_id, coures_material_data, response, current_user)</trigger>
+    <mainSequence>
+        <step id="S1">Search course by ID</step>
+        <step id="S2">Search teacher by course</step>
+        <step id="S3">Search quiz by ID</step>
+        <step id="S4">Search question by ID</step>
+        <step id="S5">Edit question</step>
+    </mainSequence>
+</useCase>

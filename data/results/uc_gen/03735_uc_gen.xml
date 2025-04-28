@@ -1,0 +1,38 @@
+<useCase id="1">
+    <name>User completes typing challenge</name>
+    <description>User completes a typing challenge by typing characters and words accurately within time limits.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Keyboard</actor>
+        <actor>JavaScript</actor>
+        <actor>HTML DOM</actor>
+        <actor>Fishtext API</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the website and starts the typing challenge.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully completes the typing challenge.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to complete the typing challenge within the time limit.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User requests text generation from Fishtext API.</step>
+        <step id="S2">Fishtext API returns text to JavaScript.</step>
+        <step id="S3">JavaScript displays text on HTML DOM.</step>
+        <step id="S4">User presses a key on the keyboard.</step>
+        <step id="S5">Keyboard inputs the character into HTML DOM.</step>
+        <step id="S6">JavaScript receives the inputted character.</step>
+        <step id="S7">JavaScript checks the length of all entered characters.</step>
+        <step id="S8">JavaScript updates input status based on correctness (correct, incorrect, backspace).</step>
+        <step id="S9">JavaScript stops the timer and calculates game points.</step>
+        <step id="S10">JavaScript creates an object with game data and sends it to the Server.</step>
+        <step id="S11">Server processes the current attempt and updates the database.</step>
+        <step id="S12">JavaScript displays end game window on HTML DOM.</step>
+        <step id="S13">JavaScript prepares data arrays for speed graph and draws the diagram on HTML DOM.</step>
+        <step id="S14">JavaScript stores game data in localStorage.</step>
+    </mainSequence>
+</useCase>

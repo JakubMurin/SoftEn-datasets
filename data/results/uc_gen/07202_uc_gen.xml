@@ -1,0 +1,23 @@
+<useCase id="GrantSubmitPermissions">
+    <name>Navigate to Repository Dashboard and grant submit permissions</name>
+    <actors>
+        <actor>FacultyMember</actor>
+        <actor>Repository Dashboard</actor>
+        <actor>Permission Service</actor>
+        <actor>Repository DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Faculty Member needs to access the Repository Dashboard</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Faculty Member navigates to the Repository Dashboard</step>
+        <step id="S2">Repository Dashboard redirects to the Permission Service for permission update page</step>
+        <step id="S3">Permission Service displays the permission update user interface</step>
+        <step id="S4">Repository Dashboard displays the UI to the Faculty Member</step>
+        <step id="S5">Faculty Member pastes a list of NetIDs</step>
+        <step id="S6">Permission Service validates and processes the NetIDs</step>
+        <step id="S7">Permission Service updates permissions for the provided NetIDs in the Repository DB</step>
+        <step id="S8">Permission Service displays a confirmation message to the Repository Dashboard</step>
+        <step id="S9">Repository Dashboard shows a confirmation that the NetIDs have been recognized by the DDR</step>
+    </mainSequence>
+</useCase>

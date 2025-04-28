@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Upload Inventory Files</name>
+    <actors>
+        <actor>Archivist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Files successfully uploaded and inventory updated</condition>
+    </successEndConditions>
+    <trigger>User wants to upload inventory files</trigger>
+    <mainSequence>
+        <step id="S1">Archivist signs in to the system</step>
+        <step id="S2">Archivist accesses the upload interface</step>
+        <step id="S3">Archivist chooses inventory file(s)</step>
+        <step id="S4">Archivist provides metadata</step>
+        <step id="S5">Archivist defines access rights</step>
+        <step id="S6">Metadata and access rights are saved in the database</step>
+        <step id="S7">Archivist uploads file(s)</step>
+        <step id="S8">Files are stored in the archive</step>
+        <step id="S9">Inventory list is updated</step>
+        <step id="S10">New entries are added to archival collections</step>
+        <step id="S11">Notification is sent to donor representatives</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Archivist skips providing metadata</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Upload failure due to file format issue</description>
+            <step id="E1S1">Archivist checks file format and re-uploads</step>
+        </esteps>
+    </errorSteps>
+</useCase>

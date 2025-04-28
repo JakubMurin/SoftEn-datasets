@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Accessing Application</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>AuthorizationServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>User needs to access the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully accesses the application</condition>
+    </successEndConditions>
+    <trigger>User accesses the application</trigger>
+    <mainSequence>
+        <step id="S1">User accesses the application</step>
+        <step id="S2">Client requests authorization from Authorization Server</step>
+        <step id="S3">Authorization Server displays login screen to the User</step>
+        <step id="S4">User enters credentials</step>
+        <step id="S5">Authorization Server authenticates the user</step>
+        <step id="S6">User authorizes access</step>
+        <step id="S7">Authorization Server redirects to the redirect URI with access token/id token</step>
+        <step id="S8">Client displays protected resource to the User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,56 @@
+<useCase id="UC001">
+    <name>Count User Errors</name>
+    <actors>
+        <actor>User</actor>
+        <actor>User Interface</actor>
+        <actor>Error Handler</actor>
+        <actor>Error Counter</actor>
+        <actor>Log Manager</actor>
+        <actor>Error Log</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User error count updated successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in updating user error count</condition>
+    </failureEndConditions>
+    <trigger>User performs an action</trigger>
+    <mainSequence>
+        <step id="S1">User performs an action</step>
+        <step id="S2">User error detection request sent to Error Handler</step>
+        <step id="S3">User error count updated</step>
+        <step id="S4">User error count displayed</step>
+        <step id="S5">Normal operation performed</step>
+        <step id="S6">Notification of normal operation sent to Error Handler</step>
+        <step id="S7">Error count decreased</step>
+        <step id="S8">Confirmation of count decrease sent to UI</step>
+        <step id="S9">Check if count reaches threshold</step>
+        <step id="S10">Error message displayed</step>
+        <step id="S11">Error logged</step>
+        <step id="S12">Recovery process initiated</step>
+        <step id="S13">Recovery process completed</step>
+        <step id="S14">Recovery completion message displayed to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">Error occurred, display error message</step>
+            <step id="A1S2">Request error logging</step>
+            <step id="A1S3">Log error</step>
+            <step id="A1S4">Recovery process requested</step>
+            <step id="A1S5">Recovery process completed</step>
+            <step id="A1S6">Recovery completion message displayed to User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S2">
+            <description>Error logging and recovery steps</description>
+            <step id="E1S1">Log error</step>
+            <step id="E1S2">Recovery process requested</step>
+            <step id="E1S3">Recovery process completed</step>
+            <step id="E1S4">Recovery completion message displayed to User</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Buy iPhone 2017</name>
+    <actors>
+        <actor>Wang</actor>
+        <actor>js</actor>
+        <actor>alipay</actor>
+        <actor>debit</actor>
+        <actor>dust</actor>
+    </actors>
+    <preconditions>
+        <precondition>Wang needs a new iPhone 2017.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Wang successfully acquires the iPhone 2017.</condition>
+    </successEndConditions>
+    <trigger>Wang wants to buy an iPhone 2017.</trigger>
+    <mainSequence>
+        <step id="S1">Wang asks js for an iPhone 2017.</step>
+        <step id="S2">js offers the iPhone 2017 for 10000 yuan.</step>
+        <step id="S3">Wang decides to buy the iPhone 2017.</step>
+        <step id="S4">Wang pays 10000 yuan via alipay.</step>
+        <step id="S5">alipay transfers 10000 yuan to js.</step>
+        <step id="S6">js gives the iPhone 2017 to Wang.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Wang borrows 10000 yuan from debit.</step>
+            <step id="A1S2">debit charges 10% monthly interest on the loan.</step>
+            <step id="A1S3">Wang gives the money to js.</step>
+            <step id="A1S4">js gives the iPhone 2017 to Wang.</step>
+            <step id="A1S5">Wang struggles financially for six months.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

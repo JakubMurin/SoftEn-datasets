@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>User signs up for an account</name>
+    <description>User creates an account to access the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>AccessController</actor>
+        <actor>AccessService</actor>
+        <actor>bcrypt</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to register for an account.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registers for an account.</condition>
+    </successEndConditions>
+    <trigger>User initiates the account registration process by sending a POST request to /signup.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to /signup.</step>
+        <step id="S2">AccessController receives the request to sign up.</step>
+        <step id="S3">AccessService processes the signUp request.</step>
+        <step id="S4">AccessService finds the user by email.</step>
+        <step id="S5">AccessService generates a salt.</step>
+        <step id="S6">bcrypt hashes the password with the salt.</step>
+        <step id="S7">AccessService creates a new user with email, hashed password, and role.</step>
+        <step id="S8">AccessService returns the user information to AccessController.</step>
+        <step id="S9">AccessController sends a success message to the User.</step>
+    </mainSequence>
+</useCase>

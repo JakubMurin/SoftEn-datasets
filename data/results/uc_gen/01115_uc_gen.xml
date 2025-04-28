@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Returning Recognized Consumer</name>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Merchant</actor>
+        <actor>Browser</actor>
+        <actor>PH</actor>
+        <actor>DB</actor>
+        <actor>Window</actor>
+        <actor>Page</actor>
+        <actor>SRCI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Consumer initiates Checkout Intent</step>
+        <step id="S2">Merchant creates Payment Request using Payment Request API</step>
+        <step id="S3">Merchant calls HasEnrolledInstruments to check SRC Payment Methods support</step>
+        <step id="S4">Browser initiates CanMakePayment check for installed SRC Common Payment Handler</step>
+        <step id="S5">SRC Common Payment Handler verifies Long-lived Token in IndexDB</step>
+        <step id="S6">Merchant displays Pay Button</step>
+        <step id="S7">Consumer clicks Pay Button</step>
+        <step id="S8">Merchant launches Payment Request flow using Show</step>
+        <step id="S9">Browser checks Payment Handler eligibility</step>
+        <step id="S10">SRC Common Payment Handler invokes Payment Handler</step>
+        <step id="S11">Payment Handler opens Window with Payment Handler Page URL</step>
+        <step id="S12">Payment Handler requests Payment Handler Page</step>
+        <step id="S13">Payment Handler sends data to SRCI Web App</step>
+        <step id="S14">SRCI completes checkout process and sends result back to Payment Handler</step>
+        <step id="S15">Payment Handler sends result data back to Browser</step>
+        <step id="S16">Browser sends result data back to Merchant</step>
+        <step id="S17">Merchant confirms Checkout Completed to Consumer</step>
+    </mainSequence>
+</useCase>

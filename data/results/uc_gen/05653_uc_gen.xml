@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Create New Memo</name>
+    <description>User creates a new memo by filling out a form and submitting it.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>MemosController</actor>
+        <actor>Memo Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User fills out memo form and submits it.</step>
+        <step id="S2">Controller sends POST /memos request to Model.</step>
+        <step id="S3">Model creates a new memo object and saves it to the database.</step>
+        <step id="S4">Database returns success/failure status to Model.</step>
+        <step id="S5">Model returns the new memo object to Controller.</step>
+        <step id="S6">Controller redirects to memos show page.</step>
+        <step id="S7">View displays the new memo to the User.</step>
+    </mainSequence>
+</useCase>

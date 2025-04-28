@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View List of Applications</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Applications Page</actor>
+        <actor>Backend Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>There are existing applications in the database.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of applications is displayed to the User.</condition>
+    </successEndConditions>
+    <trigger>User requests to view the list of applications.</trigger>
+    <mainSequence>
+        <step id="S1">User requests the list of applications from the Applications Page.</step>
+        <step id="S2">Applications Page fetches the list of applications from the Backend Server.</step>
+        <step id="S3">Backend Server queries the Database for the list of applications.</step>
+        <step id="S4">Database returns the list of applications to Backend Server.</step>
+        <step id="S5">Backend Server returns the list of applications to the Applications Page.</step>
+        <step id="S6">Applications Page displays the list of applications to the User.</step>
+    </mainSequence>
+</useCase>

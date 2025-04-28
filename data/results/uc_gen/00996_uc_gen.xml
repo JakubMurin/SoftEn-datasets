@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Generate Random Numbers</name>
+    <description>As a ProblemSolver, I want to generate random numbers from a specified range using different distributions.</description>
+    <actors>
+        <actor>ProblemSolver</actor>
+        <actor>DataServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The ProblemSolver sends a POST request to the DataServer with encrypted session key and data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The DataServer successfully generates random numbers based on the specified distribution.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The DataServer fails to generate random numbers.</condition>
+    </failureEndConditions>
+    <trigger>POST /numbers</trigger>
+    <mainSequence>
+        <step id="S1">Decrypt the encrypted session key.</step>
+        <step id="S2">Decrypt the encrypted data.</step>
+        <step id="S3">Parse the decrypted data.</step>
+        <step id="S4">Choose a random distribution (Uniform or Normal).</step>
+        <step id="S5">Generate random numbers based on the chosen distribution.</step>
+        <step id="S6">Encrypt the response data with the session key.</step>
+        <step id="S7">Get the encrypted session key.</step>
+        <step id="S8">Send the encrypted session key and data back to the ProblemSolver with 200 OK status.</step>
+    </mainSequence>
+</useCase>

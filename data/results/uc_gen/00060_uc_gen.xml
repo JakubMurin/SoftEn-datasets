@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Show Conversations on Messages Page</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Messages Page</actor>
+        <actor>GetMessagesByInboxIdActivity</actor>
+        <actor>Message</actor>
+    </actors>
+    <preconditions>
+        <precondition>Messages Page is opened.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Displayed Conversations on Messages Page.</condition>
+    </successEndConditions>
+    <trigger>User opens Messages Page.</trigger>
+    <mainSequence>
+        <step id="S1">User opens "Messages Page".</step>
+        <step id="S2">"Messages Page" sends a request to "GetMessagesByInboxIdActivity" to get Messages by inbox ID.</step>
+        <step id="S3">"GetMessagesByInboxIdActivity" sends the getMessagesByInboxIdRequest to the database "Message".</step>
+        <step id="S4">The database "Message" processes the getMessagesByInboxIdRequest and returns messages to "GetMessagesByInboxIdActivity".</step>
+        <step id="S5">"GetMessagesByInboxIdActivity" processes the response and sends back the getMessagesByInboxIdResult to "Messages Page".</step>
+        <step id="S6">"Messages Page" displays the received conversations.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Access and Manage Locker via BLE Mailbox</name>
+    <actors>
+        <actor>User</actor>
+        <actor>BLE Mailbox Central</actor>
+        <actor>BLE Mailbox Peripheral</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has BLE Mailbox application installed and running.</precondition>
+        <precondition>BLE Mailbox Central and Peripheral are properly connected.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully accesses and manages the locker via BLE Mailbox.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Connection between BLE Mailbox Central and Peripheral fails.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the process by opening the BLE Mailbox Central.</trigger>
+    <mainSequence>
+        <step id="S1">User opens BLE Mailbox Central.</step>
+        <step id="S2">User requests a scan for devices.</step>
+        <step id="S3">BLE Mailbox Central requests permissions.</step>
+        <step id="S4">Permissions are granted by the user.</step>
+        <step id="S5">BLE Mailbox Central scans for devices.</step>
+        <step id="S6">User selects BLE Mailbox Peripheral.</step>
+        <step id="S7">BLE Mailbox Central requests connection to Peripheral.</step>
+        <step id="S8">Connection handshaking between Central and Peripheral.</step>
+        <step id="S9">BLE Mailbox Central requests state of the locker.</step>
+        <step id="S10">BLE Mailbox Peripheral responds with the state of the locker.</step>
+        <step id="S11">User signs in to the locker.</step>
+        <step id="S12">BLE Mailbox Central signs in to the Peripheral.</step>
+        <step id="S13">BLE Mailbox Peripheral authenticates the user.</step>
+        <step id="S14">BLE Mailbox Central requests state of authentication.</step>
+        <step id="S15">BLE Mailbox Peripheral responds with the state of authentication.</step>
+        <step id="S16">User requests to change the state of the locker.</step>
+        <step id="S17">BLE Mailbox Central requests to change the state of the locker.</step>
+        <step id="S18">BLE Mailbox Peripheral changes the state of the locker.</step>
+        <step id="S19">BLE Mailbox Central requests state of the locker.</step>
+        <step id="S20">BLE Mailbox Peripheral responds with the state of the locker.</step>
+    </mainSequence>
+</useCase>

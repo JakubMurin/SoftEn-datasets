@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Update Receptionist Information</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin requests to update receptionist information via UI/Interface.</step>
+        <step id="S2">UI/Interface sends a GET request to Router for /admin/receptionists/update/{receptionistId}.</step>
+        <step id="S3">Router triggers Controller to show update receptionist form.</step>
+        <step id="S4">Controller fetches receptionist details by calling getReceptionistById on Repository.</step>
+        <step id="S5">Repository searches for receptionist data using ReceptionistModel and Database for receptionistId.</step>
+        <step id="S6">Controller and Router display update form with current data.</step>
+        <step id="S7">Admin fills in updated receptionist details, submits the form.</step>
+        <step id="S8">UI/Interface sends a POST request to Router for /admin/receptionists/update/{receptionistId}.</step>
+        <step id="S9">Router triggers Controller to update receptionist using saveUpdatedReceptionist in Repository.</step>
+        <step id="S10">ReceptionistModel updates receptionist data in Database.</step>
+        <step id="S11">Controller informs Router about successful receptionist update.</step>
+    </mainSequence>
+</useCase>

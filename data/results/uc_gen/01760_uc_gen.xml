@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Manage External Connections</name>
+    <actors>
+        <actor>ADC</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">DeRegister External System(url, type) is initiated by External System.</step>
+        <step id="S2">ADC sends Deregister External from API Gateway(url) request to External Manager.</step>
+        <step id="S3">External Manager processes the request and sends Deregister(url) to API Gateway.</step>
+        <step id="S4">ADC sends Deregister External to Data Exchange(url) request to External Manager.</step>
+        <step id="S5">External Manager processes the request and sends Deregister(url) to Data Exchange.</step>
+        <step id="S6">ADC sends Deregister External from Notification Gateway(url) request to External Manager.</step>
+        <step id="S7">External Manager flushes Notification Gateway.</step>
+        <step id="S8">External Manager sends Deregister(url) to Notification Gateway.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Thu hồi tin nhắn</name>
+    <actors>
+        <actor>Người dùng</actor>
+        <actor>Người nhận</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Người dùng mở cuộc trò chuyện</step>
+        <step id="S2">Người dùng chọn tin nhắn và nhấn "Thu hồi"</step>
+        <step id="S3">Hệ thống kiểm tra thời gian thu hồi</step>
+        <step id="S4">Hệ thống gửi thông báo thu hồi</step>
+        <step id="S5">WebSocket gửi yêu cầu gỡ tin nhắn tới Người nhận</step>
+        <step id="S6">Hệ thống cập nhật trạng thái tin nhắn trong MongoDB</step>
+        <step id="S7">Hệ thống nhận xác nhận cập nhật từ MongoDB</step>
+        <step id="S8">Hệ thống gỡ tin nhắn khỏi giao diện của Người dùng</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Người nhận gỡ tin nhắn</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">Hiển thị lỗi "Không thể thu hồi"</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

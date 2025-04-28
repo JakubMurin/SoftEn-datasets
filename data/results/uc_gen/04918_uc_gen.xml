@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>View Boards</name>
+    <actors>
+        <actor>user</actor>
+        <actor>ui</actor>
+        <actor>ctrl</actor>
+        <actor>protocol</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User views boards.</step>
+        <step id="S2">UI creates instance of socket with serverIp and serverPort, an input stream (inS) and output stream (outS).</step>
+        <step id="S3">UI requests boards to view.</step>
+        <step id="S4">Controller creates protocol.</step>
+        <step id="S5">Controller sets code to VIEW_BOARDS.</step>
+        <step id="S6">Controller sets token to AUTH_TOKEN.</step>
+        <step id="S7">Controller sends protocol through outS.</step>
+        <step id="S8">Controller creates protocol from inS.</step>
+        <step id="S9">Controller gets content as string from inS.</step>
+        <step id="S10">Controller splits content by "\0".</step>
+        <step id="S11">UI shows boards.</step>
+        <step id="S12">User chooses a board.</step>
+        <step id="S13">UI requests history for the chosen board.</step>
+        <step id="S14">Controller creates protocol.</step>
+        <step id="S15">Controller sets code to LIST_HISTORY.</step>
+        <step id="S16">Controller sets content from the chosen board.</step>
+        <step id="S17">Controller sets token to AUTH_TOKEN.</step>
+        <step id="S18">Controller sends protocol through outS.</step>
+        <step id="S19">Controller creates protocol from inS.</step>
+        <step id="S20">Controller gets content as string from inS.</step>
+        <step id="S21">Controller splits content by "\r".</step>
+        <step id="S22">UI shows history.</step>
+    </mainSequence>
+</useCase>

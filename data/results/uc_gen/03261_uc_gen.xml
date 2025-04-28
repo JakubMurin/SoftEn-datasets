@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>Scanner Job</name>
+    <actors>
+        <actor>admin_user</actor>
+        <actor>admin</actor>
+        <actor>explorer</actor>
+        <actor>worker</actor>
+        <actor>exporter</actor>
+        <actor>report_user</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin user starts the scanner job.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin starts the scanner job.</step>
+        <step id="S2">Explorer consumes scan specs.</step>
+        <step id="S3">Worker processes messages based on handler type.</step>
+        <step id="S4">Exporter handles and censors outgoing messages.</step>
+        <step id="S5">Checkup collector updates scheduled checkup information.</step>
+        <step id="S6">Status collector updates scan statuses.</step>
+        <step id="S7">Event collector updates document reports.</step>
+        <step id="S8">Result collector handles messages and updates document reports.</step>
+        <step id="S9">Report user checks for matches.</step>
+    </mainSequence>
+</useCase>

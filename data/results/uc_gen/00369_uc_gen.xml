@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>View Item Definitions</name>
+    <description>User wants to view the definitions of an item.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Qt QML</actor>
+        <actor>Web services C++</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has opened the ItemView.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Definitions are successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Definitions retrieval failed.</condition>
+    </failureEndConditions>
+    <trigger>User requests to view definitions.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the ItemView.</step>
+        <step id="S2">GUI adds the ItemView to the StackView.</step>
+        <step id="S3">GUI sends a request to the Dictionary to get definitions.</step>
+        <step id="S4">Dictionary retrieves and sends back the definitions.</step>
+    </mainSequence>
+</useCase>

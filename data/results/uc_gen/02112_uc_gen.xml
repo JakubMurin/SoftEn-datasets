@@ -1,0 +1,22 @@
+<useCase id="10060">
+    <name>Bereitstellung eines Messenger-Service für eine Organisation</name>
+    <actors>
+        <actor>Akteur in der Rolle Org-Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Mit einem Admin-Account am Registrierungs-Dienst anmelden</step>
+        <step id="S2">Messenger Service erstellen</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Prüfung auf zulässigen Domainnamen</step>
+            <step id="A1S2">Starte neuen Messenger-Service für die Organisation mit Matrix-Domain</step>
+            <step id="A1S3">Initial einrichten</step>
+        </asteps>
+        <asteps id="A2" start="A1S3">
+            <step id="A2S1">Prüfe client_id und client_secret</step>
+            <step id="A2S2">Prüfe ti-provider-accesstoken</step>
+            <step id="A2S3">Prüfe provider-accesstoken</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Realizar tarefa de robô drone</name>
+    <description>O uso do drone para realização de tarefas</description>
+    <actors>
+        <actor>Utente</actor>
+        <actor>robDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>O robô drone está disponível</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tarefa concluída com sucesso</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Falha na execução da tarefa</condition>
+    </failureEndConditions>
+    <trigger>O usuário solicita uma tarefa para o robô drone</trigger>
+    <mainSequence>
+        <step id="S1">O ator Utente requisita uma tarefa ao robDroneGo</step>
+        <step id="S2">O robDroneGo solicita e recebe os pontos iniciais e finais da tarefa</step>
+        <step id="S3">O ator Utente insere os dados necessários</step>
+    </mainSequence>
+</useCase>

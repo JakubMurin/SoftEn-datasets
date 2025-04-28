@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Managing Pending Account List</name>
+    <actors>
+        <actor>Zarządca</actor>
+    </actors>
+    <trigger>Zarządca wybiera listę kont oczekujących</trigger>
+    <mainSequence>
+        <step id="S1">Nawigator - Selecting Pending Account List</step>
+        <step id="S2">Nawigator sends a request to fetch search preferences for the account</step>
+        <step id="S3">AccountController - getAccountSearchPreferences</step>
+        <step id="S4">AccountEndpoint - Information Retreival</step>
+        <step id="S5">AccountService - getAccountSearchPreferences</step>
+        <step id="S6">AccountFacade - findByLogin</step>
+        <step id="S7">Account does not exist</step>
+        <step id="S8.1">AccountFacade handles failure case and informs AccountService</step>
+        <step id="S9">Account exists</step>
+        <step id="S10">AccountFacade informs AccountService</step>
+        <step id="S11">Account searches for List Search Preferences</step>
+        <step id="S11.1">AccountService - findByAccount</step>
+        <step id="S13">Account searches are done and processed successfully</step>
+        <step id="S14">Account assocites search preferences with account successfully</step>
+    </mainSequence>
+</useCase>

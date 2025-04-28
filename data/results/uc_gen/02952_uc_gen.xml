@@ -1,0 +1,49 @@
+<useCase id="UniqueATM">
+    <name>Perform ATM Transaction</name>
+    <description>Allow a customer to perform various ATM transactions</description>
+    <actors>
+        <actor>Customer</actor>
+        <actor>ATM Machine</actor>
+        <actor>Bank System</actor>
+    </actors>
+    <preconditions>
+        <precondition>A customer has inserted their card into the ATM</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>ATM transaction completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>ATM transaction failed</condition>
+    </failureEndConditions>
+    <trigger>User initiates an ATM transaction</trigger>
+    <mainSequence>
+        <step id="S1">Customer inserts card into the ATM</step>
+        <step id="S2">Customer enters PIN</step>
+        <step id="S3">ATM verifies PIN with Bank System</step>
+        <step id="S4">PIN verification successful</step>
+        <step id="S5">Customer selects transaction type</step>
+        <step id="S6">ATM processes selected transaction</step>
+        <step id="S7">Transaction completed</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Customer selects Balance Inquiry</step>
+            <step id="A1S2">ATM requests balance from Bank System</step>
+            <step id="A1S3">Bank System provides balance data</step>
+            <step id="A1S4">ATM displays balance to Customer</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">Customer selects Withdrawal</step>
+            <step id="A2S2">ATM requests withdrawal from Bank System</step>
+            <step id="A2S3">Bank System validates funds</step>
+            <step id="A2S4">Customer enters withdrawal amount</step>
+            <step id="A2S5">Customer confirms withdrawal</step>
+            <step id="A2S6">ATM processes withdrawal</step>
+            <step id="A2S7">Withdrawal approved, dispense cash</step>
+        </asteps>
+        <asteps id="A3" start="S5">
+            <step id="A3S1">Customer selects Cancel</step>
+            <step id="A3S2">Transaction canceled</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

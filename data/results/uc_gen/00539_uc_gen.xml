@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Create and Manage a Security Profile</name>
+    <description>User enables, creates, and manages security profiles.</description>
+    <actors>
+        <actor>SecurityEngineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>A Security Profile has been created and disabled.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">SecurityEngineer enables the Security Profile</step>
+        <step id="S2">Security Profile Manager enables the Security Profile</step>
+        <step id="S3">Security Profile Manager creates secProfileESP with file 'secprofile.yml'</step>
+        <step id="S4">Security Profile Manager disables secProfileESP</step>
+        <step id="S5">Security Profile Manager enables secProfileESP</step>
+        <step id="S6">All attached identities re-evaluate the policies</step>
+    </mainSequence>
+</useCase>

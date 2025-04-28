@@ -1,0 +1,20 @@
+<useCase id="Register">
+    <name>Register</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User fills in registration form with username, email, and password</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User enters details (username, email, password) on the Registration Form</step>
+        <step id="S2">App requests registration</step>
+        <step id="S3">Handler calls Create() method</step>
+        <step id="S4">Service calls Create() method</step>
+        <step id="S5">Repository checks if email is unique</step>
+        <step id="S6">Repository sends OK if email is unique, else sends Error</step>
+        <step id="S7">Service returns OK or Error to Handler</step>
+        <step id="S8">Handler displays success or error to User</step>
+        <step id="S9">User sees the registration result</step>
+    </mainSequence>
+</useCase>

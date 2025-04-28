@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>View List of Absences</name>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>List of absences is successfully displayed</condition>
+    </successEndConditions>
+    <trigger>User accesses the absence list page</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the absence list page</step>
+        <step id="S2">System retrieves the root route for absence list page</step>
+        <step id="S3">System fetches all absences for the logged-in user</step>
+        <step id="S4">System renders the list of absences on the "Vista list.ejs" view</step>
+        <step id="S5">System displays the absence list in the web browser</step>
+    </mainSequence>
+</useCase>

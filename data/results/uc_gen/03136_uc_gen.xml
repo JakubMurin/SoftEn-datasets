@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Gerenciar mapa de piso</name>
+    <actors>
+        <actor>Gestor de campus</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">O Gestor de campus carrega o mapa de piso.</step>
+        <step id="S2">O Container requisita os dados do mapa de piso.</step>
+        <step id="S3">O Gestor de campus insere os dados do mapa de piso.</step>
+        <step id="S4">O Container realiza um patch na API (/api/floorMap).</step>
+        <step id="S5">A API retorna um status code ao Container.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Se a requisição for bem-sucedida, o Container devolve o mapa de piso criado ao Gestor de campus.</step>
+            <step id="A1S2">Se a requisição falhar, o Container devolve uma mensagem de erro ao Gestor de campus.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

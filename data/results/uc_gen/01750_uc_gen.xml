@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>User Login and Access Patient Certificate</name>
+    <actors>
+        <actor>Web Browser</actor>
+        <actor>Rehab Support</actor>
+        <actor>Web Certificate</actor>
+        <actor>Certificate Service</actor>
+        <actor>Identity Provider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully accesses and views patient certificate</condition>
+    </successEndConditions>
+    <trigger>User chooses to view patient view</trigger>
+    <mainSequence>
+        <step id="S1">User logs in</step>
+        <step id="S2">Rehab Support validates SAML token and exchanges for Access Token/Refresh Token</step>
+        <step id="S3">Rehab Support builds form with certificate ID, care unit, and Access Token for POST to Web Certificate</step>
+        <step id="S4">Patient view is rendered</step>
+        <step id="S5">User clicks 'View Certificate' initiating a POST request to Web Certificate</step>
+        <step id="S6">Web Certificate validates Access Token and creates a session</step>
+        <step id="S7">Web Certificate sets care unit in the session</step>
+        <step id="S8">User is redirected to certificate view</step>
+        <step id="S9">Certificate data is rendered to the browser</step>
+        <step id="S10">User closes patient view triggering local logout</step>
+        <step id="S11">Web Certificate ends session and returns HTTP 200 with empty page to hidden iframe</step>
+    </mainSequence>
+</useCase>

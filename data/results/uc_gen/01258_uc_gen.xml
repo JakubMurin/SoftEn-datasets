@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Run Transaction Endpoint</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>PluginLedgerConnectorPolkadot</actor>
+    </actors>
+    <trigger>transact(RunTransactionRequest)</trigger>
+    <mainSequence>
+        <step id="S1">Activate Caller</step>
+        <step id="S2">Caller transacts with RunTransactionRequest</step>
+        <step id="S3">PluginLedgerConnectorPolkadot transacts with RunTransactionRequest</step>
+        <step id="S4">PluginLedgerConnectorPolkadot returns RunTransactionResponse</step>
+        <step id="S5">PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller</step>
+    </mainSequence>
+</useCase>

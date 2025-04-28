@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Generate Audit and Error Log Reports</name>
+    <description>Request, generate, and log audit and error log reports</description>
+    <actors>
+        <actor>Repoadmin</actor>
+        <actor>ARS</actor>
+        <actor>DB</actor>
+        <actor>RG</actor>
+        <actor>AL</actor>
+    </actors>
+    <preconditions>
+        <precondition>Repoadmin is authenticated and authorized</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Audit report and error logs are successfully generated and logged</condition>
+    </successEndConditions>
+    <trigger>Repoadmin requests audit report or error logs</trigger>
+    <mainSequence>
+        <step id="S1">Repoadmin requests audit report</step>
+        <step id="S2">ARS queries audit data from DB</step>
+        <step id="S3">ARS generates the audit report</step>
+        <step id="S4">ARS logs the audit report request</step>
+        <step id="S5">ARS sends the audit report to Repoadmin</step>
+        <step id="S6">Repoadmin requests error logs</step>
+        <step id="S7">ARS queries error logs from DB</step>
+        <step id="S8">ARS generates the error logs report</step>
+        <step id="S9">ARS logs the error logs request</step>
+        <step id="S10">ARS sends the error logs report to Repoadmin</step>
+        <step id="S11">Repoadmin subscribes to reports</step>
+        <step id="S12">ARS logs the subscription</step>
+        <step id="S13">ARS sets up the subscription</step>
+        <step id="S14">ES sends reports via email to Repoadmin</step>
+    </mainSequence>
+</useCase>

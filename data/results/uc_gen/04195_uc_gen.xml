@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Login</name>
+    <description>Allows the User to log in to the system by entering credentials and selecting "Remember Me".</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Login Page</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User enters credentials and selects "Remember Me"</step>
+        <step id="S2">Login Page authenticates the user</step>
+        <step id="S3">Backend Server verifies credentials</step>
+        <step id="S4">Database returns authentication result to Backend Server</step>
+        <step id="S5">Backend Server returns authentication result to Login Page</step>
+        <step id="S6">Login Page stores "Remember Me" token</step>
+        <step id="S7">Backend Server saves the token in Database</step>
+        <step id="S8">Database confirms token saved to Backend Server</step>
+        <step id="S9">Backend Server confirms "Remember Me" enabled to Login Page</step>
+        <step id="S10">Login Page displays login confirmation to User</step>
+    </mainSequence>
+</useCase>

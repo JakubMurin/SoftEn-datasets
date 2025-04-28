@@ -1,0 +1,27 @@
+<useCase id="001">
+    <name>Создать коллбек</name>
+    <actors>
+        <actor>Пользователь</actor>
+        <actor>Web UI</actor>
+        <actor>Callback GW</actor>
+        <actor>Token API</actor>
+        <actor>CMA</actor>
+        <actor>Resource Inventory</actor>
+    </actors>
+    <trigger>клик "Создать коллбек"</trigger>
+    <mainSequence>
+        <step id="S1">Пользователь кликает на кнопку "Создать коллбек" в интерфейсе</step>
+        <step id="S2">Web UI отправляет запрос на создание коллбека с указанием имени и описания</step>
+        <step id="S3">Callback GW получает запрос и обращается к Token API для валидации API ключа</step>
+        <step id="S4">Token API возвращает подтверждение верности ключа для GW</step>
+        <step id="S5">GW запрашивает состояние клиента у CMA</step>
+        <step id="S6">CMA возвращает статус клиента как "активный" GW</step>
+        <step id="S7">GW создает коллбек в Resource Inventory по указанному уникальному идентификатору приложения и коллбека</step>
+        <step id="S8">Resource Inventory определяет и возвращает идентификатор созданного коллбека обратно GW</step>
+        <step id="S9">GW запрашивает атрибуты созданного коллбека в Resource Inventory</step>
+        <step id="S10">Resource Inventory возвращает атрибуты приложения для GW</step>
+        <step id="S11">GW добавляет новую запись в Action History указывая успех операции с кодом 200 OK</step>
+        <step id="S12">GW отправляет идентификатор созданного коллбека обратно в Web UI</step>
+        <step id="S13">Web UI выводит информацию о новом созданном коллбеке пользователю</step>
+    </mainSequence>
+</useCase>

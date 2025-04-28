@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Manage Lexorank Workflows</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Lexorank</actor>
+        <actor>Storage</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User shows all rows by sending a show all request to the API.</step>
+        <step id="S2">API retrieves rows by calling Lexorank's "getRows()" method.</step>
+        <step id="S3">Lexorank fetches a snapshot of rows and ranks by calling storage's "getSnapshot()" method.</step>
+        <step id="S4">Lexorank returns the ordered rows to the API.</step>
+        <step id="S5">API displays the rows to the User.</step>
+
+        <step id="S6">User initiates an insert request to add a new row.</step>
+        <step id="S7">API calls Lexorank's "insertAt()" method.</step>
+        <step id="S8">Lexorank locks the snapshot by calling storage's "lockSnapshot()" method.</step>
+        <step id="S9">Lexorank inserts the new record into storage.</step>
+        <step id="S10">The new row is returned to the API.</step>
+        <step id="S11">API provides feedback to the User about the inserted row.</step>
+
+        <step id="S12">User sends an update request to modify an existing row.</step>
+        <step id="S13">API invokes Lexorank's "changePosition()" method.</step>
+        <step id="S14">Lexorank locks the snapshot by calling storage's "lockSnapshot()" method.</step>
+        <step id="S15">Lexorank changes the rank of the row using "changeRankTo()".</step>
+        <step id="S16">The updated row is returned to the API.</step>
+        <step id="S17">API informs the User about the updated row.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Software Development and Deployment</name>
+    <description>Developing new feature and deploying it to servers</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Reviewer</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Code is ready for deployment</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New feature successfully deployed to mainnet server</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Deployment failed</condition>
+    </failureEndConditions>
+    <trigger>Developer starts editing code</trigger>
+    <mainSequence>
+        <step id="S1">Developer edits code</step>
+        <step id="S2">Developer pushes changes to /dev branch</step>
+        <step id="S3">Developer creates a PR from /dev to /calibration</step>
+        <step id="S4">Reviewer approves the review</step>
+        <step id="S5">Developer merges the PR</step>
+        <step id="S6">Code deployed to calibration server</step>
+        <step id="S7">Developer creates a PR from /dev to /main</step>
+        <step id="S8">Reviewer approves the PR</step>
+        <step id="S9">Developer merges the PR</step>
+        <step id="S10">Code deployed to mainnet server</step>
+        <step id="S11">User can use the new feature</step>
+    </mainSequence>
+</useCase>

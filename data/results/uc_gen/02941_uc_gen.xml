@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Surveillance des conditions météorologiques</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Admin</actor>
+        <actor>Ecran</actor>
+        <actor>Controleur</actor>
+        <actor>BaseDeDonnees</actor>
+        <actor>SystemMeteo</actor>
+    </actors>
+    <preconditions>
+        <precondition>Les coordonnées des utilisateurs sont régulièrement vérifiées.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Vérifier régulièrement les coordonnées des utilisateurs dans la BaseDeDonnees.</step>
+        <step id="S2">Récupérer les coordonnées géographiques des utilisateurs de la BaseDeDonnees.</step>
+        <step id="S3">Interroger les données météorologiques du SystemMeteo.</step>
+        <step id="S4">Obtenir les conditions météorologiques actuelles et prévisionnelles du SystemMeteo.</step>
+        <step id="S5">Analyser les conditions pour détecter des anomalies ou conditions critiques.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Enregistrer l'alerte (type, heure, coordonnées) dans la BaseDeDonnees.</step>
+            <step id="A1S2">Préparer la notification pour l'utilisateur sur l'Ecran.</step>
+            <step id="A1S3">Envoyer la notification de l'alerte à l'Utilisateur.</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">Informer que l'utilisateur est exclu de la surveillance sur l'Ecran.</step>
+        </asteps>
+        <asteps id="A3" start="S5">
+            <step id="A3S1">Afficher un message d'erreur sur l'Ecran.</step>
+            <step id="A3S2">Informer que le système météorologique est hors ligne à l'Admin.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

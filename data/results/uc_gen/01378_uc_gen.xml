@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Delete Order</name>
+    <description>Allows an employee to delete a selected order from the system.</description>
+    <actors>
+        <actor>Employee</actor>
+    </actors>
+    <preconditions>
+        <precondition>The employee is authenticated and authorized to delete orders.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The selected order is successfully deleted from the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The selected order cannot be deleted.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Employee selects the order to delete.</step>
+        <step id="S2">Frontend Interface sends delete request with orderId to Backend Server.</step>
+        <step id="S3">Backend Server queries Database to delete the order from the database.</step>
+        <step id="S4">Database confirms the deletion of the order.</step>
+        <step id="S5">Backend Server returns success message to Frontend Interface.</step>
+        <step id="S6">Frontend Interface displays success message to Employee.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Backend Server returns error message to Frontend Interface.</description>
+            <step id="E1S1">Frontend Interface displays error message to Employee.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

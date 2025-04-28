@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Remove Project</name>
+    <description>As an Admin, I want to remove a project from the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is authenticated in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The project is successfully removed from the system.</condition>
+    </successEndConditions>
+    <trigger>User requests to remove a project.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to remove a project with signId and projectId.</step>
+        <step id="S2">System validates the member with signId.</step>
+        <step id="S3">System validates that the member is an Admin.</step>
+        <step id="S4">System validates the existence of the project with projectId.</step>
+        <step id="S5">System removes the project associated with projectId.</step>
+        <step id="S6">System notifies the Admin that the project has been removed.</step>
+    </mainSequence>
+</useCase>

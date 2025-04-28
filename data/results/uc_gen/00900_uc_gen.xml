@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Users can make changes to canvas</name>
+    <actors>
+        <actor>Users</actor>
+        <actor>Client</actor>
+        <actor>Canvas</actor>
+        <actor>Websocket</actor>
+    </actors>
+    <preconditions>
+        <precondition>Users need to be logged in and have access to modify the canvas</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Canvas is successfully updated with the changes made by the user</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Session error occurs or user does not have permission to make changes</condition>
+    </failureEndConditions>
+    <trigger>Users want to update the canvas with changes</trigger>
+    <mainSequence>
+        <step id="S1">Users initiate changes on the canvas</step>
+        <step id="S2">Client receives request and updates the canvas</step>
+        <step id="S3">Canvas sends changes via WebSocket</step>
+        <step id="S4">Websocket validates the session</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Session is valid: 
+                Websocket broadcasts changes</step>
+            <step id="A1S2">Canvas updates with changes and Client updates Canvas</step>
+            <step id="A1S3">Canvas reflects changes to Users</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Session error or insufficient permissions:</description>
+            <step id="E1S1">Websocket notifies Client about the session error</step>
+            <step id="E1S2">Client displays error message to the Users</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>Allows a user to log in to the system</description>
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Login API</actor>
+        <actor>User database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must have a valid account</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to authenticate user</condition>
+    </failureEndConditions>
+    <trigger>HTTP POST request for login</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a login request containing username, password, and CSRF token to Login API</step>
+        <step id="S2">Login API validates the login request</step>
+        <step id="S3">If validation fails, Login API returns an appropriate HTTP status code to User Agent</step>
+        <step id="S4">If validation succeeds, Login API queries User database for user information</step>
+        <step id="S5">User database returns the user information to Login API</step>
+        <step id="S6">If user information exists and authentication succeeds, Login API sets an encrypted session cookie and returns HTTP 200 OK to User Agent</step>
+        <step id="S7">If authentication fails, Login API returns HTTP 401 Unauthorized to User Agent</step>
+    </mainSequence>
+</useCase>

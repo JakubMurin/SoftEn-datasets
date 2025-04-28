@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>OAuth Login</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client Application</actor>
+        <actor>API Gateway</actor>
+        <actor>Auth Service</actor>
+        <actor>OAuth Provider</actor>
+        <actor>Auth DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to log in using OAuth</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User chooses OAuth login</step>
+        <step id="S2">Client Application redirects to OAuth Provider for authorization</step>
+        <step id="S3">User authorizes and grants access</step>
+        <step id="S4">OAuth Provider returns with OAuth token</step>
+        <step id="S5">Client Application sends POST request to API Gateway with OAuth token</step>
+        <step id="S6">API Gateway forwards the request to Auth Service</step>
+        <step id="S7">Auth Service verifies the OAuth token</step>
+        <step id="S8">Auth Service verifies the user's email in Auth DB</step>
+        <step id="S9">API Gateway responds with login successful and token</step>
+        <step id="S10">Client Application displays successful login message to the User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S9">
+            <step id="A1S1">OAuth token verification error occurs</step>
+            <step id="A1S2">Auth Service informs API Gateway of the verification error</step>
+            <step id="A1S3">API Gateway notifies Client Application of the error</step>
+            <step id="A1S4">Client Application displays error message to the User</step>
+        </asteps>
+        <asteps id="A2" start="S8" continue="S9">
+            <step id="A2S1">Email not found in Auth DB</step>
+            <step id="A2S2">Auth Service informs API Gateway of email not found</step>
+            <step id="A2S3">API Gateway notifies Client Application of email not found</step>
+            <step id="A2S4">Client Application displays error message to the User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

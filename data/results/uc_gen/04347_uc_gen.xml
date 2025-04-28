@@ -1,0 +1,30 @@
+<useCase id="101">
+    <name>Restrict Collection Access</name>
+    
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Curator is authenticated</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Collection access restricted successfully</condition>
+    </successEndConditions>
+    
+    <trigger>Curator initiates restriction settings</trigger>
+    
+    <mainSequence>
+        <step id="S1">Curator initiates restriction settings</step>
+        <step id="S2">Curator authenticates on UI Dashboard</step>
+        <step id="S3">Dashboard fetches collection details from Database</step>
+        <step id="S4">Dashboard displays IP restriction rule configuration to ACM</step>
+        <step id="S5">ACM updates collection with the IP access rule</step>
+        <step id="S6">ACM applies restriction to collection access</step>
+        <step id="S7">Dashboard displays success message to Curator</step>
+        <step id="S8">Curator attempts to access the collection</step>
+        <step id="S9">Networking service checks access based on CUR IP against rule</step>
+        <step id="S10">Collection is served/denied based on ACM decision</step>
+    </mainSequence>
+</useCase>

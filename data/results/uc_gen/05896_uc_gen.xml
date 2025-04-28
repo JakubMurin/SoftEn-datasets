@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Recruitment and Research Analysis</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>RecruitmentPlatform</actor>
+        <actor>UserDb</actor>
+        <actor>Participant</actor>
+        <actor>AnalysisSystem</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher defines criteria for participant selection.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher receives feedback and data from participants.</condition>
+        <condition>Researcher receives synthesized results from AnalysisSystem.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>RecruitmentPlatform fails to recruit participants.</condition>
+    </failureEndConditions>
+    <trigger>Researcher initiates the recruitment and research analysis process.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher defines criteria for participant selection.</step>
+        <step id="S2">RecruitmentPlatform queries potential participants based on criteria from UserDb.</step>
+        <step id="S3">UserDb returns a list of potential participants to RecruitmentPlatform.</step>
+        <step id="S4">RecruitmentPlatform sends recruitment invitations to Participants.</step>
+        <step id="S5">Participant responds to the invitation.</step>
+        <step id="S6">RecruitmentPlatform provides a list of participating users to Researcher.</step>
+        <step id="S7">Researcher conducts user research sessions with Participants.</step>
+        <step id="S8">Participant provides feedback and data to Researcher.</step>
+        <step id="S9">Researcher inputs user research data into AnalysisSystem.</step>
+        <step id="S10">AnalysisSystem analyzes and summarizes findings.</step>
+        <step id="S11">AnalysisSystem provides synthesized results to Researcher.</step>
+        <step id="S12">Researcher updates project status to "Complete" on RecruitmentPlatform.</step>
+        <step id="S13">Researcher archives project data and findings on AnalysisSystem.</step>
+    </mainSequence>
+</useCase>

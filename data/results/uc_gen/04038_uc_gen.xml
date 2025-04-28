@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Charging Car</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Core</actor>
+        <actor>Libocpp</actor>
+        <actor>CSMS</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User swipes ID tag and plugs in cable.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Car charging successfully completed.</condition>
+    </successEndConditions>
+    <trigger>Charging state changed.</trigger>
+    <mainSequence>
+        <step id="S1">User swipes ID tag.</step>
+        <step id="S2">Core authorizes the transaction.</step>
+        <step id="S3">User plugs in cable.</step>
+        <step id="S4">Libocpp triggers on_transaction_started().</step>
+        <step id="S5">Libocpp sends TransactionEventRequest::Started to CSMS.</step>
+        <step id="S6">Libocpp inserts transaction details into Database.</step>
+        <step id="S7">User pauses charging of car.</step>
+        <step id="S8">Core triggers on_charging_state_changed().</step>
+        <step id="S9">Libocpp sends TransactionEventRequest::Updated to CSMS.</step>
+        <step id="S10">Libocpp updates transaction charging state in Database.</step>
+        <step id="S11">Libocpp updates transaction sequence number in Database.</step>
+        <step id="S12">Core constructs ChargePoint.</step>
+        <step id="S13">Libocpp gets transaction for evse_id from Database.</step>
+        <step id="S14">Libocpp re-initializes transaction for evse_id.</step>
+        <step id="S15">Core continues charging of car.</step>
+        <step id="S16">Core triggers on_charging_state_changed().</step>
+        <step id="S17">Libocpp prints warning of no known transaction.</step>
+        <step id="S18">Libocpp sends TransactionEventRequest::Updated to CSMS.</step>
+        <step id="S19">Libocpp updates transaction charging state in Database.</step>
+        <step id="S20">Libocpp updates transaction sequence number in Database.</step>
+        <step id="S21">User swipes ID tag.</step>
+        <step id="S22">Core triggers on_transaction_finished().</step>
+        <step id="S23">Libocpp prints warning of no known transaction.</step>
+        <step id="S24">Libocpp sends TransactionEventRequest::Ended to CSMS.</step>
+        <step id="S25">Libocpp deletes transaction from Database.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="1">
+    <name>Manage Users</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>UsersRepo</actor>
+        <actor>ProductsRepo</actor>
+        <actor>BidsRepo</actor>
+        <actor>OrdersRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system should be running and properly configured.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client submits a POST request to create a new user.</step>
+        <step id="S2">Controller forwards the request to Service for user creation.</step>
+        <step id="S3">Service creates and saves the new user through UsersRepo.</step>
+        <step id="S4">Service returns the created user to Controller.</step>
+        <step id="S5">Controller sends the created user back to the Client.</step>
+        <step id="S6">Client receives the created user.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Client receives an error message if the user creation fails.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>The system does not find the requested user.</description>
+            <step id="E1S1">Controller sends an error message to the Client.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

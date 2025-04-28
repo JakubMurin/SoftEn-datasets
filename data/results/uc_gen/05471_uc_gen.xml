@@ -1,0 +1,29 @@
+<useCase id="UC01">
+    <name>User updates profile and fetches updated data</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Replica</actor>
+        <actor>Message Broker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Profile of the user exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully fetches the updated profile data</condition>
+        <condition>User successfully updates the profile</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Getting confused due to stale data from Replica</condition>
+    </failureEndConditions>
+    <trigger>User initiates updating profile request to Service</trigger>
+    <mainSequence>
+        <step id="S1">User updates their profile</step>
+        <step id="S2">Service processes the update</step>
+        <step id="S3">Message Broker notifies Profile updates</step>
+        <step id="S4">Service informs User Success</step>
+        <step id="S5">User requests data update from Replica</step>
+        <step id="S6">(stale) data is received by User</step>
+        <step id="S7">User gets confused</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Time Report Login</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Spring</actor>
+        <actor>Lewensportal</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User opens TimeReport application</precondition>
+    </preconditions>
+    <trigger>User enters username (FnNn) and password</trigger>
+    <mainSequence>
+        <step id="S1">User enters username (FnNn) and password</step>
+        <step id="S2">Spring sends Username and Password to Lewensportal</step>
+        <step id="S3">Lewensportal validates the user</step>
+        <step id="S4">Spring saves user with Username</step>
+        <step id="S5">DB provides Authorities (USER by default) to Spring</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Lewensportal confirms user is valid</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>User is not authenticated</description>
+            <step id="E1S1">Spring informs User about bad credentials</step>
+        </esteps>
+    </errorSteps>
+</useCase>

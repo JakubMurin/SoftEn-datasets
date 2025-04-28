@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Creating a Product</name>
+    <description>Admin creates a new product in the system</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is authenticated and authorized to create products</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The product is successfully created and saved in the system</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The product creation process fails</condition>
+    </failureEndConditions>
+    <trigger>Admin initiates the creation of a new product</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a POST request to the admin-api to create a new product</step>
+        <step id="S2">The admin-api forwards the request to the payment-processor to create a product with the provided SKU</step>
+        <step id="S3">The payment-processor communicates with Stripe by sending a POST request to create a product with the SKU</step>
+        <step id="S4">The payment-processor receives the product ID (prod-id) from Stripe</step>
+        <step id="S5">The payment-processor sends the product ID (prod-id) back to the admin-api</step>
+        <step id="S6">The admin-api saves the product with the received product ID (prod-id) in the database via DAO</step>
+        <step id="S7">The admin-api responds to Admin with the SKU of the created product</step>
+    </mainSequence>
+</useCase>

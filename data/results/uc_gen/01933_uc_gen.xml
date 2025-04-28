@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Create Tenant</name>
+    <description>As a User, I want to create a new Tenant in the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TenantsController</actor>
+        <actor>TenantService</actor>
+        <actor>TenantDbContext</actor>
+        <actor>ApplicationDbContext</actor>
+        <actor>ITenantContextService</actor>
+        <actor>IConfiguration</actor>
+        <actor>IServiceProvider</actor>
+    </actors>
+    <preconditions>
+        <precondition>Tenant data is provided for creation.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tenant is successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Tenant already exists in the system.</condition>
+    </failureEndConditions>
+    <trigger>POST /createTenant (Tenant data)</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to create a new Tenant.</step>
+        <step id="S2">TenantsController validates the provided model.</step>
+        <step id="S3">TenantsController checks if the Tenant already exists.</step>
+        <step id="S4">TenantService validates the existence of the Tenant in the database.</step>
+        <step id="S5">TenantDbContext queries the database for existing Tenants.</step>
+        <step id="S6">Tenant does not exist.</step>
+        <step id="S7">TenantService creates a new Tenant.</step>
+        <step id="S8">TenantService inserts the new Tenant into the database.</step>
+        <step id="S9">TenantDbContext saves the changes.</step>
+        <step id="S10">Isolated is true.</step>
+        <step id="S11">TenantService gets the connection string from IConfiguration.</step>
+        <step id="S12">TenantService gets the ApplicationDbContext from IServiceProvider.</step>
+        <step id="S13">IServiceProvider resolves an instance of ApplicationDbContext.</step>
+        <step id="S14">ApplicationDbContext sets the connection string.</step>
+        <step id="S15">ApplicationDbContext checks for pending migrations.</step>
+        <step id="S16">ApplicationDbContext applies migrations.</step>
+        <step id="S17">TenantService updates the Tenant context using ITenantContextService.</step>
+        <step id="S18">ITenantContextService sets the Tenant asynchronously.</step>
+        <step id="S19">TenantService returns the created Tenant to TenantsController.</step>
+        <step id="S20">Tenant already exists.</step>
+        <step id="S21">TenantService returns an error indicating that the Tenant already exists.</step>
+        <step id="S22">TenantsController responds with 201 Created (Tenant created) to the User.</step>
+    </mainSequence>
+</useCase>

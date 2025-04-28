@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Select and Explore Dataset</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects a dataset to explore.</step>
+        <step id="S2">User Interface sends a request to API Gateway to retrieve the properties of the selected dataset (GET /datasets/{id}/properties).</step>
+        <step id="S3">API Gateway forwards the request to Dataset Management Service to fetch the properties of the dataset using fetchDatasetProperties(id) operation.</step>
+        <step id="S4">Dataset Management Service retrieves the dataset type from Dataset Type Registry by calling getDatasetType(datasetId) operation.</step>
+        <step id="S5">Dataset Management Service gets the properties of the dataset instance from Dataset Instance by using getProperties(datasetType) operation.</step>
+        <step id="S6">Dataset Management Service provides the dataset properties to API Gateway.</step>
+        <step id="S7">API Gateway shows the updatable properties to the User Interface.</step>
+        <step id="S8">User Interface displays the properties to the user for exploration.</step>
+    </mainSequence>
+</useCase>

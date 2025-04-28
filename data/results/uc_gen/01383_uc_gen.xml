@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Edit Balance Process</name>
+    <description>Allow the client to update the initial balance.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>EditBalanceController</actor>
+        <actor>UserService</actor>
+        <actor>AppUserRepository</actor>
+        <actor>User Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates a GET request to /updateInitialBalance</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client is redirected to /premium after successful update</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client is redirected to /premium with a 403 error in case of authentication failure</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client initiates a GET request to /updateInitialBalance</step>
+        <step id="S2">EditBalanceController receives editbalance/edit-balance view</step>
+        <step id="S3">Client sends initial balance via POST request to /updateInitialBalance</step>
+        <step id="S4">EditBalanceController calls getAuthenticatedUser from UserService</step>
+        <step id="S5">UserService fetches user from User Database</step>
+        <step id="S6">User Database returns user</step>
+        <step id="S7">UserService returns user to EditBalanceController</step>
+        <step id="S8">EditBalanceController sets the initial balance</step>
+        <step id="S9">EditBalanceController saves the user via AppUserRepository</step>
+        <step id="S10">AppUserRepository updates the user in the User Database</step>
+        <step id="S11">User Database confirms the save operation</step>
+        <step id="S12">Client is redirected to /premium</step>
+    </mainSequence>
+</useCase>

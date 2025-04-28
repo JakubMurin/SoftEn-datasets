@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Implement poison response attack</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <trigger>Attacker posts /foo request with a GET /poison payload</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends POST request with GET /poison payload to Proxy</step>
+        <step id="S2">Proxy forwards POST request to Backend</step>
+        <step id="S3">Backend processes POST request and responds with status 200 to Proxy</step>
+        <step id="S4">Proxy forwards response with status 200 to Attacker</step>
+        <step id="S5">Backend receives GET /poison request</step>
+        <step id="S6">Backend sends /poison response with status 200 to Proxy</step>
+        <step id="S7">The "extra" response poisons the response queue</step>
+        <step id="S8">User sends GET request to Proxy for /bar</step>
+        <step id="S9">Proxy forwards GET request to Backend</step>
+        <step id="S10">Backend responds with /poison response and status 200 to User</step>
+        <step id="S11">Proxy receives /bar 200 response from Backend</step>
+    </mainSequence>
+</useCase>

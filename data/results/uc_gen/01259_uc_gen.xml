@@ -1,0 +1,14 @@
+<useCase id="UC1">
+    <name>Run Transaction Endpoint</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>PluginLedgerConnectorPolkadot</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Caller activates the PluginLedgerConnectorPolkadot</step>
+        <step id="S2">Caller sends transact(RunTransactionRequest) to PluginLedgerConnectorPolkadot</step>
+        <step id="S3">PluginLedgerConnectorPolkadot checks if web3SigningCredential is CACTUSKEYCHAINREF</step>
+        <step id="S4">PluginLedgerConnectorPolkadot executes transactCactusKeychainRef(RunTransactionRequest)</step>
+        <step id="S5">PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller</step>
+    </mainSequence>
+</useCase>

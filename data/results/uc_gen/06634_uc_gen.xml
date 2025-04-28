@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Verify Missing Documents</name>
+    <description>As a staff user, I want to verify missing documents for an application.</description>
+    <actors>
+        <actor>Staff</actor>
+    </actors>
+    <preconditions>
+        <precondition>The staff user is logged into the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The staff user receives a confirmation of missing documents.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The staff user does not receive a confirmation of missing documents.</condition>
+    </failureEndConditions>
+    <trigger>User identifies missing documents on the application detail page.</trigger>
+    <mainSequence>
+        <step id="S1">Staff identifies missing documents on the application detail page.</step>
+        <step id="S2">Application detail page fetches missing documents from the backend server.</step>
+        <step id="S3">Backend server queries the database for missing documents.</step>
+        <step id="S4">Database returns the missing documents to the backend server.</step>
+        <step id="S5">Backend server notifies the staff user system about the missing documents.</step>
+        <step id="S6">Notification system confirms the notifications have been sent.</step>
+        <step id="S7">Backend server confirms the notifications have been sent to the application detail page.</step>
+        <step id="S8">Application detail page displays a confirmation to the staff user.</step>
+    </mainSequence>
+</useCase>

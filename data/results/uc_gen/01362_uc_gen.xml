@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Retrieve List of Questions</name>
+    <description>As a user, I want to retrieve a list of questions for a specific survey.</description>
+    <actors>
+        <actor>Browser</actor>
+        <actor>HttpServer</actor>
+        <actor>controllers</actor>
+        <actor>ListQuestionsController</actor>
+        <actor>QuestionDao</actor>
+        <actor>OptionDao</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated and has the necessary permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of questions is successfully retrieved and displayed to the user.</condition>
+    </successEndConditions>
+    <trigger>POST /api/listQuestions</trigger>
+    <mainSequence>
+        <step id="S1">User initiates a POST request to retrieve list of questions.</step>
+        <step id="S2">HttpServer receives the request and forwards it to controllers.</step>
+        <step id="S3">ListQuestionsController handles the request and retrieves the survey ID.</step>
+        <step id="S4">ListQuestionsController queries QuestionDao to retrieve questions based on the survey ID.</step>
+        <step id="S5">ListQuestionsController queries OptionDao to retrieve options for each question.</step>
+        <step id="S6">QuestionDao retrieves questions from the database.</step>
+        <step id="S7">OptionDao retrieves options from the database.</step>
+        <step id="S8">HttpServer responds with a success status code (200 OK).</step>
+        <step id="S9">HttpServer sends the response to the Browser.</step>
+    </mainSequence>
+</useCase>

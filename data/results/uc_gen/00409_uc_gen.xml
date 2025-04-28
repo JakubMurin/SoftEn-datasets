@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Upgrade Dataset Instance</name>
+    <description>As a Pipeline Developer, I want to upgrade the dataset instance to a new version to ensure compatibility with the application.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>ManagementSystem</actor>
+        <actor>VersionControl</actor>
+        <actor>AppDeployment</actor>
+        <actor>DB</actor>
+        <actor>Pipeline</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Pipeline Developer has access rights to upgrade the dataset instance.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The dataset instance is successfully upgraded to the new version.</condition>
+    </successEndConditions>
+    <trigger>Developer requests dataset instance upgrade information.</trigger>
+    <mainSequence>
+        <step id="S1">Developer requests dataset instance upgrade information from ManagementSystem.</step>
+        <step id="S2">ManagementSystem queries available dataset type versions from VersionControl.</step>
+        <step id="S3">VersionControl returns available versions to ManagementSystem.</step>
+        <step id="S4">ManagementSystem displays versions with upgrade impacts to Developer.</step>
+        <step id="S5">Developer selects a new version for upgrade.</step>
+        <step id="S6">ManagementSystem initiates the upgrade process for the dataset instance with VersionControl.</step>
+        <step id="S7">VersionControl checks application dependencies with AppDeployment.</step>
+        <step id="S8">AppDeployment confirms compatibility with VersionControl.</step>
+        <step id="S9">VersionControl prepares the dataset instance upgrade with DB.</step>
+        <step id="S10">DB confirms upgrade readiness to VersionControl.</step>
+        <step id="S11">VersionControl executes the upgrade to the new version with DB.</step>
+        <step id="S12">DB confirms upgrade success to VersionControl.</step>
+        <step id="S13">VersionControl updates pipeline configuration with Pipeline.</step>
+        <step id="S14">Pipeline validates new dataset version compatibility.</step>
+        <step id="S15">Pipeline configuration is validated and returned to VersionControl.</step>
+        <step id="S16">Upgrade completion status is sent to ManagementSystem from VersionControl.</step>
+        <step id="S17">Upgrade success notification is sent to Developer from ManagementSystem.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Install Component</name>
+    <actors>
+        <actor>Operations</actor>
+        <actor>ComponentOperator</actor>
+        <actor>PublishedNotification</actor>
+        <actor>EventPublishingEnablementOperator</actor>
+        <actor>TMFC019</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Operations installs Component</step>
+        <step id="S2">ComponentOperator creates a separate publishedNotification resource for each published notification</step>
+        <step id="S3">PublishedNotification is created</step>
+        <step id="S4">EventPublishingEnablementOperator creates a publishedNotification</step>
+        <step id="S5">EventPublishingEnablementOperator searches for a matching topic</step>
+        <step id="S6">EventPublishingEnablementOperator configures Topic Event Hub</step>
+        <step id="S7">EventPublishingEnablementOperator updates PublishedNotification</step>
+        <step id="S8">ComponentOperator updates PublishedNotification</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC-001">
+    <name>Add File To Dataset</name>
+    <description>As an API client, I want to add a file to a dataset.</description>
+    <actors>
+        <actor>API Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The API client is authenticated</precondition>
+        <precondition>The dataset ID is provided</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The file is successfully added to the dataset</condition>
+    </successEndConditions>
+    <trigger>API client sends a request to add a file to a dataset</trigger>
+    <mainSequence>
+        <step id="S1">API client sends a request to /add?datafile&amp;datasetId</step>
+        <step id="S2">Datasets activates and calls AddFileHelper</step>
+        <step id="S3">AddFileHelper activates and calls FileUtil to create data files</step>
+        <step id="S4">FileUtil determines the file type and creates a single data file</step>
+        <step id="S5">AddFileHelper receives Datafile List from FileUtil</step>
+        <step id="S6">AddFileHelper calls ISB to add files to the dataset</step>
+        <step id="S7">AddFileHelper receives the dataset from ISB</step>
+        <step id="S8">AddFileHelper calls ISB to ingest files as tabular</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Add Event</name>
+    <description>Allows the user to add a new event to the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the Add Event feature.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Event details are successfully saved in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Event details are not valid or there is an error in saving the event.</condition>
+    </failureEndConditions>
+    <trigger>User wants to add a new event.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the Add Event Page.</step>
+        <step id="S2">User enters event details.</step>
+        <step id="S3">User selects an associated contact.</step>
+        <step id="S4">User submits the event form.</step>
+        <step id="S5">Add Event Page sends event details to the server.</step>
+        <step id="S6">Server validates the details.</step>
+        <step id="S7">Server saves the event in the database.</step>
+        <step id="S8">Database confirms the event is saved.</step>
+        <step id="S9">Server sends a success response to the Add Event Page.</step>
+        <step id="S10">Add Event Page shows a success message to the user.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">Details are valid.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Details are invalid or there is an error in saving the event.</description>
+            <step id="E1S1">Add Event Page sends an error response to the user.</step>
+            <step id="E1S2">User is shown an error message.</step>
+            <step id="E1S3">User is prompted to re-enter event details.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

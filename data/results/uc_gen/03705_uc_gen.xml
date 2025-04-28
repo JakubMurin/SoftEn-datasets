@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Join Exchange Diary Room and Validate Code</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has entered the diary room participation code.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User enters the diary room participation code.</step>
+        <step id="S2">Client sends a POST request to /v1/rooms/:room_id/join with the entered code.</step>
+        <step id="S3">API performs JSON validation of the code.</step>
+        <step id="S4">API retrieves the room code from the database.</step>
+        <step id="S5">API verifies the user-entered code with the retrieved code.</step>
+        <step id="S6">API inserts the user account into RoomMember.</step>
+        <step id="S7">API appends the AccountID to Room.Orders.</step>
+        <step id="S8">API responds with '201 Created' to the client.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,13 @@
+<useCase id="UC001">
+    <name>新增业务监控配置</name>
+    <actors>
+        <actor>user</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">检查数据的合法性</step>
+        <step id="S2">落库</step>
+        <step id="S3">将当前的时间戳更新到redis作为收到客户端的心跳时间，并更新redis中客户端心跳超时的时间</step>
+        <step id="S4">tdm抢到ACTIVE之后进行doInit()-&gt;HeartBeatControlService的初始化</step>
+        <step id="S5">initCache()将redis中的超时时间配置清空，删除缓存中的心跳时间</step>
+    </mainSequence>
+</useCase>

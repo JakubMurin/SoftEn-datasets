@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Accéder au produit A</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>AuthGuard</actor>
+        <actor>Produit [A]</actor>
+        <actor>Portail</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur est authentifié</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">L'Utilisateur accède au produit A</step>
+        <step id="S2">AuthGuard vérifie l'authentification</step>
+        <step id="S3">Si authentifié, AuthGuard redirige vers Produit A</step>
+        <step id="S4">Sinon, AuthGuard redirige vers le Portail</step>
+    </mainSequence>
+</useCase>

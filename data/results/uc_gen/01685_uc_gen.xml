@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Register Chequing Account</name>
+    <description>User wants to register their chequing account from DFSP A with the PISP app.</description>
+    <actors>
+        <actor>Ayeesha</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Ayeesha requests to register her chequing account from DFSP A using the PISP app.</step>
+        <step id="S2">DFSP A generates a random UUID and saves it internally.</step>
+        <step id="S3">DFSP A sends the random UUID to PISP to refer to the linked account.</step>
+        <step id="S4">PISP associates Ayeesha's chequing account with the received UUID.</step>
+        <step id="S5">DFSP A sends a POST request to the Switch to create an association.</step>
+        <step id="S6">Switch responds with a 201 Accepted status.</step>
+        <step id="S7">Switch sends a request to ALS to create a new key/value pair.</step>
+        <step id="S8">ALS acknowledges the request.</step>
+        <step id="S9">Switch informs DFSP A that the association has been created.</step>
+        <step id="S10">DFSP A confirms to PISP that the association has been created.</step>
+    </mainSequence>
+</useCase>

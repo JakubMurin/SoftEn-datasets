@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Service Registration and Data Transmission</name>
+    <actors>
+        <actor>SOR</actor>
+        <actor>目录服务器</actor>
+    </actors>
+    <preconditions>
+        <precondition>Initialization of storage files.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">SOR registers service and reports current node's network status (bandwidth, latency), node configuration (CPU, memory), etc. to 目录服务器.</step>
+        <step id="S2">目录服务器 identifies and stores the uploaded device information.</step>
+        <step id="S3">目录服务器 returns forwarding tasks to be executed by SOR.</step>
+        <step id="S4">SOR reports point-to-point communication relationships line by line, reporting current node's network status.</step>
+        <step id="S5">目录服务器 identifies and stores the uploaded device information, refreshes the view if it's node status information or point-to-point link information.</step>
+        <step id="S6">SOR executes the forwarding tasks line by line.</step>
+    </mainSequence>
+</useCase>

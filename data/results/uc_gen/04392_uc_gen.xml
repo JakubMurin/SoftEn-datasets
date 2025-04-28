@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Login to System</name>
+    <description>User logs in using their credentials</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist is presented with a login screen</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and is redirected to the dashboard</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in due to incorrect credentials</condition>
+    </failureEndConditions>
+    <trigger>User enters their login credentials</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password)</step>
+        <step id="S2">UI sends POST request to Router for /login</step>
+        <step id="S3">Router directs login request to Controller</step>
+        <step id="S4">Controller validates user credentials with Repository</step>
+        <step id="S5">Repository fetches user data from UserModel</step>
+        <step id="S6">Controller checks if password matches</step>
+        <step id="S7">Controller responds with login success or failure to UI</step>
+        <step id="S8">UI displays login result to Receptionist</step>
+        <step id="S9">UI requests dashboard data from Router</step>
+        <step id="S10">Router fetches dashboard data from Controller</step>
+        <step id="S11">Controller retrieves dashboard data from Repository</step>
+        <step id="S12">Router sends dashboard data to UI</step>
+        <step id="S13">UI displays dashboard to Receptionist</step>
+    </mainSequence>
+</useCase>

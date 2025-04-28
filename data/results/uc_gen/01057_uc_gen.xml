@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Passer commande</name>
+    <description>Client parcourt et sélectionne les produits, les ajoute au panier, puis passe commande.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>InterfaceUtilisateur</actor>
+        <actor>CatalogueProduits</actor>
+        <actor>Panier</actor>
+        <actor>SystèmePaiement</actor>
+        <actor>SystèmeNotification</actor>
+    </actors>
+    <preconditions>
+        <precondition>Les produits sont disponibles dans le catalogue.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Le paiement est effectué avec succès.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Le paiement échoue.</condition>
+    </failureEndConditions>
+    <trigger>Client souhaite passer commande.</trigger>
+    <mainSequence>
+        <step id="S1">Client parcourt et sélectionne les produits.</step>
+        <step id="S2">Récupérer les détails des produits depuis le CatalogueProduits.</step>
+        <step id="S3">Client ajoute un produit au Panier.</step>
+        <step id="S4">Mettre à jour le Panier dans l'InterfaceUtilisateur.</step>
+        <step id="S5">Client passe la commande.</step>
+        <step id="S6">Récupérer le contenu du panier dans l'InterfaceUtilisateur.</step>
+        <step id="S7">Traiter le paiement dans le SystèmePaiement.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Confirmation de paiement envoyée à l'InterfaceUtilisateur.</step>
+            <step id="A1S2">Envoyer la confirmation de commande dans le SystèmeNotification.</step>
+            <step id="A1S3">Client reçoit un email de confirmation.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Alerte utilisateur de l'échec du paiement envoyée par le SystèmePaiement.</description>
+            <step id="E1S1">Afficher les options de paiement alternatives dans l'InterfaceUtilisateur.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

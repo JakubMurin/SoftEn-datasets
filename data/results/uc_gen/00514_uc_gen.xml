@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Register Fault</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>fault.routes</actor>
+        <actor>fault.controller</actor>
+        <actor>faultAdd.ejs</actor>
+        <actor>faultModelInstance</actor>
+        <actor>mysql</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">navegador accesses /fault/add</step>
+        <step id="S2">fault.routes handles GET /fault/add</step>
+        <step id="S3">fault.controller retrieves faultAdd form</step>
+        <step id="S4">faultAdd.ejs displays fault form</step>
+        <step id="S5">navegador validates fields</step>
+        <step id="S6">navegador submits fault data</step>
+        <step id="S7">fault.routes handles POST /fault/add</step>
+        <step id="S8">fault.controller validates fields</step>
+        <step id="S9">fault.controller creates new FaultModel instance</step>
+        <step id="S10">faultModelInstance saves data</step>
+        <step id="S11">mysql executes SELECT userID FROM user WHERE mail = ?</step>
+        <step id="S12">faultModelInstance receives Result</step>
+        <step id="S13">faultModelInstance checks if user exists</step>
+        <step id="S14">faultModelInstance handles error</step>
+        <step id="S15">faultModelInstance inserts fault data</step>
+        <step id="S16">mysql executes INSERT INTO fault</step>
+        <step id="S17">faultModelInstance receives Insert OK</step>
+        <step id="S18">fault.controller handles registered fault</step>
+        <step id="S19">fault.controller redirects to /fault, info</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Provisioning Fault Management Job and Report</name>
+    <description>As a BUS actor, I want to provision a Fault Management Job and Report in the system.</description>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>The BUS actor is registered as a listener for FaultManagementJobNotification and FaultManagementReportNotification.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Job and Report are successfully provisioned.</condition>
+    </successEndConditions>
+    <trigger>createFaultManagementJob</trigger>
+    <mainSequence>
+        <step id="S1">BUS actor registers as a listener for FaultManagementJobNotification and FaultManagementReportNotification with Hub.</step>
+        <step id="S2">BUS actor creates a Fault Management Job.</step>
+        <step id="S3">Fault Management Job is created successfully.</step>
+        <step id="S4">Fault Management Job generates data.</step>
+        <step id="S5">Fault Management Job state changes to inProgress.</step>
+        <step id="S6">Fault Management Job creates an event.</step>
+        <step id="S7">Fault Management Job notifies listeners about the faultManagementJobCreateEvent.</step>
+        <step id="S8">Fault Management Job creates a Fault Management Report.</step>
+        <step id="S9">Fault Management Report is created successfully.</step>
+        <step id="S10">Fault Management Report collects data.</step>
+        <step id="S11">Fault Management Report state changes to inProgress.</step>
+        <step id="S12">Fault Management Report state changes to completed.</step>
+        <step id="S13">Fault Management Report notifies listeners about the faultManagementReportStateChangeEvent.</step>
+        <step id="S14">Fault Management Job notifies listeners about the faultManagementJobReportReadyEvent.</step>
+        <step id="S15">Fault Management Job state changes to completed or scheduled.</step>
+        <step id="S16">Fault Management Job notifies listeners about the faultManagementJobStateChangeEvent.</step>
+        <step id="S17">BUS actor requests a Fault Management Report.</step>
+        <step id="S18">Fault Management Report is retrieved successfully.</step>
+        <step id="S19">Fault Management Report notifies listeners about the faultManagementReportStateChangeEvent.</step>
+    </mainSequence>
+</useCase>

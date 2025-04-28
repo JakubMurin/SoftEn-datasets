@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Delete Account</name>
+    <description>User deletes their account after confirming action.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account successfully deleted with feedback to user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during account deletion and user informed.</condition>
+    </failureEndConditions>
+    <trigger>User clicks on delete account.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks delete account</step>
+        <step id="S2">Retrieve user information (name, email) from token</step>
+        <step id="S3">Prepare HTTP DELETE request to delete account using user email</step>
+        <step id="S4">Forward request with Authorization header</step>
+        <step id="S5">Delete account in the backend if user exists</step>
+        <step id="S6">Check if user exists in database</step>
+        <step id="S7">Query User by Email from MongoDB</step>
+        <step id="S8">Delete User in the MongoDB</step>
+        <step id="S9">Add success message and display</step>
+        <step id="S10">Logout user and redirect to login page</step>
+    </mainSequence>
+</useCase>

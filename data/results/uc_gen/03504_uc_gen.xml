@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>File Upload and License Assignment</name>
+    <actors>
+        <actor>Cornell Faculty Member</actor>
+    </actors>
+    <preconditions>
+        <precondition>The faculty member is logged in to the system and has selected a data file for upload.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The data file upload is successful, and the chosen license is applied to the file.</condition>
+    </successEndConditions>
+    <trigger>User selects a data file for upload and chooses a license.</trigger>
+    <mainSequence>
+        <step id="S1">Cornell Faculty Member selects a data file for upload.</step>
+        <step id="S2">Web Browser Interface initiates the file upload process.</step>
+        <step id="S3">File Upload Service stores the data file in the Repository.</step>
+        <step id="S4">Repository saves file metadata including uploader information in the Database.</step>
+        <step id="S5">Database confirms metadata storage.</step>
+        <step id="S6">Repository confirms file storage back to Upload Service.</step>
+        <step id="S7">Upload Service displays file upload success message to the faculty member.</step>
+        <step id="S8">Upload Service provides the file ID and upload confirmation to the Faculty Member.</step>
+        <step id="S9">Faculty Member chooses a licensing option (CC-By or CC0) in the Browser GUI.</step>
+        <step id="S10">Browser GUI sends the license choice along with the file ID to License Service.</step>
+        <step id="S11">License Service applies the chosen license to the file using DRM Service.</step>
+        <step id="S12">DRM Service updates the file metadata on the Repository with the license info.</step>
+        <step id="S13">Database updates the file record with the license metadata.</step>
+        <step id="S14">Database confirms the license update.</step>
+        <step id="S15">Repository confirms the license application to License Service.</step>
+        <step id="S16">License Service displays the license application success message to the Faculty Member.</step>
+        <step id="S17">Faculty Member confirms that the license has been successfully set.</step>
+    </mainSequence>
+</useCase>

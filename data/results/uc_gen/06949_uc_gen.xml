@@ -1,0 +1,30 @@
+<useCase id="UC_GRANT_EMBARGO_PRIVILEGES">
+    <name>Grant Embargo Privileges</name>
+    <actors>
+        <actor>Digital Records Archivist</actor>
+        <actor>Authentication System</actor>
+        <actor>EDRMS Core</actor>
+        <actor>User Management DB</actor>
+        <actor>Access Control Module</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist is authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Embargo privileges granted successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to grant embargo privileges.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Authenticate with Authentication System.</step>
+        <step id="S2">Access User Management in EDRMS Core.</step>
+        <step id="S3">Retrieve User List from User Management DB.</step>
+        <step id="S4">Display Users.</step>
+        <step id="S5">Select Repository Administrator(s).</step>
+        <step id="S6">Request to Update Privileges in Access Control Module.</step>
+        <step id="S7">Grant Embargo Privileges in User Management DB.</step>
+        <step id="S8">Update Confirmation in EDRMS Core.</step>
+        <step id="S9">Display Confirmation to Archivist.</step>
+    </mainSequence>
+</useCase>

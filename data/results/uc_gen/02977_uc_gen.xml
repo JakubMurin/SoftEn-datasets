@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Search for Users</name>
+    <description>User searches for GitHub users</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Search results displayed to the user</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error message displayed to the user</condition>
+    </failureEndConditions>
+    <trigger>User inputs a search query</trigger>
+    <mainSequence>
+        <step id="S1">User inputs search query</step>
+        <step id="S2">Debounce delay of 300ms occurs</step>
+        <step id="S3">Request sent to internal API for search query</step>
+        <step id="S4">Internal API forwards request to GitHub API</step>
+        <step id="S5">GitHub API returns user list to internal API</step>
+        <step id="S6">Internal API retrieves details for each user from GitHub API</step>
+        <step id="S7">Internal API sends user data to the Home component</step>
+        <step id="S8">Home component displays search results to the user</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">No users found in the search</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Error response from GitHub API</description>
+            <step id="E1S1">Error message displayed to the user</step>
+        </esteps>
+    </errorSteps>
+</useCase>

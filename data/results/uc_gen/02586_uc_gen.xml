@@ -1,0 +1,36 @@
+<useCase id="1">
+    <name>Complete a secure transaction</name>
+    <description>User initiates a secure transaction through the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Attacker</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to perform a secure transaction</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Secure transaction is successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Secure transaction fails due to unauthorized access</condition>
+    </failureEndConditions>
+    <trigger>User requests to initiate a secure transaction</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to CDN for /foo with a GET request for /poison</step>
+        <step id="S2">CDN forwards the request to Proxy</step>
+        <step id="S3">Proxy forwards the request to Backend</step>
+        <step id="S4">Backend responds to Proxy with a 200 status for /foo</step>
+        <step id="S5">Proxy forwards the response to CDN with a 200 status for /foo</step>
+        <step id="S6">CDN responds to Attacker with a 200 status for /foo</step>
+        <step id="S7">Proxy sends a GET request to Backend for /poison</step>
+        <step id="S8">Backend responds to Proxy with a 200 status for /poison</step>
+        <step id="S9">Proxy fails to forward the response to CDN due to the closed connections</step>
+        <step id="S10">CDN drops the smuggled response</step>
+        <step id="S11">User sends a GET request to CDN for /bar</step>
+        <step id="S12">CDN forwards the request to Proxy</step>
+        <step id="S13">Proxy forwards the request to Backend</step>
+        <step id="S14">Backend responds to Proxy with a 200 status for /bar</step>
+        <step id="S15">Proxy forwards the response to CDN with a 200 status for /bar</step>
+        <step id="S16">CDN responds to User with a 200 status for /bar</step>
+    </mainSequence>
+</useCase>

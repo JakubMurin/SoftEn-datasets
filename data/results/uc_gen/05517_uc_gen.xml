@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Access and Display Item/Component Details</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Dashboard</actor>
+        <actor>Authorization Module</actor>
+        <actor>Item Retrieval Module</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Curator needs to access the item/component page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The item/component details and deletion date are successfully displayed.</condition>
+    </successEndConditions>
+    <trigger>The Curator accesses the item/component page.</trigger>
+    <mainSequence>
+        <step id="S1">Curator accesses the item/component page through the UI Dashboard.</step>
+        <step id="S2">UI Dashboard validates access with the Authorization Module.</step>
+        <step id="S3">Authorization Module grants access.</step>
+        <step id="S4">UI Dashboard requests item/component details from the Retrieval Module.</step>
+        <step id="S5">Retrieval Module queries the Database for item/component details and deletion date.</step>
+        <step id="S6">Database returns the requested data to the Retrieval Module.</step>
+        <step id="S7">Retrieval Module displays item/component details and deletion date to the UI Dashboard.</step>
+        <step id="S8">UI Dashboard shows the item/component page with deletion date to the Curator.</step>
+    </mainSequence>
+</useCase>

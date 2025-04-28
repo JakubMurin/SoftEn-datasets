@@ -1,0 +1,29 @@
+<useCase id="UC001">
+  <name>Play Rock, Paper, Scissors</name>
+  <description>Allows the user to play the game of Rock, Paper, Scissors</description>
+  <actors>
+    <actor>User</actor>
+    <actor>HomeRock</actor>
+    <actor>GameMode</actor>
+  </actors>
+  <preconditions>
+    <precondition>User is on the HomeRock component</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The user successfully completes the game</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>The user exits the game</condition>
+  </failureEndConditions>
+  <trigger>User initiates the game by interacting with the HomeRock component</trigger>
+  <mainSequence>
+    <step id="S1">User renders the HomeRock component</step>
+    <step id="S2">HomeRock displays the title "Piedra, Papel, Tijera"</step>
+    <step id="S3">User clicks the "Un Jugador" button</step>
+    <step id="S4">HomeRock sets the game mode to 'single'</step>
+    <step id="S5">User clicks the "Dos Jugadores" button</step>
+    <step id="S6">HomeRock sets the game mode to 'multi'</step>
+    <step id="S7">User clicks the "Back to Home" button</step>
+    <step id="S8">HomeRock triggers the onBackToHome event</step>
+  </mainSequence>
+</useCase>

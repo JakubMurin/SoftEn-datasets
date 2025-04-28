@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Delete Holiday</name>
+    <description>Delete a holiday entry from the database</description>
+    <actors>
+        <actor>navegador</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The user selects to delete a holiday</step>    
+        <step id="S2">Confirmation prompt for deletion is displayed to the user</step>
+        <step id="S3">The user confirms the delete action</step>
+        <step id="S4">HTTP DELETE request is sent (/nuclea/holiday/delete/idDiaFeriado)</step>
+        <step id="S5">Delete request is forwarded to the holiday controller (Delete(req,res))</step>
+        <step id="S6">Holiday controller processes the delete action (Delete(req.params.idDiaFeriado))</step>
+        <step id="S7">Delete query executed in the database (DELETE FROM DiasFeriados WHERE idDiaFeriado=?[id])</step>
+        <step id="S8">Response is sent as a Promise to the holiday controller</step>
+        <step id="S9">Response is formatted and sent back (return res.JSON)</step>
+        <step id="S10">Confirmation data is returned in html format to the user</step>
+    </mainSequence>
+</useCase>

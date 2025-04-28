@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>PlayGame</name>
+    <description>Allows the player to play the game and view results.</description>
+    <actors>
+        <actor>Player</actor>
+    </actors>
+    <preconditions>
+        <precondition>The game is installed and running.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The player successfully completes the game.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The player quits the game.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the game by selecting 'Start Game'.</trigger>
+    <mainSequence>
+        <step id="S1">Player starts the game by selecting 'Start Game' in the main menu.</step>
+        <step id="S2">Player navigates to the result viewing section to see the top scores.</step>
+        <step id="S3">Player exits the game by selecting 'Exit Game' button.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1" continue="S2">
+            <step id="A1S1">Player chooses to view results.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Player quits the game unexpectedly.</description>
+            <step id="E1S1">Player exits the game without saving progress.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

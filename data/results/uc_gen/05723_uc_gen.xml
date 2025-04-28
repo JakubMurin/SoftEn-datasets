@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Mở cuộc trò chuyện và thu hồi tin nhắn</name>
+    <actors>
+        <actor>Người dùng</actor>
+        <actor>Người nhận</actor>
+        <actor>Hệ thống</actor>
+        <actor>WebSocket</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Người dùng đã mở cuộc trò chuyện</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Người dùng mở cuộc trò chuyện với Người nhận</step>
+        <step id="S2">Người dùng chọn tin nhắn và nhấn "Thu hồi"</step>
+        <step id="S3">Hệ thống kiểm tra thời gian thu hồi</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Hệ thống gửi thông báo thu hồi qua WebSocket</step>
+            <step id="A1S2">WebSocket gửi yêu cầu gỡ tin nhắn đến Người nhận</step>
+            <step id="A1S3">Hệ thống cập nhật trạng thái tin nhắn trong MongoDB</step>
+            <step id="A1S4">Người nhận gỡ tin nhắn</step>
+            <step id="A1S5">Hệ thống xác nhận cập nhật thành công</step>
+            <step id="A1S6">Hệ thống thông báo cho Người dùng gỡ tin nhắn khỏi giao diện</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

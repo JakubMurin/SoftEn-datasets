@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Update Account Details</name>
+    <actors>
+        <actor>Moderator</actor>
+        <actor>Web Interface</actor>
+        <actor>Backend Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Moderator navigates to the Account Settings section.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The account details are successfully updated.</condition>
+    </successEndConditions>
+    <trigger>Moderator inputs updated account details.</trigger>
+    <mainSequence>
+        <step id="S1">Moderator navigates to Account Settings.</step>
+        <step id="S2">Web Interface receives the request to view current account details.</step>
+        <step id="S3">Backend Server fetches account details from the Account Database.</step>
+        <step id="S4">Account Database returns the requested account details to the Backend Server.</step>
+        <step id="S5">Backend Server displays the current account details to the Web Interface.</step>
+        <step id="S6">Web Interface shows the account details form to the Moderator.</step>
+        <step id="S7">Moderator inputs updated account details.</step>
+        <step id="S8">Web Interface submits the updated account details to the Backend Server.</step>
+        <step id="S9">Backend Server updates the account details in the Account Database.</step>
+        <step id="S10">Account Database confirms the details have been successfully updated to the Backend Server.</step>
+        <step id="S11">Backend Server acknowledges the successful account details update to the Web Interface.</step>
+        <step id="S12">Web Interface displays the update success message to the Moderator.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Criar novo edifício</name>
+    <actors>
+        <actor>Gestor de campus</actor>
+    </actors>
+    <preconditions>
+        <precondition>O Gestor de campus está autenticado no sistema</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">O Gestor de campus inicia a criação de um novo edifício</step>
+        <step id="S2">O Gestor de campus requisita os dados necessários para o novo edifício</step>
+        <step id="S3">O Gestor de campus insere os dados do edifício</step>
+        <step id="S4">O Container envia os dados para a API para criar o edifício</step>
+        <step id="S5">A API responde com um status code</step>
+        <step id="S6">Se o status code for 200:</step>
+        <step id="S7">O Container devolve o edifício criado ao Gestor de campus</step>
+        <step id="S8">Se o status code for 400:</step>
+        <step id="S9">O Container devolve uma mensagem de erro ao Gestor de campus</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,55 @@
+<useCase id="UC1">
+    <name>Retrieve producers with minimum and maximum winners</name>
+    <description>As a user, I want to retrieve producers with minimum and maximum winners.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to access producer data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Producer winners retrieved successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to retrieve producer winners.</condition>
+    </failureEndConditions>
+    <trigger>User sends a GET request to /v1/api/producers/min-max-winners.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the GET request to retrieve producers over the designated API endpoint.
+            Actors Involved: User, ProducerController
+        </step>
+        <step id="S2">ProducerController requests ProducerService to find minimum and maximum winners.
+            Actors Involved: ProducerController, ProducerService
+        </step>
+        <step id="S3">ProducerService delegates the task to MovieService to find the winners.
+            Actors Involved: ProducerService, MovieService
+        </step>
+        <step id="S4">MovieService utilizes MovieRepository to fetch the records where winner is true.
+            Actors Involved: MovieService, MovieRepository
+        </step>
+        <step id="S5">MovieRepository returns List of Movies to MovieService.
+            Actors Involved: MovieRepository, MovieService
+        </step>
+        <step id="S6">MovieService processes the data and prepares a set of ProducerWinnerDto.
+            Actors Involved: MovieService, ProducerMapper
+        </step>
+        <step id="S7">ProducerMapper maps the data into a suitable entity format for downstream processing.
+            Actors Involved: ProducerMapper, ProducerService
+        </step>
+        <step id="S8">ProducerService constructs a response by setting with ProducerWinnerDto values.
+            Actors Involved: ProducerService, ProducerResponseBuilder
+        </step>
+        <step id="S9">ProducerResponseBuilder builds final response incorporating the details provided..
+            Actors Involved: ProducerResponseBuilder, ProducerService
+        </step>
+        <step id="S10">ProducerService converts the ProducerWinnerResponseDto into acceptable format.
+            Actors Involved: ProducerService, ProducerResponseBuilder
+        </step>
+        <step id="S11">ProducerService crafts a successful response and sends results promptly.
+            Actors Involved: ProducerService, ProducerResponseBuilder   
+        </step>
+        <step id="S12">ProducerController receives ProducerWinnerResponse and quickly dispatched
+            Actors Involved: ProducerController, User
+        </step>
+    </mainSequence>
+</useCase>

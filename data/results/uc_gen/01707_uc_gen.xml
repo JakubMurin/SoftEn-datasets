@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Creating a new type of test</name>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Administrator asks to create a new type of test.</step>
+        <step id="S2">:TestTypeUI logins to get the parameter categories data.</step>
+        <step id="S3">:TestTypeController requests the list of parameter categories.</step>
+        <step id="S4">:Company gets the ParameterCategoryStore.</step>
+        <step id="S5">:ParameterCategoryStore retrieves parameter categories.</step>
+        <step id="S6">:listPCMapper converts parameter category list to DTO.</step>
+        <!-- The loop starts here -->
+        <step id="S7">:TestTypeUI displays parameter category list for selection.</step>
+        <step id="S8">Administrator selects a parameter category.</step>
+        <step id="A1">Administrator requests data(description, collecting method, code).</step>
+        <step id="A1S1">:TestTypeUI enters required data.</step>
+        <step id="A1S2">:TestTypeController creates a new test type with the entered data and categories.</step>
+        <step id="A1S3">:TestTypeStore saves the new test type.</step>
+        <step id="A1S4">:TestTypeStore validates the new test type.</step>
+        <step id="A1S5">:TestTypeStore adds the new test type.</step>
+        <!-- The loop ends here -->
+        <step id="S9">:TestTypeUI displays all entered data and requests confirmation.</step>
+        <step id="S10">Administrator confirms all entered data.</step>
+        <step id="S11">:TestTypeController saves the created test type.</step>
+        <step id="S12">:TestTypeStore saves the created test type.</step>
+        <step id="S13">:TestTypeStore validates the saved test type.</step>
+        <step id="S14">:TestTypeStore adds the saved test type.</step>
+        <step id="S15">:TestTypeUI informs the Administrator of the successful test type creation.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Delete Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>DELETE /task/{id}</trigger>
+    <mainSequence>
+        <step id="S1">User requests for task deletion</step>
+        <step id="S2">TaskController receives deletion request</step>
+        <step id="S3">TaskController activates TaskService</step>
+        <step id="S4">TaskService calls deleteTask method with task id</step>
+        <step id="S5">TaskService activates TaskRepository</step>
+        <step id="S6">TaskRepository deletes task by id</step>
+        <step id="S7">TaskRepository returns task deletion</step>
+        <step id="S8">TaskService receives task deletion result</step>
+        <step id="S9">TaskService responds to TaskController</step>
+        <step id="S10">TaskController sends response ResponseEntity with status NO_CONTENT</step>
+    </mainSequence>
+</useCase>

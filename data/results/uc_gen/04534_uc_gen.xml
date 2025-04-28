@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Add Assessment of Subject</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin adds assessment of subject</step>
+        <step id="S2">SubjectController adds mark type to subject</step>
+        <step id="S3">SubjectService adds mark type to subject</step>
+        <step id="S4">SubjectRepository adds mark type to subject</step>
+        <step id="S5">MySQL inserts mark type to subject</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Mark Type exists in subject's assessment</step>
+            <step id="A1S2">CustomExceptionHandler throws ActionNotAllowedException</step>
+            <step id="A1S3">CustomExceptionHandler displays error to Admin</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">Mark Type doesn't exist in subject's assessment</step>
+            <step id="A2S2">MySQL returns response</step>
+            <step id="A2S3">SubjectRepository gets assessment by subject id</step>
+            <step id="A2S4">MySQL returns response</step>
+            <step id="A2S5">SubjectService returns list of tuple</step>
+            <step id="A2S6">SubjectController returns map of mark type and no marks</step>
+            <step id="A2S7">Admin displays assessment</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

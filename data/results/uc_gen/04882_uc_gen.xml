@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Create Workflow</name>
+    
+    <actors>
+        <actor>Workflow Administrator</actor>
+        <actor>Api Gateway</actor>
+        <actor>Workflow Service</actor>
+        <actor>Workflow Db</actor>
+        <actor>NATS Event Relay</actor>
+        <actor>ZKP Manager Service</actor>
+        <actor>Circuit Db</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>Workflow Administrator is authorized.</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Workflow is successfully created in the system.</condition>
+    </successEndConditions>
+    
+    <trigger>Workflow Administrator requests to create a new workflow.</trigger>
+
+    <mainSequence>
+        <step id="S1">Workflow Administrator sends a POST request to Api Gateway for creating a new workflow.</step>
+        <step id="S2">Api Gateway calls Workflow Service to initiate the creation of a new workflow.</step>
+        <step id="S3">Workflow Service interacts with Workflow Db to store the newly created workflow.</step>
+        <step id="S4">Workflow Service publishes a 'new-workflow-allocated' event through NATS.</step>
+    </mainSequence>
+</useCase>

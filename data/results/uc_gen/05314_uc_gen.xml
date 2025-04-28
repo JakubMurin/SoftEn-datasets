@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>User interacts with Liba, App, renderC, renderLiba, createChildren, and UserCard to render elements</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>App</actor>
+        <actor>renderC</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <trigger>rendering elements on the user interface</trigger>
+    <mainSequence>
+        <step id="S1">User calls .create(App) on Liba</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">Liba passes cInstance to renderC</step>
+        <step id="S4">renderC receives cInstance</step>
+        <step id="S5">renderC calls .create('button') on App</step>
+        <step id="S6">App creates bElement</step>
+        <step id="S7">App calls .create(UserCard) on renderLiba</step>
+        <step id="S8">renderLiba creates element for UserCard</step>
+        <step id="S9">UserCard receives props and renderLiba from App</step>
+        <step id="S10">createChildren is called with UserCard, props, AppCInstance, and key</step>
+        <step id="S11">createChildren retrieves instances from cache if available</step>
+        <step id="S12">Liba creates UserCard using AppCInstance, props, and key</step>
+        <step id="S13">renderC receives UserCInstance</step>
+        <step id="S14">UserCard receives props and renderLiba</step>
+        <step id="S15">UserCard creates 'div' elements</step>
+        <step id="S16">UserCard creates another 'div' element</step>
+        <step id="S17">UserCard passes the created element to renderLiba</step>
+        <step id="S18">renderLiba assigns the element to instance.element in renderC</step>
+    </mainSequence>
+</useCase>

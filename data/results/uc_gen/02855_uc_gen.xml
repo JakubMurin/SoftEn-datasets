@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Manage Data</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>CommandHandler</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+        <actor>DomainEntity</actor>
+        <actor>QueryHandler</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates, reads, or updates data through API.</step>
+        <step id="S2">API sends the command to CommandHandler to handle the command.</step>
+        <step id="S3">CommandHandler requests the entity from Repository.</step>
+        <step id="S4">Repository executes SQL queries on the Database.</step>
+        <step id="S5">Database provides raw data to Repository.</step>
+        <step id="S6">Repository maps the raw data to Entity using a Factory.</step>
+        <step id="S7">Repository sends the Entity back to CommandHandler.</step>
+        <step id="S8">CommandHandler applies business logic to the DomainEntity.</step>
+        <step id="S9">CommandHandler saves the Entity in the Repository.</step>
+        <step id="S10">Repository detects changes in the Entity and generates SQL queries.</step>
+        <step id="S11">Repository saves the changes in the Database.</step>
+        <step id="S12">Database confirms the save result to Repository.</step>
+        <step id="S13">CommandHandler sends a NotificationObject to API.</step>
+        <step id="S14">API communicates with QueryHandler.</step>
+        <step id="S15">QueryHandler provides a Data Transfer Object (DTO) to API.</step>
+        <step id="S16">QueryHandler sends the DTO back to the Client.</step>
+    </mainSequence>
+</useCase>

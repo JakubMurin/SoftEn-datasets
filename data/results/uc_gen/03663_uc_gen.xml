@@ -1,0 +1,28 @@
+<useCase id="UC01">
+    <name>Manage Subscription</name>
+    <description>Manage user subscription to the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be authenticated and authorized.</precondition>
+        <precondition>User interface must be accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User subscription successfully managed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to manage user subscription.</condition>
+    </failureEndConditions>
+    <trigger>User initiates subscription management process.</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with the SubscriptionController.</step>
+        <step id="S2">SubscriptionController forwards the request to SubscriptionService.</step>
+        <step id="S3">SubscriptionService processes the request and interacts with SubscriptionRepository.</step>
+        <step id="S4">SubscriptionRepository retrieves data from Datastore.</step>
+        <step id="S5">Datastore sends data back to SubscriptionRepository.</step>
+        <step id="S6">SubscriptionRepository forwards data to SubscriptionService.</step>
+        <step id="S7">SubscriptionService finalizes the process and sends the response to SubscriptionController.</step>
+        <step id="S8">SubscriptionController presents the response to the User.</step>
+    </mainSequence>
+</useCase>

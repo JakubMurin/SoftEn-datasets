@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View Boards</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ViewBoardsUI</actor>
+        <actor>ViewBoardsController</actor>
+        <actor>SBProtocol</actor>
+        <actor>ServerAJAX</actor>
+    </actors>
+    <preconditions>
+        <precondition>Instance of socket with server IP and server port created.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User views boards.</step>
+        <step id="S2">UI creates instance of socket with server IP and server Port.</step>
+        <step id="S3">UI requests boards to view.</step>
+        <step id="S4">Controller creates and sets code and token, sends data and retrieves content.</step>
+        <step id="S5">Controller checks viewBoardHandler in ServerAJAX.</step>
+        <step id="S6">Controller retrieves board contents.</step>
+        <step id="S7">UI shows boards.</step>
+        <step id="S8">User chooses a board.</step>
+        <step id="S9">UI requests history for the chosen board.</step>
+        <step id="S10">Controller creates and sets code, content, and token, sends data and retrieves history content.</step>
+        <step id="S11">Controller checks viewBoardHandler in ServerAJAX.</step>
+        <step id="S12">Controller retrieves and shows history.</step>
+    </mainSequence>
+</useCase>

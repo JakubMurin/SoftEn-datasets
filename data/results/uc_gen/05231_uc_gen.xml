@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Perform TopHat Minting Process</name>
+    <actors>
+        <actor>address1</actor>
+        <actor>address2</actor>
+        <actor>address3</actor>
+    </actors>
+    <preconditions>
+        <precondition>Hats, HatsModuleFactory, and necessary tokens are set up.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Create a TopHat for address1.</step>
+        <step id="S2">Deploy TimeFrameHatModule using HatsModuleFactory.</step>
+        <step id="S3">Create a Hatter Hat.</step>
+        <step id="S4">Mint Hatter Hat in TimeFrameHatModule for address1.</step>
+        <step id="S5">Create Role Hat 1 under Hatter Hat for address1.</step>
+        <step id="S6">Create Role Hat 2 under Hatter Hat for address1.</step>
+        <step id="S7">Mint Role Hat 1 to address1 from TimeFrameHatModule.</step>
+        <step id="S8">Mint Role Hat 2 to address2 from TimeFrameHatModule.</step>
+        <step id="S9">Mint FractionToken to address1 with initial values.</step>
+        <step id="S10">Mint FractionToken to address2 with initial values.</step>
+        <step id="S11">Transfer a portion of FractionToken from address2 to address3.</step>
+        <step id="S12">Create and set up Split information by sending hatId share ratios and wearer information to SplitCreator.</step>
+        <step id="S13">Request and retrieve FractionToken balance information from FractionToken.</step>
+        <step id="S14">Create PullSplits contract in PullSplitsFactory based on hatId ratios and FractionToken details.</step>
+        <step id="S15">Fund PullSplit with ETH or ERC20 token.</step>
+        <step id="S16">Distribute tokens based on Split information by validating and updating SplitsWarehouse balance for each address.</step>
+        <step id="S17">Withdraw specified tokens from SplitsWarehouse for address1.</step>
+        <step id="S18">Withdraw specified tokens from SplitsWarehouse for address2.</step>
+        <step id="S19">Withdraw specified tokens from SplitsWarehouse for address3.</step>
+    </mainSequence>
+</useCase>

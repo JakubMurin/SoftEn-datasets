@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Manage Charging Transaction</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Core</actor>
+        <actor>Libocpp</actor>
+        <actor>CSMS</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User swipes ID tag</step>
+        <step id="S2">Core authorizes the transaction</step>
+        <step id="S3">User plugs in cable</step>
+        <step id="S4">Libocpp triggers TransactionEventRequest::Started to CSMS</step>
+        <step id="S5">Libocpp inserts transaction details into the database</step>
+        <step id="S6">User pauses charging of car</step>
+        <step id="S7">Libocpp triggers TransactionEventRequest::Updated to CSMS</step>
+        <step id="S8">Libocpp updates transaction charging state in the database</step>
+        <step id="S9">Libocpp updates transaction sequence number in the database</step>
+        <step id="S10">Core constructs ChargePoint in case of power outage or crash of libocpp</step>
+        <step id="S11">Libocpp gets transaction details for each evse_id from the database</step>
+        <step id="S12">Libocpp re-initializes transaction for evse_id</step>
+        <step id="S13">Libocpp continues normal operations</step>
+        <step id="S14">User continues charging of car</step>
+        <step id="S15">Libocpp triggers on_charging_state_changed()</step>
+        <step id="S16">Libocpp prints warning of no known transaction if no support for resuming transactions</step>
+        <step id="S17">Libocpp updates transaction charging state in the database if support for resuming transactions</step>
+        <step id="S18">Libocpp updates transaction sequence number in the database if support for resuming transactions</step>
+        <step id="S19">User swipes ID tag to finish the transaction</step>
+        <step id="S20">Libocpp prints warning of no known transaction if no support for resuming transactions</step>
+        <step id="S21">Libocpp deletes transaction in the database if support for resuming transactions</step>
+    </mainSequence>
+</useCase>

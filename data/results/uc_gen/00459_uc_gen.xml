@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Create Translation Client</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>CreateTranslationClientActivity</actor>
+        <actor>TranslationClientDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client makes an HTTP Request through API Gateway/Lambda</step>
+        <step id="S2">CreateTranslationClientActivity receives CreateTranslationClientRequest</step>
+        <step id="S3">TranslationClientDao creates a translation client for specified customer</step>
+        <step id="S4">TranslationClientDao loads customer information from DynamoDB</step>
+        <step id="S5">TranslationClientDao checks for existing translation client</step>
+        <step id="S6">If translationClientName / ClientType pair is identical to existing, throw DuplicateTranslationClientException</step>
+        <step id="S7">Resolve DuplicateTranslationClientException and return 400 response to the Client</step>
+        <step id="S8">If translationClientName / ClientType pair is not identical to existing, save newTranslationClient to DynamoDB</step>
+        <step id="S9">DynamoDB saves the newTranslationClient and returns 200 response</step>
+        <step id="S10">TranslationClientDao returns the newTranslationClient object to CreateTranslationClientActivity</step>
+        <step id="S11">CreateTranslationClientActivity returns CreateTranslationClientResult to API Gateway/Lambda</step>
+        <step id="S12">API Gateway/Lambda returns 200 response with CreateTranslationClientResult data to the Client</step>
+    </mainSequence>
+</useCase>

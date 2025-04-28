@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Create New Memo</name>
+    <actors>
+        <actor>User</actor>
+        <actor>View</actor>
+        <actor>Controller</actor>
+        <actor>Model</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to create a new memo</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New memo successfully created and displayed</condition>
+    </successEndConditions>
+    <trigger>User fills out memo form and submits</trigger>
+    <mainSequence>
+        <step id="S1">User fills out memo form and submits</step>
+        <step id="S2">View sends POST /memos request to Controller</step>
+        <step id="S3">Controller creates new memo object</step>
+        <step id="S4">Model saves memo to database</step>
+        <step id="S5">DB returns success/failure status to Model</step>
+        <step id="S6">Model returns new memo object to Controller</step>
+        <step id="S7">Controller redirects to memos show page</step>
+        <step id="S8">View displays new memo to User</step>
+    </mainSequence>
+</useCase>

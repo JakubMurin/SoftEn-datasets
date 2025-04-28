@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Send Overdue Notices</name>
+    <description>Notify borrowers of overdue books</description>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>Web Interface</actor>
+        <actor>Database</actor>
+        <actor>Notification System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Librarian selects "Late Returns" option</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Notification system confirms notifications sent</condition>
+    </successEndConditions>
+    <trigger>Librarian requests to send reminders</trigger>
+    <mainSequence>
+        <step id="S1">Librarian selects "Late Returns" option</step>
+        <step id="S2">Web Interface queries overdue books from Database</step>
+        <step id="S3">Database returns list of overdue books to Web Interface</step>
+        <step id="S4">Web Interface displays the list of overdue books to Librarian</step>
+        <step id="S5">Librarian requests to send reminders</step>
+        <step id="S6">Web Interface triggers overdue notices to Notification System</step>
+        <step id="S7">Notification System looks up borrower contact info from Database</step>
+        <step id="S8">Database returns contact info to Notification System</step>
+        <step id="S9">Notification System confirms notifications sent to Librarian</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>User Access Validation</name>
+    <description>Ensure proper access control is enforced for user requests</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>UserSecurityService</actor>
+        <actor>ServiceA</actor>
+        <actor>ServiceB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Gateway must receive a request</precondition>
+    </preconditions>
+    <trigger>Request received by Gateway</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to Gateway</step>
+        <step id="S2">Gateway requests token validation from UserSecurityService</step>
+        <step id="S3">UserSecurityService validates the token</step>
+        <step id="S4">Gateway forwards the request to ServiceA</step>
+        <step id="S5">ServiceA responds to Gateway</step>
+        <step id="S6">Gateway sends the response to User</step>
+    </mainSequence>
+</useCase>

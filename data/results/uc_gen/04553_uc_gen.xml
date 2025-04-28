@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Track Package</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user requests tracking information for a specific transaction.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The tracking information is successfully retrieved and displayed to the user.</condition>
+    </successEndConditions>
+    <trigger>User requests tracking information for a specific transaction.</trigger>
+    <mainSequence>
+        <step id="S1">User requests tracking information for a specific transaction.</step>
+        <step id="S2">TrackingController receives the request.</step>
+        <step id="S3">TrackingController retrieves the transaction details.</step>
+        <step id="S4">TransactionController gets the shipping order details.</step>
+        <step id="S5">ShippoTrackingService is called to get tracking information.</step>
+        <step id="S6">ShippoTrackingService retrieves tracking information from Shippo API.</step>
+        <step id="S7">ShippoTrackingService tracks the package.</step>
+        <step id="S8">TrackingController receives the tracking information.</step>
+        <step id="S9">TrackingController sends the tracking information to the user.</step>
+    </mainSequence>
+</useCase>

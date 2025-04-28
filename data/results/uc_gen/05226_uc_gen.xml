@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Generate Secret Key</name>
+    <description>Generate a secret key using SecureRandom and NativeCrypto</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>SecureRandom and NativeCrypto classes are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Secret key successfully generated and returned</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while generating the secret key</condition>
+    </failureEndConditions>
+    <trigger>User initiates secret key generation</trigger>
+    <mainSequence>
+        <step id="S1">User requests a secret key generation</step>
+        <step id="S2">SecretKey object invokes SecureRandom's constructor</step>
+        <step id="S3">SecureRandom generates a SecureRandom instance</step>
+        <step id="S4">SecretKey object requests SecureRandom to generate 32 random bytes</step>
+        <step id="S5">SecureRandom invokes NativeCrypto to generate the random bytes</step>
+        <step id="S6">NativeCrypto returns Uint8List of 32 random bytes to SecureRandom</step>
+        <step id="S7">SecretKey receives the Uint8List and returns it as the secret key</step>
+    </mainSequence>
+</useCase>

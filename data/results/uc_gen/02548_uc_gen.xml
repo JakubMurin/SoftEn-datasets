@@ -1,0 +1,29 @@
+<useCase id="UC1">
+   <name>Perform Station Keeping</name>
+   <actors>
+      <actor>System</actor>
+      <actor>StationKeepingMonitorHandler</actor>
+      <actor>Propagator</actor>
+      <actor>EphemerisGenerator</actor>
+      <actor>BoundedPropagator</actor>
+      <actor>AdapterPropagator</actor>
+      <actor>Small maneuver</actor>
+      <actor>J2 due to maneuver</actor>
+   </actors>
+   <trigger>Initiate Station Keeping Procedure</trigger>
+   <mainSequence>
+      <step id="S1">System requests Ephemeris Generator from Propagator</step>
+      <step id="S2">Propagator creates Ephemeris Generator</step>
+      <step id="S3">System propagates using Propagator</step>
+      <step id="S4">Propagator interacts with EphemerisGenerator to generate ephemeris</step>
+      <step id="S5">System grabs generated ephemeris from Ephemeris Generator</step>
+      <step id="S6">System optimizes with AdapterPropagator for p optimization attempts</step>
+      <step id="S7">System adds direct maneuver effect to AdapterPropagator</step>
+      <step id="S8">System adds indirect J2 effect to AdapterPropagator</step>
+      <step id="S9">System registers SK monitor in AdapterPropagator</step>
+      <step id="S10">System propagates with AdapterPropagator</step>
+      <step id="S11">System applies maneuver in AdapterPropagator for n maneuvers</step>
+      <step id="S12">System handles step in StationKeepingMonitorHandler for q steps</step>
+      <step id="S13">System checks Station Keeping goals in StationKeepingMonitorHandler</step>
+   </mainSequence>
+</useCase>

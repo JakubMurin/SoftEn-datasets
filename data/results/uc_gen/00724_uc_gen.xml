@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Modifier une tâche</name>
+    <description>Permet à l'utilisateur de modifier une tâche.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>ServiceAutorisation</actor>
+        <actor>MoteurTemplates</actor>
+    </actors>
+    <trigger>Utilisateur déclenche l'édition d'une tâche spécifique.</trigger>
+    <mainSequence>
+        <step id="S1">L'utilisateur envoie une requête pour éditer une tâche spécifique.</step>
+        <step id="S2">Le contrôleur trouve la tâche avec l'identifiant indiqué.</step>
+        <step id="S3">Le contrôleur vérifie si la tâche appartient à cet utilisateur.</step>
+        <step id="S4">Service Autorisation confirme que l'utilisateur est propriétaire de la tâche.</step>
+        <step id="S5">Le moteur de templates affiche le formulaire d'édition de la tâche.</step>
+        <step id="S6">Le formulaire d'édition est affiché à l'utilisateur.</step>        
+    </mainSequence>
+</useCase>

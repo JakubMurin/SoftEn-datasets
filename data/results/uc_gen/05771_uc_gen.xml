@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Import Json File and Create Warehouse Structure</name>
+    <actors>
+        <actor>Warehouse Employee</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Warehouse Employee imports a Json File.</step>
+        <step id="S2">JsonImporterUI creates the user interface.</step>
+        <step id="S3">JsonImporterUI asks for user information.</step>
+        <step id="S4">Warehouse Employee provides the filename.</step>
+        <step id="S5">JsonImporterUI displays the filename input field.</step>
+        <step id="S6">JsonImporterController creates an instance.</step>
+        <step id="S7">JsonImporterController calls jsonImporter method with the filename.</step>
+        <step id="S8">JsonImporter creates an instance.</step>
+        <step id="S9">JsonImporter calls importer method with the filename.</step>
+        <step id="S10">JsonImporter parses the JSON file to create a warehouse structure.</step>
+        <step id="S11">WarehouseBuilder creates a warehouse instance.</step>
+        <step id="S12">WarehouseBuilder creates a new warehouse structure.</step>
+        <step id="S13">JsonImporter assigns the warehouse structure to the JsonImporter object.</step>
+        <step id="S14">WarehouseRepository saves the warehouse structure.</step>
+        <step id="S15">AisleBuilder creates an aisle instance.</step>
+        <step id="S16">AisleBuilder creates a new aisle structure.</step>
+        <step id="S17">JsonImporter assigns the aisle structure to the JsonImporter object.</step>
+        <step id="S18">AisleRepository saves the aisle structure.</step>
+        <step id="S19">RowBuilder creates a section instance.</step>
+        <step id="S20">RowBuilder creates a new section structure.</step>
+        <step id="S21">JsonImporter assigns the section structure to the JsonImporter object.</step>
+        <step id="S22">SectionRepository saves the section structure.</step>
+        <step id="S23">ShelfBuilder creates a shelf instance.</step>
+        <step id="S24">ShelfBuilder creates a new shelf structure.</step>
+        <step id="S25">JsonImporter assigns the shelf structure to the JsonImporter object.</step>
+        <step id="S26">ShelfRepository saves the shelf structure.</step>
+        <step id="S27">AGVDockBuilder creates an AGV dock instance.</step>
+        <step id="S28">AGVDockBuilder creates a new AGV dock structure.</step>
+        <step id="S29">JsonImporter assigns the AGV dock structure to the JsonImporter object.</step>
+        <step id="S30">AGVDockRepository saves the AGV dock structure.</step>
+        <step id="S31">JsonImporter completes the creation of the warehouse structure.</step>
+        <step id="S32">JsonImporterUI displays user information.</step>
+    </mainSequence>
+</useCase>

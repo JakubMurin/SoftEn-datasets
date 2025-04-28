@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>企业准入（回收商）</name>
+    <description>Use case for enterprise admission in recycling business</description>
+    <actors>
+        <actor>企业</actor>
+        <actor>监管机构</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">企业 submits the necessary documents</step>
+        <step id="S2">Enters approval process</step>
+        <step id="S3">Government queries unapproved registered companies list</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Government approves the admission request</step>
+            <step id="A1S2">Government deploys admission contract using JAVA_SDK</step>
+            <step id="A1S3">Government updates information regarding admission status, role type, and contract address</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Query the admission results</step>
+            <step id="A2S2">If admission approved: Retrieve and return admission contract data</step>
+            <step id="A2S3">If admission rejected: Return rejection response and prompt to resubmit documents</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

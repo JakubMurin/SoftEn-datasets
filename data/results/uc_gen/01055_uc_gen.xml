@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Passer une commande en ligne</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>InterfaceUtilisateur</actor>
+        <actor>CatalogueProduits</actor>
+        <actor>Panier</actor>
+        <actor>SystèmePaiement</actor>
+        <actor>SystèmeNotification</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client est connecté au site</precondition>
+        <precondition>Produits sont disponibles dans le catalogue</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Paiement effectué avec succès</condition>
+        <condition>Confirmation de commande envoyée</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Echec du paiement</condition>
+        <condition>Options de paiement alternatives affichées</condition>
+    </failureEndConditions>
+    <trigger>Client clique sur "Passer commande"</trigger>
+    <mainSequence>
+        <step id="S1">Parcourir et sélectionner les produits</step>
+        <step id="S2">Récupérer les détails des produits du catalogue</step>
+        <step id="S3">Ajouter produit sélectionné au panier</step>
+        <step id="S4">Mettre à jour le contenu du panier</step>
+        <step id="S5">Récupérer contenu du panier pour paiement</step>
+        <step id="S6">Traiter le paiement</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Confirmation de paiement envoyée</step>
+            <step id="A1S2">Confirmation de commande envoyée</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Alerter utilisateur de l'échec de paiement</description>
+            <step id="E1S1">Afficher options de paiement alternatives</step>
+        </esteps>
+    </errorSteps>
+</useCase>

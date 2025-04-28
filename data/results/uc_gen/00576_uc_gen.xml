@@ -1,0 +1,31 @@
+<useCase id="1">
+    <name>Process Payment with USDT</name>
+    <description>Allow users to pay for services using USDT cryptocurrency</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Website UI</actor>
+        <actor>Payment Gateway</actor>
+        <actor>Database and Backend</actor>
+        <actor>Transaction Monitoring</actor>
+        <actor>Blockchain Interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>Have a valid USDT balance in the wallet</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Final transaction approval received</condition>
+    </successEndConditions>
+    <trigger>User decides to pay with USDT</trigger>
+    <mainSequence>
+        <step id="S1">User decides to pay with USDT</step>
+        <step id="S2">Request payment information from Payment Gateway (USDT deposit address and amount)</step>
+        <step id="S3">Provides USDT deposit address and amount, including QR code</step>
+        <step id="S4">Transfers USDT from User to Blockchain</step>
+        <step id="S5">Detects transaction on Blockchain</step>
+        <step id="S6">Request confirmation of transaction from Blockchain</step>
+        <step id="S7">Updates transaction status based on 6 confirmations</step>
+        <step id="S8">Notification of final transaction approval received</step>
+        <step id="S9">Stores transaction and user information in Database</step>
+        <step id="S10">Confirms payment and converts to points in Website UI</step>
+    </mainSequence>
+</useCase>

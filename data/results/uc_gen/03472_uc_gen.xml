@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Retrieve Text Flyweight</name>
+    <description>As a User, I want to retrieve a Text Flyweight from the Document using the TextFactory and Cache.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Document</actor>
+        <actor>TextFactory</actor>
+        <actor>Cache</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User types character(s) to retrieve text.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Text Flyweight is successfully returned and rendered to the User.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Text Flyweight retrieval fails.</condition>
+    </failureEndConditions>
+    <trigger>Type character(s)</trigger>
+    <mainSequence>
+        <step id="S1">User types character(s)</step>
+        <step id="S2">Document retrieves text value using TextFactory</step>
+        <step id="S3">TextFactory retrieves Flyweight value from Cache</step>
+        <step id="S4">Cache returns existing Flyweight if it exists</step>
+        <step id="S5">TextFactory creates new Flyweight if no match found</step>
+        <step id="S6">TextFactory adds new Flyweight to Cache</step>
+        <step id="S7">Cache returns new Flyweight to TextFactory</step>
+        <step id="S8">TextFactory returns Text Flyweight to Document</step>
+        <step id="S9">Document renders text to User</step>
+    </mainSequence>
+</useCase>

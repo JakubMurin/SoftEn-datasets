@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Add New Room Category</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in and has access to add room categories.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin requests to add a new room category through the UI.</step>
+        <step id="S2">UI displays the add room category form.</step>
+        <step id="S3">Admin submits new room category data.</step>
+        <step id="S4">UI sends the new room category data to the Router.</step>
+        <step id="S5">Router forwards the request to the Controller to add the room category.</step>
+        <step id="S6">Controller saves the new room category data in the Repository.</step>
+        <step id="S7">Repository creates the new room category in the RoomCategoryModel.</step>
+        <step id="S8">RoomCategoryModel inserts the new room category data into the Database.</step>
+        <step id="S9">RoomCategoryModel notifies Repository of successful creation.</step>
+        <step id="S10">Repository informs Controller about successful room category creation.</step>
+        <step id="S11">Controller responds with a success message to the Router.</step>
+        <step id="S12">Router sends a success response to the UI.</step>
+        <step id="S13">UI displays a success message to the Admin.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Retrieve Tracking Information</name>
+    <description>As a User, I want to retrieve tracking information for a specific transaction.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TrackingController</actor>
+        <actor>TransactionController</actor>
+        <actor>ShippoTrackingService</actor>
+        <actor>shippo.model.Track</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates a request to retrieve tracking information for a specific transaction.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tracking information is successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Tracking information retrieval fails.</condition>
+    </failureEndConditions>
+    <trigger>User requests tracking information by accessing /api/tracking/{transId}.</trigger>
+    <mainSequence>
+        <step id="S1">User requests tracking information for a specific transaction.</step>
+        <step id="S2">TrackingController activates to handle the request.</step>
+        <step id="S3">TrackingController retrieves the transaction details using getTransaction(transId) method.</step>
+        <step id="S4">TransactionController activates to fetch the transaction.</step>
+        <step id="S5">TransactionController sends the Shipping order details to TrackingController.</step>
+        <step id="S6">TrackingController calls ShippoTrackingService to get tracking information.</step>
+        <step id="S7">ShippoTrackingService activates to fetch tracking information.</step>
+        <step id="S8">ShippoTrackingService calls shippo.model.Track to get tracking info.</step>
+        <step id="S9">shippo.model.Track activates to track the shipment.</step>
+        <step id="S10">shippo.model.Track sends the tracking information back to ShippoTrackingService.</step>
+        <step id="S11">ShippoTrackingService sends the tracked DTO back to TrackingController.</step>
+        <step id="S12">TrackingController sends the tracked DTO back to User.</step>
+    </mainSequence>
+</useCase>

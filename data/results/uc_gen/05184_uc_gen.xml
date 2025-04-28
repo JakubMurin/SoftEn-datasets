@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Manage Payment Terms for Defendant Account</name>
+    <description>As a User, I want to be able to change the payment terms for a Defendant Account.</description>
+    <actors>
+        <actor>FAE User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Defendant Account Payment Terms are successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the update of Defendant Account Payment Terms.</condition>
+    </failureEndConditions>
+    <trigger>User selects the 'Change' button on the View Account (Payment Terms tab).</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the Change Payment Terms page.</step>
+        <step id="S2">User inputs the necessary data and clicks on the 'Save changes' button.</step>
+        <step id="S3">API call is made to change the Defendant Account Payment Terms.</step>
+        <step id="S4">The Defendant Account Payment Terms are successfully updated.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">In Opal Mode, the Defendant Account Payment Terms are updated using JPA.</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">In Legacy Mode, the Defendant Account Payment Terms are updated using XML.</step>
+            <step id="A2S2">The JSON payload is converted to XML.</step>
+            <step id="A2S3">Defendant Account Payment Terms are created using XML.</step>
+            <step id="A2S4">The XML response is converted back to JSON.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>An error occurs during the update of Defendant Account Payment Terms.</description>
+            <step id="E1S1">Error handling steps are executed.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

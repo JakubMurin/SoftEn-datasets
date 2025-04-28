@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Realizar simulación de temperatura en planta nuclear</name>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>PlantaNuclear</actor>
+        <actor>Sensor</actor>
+        <actor>ReactorNuclear</actor>
+        <actor>Operadores</actor>
+        <actor>EstadoReactor</actor>
+        <actor>Reportador</actor>
+        <actor>Duenio</actor>
+    </actors>
+    <preconditions>
+        <precondition>Los componentes de la planta nuclear están inicializados</precondition>
+    </preconditions>
+    <trigger>Usuario inicia la simulación de temperatura en la planta nuclear</trigger>
+    <mainSequence>
+        <step id="S1">Usuario inicializa los componentes de la planta nuclear</step>
+        <step id="S2">Usuario inicia la simulación de temperatura</step>
+        <step id="S3">Sensor peticiona medir la temperatura</step>
+        <step id="S4">Sensor pide el estado más reciente al Reactor Nuclear</step>
+        <step id="S5">Sensor chequea el estado con el Estado del Reactor</step>
+        <step id="S6">Sensor notifica del estado a los Operadores</step>
+        <step id="S7">Operadores manejan la situación</step>
+        <step id="S8">Estado del Reactor envía un reporte de la situación al Reportador</step>
+        <step id="S9">Reportador envía el reporte con la temperatura al Dueño</step>
+    </mainSequence>
+</useCase>

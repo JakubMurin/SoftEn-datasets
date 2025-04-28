@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Perform Attack</name>
+    <description>Perform a malicious attack on the system.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker and User are authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>System responds with a 200 status.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>System responds with an error status.</condition>
+    </failureEndConditions>
+    <trigger>Attacker sends a POST request to /foo with a GET request to /poison.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends a POST request to /foo.</step>
+        <step id="S2">Proxy activates.</step>
+        <step id="S3">Proxy forwards the request to Backend.</step>
+        <step id="S4">Backend activates.</step>
+        <step id="S5">Backend processes the request and responds with a 200 status to Proxy.</step>
+        <step id="S6">Proxy forwards the response to Attacker.</step>
+        <step id="S7">Backend sends a GET request to /poison to itself.</step>
+        <step id="S8">Backend processes the request and responds with a 200 status to Proxy.</step>
+        <step id="S9">Proxy deactivates.</step>
+        <step id="S10">Backend deactivates.</step>
+        <step id="S11">User sends a GET request to /bar.</step>
+        <step id="S12">Proxy activates.</step>
+        <step id="S13">Proxy forwards the request to Backend.</step>
+        <step id="S14">Backend activates.</step>
+        <step id="S15">Proxy responds with a 200 status to User.</step>
+        <step id="S16">Proxy deactivates.</step>
+        <step id="S17">Backend responds with a 200 status to Proxy.</step>
+        <step id="S18">Backend deactivates.</step>
+    </mainSequence>
+</useCase>

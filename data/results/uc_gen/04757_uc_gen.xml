@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>User edits question in quiz</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Course</actor>
+        <actor>UserClass</actor>
+    </actors>
+    <preconditions>
+        <precondition>Course and related data exist</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Question edited successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Edit process failed</condition>
+    </failureEndConditions>
+    <trigger>User requests to edit a question in a quiz</trigger>
+    <mainSequence>
+        <step id="S1">User edits question request sent to Controller</step>
+        <step id="S2">Controller searches course by ID</step>
+        <step id="S3">Course found, Controller searches teacher by course</step>
+        <step id="S4">Teacher found, Controller searches quiz by ID</step>
+        <step id="S5">Quiz found, Controller searches question by ID</step>
+        <step id="S6">Question found, Controller edits question in quiz</step>
+        <step id="S7">Edit success response sent to User</step>
+    </mainSequence>
+</useCase>

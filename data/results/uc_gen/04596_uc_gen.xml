@@ -1,0 +1,46 @@
+<useCase id="001">
+    <name>Change Password</name>
+    <description>User accesses the account settings page and changes the password.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Password successfully updated in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Current password is incorrect</condition>
+        <condition>New password format is invalid</condition>
+    </failureEndConditions>
+    <trigger>User initiates the password change process.</trigger>
+    <mainSequence>
+        <step id="S1">User accesses the account settings page.</step>
+        <step id="S2">System displays the password change form.</step>
+        <step id="S3">User enters the current and new password.</step>
+        <step id="S4">System verifies the current and new password.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="A1S1">
+            <step id="A1S1">Information is valid.</step>
+            <step id="A1S2">System updates the password in MongoDB.</step>
+            <step id="A1S3">DB confirms the password update.</step>
+            <step id="A1S4">System displays "Password changed successfully" message to the User.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="E1S1">
+            <description>Current password is incorrect.</description>
+            <step id="E1S1">System displays error message "Current password is incorrect".</step>
+            <step id="E1S2">User retries entering the information.</step>
+        </esteps>
+        <esteps id="E2" start="E2S1">
+            <description>New password format is invalid.</description>
+            <step id="E2S1">System displays error message regarding the invalid format.</step>
+            <step id="E2S2">User retries entering the information.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

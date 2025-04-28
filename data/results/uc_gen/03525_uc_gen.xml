@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Authenticate User</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Gatekeeper</actor>
+        <actor>PASTA_service</actor>
+        <actor>LDAP</actor>
+        <actor>auth_service</actor>
+        <actor>IDP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client sends a public request to Gatekeeper</step>
+        <step id="S2">Gatekeeper generates internal (public) token</step>
+        <step id="S3">Gatekeeper forwards request to PASTA_service with internal (public) token</step>
+        <step id="S4">PASTA_service authorizes service</step>
+        <step id="S5">PASTA_service authorizes resource</step>
+        <step id="S6">PASTA_service performs service</step>
+        <step id="S7">Gatekeeper sends response to Client</step>
+        <step id="S8">Gatekeeper drops internal (public) token</step>
+    </mainSequence>
+</useCase>

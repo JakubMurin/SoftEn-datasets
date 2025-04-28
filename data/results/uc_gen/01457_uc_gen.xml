@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Complete Payment Transaction</name>
+    <actors>
+        <actor>Faber</actor>
+        <actor>Acme</actor>
+        <actor>Alice</actor>
+        <actor>DiemLedger</actor>
+        <actor>FaberIndyWallet</actor>
+        <actor>FaberAnonCreds</actor>
+        <actor>FaberPythonDiem</actor>
+        <actor>FaberMiniWallet</actor>
+        <actor>AcmeMiniWallet</actor>
+        <actor>AcmePythonDiem</actor>
+        <actor>AliceMiniWallet</actor>
+        <actor>AlicePythonDiem</actor>
+        <actor>AliceAnonCreds</actor>
+        <actor>AliceIndyWallet</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Faber requests to create Faber DID</step>
+        <step id="S2">Faber creates SCHEMA using Faber DID</step>
+        <step id="S3">Faber requests to create Diem Identifier and ED25519 keys</step>
+        <step id="S4">Faber creates payment transaction for Trusted Institution</step>
+        <step id="S5">DiemLedger sends payment transaction to ledger with SCHEMA</step>
+        <step id="S6">DiemLedger accepts payment or denies payment</step>
+        <step id="S7">Faber pulls SCHEMA from Acme payments on ledger</step>
+        <step id="S8">Faber creates CRED_DEF using Faber DID and SCHEMA pulled</step>
+        <step id="S9">Faber sends payment transaction to ledger with CRED_DEF</step>
+        <step id="S10">DiemLedger accepts payment or denies payment</step>
+        <step id="S11">Alice creates master secret</step>
+        <step id="S12">Faber creates credential offer</step>
+        <step id="S13">Faber sends credential offer to Alice</step>
+        <step id="S14">Alice creates credential request</step>
+        <step id="S15">Alice sends credential request to Faber</step>
+        <step id="S16">Faber creates credential with credential attributes</step>
+        <step id="S17">Faber sends credential to Alice</step>
+        <step id="S18">Alice stores credential in AliceIndyWallet</step>
+    </mainSequence>
+</useCase>

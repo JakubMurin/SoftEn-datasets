@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Send Mass Message</name>
+    <actors>
+        <actor>client</actor>
+        <actor>MassMessageController</actor>
+        <actor>wechat</actor>
+        <actor>mongo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client sends mass message request to MassMessageController.</step>
+        <step id="S2">MassMessageController validates the request.</step>
+        <step id="S3">MassMessageController retrieves access token from wechat.</step>
+        <step id="S4">MassMessageController calls Tencent mass send interface on wechat.</step>
+        <step id="S5">wechat responds to Tencent mass send interface call.</step>
+        <step id="S6">MassMessageController saves the message to mongo.</step>
+        <step id="S7">MassMessageController sends mass message response to the client.</step>
+    </mainSequence>
+</useCase>

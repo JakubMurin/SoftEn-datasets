@@ -1,0 +1,40 @@
+<useCase id="1">
+    <name>Cache Data Retrieval</name>
+    <description>As a user, I want to retrieve data from cache servers efficiently.</description>
+    <actors>
+        <actor>UserX</actor>
+        <actor>UserY</actor>
+    </actors>
+    <preconditions>
+        <precondition>A and B cache servers have synchronized data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The data is successfully retrieved from cache with the correct version and inventory.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The data retrieval fails due to cache inconsistency or errors.</condition>
+    </failureEndConditions>
+    <trigger>Upon a request for data retrieval from the cache servers.</trigger>
+    <mainSequence>
+        <step id="S1">UserX queries Server A for data with version = null.</step>
+        <step id="S2">Server A requests data from Distributed Cache with itemId=1 and version=null.</step>
+        <step id="S3">Distributed Cache provides itemId=1, version=12:00, inventory=10 to Server A.</step>
+        <step id="S4">Server A returns data (itemId=1, version=12:00, inventory=10) to UserX.</step>
+        <step id="S5">UserX stores version = 12:00 in cookie/local storage.</step>
+        <step id="S6">UserY queries Server B for data with version = null.</step>
+        <step id="S7">Server B requests data from Distributed Cache with itemId=1 and version=null.</step>
+        <step id="S8">Distributed Cache provides itemId=1, version=12:05, inventory=8 to Server B.</step>
+        <step id="S9">Server B returns data (itemId=1, version=12:05, inventory=8) to UserY.</step>
+        <step id="S10">UserY stores version = 12:05 in cookie/local storage.</step>
+        <step id="S11">UserY queries Server B for data with version = 12:05.</step>
+        <step id="S12">Server A checks local cache (version=12:00).</step>
+        <step id="S13">Server A queries Distributed Cache for the latest data (itemId=1, version=12:05).</step>
+        <step id="S14">Distributed Cache provides itemId=1, version=12:10, inventory=8 to Server A.</step>
+        <step id="S15">Server A returns data (itemId=1, version=12:10, inventory=8) to UserY.</step>
+        <step id="S16">UserY stores version = 12:10 in cookie/local storage.</step>
+        <step id="S17">UserX queries Server A for data with version = 12:00.</step>
+        <step id="S18">Server A checks local cache (version=12:10).</step>
+        <step id="S19">Server A returns data from local cache (itemId=1, version=12:10, inventory=8) to UserX.</step>
+        <step id="S20">UserX stores version = 12:10 in cookie/local storage.</step>
+    </mainSequence>
+</useCase>

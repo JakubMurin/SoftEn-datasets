@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Generate Surat Lapas</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>surat_lapas</actor>
+        <actor>welcome</actor>
+        <actor>BimbinganController</actor>
+        <actor>NapiController</actor>
+        <actor>Model_Bimbingan</actor>
+        <actor>Model_Napi</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator clicks on the "Surat Lapas" menu.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Administrator clicks on the "Surat Lapas" menu.</step>
+        <step id="S2">Surat_lapas performs the suratpengantar() function.</step>
+        <step id="S3">Welcome redirects the process.</step>
+        <step id="S4">Surat_lapas redirects the process to Administrator.</step>
+        <step id="S5">Administrator inputs the surat number and date.</step>
+        <step id="S6">Surat_lapas searches for the surat based on the input.</step>
+        <step id="S7">If the Surat is available:</step>
+        <step id="S8">BimbinganController retrieves information about Napi from NapiController.</step>
+        <step id="S9">NapiController fetches Napi details from Model_Napi.</step>
+        <step id="S10">Model_Napi provides the necessary details to NapiController.</step>
+        <step id="S11">NapiController redirects the process.</step>
+        <step id="S12">NapiController redirects the process to surat_lapas.</step>
+        <step id="S13">Surat_lapas redirects back to the Administrator.</step>
+        <step id="S14">If the Surat is not available:</step>
+        <step id="S15">BimbinganController redirects back to surat_lapas.</step>
+        <step id="S16">Surat_lapas notifies the Administrator that the Surat is not available.</step>
+    </mainSequence>
+</useCase>

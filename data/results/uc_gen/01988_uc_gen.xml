@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Manage Expiration of Items</name>
+    <actors>
+        <actor>Collection Curator</actor>
+        <actor>Web Interface</actor>
+        <actor>EDRMS Server</actor>
+        <actor>Repository Database</actor>
+    </actors>
+    <trigger>User decides to expire items</trigger>
+    <mainSequence>
+        <step id="S1">Curator selects item(s) for expiration</step>
+        <step id="S2">Web Interface sends item(s) and expiration parameters to EDRMS Server</step>
+        <step id="S3">EDRMS Server queries Repository Database to update item(s) with expiration date</step>
+        <step id="S4">EDRMS Server schedules a task for item(s) expiration</step>
+        <step id="S5">EDRMS Server checks for expired items every night at 12:00 AM</step>
+        <step id="S6">EDRMS Server queries Repository Database for items to hide/delete</step>
+        <step id="S7">Repository Database updates item(s) status to hidden or deletes item(s)</step>
+    </mainSequence>
+</useCase>

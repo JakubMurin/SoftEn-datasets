@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>User Connect Flow</name>
+    <actors>
+        <actor>Invitee</actor>
+        <actor>Inviter</actor>
+        <actor>Invitee Cloud Agent</actor>
+        <actor>Inviter Cloud Agent</actor>
+    </actors>
+    <preconditions>
+        <precondition>All actors have access to required systems.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully establishes connection.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Connection establishment fails.</condition>
+    </failureEndConditions>
+    <trigger>User wishes to establish a connection.</trigger>
+    <mainSequence>
+        <step id="S1">Inviter creates new connection by sending POST request to Inviter Cloud Agent,</step>
+        <step id="S2">InviterAgent generates a new pairwise Peer DID,</step>
+        <step id="S3">InviterAgent creates a connection state record,</step>
+        <step id="S4">Inviter receives connection record {id, invitation, state},</step>
+        <step id="S5">Inviter packs connection invitation into a QR code,</step>
+        <step id="S6">Inviter sends the invitation to the Invitee using Out-of-band (OOB) mechanism.</step>
+
+        <step id="S7">Inviter checks the connection state by sending GET request to InviterAgent, </step>
+        <step id="S8">Inviter receives the connection's current state (InvitationGenerated),</step>
+
+        <step id="S9">Invitee parses the invitation message,  reviews, and accepted the invitation,</step>
+        <step id="S10">InviteeAgent receives and accepts the invitation,</step>
+        <step id="S11">Invitee partitions pairity Generates aioms related drawings,</step>
+        <step id="S12">Invitee Act theres banana chaining missed ot></step>
+
+        <step id="S13">Invitee provides constructing olive acting body conservative confusingOrdersOur:Admin Lite,</step>
+
+
+    </mainSequence>
+</useCase>

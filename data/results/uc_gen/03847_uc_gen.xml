@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Fault Management Provisioning</name>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF:FaultManagement</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is up and running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management Report successfully generated and retrieved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during Fault Management Provisioning process</condition>
+    </failureEndConditions>
+    <trigger>Triggered by BUS to provision Fault Management</trigger>
+    <mainSequence>
+        <step id="S1">BUS registers listeners for FaultManagementJobNotification and FaultManagementReportNotification</step>
+        <step id="S2">BUS creates a Fault Management Job</step>
+        <step id="S3">Fault Management Job is created successfully</step>
+        <step id="S4">Fault Management Job generates data</step>
+        <step id="S5">Fault Management Report is created based on the Job</step>
+        <step id="S6">Fault Management Report collects data</step>
+        <step id="S7">Fault Management Report state changes to completed</step>
+        <step id="S8">Fault Management Report is successfully retrieved</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Submit Subject Responses</name>
+    <description>Allows the MRI Operator to submit subject responses.</description>
+    <actors>
+        <actor>operator</actor>
+        <actor>formInterface</actor>
+        <actor>responsesAPI</actor>
+        <actor>database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The operator accesses the digital form.</step>
+        <step id="S2">The digital form interface displays the form to the operator.</step>
+        <step id="S3">The operator enters the subject responses into the form.</step>
+        <step id="S4">The form interface posts the responses to the responsesAPI.</step>
+        <step id="S5">The responsesAPI saves the responses in the Neurohub Database.</step>
+        <step id="S6">The responsesAPI confirms the successful save of responses in the database.</step>
+        <step id="S7">The responsesAPI confirms the success to the form interface.</step>
+        <step id="S8">The form interface displays a success message to the operator.</step>
+    </mainSequence>
+</useCase>

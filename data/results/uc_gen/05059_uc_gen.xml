@@ -1,0 +1,39 @@
+<useCase id="1">
+    <name>Data Query</name>
+    <description>Performing data queries and cache management</description>
+    <actors>
+        <actor>UserX</actor>
+        <actor>UserY</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both UserX and UserY have access to the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data queries are successfully executed and cache is managed efficiently</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Data queries fail or cache management is inefficient</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">UserX queries data from Server A</step>
+        <step id="S2">Server A queries data from Distributed Cache</step>
+        <step id="S3">Distributed Cache returns data to Server A</step>
+        <step id="S4">Server A returns data to UserX</step>
+        <step id="S5">UserX saves version in cookie/local storage</step>
+        <step id="S6">UserX queries data from Server A again with version 12:00</step>
+        <step id="S7">Server A checks local cache and returns data from cache to UserX</step>
+        <step id="S8">UserY queries data from Server B</step>
+        <step id="S9">Server B queries data from Distributed Cache</step>
+        <step id="S10">Distributed Cache returns data to Server B</step>
+        <step id="S11">Server B returns data to UserY</step>
+        <step id="S12">UserY saves version in cookie/local storage</step>
+        <step id="S13">UserY queries data from Server B with version 12:05</step>
+        <step id="S14">Server B checks local cache and returns data from cache to UserY</step>
+        <step id="S15">UserY queries data from Server B again with version 12:05</step>
+        <step id="S16">Server A checks local cache and queries latest data from Distributed Cache, then returns data to UserY</step>
+        <step id="S17">UserY saves version in cookie/local storage</step>
+        <step id="S18">UserX queries data from Server A with version 12:00 again</step>
+        <step id="S19">Server A checks local cache and returns data from cache to UserX</step>
+        <step id="S20">UserX saves updated version in cookie/local storage</step>
+    </mainSequence>
+</useCase>

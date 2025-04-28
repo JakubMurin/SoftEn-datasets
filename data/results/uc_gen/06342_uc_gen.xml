@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Automate CI/CD Pipeline Integration</name>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob pushes a commit to the master branch of the repository.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Webhook in the Repository triggers the "Awesome pipeline".</step>
+        <step id="S2">"Awesome pipeline" performs a build.</step>
+        <step id="S3">"Awesome pipeline" triggers the "Sync pipeline".</step>
+        <step id="S4">"Sync pipeline" creates an integration_config.yml file.</step>
+        <step id="S5">"Sync pipeline" runs the sync command.</step>
+        <step id="S6">"CI Integration tool" adds new build data to Firestore.</step>
+        <step id="S7">Sync command finishes execution.</step>
+        <step id="S8">Build data export finishes and Bob receives the updated data.</step>
+    </mainSequence>
+</useCase>

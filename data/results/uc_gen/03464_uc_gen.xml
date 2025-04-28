@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Backup service</name>
+    <actors>
+        <actor>User</actor>
+        <actor>BackupManager</actor>
+        <actor>Schedule</actor>
+        <actor>Logger</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User triggers backup process</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Backup process started successfully</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">User starts backup process</step>
+        <step id="S2">BackupManager retrieves next scheduled execution</step>
+        <step id="S3">BackupManager logs success of backup start</step>
+        <step id="S4">BackupManager notifies User about backup start</step>
+    </mainSequence>
+</useCase>

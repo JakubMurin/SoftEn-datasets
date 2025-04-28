@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>List Passage Between 2 Buildings</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User lists passage between 2 buildings</step>
+        <step id="S2">UI displays the list passage between 2 buildings component</step>
+        <step id="S3">UI requests building data from BuildingServiceFE</step>
+        <step id="S4">BuildingServiceFE retrieves a list of buildings from BuildingController</step>
+        <step id="S5">BuildingController fetches all buildings from BuildingServiceBE</step>
+        <step id="S6">BuildingServiceBE queries the database to get the buildings</step>
+        <step id="S7">BuildingServiceBE receives the list of buildings from the database</step>
+        <step id="S8">BuildingServiceBE sends the list of buildings to BuildingController</step>
+        <step id="S9">BuildingController responds with the list of buildings to BuildingServiceFE</step>
+        <step id="S10">BuildingServiceFE logs the buildings into the console</step>
+        <step id="S11">List of buildings is displayed on the UI</step>
+        <step id="S12">User asks for passage between 2 buildings</step>
+        <step id="S13">User selects 2 buildings</step>
+        <step id="S14">UI triggers the ListPassageBetween2Buildings function</step>
+        <step id="S15">ListPassageBetween2Buildings method lists floors from the selected buildings</step>
+        <step id="S16">ListPassageBetween2Buildings checks for passage availability</step>
+        <step id="S17">FloorController retrieves passage information from FloorServiceBE</step>
+        <step id="S18">FloorServiceBE queries the database for passage information</step>
+        <step id="S19">FloorServiceBE receives the passage information from the database</step>
+        <step id="S20">Passage information is sent back to FloorController</step>
+        <step id="S21">FloorController provides the passage information to FloorServiceFE</step>
+        <step id="S22">FloorServiceFE processes the information and displays the passage on the UI</step>
+    </mainSequence>
+</useCase>

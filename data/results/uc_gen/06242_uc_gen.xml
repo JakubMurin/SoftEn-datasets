@@ -1,0 +1,42 @@
+<useCase id="UC001">
+   <name>Searching and Borrowing a Book</name>
+   <description>Selecting and borrowing a book from the library.</description>
+   <actors>
+      <actor>Member</actor>
+   </actors>
+   <preconditions>
+      <precondition>Member has access to library.</precondition>
+   </preconditions>
+   <successEndConditions>
+      <condition>Member successfully borrows the book.</condition>
+   </successEndConditions>
+   <failureEndConditions>
+      <condition>Book is not available for borrowing.</condition>
+   </failureEndConditions>
+   <trigger>Member decides to search and borrow a book.</trigger>
+   <mainSequence>
+      <step id="S1">Member enters a search query for a book.</step>
+      <step id="S2">Search Interface fetches matching books from Library Database.</step>
+      <step id="S3">Search Interface displays list of matched books to the Member.</step>
+      <step id="S4">Member selects a book to check availability from Book Details.</step>
+      <step id="S5">Book Details requests availability status from Availability Checker.</step>
+      <step id="S6">Availability Checker checks current borrowings and reservations for the selected book.</step>
+      <step id="S7">Availability Checker shows availability status to the Member.</step>
+      <step id="S8">Member is presented if the book is "available" or "reserved" in the book details.</step>
+   </mainSequence>
+   <alternativeSteps>
+      <asteps id="A1" start="S8">
+         <step id="A1S1">If book is available, Member requests to borrow the book.</step>
+         <step id="A1S2">Reservation System updates book status to "on loan."</step>
+         <step id="A1S3">Reservation System confirms the update and provides due date to the Member.</step>
+      </asteps>
+   </alternativeSteps>
+   <errorSteps>
+      <esteps id="E1" start="S8">
+         <description>Book is reserved.</description>
+         <step id="E1S1">Member places a reservation request for the book.</step>
+         <step id="E1S2">Reservation System adds book to the reservation queue.</step>
+         <step id="E1S3">Reservation System confirms the reservation and provides estimated wait time to the Member.</step>
+      </esteps>
+   </errorSteps>
+</useCase>

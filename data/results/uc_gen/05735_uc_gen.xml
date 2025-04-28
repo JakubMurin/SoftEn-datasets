@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Like Attendee</name>
+    <description>As a Recruiter, I want to like an Attendee, so that I can show interest in them.</description>
+    <actors>
+        <actor>Recruiter</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Recruiter and Attendee exist in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Attendee is successfully liked by the Recruiter.</condition>
+    </successEndConditions>
+    <trigger>POST /attendees/{attendeeId}/like</trigger>
+    <mainSequence>
+        <step id="S1">Recruiter sends a request to like an Attendee.</step>
+        <step id="S2">Controller forwards the request to likeAttendee service method.</step>
+        <step id="S3">Service retrieves Recruiter details by ID from RecruiterRepository.</step>
+        <step id="S4">Service retrieves Attendee details by ID from AttendeeRepository.</step>
+        <step id="S5">Service checks if the Recruiter has already liked the Attendee.</step>
+        <step id="S6">Service saves the like between Recruiter and Attendee in LikeRepo.</step>
+        <step id="S7">Service sends a completion response to Controller.</step>
+        <step id="S8">Controller responds to the Recruiter with 200 OK status.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Complete USDT Payment</name>
+    <description>As a User, I want to pay with USDT through the Website UI and have the transaction confirmed and stored in the Database.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>Gateway</actor>
+        <actor>Database</actor>
+        <actor>Monitor</actor>
+        <actor>Blockchain</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has sufficient USDT balance.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Transaction is successfully confirmed and stored in the Database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Transaction fails to be confirmed or stored in the Database.</condition>
+    </failureEndConditions>
+    <trigger>User decides to pay with USDT.</trigger>
+    <mainSequence>
+        <step id="S1">User decides to pay with USDT.</step>
+        <step id="S2">UI requests payment information from Gateway.</step>
+        <step id="S3">Gateway provides USDT deposit address and amount, including QR code, to User.</step>
+        <step id="S4">User transfers USDT to Blockchain.</step>
+        <step id="S5">Monitor detects the transaction on Blockchain.</step>
+        <step id="S6">Blockchain requests transaction confirmation from Monitor.</step>
+        <step id="S7">Blockchain updates transaction status for 6 confirmations.</step>
+        <step id="S8">Monitor notifies Gateway of final transaction approval.</step>
+        <step id="S9">Gateway stores transaction and user information in Database.</step>
+        <step id="S10">Database confirms payment and converts it to points for User.</step>
+    </mainSequence>
+</useCase>

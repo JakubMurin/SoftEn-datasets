@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Complete User Registration</name>
+    <description>User completes the registration process by providing necessary information and verifying email.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Authorization Service</actor>
+        <actor>Validation Service</actor>
+        <actor>Email Service</actor>
+        <actor>Data Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the registration process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully completes registration and verifies email.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to complete registration or verify email.</condition>
+    </failureEndConditions>
+    <trigger>User starts the registration process.</trigger>
+    <mainSequence>
+        <step id="S1">User starts registration by providing email and password or using social login.</step>
+        <step id="S2">Authorization Service validates email format and password strength.</step>
+        <step id="S3">Authorization Service checks for existing user.</step>
+        <step id="S4">Authorization Service saves initial user data with unverified status.</step>
+        <step id="S5">Email Service sends confirmation email with verification link.</step>
+        <step id="S6">User confirms email by clicking on the verification link.</step>
+        <step id="S7">Authorization Service updates user status to verified.</step>
+        <step id="S8">Registration process completed, user status set to verified.</step>
+    </mainSequence>
+</useCase>

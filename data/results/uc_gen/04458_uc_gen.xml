@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Delete Snippet</name>
+    <actors>
+        <actor>User</actor>
+        <actor>PrintscriptUI</actor>
+        <actor>SnippetService</actor>
+        <actor>SnippetRepository</actor>
+        <actor>AssetService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+        <precondition>Snippet to be deleted exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Snippet is successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Snippet to be deleted does not exist</condition>
+    </failureEndConditions>
+    <trigger>User clicks on delete button</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on delete button</step>
+        <step id="S2">PrintscriptUI receives delete button click event</step>
+        <step id="S3">SnippetService initiates delete process</step>
+        <step id="S4">SnippetService checks if the snippet exists</step>
+        <step id="S5">SnippetService deletes the snippet</step>
+        <step id="S6">SnippetService deletes related assets</step>
+        <step id="S7">PrintscriptUI displays success message</step>
+        <step id="S8">User views success message</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S6">
+            <step id="A1S1">Snippet does not exist</step>
+            <step id="A1S2">PrintscriptUI displays error message</step>
+            <step id="A1S3">User views error message</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

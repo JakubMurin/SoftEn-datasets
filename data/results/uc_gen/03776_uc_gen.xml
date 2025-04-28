@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Create Booking</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <trigger>Receptionist requests to create booking</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create booking</step>
+        <step id="S2">UI shows booking form</step>
+        <step id="S3">Receptionist fills booking details</step>
+        <step id="S4">Room availability is checked</step>
+        <step id="S5">New booking is created</step>
+        <step id="S6">Success message is displayed</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Room is available, new booking is created</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Room is not available, error message displayed</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

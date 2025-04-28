@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View Dashboard</name>
+    <description>Allow the Receptionist to view the dashboard providing information about bookings, rooms, and services.</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist has logged in and requested to view dashboard</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The dashboard data is successfully displayed to the Receptionist.</condition>
+    </successEndConditions>
+    <trigger>Receptionist request to view the dashboard.</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist requests to view the dashboard.</step>
+        <step id="S2">UI receives the request and forwards it to the Router.</step>
+        <step id="S3">The Router fetches the dashboard data by calling getDashboardData() method in the Controller.</step>
+        <step id="S4">Controller interacts with the Repository to retrieve Dashboard data.</step>
+        <step id="S5">The Repository retrieves the needed data from the Database via the DashboardModel.</step>
+        <step id="S6">The Controller responds with '200 OK' status, containing the dashboard data.</step>
+        <step id="S7">Router sends back the '200 OK' status with the dashboard data to the UI.</step>
+        <step id="S8">UI successfully displays the dashboard data to the Receptionist.</step>
+    </mainSequence>
+</useCase>

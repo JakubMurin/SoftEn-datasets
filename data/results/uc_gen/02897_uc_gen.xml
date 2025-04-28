@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Realizar compra de un curso</name>
+    <description>Este caso de uso describe el proceso de compra de un curso por parte de un estudiante.</description>
+    <actors>
+        <actor>Estudiante</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El Estudiante accede al curso que desea comprar.</step>
+        <step id="S2">La \ComprarCursoView\ solicita detalles del curso al \CompraController.</step>
+        <step id="S3">El \CompraController\ obtiene los detalles del curso desde el \Curso.</step>
+        <step id="S4">El \Curso\ proporciona los detalles del curso al \CompraController.</step>
+        <step id="S5">El \CompraController\ muestra los detalles del curso y el precio en la \ComprarCursoView.</step>
+        <step id="S6">La \ComprarCursoView\ envía los datos de la compra al \CompraController.</step>
+        <step id="S7">El \CompraController\ registra la compra en el \ComprasRepository.</step>
+        <step id="S8">El \ComprasRepository\ confirma la compra al \CompraController.</step>
+        <step id="S9">El \CompraController\ informa a la \ComprarCursoView\ que la compra se ha realizado con éxito.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Error: Error durante el procesamiento de la compra.</step>
+            <step id="A1S2">El \CompraController\ muestra un mensaje de error en la \ComprarCursoView.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

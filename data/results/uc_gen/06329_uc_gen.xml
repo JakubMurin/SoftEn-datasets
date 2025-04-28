@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>ASA Escrow Pay (Order Exec)</name>
+    <actors>
+        <actor>Buyer (Algo Owner)</actor>
+        <actor>Seller (ASA Escrow Owner)</actor>
+        <actor>ASA Escrow (Sell Order) Stateless</actor>
+        <actor>ASA Order Book Stateful</actor>
+    </actors>
+    <preconditions>
+        <precondition>Min .5 Algo balance</precondition>
+        <precondition>ASA to sell available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">ASA Escrow initiates app call to ASA Order Book with TEAL attached for approval</step>
+        <step id="S2">Buyer makes Algo payment of partial order amount to Seller</step>
+        <step id="S3">If necessary, Buyer opts-in to ASA to buy</step>
+        <step id="S4">ASA Escrow closes out full sell amount of asset to Buyer</step>
+        <step id="S5">ASA Escrow closes out escrow algo balance to Seller</step>
+    </mainSequence>
+</useCase>

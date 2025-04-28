@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View Patient's Sick Leave History</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Läkare chooses to view sick leave history for patient at Vårdenhet</step>
+        <step id="S2">Rehabstöd lists sick leaves for person</step>
+        <step id="S3">Rehabstöd retrieves unit names for each certificate</step>
+        <step id="S4">Rehabstöd gets person information for patient</step>
+        <step id="S5">Rehabstöd filters out certificates not on active unit if patient is marked as secret</step>
+        <step id="S6">Rehabstöd checks blocks for patient if not secret</step>
+        <step id="S7">Rehabstöd updates certificates with block status</step>
+        <step id="S8">Rehabstöd sends all certificates to Sjukfallsmotor</step>
+        <step id="S9">Rehabstöd checks consent status for showing certificates outside caregiver</step>
+        <step id="S10">Rehabstöd filters out certificates from other caregivers if consent is missing</step>
+        <step id="S11">Rehabstöd filters out blocked certificates and those outside current unit</step>
+        <step id="S12">Rehabstöd compiles client response with sick leaves and metadata</step>
+        <step id="S13">Rehabstöd sends net list of certificates to get actual sick leaves</step>
+        <step id="S14">Rehabstöd updates list with names and privacy status</step>
+        <step id="S15">Rehabstöd retrieves certificate additions for each certificate</step>
+        <step id="S16">Rehabstöd updates certificates with completion status</step>
+        <step id="S17">Rehabstöd gets risk prediction for each certificate if SRS support is enabled</step>
+        <step id="S18">Rehabstöd logs actual displayed information</step>
+        <step id="S19">Rehabstöd shows patient's sick leave history including SJF to Läkare</step>
+    </mainSequence>
+</useCase>

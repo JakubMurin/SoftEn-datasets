@@ -1,0 +1,32 @@
+<useCase id="1">
+  <name>Hub And Spoke - Flow Reroute</name>
+  <actors>
+    <actor>User</actor>
+    <actor>FlowManager</actor>
+    <actor>DAO</actor>
+    <actor>PathComputer</actor>
+    <actor>ResourcePool</actor>
+    <actor>CommandBuilder</actor>
+    <actor>History</actor>
+    <actor>SpeakerWorker</actor>
+    <actor>RulesValidator</actor>
+    <actor>RuleManager</actor>
+  </actors>
+  <preconditions>
+    <precondition>User requests to reroute the flow in the system.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Successfully rerouted the flow with allocated resources and persisted the changes.</condition>
+  </successEndConditions>
+  <trigger>User initiates the reroute request.</trigger>
+  <mainSequence>
+    <step id="S1">User requests to reroute the flow.</step>
+    <step id="S2">FlowManager reroutes the flow.</step>
+    <step id="S3">FlowManager starts the flow reroute workflow and validates the flow in the database.</step>
+    <step id="S4">FlowManager finds a path for the flow and allocates resources.</step>
+    <step id="S5">FlowManager persists the changes in the database.</step>
+    <step id="S6">FlowManager creates switch rules and installs them.</step>
+    <step id="S7">FlowManager updates the flow with the found path and changes the status to UP.</step>
+    <step id="S8">FlowManager removes old flow path rules and validates the removal.</step>
+  </mainSequence>
+</useCase>

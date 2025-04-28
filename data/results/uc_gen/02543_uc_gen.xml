@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>User application process</name>
+    <description>Performing a series of tasks related to monitoring and managing satellite station keeping operations.</description>
+    <actors>
+        <actor>Main User</actor>
+        <actor>Station Keeping Monitor Handler</actor>
+        <actor>Propagator</actor>
+        <actor>Ephemeris Generator</actor>
+        <actor>Bounded Propagator</actor>
+        <actor>Adapter Propagator</actor>
+        <actor>Small maneuver</actor>
+        <actor>J₂ due to maneuver</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Main User requests Ephemeris Generator from Propagator.</step>
+        <step id="S2">Propagator creates Ephemeris Generator.</step>
+        <step id="S3">Main User initiates propagation with Propagator.</step>
+        <step id="S4">Propagator feeds data to Ephemeris Generator.</step>
+        <step id="S5">Main User receives generated Ephemeris from Ephemeris Generator.</step>
+        <step id="S6">Main User creates Bounded Propagator.</step>
+        <step id="S7">Main User registers Satellite Station Keeping Monitor with Adapter Propagator.</step>
+        <step id="S8">Main User initiates propagation with Adapter Propagator.</step>
+        <step id="S9">Adapter Propagator propagates reference state with Bounded Propagator.</step>
+        <step id="S10">Adapter Propagator applies direct maneuver effect through small maneuver.</step>
+        <step id="S11">Adapter Propagator applies indirect J₂ effect through J₂ due to maneuver.</step>
+        <step id="S12">Adapter Propagator handles step with Station Keeping Monitor Handler.</step>
+        <step id="S13">Main User checks Station Keeping goals with Station Keeping Monitor Handler.</step>
+    </mainSequence>
+</useCase>

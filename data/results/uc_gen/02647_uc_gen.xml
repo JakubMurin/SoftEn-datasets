@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Load Map Data</name>
+    <actors>
+        <actor>Application</actor>
+        <actor>MapEngine</actor>
+        <actor>MapImport</actor>
+        <actor>MemSearch</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects map path and type in Application</step>
+        <step id="S2">MapEngine parses data and initiates map file parsing in MapImport</step>
+        <step id="S3">MapImport transforms data to data model and constructs geometric map data model</step>
+        <step id="S4">MapImport inserts map data into Rtree in MemSearch</step>
+        <step id="S5">MemSearch returns status code to MapImport</step>
+        <step id="S6">MapImport returns status code to MapEngine</step>
+        <step id="S7">MapEngine returns status code to Application</step>
+        <step id="S8">User requests road information in Application</step>
+        <step id="S9">MapEngine searches for roads in MemSearch</step>
+        <step id="S10">MemSearch searches for lanes in Rtree</step>
+        <step id="S11">MemSearch transmits road pointers to MapEngine</step>
+        <step id="S12">MapEngine transmits road pointers to Application</step>
+        <step id="S13">User requests road lane links in Application</step>
+        <step id="S14">MapEngine searches for lane links in MemSearch</step>
+        <step id="S15">MemSearch transmits lane links to MapEngine</step>
+        <step id="S16">MapEngine transmits lane links to Application</step>
+        <step id="S17">User requests object information on roads in Application</step>
+        <step id="S18">MapEngine searches for objects on roads in MemSearch</step>
+        <step id="S19">MemSearch transmits object information on roads to MapEngine</step>
+        <step id="S20">MapEngine transmits object information on roads to Application</step>
+    </mainSequence>
+</useCase>

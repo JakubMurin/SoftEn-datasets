@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Fault Management Provisioning</name>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operations Facility</actor>
+        <actor>Hub</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Business User registers listeners for Fault Management Job and Report Notifications with Hub.</step>
+        <step id="S2">Business User creates a Fault Management Job.</step>
+        <step id="S3">System Operations Facility creates the Fault Management Job.</step>
+        <step id="S4">System Operations Facility responds with the created Fault Management Job to Business User.</step>
+        <step id="S5">Fault Management Job is activated.</step>
+        <step id="S6">Fault Management Job generates data.</step>
+        <step id="S7">Fault Management Job creates an event.</step>
+        <step id="S8">Hub notifies listeners about the faultManagementJobCreateEvent.</step>
+        <step id="S9">Fault Management Job changes state to inProgress.</step>
+        <step id="S10">Fault Management Job creates a state change event.</step>
+        <step id="S11">Hub notifies listeners about the faultManagementJobStateChangeEvent.</step>
+        <step id="S12">Fault Management Job reports ready event to Hub.</step>
+        <step id="S13">Hub notifies listeners about the faultManagementJobReportReadyEvent.</step>
+        <step id="S14">Business User requests a report.</step>
+        <step id="S15">System Operations Facility retrieves the Fault Management Report.</step>
+        <step id="S16">System Operations Facility responds with the retrieved Fault Management Report to Business User.</step>
+    </mainSequence>
+</useCase>

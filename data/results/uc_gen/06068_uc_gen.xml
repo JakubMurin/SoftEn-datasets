@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Perform Persisted Queue Transaction using State Machine Replication</name>
+    <actors>
+        <actor>ApplicationA</actor>
+        <actor>ApplicationB</actor>
+        <actor>CorfuGuidGeneratorA</actor>
+        <actor>CorfuGuidGeneratorB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">ApplicationA enqueues object A</step>
+        <step id="S2">CorfuRuntimeA retrieves a unique ID (0001) for object A from CorfuGuidGeneratorA</step>
+        <step id="S3">CorfuRuntimeA writes object A to CorfuCluster with the assigned key 0001</step>
+        <step id="S4">ApplicationA receives the unique ID 0001 for object A</step>
+        <step id="S5">ApplicationB enqueues object B</step>
+        <step id="S6">CorfuRuntimeB retrieves a unique ID (0002) for object B from CorfuGuidGeneratorB</step>
+        <step id="S7">CorfuRuntimeB writes object B to CorfuCluster with the assigned key 0002</step>
+        <step id="S8">ApplicationB receives the unique ID 0002 for object B</step>
+        <step id="S9">CorfuCluster assigns addresses to objects based on commit order</step>
+        <step id="S10">CorfuCluster updates CorfuRuntimeB's map with object A at Address 200</step>
+        <step id="S11">CorfuCluster updates CorfuRuntimeA's map with object B at Address 100</step>
+        <step id="S12">ApplicationA queries CorfuRuntimeA for the entry list and receives [200+0001 =&gt; A, 100+0002 =&gt; B]</step>
+        <step id="S13">ApplicationB queries CorfuRuntimeB for the entry list and receives [200+0001 =&gt; A, 100+0002 =&gt; B]</step>
+    </mainSequence>
+</useCase>

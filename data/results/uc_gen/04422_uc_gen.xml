@@ -1,0 +1,29 @@
+<useCase id="1">
+    <name>Payment Initiation with Embedded approach explicit authorisation mode.</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates payment by interacting with TPP.</step>
+        <step id="S2">TPP calls XS2A to initiate the payment using a REST Call.</step>
+        <step id="S3">XS2A calls SPI to initiate payment.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">SPI communicates with XS2A and returns a SpiSinglePaymentInitiationResponse.</step>
+            <step id="A1S2">XS2A saves the payment in CMS.</step>
+            <step id="A1S3">XS2A responds to TPP with the payment initiation outcome.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1">
+            <description>Error during authorisation</description>
+            <step id="E1S1">XS2A saves the authorization in CMS after receiving it from SPI.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

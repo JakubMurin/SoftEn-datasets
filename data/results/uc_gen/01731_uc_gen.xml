@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Retrieve Minimum and Maximum Winners</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SpringBoot</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User requests to retrieve the minimum and maximum winners of the producers.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a GET request to ProducerController to retrieve minimum and maximum winners.</step>
+        <step id="S2">ProducerController forwards the request to ProducerService.</step>
+        <step id="S3">ProducerService calls MovieService to find winners.</step>
+        <step id="S4">MovieService queries MovieRepository to find movies by winners.</step>
+        <step id="S5">MovieRepository returns a list of movies to MovieService.</step>
+        <step id="S6">MovieService sets ProducerWinnerDto based on the retrieved movies.</step>
+        <step id="S7">ProducerService maps ProducerWinnerDto to Producer years.</step>
+        <step id="S8">ProducerService builds the response using ProducerMapper and ProducerResponseBuilder.</step>
+        <step id="S9">ProducerService returns the ProducerWinnerResponse to ProducerController.</step>
+        <step id="S10">ProducerController responds to the User with the ProducerWinnerResponse.</step>
+        <step id="S11">SpringBoot triggers ApplicationReadyEvent.</step>
+        <step id="S12">MovieService imports CSV data using CsvReader.</step>
+        <step id="S13">CsvReader returns a list of MovieDto to MovieService.</step>
+        <step id="S14">MovieService saves all the MovieDto data to MovieRepository.</step>
+    </mainSequence>
+</useCase>

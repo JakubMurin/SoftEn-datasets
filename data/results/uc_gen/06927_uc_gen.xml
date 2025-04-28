@@ -1,0 +1,13 @@
+<useCase id="1">
+    <name>Conflict Resolution</name>
+    <actors>
+        <actor>NotificationService</actor>
+        <actor>MQTTServer</actor>
+        <actor>User Device</actor>
+    </actors>
+    <trigger>Conflict Event(user_id, file_id)</trigger>
+    <mainSequence>
+        <step id="S1">Conflict notification(user_id, file_id) is sent to the "User Device"
+        actor:"Device"</step>
+    </mainSequence>
+</useCase>

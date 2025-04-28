@@ -1,0 +1,22 @@
+<useCase id="UC-001">
+  <name>Scan Proxy Repo</name>
+  <description>Scan the proxy repository for new files and sources.</description>
+  <actors>
+    <actor>ChangeListener</actor>
+  </actors>
+  <preconditions>
+    <precondition>A Proxy Repository is set up.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>New files are successfully scanned and added to the repository.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Scan process fails due to technical issues.</condition>
+  </failureEndConditions>
+  <trigger>ProxyRepoFileScanner initiates a scan.</trigger>
+  <mainSequence>
+    <step id="S1">ProxyRepoFileScanner scans the proxy repository files.</step>
+    <step id="S2">ProxyRepoFileScanner adds a new source for scanning to ProxyRepoSources.</step>
+    <step id="S3">ProxyRepoSources adds the 'source' record to the database.</step>
+  </mainSequence>
+</useCase>

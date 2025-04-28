@@ -1,0 +1,24 @@
+<useCase id="UC01">
+    <name>Create Volume</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin has necessary privileges to create volumes</precondition>
+        <precondition>User has access to Kubernetes cluster</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin creates storage class with mgmt-endpoint: 10.10.10.40:80,10.10.10.41:80,10.10.10.42:80, replica-count: "3", and compression disabled</step>
+        <step id="S2">User requests creation of persistent volume claim (PVC)</step>
+        <step id="S3">Kubernetes triggers the ControllerCreateVolume operation in the CSI driver</step>
+        <step id="S4">The CSI driver sends a CreateVolume request to the target storage system</step>
+        <step id="S5">The target storage system responds with the volume ID and capacity</step>
+        <step id="S6">The CSI driver sends the CreateVolumeResponse back to Kubernetes</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">Admin uses lbcli to statically provision a volume on the target</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

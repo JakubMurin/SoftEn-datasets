@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Execute Task</name>
+    <description>Allow the Developer to execute a task through the Throttle mechanism.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Throttle</actor>
+        <actor>Queue</actor>
+        <actor>Throttle Strategy</actor>
+        <actor>Timer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer sends an execution request to Throttle.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Task is successfully executed by Throttle.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Execution permit is denied by Throttle Strategy.</condition>
+    </failureEndConditions>
+    <trigger>Developer sends an execution request.</trigger>
+    <mainSequence>
+        <step id="S1">Developer sends an execution request to Throttle.</step>
+        <step id="S2">Throttle stores the task in the Queue.</step>
+        <step id="S3">Throttle retrieves the next task from the Queue.</step>
+        <step id="S4">Throttle asks for an execution permit from Throttle Strategy.</step>
+        <step id="S5">Throttle Strategy checks the current time with Timer.</step>
+        <step id="S6">Throttle Strategy waits for the next execution time.</step>
+        <step id="S7">Throttle executes the task.</step>
+    </mainSequence>
+</useCase>

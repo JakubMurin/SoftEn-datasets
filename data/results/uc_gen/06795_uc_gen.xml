@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View Recent Submissions</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>Dashboard</actor>
+        <actor>Database</actor>
+        <actor>SubmissionService</actor>
+        <actor>CollectionWidget</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator requests to view the recent submissions</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Curator views the dashboard with the collection widget displaying recent submissions</condition>
+    </successEndConditions>
+    <trigger>Curator requests dashboard view</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests Dashboard View</step>
+        <step id="S2">Dashboard fetches recent submissions</step>
+        <step id="S3">SubmissionService queries submissions by date</step>
+        <step id="S4">Database returns submission data</step>
+        <step id="S5">SubmissionService processes submission summary</step>
+        <step id="S6">Dashboard prepares collection widget</step>
+        <step id="S7">CollectionWidget displays recent submissions</step>
+        <step id="S8">Dashboard shows dashboard with widget</step>
+    </mainSequence>
+</useCase>

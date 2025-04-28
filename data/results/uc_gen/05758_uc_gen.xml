@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>View Monthly Lending Report</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian is authenticated and authorized to view the monthly lending report.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Librarian requests the monthly lending report by sending a GET request to /api/lendings/monthly-lending.</step>
+        <step id="S2">LendingController activates.</step>
+        <step id="S3">LendingController calls ReaderService to retrieve all readers.</step>
+        <step id="S4">ReaderService activates.</step>
+        <step id="S5">ReaderService queries ReaderRepository to find all readers.</step>
+        <step id="S6">ReaderRepository activates.</step>
+        <step id="S7">ReaderRepository returns a list of readers to ReaderService.</step>
+        <step id="S8">ReaderRepository deactivates.</step>
+        <step id="S9">For each reader:</step>
+        <step id="S10">ReaderService queries ReaderRepository to get the monthly lending for the reader.</step>
+        <step id="S11">ReaderRepository activates.</step>
+        <step id="S12">ReaderRepository returns the number of lents to ReaderService.</step>
+        <step id="S13">ReaderRepository deactivates.</step>
+        <step id="S14">ReaderService sets the number of lents for the reader.</step>
+        <step id="S15">ReaderService deactivates.</step>
+        <step id="S16">LendingController calls ReaderLentsViewMapper to convert readers to ReaderLentsView.</step>
+        <step id="S17">ReaderLentsViewMapper activates.</step>
+        <step id="S18">ReaderLentsViewMapper returns an iterable of ReaderLentsView to LendingController.</step>
+        <step id="S19">ReaderLentsViewMapper deactivates.</step>
+        <step id="S20">LendingController responds to the Librarian with HTTP 200 OK and the iterable of ReaderLentsView.</step>
+        <step id="S21">LendingController deactivates.</step>
+    </mainSequence>
+</useCase>

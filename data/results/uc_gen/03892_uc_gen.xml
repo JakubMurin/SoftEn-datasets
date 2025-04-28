@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Create Build</name>
+    <actors>
+        <actor>DevSecOpsManager</actor>
+        <actor>dsom</actor>
+        <actor>provisioner</actor>
+        <actor>EventBus</actor>
+    </actors>
+    <trigger>DevSecOpsManager initiates the creation of a build.</trigger>
+    <mainSequence>
+        <step id="S1">DevSecOpsManager instructs dsom to create a build.</step>
+        <step id="S2">dsom communicates with provisioner to create the build with name 'hello' and file './templates/build.yml'.</step>
+        <step id="S3">provisioner creates the specified build.</step>
+        <step id="S4">provisioner notifies EventBus about the creation of the build.</step>
+    </mainSequence>
+</useCase>

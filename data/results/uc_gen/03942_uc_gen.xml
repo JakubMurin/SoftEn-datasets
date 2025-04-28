@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>The user logs in to the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Login Page</actor>
+        <actor>Home Page</actor>
+        <actor>AuthController</actor>
+        <actor>AuthService</actor>
+        <actor>UserRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User accesses the login page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and accesses the home page.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in due to incorrect credentials.</condition>
+    </failureEndConditions>
+    <trigger>User enters username and password and submits the login form.</trigger>
+    <mainSequence>
+        <step id="S1">User enters username and password in the login form.</step>
+        <step id="S2">User submits the login form.</step>
+        <step id="S3">Login Page sends HTTP POST request to AuthController with credentials.</step>
+        <step id="S4">AuthController calls AuthService to authenticate the user.</step>
+        <step id="S5">AuthService verifies user credentials by querying UserRepository.</step>
+        <step id="S6">UserRepository queries the Database for user credentials.</step>
+        <step id="S7">UserRepository receives user details from the Database.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">UserRepository returns an error due to invalid credentials.</step>
+            <step id="A1S2">AuthService returns an error to AuthController.</step>
+            <step id="A1S3">AuthController displays an error message on the login page.</step>
+            <step id="A1S4">Login Page displays an error message to the User.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

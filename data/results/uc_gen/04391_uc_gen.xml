@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Request to create dataset instance</name>
+    <actors>
+        <actor>DataScientist</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataScientist requests to create a dataset instance.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">DataScientist requests UI interface to create a dataset instance.</step>
+        <step id="S2">UI interface receives request and parses parameters to select existing dataset type and define instance properties.</step>
+        <step id="S3">Dataset Management System (DMS) is activated and verifies permissions and dataset type existence.</step>
+        <step id="S4">If dataset type exists and the user has permissions:</step>
+        <step id="S5">DMS sends a request to create a new dataset instance with specified properties to the Dataset Repository.</step>
+        <step id="S6">Dataset Repository creates a new dataset instance and sends an instance creation confirmation to DMS.</step>
+        <step id="S7">DMS displays a success message with instance details to the UI.</step>
+        <step id="S8">UI interface shows a confirmation message to DataScientist.</step>
+        <step id="S9">If dataset type not found or no permissions:</step>
+        <step id="S10">DMS displays an error message to the UI interface.</step>
+        <step id="S11">UI interface shows an error message to DataScientist.</step>
+    </mainSequence>
+</useCase>

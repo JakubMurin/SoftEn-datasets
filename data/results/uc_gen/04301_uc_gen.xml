@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Submit Session</name>
+    <actors>
+        <actor>AuthenticatedUser</actor>
+        <actor>Web Interface</actor>
+        <actor>Session Database</actor>
+        <actor>Session Review System</actor>
+        <actor>Notification Service</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User navigates to 'Submit Session' on the Web Interface.</step>
+        <step id="S2">Web Interface displays 'Session Submission Form' to the Authenticated User.</step>
+        <step id="S3">User fills in and submits the form on the Web Interface.</step>
+        <step id="S4">Session details are saved in the Session Database.</step>
+        <step id="S5">Session Review Process is triggered by the Session Database.</step>
+        <step id="S6">Session status is updated to 'Under Review' in the Session Database.</step>
+        <step id="S7">Notification to the User is triggered by the Session Database.</step>
+        <step id="S8">Email notification 'Session Submitted' is sent to the User by the Notification Service.</step>
+        <step id="S9">User refreshes/checks email for notification.</step>
+        <step id="S10">Session status is updated to 'Approved/Rejected' in the Session Database by the Session Review System.</step>
+        <step id="S11">Notification to the User is triggered by the Session Database.</step>
+        <step id="S12">Email notification 'Session Approved' or 'Session Rejected' is sent to the User by the Notification Service.</step>
+    </mainSequence>
+</useCase>

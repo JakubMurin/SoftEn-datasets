@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Resolve Challenge</name>
+    <actors>
+        <actor>Attore</actor>
+    </actors>
+    <trigger>facesChallenge()</trigger>
+    <mainSequence>
+        <step id="S1">Attore faces a challenge.</step>
+        <step id="S2">Command receives input.</step>
+        <step id="S3">Logic solves a riddle in the temple.</step>
+        <step id="S4">Command verifies the result.</step>
+        <step id="S5">Logic can access the next room.</step>
+        <step id="S6">Command moves to the next room.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Logic fights a creature.</step>
+            <step id="A1S2">Command checks the weapon.</step>
+            <step id="A1S3">Logic can access the next room.</step>
+            <step id="A1S4">Command moves to the next room.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

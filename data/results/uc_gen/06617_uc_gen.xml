@@ -1,0 +1,40 @@
+<useCase id="001">
+    <name>Sending Grin Transaction</name>
+    
+    <actors>
+        <actor>Sender</actor>
+        <actor>Recipient</actor>
+        <actor>Grin Node</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Create Transaction UUID for reference</step>
+        <step id="S2">Set lock_height for transaction kernel</step>
+        <step id="S3">Select inputs using selection strategy</step>
+        <!-- additional steps removed for brevity -->
+        <step id="S8">Calculate tx_weight</step>
+        <step id="S9">Calculate fee</step>
+        <step id="S10">Calculate total blinding excess sum xS1</step>
+        <!-- additional steps removed for brevity -->
+        <step id="S14">Add values to Slate for passing to other participants</step>
+        
+        <step id="S15">Sender sends Slate to Recipient</step>
+        
+        <step id="S16">Recipient checks fee and creates receiver_output</step>
+        <!-- additional steps removed for brevity -->
+        <step id="S19">Recipient creates wallet output function rF</step>
+        
+        <step id="S20">Recipient sends confirmation to Sender</step>
+        
+        <step id="S21">Sender finalizes transaction</step>
+        
+        <step id="S22">Sender creates final transaction tx from Slate</step>
+        <!-- additional steps removed for brevity -->
+        
+        <step id="S23">Sender posts tx to mempool</step>
+        <step id="S24">Grin Node confirms transaction POST</step>
+        
+        <step id="S25">Recipient confirms finalization to Sender</step>
+        <!-- additional steps removed for brevity -->
+    </mainSequence>
+</useCase>

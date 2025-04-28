@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Scribble, Join scribble rooms</name>
+    <actors>
+        <actor>user</actor>
+        <actor>client</actor>
+        <actor>server</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has started the app.</precondition>
+    </preconditions>
+    <trigger>User wants to join a scribble room.</trigger>
+    <mainSequence>
+        <step id="S1">User asks the client for a nickname.</step>
+        <step id="S2">User writes the chosen nickname.</step>
+        <step id="S3">Client sends the join request with the nickname, IP, and port to the server.</step>
+        <step id="S4">Server checks if the nickname is available.</step>
+        <step id="S5">Server adds the nickname to the list of users with the corresponding IP.</step>
+        <step id="S6">Server notifies the client that the user has successfully joined.</step>
+        <step id="S7">Server updates the chat with the joined user's nickname.</step>
+        <step id="S8">Client enables the "Ready to Play" button.</step>
+        <step id="S9">Client enables the chat functionality.</step>
+        <step id="S10">User acknowledges the successful join.</step>
+    </mainSequence>
+</useCase>

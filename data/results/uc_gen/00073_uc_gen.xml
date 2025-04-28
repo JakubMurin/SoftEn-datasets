@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Create Volume</name>
+    <actors>
+        <actor>admin</actor>
+        <actor>user</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin creates storage class</step>
+        <step id="S2">User creates persistent volume claim</step>
+        <step id="S3">Kubernetes sends request to CSI driver to create volume</step>
+        <step id="S4">CSI driver communicates with storage target to create volume</step>
+        <step id="S5">Storage target responds with volume information</step>
+        <step id="S6">CSI driver sends volume creation response to Kubernetes</step>
+    </mainSequence>
+</useCase>

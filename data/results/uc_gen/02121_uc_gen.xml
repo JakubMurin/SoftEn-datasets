@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Agent Recovery</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to use for control over her agent policy registry on the ledger.</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice performs agent recovery by completing all steps in Offline Recovery diagram or Social Recovery diagram.</step>
+        <step id="S2">Alice can't complete the portion to update the agent policy registry because she is locked out.</step>
+    </mainSequence>
+</useCase>

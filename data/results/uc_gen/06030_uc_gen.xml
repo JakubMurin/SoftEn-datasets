@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>数据存储与搜索</name>
+    <actors>
+        <actor>User</actor>
+        <actor>DataStorage</actor>
+        <actor>Database</actor>
+        <actor>GitLabCrawler</actor>
+        <actor>TDCrawler</actor>
+        <actor>Preprocessor</actor>
+        <actor>SearchEngine</actor>
+        <actor>VectorSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>User已登录系统</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User初始化数据库</step>
+        <step id="S2">DataStorage创建数据库结构</step>
+        <step id="S3">User爬取GitLab数据</step>
+        <step id="S4">GitLabCrawler返回GitLab数据</step>
+        <step id="S5">User爬取TD数据</step>
+        <step id="S6">TDCrawler返回TD数据</step>
+        <step id="S7">DataStorage进行数据预处理</step>
+        <step id="S8">Preprocessor返回预处理后的数据</step>
+        <step id="S9">DataStorage存储数据到SQLite</step>
+        <step id="S10">DataStorage更新索引</step>
+        <step id="S11">User发起搜索请求</step>
+        <step id="S12">SearchEngine进行向量检索</step>
+        <step id="S13">VectorSearch返回前N个结果</step>
+        <step id="S14">SearchEngine根据id获取完整的bug信息</step>
+        <step id="S15">Database返回完整bug信息</step>
+        <step id="S16">SearchEngine返回bug列表</step>
+    </mainSequence>
+</useCase>

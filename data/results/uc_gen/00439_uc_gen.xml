@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Add account note</name> 
+    <description>User should be able to add a note to an account on the UI</description> 
+    <actors>
+        <actor>Users</actor>
+    </actors>
+    <trigger>User clicks on the 'Add account note' button</trigger> 
+    <mainSequence>
+        <step id="S1">User navigates to the 'Add Note' page</step>
+        <step id="S2">User inputs data for the note</step>
+        <step id="S3">User clicks on the 'Save Note' button</step>
+        <step id="S4">System creates the note</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Incase of failure message</step>
+            <step id="A1S2">Retry to save the note</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error occurred while creating the note</description>
+            <step id="E1S1">System fails to create the note</step>
+        </esteps>
+    </errorSteps>
+</useCase>

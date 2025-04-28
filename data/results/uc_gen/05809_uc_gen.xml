@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Receive and display AGV data on smart screen</name>
+    <description>As a Client B (Smart Screen), I want to subscribe to the topic "screen/report" and receive AGV data published by Client A (Smart Car) via MQTT Broker, so that the data can be displayed on the smart screen.</description>
+    <actors>
+        <actor>Client B (Smart Screen)</actor>
+        <actor>Client A (Smart Car)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client B and Client A are connected to the MQTT Broker.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client B successfully receives and displays AGV data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client B fails to receive or display AGV data.</condition>
+    </failureEndConditions>
+    <trigger>Client B subscribes to the topic "screen/report". Client A publishes data to the topic "agv/report".</trigger>
+    <mainSequence>
+        <step id="S1">Client B subscribes to the topic "screen/report".</step>
+        <step id="S2">Client A publishes AGV data to the topic "agv/report".</step>
+        <step id="S3">MQTT Broker forwards the data to the topic "screen/report".</step>
+    </mainSequence>
+</useCase>

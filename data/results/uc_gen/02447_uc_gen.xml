@@ -1,0 +1,50 @@
+<useCase id="UC001">
+    <name>Count User Errors</name>
+    <actors>
+        <actor>User</actor>
+        <actor>User Interface</actor>
+        <actor>Error Handler</actor>
+        <actor>Error Counter</actor>
+        <actor>Log Manager</actor>
+        <actor>Error Log</actor>
+    </actors>
+    <preconditions>
+        <precondition>User performs an action.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User error count updated successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error count not updated.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User performs an action.</step>
+        <step id="S2">User Interface detects user error.</step>
+        <step id="S3">Error Handler requests user error detection.</step>
+        <step id="S4">Error Counter counts user error.</step>
+        <step id="S5">Error Counter updates count.</step>
+        <step id="S6">Error Handler updates count.</step>
+        <step id="S7">User Interface receives updated count.</step>
+        <step id="S8">User performs a normal action.</step>
+        <step id="S9">User Interface notifies normal action.</step>
+        <step id="S10">Error Handler decreases count.</step>
+        <step id="S11">Error Counter decreases count.</step>
+        <step id="S12">Error Handler confirms count decrease.</step>
+        <step id="S13">User Interface receives decreased count.</step>
+        <step id="S14">Error Handler checks if count reaches a threshold.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S14">
+            <step id="A1S1">Error Handler confirms count threshold reached.</step>
+            <step id="A1S2">User Interface displays error message.</step>
+            <step id="A1S3">User Interface requests error logging.</step>
+            <step id="A1S4">Log Manager records error in Error Log.</step>
+            <step id="A1S5">Log Manager confirms error logged.</step>
+            <step id="A1S6">User Interface confirms error logged.</step>
+            <step id="A1S7">User Interface requests recovery process.</step>
+            <step id="A1S8">Error Handler performs recovery process.</step>
+            <step id="A1S9">Error Handler confirms recovery process completed.</step>
+            <step id="A1S10">User Interface displays recovery completion message to User.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

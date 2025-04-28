@@ -1,0 +1,34 @@
+<useCase id="UC123">
+    <name>Time Off Request</name>
+    <actors>
+        <actor>Team Member</actor>
+        <actor>Project Manager</actor>
+        <actor>User Research Coordinator</actor>
+        <actor>Calendar System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Team Member requests time off</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Time off request approved and team schedule is updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Time off request overlaps with user research</condition>
+    </failureEndConditions>
+    <trigger>Team Member requests time off</trigger>
+    <mainSequence>
+        <step id="S1">Team Member requests time off</step>
+        <step id="S2">Project Manager checks team schedule</step>
+        <step id="S3">Calendar System notifies Project Manager about overlap</step>
+        <step id="S4">Project Manager consults with User Research Coordinator on reshuffling tasks</step>
+        <step id="S5">User Research Coordinator proposes new schedule</step>
+        <step id="S6">Project Manager updates team schedule</step>
+        <step id="S7">Calendar System confirms update</step>
+        <step id="S8">Project Manager informs Team Member about the overlap and new schedule</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">No overlap exists</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

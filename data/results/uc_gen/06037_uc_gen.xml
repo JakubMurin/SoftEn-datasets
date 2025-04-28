@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Add New Edge Agent</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Edge Agent 1</actor>
+        <actor>Edge Agent 2</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice has chosen existing or add new device from options in Edge Agent Start.</precondition>
+        <precondition>Edge Agent 2 has been provisioned as described in the Provision New Agent diagram.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice adds new edge agent.</step>
+        <step id="S2">Edge Agent 2 sends instructions for adding Agent 2 and selecting authorizations to Alice.</step>
+        <step id="S3">Alice adds agent with selected authorizations.</step>
+        <step id="S4">Edge Agent 1 displays provisioning code for adding Agent 2.</step>
+        <step id="S5">Alice views and shows the code to Edge Agent 2, who scans it.</step>
+        <step id="S6">Edge Agent 2 sends add request, along with keys and token data, to Edge Agent 1.</step>
+        <step id="S7">Edge Agent 1 stores the keys in the wallet and confirms Agent 2.</step>
+        <step id="S8">Edge Agent 1 syncs data to Agent 2.</step>
+        <step id="S9">Edge Agent 2 stores data in its wallet.</step>
+    </mainSequence>
+</useCase>

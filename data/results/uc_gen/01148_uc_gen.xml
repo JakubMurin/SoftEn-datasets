@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Delete istiocsr CR</name>
+    <actors>
+        <actor>User</actor>
+        <actor>OpenShift API Server</actor>
+        <actor>cert-manager-operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>istio-csr agent installation managed by operator</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>istiocsr CR successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during deletion of istiocsr CR</condition>
+    </failureEndConditions>
+    <trigger>User triggers deletion of istiocsr CR</trigger>
+    <mainSequence>
+        <step id="S1">User requests deletion of istiocsr CR from API Server</step>
+        <step id="S2">API Server forwards deletion request to cert-manager-operator</step>
+        <step id="S3">Operator reconciles the deletion event for istiocsr CR</step>
+    </mainSequence>
+</useCase>

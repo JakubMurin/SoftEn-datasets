@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Enterprise Access (Recycler)</name>
+    <actors>
+        <actor>企业</actor>
+        <actor>监管机构</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Submit Data</step>
+        <step id="S2">Approve Access</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Approval Decision Passed</step>
+        </asteps>
+        <asteps id="A2" start="S2">
+            <step id="A2S1">Approval Decision Rejected</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Error during access approval phase</description>
+            <step id="E1S1">Return for Resubmission</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC001">
+  <name>View Absence List</name>
+  <actors>
+    <actor>Logged-in User</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user is logged in.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The absence list is displayed.</condition>
+  </successEndConditions>
+  <trigger>Logged-in user requests to view the absence list.</trigger>
+  <mainSequence>
+    <step id="S1">User opens the absence list page in the browser.</step>
+    <step id="S2">The routes receive a GET request for /absence.</step>
+    <step id="S3">The controller gets the root route request.</step>
+    <step id="S4">The controller fetches all absences of the logged-in user.</step>
+    <step id="S5">The absence entity retrieves absence data from the database.</step>
+    <step id="S6">The retrieved absence data is passed back to the controller.</step>
+    <step id="S7">The controller renders the list view with the absence data.</step>
+    <step id="S8">The list view is sent to the browser as HTML.</step>
+  </mainSequence>
+</useCase>

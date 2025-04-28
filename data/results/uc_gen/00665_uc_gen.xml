@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Submit Match Request</name>
+    <description>User submits a match request with selected question difficulty.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>API Gateway</actor>
+        <actor>Matching Service Controller</actor>
+        <actor>Matching Service</actor>
+        <actor>Matching Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Frontend is capable of displaying selected question difficulty options.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Match request is successfully stored in the database.</condition>
+    </successEndConditions>
+    <trigger>User selects the question difficulty and submits the match request.</trigger>
+    <mainSequence>
+        <step id="S1">User selects the question difficulty (Hard/Medium/Easy).</step>
+        <step id="S2">User clicks the submit button.</step>
+        <step id="S3">Frontend sends a POST request to API Gateway (/api/match/submit) with payload containing user and selected difficulty.</step>
+        <step id="S4">API Gateway forwards the request to Matching Service Controller.</step>
+        <step id="S5">Matching Service Controller processes the request, passes it to the Matching Service, and stores the match request.</step>
+        <step id="S6">Matching Service creates a MatchRequest object and saves it to the MatchRequests collection in the Matching Database.</step>
+        <step id="S7">Matching Service generates a request identifier (requestId).</step>
+        <step id="S8">Matching Service Controller responds with a 200 OK status to API Gateway along with the requestId.</step>
+        <step id="S9">API Gateway returns a 200 OK status to the Frontend with the accepted requestId.</step>
+    </mainSequence>
+</useCase>

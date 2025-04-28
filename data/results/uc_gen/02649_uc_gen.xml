@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Manage Map Data</name>
+    <description>Allows the user to manage map data by loading, parsing, and querying various information.</description>
+    <actors>
+        <actor>Application</actor>
+        <actor>MapEngine</actor>
+        <actor>MapImport</actor>
+        <actor>MemSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has the necessary permissions to manage map data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The map data is successfully loaded, parsed, and queried.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the loading, parsing, or querying process.</condition>
+    </failureEndConditions>
+    <trigger>The user initiates the map data management process.</trigger>
+    <mainSequence>
+        <step id="S1">User selects map path and type using hadmapconnect.</step>
+        <step id="S2">MapEngine parses data and performs map file analysis.</step>
+        <step id="S3">MapImport transforms data into data model and constructs geometric map data.</step>
+        <step id="S4">MapImport inserts map data into R-tree for storage.</step>
+        <step id="S5">MapImport returns status code to MemSearch.</step>
+        <step id="S6">MapImport returns status code to MapEngine.</step>
+        <step id="S7">MapEngine returns status code to Application.</step>
+        <step id="S8">Application requests road information using getRoads.</step>
+        <step id="S9">MapEngine searches for roads in R-tree using searchRoads.</step>
+        <step id="S10">MemSearch searches for lanes in R-tree using searchLanes.</step>
+        <step id="S11">MemSearch returns road pointers to MapEngine.</step>
+        <step id="S12">MapEngine returns road pointers to Application.</step>
+        <step id="S13">Application requests lane links information using getLaneLinks.</step>
+        <step id="S14">MapEngine searches for lane links in R-tree using searchLaneLinks.</step>
+        <step id="S15">MemSearch returns lane links information to MapEngine.</step>
+        <step id="S16">MapEngine returns lane links information to Application.</step>
+        <step id="S17">Application requests objects information on roads using getObjects.</step>
+        <step id="S18">MapEngine searches for objects on roads in R-tree using searchObjects.</step>
+        <step id="S19">MemSearch returns objects information on roads to MapEngine.</step>
+        <step id="S20">MapEngine returns objects information on roads to Application.</step>
+    </mainSequence>
+</useCase>

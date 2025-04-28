@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Access OneToOne Session Data</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Routes</actor>
+        <actor>Controller</actor>
+        <actor>OneToOne</actor>
+        <actor>MySQL</actor>
+        <actor>Error</actor>
+        <actor>Question</actor>
+        <actor>Measurable</actor>
+        <actor>Ejs</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Navegador accesses the route GET /oneToOne/:sessionID</step>
+        <step id="S2">Routes forwards the request to Controller for getCheck</step>
+        <step id="S3">Controller fetches session data from OneToOne using request.params.sessionID</step>
+        <step id="S4">Controller redirects to /error if no data found</step>
+        <step id="S5">Controller redirects to /error if role is not "Human Resources" and oneOnOneUserIDFK does not match userID</step>
+        <step id="S6">Controller fetches answers from Question using request.params.sessionID</step>
+        <step id="S7">Controller renders "oneToOneCheck" if no answers found</step>
+        <step id="S8">Controller fetches measures from Measurable using request.params.sessionID</step>
+        <step id="S9">Controller renders "oneToOneCheck" with data</step>
+    </mainSequence>
+</useCase>

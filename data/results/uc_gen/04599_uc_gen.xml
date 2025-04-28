@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Change Password</name>
+    <description>Allows the user to change their password</description>
+    <actors>
+        <actor>Người dùng</actor>
+        <actor>Hệ thống</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Password successfully changed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Incorrect current password or invalid new password format</condition>
+    </failureEndConditions>
+    <trigger>User accesses the account settings page</trigger>
+    <mainSequence>
+        <step id="S1">Display change password form to User</step>
+        <step id="S2">User inputs current and new password</step>
+        <step id="S3">System validates current and new password</step>
+        <step id="S4">System updates the password in the database</step>
+        <step id="S5">System confirms password update to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Display success message to User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Display error messages to User</description>
+            <step id="E1S1">User inputs correct current password</step>
+            <step id="E1S2">User inputs valid new password</step>
+        </esteps>
+    </errorSteps>
+</useCase>

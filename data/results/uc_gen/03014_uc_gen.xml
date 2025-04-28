@@ -1,0 +1,27 @@
+<useCase id="UC1">
+	<name>Scan Proxy Repo</name>
+	<description>As a user, I want to be able to scan the proxy repository and add new sources.</description>
+	<actors>
+		<actor>ProxyRepoFileScanner</actor>
+		<actor>ProxyRepoSources</actor>
+		<actor>repo</actor>
+		<actor>db</actor>
+		<actor>ChangeListener</actor>
+	</actors>
+	<preconditions>
+		<precondition>ProxyRepoFileScanner initiating scan operation</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>New source record added successfully in the database.</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Error occurred during source addition process.</condition>
+	</failureEndConditions>
+	<trigger>User requests to scan the proxy repository.</trigger>
+	<mainSequence>
+		<step id="S1">ProxyRepoFileScanner initiates scan operation.</step>
+		<step id="S2">ProxyRepoFileScanner adds a new source through a proxy repository.</step>
+		<step id="S3">ProxyRepoSources adds the 'source' record to the database.</step>
+		<step id="S4">ChangeListener receives onChange event notification from ProxyRepoSources.</step>
+	</mainSequence>
+</useCase>

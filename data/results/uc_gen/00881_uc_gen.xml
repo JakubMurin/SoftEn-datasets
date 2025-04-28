@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>User signs up</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SignUpController</actor>
+        <actor>SignUpService</actor>
+        <actor>UserRepository</actor>
+    </actors>
+    <trigger>User sends POST request to /sign-up</trigger>
+    <mainSequence>
+        <step id="S1">User sends POST request to /sign-up</step>
+        <step id="S2">SignUpController executes business logic</step>
+        <step id="S3">SignUpService validates user existence</step>
+        <step id="S4">UserRepository retrieves user from the Database</step>
+        <step id="S5">SignUpService validates response</step>
+        <step id="S6">SignUpService creates user</step>
+        <step id="S7">UserRepository saves user to the Database</step>
+        <step id="S8">SignUpService generates token</step>
+        <step id="S9">SignUpService responds with success</step>
+        <step id="S10">SignUpController responds with user data</step>
+    </mainSequence>
+</useCase>

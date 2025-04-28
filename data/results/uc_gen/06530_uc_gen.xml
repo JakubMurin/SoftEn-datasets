@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Round 0: Client Joins and Deposits 5ETH and 1000 OAX</name>
+    
+    <actors>
+        <actor>WebClient</actor>
+        <actor>L2Client</actor>
+        <actor>Mediator</actor>
+        <actor>Events</actor>
+        <actor>Operator</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">WebClient requests to deposit 5 ETH to L2Client</step>
+        <step id="S2">L2Client calls Mediator's V.depositTokens(5 ETH)</step>
+        <step id="S3">Operator queries Events for a List of Deposits</step>
+        <step id="S4">Events notifies Operator about the deposit of 5 ETH by WebClient</step>
+        <step id="S5">Operator updates balances for ETH, BTC, and OAX</step>
+        
+        <step id="S6">WebClient requests to deposit 1000 OAX to L2Client</step>
+        <step id="S7">L2Client calls Mediator's V.depositTokens(1000 OAX)</step>
+        <step id="S8">Operator queries Events for a List of Deposits</step>
+        <step id="S9">Events notifies Operator about the deposit of 1000 OAX by WebClient</step>
+        <step id="S10">Operator updates balances for ETH, BTC, and OAX</step>
+    </mainSequence>
+</useCase>

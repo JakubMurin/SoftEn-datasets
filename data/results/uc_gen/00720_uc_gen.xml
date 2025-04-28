@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Editing Task</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepositoryTaches</actor>
+        <actor>ServiceAutorisation</actor>
+        <actor>MoteurTemplates</actor>
+    </actors>
+    <preconditions>
+        <precondition>A task exists with the given id.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Task editing form is displayed to the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User is redirected to an error page due to unauthorized access.</condition>
+    </failureEndConditions>
+    <trigger>GET /tasks/{id}/edit</trigger>
+    <mainSequence>
+        <step id="S1">Controleur receives GET request for editing task.</step>
+        <step id="S2">Controleur queries RepositoryTaches to find task by id.</step>
+        <step id="S3">RepositoryTaches returns the task to Controleur.</step>
+        <step id="S4">Controleur checks ownership of the task with ServiceAutorisation.</step>
+        <step id="S5">ServiceAutorisation confirms ownership is true to Controleur.</step>
+        <step id="S6">Controleur requests MoteurTemplates to display task editing form.</step>
+        <step id="S7">MoteurTemplates generates and returns the editing form to Controleur.</step>
+        <step id="S8">Controleur displays the editing form to Utilisateur.</step>
+    </mainSequence>
+</useCase>

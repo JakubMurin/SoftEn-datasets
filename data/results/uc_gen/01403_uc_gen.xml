@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Delete Existing Other Service</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in and has permission to delete other services.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin requests to delete an existing other service.</step>
+        <step id="S2">UI receives the request.</step>
+        <step id="S3">Router processes the request and shows delete confirmation.</step>
+        <step id="S4">Controller retrieves service details for confirmation.</step>
+        <step id="S5">Repository fetches service details.</step>
+        <step id="S6">OtherServiceModel queries service data from the database.</step>
+        <step id="S7">Repository receives service data.</step>
+        <step id="S8">Controller displays delete confirmation form.</step>
+        <step id="S9">Admin confirms the delete request.</step>
+        <step id="S10">UI receives the confirmation.</step>
+        <step id="S11">Router processes the delete request.</step>
+        <step id="S12">Controller initiates service deletion.</step>
+        <step id="S13">Repository deletes the service from the database.</step>
+        <step id="S14">OtherServiceModel deletes the service data.</step>
+        <step id="S15">Repository confirms successful deletion.</step>
+        <step id="S16">Controller sends 200 OK response.</step>
+        <step id="S17">Router sends 200 OK response.</step>
+        <step id="S18">UI displays success message.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Hide Story</name>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryPublishView</actor>
+        <actor>StoriesController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks on "Hide Story" option.</step>
+        <step id="S2">StoryPublishView requests API to hide the story.</step>
+        <step id="S3">StoriesController processes the request by calling DeleteStory() method.</step>
+        <step id="S4">StoriesController queries the database for data.</step>
+        <step id="S5">Database returns the data to StoriesController.</step>
+        <step id="S6">StoriesController formats the response payload.</step>
+        <step id="S7">StoriesController sends the response to StoryPublishView.</step>
+        <step id="S8">StoryPublishView displays the Stories Management Page to the User.</step>
+    </mainSequence>
+</useCase>

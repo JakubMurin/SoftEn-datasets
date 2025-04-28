@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Deposit Tokens</name>
+    <description>Client deposits tokens into the system</description>
+    <actors>
+        <actor>WebClient</actor>
+        <actor>L2Client</actor>
+        <actor>Mediator</actor>
+        <actor>Events</actor>
+        <actor>Operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>L2Client receives deposit request from WebClient</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>L2Client successfully deposits tokens into Mediator</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>L2Client fails to deposit tokens into Mediator</condition>
+    </failureEndConditions>
+    <trigger>WebClient request to deposit tokens</trigger>
+    <mainSequence>
+        <step id="S1">WebClient wants to deposit 5 ETH</step>
+        <step id="S2">L2Client receives request and calls V.depositTokens(5 ETH) on Mediator</step>
+        <step id="S3">Mediator processes the deposit event</step>
+        <step id="S4">Operator updates balances for ETH and OAX</step>
+        <step id="S5">WebClient wants to deposit 1000 OAX</step>
+        <step id="S6">L2Client receives request and calls V.depositTokens(1000 OAX) on Mediator</step>
+        <step id="S7">Mediator processes the deposit event</step>
+        <step id="S8">Operator updates balances for ETH and OAX</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">WebClient deposits 5 ETH successfully and triggers the subsequent deposit of 1000 OAX.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Failed to deposit tokens</description>
+            <step id="E1S1">L2Client failed to deposit the requested 1000 OAX into the Mediator.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

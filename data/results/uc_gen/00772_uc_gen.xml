@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Manage Sensors</name>
+    <description>Allows the Actor to manage sensors through the Sensors Manager.</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Sensors Manager is accessible.</precondition>
+        <precondition>The Actor is authorized to manage sensors.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The sensors are successfully managed.</condition>
+    </successEndConditions>
+    <trigger>Actor invokes the start operation on the Sensors Manager.</trigger>
+    <mainSequence>
+        <step id="S1">Actor starts managing sensors.</step>
+        <step id="S2">Sensors Manager is activated.</step>
+        <step id="S3">For each sensor in the system:</step>
+        <step id="A1">Actor starts managing sensor.</step>
+        <step id="A1S1">Sensor-specific tasks are performed.</step>
+        <step id="S4">Sensors Manager verifies sensor operations.</step>
+        <step id="S5">Sensors Manager sets sensors as started.</step>
+    </mainSequence>
+</useCase>

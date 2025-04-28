@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Issue Access Request</name>
+    <description>User searches and selects a restricted object, requests access details, and contacts the curator.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Interface</actor>
+        <actor>ACS</actor>
+        <actor>Email</actor>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is operational and User is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User receives access to a requested restricted object.</condition>        
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User's access request is denied or the system fails.</condition>
+    </failureEndConditions>
+    <trigger>User wants to access a restricted object, contact the curator, and obtain permissions.</trigger>
+    <mainSequence>
+        <step id="S1">User searches and selects the restricted object.</step>
+        <step id="S2">Interface requests access details from ACS.</step>
+        <step id="A1">Interface displays the "Contact Curator" option.</step>
+        <step id="A1S1">User clicks the "Contact Curator" button.</step>
+        <step id="S3">Interface generates an email template to correspond with the curator.</step>
+        <step id="S4">User fills in and sends the email request to the curator.</step>
+        <step id="S5">Email system forwards the user's request to the curator.</step>
+        <step id="S6">Curator reivews the request received from the email system.</step>
+        <step id="S7">Curator updates the access permissions in ACS, if request is approved.</step>
+        <step id="S8">ACS notifies the User of the access decision.</step>
+        <step id="S9">Email system displays the access decision to the User.</step>
+    </mainSequence>
+</useCase>

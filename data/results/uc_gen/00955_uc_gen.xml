@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>User runs ReWOOAgent</name>
+    <description>The user initiates the ReWOOAgent to perform reasoning, simulation, observation, and outcome determination for a given input.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ReWOOAgent</actor>
+        <actor>ReasonLLM</actor>
+        <actor>WorldLLM</actor>
+        <actor>ObserveLLM</actor>
+        <actor>OutcomeLLM</actor>
+    </actors>
+    <preconditions>
+        <precondition>ReWOOAgent is available and correctly configured.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>ReWOOAgent successfully completes the reasoning, simulation, observation, and outcome determination process.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>ReWOOAgent fails to complete any step in the process.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the ReWOOAgent by running the input.</trigger>
+    <mainSequence>
+        <step id="S1">User runs ReWOOAgent</step>
+        <step id="S2">ReWOOAgent reasons about the action</step>
+        <step id="S3">ReWOOAgent simulates the world</step>
+        <step id="S4">ReWOOAgent observes the effects</step>
+        <step id="S5">ReWOOAgent determines the outcome</step>
+        <step id="S6">ReWOOAgent provides the final result to the user</step>
+    </mainSequence>
+</useCase>

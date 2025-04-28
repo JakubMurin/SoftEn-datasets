@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Регистрация пользователя</name>
+    <actors>
+        <actor>Клиент</actor>
+        <actor>FE. ЭФ Регистрация</actor>
+        <actor>BE. Рег.скрипт</actor>
+        <actor>DB. База данных</actor>
+    </actors>
+    <preconditions>
+        <precondition>Клиент заполняет форму регистрации</precondition>
+    </preconditions>
+    <trigger>Отправка данных на сервер</trigger>
+    <mainSequence>
+        <step id="S1">FE. ЭФ Регистрация получает данные от клиента</step>
+        <step id="S2">FE. ЭФ Регистрация отправляет данные на BE. Рег.скрипт</step>
+        <step id="S3">BE. Рег.скрипт проверяет существование пользователя в DB. База данных</step>
+        <step id="S4">BE. Рег.скрипт получает результат проверки от DB. База данных</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">BE. Рег.скрипт вставляет пользователя в DB. База данных</step>
+            <step id="A1S2">BE. Рег.скрипт сообщает об успешной вставке</step>
+            <step id="A1S3">FE. ЭФ Регистрация подтверждает регистрацию</step>
+            <step id="A1S4">FE. ЭФ Регистрация отправляет сообщение о регистрации клиенту</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">BE. Рег.скрипт сообщает FE. ЭФ Регистрация о неудачной вставке</step>
+            <step id="A2S2">FE. ЭФ Регистрация отправляет сообщение об ошибке клиенту</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

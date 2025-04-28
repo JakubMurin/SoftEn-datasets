@@ -1,0 +1,60 @@
+<useCase id="UC1">
+    <name>Display rooms list of an EnergyGrid</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>MainUI</actor>
+        <actor>HouseConfigurationUI</actor>
+        <actor>HouseConfigurationController</actor>
+        <actor>GeographicAreaList</actor>
+        <actor>GeographicArea</actor>
+        <actor>HouseList</actor>
+        <actor>House</actor>
+        <actor>EnergyGridList</actor>
+        <actor>EnergyGrid</actor>
+        <actor>RoomList</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin has access to the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Rooms list of EnergyGrid displayed successfully</condition>
+    </successEndConditions>
+    <trigger>Admin requests to display rooms list of an EnergyGrid</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to display rooms list of an EnergyGrid</step>
+        <step id="S2">MainUI displays rooms list of an EnergyGrid</step>
+        <step id="S3">HouseConfigurationUI displays rooms list of an EnergyGrid</step>
+        <step id="S4">Admin is requested to provide Geographic Area Name</step>
+        <step id="S5">Admin inserts Geographic Area Name</step>
+        <step id="S6">MainUI sets Geographic Area Name</step>
+        <step id="S7">HouseConfigurationUI sets Geographic Area Name</step>
+        <step id="S8">HouseConfigurationController checks if name is contained in list</step>
+        <step id="S9">GeographicAreaList checks if name is contained in list</step>
+        <step id="S10">GeographicArea matches Geographic Area by name</step>
+        <step id="S11">GeographicArea validates data</step>
+        <step id="S12">HouseConfigurationUI sets Geographic Area data</step>
+        <step id="S13">Admin is requested to provide House Name</step>
+        <step id="S14">Admin inserts House Name</step>
+        <step id="S15">MainUI sets House Name</step>
+        <step id="S16">HouseConfigurationUI sets House Name</step>
+        <step id="S17">HouseConfigurationController checks if name is contained in list</step>
+        <step id="S18">HouseList checks if name is contained in list</step>
+        <step id="S19">House matches House by name</step>
+        <step id="S20">House validates data</step>
+        <step id="S21">HouseConfigurationUI sets House data</step>
+        <step id="S22">Admin is requested to provide Energy Grid Name</step>
+        <step id="S23">Admin inserts Energy Grid Name</step>
+        <step id="S24">MainUI sets Energy Grid Name</step>
+        <step id="S25">HouseConfigurationUI sets Energy Grid Name</step>
+        <step id="S26">HouseConfigurationController checks if name is contained in list</step>
+        <step id="S27">EnergyGridList checks if name is contained in list</step>
+        <step id="S28">EnergyGrid matches Energy Grid by name</step>
+        <step id="S29">EnergyGrid validates data</step>
+        <step id="S30">HouseConfigurationUI sets Energy Grid data</step>
+        <step id="S31">HouseConfigurationController gets data from EnergyGrid (Room list)</step>
+        <step id="S32">EnergyGrid gets RoomList</step>
+        <step id="S33">RoomList validates data and Builds String</step>
+        <step id="S34">RoomList returns RoomList as String</step>
+        <step id="S35">HouseConfigurationUI displays list of rooms of the EnergyGrid</step>
+    </mainSequence>
+</useCase>

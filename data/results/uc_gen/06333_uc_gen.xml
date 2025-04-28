@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Integration of CI data to Firestore</name>
+    <actors>
+        <actor>Bob</actor>
+        <actor>Repository</actor>
+        <actor>Awesome pipeline</actor>
+        <actor>Sync pipeline</actor>
+        <actor>CI Integration tool</actor>
+        <actor>Firestore</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob pushes a commit to the master branch</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Build data successfully exported to Firestore</condition>
+    </successEndConditions>
+    <trigger>Webhook triggers pipeline in Repository</trigger>
+    <mainSequence>
+        <step id="S1">Repository receives commit from Bob</step>
+        <step id="S2">Awesome pipeline performs build</step>
+        <step id="S3">Sync pipeline creates integration_config.yml</step>
+        <step id="S4">Sync pipeline triggers CI Integration tool to run sync command</step>
+        <step id="S5">CI Integration tool adds new build data to Firestore</step>
+    </mainSequence>
+</useCase>

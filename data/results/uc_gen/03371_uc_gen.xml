@@ -1,0 +1,27 @@
+<useCase id="ScannerJobUseCase">
+    <name>Perform Scanner Job</name>
+    <actors>
+        <actor>Admin User</actor>
+        <actor>Admin</actor>
+        <actor>Explorer</actor>
+        <actor>Worker</actor>
+        <actor>Exporter</actor>
+        <actor>Event Collector</actor>
+        <actor>Result Collector</actor>
+        <actor>Checkup Collector</actor>
+        <actor>Status Collector</actor>
+        <actor>Report User</actor>
+        <actor>Report</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin User starts the Scanner job</step>
+        <step id="S2">Explorer consumes os2ds_scan_specs</step>
+        <step id="S3">Worker processes messages based on type</step>
+        <step id="S4">Exporter handles messages</step>
+        <step id="S5">Checkup Collector updates scheduled checkups</step>
+        <step id="S6">Status Collector updates scanner status</step>
+        <step id="S7">Event Collector updates document report</step>
+        <step id="S8">Result Collector handles message and updates report</step>
+        <step id="S9">Report User checks for matches</step>
+    </mainSequence>
+</useCase>

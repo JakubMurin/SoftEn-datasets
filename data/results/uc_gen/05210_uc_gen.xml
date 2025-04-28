@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Upload Material Photo</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>CameraScreen</actor>
+        <actor>DisplayPictureScreen</actor>
+        <actor>ApiService</actor>
+        <actor>MaterialsRouter</actor>
+        <actor>PredictionRouter</actor>
+        <actor>MaterialsService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has opened the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Material successfully added</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Material addition process canceled</condition>
+    </failureEndConditions>
+    <trigger>User selects to upload a material photo</trigger>
+    <mainSequence>
+        <step id="S1">Display list of materials to User</step>
+        <step id="S2">User selects camera button</step>
+        <step id="S3">Display dialog to User (Take photo / Upload)</step>
+        <step id="S4">User selects "Take photo"</step>
+        <step id="S5">Prompt User to capture photo</step>
+        <step id="S6">User captures photo</step>
+        <step id="S7">Display captured photo to User</step>
+        <step id="S8">Review photo quality with User</step>
+        <step id="S9">Confirm selection with User</step>
+        <step id="S10">Upload photo to ApiService</step>
+        <step id="S11">API Call to add material by MaterialsRouter</step>
+        <step id="S12">Process photo by PredictionRouter</step>
+        <step id="S13">Analyze photo by MaterialsService</step>
+        <step id="S14">Save material data to Database</step>
+        <step id="S15">Confirm material added to ApiService</step>
+        <step id="S16">Display success message to User</step>
+        <step id="S17">Update materials list on DisplayPictureScreen</step>
+        <step id="S18">Display updated materials list to User</step>
+    </mainSequence>
+</useCase>

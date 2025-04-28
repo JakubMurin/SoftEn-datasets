@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Retrieve Translation Case</name>
+    <description>Allows a client to retrieve a translation case by ID.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>GetTranslationCaseActivity</actor>
+        <actor>TranslationCaseDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates an HTTP request to retrieve a translation case.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client receives a 200 response with the GetTranslationCaseResult data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client receives a 400 response due to TranslationCaseNotFoundException or SecurityException.</condition>
+    </failureEndConditions>
+    <trigger>HTTP Request</trigger>
+    <mainSequence>
+        <step id="S1">Client initiates an HTTP request.</step>
+        <step id="S2">API Gateway/Lambda processes the request and sends GetTranslationCaseRequest to GetTranslationCaseActivity.</step>
+        <step id="S3">GetTranslationCaseActivity calls TranslationCaseDao to retrieve the translation case by ID.</step>
+        <step id="S4">TranslationCaseDao loads the translation case from DynamoDB.</step>
+        <step id="S5">TranslationCaseDao returns the translation case data to GetTranslationCaseActivity.</step>
+        <step id="S6">GetTranslationCaseActivity returns the GetTranslationCaseResult to API Gateway/Lambda.</step>
+        <step id="S7">API Gateway/Lambda sends a 200 response with the GetTranslationCaseResult data to the Client.</step>
+    </mainSequence>
+</useCase>

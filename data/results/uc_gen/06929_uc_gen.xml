@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Creating Access Derivatives</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>User Interface</actor>
+        <actor>Authorization System</actor>
+        <actor>Object Management System</actor>
+        <actor>Derivative Creation System</actor>
+        <actor>Metadata System</actor>
+        <actor>Notification System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist has selected digital objects for derivative creation</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Access derivatives successfully created and metadata updated</condition>
+    </successEndConditions>
+    <trigger>User Interface: Select digital objects for derivative creation</trigger>
+    <mainSequence>
+        <step id="S1">Check authorization by Authorization System</step>
+        <step id="S2">Process selected digital objects by Object Management System</step>
+        <step id="S3">Create access derivatives by Derivative Creation System</step>
+        <step id="S4">Update metadata with derivative details by Metadata System</step>
+        <step id="S5">Send success notification by Notification System</step>
+    </mainSequence>
+</useCase>

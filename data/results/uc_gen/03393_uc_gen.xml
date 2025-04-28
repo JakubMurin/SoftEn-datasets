@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Register Guild with Token</name>
+    <actors>
+        <actor>Guest</actor>
+        <actor>Mail</actor>
+        <actor>Page1</actor>
+        <actor>Page2</actor>
+        <actor>API1</actor>
+        <actor>Guest_Token</actor>
+        <actor>Guild</actor>
+    </actors>
+    <preconditions>
+        <precondition>The guest clicks on a link in the email.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Guest clicks on the link in the email.</step>
+        <step id="S2">Mail passes the token to Page1.</step>
+        <step id="S3">Page1 invokes API1 to check the registration token.</step>
+        <step id="S4">API1 retrieves the existing token within the valid time frame.</step>
+        <step id="S5">API1 fetches the token from Guest_Token.</step>
+        <step id="S6">API1 retrieves the preparatory registered guild by API1 ID.</step>
+        <step id="S7">Guild supplies the guild name to API1.</step>
+        <step id="S8">API1 passes Guild ID, guild name, and email address to Page1.</step>
+    </mainSequence>
+</useCase>

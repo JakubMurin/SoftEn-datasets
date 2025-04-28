@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Process Refund Request</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>UI</actor>
+        <actor>Router</actor>
+        <actor>Controller</actor>
+        <actor>Repository</actor>
+        <actor>RefundModel</actor>
+        <actor>CustomerRepo</actor>
+        <actor>DB</actor>
+        <actor>AdminService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer is logged in</precondition>
+        <precondition>Customer has the necessary information to request a refund</precondition>
+    </preconditions>
+    <trigger>Customer initiates a refund process</trigger>
+    <mainSequence>
+        <step id="S1">Customer opens refund request page</step>
+        <step id="S2">UI displays refund request form</step>
+        <step id="S3">Customer submits refund request with data (customerId, orderId, reason, amount) to UI</step>
+        <step id="S4">UI sends refund request details to Router</step>
+        <step id="S5">Router forwards refund request to Controller</step>
+        <step id="S6">Controller searches for customer details using CustomerRepo</step>
+        <step id="S7">Controller creates new refund request in RefundModel</step>
+        <step id="S8">Controller saves refund request details in Repository</step>
+        <step id="S9">Controller notifies AdminService of the refund request</step>
+        <step id="S10">Controller responds with 201 Created status to Router (refund request submitted)</step>
+        <step id="S11">Router sends success response to UI</step>
+    </mainSequence>
+</useCase>

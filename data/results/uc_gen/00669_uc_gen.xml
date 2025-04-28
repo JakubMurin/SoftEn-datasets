@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Submit Match Request</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>API Gateway</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has selected a question difficulty.</precondition>
+        <precondition>The user has submitted the selected difficulty.</precondition>
+    </preconditions>
+    <trigger>The user invokes 'Submit Match Request' action.</trigger>
+    <mainSequence>
+        <step id="S1">User selects question difficulty (Hard/Medium/Easy).</step>
+        
+        <step id="S2">User clicks submit.</step>
+        
+        <step id="S3">Webapp handles the submission, sending payload {user, difficulty} to the API Gateway.</step>
+        
+        <step id="S4">API Gateway receives the payload and forwards it to the Controller.</step>
+        
+        <step id="S5">Controller retrieves the data and forwards it to the Service for processing.</step>
+        
+        <step id="S6">Service creates a MatchRequest entity and saves it to the MatchRequests collection.</step>
+        
+        <step id="S7">Service generates a requestId and sends it back to the Controller.</step>
+        
+        <step id="S8">Controller sends back a 200 OK response along with the requestId to the API Gateway.</step>
+        
+        <step id="S9">API Gateway responds with 200 OK Accepted and the requestId to the Webapp.</step>
+    </mainSequence>
+</useCase>

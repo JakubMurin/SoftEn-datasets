@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Booking a Room</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create booking</step>
+        <step id="S2">UI displays booking form</step>
+        <step id="S3">Receptionist fills in booking details</step>
+        <step id="S4">Router processes booking creation request</step>
+        <step id="S5">Controller creates booking in the system</step>
+        <step id="S6">Repository checks room availability</step>
+        <step id="S7">RoomModel queries room availability</step>
+        <step id="S8">Repository creates new booking</step>
+        <step id="S9">BookingModel inserts new booking</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S8">
+            <step id="A1S1">Room is available, create new booking</step>
+        </asteps>
+        <asteps id="A2" start="S6" continue="A1S1">
+            <step id="A2S1">Room is not available, display error message</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

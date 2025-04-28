@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Provisioning Fault Management Job and Report</name>
+    <description>Register listeners, create job, generate data, create report, collect data, and get report</description>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operator Framework</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>System Operator Framework is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Job and report created successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Job or report creation failed</condition>
+    </failureEndConditions>
+    <trigger>Business User initiates fault management job and report creation</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers listeners with Hub for notifications</step>
+        <step id="S2">Business User creates a fault management job</step>
+        <step id="S3">System Operator Framework creates the fault management job</step>
+        <step id="S4">Fault Management Job is in progress</step>
+        <step id="S5">Fault Management Job generates data</step>
+        <step id="S6">Fault Management Job creates a report</step>
+        <step id="S7">Fault Management Report is in progress</step>
+        <step id="S8">Fault Management Report collects data</step>
+        <step id="S9">Fault Management Report is completed</step>
+        <step id="S10">Fault Management Job receives the report</step>
+        <step id="S11">Fault Management Job is completed or scheduled</step>
+        <step id="S12">Business User requests the report</step>
+        <step id="S13">System Operator Framework retrieves the report</step>
+        <step id="S14">Business User receives the Fault Management Report</step>
+    </mainSequence>
+</useCase>

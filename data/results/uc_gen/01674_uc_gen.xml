@@ -1,0 +1,30 @@
+<useCase id="UC1">
+  <name>Send Mass Message</name>
+  <description>As a client, I want to send a mass message to multiple recipients through WeChat.</description>
+  <actors>
+    <actor>Client</actor>
+    <actor>MassMessageController</actor>
+    <actor>WeChat</actor>
+    <actor>Mongo</actor>
+  </actors>
+  <preconditions>
+    <precondition>The parameters for the mass message request are valid.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The mass message is successfully sent to all recipients.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>An error occurs during the mass message sending process.</condition>
+  </failureEndConditions>
+  <trigger>Client initiates a mass message send request.</trigger>
+  <mainSequence>
+    <step id="S1">Client sends a mass message request to MassMessageController.</step>
+    <step id="S2">MassMessageController validates the parameters.</step>
+    <step id="S3">MassMessageController gets the access token from WeChat.</step>
+    <step id="S4">MassMessageController calls the Tencent mass send interface.</step>
+    <step id="S5">WeChat responds to the access token request.</step>
+    <step id="S6">WeChat responds to the Tencent mass send interface call.</step>
+    <step id="S7">MassMessageController saves the message to mongo.</step>
+    <step id="S8">MassMessageController sends the mass message response to the client.</step>
+  </mainSequence>
+</useCase>

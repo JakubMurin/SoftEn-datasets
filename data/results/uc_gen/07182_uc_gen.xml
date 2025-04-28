@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>DMPtool Publication Management</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>DMP</actor>
+        <actor>Repo</actor>
+        <actor>Report</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher is authenticated in the system.</precondition>
+    </preconditions>
+    <trigger>Researcher initiates the publication management process.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher logs in to DMPtool.</step>
+        <step id="S2">Researcher navigates to the specific project DMP.</step>
+        <step id="S3">DMP fetches DMP record details.</step>
+        <step id="S4">Researcher selects "Add Publication".</step>
+        <step id="S5">Researcher enters publication details.</step>
+        <step id="S6">DMP checks if the publication is in Repo.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Publication not in Repo</step>
+            <step id="A1S2">DMP adds publication to Repo.</step>
+            <step id="A1S3">Repo confirms publication added.</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">Publication exists in Repo</step>
+            <step id="A2S2">DMP updates the publication record.</step>
+            <step id="A2S3">Repo confirms publication updated.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error in adding/updating publication record</description>
+            <step id="E1S1">Encountered an issue during the publication addition/update process.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

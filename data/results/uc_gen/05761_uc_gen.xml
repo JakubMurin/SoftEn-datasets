@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Process Monthly Lending Statistics</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Librarian requests monthly lending statistics from the system.</step>
+        <step id="S2">System activates Lending Controller.</step>
+        <step id="S3">Lending Controller requests all readers from Reader Service.</step>
+        <step id="S4">System activates Reader Service.</step>
+        <step id="S5">Reader Service retrieves all readers from the Reader Repository.</step>
+        <step id="S6">System activates Reader Repository.</step>
+        <step id="S7">Reader Repository returns a list of Readers to the Reader Service.</step>
+        <step id="S8">System deactivates Reader Repository.</step>
+        <step id="S9">For each reader:</step>
+        <step id="S10">Reader Service fetches the monthly lending stats for the reader from the Reader Repository.</step>
+        <step id="S11">System activates Reader Repository.</step>
+        <step id="S12">Reader Repository returns the number of items lent by the reader.</step>
+        <step id="S13">System deactivates Reader Repository.</step>
+        <step id="S14">Reader Service sets the number of items lent for the current reader.</step>
+        <step id="S15">Reader Service repeats the process for each reader.</step>
+        <step id="S16">System deactivates Reader Service.</step>
+        <step id="S17">Lending Controller maps Reader information to Reader Lents View.</step>
+        <step id="S18">System activates Reader Lents View Mapper.</step>
+        <step id="S19">Reader Lents View Mapper transforms Reader data to Reader Lents View objects.</step>
+        <step id="S20">System deactivates Reader Lents View Mapper.</step>
+        <step id="S21">Lending Controller responds with HTTP status 200 OK including the Reader Lents Views.</step>
+        <step id="S22">System deactivates Lending Controller.</step>
+    </mainSequence>
+</useCase>

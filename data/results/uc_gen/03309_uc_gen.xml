@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Update User Information</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UpdateUserRequest</actor>
+        <actor>QJsonObject</actor>
+        <actor>QMutex</actor>
+        <actor>QMutexLocker</actor>
+        <actor>DB::DatabaseManager</actor>
+        <actor>DB::DbResult</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to update their information.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User's information is successfully updated.</condition>
+    </successEndConditions>
+    <trigger>User initiates the update process.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the update process by providing the necessary data.</step>
+        <step id="S2">UpdateUserRequest executes with the provided JSON object and mutex.</step>
+        <step id="S3">QMutexLocker is activated to handle the mutex.</step>
+        <step id="S4">UpdateUserRequest extracts email, account number, and new data from the JSON object.</step>
+        <step id="S5">If the DB connection is invalid, an error response is created and returned to the User.</step>
+        <step id="S6">If the DB connection is valid, the user's role is retrieved from the database.</step>
+        <step id="S7">If the user is not found, an error response is created and returned to the User.</step>
+        <step id="S8">If the user is found, the system checks if the user is an admin.</step>
+        <step id="S9">If the user is not an admin, an error response is created and returned to the User.</step>
+        <step id="S10">If the user is an admin, the system retrieves the account data based on the account number.</step>
+        <step id="S11">If the account is not found, an error response is created and returned to the User.</step>
+        <step id="S12">If the account is found, the system checks if the new email is already associated with another account.</step>
+        <step id="S13">If the email is in use, an error response is created and returned to the User.</step>
+        <step id="S14">If the email is available, the user's information is updated in the database.</step>
+        <step id="S15">If the update fails, an error response is created and returned to the User.</step>
+        <step id="S16">If the update is successful, a success response is constructed and returned to the User.</step>
+    </mainSequence>
+</useCase>

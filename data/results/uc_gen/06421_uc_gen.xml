@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Perform Task using ReflexionAgent</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflexionAgent</actor>
+        <actor>LLM</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <preconditions>
+        <precondition>ReflexionAgent, LLM, ToolRegistry, Tool, and Memory systems are available and properly configured.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Task completed successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Task cannot be completed due to system failure or user intervention.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User runs the input_text through ReflexionAgent.</step>
+        <step id="S2">ReflexionAgent retrieves relevant memories from Memory based on input_text.</step>
+        <step id="S3">ReflexionAgent invokes LLM for agent_prompt.</step>
+        <step id="S4">LLM responds to agent_prompt.</step>
+        <step id="S5">Agent decides to use a tool.</step>
+        <step id="S6">Registry executes the specified tool.</step>
+        <step id="S7">Tool executes the required task.</step>
+        <step id="S8">Agent reflects on the tool usage.</step>
+        <step id="S9">Agent saves episodic memory of tool usage and reflection memory.</step>
+        <step id="S10">Agent decides to finish the task.</step>
+        <step id="S11">Agent saves episodic memory of the interaction.</step>
+        <step id="S12">Final result is provided to the User.</step>
+    </mainSequence>
+</useCase>

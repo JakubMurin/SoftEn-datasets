@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>View Book Reviews</name>
+    <description>User wants to view reviews for a book</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Review Service</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has a valid JWT token</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully retrieves and views review list</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User does not have a valid JWT or JWT is missing, or JWT is not valid</condition>
+    </failureEndConditions>
+    <trigger>User requests to view reviews for a book</trigger>
+    <mainSequence>
+        <step id="S1">User requests to view book reviews</step>
+        <step id="S2">Gateway forwards the request to Keycloak to verify JWT</step>
+        <step id="S3">Keycloak validates the JWT token</step>
+        <step id="S4">Keycloak sends verification result to Gateway</step>
+        <step id="S5">Gateway checks the verification result</step>
+        <step id="S6">Gateway makes a decision based on the verification result</step>
+        <step id="S7">If JWT is valid, Gateway sends request to Review Service</step>
+        <step id="S8">Review Service queries MongoDB for reviews by bookId</step>
+        <step id="S9">MongoDB returns review list to Review Service</step>
+        <step id="S10">Review Service sends review list to Gateway</step>
+        <step id="S11">Gateway sends the review list back to the User</step>
+        <step id="S12">If JWT is absent, Gateway sends HttpStatus 401 to User</step>
+        <step id="S13">If JWT is not valid, Gateway sends HttpStatus 403 to User</step>
+    </mainSequence>
+</useCase>

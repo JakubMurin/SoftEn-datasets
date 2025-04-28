@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Delete Holiday</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>holiday.routes.js</actor>
+        <actor>holiday.controller.js</actor>
+        <actor>holiday.model</actor>
+    </actors>
+    <preconditions>
+        <precondition>The holiday to be deleted exists in the system.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Navegador initiates delete process.</step>
+        <step id="S2">Delete entity triggers confirmation window.</step>
+        <step id="S3">ConfirmDeleteHol sends deletion request to holiday.routes.js.</step>
+        <step id="S4">Holiday.routes.js calls holiday.controller.js to handle DELETE request.</step>
+        <step id="S5">Holiday.controller.js dispatches deletion action to holiday.model.</step>
+        <step id="S6">Holiday.model executes SQL query to delete the holiday entry.</step>
+        <step id="S7">SQL operation is successful.</step>
+        <step id="S8">Holiday.model communicates success to holiday.controller.js.</step>
+        <step id="S9">Holiday.controller.js returns JSON response.</step>
+        <step id="S10">ConfirmDeleteHol processes JSON data and displays HTML response to Navegador.</step>
+    </mainSequence>
+</useCase>

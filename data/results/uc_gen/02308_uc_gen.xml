@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Agent Recovery</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Alice performs agent recovery by completing all steps in Offline Recovery diagram or Social Recovery diagram.</step>
+        <step id="S2">Alice generates policy registry address P' and stores it.</step>
+        <step id="S3">Alice revokes all her claims that include the old agent policy address P as a blinded attribute and petitions the Issuers to reissue her claims.</step>
+        <step id="S4">Alice revokes a claim with a claim schema S and claim index Si.</step>
+        <step id="S5">Alice verifies her identity with the Issuer.</step>
+        <step id="S6">Issuer revokes the claim and adds claim index Si to the non-revocation accumulator SO.</step>
+        <step id="S7">Ledger updates the accumulator and forwards the result to Issuer.</step>
+        <step id="S8">Issuer forwards the result.</step>
+        <step id="S9">Issuer acknowledges.</step>
+        <step id="S10">Alice completes the Issue Claim diagram for each claim with new policy address P.</step>
+    </mainSequence>
+</useCase>

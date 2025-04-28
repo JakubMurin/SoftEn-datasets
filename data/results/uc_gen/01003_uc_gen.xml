@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Update and Deploy Smart Contracts</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>AnotherDeveloper</actor>
+        <actor>Reviewer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developers have necessary permissions</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Smart contracts successfully updated and deployed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Updating or deploying smart contracts fails</condition>
+    </failureEndConditions>
+    <trigger>Developers need to update and deploy smart contracts</trigger>
+    <mainSequence>
+        <step id="S1">Developer changes smart contracts and commits</step>
+        <step id="S2">Developer creates a changeset using 'npx changeset' and commits it</step>
+        <step id="S3">Developer pushes changes and opens a PR to LocalBranch</step>
+        <step id="S4">Reviewer approves the PR</step>
+        <step id="S5">Developer deploys new/updated smart contracts to all chains</step>
+        <step id="S6">Developer updates addresses json files in LocalBranch</step>
+        <step id="S7">Developer pushes updated addresses json files</step>
+        <step id="S8">Developer merges changes to main</step>
+        <step id="S9">ReleaseGithubAction includes changes to main</step>
+        <step id="S10">VersionPackagesPR creates a PR with new versions applied to package.jsons</step>
+        <step id="S11">AnotherDeveloper pushes a new changeset</step>
+        <step id="S12">ReleaseGithubAction includes the new changeset</step>
+        <step id="S13">VersionPackagesPR updates the PR with new versions</step>
+        <step id="S14">Developer merges changes to main in VersionPackagesPR</step>
+        <step id="S15">ReleaseGithubAction includes new versions in package.jsons</step>
+        <step id="S16">ReleaseGithubAction builds and publishes packages via npm</step>
+    </mainSequence>
+</useCase>

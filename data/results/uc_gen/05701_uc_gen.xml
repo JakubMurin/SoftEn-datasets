@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Search Books By Author</name>
+    <actors>
+        <actor>Reader</actor>
+    </actors>
+    <trigger>Reader initiates search for books by author</trigger>
+    <mainSequence>
+        <step id="S1">Reader requests to search books by author</step>
+        <step id="S2">ReaderController receives request to search books by author</step>
+        <step id="S3">ReaderController forwards request to BookService</step>
+        <step id="S4">BookService creates search criteria based on author name</step>
+        <step id="S5">BookService retrieves list of books from Database</step>
+        <step id="S6">BookService returns list of books to ReaderController</step>
+        <step id="S7">ReaderController returns List of BookView to Reader</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Đăng nhập hệ thống</name>
+    <description>Use case này mô tả việc đăng nhập vào hệ thống</description>
+    <actors>
+        <actor>Khách hàng</actor>
+    </actors>
+    <preconditions>
+        <precondition>Người dùng đã có tài khoản</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Người dùng đăng nhập thành công</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Mật khẩu sai hoặc người dùng chưa active hoặc chưa verify email</condition>
+    </failureEndConditions>
+    <trigger>Người dùng muốn truy cập vào hệ thống</trigger>
+    <mainSequence>
+        <step id="S1">Người dùng nhập email, password và kích nút Đăng nhập</step>
+        <step id="S2">Hệ thống gửi dữ liệu đăng nhập tới API Gateway service</step>
+        <step id="S3">API Gateway service lấy dữ liệu người dùng dựa trên email từ cơ sở dữ liệu</step>
+        <step id="S4">API Gateway service trả về thông tin liên quan đến user</step>
+        <step id="S5">API Gateway service sinh access token và refresh token</step>
+        <step id="S6">API Gateway service lưu trữ refresh token vào bảng refresh_token</step>
+        <step id="S7">API Gateway service trả về thông tin người dùng cùng với access token và refresh token</step>
+        <step id="S8">Hệ thống lưu trữ thông tin vào local storage và chuyển hướng hiển thị trang chủ</step>
+    </mainSequence>
+</useCase>

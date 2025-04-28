@@ -1,0 +1,21 @@
+<useCase id="UC1">
+	<name>Remove audio channel</name>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>The user has initiated the removal of an audio channel by right-clicking on it.</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">User right clicks on audio channel.</step>
+		<step id="S2">Audio channel context menu is activated.</step>
+		<step id="S3">Context menu is rendered.</step>
+		<step id="S4">User clicks on "Delete" in the context menu.</step>
+		<step id="S5">Audio channel delete handler is called.</step>
+		<step id="S6">Audio channel is deleted from index.</step>
+		<step id="S7">ChannelAction initiates deletion of the channel.</step>
+		<step id="S8">ChannelSaga triggers the deletion process.</step>
+		<step id="S9">EventEmitter emits 'CHANNEL_DELETE_CHANNEL' event.</step>
+		<step id="S10">AudioController removes the channel.</step>
+	</mainSequence>
+</useCase>

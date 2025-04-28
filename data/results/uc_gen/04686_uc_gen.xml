@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Main Message Input</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has opened the chat interface.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Main message response is displayed successfully.</condition>
+    </successEndConditions>
+    <trigger>User submits a message.</trigger>
+    <mainSequence>
+        <step id="S1">User submits a message to Main Message Input.</step>
+        <step id="S2">Main Message Input gets messages.</step>
+        <step id="S3">Chat Client processes messages.</step>
+        <step id="S4">Messages Service sends user request to Unix Socket Server containing an object.</step>
+        <step id="S5">Unix Socket Server handles user request.</step>
+        <step id="S6">Unix Socket Server sends message to AI Response from LLM containing a response.</step>
+        <step id="S7">AI Response returns the response as an object to Messages Service.</step>
+        <step id="S8">Messages Service returns a stream of objects to Chat Client.</step>
+        <step id="S9">Response Area displays AI response to the User.</step>
+     </mainSequence>
+</useCase>

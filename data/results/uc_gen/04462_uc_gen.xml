@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Delete Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated and authorized to delete a task.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a DELETE request to the TaskController for a specific task.</step>
+        <step id="S2">TaskController activates to handle the request.</step>
+        <step id="S3">TaskController calls TaskService to delete the task.</step>
+        <step id="S4">TaskService activates to process the deletion.</step>
+        <step id="S5">TaskService interacts with TaskRepository to delete the task by ID.</step>
+        <step id="S6">TaskRepository is activated to perform the deletion operation.</step>
+        <step id="S7">TaskRepository successfully deletes the task.</step>
+        <step id="S8">TaskRepository deactivates after successful deletion.</step>
+        <step id="S9">TaskService receives confirmation of successful deletion.</step>
+        <step id="S10">TaskService deactivates after successful deletion.</step>
+        <step id="S11">TaskController receives a response with NO_CONTENT status.</step>
+        <step id="S12">TaskController deactivates after sending the response.</step>
+    </mainSequence>
+</useCase>

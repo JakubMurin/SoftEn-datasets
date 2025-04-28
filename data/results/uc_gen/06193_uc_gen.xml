@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Manage Consumer and Publisher Subscriptions</name>
+    <description>Manage the subscriptions of consumers and publishers to topics in the system.</description>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Publisher</actor>
+        <actor>Exchanger</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system is up and running.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All subscriptions were successfully managed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>There was an issue managing some of the subscriptions.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Consumer starts connection with Consumer Server.</step>
+        <step id="S2">Consumer creates a new consumer after connection is established.</step>
+        <step id="S3">Consumer logs in with username successfully.</step>
+        <step id="S4">Consumer subscribes to necessary topics.</step>
+        <step id="S5">Exchanger handles the subscription request by creating a new topic if not present.</step>
+        <step id="S6">Exchanger adds or checks the subscriber pointer for the topic.</step>
+        <step id="S7">Publisher starts connection with Publisher Server.</step>
+        <step id="S8">Publisher creates a new publisher upon successful connection.</step>
+        <step id="S9">Publisher sends a topic along with the message.</step>
+        <step id="S10">Exchanger sends the topic and message to the appropriate components.</step>
+        <step id="S11">Exchanger sends the message to the topic.</step>
+        <step id="S12">The topic dispatches the message to each subscriber.</step>
+        <step id="S13">Consumer unsubscribes from the topic.</step>
+        <step id="S14">Exchanger handles the unsubscription by moving the subscriber pointer.</step>
+    </mainSequence>
+</useCase>

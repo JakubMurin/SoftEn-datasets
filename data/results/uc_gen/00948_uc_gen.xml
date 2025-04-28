@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Reconfigure System Composition</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Karaf Console</actor>
+        <actor>Karaf Configuration</actor>
+        <actor>core.caos</actor>
+        <actor>BackendManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system composition needs to be reconfigured.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The system composition is successfully reconfigured.</condition>
+    </successEndConditions>
+    <trigger>netide:loadcomposition new.xml</trigger>
+    <mainSequence>
+        <step id="S1">Read content of xml file.</step>
+        <step id="S2">Set configuration value (composition, xml content).</step>
+        <step id="S3">Reload OSGI Module.</step>
+        <step id="S4">Get configuration (composition).</step>
+        <step id="S5">Load Composition Specification.</step>
+        <step id="S6">List of required Modules.</step>
+        <step id="S7">Get Backends.</step>
+        <step id="S8">Currently connected backends.</step>
+        <step id="S9">Check if all required modules are present.</step>
+        <step id="S10">Reconfiguration finished.</step>
+        <step id="S11">Log successful reconfiguration.</step>
+    </mainSequence>
+</useCase>

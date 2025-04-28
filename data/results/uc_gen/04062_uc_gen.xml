@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>User Profile Management</name>
+    <description>Manage user profiles with Service, Message Broker, and Replica.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User profile successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Profile update failure due to communication issues.</condition>
+    </failureEndConditions>
+    <trigger>Update Profile request from User triggers the process.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates Update Profile action.</step>
+        <step id="S2">Service processes the Update Profile request.</step>
+        <step id="S3">Service sends Profile Updated message to User.</step>
+        <step id="S4">User receives successful update message from Service.</step>
+        <step id="S5">User requests profile from Replica.</step>
+        <step id="S6">Replica provides a stale profile to User.</step>
+        <step id="S7">User experiences confusion due to stale profile.</step>
+        <step id="S8">Message Broker updates the profile in Replica.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">Message Broker sends the updated profile to Replica.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Communication issue prevents Service from processing Update Profile request.</description>
+            <step id="E1S1">Profile update fails due to communication issue.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

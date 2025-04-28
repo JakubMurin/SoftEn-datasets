@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Process Payment Creation and Disbursement</name>
+    <description>Handle the creation and disbursement of payments in the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>MUKTA_ADAPTER</actor>
+        <actor>PROGRAM_SERVICE</actor>
+        <actor>Expense_Service</actor>
+        <actor>MDMS</actor>
+        <actor>ORG_SERVICE</actor>
+        <actor>IND_SERVICE</actor>
+        <actor>BANK_ACC_SERVICE</actor>
+        <actor>KAFKA</actor>
+        <actor>SCHEDULER</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User called the Payment Create Scheduler</step>
+        <step id="S2">MUKTA_ADAPTER requested for tenents from MDMS</step>
+        <step id="S3">MDMS provided the tenants list to MUKTA_ADAPTER</step>
+        <step id="S4">MUKTA_ADAPTER searched for bills where bills are not created</step>
+        <step id="S5">Expense_Service returned the list of bills to MUKTA_ADAPTER</step>
+        <step id="S6">MUKTA_ADAPTER processed bills and generated payments</step>
+        <step id="S7">MUKTA_ADAPTER created payments with Expense_Service</step>
+        <step id="S8">Expense_Service returned payment response to MUKTA_ADAPTER</step>
+        <step id="S9">MUKTA_ADAPTER pushed payment details to Kafka for creating topic</step>
+        <step id="S10">MUKTA_ADAPTER listened to payment create topic from Kafka</step>
+        <step id="S11">MUKTA_ADAPTER processed payments</step>
+        <step id="S12">MUKTA_ADAPTER fetched bill details from Expense_Service</step>
+        <step id="S13">Expense_Service returned bill details to MUKTA_ADAPTER</step>
+        <step id="S14">MUKTA_ADAPTER processed each bill by fetching org, ind, and bank account details</step>
+        <step id="S15">MUKTA_ADAPTER created disburse request for each individual bill</step>
+        <step id="S16">MUKTA_ADAPTER sent a disburse request to PROGRAM_SERVICE</step>
+        <step id="S17">PROGRAM_SERVICE provided an acknowledgement to MUKTA_ADAPTER</step>
+    </mainSequence>
+</useCase>

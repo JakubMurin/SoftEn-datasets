@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Record Subject Responses</name>
+    <description>Allows the MRI Operator to record subject responses in the system.</description>
+    <actors>
+        <actor>MRI Operator</actor>
+        <actor>Digital Form Interface</actor>
+        <actor>Subject Responses API</actor>
+        <actor>Neurohub Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The MRI Operator has access to the digital form.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The responses are successfully saved in the database.</condition>
+    </successEndConditions>
+    <trigger>The MRI Operator accesses the digital form to record subject responses.</trigger>
+    <mainSequence>
+        <step id="S1">The MRI Operator accesses the digital form.</step>
+        <step id="S2">The digital form is displayed for the MRI Operator.</step>
+        <step id="S3">The MRI Operator enters subject responses.</step>
+        <step id="S4">The subject responses are posted via the form interface.</step>
+        <step id="S5">The responses are saved in the Neurohub Database.</step>
+        <step id="S6">The Neurohub Database confirms the successful save operation.</step>
+        <step id="S7">The Responses API confirms success to the form interface.</step>
+        <step id="S8">The success message is displayed to the MRI Operator.</step>
+    </mainSequence>
+</useCase>

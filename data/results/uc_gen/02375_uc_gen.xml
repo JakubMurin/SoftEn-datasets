@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Välja att visa sjukfallshistorik för patient på Vårdenhet</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet</step>
+        <step id="S2">Rehabstöd läser upp patientens samtliga intyg över alla VG</step>
+        <step id="S3">Rehabstöd listar av patientens samtliga intyg</step>
+        <step id="S4">Rehabstöd hämtar vårdgivarnamn för varje intyg mha GetUnit v1</step>
+        <step id="S5">Rehabstöd får GetUnitResponseType</step>
+        <step id="S6">Rehabstöd får PersonSvar genom GetPerson för patienten</step>
+        <step id="S7">Rehabstöd filtrerar bort alla intyg som inte ligger på den aktiva enheten om patienten är sekretssmarkerad</step>
+        <step id="S8">Rehabstöd kontrollerar spärr via CheckBlocks v4 om patienten ej är sekretssmarkerad</step>
+        <step id="S9">Rehabstöd uppdaterar intygen med spärrstatus</step>
+        <step id="S10">Rehabstöd skickar in ALLA intyg oavsett spärr/samtyckesstatus till Sjukfallsmotor</step>
+        <step id="S11">Rehabstöd kontrollerar samtyckesstatus för enheten/läkaren mot patienten för att visa intyg utanför vårdgivaren via CheckConsent v2</step>
+        <step id="S12">Rehabstöd filtrerar bort intyg från andra vårdgivare om samtycke saknas</step>
+        <step id="S13">Rehabstöd filtrerar bort intyg med spärr och utanför den nuvarande enhet där användaren inte aktivt valt att ta med vårdgivaren/enheten</step>
+        <step id="S14">Rehabstöd sammanställer klientsvar med sjukfall och metadataobjekt</step>
+        <step id="S15">Rehabstöd skickar in nettolistan av intyg för att få verkliga sjukfall</step>
+        <step id="S16">Rehabstöd uppdaterar lista med namn och sekretessstatus</step>
+        <step id="S17">Rehabstöd får GetCertificateAdditions för varje intyg utfärdade på nuvarande VG/VE</step>
+        <step id="S18">Rehabstöd uppdaterar sjukfallens ingående intyg med kompletteringsstatus</step>
+        <step id="S19">Rehabstöd får RiskPredictionForCertificate genom getRiskPredictionForCertificate för varje intyg om SRS-stöd är aktiverat</step>
+        <step id="S20">Rehabstöd loggar PDL loggning av faktisk visad information</step>
+        <step id="S21">Rehabstöd visar patientens sjukfallshistorik inkl. SJF till Läkare</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>View Assigned Campers Schedule</name>
+    <description>As a Camp Worker, I want to view the schedule and location of the campers assigned to me.</description>
+    <actors>
+        <actor>Camp Worker</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Camp Worker is logged into the Camp Management System.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Camp Worker successfully views the schedule and location information for assigned campers.</condition>
+    </successEndConditions>
+    <trigger>User selects the option to view assigned camper schedule.</trigger>
+    <mainSequence>
+        <step id="S1">Camp Worker logs into the system.</step>
+        <step id="S2">System fetches the list of campers assigned to the Camp Worker from the Camper Profiles database.</step>
+        <step id="S3">System retrieves the schedule and location information for each camper from the Scheduling Service database.</step>
+        <step id="S4">System displays the list of campers with their respective schedule and location to the Camp Worker.</step>
+    </mainSequence>
+</useCase>

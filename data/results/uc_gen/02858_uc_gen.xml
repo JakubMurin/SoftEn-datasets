@@ -1,0 +1,38 @@
+<useCase id="UC1">
+  <name>Perform CRUD operation</name>
+  <actors>
+    <actor>Client</actor>
+    <actor>API</actor>
+    <actor>CommandHandler</actor>
+    <actor>Repository</actor>
+    <actor>Database</actor>
+    <actor>DomainEntity</actor>
+    <actor>NotificationObject</actor>
+    <actor>QueryHandler</actor>
+  </actors>
+  <preconditions>
+    <precondition>Client and API initialized</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Data successfully read/created/updated</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Error during CRUD operation</condition>
+  </failureEndConditions>
+  <mainSequence>
+    <step id="S1">Client creates/reads/updates data via API</step>
+    <step id="S2">API sends command to CommandHandler</step>
+    <step id="S3">CommandHandler processes command and requests entity from Repository</step>
+    <step id="S4">Repository queries Database and retrieves raw data</step>
+    <step id="S5">Repository maps raw data to Entity using Factory</step>
+    <step id="S6">CommandHandler applies business logic to DomainEntity</step>
+    <step id="S7">CommandHandler saves Entity changes via Repository</step>
+    <step id="S8">Repository performs entity change detection and updates SQL</step>
+    <step id="S9">Repository requests Database to save changes</step>
+    <step id="S10">Database saves changes and sends result to Repository</step>
+    <step id="S11">CommandHandler sends NotificationObject to API</step>
+    <step id="S12">API interacts with QueryHandler</step>
+    <step id="S13">QueryHandler returns DTO to API</step>
+    <step id="S14">Client receives DTO from QueryHandler</step>
+  </mainSequence>
+</useCase>

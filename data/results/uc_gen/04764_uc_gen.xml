@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>View Story Details</name>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryDetailView</actor>
+        <actor>StoriesController</actor>
+        <actor>AuthorsController</actor>
+        <actor>ChaptersController</actor>
+        <actor>CommentsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks on the story cover</step>
+        <step id="S2">View requests API for story details</step>
+        <step id="S3">StoriesController processes GetStoryDetail()</step>
+        <step id="S4">StoriesController queries data from the database</step>
+        <step id="S5">Database returns data to StoriesController</step>
+        <step id="S6">MsgService handles message return</step>
+        <step id="S7">MsgService responds with payload format to View</step>
+        <step id="S8">View requests API for related author details</step>
+        <step id="S9">AuthorsController processes GetStoryRelateAuthor()</step>
+        <step id="S10">AuthorsController queries data from the database</step>
+        <step id="S11">Database returns data to AuthorsController</step>
+        <step id="S12">MsgService handles message return</step>
+        <step id="S13">MsgService responds with payload format to View</step>
+        <step id="S14">View requests API for story chapters</step>
+        <step id="S15">ChaptersController processes GetStoryChapters()</step>
+        <step id="S16">ChaptersController queries data from the database</step>
+        <step id="S17">Database returns data to ChaptersController</step>
+        <step id="S18">MsgService handles message return</step>
+        <step id="S19">MsgService responds with payload format to View</step>
+        <step id="S20">View requests API for story comments</step>
+        <step id="S21">CommentsController processes GetStoryComments()</step>
+        <step id="S22">CommentsController queries data from the database</step>
+        <step id="S23">Database returns data to CommentsController</step>
+        <step id="S24">MsgService handles message return</step>
+        <step id="S25">MsgService responds with payload format to View</step>
+        <step id="S26">View displays Story Detail Page to User</step>
+    </mainSequence>
+</useCase>

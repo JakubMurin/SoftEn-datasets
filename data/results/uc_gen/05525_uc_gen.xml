@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Excel Upload Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>GUI CMS</actor>
+        <actor>Batch API Server</actor>
+        <actor>Queue and Log Storage MySQL</actor>
+    </actors>
+    <preconditions>
+        <precondition>GUI CMS and Batch API Server are accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Excel upload completed successfully.</condition>
+    </successEndConditions>
+    <trigger>User initiates Excel upload process.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates Excel upload through GUI CMS.</step>
+        <step id="S2">GUI CMS triggers Excel upload process in Batch API Server.</step>
+        <step id="S3">Batch API Server saves the Excel file in the Queue and Log Storage MySQL.</step>
+        <step id="S4">Batch API Server saves the job metadata in the Queue and Log Storage MySQL.</step>
+        <step id="S5">Batch API Server sends upload completion response to GUI CMS.</step>
+    </mainSequence>
+</useCase>

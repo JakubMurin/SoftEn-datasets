@@ -1,0 +1,51 @@
+<useCase id="UC1">
+    <name>Create Data Package</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>DataPackageManagerResource</actor>
+        <actor>Creator</actor>
+        <actor>DataPackageManager</actor>
+        <actor>DataManagerClient</actor>
+        <actor>EMLDataManager</actor>
+        <actor>DataManager</actor>
+        <actor>EMLDataPackage</actor>
+        <actor>EML200</actor>
+        <actor>DocumentBuilder</actor>
+        <actor>DataPackage</actor>
+        <actor>QualityReport</actor>
+        <actor>QualityCheck</actor>
+        <actor>SolrMetadataCatalog</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates data package</step>
+        <step id="S2">DataPackageManagerResource runs</step>
+        <step id="S3">Creator creates data package</step>
+        <step id="S4">DataPackageManager creates data package (EML)</step>
+        <step id="S5">DataPackageManager parses EML</step>
+        <step id="S6">DataPackageManager parses metadata</step>
+        <step id="S7">DataManager parses EML</step>
+        <step id="S8">EML200 parses</step>
+        <step id="S9">EML200 parses document</step>
+        <step id="S10">DataManager gets data package</step>
+        <step id="S11">DataManager checks data package quality</step>
+        <step id="S12">DataPackageManager creates EML data package</step>
+        <step id="S13">DataPackageManager checks data package</step>
+        <step id="S14">DataPackageManager creates data package aux</step>
+        <step id="S15">DataPackageManager adds data package</step>
+        <step id="S16">DataPackageManager checks for conflicting reservation</step>
+        <step id="S17">EMLDataPackage validates metadata</step>
+        <step id="S18">DataPackageManager creates data entities</step>
+        <step id="S19">EMLDataManager creates data entities</step>
+        <step id="S20">EMLDataManager downloads entity</step>
+        <step id="S21">EMLDataManager loads entity</step>
+        <step id="S22">DataManager loads data to database</step>
+        <step id="S23">DataPackageManager stores metadata</step>
+        <step id="S24">DataPackageManager parses EML</step>
+        <step id="S25">DataPackageManager generates Dublin Core</step>
+        <step id="S26">DataPackageManager inserts Solr</step>
+        <step id="S27">DataPackageManager inserts provenance record</step>
+        <step id="S28">DataPackageManager inserts resource registry</step>
+        <step id="S29">DataPackageManager registers DOI</step>
+        <step id="S30">DataPackageManager removes from working on</step>
+    </mainSequence>
+</useCase>

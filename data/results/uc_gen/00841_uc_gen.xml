@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Execute Database Query</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SamuraiDB</actor>
+        <actor>SegmentManager</actor>
+        <actor>IndexManager</actor>
+        <actor>FileAdapter</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User executes a query.</step>
+        <step id="S2">SamuraiDB fetches relevant indexes for the query.</step>
+        <step id="S3">IndexManager reads index data from FileAdapter.</step>
+        <step id="S4">FileAdapter provides indexes to IndexManager.</step>
+        <step id="S5">SamuraiDB fetches segments based on the indexes.</step>
+        <step id="S6">SegmentManager reads segment data from FileAdapter.</step>
+        <step id="S7">FileAdapter provides segments to SegmentManager.</step>
+        <step id="S8">SamuraiDB sends the query result to the User.</step>
+    </mainSequence>
+</useCase>

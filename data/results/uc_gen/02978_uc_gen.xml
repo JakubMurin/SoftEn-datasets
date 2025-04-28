@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Search Users</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the Home Component.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Search results are displayed to the User.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error message is displayed to the User.</condition>
+    </failureEndConditions>
+    <trigger>User inputs a search query.</trigger>
+    <mainSequence>
+        <step id="S1">User inputs a search query.</step>
+        <step id="S2">Home Component debounces the input with a delay of 300ms.</step>
+        <step id="S3">Home Component requests search query from Internal API.</step>
+        <step id="S4">Internal API requests user search from GitHub API.</step>
+        <step id="S5">GitHub API returns user list to Internal API.</step>
+        <step id="S6">Internal API requests user details for each user from GitHub API.</step>
+        <step id="S7">GitHub API returns user details for each user to Internal API.</step>
+        <step id="S8">Internal API returns user data to Home Component.</step>
+        <step id="S9">Home Component displays search results to the User.</step>
+    </mainSequence>
+</useCase>

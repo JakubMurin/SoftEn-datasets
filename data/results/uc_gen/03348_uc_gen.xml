@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Submit Question</name>
+    <actors>
+        <actor>User</actor>
+        <actor>:View</actor>
+        <actor>:Route</actor>
+        <actor>:views.py</actor>
+        <actor>:validate</actor>
+        <actor>:Questions</actor>
+        <actor>:Model</actor>
+        <actor>:AdaptiveTesting</actor>
+        <actor>:database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks "Submit" on a question.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Question submitted successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Question submission fails.</condition>
+    </failureEndConditions>
+    <trigger>User action of clicking "Submit" Question.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks "Submit" on a question.</step>
+        <step id="S2">Route executes "Submit Question".</step>
+        <step id="S3">Views call quiz().</step>
+        <step id="S4">Views validate on submit.</step>
+        <step id="S5">Questions submits response.</step>
+        <step id="S6">Model gets student category.</step>
+        <step id="S7">Database saves to file.</step>
+        <step id="S8">Model updates Proficiency.</step>
+        <step id="S9">Model saves to file.</step>
+        <step id="S10">Model corrects responses.</step>
+        <step id="S11">Views show result.</step>
+        <step id="S12">Route displays result.html.</step>
+    </mainSequence>
+</useCase>

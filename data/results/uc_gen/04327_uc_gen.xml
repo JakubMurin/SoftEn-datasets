@@ -1,0 +1,50 @@
+<useCase id="Epic-Transaction">
+    <name>Current Epic Tranaction Workflow</name>
+    <actors>
+        <actor>Sender</actor>
+        <actor>Recipient</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Create Transaction UUID (for reference and maintaining correct state)</step>
+        <step id="S2">Set lock_height for transaction kernel (current chain height)</step>
+        <step id="S3">Select inputs using desired selection strategy</step>
+        <step id="S4">Calculate sum inputs blinding factors xI</step>
+        <step id="S5">Create change_output</step>
+        <step id="S6">Select blinding factor xC for change_output</step>
+        <step id="S7">Create lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS linking inputs + outputs (Not executed at this point)</step>
+        <step id="S8">Calculate tx_weight: MAX(-1 * num_inputs + 4 * (num_change_outputs + 1), 1) (+1 covers a single output on the receiver's side)</step>
+        <step id="S9">Calculate fee: tx_weight * 1_000_000 nG</step>
+        <step id="S10">Calculate total blinding excess sum for all inputs and outputs xS1 = xC - xI (private scalar)</step>
+        <step id="S11">Select a random nonce kS (private scalar)</step>
+        <step id="S12">Subtract random kernel offset oS from xS1. Calculate xS = xS1 - oS</step>
+        <step id="S13">Multiply xS and kS by generator G to create public curve points xSG and kSG</step>
+        <step id="S14">Add values to Slate for passing to other participants: UUID, inputs, change_outputs, fee, amount, lock_height, kSG, xSG, oS</step>
+        <step id="S15">Recipient receives Slate</step>
+        <step id="S16">Recipient checks fee against number of inputs, change_outputs, and receiver_output</step>
+        <step id="S17">Recipient creates receiver_output</step>
+        <step id="S18">Recipient chooses random blinding factor for receiver_output xR (private scalar)</step>
+        <step id="S19">Recipient calculates message M = fee | lock_height</step>
+        <step id="S20">Recipient chooses random nonce kR (private scalar)</step>
+        <step id="S21">Recipient computes Schnorr challenge e = SHA256(kRG + kSG | xRG + xSG | M)</step>
+        <step id="S22">Recipient computes Recipient Schnorr signature sR = kR + e * xR</step>
+        <step id="S23">Recipient adds sR, xRG, kRG to Slate</step>
+        <step id="S24">Recipient creates wallet output function rF that stores receiver_output in wallet with status "Unconfirmed"</step>
+        <step id="S25">Recipient executes wallet output function rF</step>
+        <step id="S26">Finalize transaction - Sender calculates signatures and verifies against excess values</step>
+        <step id="S27">Sender creates final transaction tx from Slate</step>
+        <step id="S28">Sender posts tx to mempool via epic_node</step>
+        <step id="S29">epic_node confirms transaction posting to Recipient</step>
+        <step id="S30">Sender waits for Recipient confirmation and executes wallet lock function sF</step>
+        <step id="S31">Recipient confirms receiver_output and changes status to "Confirmed"</step>
+        <step id="S32">Sender confirms change_output, changes status of inputs to "Spent" and change_output to "Confirmed"</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S30">
+            <step id="A1S1">Recipient manually removes receiver_output from wallet using transaction log entry TR</step>
+            <step id="A1S2">Recipient aborts</step>
+            <step id="A1S3">Recipient reports error to Sender</step>
+            <step id="A1S4">Sender unlocks inputs and deletes change_output identified in transaction log entry TS</step>
+            <step id="A1S5">Sender aborts</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

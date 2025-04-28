@@ -1,0 +1,39 @@
+<useCase id="UC001">
+  <name>Submit Question</name>
+  <actors>
+    <actor>User</actor>
+    <actor>:View</actor>
+    <actor>:Route</actor>
+    <actor>:views.py</actor>
+    <actor>:validate</actor>
+    <actor>:Questions</actor>
+    <actor>:Model</actor>
+    <actor>:AdaptiveTesting</actor>
+    <actor>:database</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User clicks "Submit" Question</step>
+    <step id="S2">View executes "Submit Question"</step>
+    <step id="S3">Route executes quiz()</step>
+    <step id="S4">Views validateOnSubmit()</step>
+    <step id="S5">Questions submit_response()</step>
+    <step id="S6">Model Response(user, form)</step>
+    <step id="S7">Model get_student_cat()</step>
+    <step id="S8">Model theta=Proficiency(user), student=Student(user)</step>
+    <step id="S9">Database db.session.add(theta), student.get_next_question()</step>
+    <step id="S10">Database Save to File</step>
+    <step id="S11">Database Question(), Proficiency()</step>
+    <step id="S12">ML item_response=Proficiency.get_item_responses()</step>
+    <step id="S13">ML student=Student(item_response)</step>
+    <step id="S14">ML student.update()</step>
+    <step id="S15">ML student.theta</step>
+    <step id="S16">Database Proficiency.theta=student.theta</step>
+    <step id="S17">Database Save to File</step>
+    <step id="S18">Database Response(), Answer()</step>
+    <step id="S19">Model correct(Response, Answer)</step>
+    <step id="S20">Model correct_responses</step>
+    <step id="S21">Views result()</step>
+    <step id="S22">Route /result</step>
+    <step id="S23">View result.html</step>
+  </mainSequence>
+</useCase>

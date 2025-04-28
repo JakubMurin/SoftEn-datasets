@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Créer une tâche</name>
+    <description>Permet à l'administrateur de créer une nouvelle tâche.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>UserController</actor>
+        <actor>UserHandler</actor>
+    </actors>
+    <trigger>GET /tasks/create</trigger>
+    <mainSequence>
+        <step id="S1">Admin demande la création d'une tâche en accédant à l'URL /tasks/create.</step>
+        <step id="S2">UserController reçoit la demande et initie la création du formulaire.</step>
+        <step id="S3">UserHandler effectue la création du formulaire.</step>
+        <step id="S4">UserController renvoie le formulaire créé à l'Admin.</step>
+    </mainSequence>
+</useCase>

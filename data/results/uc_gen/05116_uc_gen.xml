@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Preview Data Package Process</name>
+    <actors>
+        <actor>Publisher</actor>
+        <actor>UI Interface</actor>
+        <actor>Publisher Account</actor>
+        <actor>Data Package Service</actor>
+        <actor>Validation Service</actor>
+        <actor>Preview Service</actor>
+        <actor>Data Storage</actor>
+    </actors>
+    <trigger>Publisher requests preview of Data Package</trigger>
+    <mainSequence>
+        <step id="S1">Publisher requests preview of Data Package through UI Interface</step>
+        <step id="S2">UI Interface verifies Publisher's identity with Publisher Account</step>
+        <step id="S3">Publisher Account confirms Publisher's identity to UI Interface</step>
+        <step id="S4">UI Interface prepares Data Package for preview using Data Package Service</step>
+        <step id="S5">Data Package Service validates the Data Package with Validation Service</step>
+        <step id="S6">Validation Service provides validation results to Data Package Service</step>
+        <step id="S7">Data Package Service sends validated Data Package to Preview Service</step>
+        <step id="S8">Preview Service generates a preview link</step>
+        <step id="S9">Data Package Service sends the preview link to UI Interface</step>
+        <step id="S10">UI Interface displays the preview link to Publisher</step>
+    </mainSequence>
+</useCase>

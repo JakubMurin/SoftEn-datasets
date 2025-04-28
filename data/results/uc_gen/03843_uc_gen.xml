@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Fault Management Provisioning</name>
+    <description>Manage the fault management process for the system.</description>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operator Framework</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>System Operator Framework is operational.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management Report successfully generated and delivered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in generating or delivering the Fault Management Report.</condition>
+    </failureEndConditions>
+    <trigger>Business User initiates the fault management process.</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers listeners for Fault Management notifications with the Hub.</step>
+        <step id="S2">Business User creates a Fault Management Job.</step>
+        <step id="S3">System Operator Framework creates the Fault Management Job.</step>
+        <step id="S4">System Operator Framework responds with the created Fault Management Job.</step>
+        <step id="S5">Fault Management Job is activated.</step>
+        <step id="S6">Fault Management Job generates necessary data.</step>
+        <step id="S7">Fault Management Job creates a Fault Management Report.</step>
+        <step id="S8">Fault Management Report is activated.</step>
+        <step id="S9">Fault Management Report collects data.</step>
+        <step id="S10">Fault Management Report completes data collection.</step>
+        <step id="S11">Fault Management Report is ready for delivery.</step>
+        <step id="S12">Business User requests the Fault Management Report.</step>
+        <step id="S13">System Operator Framework retrieves the Fault Management Report.</step>
+        <step id="S14">System Operator Framework responds with the retrieved Fault Management Report.</step>
+    </mainSequence>
+</useCase>

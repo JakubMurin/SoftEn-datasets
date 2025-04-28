@@ -1,0 +1,19 @@
+<useCase id="UC001">
+	<name>Criar Novo Edifício</name>
+	<actors>
+		<actor>Gestor de campus</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">O gestor de campus solicita a criação de um novo edifício</step>
+		<step id="S2">O robDroneGo:robDroneGo inicia a requisição dos dados do edifício</step>
+		<step id="S3">O gestor de campus insere os dados do edifício</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S2">
+			<step id="A1S1">O robDroneGo:robDroneGo devolve o edifício criado</step>
+		</asteps>
+		<asteps id="A2" start="S2">
+			<step id="A2S1">O robDroneGo:robDroneGo devolve mensagem de erro</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

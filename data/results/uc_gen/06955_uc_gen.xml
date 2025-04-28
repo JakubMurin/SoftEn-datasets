@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Check Upgrade Compatibility for Dataset Instance</name>
+    <actors>
+        <actor>DatasetDeveloper</actor>
+        <actor>Dataset Version Control</actor>
+        <actor>Dataset Instance</actor>
+        <actor>Dataset Registry</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The DatasetDeveloper requests an upgrade check for a dataset instance with a new version to the Dataset Version Control.</step>
+        <step id="S2">The Dataset Version Control retrieves dataset type information for the new version from the Dataset Registry.</step>
+        <step id="S3">The Dataset Version Control gets existing version details for the dataset instance from the Dataset Instance.</step>
+        <step id="S4">The Dataset Version Control compares the dataset type details and existing version details.</step>
+        <step id="S5">The Dataset Version Control retrieves upgrade compatibility rules for the dataset type from the Dataset Registry.</step>
+        <step id="S6">The Dataset Version Control applies compatibility rules to determine upgrade compatibility.</step>
+        <step id="S7">If the upgrade is compatible, the Dataset Version Control notifies the DatasetDeveloper and proceeds with the upgrade process.</step>
+        <step id="S8">If the upgrade is not compatible, the Dataset Version Control notifies the DatasetDeveloper of the incompatibility reason.</step>
+    </mainSequence>
+</useCase>

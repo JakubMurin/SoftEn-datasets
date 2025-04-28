@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Manage NSF Participants Interviews</name>
+    <description>Manage the process of selecting and inviting NSF participants for interviews</description>
+    <actors>
+        <actor>User Researcher</actor>
+        <actor>User Research Management System</actor>
+        <actor>NSF Staff Database</actor>
+        <actor>Email System</actor>
+        <actor>NSF Person</actor>
+    </actors>
+    <preconditions>
+        <precondition>User Researcher needs to have a list of potential participants based on interview topic</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>NSF participants are successfully selected and RSVP to the interview invitations</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to select or invite NSF participants</condition>
+    </failureEndConditions>
+    <trigger>User Researcher initiates the process to manage NSF participant interviews</trigger>
+    <mainSequence>
+        <step id="S1">User Researcher searches for potential participants based on interview topic</step>
+        <step id="S2">User Research Management System queries for staff with relevant expertise in NSF Staff Database</step>
+        <step id="S3">NSF Staff Database returns a list of potential NSF participants</step>
+        <step id="S4">User Research Management System presents potential participants to User Researcher</step>
+        <step id="S5">User Researcher selects NSF participants for interviews</step>
+        <step id="S6">User Research Management System sends invitation emails with interview details via Email System</step>
+        <step id="S7">NSF Person receives interview invitation</step>
+        <step id="S8">NSF Person RSVPs to invitation</step>
+        <step id="S9">Email System logs RSVP status</step>
+        <step id="S10">User Research Management System confirms NSF participant RSVPs</step>
+    </mainSequence>
+</useCase>

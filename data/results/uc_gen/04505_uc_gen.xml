@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Update Authors and Organizations</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>AdvancedSearch.jsp</actor>
+        <actor>AuthorSearch</actor>
+        <actor>DataPackageManagerClient</actor>
+        <actor>Umbra</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client updates authors and organizations.</step>
+        <step id="S2">AuthorSearch gets names from Umbra.</step>
+        <step id="S3">Umbra provides authors to AuthorSearch.</step>
+        <step id="S4">AuthorSearch builds author query.</step>
+        <step id="S5">AuthorSearch updates authors based on the query.</step>
+        <step id="S6">AuthorSearch executes the query using DataPackageManagerClient.</step>
+        <step id="S7">DataPackageManagerClient retrieves authors in XML format.</step>
+        <step id="S8">AuthorSearch parses the query results to get authors.</step>
+        <step id="S9">AdvancedSearch.jsp composes author name options.</step>
+        <step id="S10">AuthorSearch builds an HTML author list.</step>
+        <step id="S11">AuthorSearch sends the HTML author list to AdvancedSearch.jsp.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC1">
+	<name>Perform transaction</name>
+	<description>Allow user to perform a transaction</description>
+	<actors>
+		<actor>Actor</actor>
+	</actors>
+	<preconditions>
+		<precondition>User is authenticated</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Transaction completed successfully</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Transaction failed due to lack of funds</condition>
+		<condition>Transaction failed due to technical issue</condition>
+	</failureEndConditions>
+	<trigger>User initiates the transaction</trigger>
+	<mainSequence>
+		<step id="S1">Actor initiates the transaction</step>
+		<step id="S2">Actor selects the item to purchase</step>
+		<step id="S3">Actor confirms the transaction</step>
+		<step id="S4">Payment is processed</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S3">
+			<step id="A1S1">Transaction cancellation requested by actor</step>
+			<step id="A1S2">Payment refund process initiated</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="S4">
+			<description>Transaction fails</description>
+			<step id="E1S1">Payment is declined</step>
+			<step id="E1S2">Technical issue during processing</step>
+		</esteps>
+	</errorSteps>
+</useCase>

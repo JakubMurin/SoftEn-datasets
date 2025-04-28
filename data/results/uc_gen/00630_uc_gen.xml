@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Upload Object with Quota Validation</name>
+    <description>Client uploads an object while verifying quota limitations</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>RPC Server</actor>
+        <actor>Object Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Client initiates the process by creating an object upload request.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Object is successfully uploaded and quota limitations are validated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Object upload fails due to quota restrictions.</condition>
+    </failureEndConditions>
+    <trigger>create_object_upload</trigger>
+    <mainSequence>
+        <step id="S1">Client creates an object upload request.</step>
+        <step id="S2">RPC Server forwards request to Object Server.</step>
+        <step id="S3">Object Server checks the quota for the object upload.</step>
+    </mainSequence>
+</useCase>

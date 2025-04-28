@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Select Monthly Popular Dishes Report</name>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Manager has access to the UI Dashboard</precondition>
+    </preconditions>
+    <trigger>The Manager selects the "Monthly Popular Dishes" report</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Monthly Popular Dishes" report</step>
+        <step id="S2">UI Dashboard requests for most frequently ordered food of the month from Backend Server</step>
+        <step id="S3">Backend Server queries the ordered food data of the month from the Database</step>
+        <step id="S4">If data is available</step>
+        <step id="S5">Backend Server processes data to find the most frequently ordered dishes</step>
+        <step id="S6">UI Dashboard receives and displays the report of most frequently ordered food</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Database returns the ordered food data of the month to Backend Server</step>
+            <step id="A1S2">Backend Server processes data to find the most frequently ordered dishes</step>
+            <step id="A1S3">UI Dashboard receives and displays the report of most frequently ordered food</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>No data is available</description>
+            <step id="E1S1">Database returns empty result to Backend Server</step>
+            <step id="E1S2">UI Dashboard receives and displays a message indicating no data is available</step>
+        </esteps>
+    </errorSteps>
+</useCase>

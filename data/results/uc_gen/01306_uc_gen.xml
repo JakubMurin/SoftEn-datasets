@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Creating a Comment on a Post</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>CommentController</actor>
+        <actor>CommentService</actor>
+        <actor>CommentRepository</actor>
+        <actor>CommentsDatabase</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the post section.</precondition>
+    </preconditions>
+    <trigger>User decides to create a new comment on a post.</trigger>
+    <mainSequence>
+        <step id="S1">User goes to the post page.</step>
+        <step id="S2">UserInterface displays post details and comment form to User.</step>
+        <step id="S3">User enters comment content (text) into the form.</step>
+        <step id="S4">User clicks on the "Submit" button to submit the comment.</step>
+        <step id="S5">UserInterface calls CommentController's createComment(CommentDTO commentDTO) method.</step>
+        <step id="S6">CommentController receives the comment DTO and processes the request.</step>
+        <step id="S7">CommentController calls CommentService to validate and create the comment.</step>
+        <step id="S8">CommentService validates the comment content and initiates the creation process.</step>
+        <step id="S9">CommentService persists the comment data through CommentRepository.</step>
+        <step id="S10">CommentRepository retrieves CommentsDatabase to insert comment data.</step>
+        <step id="S11">CommentRepository saves the comment data successfully to the database.</step>
+        <step id="S12">CommentsDatabase confirms the successful insertion of data and returns the response.</step>
+        <step id="S13">CommentRepository returns the saved comment to CommentService.</step>
+        <step id="S14">CommentService constructs the comment response and returns it to CommentController.</step>
+        <step id="S15">CommentController processes the response and returns the success message to UserInterface.</step>
+        <step id="S16">UserInterface displays "Comment created successfully" and updates the post comments section.</step>
+    </mainSequence>
+</useCase>

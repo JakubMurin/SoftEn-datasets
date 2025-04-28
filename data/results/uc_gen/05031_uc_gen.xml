@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Perform DCSync Attack</name>
+    <description>Performing a DCSync attack to retrieve user credentials from a domain controller.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>Attacker's Computer</actor>
+        <actor>Target Domain Controller</actor>
+        <actor>Domain Environment</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker has gained access with necessary rights to perform the attack.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User credentials are successfully retrieved from the domain controller.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Attacker fails to retrieve user credentials.</condition>
+    </failureEndConditions>
+    <trigger>Attacker initiates the DCSync attack.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker gains access with necessary rights.</step>
+        <step id="S2">Attacker's Computer issues a DCSync request to the Target Domain Controller.</step>
+        <step id="S3">Target Domain Controller validates the request.</step>
+        <step id="S4">Target Domain Controller sends the requested data to Attacker's Computer.</step>
+        <step id="S5">Attacker uses the obtained credentials for further actions within the Domain Environment.</step>
+    </mainSequence>
+</useCase>

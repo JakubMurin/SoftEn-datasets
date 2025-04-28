@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Adding Other Service to Booking</name>
+    <description>Allows User to add other service to a booking</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UI/Interface</actor>
+        <actor>BookingRouter</actor>
+        <actor>BookingController</actor>
+        <actor>BookingRepository</actor>
+        <actor>OtherServiceRepository</actor>
+        <actor>Booking Model</actor>
+        <actor>OtherService Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User opens booking details page in the UI</trigger>
+    <mainSequence>
+        <step id="S1">User opens booking details page</step>
+        <step id="S2">UI forwards details to BookingRouter</step>
+        <step id="S3">Router calls addOtherServiceToBooking endpoint in Controller</step>
+        <step id="S4">Controller adds other service to booking in Repository</step>
+        <step id="S5">Repository retrieves booking details from Database</step>
+        <step id="S6">Repository retrieves other service details from OtherServiceRepository</step>
+        <step id="S7">Repository adds other service to booking</step>
+        <step id="S8">Controller confirms updated booking with other service to Router</step>
+        <step id="S9">Router confirms success status to UI</step>
+        <step id="S10">UI displays confirmation of added service to User</step>
+    </mainSequence>
+</useCase>

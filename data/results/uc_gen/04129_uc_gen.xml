@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Manage Inventory Backup Food List</name>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Access inventory management</step>
+        <step id="S2">Check current backup food stock in InventoryDB</step>
+        <step id="S3">Return current stock levels</step>
+        <step id="S4">Show Chef the current backup food list with stock levels</step>
+        <step id="S5">Identify items for renewal</step>
+        <step id="S6">Update backup food list in InventoryDB</step>
+        <step id="S7">Confirm updated list</step>
+        <step id="S8">Display confirmation of renewed list to Chef</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Initiate restock request for items</step>
+            <step id="A1S2">Place order for restock with Supplier</step>
+            <step id="A1S3">Confirm restock order</step>
+            <step id="A1S4">Update pending deliveries in InventoryDB</step>
+            <step id="A1S5">Confirm update in InventoryDB</step>
+            <step id="A1S6">Display restock order confirmation to Chef</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

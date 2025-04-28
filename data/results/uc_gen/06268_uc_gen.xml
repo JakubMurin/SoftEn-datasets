@@ -1,0 +1,23 @@
+<useCase id="UC1">
+  <name>Create User</name>
+  <actors>
+    <actor>Admin</actor>
+    <actor>UserController</actor>
+    <actor>UserHandler</actor>
+    <actor>BDD</actor>
+  </actors>
+  <preconditions>
+    <precondition>Admin is logged in</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>User successfully created</condition>
+  </successEndConditions>
+  <trigger>Admin submits create user form</trigger>
+  <mainSequence>
+    <step id="S1">Admin initiates creation of a new user by sending POST request to /users/create</step>
+    <step id="S2">User Handler transmits the user creation form requested by the UserController</step>
+    <step id="S3">BDD records the user details to create the user in the system</step>
+    <step id="S4">UserHandler receives the confirmation of user creation from the BDD</step>
+    <step id="S5">UserController redirects Admin to /users after successful user creation</step>
+  </mainSequence>
+</useCase>

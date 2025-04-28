@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Negotiation Pattern Sequence</name>
+    <description>Illustrates the negotiation pattern between Acquirer and Provider</description>
+    <actors>
+        <actor>Acquirer</actor>
+        <actor>Provider</actor>
+    </actors>
+    <preconditions>
+        <precondition>An initial offer is strictly required, though in practice, it is expected OFFERs will precede a REQUEST.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The negotiation is successfully completed with an ACK acknowledgment.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Acquirer sends an OFFER to Provider.</step>
+        <step id="S2">Acquirer requests further negotiation terms from Provider.</step>
+        <step id="S3">Provider responds with an OFFER or may abandon the negotiation.</step>
+        <step id="S4">Acquirer requests new terms or abandons the negotiation based on the previous OFFER.</step>
+        <step id="S5">Provider acknowledges the negotiated matter.</step>
+    </mainSequence>
+</useCase>

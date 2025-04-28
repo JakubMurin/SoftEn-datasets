@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>User Authentication</name>
+    <description>User enters credentials to log in and access protected routes.</description>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>AngularApp</actor>
+        <actor>AngularService</actor>
+        <actor>ExpressServer</actor>
+        <actor>MySQL</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and accesses protected routes.</condition>
+    </successEndConditions>
+    <trigger>User initiates the login process.</trigger>
+    <mainSequence>
+        <step id="S1">User enters credentials</step>
+        <step id="S2">AngularApp requests authentication</step>
+        <step id="S3">AngularService requests authentication</step>
+        <step id="S4">ExpressServer verifies credentials</step>
+        <step id="S5">ExpressServer generates access token</step>
+        <step id="S6">AngularService generates access token</step>
+        <step id="S7">AngularApp successfully logs in</step>
+    </mainSequence>
+</useCase>

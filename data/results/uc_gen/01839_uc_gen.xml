@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Handle Collision</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>GameBoundaryDelegate</actor>
+        <actor>Boundary</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>GameEngine needs to detect a collision.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Collision is handled successfully.</condition>
+    </successEndConditions>
+    <trigger>GameEngine triggers collision handling.</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine gets the boundary.</step>
+        <step id="S2">GameEngine triggers Ball to handle collision with the boundary.</step>
+        <step id="S3">Ball collides with the boundary.</step>
+        <step id="S4">Ball gets a safe position from the boundary.</step>
+        <step id="S5">Ball triggers FreeBody to handle collision with the boundary.</step>
+    </mainSequence>
+</useCase>

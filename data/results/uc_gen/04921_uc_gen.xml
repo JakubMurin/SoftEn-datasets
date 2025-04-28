@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>View Boards</name>
+    
+    <actors>
+        <actor>user</actor>
+        <actor>ui</actor>
+        <actor>ctrl</actor>
+        <actor>protocol</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">User views Boards</step>
+        <step id="S2">UI creates instance of socket with serverIp and serverPort along with input stream (inS) and output stream (outS)</step>
+        <step id="S3">UI sends a request to create boards to view</step>
+        <step id="S4">Protocol creates the request with code VIEW_BOARDS and token AUTH_TOKEN</step>
+        <step id="S5">Protocol sends the request packet</step>
+        <step id="S6">Protocol receives response and fetches content as string</step>
+        <step id="S7">UI visually represents the content split</step>
+        <step id="S8">User sees the boards and chooses a specific board</step>
+        <step id="S9">UI requests history for the selected board</step>
+        <step id="S10">Protocol creates the request LIST_HISTORY for the selected board</step>
+        <step id="S11">Protocol sends request to fetch history</step>
+        <step id="S12">Protocol receives history content and processes it</step>
+        <step id="S13">UI shows the history to the user</step>
+    </mainSequence>
+</useCase>

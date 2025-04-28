@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Comprar sobre</name>
+    <actors>
+        <actor>Usuario Autenticado</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario ha iniciado sesión en el sistema de compras</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">El usuario selecciona comprar sobre</step>
+        <step id="S2">El sistema de compras solicita la compra del paquete de cartas</step>
+        <step id="S3">Se inicia sesión de transacción en la base de datos</step>
+        <step id="S4">El sistema de compras busca el paquete de cartas en la base de datos</step>
+        <step id="S5">Se verifica la disponibilidad del paquete de cartas</step>
+        <step id="S6">Se verifica el saldo del usuario</step>
+        <step id="S7">El sistema de compras genera las cartas y actualiza el inventario</step>
+        <step id="S8">Se actualiza el saldo del usuario en la base de datos</step>
+        <step id="S9">Se registran las transacciones y se actualiza la colección del usuario</step>
+        <step id="S10">Se cierra la sesión de transacción en la base de datos</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">El paquete no está disponible, se notifica al usuario</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">El saldo del usuario es insuficiente, se notifica al usuario</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Se produce un error durante el proceso de compra</description>
+            <step id="E1S1">Se aborta la transacción y se notifica al usuario</step>
+        </esteps>
+    </errorSteps>
+</useCase>

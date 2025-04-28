@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Generate Monthly Popular Dishes Report</name>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Monthly popular dishes report generated successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to generate monthly popular dishes report</condition>
+    </failureEndConditions>
+    <trigger>User selects "Monthly Popular Dishes" report</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Monthly Popular Dishes" report</step>
+        <step id="S2">UI Dashboard requests for most frequently ordered food of the month</step>
+        <step id="S3">Backend Server queries ordered food data of the month</step>
+        <step id="S4">Backend Server processes data to find most frequently ordered dishes (based on available data)</step>
+        <step id="S5">UI Dashboard displays most frequently ordered food report to Manager</step>
+    </mainSequence>
+</useCase>

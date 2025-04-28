@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Register New Identity</name>
+    <description>Allows an individual to create a new identity record.</description>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>Registration Interface</actor>
+        <actor>Central Repository Database</actor>
+        <actor>Identity Management Module</actor>
+        <actor>DAMS Core System</actor>
+    </actors>
+    <trigger>Access Registration Interface</trigger>
+    <mainSequence>
+        <step id="S1">Repository Manager accesses Registration Interface.</step>
+        <step id="S2">Registration Interface requests existing identities from Central Repository Database.</step>
+        <step id="S3">Central Repository Database returns a list of identities back to Registration Interface.</step>
+        <step id="S4">Registration Interface displays the identities to the Repository Manager.</step>
+        <step id="S5">Repository Manager provides new identity details back to Registration Interface.</step>
+        <step id="S6">Registration Interface validates and prepares the new identity record with Identity Management Module.</step>
+        <step id="S7">Identity Management Module checks for duplicates with Central Repository Database.</step>
+        <step id="S8">Central Repository Database communicates duplicate check result back to Identity Management Module.</step>
+        <step id="S9">Identity Management Module registers the new identity with DAMS Core System in case of uniqueness.</step>
+        <step id="S10">DAMS Core System stores the new identity record by confirmation from Central Repository Database and provides a new recording ID.</step>
+        <step id="S11">DAMS Core System confirms the registration to Identity Management Module.</step>
+        <step id="S12">Identity Management Module sends a registration success message back to Registration Interface.</step>
+        <step id="S13">Registration Interface displays the success message and the new identity ID to the Repository Manager.</step>
+    </mainSequence>
+</useCase>

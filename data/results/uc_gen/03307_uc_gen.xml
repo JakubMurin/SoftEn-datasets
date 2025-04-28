@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Update User Information</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UpdateUserRequest</actor>
+        <actor>QJsonObject</actor>
+        <actor>QMutexLocker</actor>
+        <actor>DB::DatabaseManager</actor>
+        <actor>DB::DbResult</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User executes UpdateUserRequest with JSON object and mutex</step>
+        <step id="S2">UpdateUserRequest initializes QMutexLocker with mutex</step>
+        <step id="S3">UpdateUserRequest extracts email, account number, and new data from JSON object</step>
+        <step id="S4">JSON object returns user data to UpdateUserRequest</step>
+        <step id="S5">UpdateUserRequest checks if DB connection is valid</step>
+        <step id="S6">UpdateUserRequest creates DB connection error response and returns it to User</step>
+        <step id="S7">UpdateUserRequest queries user role from the database</step>
+        <step id="S8">UpdateUserRequest creates error response for unregistered user and returns it to User</step>
+        <step id="S9">UpdateUserRequest checks if user is an admin</step>
+        <step id="S10">UpdateUserRequest creates unauthorized error response and returns it to User</step>
+        <step id="S11">UpdateUserRequest queries account data from the database</step>
+        <step id="S12">UpdateUserRequest creates error response for non-existent account and returns it to User</step>
+        <step id="S13">UpdateUserRequest queries user data with new email from the database</step>
+        <step id="S14">UpdateUserRequest creates error response for email in use and returns it to User</step>
+        <step id="S15">UpdateUserRequest updates user information in the database</step>
+        <step id="S16">UpdateUserRequest creates error response for failed update and returns it to User</step>
+        <step id="S17">UpdateUserRequest constructs success response and returns it to User</step>
+    </mainSequence>
+</useCase>

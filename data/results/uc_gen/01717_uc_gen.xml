@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Alice recovers agent policy registry</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to use for control over her agent policy registry on the ledger.</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice performs agent recovery by completing all steps in Offline Recovery diagram or Social Recovery diagram.</step>
+        <step id="S2">Alice generates policy registry address P' and stores it.</step>
+        <step id="S3">Alice revokes all her claims that include the old agent policy address P as a blinded attribute and petitions the Issuers to reissue her claims.</step>
+        <step id="S4">Alice revokes claim.</step>
+        <step id="S5">Alice's Edge Agent sends revoke claim message.</step>
+        <step id="S6">Issuer authenticates Alice using the same methods as before when Alice was issued the claim.</step>
+        <step id="S7">Issuer revokes claim and adds claim index Si to the non-revocation accumulator SO corresponding to claim schema S. Signs transaction with Issuer accumulator private key.</step>
+        <step id="S8">Ledger forwards revoke claim and updates accumulator.</step>
+        <step id="S9">Issuer forwards result.</step>
+        <step id="S10">Alice's Cloud Agent acknowledges.</step>
+        <step id="S11">Alice's Edge Agent proceeds.</step>
+        <step id="S12">Alice completes Issue Claim diagram for each claim with new policy address P.</step>
+    </mainSequence>
+</useCase>

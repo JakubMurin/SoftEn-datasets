@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Create Translation Client</name>
+    <description>Allow clients to create new translation clients.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP request.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Translation client successfully created and returned to the client.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>DuplicateTranslationClientException thrown if translation client name/ClientType pair is identical to an existing one.</condition>
+    </failureEndConditions>
+    <trigger>Client sends an HTTP request to create a translation client.</trigger>
+    <mainSequence>
+        <step id="S1">API Gateway/Lambda receives an HTTP request from the Client.</step>
+        <step id="S2">CreateTranslationClientActivity processes CreateTranslationClientRequest.</step>
+        <step id="S3">TranslationClientDao creates a translation client object.</step>
+        <step id="S4">TranslationClientDao checks for an existing client with the same name/ClientType pair.</step>
+        <step id="S5">If a duplicate is found, DuplicateTranslationClientException is thrown and handled.</step>
+        <step id="S6">If no duplicate is found, newTranslationClient is saved to DynamoDB.</step>
+        <step id="S7">DynamoDB saves the newTranslationClient and returns a 200 response.</step>
+        <step id="S8">CreateTranslationClientActivity returns the newTranslationClient object.</step>
+        <step id="S9">API Gateway/Lambda returns CreateTranslationClientResult to the Client.</step>
+    </mainSequence>
+</useCase>

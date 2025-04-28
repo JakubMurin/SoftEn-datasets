@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>View Book Details</name>
+    <description>Allows the reader to view detailed information about a selected book.</description>
+    <actors>
+        <actor>Reader</actor>
+    </actors>
+    <preconditions>
+        <precondition>The reader has selected a book from the search list.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The system successfully displays the book details.</condition>
+    </successEndConditions>
+    <trigger>Reader chooses a book from the search list.</trigger>
+    <mainSequence>
+        <step id="S1">Reader selects a book from the search list.</step>
+        <step id="S2">System retrieves detailed information about the book using its ID.</step>
+        <step id="S3">Database returns book information (Title, Author, Cover Image, Status) to the system.</step>
+        <step id="S4">System displays the detailed book information to the reader.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">System displays "Available" status.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">System displays "Not Available" status.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Reader may return to the main interface if they do not want to borrow the book.</description>
+            <step id="E1S1">Reader navigates back to the main interface.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Bidirectional Update Flow</name>
+    <description>As a Repository Manager, I want to synchronize data bidirectionally between EDRMS and Symplectic Elements API.</description>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>EDRMS API</actor>
+        <actor>Symplectic Elements API</actor>
+        <actor>Data Mapping Service</actor>
+        <actor>EDRMS Database</actor>
+        <actor>Symplectic Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>All systems are operational.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data synchronization completed successfully.</condition>
+    </successEndConditions>
+    <trigger>Request Data Sync</trigger>
+    <mainSequence>
+        <step id="S1">Repository Manager requests data synchronization from EDRMS.</step>
+        <step id="S2">EDRMS initiates the sync process by contacting the Data Mapping Service.</step>
+        <step id="S3">Data Mapping Service fetches changes from Symplectic Elements API.</step>
+        <step id="S4">Symplectic Elements API queries changed data from Symplectic Database.</step>
+        <step id="S5">Symplectic Database returns the changed data to Symplectic Elements API.</step>
+        <step id="S6">Symplectic Elements API provides updates to the Data Mapping Service.</step>
+        <step id="S7">Data Mapping Service sends updates to EDRMS.</step>
+        <step id="S8">EDRMS updates records in the EDRMS Database.</step>
+        <step id="S9">EDRMS confirms the update success to the Repository Manager.</step>
+        <step id="S10">Data synchronization is complete.</step>
+    </mainSequence>
+</useCase>

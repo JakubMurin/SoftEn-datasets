@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Детальна інсталяція платформи</name>
+    
+    <actors>
+        <actor>Адміністратор платформи</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Адміністратор запускає інсталлер</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Адміністратор активує шифрування etcd</step>
+        <step id="S2">Адміністратор активує catalog-source (Redhat репозиторії)</step>
+        <step id="S3">Адміністратор встановлює storage у Ceph</step>
+        <step id="S4">Адміністратор встановлює logging</step>
+        <step id="S5">Адміністратор встановлює service-mesh</step>
+        <step id="S6">Адміністратор встановлює control-plane-nexus у Nexus</step>
+        <step id="S7">Адміністратор встановлює platform-vault</step>
+        <step id="S8">Адміністратор встановлює platform-minio</step>
+        <step id="S9">Адміністратор завантажує докер імеджі у Nexus</step>
+        <step id="S10">Адміністратор встановлює user-management у Keycloak</step>
+        <step id="S11">Адміністратор запускає control-plane-installer</step>
+        <step id="S12">Адміністратор завантажує nexus ресурси (*.xsd) у Nexus</step>
+        <step id="S13">Адміністратор створює backup-credentials</step>
+        <step id="S14"> control-plane-installer встановлює CP компоненти</step>
+        <step id="S15">Jenkins встановлює jenkins-operator та jenkins у CP</step>
+        <step id="S16">Інші компоненти встановлюють codebase-operator у CP</step>
+        <step id="S17">Інші компоненти встановлюють keycloak-operator у CP</step>
+        <step id="S18">Gerrit встановлює gerrit-operator та gerrit у CP</step>
+        <step id="S19">Gerrit встановлює codebase cluster-mgmt у CP</step>
+        <step id="S20">Gerrit інціалізує cluster-mgmt repo з helm</step>
+        <step id="S21">Jenkins створює gitops job для cluster-mgmt у CP</step>
+        <step id="S22">Jenkins запускає gitops job для cluster-mgmt у CP</step>
+        <step id="S23">Jenkins checkout helmfile з Gerrit</step>
+        <step id="S24">Jenkins запускає helmfile</step>
+        <step id="S25">Інші компоненти встановлюють</step>
+        <step id="S26">CP створює realm для Control Plane</step>
+        <step id="S27">CP інтегрує всі компоненти з Keycloak</step>
+    </mainSequence>
+</useCase>

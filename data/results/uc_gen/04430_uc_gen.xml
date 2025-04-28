@@ -1,0 +1,29 @@
+<useCase id="UC1">
+	<name>Update Workout Details</name>
+	<actors>
+		<actor>User</actor>
+		<actor>WorkoutEditScreen</actor>
+		<actor>WorkoutService</actor>
+		<actor>Workout</actor>
+		<actor>DatabaseService</actor>
+	</actors>
+	<preconditions>
+		<precondition>User wants to update workout details.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Workout details updated successfully.</condition>
+	</successEndConditions>
+	<trigger>User opens Workout Edit Screen to update workout details.</trigger>
+	<mainSequence>
+		<step id="S1">User opens Workout Edit Screen.</step>
+		<step id="S2">WorkoutEditScreen loads workout details.</step>
+		<step id="S3">WorkoutService retrieves Workout data.</step>
+		<step id="S4">WorkoutService displays Workout data.</step>
+		<step id="S5">User edits Workout data.</step>
+		<step id="S6">WorkoutService saves changes.</step>
+		<step id="S7">Workout is updated.</step>
+		<step id="S8">DatabaseService saves updated Workout data.</step>
+		<step id="S9">WorkoutService displays success message.</step>
+		<step id="S10">WorkoutEditScreen confirms Workout saved.</step>
+	</mainSequence>
+</useCase>

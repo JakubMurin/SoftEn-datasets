@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Track User Visits</name>
+    <description>As a User, I want to track my visits to the website.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Component</actor>
+        <actor>Store</actor>
+        <actor>Reducer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User visit is successfully tracked</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The User visit is not tracked</condition>
+    </failureEndConditions>
+    <trigger>User triggers the addVisitedUser action</trigger>
+    <mainSequence>
+        <step id="S1">User dispatches addVisitedUser("user123") action</step>
+        <step id="S2">Component dispatches addVisitedUser("user123") action to Store</step>
+        <step id="S3">Store calls addVisitedUser reducer in Reducer</step>
+        <step id="S4">Reducer checks if "user123" is in visitedUsers</step>
+        <step id="S5">Slice updates state if "user123" is not present</step>
+        <step id="S6">Reducer returns updated state to Store</step>
+        <step id="S7">Store notifies Component of state change</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>View List of Orders Being Delivered</name>
+    <actors>
+        <actor>Shipper</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Shipper Views List of Orders Being Delivered</step>
+        <step id="S2">Shipper Retrieves Orders Being Delivered from Dashboard</step>
+        <step id="S3">Dashboard Requests Orders Being Delivered from Controller</step>
+        <step id="S4">Controller Gets Orders Being Delivered from Service</step>
+        <step id="S5">Service Retrieves Orders with Status "IN_TRANSIT" from Repository</step>
+        <step id="S6">Repository Queries Orders with Status "IN_TRANSIT" from Database</step>
+        <step id="S7">Database Returns Order Data to Repository</step>
+        <step id="S8">Repository Returns Order Data to Service</step>
+        <step id="S9">Service Returns Order Data to Controller</step>
+        <step id="S10">Controller Returns Order Data to Dashboard</step>
+        <step id="S11">Dashboard Displays List of Orders Being Delivered</step>
+    </mainSequence>
+</useCase>

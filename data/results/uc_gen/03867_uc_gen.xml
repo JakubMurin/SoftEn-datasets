@@ -1,0 +1,25 @@
+<useCase id="UC002">
+    <name>Retrieve Status</name>
+    <description>As an Alice, I want to retrieve the status information from the Timer, using the Cowboy and Plug components.</description>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Cowboy and Plug components have been initialized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The status information has been successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurred while retrieving the status information.</condition>
+    </failureEndConditions>
+    <trigger>Alice triggers the retrieval process.</trigger>
+    <mainSequence>
+        <step id="S1">Alice requests the status information from Cowboy (/bt_status).</step>
+        <step id="S2">Cowboy calls Plug.</step>
+        <step id="S3">Plug requests the status information from Timer (:get_status).</step>
+        <step id="S4">Timer returns the status information to Plug.</step>
+        <step id="S5">Plug responds to Cowboy with the status information.</step>
+        <step id="S6">Cowboy responds to Alice with the status information.</step>
+    </mainSequence>
+</useCase>

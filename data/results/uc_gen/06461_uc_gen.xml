@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Bullet Shooting</name>
+    <actors>
+        <actor>Bullet Actor</actor>
+        <actor>Model</actor>
+        <actor>Balloon Actor</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Model updates entities.</step>
+        <step id="S2">Bullet Actor updates bullet position.</step>
+        <step id="S3">Bullet Actor checks for collision between bullet and balloon.</step>
+        <step id="S4">Bullet Actor explodes when collision detected.</step>
+        <step id="S5">Bullet Actor communicates with Model to start explosion and handle balloon hits.</step>
+        <step id="S6">Bullet Actor informs Model about the bullet being killed.</step>
+        <step id="S7">Model receives hit event from Bullet Actor.</step>
+        <step id="S8">Bullet Actor updates Model about the entities with the bullet.</step>
+        <step id="S9">Bullet Actor communicates to Model that the bullet is killed when out of screen.</step>
+    </mainSequence>
+</useCase>

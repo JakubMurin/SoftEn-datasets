@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Create New Pipeline and Dataset Instance</name>
+    <actors>
+        <actor>HydratorUser</actor>
+        <actor>Web UI</actor>
+        <actor>Pipeline Service</actor>
+        <actor>Dataset Management Service</actor>
+        <actor>Dataset Instance Creator</actor>
+        <actor>Version Control</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects option to create new pipeline.</step>
+        <step id="S2">UI displays pipeline creation form.</step>
+        <step id="S3">User fills in pipeline details and specifies new dataset instance.</step>
+        <step id="S4">UI sends filled details to Pipeline to initiate pipeline and dataset creation.</step>
+        <step id="S5">Pipeline requests dataset type check from Dataset Management Service.</step>
+        <step id="S6">Dataset Management Service verifies dataset type and version with Version Control.</step>
+        <step id="S7">Version Control provides dataset type specifications to Dataset Management Service.</step>
+        <step id="S8">Dataset Management Service confirms dataset type with Pipeline.</step>
+        <step id="S9">Pipeline requests Dataset Instance Creator to create a new dataset instance.</step>
+        <step id="S10">Dataset Instance Creator creates the new dataset instance with Dataset Management Service.</step>
+        <step id="S11">Dataset Management Service registers the new dataset instance version with Version Control.</step>
+        <step id="S12">Version Control provides confirmation and version details to Dataset Management Service.</step>
+        <step id="S13">Dataset Instance Creator informs Pipeline of successful dataset instance creation.</step>
+        <step id="S14">Pipeline confirms successful creation of pipeline and dataset instance to UI.</step>
+        <step id="S15">UI displays success message and pipeline details to user.</step>
+    </mainSequence>
+</useCase>

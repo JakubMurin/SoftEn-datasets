@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Authenticate User</name>
+    <description>As a User, I want to authenticate myself in the Finance App.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Finance App</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has entered their credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User is successfully authenticated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The User's credentials are invalid.</condition>
+    </failureEndConditions>
+    <trigger>HTTP request sent by the User.</trigger>
+    <mainSequence>
+        <step id="S1">User sends an HTTP request to the Finance App.</step>
+        <step id="S2">Finance App forwards the SQL request to the Database.</step>
+        <step id="S3">Database processes the SQL request and sends a response to the Finance App.</step>
+        <step id="S4">Finance App sends an HTTP response back to the User.</step>
+        <step id="S5">User sends an Authentication request to the Finance App.</step>
+        <step id="S6">If valid credentials:</step>
+        <step id="S7">Finance App responds with an Authentication success message.</step>
+        <step id="S8">If invalid credentials:</step>
+        <step id="S9">Finance App responds with an Invalid credentials message.</step>
+        <step id="S10">Finance App sends an Authentication response to the User.</step>
+    </mainSequence>
+</useCase>

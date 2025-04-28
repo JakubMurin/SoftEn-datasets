@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Create Volume</name>
+    <description>Admin or User creates a new volume for Kubernetes.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin or User has appropriate permissions to create a volume.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The volume is successfully created in Kubernetes.</condition>
+    </successEndConditions>
+    <trigger>Admin or User initiates volume creation process.</trigger>
+    <mainSequence>
+        <step id="S1">Admin or User triggers volume creation.</step>
+        <step id="S2">Kubernetes creates StorageClass.</step>
+        <step id="S3">User creates PersistentVolumeClaim.</step>
+        <step id="S4">Kubernetes sends a request to the CSI driver (lb_csi) to create a volume.</step>
+        <step id="S5">lb_csi communicates with lb_target to create the volume.</step>
+        <step id="S6">lb_target responds with the volume information to lb_csi.</step>
+        <step id="S7">lb_csi sends the volume creation response to Kubernetes.</step>
+    </mainSequence>
+</useCase>

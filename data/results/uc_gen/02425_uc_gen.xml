@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Login, Start Quiz, Submit Quiz, View Result, Practice Quiz</name>
+    <actors>
+        <actor>Student</actor>
+        <actor>HomePage</actor>
+        <actor>LoginPage</actor>
+        <actor>DashboardPage</actor>
+        <actor>QuizPage</actor>
+        <actor>APIHandlers</actor>
+        <actor>SharedFiles</actor>
+    </actors>
+    <preconditions>
+        <precondition>Student needs to have access to the system</precondition>
+        <precondition>Quiz data and result files are available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Student accesses the homepage</step>
+        <step id="S2">Homepage navigates to the login page</step>
+        <step id="S3">Student enters their ID</step>
+        <step id="S4">Login page redirects to the dashboard page</step>
+        <step id="S5">Student clicks "Start Quiz" on the dashboard</step>
+        <step id="S6">Dashboard navigates to the quiz page</step>
+        <step id="S7">Quiz page requests quiz data from API</step>
+        <step id="S8">API reads quiz_001.json from shared files</step>
+        <step id="S9">API sends quiz data to quiz page</step>
+        <step id="S10">Student submits answers on quiz page</step>
+        <step id="S11">Quiz page sends answers to API for submission</step>
+        <step id="S12">API writes answers_001_x.json and generates result_001_x.json in shared files</step>
+        <step id="S13">API acknowledges quiz submission to quiz page</step>
+        <step id="S14">Student clicks "View Results" on the dashboard</step>
+        <step id="S15">Dashboard navigates to the results page</step>
+        <step id="S16">Results page requests result data from API</step>
+        <step id="S17">API reads result_001_x.json from shared files</step>
+        <step id="S18">API sends result data to results page</step>
+        <step id="S19">Student clicks "Practice Quiz" on the dashboard</step>
+        <step id="S20">Dashboard navigates to the practice quiz page</step>
+        <step id="S21">Practice page requests a practice quiz from API</step>
+        <step id="S22">API reads quiz_001.json and writes practice_001_x.json in shared files</step>
+        <step id="S23">API sends randomized quiz data to the practice page</step>
+    </mainSequence>
+</useCase>

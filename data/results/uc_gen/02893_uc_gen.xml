@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Comprar Curso</name>
+    <actors>
+        <actor>Estudiante</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El Estudiante accede al curso que desea comprar.</step>
+        <step id="S2">La Vista solicita detalles del curso al Controlador.</step>
+        <step id="S3">El Controlador obtiene los detalles del curso desde el Curso.</step>
+        <step id="S4">El Curso proporciona los detalles del curso al Controlador.</step>
+        <step id="S5">El Controlador muestra los detalles del curso y el precio en la Vista.</step>
+        <step id="S6">La Vista envía los datos de la compra al Controlador.</step>
+        <step id="S7">El Controlador registra la compra en el Repositorio.</step>
+        <step id="S8">El Repositorio confirma la compra al Controlador.</step>
+        <step id="S9">El Controlador muestra la confirmación de la compra realizada en la Vista.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Error: Error durante el procesamiento de la compra.</step>
+            <step id="A1S2">El Controlador muestra un mensaje de error en la Vista.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

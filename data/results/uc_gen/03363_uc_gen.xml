@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Scanner Job Lifecycle</name>
+    <actors>
+        <actor>admin_user</actor>
+        <actor>admin</actor>
+        <actor>explorer</actor>
+        <actor>worker</actor>
+        <actor>exporter</actor>
+        <actor>report_user</actor>
+    </actors>
+    <preconditions>
+        <precondition>Scanner job is initiated</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Start Scanner job</step>
+        <step id="S2">Explorer consumes scan specs</step>
+        <step id="S3">Worker processes messages</step>
+        <step id="S4">Exporter handles metadata, matches, and problems</step>
+        <step id="S5">Checkup Collector updates scheduled checkup</step>
+        <step id="S6">Status Collector updates scanner status</step>
+        <step id="S7">Event Collector updates document report</step>
+        <step id="S8">Result Collector handles messages and updates document report</step>
+        <step id="S9">Report User checks for matches</step>
+    </mainSequence>
+</useCase>

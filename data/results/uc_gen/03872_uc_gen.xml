@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Get Keychain Entry Endpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User A initiates Tx GetKeychainEntryV1</step>
+        <step id="S2">API Client sends a request to API Server</step>
+        <step id="S3">API Server sends a request to AWS SM to get a key-value pair</step>
+        <step id="S4">AWS SM gets the AWS client</step>
+        <step id="S5">Try block - AWS SM awaits AWS client to get secret value</step>
+        <step id="S6">AWS SM sends a true response to API Server</step>
+        <step id="S7">API Server responds to API Client</step>
+        <step id="S8">API Client sends formatted response to User A</step>
+        <step id="S9">User A receives GetKeychainEntryResponse</step>
+    </mainSequence>
+</useCase>

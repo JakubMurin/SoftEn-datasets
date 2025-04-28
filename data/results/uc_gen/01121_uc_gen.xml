@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Returning Recognized Consumer</name>
+    
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Merchant</actor>
+        <actor>Browser</actor>
+        <actor>PH</actor>
+        <actor>DB</actor>
+        <actor>Window</actor>
+        <actor>Page</actor>
+        <actor>SRCI</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Checkout Intent initiated by Consumer</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Payment Request flow successfully completed</condition>
+    </successEndConditions>
+    
+    <trigger>Checkout Intent</trigger>
+    
+    <mainSequence>
+        <step id="S1">Merchant creates Payment Request API with list of supported SRC Payment Method URLs and Payment Request Data</step>
+        <step id="S2">Merchant calls HasEnrolledInstruments to check for supported SRC Payment Methods</step>
+        <step id="S3">Browser initiates CanMakePayment check for the installed SRC Common Payment Handler</step>
+        <step id="S4">SRC Common Payment Handler verifies presence of Long-lived Token in Indexed DB</step>
+        <step id="S5">SRC Common Payment Handler indicates Consumer can be recognized</step>
+        <step id="S6">Merchant displays Pay Button</step>
+        <step id="S7">Merchant launches Payment Request flow</step>
+        <step id="S8">Browser initiates CanMakePayment check for SRC Common Payment Handler eligibility</step>
+        <step id="S9">SRC Common Payment Handler allows Payment Request execution</step>
+        <step id="S10">Browser invokes SRC Common Payment Handler</step>
+        <step id="S11">SRC Common Payment Handler opens Window and requests Payment Handler Page</step>
+        <step id="S12">SRC Common Payment Handler Page redirects to SRCI Web App</step>
+        <step id="S13">SRCI handles checkout process and returns result to SRC Common Payment Handler</step>
+        <step id="S14">SRC Common Payment Handler Page sends data back to SRC Common Payment Handler</step>
+        <step id="S15">SRC Common Payment Handler sends result back to Browser</step>
+        <step id="S16">Browser sends result to Merchant</step>
+        <step id="S17">Checkout Completed</step>
+    </mainSequence>
+</useCase>

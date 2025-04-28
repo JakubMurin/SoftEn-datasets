@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Payment Cancellation with Redirect approach, implicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>Online_banking</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates Payment Cancellation</step>
+        <step id="S2">TPP initiates REST Call Cancel payment</step>
+        <step id="S3">XS2A makes a Java Call getPaymentById</step>
+        <step id="S4">XS2A updates payment status when payment is finalized</step>
+        <step id="S5">TPP communicates that the Payment cannot be cancelled when status is finalized</step>
+        <step id="S6">XS2A proceeds with no SCA if payment cancellation authorisation is not mandated and the status is not finalized</step>
+        <step id="S7">XS2A initiates authorisation request when authorisation is mandated</step>
+        <step id="S8">PSU redirects to an ASPSP authorization webpage</step>
+        <step id="S9">Online banking calls REST API to get cancellation information</step>
+        <step id="S10">PSU authorises the Cancellation on Online Banking</step>
+        <step id="S11">Online banking calls REST API to update authorization status</step>
+        <step id="S12">Online banking executes Payment Cancellation with ASPSP</step>
+        <step id="S13">Online banking calls REST API to update Payment Status</step>
+        <step id="S14">TPP redirection back to XS2A to check payment status</step>
+        <step id="S15">XS2A retrieves payment status information</step>
+        <step id="S16">XS2A retrieves transaction status details</step>
+        <step id="S17">XS2A retrieves payment details</step>
+        <step id="S18">XS2A retrieves payment cancellation authorisation information</step>
+        <step id="S19">XS2A gets specific cancellation authorisation detail</step>
+    </mainSequence>
+</useCase>

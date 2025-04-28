@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>View Patient's Sick Leave History</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <preconditions>
+        <precondition>The doctor has access to the patient's sick leave history.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Doctor selects to view sick leave history for a patient at the Care Unit.</step>
+        <step id="S2">Rehab support lists sick leaves for the person.</step>
+        <step id="S3">Rehab support retrieves healthcare provider name for each certificate using GetUnit v1.</step>
+        <step id="S4">Rehab support fetches person data for the patient.</step>
+        <step id="S5">If the patient is privacy protected, filter out certificates not on the active unit.</step>
+        <step id="S6">If the patient is not privacy protected, check blocks via CheckBlocks v4, update certificates with block status, send all certificates to Sick Leave Engine.</step>
+        <step id="S7">Check consent status for the unit/doctor to display certificates outside the healthcare provider via CheckConsent v2.</step>
+        <step id="S8">If consent is missing, filter out certificates from other healthcare providers.</step>
+        <step id="S9">Filter out certificates with blocks, filter out certificates outside the current unit where the user has not actively chosen to include the healthcare provider/unit.</step>
+        <step id="S10">Consolidate client response with sick leaves and metadata objects detailing filtered-out items and registered/selected consents.</step>
+        <step id="S11">Send the net list of certificates to get actual sick leaves.</step>
+        <step id="S12">Update the list with names and privacy status.</step>
+        <step id="S13">Retrieve certificate additions for each certificate issued at the current healthcare provider/unit.</step>
+        <step id="S14">Update the sick leaves' certificates with completion status.</step>
+        <step id="S15">If SRS support is enabled, retrieve risk predictions for each certificate.</step>
+        <step id="S16">Log the actual displayed information in PDL log.</step>
+        <step id="S17">Doctor displays the patient's sick leave history including SJF.</step>
+    </mainSequence>
+</useCase>

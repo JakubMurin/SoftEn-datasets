@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>User Login</name>
+    <description>Scenario for user logging into the system</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Library System is responsive and working</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to login with incorrect details</condition>
+    </failureEndConditions>
+    <trigger>User clicks on "Login" button</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on "Login"</step>
+        <step id="S2">Library System requests username and password</step>
+        <step id="S3">User enters valid username and password</step>
+        <step id="S4">Library System validates login details</step>
+        <step id="S5">[alt] If login details correct:</step>
+        <step id="S6">Library System logs in the User</step>
+        <step id="S7">Library System displays welcome message to User</step>
+        <step id="S7.1">[else] If login details incorrect:</step>
+        <step id="S8">Library System displays error message</step>
+    </mainSequence>
+</useCase>

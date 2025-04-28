@@ -1,0 +1,29 @@
+<useCase id="UC123">
+    <name>Process Refund Request</name>
+  
+    <actors>
+        <actor>Support Agent</actor>
+    </actors>
+  
+    <preconditions>
+        <precondition>Support Agent is logged in</precondition>
+        <precondition>Support Agent has necessary permissions</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Refund request successfully processed and notified to admin</condition>
+    </successEndConditions>
+    
+    <trigger>User clicks on the refund request form</trigger>
+  
+    <mainSequence>
+        <step id="S1">Support Agent opens the refund page!</step>
+        <step id="S2">UI displays the refund form for the Support Agent</step>
+        <step id="S3">Support Agent fills and submits the refund request form with customer details</step>
+        <step id="S4">Form submission triggers API call to create a refund request</step>
+        <step id="S5">Controller processes the refund request and creates a new refund object</step>
+        <step id="S6">Refund request data is saved in the database</step>
+        <step id="S7">Admin notification service is triggered to notify admin of new refund request</step>
+        <step id="S8">Admin is successfully notified</step>
+        <step id="S9">UI displays success message to the Support Agent</step>
+    </mainSequence>
+</useCase>

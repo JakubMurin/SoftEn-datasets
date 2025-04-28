@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Provision Fault Management Job and Report</name>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>Listeners registered for Fault Management notifications.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management Report successfully created and completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in creating or completing Fault Management Report.</condition>
+    </failureEndConditions>
+    <trigger>Bus triggers creation and retrieval of Fault Management Job and Report.</trigger>
+    <mainSequence>
+        <step id="S1">BUS registers listeners for Fault Management notifications with Hub.</step>
+        <step id="S2">BUS creates Fault Management Job.</step>
+        <step id="S3">Fault Management Job is successfully created by SOF.</step>
+        <step id="S4">Fault Management Job state changes to 'inProgress'.</step>
+        <step id="S5">Event is created for Fault Management Job and listeners are notified.</step>
+        <step id="S6">Fault Management Job generates data.</step>
+        <step id="S7">Fault Management Report is created based on Job.</step>
+        <step id="S8">Fault Management Report state changes to 'inProgress'.</step>
+        <step id="S9">Event is created for Fault Management Report and listeners are notified.</step>
+        <step id="S10">Data is collected for Fault Management Report.</step>
+        <step id="S11">Fault Management Report state changes to 'completed'.</step>
+        <step id="S12">Report completion event is triggered and listeners are notified.</step>
+        <step id="S13">Fault Management Job is marked as 'completed' or 'scheduled' after report completion.</step>
+        <step id="S14">Fault Management Job state changes are reported to listeners.</step>
+        <step id="S15">BUS requests Fault Management Report.</step>
+        <step id="S16">Fault Management Report is retrieved by SOF.</step>
+        <step id="S17">Response containing Fault Management Report is sent back to BUS.</step>
+    </mainSequence>
+</useCase>

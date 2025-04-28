@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Communication between Consumer and Publisher</name>
+    <description>Manage the communication process between a consumer and a publisher</description>
+    <actors>
+        <actor>One Consumer</actor>
+        <actor>One Publisher</actor>
+    </actors>
+    <preconditions>
+        <precondition>Consumer and Publisher are registered and connected</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message successfully delivered to each subscriber</condition>
+    </successEndConditions>
+    <trigger>Consumer requests to subscribe and receive messages from Publisher</trigger>
+    <mainSequence>
+        <step id="S1">Consumer starts connection with Consumer Server</step>
+        <step id="S2">Consumer logs in with username</step>
+        <step id="S3">Consumer subscribes to messages from Publisher</step>
+        <step id="S4">Publisher sends topic and message to Exchanger</step>
+        <step id="S5">Exchanger creates topic if not present and adds subscriber pointer</step>
+        <step id="S6">Exchanger sends message to Topic, which distributes it to each subscriber</step>
+        <step id="S7">Consumer unsubscribes from Publisher</step>
+        <step id="S8">Exchanger removes subscriber from topic's list</step>
+    </mainSequence>
+</useCase>

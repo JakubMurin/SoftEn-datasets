@@ -1,0 +1,47 @@
+<useCase id="1">
+    <name>Детальна інсталяція платформи</name>
+    <actors>
+        <actor>Адміністратор платформи</actor>
+        <actor>Bash-installer</actor>
+        <actor>Helm-installer</actor>
+        <actor>Ceph</actor>
+        <actor>Logging</actor>
+        <actor>Service-mesh</actor>
+        <actor>Nexus Registry</actor>
+        <actor>Keycloak</actor>
+        <actor>ControlPlane components</actor>
+        <actor>Cluster-management helm in Gerrit</actor>
+        <actor>Gitops Job Jenkins</actor>
+        <actor>Інші компоненти</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Адміністратор платформи запускає інсталлер</step>
+        <step id="S2">Bash-installer активує шифрування etcd</step>
+        <step id="S3">Bash-installer активує catalog-source (Redhat репозиторії)</step>
+        <step id="S4">Bash-installer встановлює storage</step>
+        <step id="S5">Bash-installer встановлює logging</step>
+        <step id="S6">Bash-installer встановлює service-mesh</step>
+        <step id="S7">Bash-installer встановлює control-plane-nexus</step>
+        <step id="S8">Bash-installer встановлює platform-vault</step>
+        <step id="S9">Bash-installer встановлює platform-minio</step>
+        <step id="S10">Bash-installer завантажує докер імеджі</step>
+        <step id="S11">Bash-installer встановлює user-management</step>
+        <step id="S12">Bash-installer запускає control-plane-installer</step>
+        <step id="S13">Bash-installer завантажує nexus ресурси (*.xsd)</step>
+        <step id="S14">Bash-installer створює backup-credentials</step>
+        <step id="S15">ControlPlane components встановлює CP компоненти</step>
+        <step id="S16">ControlPlane components встановлює jenkins-operator та jenkins</step>
+        <step id="S17">ControlPlane components встановлює codebase-operator</step>
+        <step id="S18">ControlPlane components встановлює keycloak-operator</step>
+        <step id="S19">ControlPlane components встановлює gerrit-operator та gerrit</step>
+        <step id="S20">ControlPlane components встановлює codebase cluster-mgmt</step>
+        <step id="S21">Cluster-management helm in Gerrit інціалізує cluster-mgmt repo з helm</step>
+        <step id="S22">Jenkins створює gitops job для cluster-mgmt</step>
+        <step id="S23">Jenkins запускає gitops job для cluster-mgmt</step>
+        <step id="S24">Jenkins checkout helmfile</step>
+        <step id="S25">Jenkins запускає helmfile</step>
+        <step id="S26">Jenkins встановлює</step>
+        <step id="S27">ControlPlane components створює realm для Control Plane</step>
+        <step id="S28">ControlPlane components інтегрує всі компоненти з keycloak</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Generar y Notificar Orden de Evaluación</name>
+    <actors>
+        <actor>Medico</actor>
+        <actor>Servicio de Diagnóstico</actor>
+    </actors>
+    <preconditions>
+        <precondition>El Médico desea generar una orden de evaluación.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La orden de evaluación se ha registrado con éxito en el sistema.</condition>
+    </successEndConditions>
+    <trigger>El Médico solicita generar una orden de evaluación.</trigger>
+    <mainSequence>
+        <step id="S1">Medico genera una orden de evaluación en el Frontend.</step>
+        <step id="S2">Frontend envía los datos de la orden a tRPC.</step>
+        <step id="S3">tRPC registra la orden de evaluación en Prisma.</step>
+        <step id="S4">Prisma inserta la orden en la base de datos.</step>
+        <step id="S5">Prisma confirma la inserción en la base de datos.</step>
+        <step id="S6">OrdenCtrl mapea la confirmación de inserción.</step>
+        <step id="S7">OrdenCtrl confirma el registro a tRPC.</step>
+        <step id="S8">tRPC notifica al Frontend el registro exitoso.</step>
+        <step id="S9">OrdenCtrl notifica al Servicio de Diagnóstico la nueva orden de evaluación.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="1">
+    <name>Manage Account Settings</name>
+    <description>Allow users to view and update their account details</description>
+    <actors>
+        <actor>Moderator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Moderator is logged in</precondition>
+        <precondition>Web interface is accessible</precondition>
+        <precondition>Backend server is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account details are successfully updated</condition>
+    </successEndConditions>
+    <trigger>User navigates to account settings</trigger>
+    <mainSequence>
+        <step id="S1">Moderator navigates to Account Settings</step>
+        <step id="S2">Web interface receives a request to view current account details</step>
+        <step id="S3">Backend server fetches account details from the database</step>
+        <step id="S4">Backend server displays current account details to Web interface</step>
+        <step id="S5">Web interface shows account details form to the Moderator</step>
+        <step id="S6">Moderator inputs updated account details</step>
+        <step id="S7">Web interface submits updated account details to the Backend server</step>
+        <step id="S8">Backend server updates account details in the database</step>
+        <step id="S9">Web interface acknowledges successful update to the Moderator</step>
+        <step id="S10">Moderator receives update success message</step>
+    </mainSequence>
+</useCase>

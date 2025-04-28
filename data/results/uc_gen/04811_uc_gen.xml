@@ -1,0 +1,40 @@
+<useCase id="UC1">
+	<name>Reservation of Device</name>
+	<actors>
+		<actor>Alice</actor>
+		<actor>Sarad App</actor>
+		<actor>Registration Server 2</actor>
+		<actor>rest api</actor>
+		<actor>device Actor</actor>
+		<actor>device with Instrument Server</actor>
+	</actors>
+	<preconditions>
+		<precondition>Changes Config and Requests Data</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">User changes config and requests data</step>
+		<step id="S2">App attempts to reserve device</step>
+		<step id="S3">API relays reservation request to device actor</step>
+		<step id="S4">Device actor relays request to device with instrument server</step>
+		<step id="S5">Device accepts request and relays port information</step>
+		<step id="S6">Device connects and opens port</step>
+		<step id="S7">Device actor accepts request and relays port information to API</step>
+		<step id="S8">API relays port to app</step>
+		<step id="S9">App connects to device</step>
+		<step id="S10">Start timeout</step>
+		<step id="S11">On unexpected disconnect, app reconnects and refreshes timeout</step>
+		<step id="S12">App sends data to device actor without response</step>
+		<step id="S13">Device actor relays data to device</step>
+		<step id="S14">App displays OK to user</step>
+		<step id="S15">App sends data to device actor with response</step>
+		<step id="S16">Device actor relays data to device</step>
+		<step id="S17">Device relays answer to device actor</step>
+		<step id="S18">Device actor relays answer to app</step>
+		<step id="S19">App displays answer to user</step>
+		<step id="S20">App disconnects from device actor</step>
+		<step id="S21">App frees device</step>
+		<step id="S22">API relays free to device actor</step>
+		<step id="S23">Device actor relays free to device</step>
+		<step id="S24">Device sends free as timeout reached</step>
+	</mainSequence>
+</useCase>

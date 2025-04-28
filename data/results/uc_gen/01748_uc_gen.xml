@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>User Login and Access Patient Information</name>
+    <description>User logs in and accesses patient information</description>
+    <actors>
+        <actor>Webbläsare</actor>
+        <actor>Rehabstöd</actor>
+        <actor>Webcert</actor>
+        <actor>Intygstjänst</actor>
+        <actor>IdP</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Patient information accessed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure to access patient information</condition>
+    </failureEndConditions>
+    <trigger>User selects to view patient view</trigger>
+    <mainSequence>
+        <step id="S1">User logs in</step>
+        <step id="S2">Rehabstöd exchanges SAML token for AccessToken/RefreshToken</step>
+        <step id="S3">User is logged in</step>
+        <step id="S4">User chooses to view patient view</step>
+        <step id="S5">Rehabstöd builds form with necessary data for POST to Webcert</step>
+        <step id="S6">Patient view is rendered</step>
+        <step id="S7">User clicks to view certificate</step>
+        <step id="S8">Webcert validates AccessToken and creates session</step>
+        <step id="S9">Webcert opens certificate view in iFrame</step>
+        <step id="S10">Certificate data is fetched from Intygstjänst</step>
+        <step id="S11">Certificate is rendered in Webcert</step>
+        <step id="S12">User closes patient view</step>
+        <step id="S13">Local logout is performed</step>
+    </mainSequence>
+</useCase>

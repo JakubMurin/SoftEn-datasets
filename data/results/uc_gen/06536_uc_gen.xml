@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Se connecter à une application de gestion de tâches</name>
+    <description>En tant qu'utilisateur, je veux pouvoir me connecter à mon compte pour gérer mes tâches.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>TodoList</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur possède un compte enregistré dans l'application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>L'utilisateur est authentifié avec succès.</condition>
+    </successEndConditions>
+    <trigger>L'utilisateur souhaite se connecter à son compte.</trigger>
+    <mainSequence>
+        <step id="S1">L'utilisateur entre son email et son mot de passe.</step>
+        <step id="S2">Le système vérifie les informations d'authentification.</step>
+        <step id="S3">Le système récupère les tâches de l'utilisateur.</step>
+        <step id="S4">TodoList demande les tâches depuis la base de données.</step>
+        <step id="S5">DB envoie la liste des tâches à TodoList.</step>
+        <step id="S6">TodoList renvoie la liste des tâches au système.</step>
+        <step id="S7">Le système affiche la liste des tâches à l'utilisateur.</step>
+    </mainSequence>
+</useCase>

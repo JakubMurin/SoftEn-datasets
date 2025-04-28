@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>UMA protocol flow</name>
+    <actors>
+        <actor>requesting party</actor>
+        <actor>client (application)</actor>
+        <actor>authorization server</actor>
+        <actor>resource server</actor>
+        <actor>resource owner</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Set policy conditions (anytime) - user</step>
+        <step id="S2">Resource Request (no access token) - client</step>
+        <step id="S3">Access token (RPT) request with permission ticket, and claim token (push claims) - client</step>
+        <step id="S4">Authz assessment - authorization</step>
+        <step id="S5">403 response with new permission ticket, need_info error, redirect_user hint - client</step>
+        <step id="S6">Redirect user with permission ticket - client</step>
+        <step id="S7">Follow redirect to authz server - requester</step>
+        <step id="S8">Interactive claims gathering - authorization</step>
+        <step id="S9">Redirect back with new permission ticket - requester</step>
+        <step id="S10">Follow redirect to client - requester</step>
+        <step id="S11">RPT request with permission ticket - client</step>
+        <step id="S12">Authz assessment - authorization</step>
+        <step id="S13">Response with RPT and PCT - client</step>
+        <step id="S14">Resource request with RPT - client</step>
+        <step id="S15">Protected Resource - resource</step>
+    </mainSequence>
+</useCase>

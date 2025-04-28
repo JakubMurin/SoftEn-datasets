@@ -1,0 +1,40 @@
+<useCase id="1">
+    <name>Регистрация пользователя</name>
+    <description>Сценарий регистрации нового пользователя в системе</description>
+    <actors>
+        <actor>Клиент</actor>
+        <actor>FE. ЭФ Регистрация</actor>
+        <actor>BE. Рег.скрипт</actor>
+        <actor>DB. База данных</actor>
+    </actors>
+    <preconditions>
+        <precondition>Клиент заполняет форму регистрации</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Пользователь успешно добавлен</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Пользователь не добавлен</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Клиент заполняет форму регистрации</step>
+        <step id="S2">FE. ЭФ Регистрация отправляет данные</step>
+        <step id="S3">BE. Рег.скрипт получает POST запрос с данными (username, password)</step>
+        <step id="S4">BE. Рег.скрипт проверяет существование пользователя в DB</step>
+        <step id="S5">DB. База данных возвращает результат проверки</step>
+        <step id="S6">BE. Рег.скрипт вставляет нового пользователя</step>
+        <step id="S7">FE. ЭФ Регистрация получает сообщение о регистрации</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">BE. Рег.скрипт вставляет нового пользователя</step>
+            <step id="A1S2">DB. База данных подтверждает успешную вставку</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Ошибка: пользователь уже существует</description>
+            <step id="E1S1">FE. ЭФ Регистрация получает сообщение об ошибке</step>
+        </esteps>
+    </errorSteps>
+</useCase>

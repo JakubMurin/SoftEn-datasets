@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Complete Ticket Transition</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TicketTransitions</actor>
+        <actor>ClientRestService</actor>
+        <actor>ProfessionalTicket</actor>
+        <actor>TechReport</actor>
+    </actors>
+    <preconditions>
+        <precondition>User interacts with the ticketing system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Technical report completed and saved successfully</condition>
+    </successEndConditions>
+    <trigger>User completes the ticket transition</trigger>
+    <mainSequence>
+        <step id="S1">User completes the transition</step>
+        <step id="S2">The technical review on the report is completed</step>
+        <step id="S3">The appropriate ticket category is checked</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">User is informed to select a valid category</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1">
+            <description>User needs to input technical image quality comments.</description>
+            <step id="E1S1">User enters technical image quality comments</step>
+        </esteps>
+	</errorSteps>
+</useCase>

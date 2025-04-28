@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Buildkite Integration</name>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob has pushed a commit to the master branch of the repository</precondition>
+    </preconditions>
+    <trigger>Webhook triggers the pipeline in the Awesome pipeline</trigger>
+    <mainSequence>
+        <step id="S1">Repository receives commit from Bob</step>
+        <step id="S2">Awesome pipeline performs build</step>
+        <step id="S3">Sync pipeline is triggered</step>
+        <step id="S4">Sync pipeline creates integration_config.yml</step>
+        <step id="S5">CI Integration tool runs sync command</step>
+        <step id="S6">CI Integration tool adds new build data to Firestore</step>
+        <step id="S7">Sync pipeline finishes sync command</step>
+        <step id="S8">Bob receives notification that build data export finishes</step>
+    </mainSequence>
+</useCase>

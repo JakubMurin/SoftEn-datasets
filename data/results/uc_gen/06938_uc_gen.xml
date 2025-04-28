@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>OAuth Login</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client Application</actor>
+        <actor>API Gateway</actor>
+        <actor>Auth Service</actor>
+        <actor>OAuth Provider</actor>
+        <actor>Auth DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has chosen OAuth login</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Login successful</condition>
+    </successEndConditions>
+    <trigger>User chooses OAuth login</trigger>
+    <mainSequence>
+        <step id="S1">User chooses OAuth login</step>
+        <step id="S2">Client Application redirects to OAuth Provider for authorization</step>
+        <step id="S3">User authorizes and grants access</step>
+        <step id="S4">OAuth Provider returns with OAuth token</step>
+        <step id="S5">Client Application sends OAuth token to API Gateway</step>
+        <step id="S6">API Gateway sends OAuth token to Auth Service</step>
+        <step id="S7">Auth Service verifies OAuth token with OAuth Provider</step>
+        <step id="S8">Auth Service verifies user email in Auth DB</step>
+        <step id="S9">Auth Service sends successful login and token to API Gateway</step>
+        <step id="S10">API Gateway sends successful login and token to Client Application</step>
+        <step id="S11">Client Application displays successful login message to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">OAuth token verification error</step>
+            <step id="A1S2">API Gateway sends error message to Client Application</step>
+            <step id="A1S3">Client Application displays error message to User</step>
+        </asteps>
+        <asteps id="A2" start="S8">
+            <step id="A2S1">Email not found error</step>
+            <step id="A2S2">API Gateway sends error message to Client Application</step>
+            <step id="A2S3">Client Application displays error message to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

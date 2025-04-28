@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Link Email Account</name>
+    <description>Allow users to link their email account to their profile</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UI Interface</actor>
+        <actor>User Profile Service</actor>
+        <actor>Email Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to their profile settings</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Email successfully linked to user profile</condition>
+    </successEndConditions>
+    <trigger>User selects "Link Email" option in the UI</trigger>
+    <mainSequence>
+        <step id="S1">User selects "Link Email"</step>
+        <step id="S2">UI requests email linking operation from User Profile Service</step>
+        <step id="S3">User Profile Service checks if the email exists</step>
+        <step id="S4">User Profile Service links the email to the user</step>
+        <step id="S5">Email Service sends confirmation email</step>
+        <step id="S6">UI displays success message</step>
+    </mainSequence>
+</useCase>

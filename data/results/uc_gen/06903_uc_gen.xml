@@ -1,0 +1,35 @@
+<useCase id="EditSaveTask">
+    <name>Task Edit and Save</name>
+    <actors>
+        <actor>User</actor>
+        <actor>tasks_table_interactions.js</actor>
+        <actor>Flask Backend</actor>
+        <actor>Task Model</actor>
+        <actor>Task Validation</actor>
+        <actor>Task Service</actor>
+        <actor>Logger</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks "Edit Task"</step>
+        <step id="S2">tasks_table_interactions.js initiates edit task modal and fetches task data</step>
+        <step id="S3">Flask Backend fetches task data for the given ID</step>
+        <step id="S4">Task Model retrieves task by ID</step>
+        <step id="S5">Task data is fetched from the database</step>
+        <step id="S6">Task data is populated in the modal fields</step>
+        <step id="S7">User submits "Save Task" form</step>
+        <step id="S8">Flask Backend handles POST request to create or update a task</step>
+        <step id="S9">Task Model creates or updates the task object</step>
+        <step id="S10">Task hierarchy is validated</step>
+        <step id="S11">Circular references in the task hierarchy are checked</step>
+        <step id="S12">Database performs recursive parent-child checks</step>
+        <step id="S13">Hierarchy validation passes</step>
+        <step id="S14">Task is saved to the database</step>
+        <step id="S15">Save event is logged for auditing</step>
+        <step id="S16">Task saved response is sent back</step>
+        <step id="S17">UI is updated or error is shown</step>
+        <step id="S18">Error handling if response status is not 200</step>
+        <step id="S19">Database changes are rolled back and appropriate error message is returned</step>
+        <step id="S20">Error message is shown to the user</step>
+    </mainSequence>
+</useCase>

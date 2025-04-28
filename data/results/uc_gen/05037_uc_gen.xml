@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>DCSync Attack</name>
+    <description>A technique used to retrieve Active Directory information from a domain controller.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>Attacker's Computer</actor>
+        <actor>Target Domain Controller</actor>
+        <actor>Domain Environment</actor>
+    </actors>
+    <preconditions>
+        <precondition>The attacker has gained access to an account with necessary rights in the domain.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The attacker successfully retrieves data from the domain controller.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The attacker fails to retrieve data due to insufficient privileges.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Attacker gains access to an account with the required rights.</step>
+        <step id="S2">Attacker issues a DCSync request impersonating a domain controller.</step>
+        <step id="S3">Domain controller validates the request.</step>
+        <step id="S4">Domain controller sends the requested data to the attacker's computer.</step>
+        <step id="S5">Attacker uses the obtained credentials to access resources within the domain.</step>
+    </mainSequence>
+</useCase>

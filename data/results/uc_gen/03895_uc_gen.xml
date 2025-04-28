@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Burn notes to linked ERC20 contract</name>
+    <actors>
+        <actor>Token Owner</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Token Owner inputs notes.</step>
+        <step id="S2">Token Owner generates JoinSplitProof using the notes to be spent.</step>
+        <step id="S3">Token Owner encodes the proof ABI with asset address.</step>
+        <step id="S4">Token Owner sends proof data to ACE for public approval.</step>
+        <step id="S5">ACE approves the public transaction.</step>
+        <step id="S6">Token Owner constructs signatures for the proof.</step>
+        <step id="S7">Token Owner initiates a confidential transfer with the proof data and signatures.</step>
+        <step id="S8">Asset updates the Note Registry with the proof details.</step>
+        <step id="S9">ACE updates the Note Registry behavior.</step>
+        <step id="S10">Note Registry triggers transfer of tokens to the token owner.</step>
+    </mainSequence>
+</useCase>

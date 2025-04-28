@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Upgrade Dataset Instance Version</name>
+    <actors>
+        <actor>Developer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer needs to access the Dataset Management System</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Dataset instance successfully upgraded to the new version</condition>
+    </successEndConditions>
+    <trigger>Developer requests dataset instance upgrade information</trigger>
+    <mainSequence>
+        <step id="S1">Developer requests dataset instance upgrade information to ManagementSystem</step>
+        <step id="S2">ManagementSystem queries available dataset type versions to VersionControl</step>
+        <step id="S3">VersionControl returns available versions to ManagementSystem</step>
+        <step id="S4">ManagementSystem displays versions with upgrade impacts to Developer</step>
+        <step id="S5">Developer selects new version for upgrade to ManagementSystem</step>
+        <step id="S6">ManagementSystem initiates upgrade process for dataset instance to VersionControl</step>
+        <step id="S7">VersionControl prepares dataset instance upgrade to DB</step>
+        <step id="S8">DB confirms readiness for upgrade to VersionControl</step>
+        <step id="S9">VersionControl executes upgrade to new version in DB</step>
+        <step id="S10">DB confirms upgrade success to VersionControl</step>
+        <step id="S11">VersionControl updates pipeline configuration to Pipeline</step>
+        <step id="S12">Pipeline validates new dataset version compatibility</step>
+        <step id="S13">Pipeline configuration validated, sends confirmation to VersionControl</step>
+        <step id="S14">Upgrade completion status sent from VersionControl to ManagementSystem</step>
+        <step id="S15">Upgrade success notification sent from ManagementSystem to Developer</step>
+    </mainSequence>
+</useCase>

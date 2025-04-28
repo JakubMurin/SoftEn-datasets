@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Request Editing Project</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Project Controller</actor>
+        <actor>quart_auth</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user requests editing a project.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user is informed that the project ID is not in the database.</condition>
+    </successEndConditions>
+    <trigger>User requests to edit a project.</trigger>
+    <mainSequence>
+        <step id="S1">User requests editing a project.</step>
+        <step id="S2">Project Controller checks authentication.</step>
+        <step id="S3">Project Controller checks if the project ID is in the database.</step>
+        <step id="S4">Inform user that the project ID is not in the database.</step>
+    </mainSequence>
+</useCase>

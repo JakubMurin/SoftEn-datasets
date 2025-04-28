@@ -1,0 +1,33 @@
+<useCase id="UC1">
+	<name>Retrieve producer winners</name>
+	<actors>
+		<actor>User</actor>
+		<actor>ProducerController</actor>
+		<actor>ProducerService</actor>
+		<actor>MovieService</actor>
+		<actor>ProducerMapper</actor>
+		<actor>ProducerResponseBuilder</actor>
+		<actor>MovieRepository</actor>
+		<actor>SpringBoot</actor>
+		<actor>CsvReader</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">User makes a GET request to /v1/api/producers/min-max-winners</step>
+		<step id="S2">ProducerController receives the request and forwards it to ProducerService</step>
+        <step id="S3">ProducerService invokes findMinAndMaxWinners method to retrieve winners</step>
+        <step id="S4">MovieService is called to find the winners</step>
+        <step id="S5">MovieService queries MovieRepository for movies with winner attribute true</step>
+        <step id="S6">MovieRepository responds with the list of movies</step>
+        <step id="S7">MovieService processes the list to set the winner producer</step>
+        <step id="S8">ProducerService maps the producers and their years</step>
+        <step id="S9">ProducerResponseBuilder constructs the overall producer response</step>
+        <step id="S10">ProducerService builds the response for the winners</step>
+        <step id="S11">ProducerService sends the ProducerWinnerResponse back to ProducerController</step>
+        <step id="S12">ProducerController responds to the User with HTTP status 200 and ProducerWinnerResponse</step>
+        <step id="S13">SpringBoot receives the ApplicationReadyEvent</step>
+        <step id="S14">MovieService triggers the importCsv method in CsvReader to import data</step>
+        <step id="S15">CsvReader reads and processes the list of MovieDTOs</step>
+        <step id="S16">CsvReader sends the list of MovieDTOs to MovieService</step>
+        <step id="S17">MovieService saves all movies to the MovieRepository</step>
+	</mainSequence>
+</useCase>

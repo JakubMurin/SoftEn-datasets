@@ -1,0 +1,38 @@
+<useCase id="UC1">
+  <name>Import Warehouse Data</name>
+  <actors>
+    <actor>Warehouse Employee</actor>
+  </actors>
+  <trigger>Warehouse Employee initiates the import process.</trigger>
+  <mainSequence>
+    <step id="S1">Warehouse Employee imports a Json File.</step>
+    <step id="S2">JsonImporterUI creates the file import request.</step>
+    <step id="S3">JsonImporterController processes the import request.</step>
+    <step id="S4">JsonImporterUI asks for user information.</step>
+    <step id="S5">Warehouse Employee provides the Filename through the JsonImporterUI.</step>
+    <step id="S6">JsonImporterController calls JsonImporter to create a new JsonImporter instance.</step>
+    <step id="S7">JsonImporter parses the Json file and creates a Warehouse object.</step>
+    <step id="S8">WarehouseBuilder creates a new Warehouse instance.</step>
+    <step id="S9">WarehouseBuilder creates a warehouse.</step>
+    <step id="S10">JsonImporter assigns the warehouse to the parsed warehouse.</step>
+    <step id="S11">WarehouseRepository saves the newly created warehouse.</step>
+    <step id="S12">AisleBuilder creates a new Aisle instance.</step>
+    <step id="S13">AisleBuilder creates an aisle.</step>
+    <step id="S14">JsonImporter assigns the aisle to the parsed aisle.</step>
+    <step id="S15">AisleRepository saves the newly created Aisle.</step>
+    <step id="S16">RowBuilder creates a new Section instance.</step>
+    <step id="S17">RowBuilder creates a section.</step>
+    <step id="S18">JsonImporter assigns the section to the created section.</step>
+    <step id="S19">SectionRepository saves the newly created section.</step>
+    <step id="S20">ShelfBuilder creates a new Shelf instance.</step>
+    <step id="S21">ShelfBuilder creates a shelf.</step>
+    <step id="S22">JsonImporter assigns the shelf to the created shelf.</step>
+    <step id="S23">ShelfRepository saves the newly created shelf.</step>
+    <step id="S24">AGVDockBuilder creates a new AGVDock instance.</step>
+    <step id="S25">AGVDockBuilder creates an AGVDock object.</step>
+    <step id="S26">JsonImporter assigns the AGVDock to the created AGVDock.</step>
+    <step id="S27">AGVDockRepository saves the newly created AGVDock.</step>
+    <step id="S28">JsonImporter ends the import process.</step>
+    <step id="S29">JsonImporterUI displays user information.</step>
+  </mainSequence>
+</useCase>

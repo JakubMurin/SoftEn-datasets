@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Register Patient</name>
+    <description>Register a new patient in the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is authenticated and authorized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The patient is successfully registered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to register the patient due to system error.</condition>
+    </failureEndConditions>
+    <trigger>Admin sends a POST request to register a new patient.</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a POST request to PatientController to register a new patient.</step>
+        <step id="S2">PatientController activates and adds the new patient asynchronously.</step>
+        <step id="S3">PatientService activates and checks if the email and phone number are unique.</step>
+        <step id="S4">PatientService generates a unique medical number for the patient.</step>
+        <step id="S5">PatientService creates a new Patient object.</step>
+        <step id="S6">PatientService adds the new Patient to the repository.</step>
+        <step id="S7">PatientService commits the changes using Unit of Work.</step>
+        <step id="S8">PatientService sends an email to the new patient.</step>
+        <step id="S9">PatientController responds with 200 OK along with the PatientDto.</step>
+    </mainSequence>
+</useCase>

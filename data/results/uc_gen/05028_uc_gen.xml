@@ -1,0 +1,13 @@
+<useCase id="UC1">
+    <name>Gain Access with Necessary Rights</name>
+    <actors>
+        <actor>Attacker</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Attacker gains access to an account with rights like "Replicating Directory Changes" (typically Domain Admins).</step>
+        <step id="S2">Attacker issues a DCSync request impersonating a domain controller.</step>
+        <step id="S3">Domain Controller validates the request by checking if the requesting SID has appropriate privileges.</step>
+        <step id="S4">Domain Controller sends the requested data, including user credentials, to the Attacker's machine.</step>
+        <step id="S5">Attacker uses obtained credentials to access resources or perform actions within the domain.</step>
+    </mainSequence>
+</useCase>

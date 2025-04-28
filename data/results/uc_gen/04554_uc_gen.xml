@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Track Package</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TrackingController</actor>
+        <actor>TransactionController</actor>
+        <actor>ShippoTrackingService</actor>
+        <actor>shippo.model.Track</actor>
+    </actors>
+    <preconditions>
+        <precondition>Carrier and tracking number are available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>TrackDTO containing tracking information is returned.</condition>
+    </successEndConditions>
+    <trigger>User requests tracking information for a transaction.</trigger>
+    <mainSequence>
+        <step id="S1">User sends request for tracking information.</step>
+        <step id="S2">TrackingController retrieves transaction information.</step>
+        <step id="S3">TransactionController obtains shipping order details.</step>
+        <step id="S4">TransactionController requests ShippoTrackingService for tracking information.</step>
+        <step id="S5">ShippoTrackingService fetches and tracks the package details.</step>
+        <step id="S6">ShippoTrackingService sends the tracked information back to TrackingController.</step>
+        <step id="S7">TrackingController provides the TrackDTO with tracking details to the User.</step>
+    </mainSequence>
+</useCase>

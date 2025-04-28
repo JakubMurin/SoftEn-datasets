@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Chọn sách từ danh sách tìm kiếm</name>
+    <actors>
+        <actor>Reader</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Reader chọn sách từ danh sách tìm kiếm.</step>
+        <step id="S2">System lấy thông tin chi tiết sách (ID sách) từ Book Database.</step>
+        <step id="S3">Book Database trả về thông tin sách (Tên sách, tác giả, ảnh bìa, trạng thái) cho System.</step>
+        <step id="S4">System hiển thị thông tin sách chi tiết cho Reader.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">System hiển thị trạng thái "Có sẵn" cho Reader nếu sách có sẵn.</step>
+            <step id="A1S2">System hiển thị trạng thái "Không có sẵn" cho Reader nếu sách không có sẵn.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

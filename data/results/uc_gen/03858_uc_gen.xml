@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Perform System Initialization</name>
+    <description>Initialize the system components</description>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>System components are installed</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The system is initialized successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>System initialization fails</condition>
+    </failureEndConditions>
+    <trigger>Application triggers system initialization</trigger>
+    <mainSequence>
+        <step id="S1">Application starts the process</step>
+        <step id="S2">CowboyPlug starts</step>
+        <step id="S3">Cowboy starts</step>
+        <step id="S4">CowboyPlug starts Plug</step>
+        <step id="S5">Application starts Supervisor</step>
+        <step id="S6">Supervisor initializes Timer</step>
+        <step id="S7">Supervisor monitors Timer</step>
+        <step id="S8">Timer wakes up</step>
+        <step id="S9">Timer sends GET request to Monitored Server</step>
+        <step id="S10">Timer updates its state</step>
+        <step id="S11">Supervisor restarts Timer</step>
+        <step id="S12">Alice checks status with Cowboy</step>
+        <step id="S13">Cowboy calls Plug</step>
+        <step id="S14">Plug gets status from Timer</step>
+        <step id="S15">Plug responds to Cowboy</step>
+        <step id="S16">Cowboy responds to Alice</step>
+    </mainSequence>
+</useCase>

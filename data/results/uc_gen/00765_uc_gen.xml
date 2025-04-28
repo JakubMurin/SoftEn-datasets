@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Retrieve Medical Conditions</name>
+    <description>Allows the user to retrieve all medical conditions related to a specific name.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>AllergyService</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user initiates a GET request with a valid medical condition name.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The API responds with a 200 status code and the medical condition data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The API responds with a 400 status code for invalid requests or a 404 status code if the medical condition is not found.</condition>
+    </failureEndConditions>
+    <trigger>The user makes a GET request with a medical condition name.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to the API_Controller with a medical condition name parameter.</step>
+        <step id="S2">API_Controller validates the path parameter.</step>
+        <step id="S3">If the name is invalid, API_Controller responds with a 400 Bad Request message to the User.</step>
+        <step id="S4">If the name is valid, API_Controller calls AllergyService to retrieve all medical conditions.</step>
+        <step id="S5">AllergyService requests Repository to fetch the medical conditions.</step>
+        <step id="S6">If the allergy is not found, AllergyService throws an exception "Medical Condition not found" to API_Controller.</step>
+        <step id="S7">API_Controller responds with a 404 Not Found message to the User.</step>
+        <step id="S8">If the allergy is found, Repository provides a list of medical conditions to AllergyService.</step>
+        <step id="S9">AllergyService sends the list of medical conditions to API_Controller.</step>
+        <step id="S10">API_Controller responds with a 200 OK message along with the medical condition data to the User.</step>
+    </mainSequence>
+</useCase>

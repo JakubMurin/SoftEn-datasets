@@ -1,0 +1,34 @@
+<useCase id="UC_001">
+    <name>Access Files from X-drive</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>Authentication System</actor>
+        <actor>User Management System</actor>
+        <actor>File Management System</actor>
+        <actor>Access Restriction Controls</actor>
+        <actor>XDrive</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist is authenticated.</precondition>
+        <precondition>Archivist's permissions are validated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Archivist has successfully accessed files from X-drive.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Access to files is denied.</condition>
+    </failureEndConditions>
+    <trigger>Request to access files from X-drive.</trigger>
+    <mainSequence>
+        <step id="S_1">Archivist submits credentials.</step>
+        <step id="S_2">Authentication System validates Archivist's credentials.</step>
+        <step id="S_3">Authentication System grants access to Archivist.</step>
+        <step id="S_4">Archivist requests access to X-drive from File Management System.</step>
+        <step id="S_5">File Management System verifies permissions with Access Restrictions controls.</step>
+        <step id="S_6">User Management System retrieves Archivist permissions.</step>
+        <step id="S_7">Access Restrictions Controls grants access to FileManager.</step>
+        <step id="S_8">File Management System fetches files from XDrive.</step>
+        <step id="S_9">XDrive returns requested files to FileManager.</step>
+        <step id="S_10">FileManager displays files to Archivist.</step>
+    </mainSequence>
+</useCase>

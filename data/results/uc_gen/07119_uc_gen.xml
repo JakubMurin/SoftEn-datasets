@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Add new business monitoring configuration</name>
+    <actors>
+        <actor>user</actor>
+        <actor>system</actor>
+        <actor>pg</actor>
+        <actor>redis</actor>
+        <actor>tdm</actor>
+        <actor>HeartBeatControlService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Data legality needs to be verified</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The new configuration is successfully added</condition>
+    </successEndConditions>
+    <trigger>User requests to add a new business monitoring configuration</trigger>
+    <mainSequence>
+        <step id="S1">The user initiates the process to add a new business monitoring configuration</step>
+        <step id="S2">The system checks the legality of the data</step>
+        <step id="S3">The system stores the configuration in the database</step>
+        <step id="S4">The system updates the current timestamp in redis as the client's heartbeat time and updates the client's heartbeat timeout time in redis</step>
+        <step id="S5">The tdm, after acquiring ACTIVE, initializes the HeartBeatControlService using doInit()</step>
+        <step id="S6">The tdm executes initCache() to clear the timeout configuration from redis and delete the heartbeat time from the cache</step>
+    </mainSequence>
+</useCase>

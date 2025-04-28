@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View Account (Payment Terms tab)</name>
+    <actors>
+        <actor>FAE User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to view payment terms.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects 'Change' button.</step>
+        <step id="S2">User navigates to 'Change Payment Terms' page.</step>
+        <step id="S3">User inputs data and clicks 'Save changes' button.</step>
+        <step id="S4">User checks 'Request Payment Card' option.</step>
+        <step id="S5">API call is made to Add Defendant Account Payment Terms with Defendant Account ID and Payload (JSON).</step>
+        <step id="S6">Defendant Account Payment Terms are created in the database.</step>
+        <step id="S7">Defendant Account Payment Terms are displayed on the Payment Terms tab.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Defendant Account Payment Terms are created in the database (JPA).</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">Defendant Account Payment Terms are created in the database (XML).</step>
+            <step id="A2S2">Defendant Account Payment Terms are converted from XML to JSON.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

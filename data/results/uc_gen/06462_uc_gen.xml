@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Handle Bullet Collision</name>
+    <description>Manage the collision between the bullet and balloons</description>
+    <actors>
+        <actor>Bullet Actor</actor>
+        <actor>Model</actor>
+        <actor>Balloon Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The entities are updated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Bullet successfully hits the balloon</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No collision detected</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Update entities</step>
+        <step id="S2">Update bullet position</step>
+        <step id="S3">Check for collision between bullet and balloon</step>
+        <step id="S4">Explode if collision detected</step>
+        <step id="S5">Start explosion</step>
+        <step id="S6">Hit the balloon</step>
+        <step id="S7">Bullet killed</step>
+    </mainSequence>
+</useCase>

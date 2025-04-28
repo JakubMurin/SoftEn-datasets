@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Customer Makes Reservation</name>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer must have access to reservation system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Reservation successfully made and confirmed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Reservation not made due to unavailability</condition>
+    </failureEndConditions>
+    <trigger>Customer requests to make a reservation</trigger>
+    <mainSequence>
+        <step id="S1">Customer requests reservation page</step>
+        <step id="S2">Reservation system displays reservation form to Customer</step>
+        <step id="S3">Customer submits reservation details</step>
+        <step id="S4">Database checks availability</step>
+        <step id="S5">Database confirms availability</step>
+        <step id="S6">Reservation system displays confirmation message to Customer</step>
+        <step id="S7">Reservation details are saved in Database</step>
+        <step id="S8">Database sends confirmation status to Reservation system</step>
+        <step id="S9">Reservation system shows reservation ID and details to Customer</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="uc1">
+    <name>Manage Consumer-Publisher Communication</name>
+    <description>Allows a consumer to connect to a publisher and exchange messages via topics.</description>
+    <actors>
+        <actor>One Consumer</actor>
+        <actor>One Publisher</actor>
+    </actors>
+    <preconditions>
+        <precondition>The consumer has access to the publisher server.</precondition>
+        <precondition>The publisher is set up to handle communication with consumers.</precondition>
+    </preconditions>
+    <trigger>Start connection between consumer and publisher.</trigger>
+    <mainSequence>
+        <step id="S1">Consumer connects to Consumer Server.</step>
+        <step id="S2">Consumer creates a new consumer record.</step>
+        <step id="S3">Consumer logs in with username.</step>
+        <step id="S4">Consumer successfully logs in.</step>
+        <step id="S5">Consumer subscribes to topics.</step>
+        <step id="S6">Consumer sends a subscription request to the topic exchange.</step>
+        <step id="S7">Topic exchange creates a new topic if not present.</step>
+        <step id="S8">Topic exchange adds the consumer as a subscriber to the topic.</step>
+        <step id="S9">Publisher connects to Publisher Server.</step>
+        <step id="S10">Publisher creates a new publisher instance.</step>
+        <step id="S11">Publisher sends a message with a topic to the topic exchange.</step>
+        <step id="S12">Exchange passes the message to the corresponding topic.</step>
+        <step id="S13">The topic sends the message to each subscriber.</step>
+        <step id="S14">Consumer unsubscribes from topics.</step>
+        <step id="S15">Consumer sends an unsubscription request to the topic exchange.</step>
+        <step id="S16">Topic exchange disassociates the consumer from the topic.</step>
+    </mainSequence>
+</useCase>

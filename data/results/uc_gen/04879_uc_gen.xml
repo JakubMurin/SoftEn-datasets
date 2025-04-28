@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Workflow Management</name>
+    <actors>
+        <actor>Workflow Administrator</actor>
+        <actor>Api Gateway</actor>
+        <actor>Workflow Service</actor>
+        <actor>Workflow Database</actor>
+        <actor>NATS Event Relay</actor>
+        <actor>ZKP Manager Service</actor>
+        <actor>Circuit Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Workflow Administrator posts a new workflow to the Api Gateway.</step>
+        <step id="S2">Api Gateway forwards the request to the Workflow Service to create the workflow.</step>
+        <step id="S3">Workflow Service updates the Workflow Database with the new workflow and publishes an event to NATS.</step>
+        <step id="S4">Workflow Service responds to the Api Gateway with the created workflow ID.</step>
+        <step id="S5">Workflow Administrator polls the status of the workflow from the Api Gateway.</step>
+        <step id="S6">Api Gateway retrieves the workflow status from the Workflow Service.</step>
+        <step id="S7">Workflow Administrator subscribes to events related to new workflows being allocated.</step>
+        <step id="S8">ZKP Manager Service generates a signature circuit for the new workflow.</step>
+        <step id="S9">ZKP Manager Service saves the circuit in the Circuit Database.</step>
+        <step id="S10">ZKP Manager Service compiles the circuit and publishes an event to NATS.</step>
+        <step id="S11">Workflow Service subscribes to events related to compiled circuits.</step>
+        <step id="S12">Workflow Service updates the Workflow Database with the compiled circuit and publishes an event to NATS.</step>
+        <step id="S13">ZKP Manager Service sets up the circuit and publishes an event to NATS.</step>
+        <step id="S14">Workflow Service updates the Workflow Database with the setup circuit and publishes an event to NATS.</step>
+        <step id="S15">ZKP Manager Service subscribes to events related to setup circuits.</step>
+    </mainSequence>
+</useCase>

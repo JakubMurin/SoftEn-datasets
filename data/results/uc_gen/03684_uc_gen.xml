@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>User Searches for Task or Environment</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Environment Page</actor>
+        <actor>Search Service</actor>
+        <actor>Database</actor>
+        <actor>Show Result Page</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User accesses the environment</step>
+        <step id="S2">Environment Page initiates search</step>
+        <step id="S3">Search Service searches for a task or an environment</step>
+        <step id="S4.1">Search Service queries for task in database</step>
+        <step id="S4.2">Database returns task data to Search Service</step>
+        <step id="S5">Search Service redirects to Result Page to show the results</step>
+        <step id="S6">User views the search results on Result Page</step>
+        <step id="S7">User accesses the chosen task or environment from Result Page</step>
+    </mainSequence>
+</useCase>

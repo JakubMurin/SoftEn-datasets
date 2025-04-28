@@ -1,0 +1,24 @@
+<useCase id="UC-101">
+    <name>Hide Story</name>
+    <description>User wants to hide a specific story from view in the stories management section.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Author</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged into the system as an author.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The selected story is successfully hidden from view.</condition>
+    </successEndConditions>
+    <trigger>1. Click hide story</trigger>
+    <mainSequence>
+        <step id="S1">Author, as a user, initiates the hide story feature in the view.</step>
+        <step id="S2">The view requests an API.</step>
+        <step id="S3">The controller processes the deletion of the story.</step>
+        <step id="S4">The controller queries the necessary data for deletion from the database.</step>
+        <step id="S5">The database returns the query result to the controller.</step>
+        <step id="S6">The controller formats the response payload.</step>
+        <step id="S7">The view displays the stories management page.</step>
+    </mainSequence>
+</useCase>

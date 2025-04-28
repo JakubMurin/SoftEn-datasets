@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Creating a Post-It</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Server</actor>
+    </actors>
+    <trigger>client canCreatePostIt()</trigger>
+    <mainSequence>
+        <step id="S1">Client requests boardsUserCanWrite from Server</step>
+        <step id="S2">Server responds with boardsUserCanWrite</step>
+        <step id="S3">Client sends createPostIt(info) to Server</step>
+        <step id="S4">Server receives a string with board title, position in board, and content of Post-It</step>
+        <step id="S5">Server creates the Post-It</step>
+        <step id="S6">Server sends ACK code to Client</step>
+    </mainSequence>
+</useCase>

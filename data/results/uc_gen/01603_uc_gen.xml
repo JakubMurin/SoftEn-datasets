@@ -1,0 +1,29 @@
+<useCase id="UC001">
+  <name>Adjust Volume Level</name>
+  <description>As a User, I want to adjust the volume level of the A2DP Sink device.</description>
+  <actors>
+    <actor>User</actor>
+    <actor>Source's AVRCP event handler</actor>
+    <actor>Service Bluetooth</actor>
+    <actor>Service Audio</actor>
+    <actor>Settings</actor>
+    <actor>Application</actor>
+  </actors>
+  <preconditions>
+    <precondition>The A2DP Sink device is connected.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The volume of the A2DP Sink device is successfully adjusted.</condition>
+  </successEndConditions>
+  <trigger>Volume button is pressed on the User device.</trigger>
+  <mainSequence>
+    <step id="S1">User presses the volume button.</step>
+    <step id="S2">AVRCP volume change event is triggered in the A2DP Sink device.</step>
+    <step id="S3">The Source's AVRCP event handler receives the volume change event.</step>
+    <step id="S4">The Bluetooth service forwards the volume change message.</step>
+    <step id="S5">The Audio service receives the volume change message.</step>
+    <step id="S6">The Audio service sets the appropriate volume value.</step>
+    <step id="S7">The Application acknowledges the volume change.</step>
+    <step id="S8">The User views the current volume level on the application.</step>
+  </mainSequence>
+</useCase>

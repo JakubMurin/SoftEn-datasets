@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View User Profile</name>
+    <description>As a Colaborador, I want to view my profile information.</description>
+    <actors>
+        <actor>Colaborador</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Colaborador is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Colaborador successfully views their profile.</condition>
+    </successEndConditions>
+    <trigger>Colaborador accesses the profile page.</trigger>
+    <mainSequence>
+        <step id="S1">Colaborador requests to view their profile.</step>
+        <step id="S2">user.routes receives GET request to /myprofile.</step>
+        <step id="S3">user.controller processes getProfile request.</step>
+        <step id="S4">user.model fetches profile data based on user ID.</step>
+        <step id="S5">mysql executes SELECT query to retrieve user data.</step>
+        <step id="S6">user.model receives profile data from mysql.</step>
+        <step id="S7">user.controller renders myprofile.ejs with profile data.</step>
+        <step id="S8">myprofile.ejs generates HTML for the profile page.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,42 @@
+<useCase id="UC001">
+	<name>Update Canvas Changes</name>
+	<description>Allows users to make changes to the canvas and view updates.</description>
+	<actors>
+		<actor>Users</actor>
+	</actors>
+	<preconditions>
+		<precondition>Users want to modify the canvas.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Canvas changes successfully updated and displayed.</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Error occurs while updating canvas changes.</condition>
+	</failureEndConditions>
+	<trigger>User initiates changes on the canvas.</trigger>
+	<mainSequence>
+		<step id="S1">Users change canvas.</step>
+		<step id="S2">Client updates canvas.</step>
+		<step id="S3">Canvas sends changes via WebSocket.</step>
+		<step id="S4">WebSocket validates session.</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S4">
+			<step id="A1S1">Session is valid.</step>
+			<step id="A1S2">WebSocket broadcasts changes.</step>
+			<step id="A1S3">Canvas updates and displays changes.</step>
+			<step id="A1S4">Users view changes on canvas.</step>
+		</asteps>
+		<asteps id="A2" start="S4">
+			<step id="A2S1">Session is invalid.</step>
+			<step id="A2S2">Client receives session error.</step>
+			<step id="A2S3">Users are shown an error message.</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="S3">
+			<description>WebSocket failed to send changes.</description>
+			<step id="E1S1">Client displays error message.</step>
+		</esteps>
+	</errorSteps>
+</useCase>

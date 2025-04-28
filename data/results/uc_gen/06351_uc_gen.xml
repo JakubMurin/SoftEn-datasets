@@ -1,0 +1,24 @@
+<useCase id="UC_001">
+    <name>Manage Ticket Queue</name>
+    <description>As a Ticket Handler, I want to be able to manage tickets in the ticket queue to efficiently serve customers.</description>
+    <actors>
+        <actor>Vendor</actor>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>There are tickets added to the queue.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All tickets in the queue have been attended to.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>There are still tickets in the queue after completion.</condition>
+    </failureEndConditions>
+    <trigger>Vendor adds a ticket or Customer asks for their ticket.</trigger>
+    <mainSequence>
+        <step id="S1">Vendor adds a new ticket to the ticket queue.</step>
+        <step id="S2">Vendor notifies all actors about the newly added ticket.</step>
+        <step id="S3">Customer consumes a ticket from the queue.</step>
+        <step id="S4">Ticket Handler returns the retrieved ticket to the Customer.</step>
+    </mainSequence>
+</useCase>

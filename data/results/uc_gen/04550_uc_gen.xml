@@ -1,0 +1,20 @@
+<useCase id="1">
+    <name>Track Package</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TrackingController</actor>
+        <actor>TransactionController</actor>
+        <actor>ShippoTrackingService</actor>
+        <actor>shippo.model.Track</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User accesses /api/tracking/{transId}</step>
+        <step id="S2">TrackingController gets transaction details for transId</step>
+        <step id="S3">TransactionController retrieves shipping order</step>
+        <step id="S4">TrackingController requests tracking information from ShippoTrackingService</step>
+        <step id="S5">ShippoTrackingService fetches tracking info from shippo.model.Track using carrier, trackingNumber, and shippoApiKey</step>
+        <step id="S6">shippo.model.Track tracks the package</step>
+        <step id="S7">ShippoTrackingService returns trackDTO to TrackingController</step>
+        <step id="S8">TrackingController provides trackDTO to User</step>
+    </mainSequence>
+</useCase>

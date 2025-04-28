@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Execute Function Query</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Chat Client</actor>
+        <actor>Application</actor>
+        <actor>LLM Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to query a function.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Function query successfully executed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Function query failed to execute.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User queries a function (e.g., "Show my orders").</step>
+        <step id="S2">Chat Client receives the query and forwards it to the Application.</step>
+        <step id="S3">Application prompts with the function schema (e.g., GetOrderRequest).</step>
+        <step id="S4">LLM Service identifies the appropriate function.</step>
+        <step id="S5">Application executes the function.</step>
+        <step id="S6">LLM Service provides the function execution result to the Application.</step>
+        <step id="S7">Application sends the final response to the Chat Client.</step>
+        <step id="S8">Chat Client delivers the final response to the User.</step>
+    </mainSequence>
+</useCase>

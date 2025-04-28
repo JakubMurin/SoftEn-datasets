@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Add User</name>
+    <description>Use case for adding a new user</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully added</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Maximum user limit reached</condition>
+    </failureEndConditions>
+    <trigger>Admin initiates user addition</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to add a user</step>
+        <step id="S2">UserController checks user limit</step>
+        <step id="S3">UserService saves user data in user_data.txt</step>
+        <step id="S4">UserController informs Admin about successful user addition</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">User limit allows addition</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Maximum user limit reached</description>
+            <step id="E1S1">UserController notifies Admin about the error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

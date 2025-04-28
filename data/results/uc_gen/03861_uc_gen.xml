@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Perform Application Startup</name>
+    <description>Ensure the application starts successfully</description>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system components are properly configured</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The application starts without errors</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The application fails to start</condition>
+    </failureEndConditions>
+    <trigger>Application startup event</trigger>
+    <mainSequence>
+        <step id="S1">Application starts</step>
+        <step id="S2">CowboyPlug starts</step>
+        <step id="S3">Cowboy starts</step>
+        <step id="S4">Plug starts</step>
+        <step id="S5">Supervisor starts</step>
+        <step id="S6">Timer initialized</step>
+        <step id="S7">Timer monitoring</step>
+        <step id="S8">Timer wakes up</step>
+        <step id="S9">Monitored Server GET request</step>
+        <step id="S10">Timer updates state</step>
+        <step id="S11">Timer crashes</step>
+        <step id="S12">Supervisor restarts Timer</step>
+        <step id="S13">Alice checks Cowboy status</step>
+        <step id="S14">Cowboy calls Plug</step>
+        <step id="S15">Plug gets status from Timer</step>
+        <step id="S16">Plug responds to Cowboy</step>
+        <step id="S17">Cowboy responds to Alice</step>
+    </mainSequence>
+</useCase>

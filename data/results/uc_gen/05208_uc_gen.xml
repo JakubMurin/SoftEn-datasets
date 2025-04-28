@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Complete Data Persistence Process</name>
+    <description>As a User, I want to ensure the data persistence process is successfully completed.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User initiates the data persistence process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The data is successfully persisted in the datastore.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The data persistence process fails.</condition>
+    </failureEndConditions>
+    <trigger>User interacts with the application for data persistence.</trigger>
+    <mainSequence>
+        <step id="S1">User requests data persistence through the User Interfaces Layer.</step>
+        <step id="S2">SubscriptionController directs the request to the Application Layer.</step>
+        <step id="S3">SubscriptionFacadeImpl interacts with the Domain Model Layer.</step>
+        <step id="S4">SubscriptionRepository communicates with the Infrastructure Layer.</step>
+        <step id="S5">SubscriptionJpaPersistenceAdapter manages the data persistence operation.</step>
+        <step id="S6">SubscriptionJpaRepository accesses the Datastore to persist the data.</step>
+    </mainSequence>
+</useCase>

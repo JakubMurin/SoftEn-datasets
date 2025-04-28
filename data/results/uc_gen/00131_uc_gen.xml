@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <description>Allows a user to register in the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>RegistrationPage</actor>
+        <actor>AuthControl</actor>
+        <actor>UserEntity</actor>
+        <actor>UserDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User accesses the registration page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email already registered</condition>
+        <condition>Email not registered</condition>
+    </failureEndConditions>
+    <trigger>User inputs email and password</trigger>
+    <mainSequence>
+        <step id="S1">User inputs email and password on the Registration Page</step>
+        <step id="S2">Registration Page sends data to AuthControl</step>
+        <step id="S3">AuthControl checks if email is already registered</step>
+        <step id="S4">AuthControl sends error message if email is already registered</step>
+        <step id="S5">AuthControl saves new user data if email is not registered</step>
+        <step id="S6">UserEntity saves user data to UserDB</step>
+        <step id="S7">UserDB confirms data storage status</step>
+        <step id="S8">AuthControl confirms successful registration</step>
+        <step id="S9">RegistrationPage sends successful registration status</step>
+        <step id="S10">User accesses the system</step>
+    </mainSequence>
+</useCase>

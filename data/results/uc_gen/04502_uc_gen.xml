@@ -1,0 +1,18 @@
+<useCase id="UC1">
+	<name>Request list of orders delivered successfully</name>
+	<actors>
+		<actor>Manager</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Manager requests a list of orders that have been delivered successfully</step>
+		<step id="S2">ManagerPage forwards the request to ManagerOrderController</step>
+		<step id="S3">ManagerOrderController calls OrderService's getOrdersByStatus("DELIVERED")</step>
+		<step id="S4">OrderService queries OrderRepository for orders with status "DELIVERED"</step>
+		<step id="S5">OrderRepository queries the database for orders with status "DELIVERED"</step>
+		<step id="S6">Database returns the orders data to OrderRepository</step>
+		<step id="S7">OrderRepository returns the orders data to OrderService</step>
+		<step id="S8">OrderService returns the orders data to ManagerOrderController</step>
+		<step id="S9">ManagerOrderController returns the orders data to ManagerPage</step>
+		<step id="S10">ManagerPage displays the list of orders delivered successfully to Manager</step>
+	</mainSequence>
+</useCase>

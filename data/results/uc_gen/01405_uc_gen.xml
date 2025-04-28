@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Delete Other Service</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin requests to delete an existing other service</step>
+        <step id="S2">UI receives the request</step>
+        <step id="S3">Router handles GET /admin/other-services/delete/{serviceId}</step>
+        <step id="S4">Controller shows delete confirmation form for serviceId</step>
+        <step id="S5">Repository fetches service details for serviceId</step>
+        <step id="S6">OtherServiceModel fetches service by ID from DB</step>
+        <step id="S7">Repository receives service data</step>
+        <step id="S8">Controller displays delete confirmation form</step>
+        <step id="S9">Admin confirms delete request</step>
+        <step id="S10">UI receives confirmation</step>
+        <step id="S11">Router handles POST /admin/other-services/delete/{serviceId}</step>
+        <step id="S12">Controller deletes other service for serviceId</step>
+        <step id="S13">Repository deletes service for serviceId</step>
+        <step id="S14">OtherServiceModel deletes service from DB</step>
+        <step id="S15">Repository receives service deleted</step>
+        <step id="S16">Controller handles service deleted successfully</step>
+        <step id="S17">Router sends 200 OK for service deleted</step>
+        <step id="S18">UI displays success message for service deleted</step>
+    </mainSequence>
+</useCase>

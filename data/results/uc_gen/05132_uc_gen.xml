@@ -1,0 +1,36 @@
+<useCase id="1">
+    <name>Interacting with L4 System</name>
+    <description>Displaying the possible interaction of L4 with L3</description>
+    <actors>
+        <actor>Health Workers</actor>
+    </actors>
+    <preconditions>
+        <precondition>Health workers search for a patient</precondition>
+    </preconditions>
+    <trigger>Search for patient</trigger>
+    <mainSequence>
+        <step id="S1">Health workers search for patient (created before if needed) in the user interface</step>
+        <step id="S2">Engine searches for the patient</step>
+        <step id="S3">Engine evaluates available CarePlans based on PlanDefinition</step>
+        <step id="S4">Engine sends list of available CarePlans to user interface</step>
+        <step id="S5">Health workers select a CarePlan</step>
+        <step id="S6">User interface sends the selected CarePlan to Engine</step>
+        <step id="S7">Engine saves the PlanDefinition for guideline-based care, determine diagnosis, dispense medications, and provide counseling</step>
+        <step id="S8">Engine creates the encounter</step>
+        <step id="S9">Engine applies PlanDefinition/EmCareDXX/$Apply with patient and encounter details</step>
+        <step id="S10">Engine replies with CarePlan for clinical interrogation or test</step>
+        <step id="S11">Health workers fill and submit the questionnaire</step>
+        <step id="S12">Engine runs the structureMap on the QuestionnaireResponse</step>
+        <step id="S13">Engine saves the created bundle</step>
+        <step id="S14">Engine sends the classification questionnaire</step>
+        <step id="S15">Health workers agree or disagree with classification</step>
+        <step id="S16">Health workers add classification</step>
+        <step id="S17">Health workers document medication availability</step>
+        <step id="S18">Engine sends the medication questionnaire</step>
+        <step id="S19">Health workers fill and submit the medication questionnaire</step>
+        <step id="S20">Engine runs the structureMap on the QuestionnaireResponse</step>
+        <step id="S21">Engine saves the created bundle</step>
+        <step id="S22">Engine sends the counseling questionnaire</step>
+        <step id="S23">Health workers display and interact with the counseling questionnaire</step>
+    </mainSequence>
+</useCase>

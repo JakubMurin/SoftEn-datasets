@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Access and Query Road Information</name>
+    <actors>
+        <actor>Application</actor>
+        <actor>MapEngine</actor>
+        <actor>MapImport</actor>
+        <actor>MemSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has connected to the application and chosen the map path and type.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The road information data is successfully retrieved from the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in retrieving road information from the database.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">The user selects the map path and type through the application's interface.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">The selected map data is parsed by the MapImport component.</step>
+            <step id="A1S2">The data from the map is transformed into a data model for the MapImport.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>An error occurs during the data transformation process.</description>
+            <step id="E1S1">The system encounters an issue while inserting the map data into the Rtree structure.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

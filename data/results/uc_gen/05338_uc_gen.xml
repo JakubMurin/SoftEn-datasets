@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>User interacts with Liba to render dynamic content</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>A User-triggered action is triggered.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All required components and instances of each component for the desired content are successfully rendered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Some components or instances fail to render the content as required.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User creates an instance of an App.</step>
+        <step id="S2">The corresponding CInstance for App is created.</step>
+        <step id="S3">The CInstance is passed to render component.</step>
+        <step id="S4">Props and renderLiba are provided for rendering.</step>
+        <step id="S5">Dynamic content to be rendered is decided (e.g., 'button', 'UserCard').</step>
+        <step id="S6">UserCard, with associated properties, AppCInstance, and a key, is prepared.</step>
+        <step id="S7">Liba receives instructions to create UserCard with specified keys and components.</step>
+        <step id="S8">The UserCInstance is send back from Liba to render component.</step>
+        <step id="S9">Requirements, props, and more sub-components for UserCard are then passed to render component.</step>
+        <step id="S10">renderLiba internal content handling(begin output), first two sub rate elements are created successfully per props.</step>
+        <step id="S11">The generated element is effectively passed from renderLiba to UserCard end-side.</step>
+    </mainSequence>
+</useCase>

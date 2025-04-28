@@ -1,0 +1,43 @@
+<useCase id="1">
+    <name>Manage Users</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>UsersRepo</actor>
+        <actor>ProductsRepo</actor>
+        <actor>BidsRepo</actor>
+        <actor>OrdersRepo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates a new user by sending a POST request to Controller with createUserDto.</step>
+        <step id="S2">Controller forwards the request to Service.</step>
+        <step id="S3">Service creates and saves the user in UsersRepo.</step>
+        <step id="S4">Service returns the created user to Controller.</step>
+        <step id="S5">Controller sends the user back to the Client.</step>
+        <step id="S6">Client retrieves all users by sending a GET request to Controller.</step>
+        <step id="S7">Controller calls Service to find all users.</step>
+        <step id="S8">Service retrieves users from UsersRepo.</step>
+        <step id="S9">Service returns the list of users to Controller.</step>
+        <step id="S10">Controller sends the list of users back to the Client.</step>
+        <step id="S11">Client requests a specific user by sending a GET request with user ID to Controller.</step>
+        <step id="S12">Controller asks Service to find the user by ID.</step>
+        <step id="S13">Service retrieves the user from UsersRepo.</step>
+        <step id="S14">Service returns the user to Controller.</step>
+        <step id="S15">Controller sends the user back to the Client.</step>
+        <step id="S16">Client updates a user by sending a PUT request with user ID and updateUserDto to Controller.</step>
+        <step id="S17">Controller forwards the update request to Service.</step>
+        <step id="S18">Service checks if the user exists in UsersRepo.</step>
+        <step id="S19">If the user exists, Service updates the user and returns the updated user to Controller.</step>
+        <step id="S20">If the user does not exist, Service throws a user not found exception.</step>
+        <step id="S21">Controller sends the updated user or exception back to the Client.</step>
+        <step id="S22">Client deletes a user by sending a DELETE request with user ID to Controller.</step>
+        <step id="S23">Controller requests Service to remove the user by ID.</step>
+        <step id="S24">Service checks if the user exists in UsersRepo.</step>
+        <step id="S25">If the user exists, Service checks for associated products, bids, and orders.</step>
+        <step id="S26">If associated products, bids, or orders are found, Service throws respective exceptions.</step>
+        <step id="S27">If no associated products, bids, or orders are found, Service removes the user from UsersRepo.</step>
+        <step id="S28">Service sends success response to Controller.</step>
+        <step id="S29">Controller sends the response (success or exception) back to the Client.</step>
+    </mainSequence>
+</useCase>

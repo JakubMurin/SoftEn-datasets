@@ -1,0 +1,19 @@
+<useCase id="UCM-1">
+    <name>Perform Option Exercise</name>
+    <description>Allows the Option Holder to exercise their option before expiration</description>
+    <actors>
+        <actor>Option Holder</actor>
+        <actor>Option Serie Smart Contract</actor>
+        <actor>Exchange Adapter Contract</actor>
+        <actor>Exchange</actor>
+    </actors>
+    <trigger>The Option Holder initiates the option exercise operation by transferring the option tokens to the smart contract.</trigger>
+    <mainSequence>
+        <step id="S1">The Option Holder initiates the operation, transferring the option tokens to the smart contract.</step>
+        <step id="S2">The Option Serie Smart Contract checks if the price is more than the strike and transfers the corresponding amount of underlying tokens.</step>
+        <step id="S3">The Exchange Adapter Contract puts the underlying token.</step>
+        <step id="S4">The Exchange gets the basis token from the Exchange Adapter Contract.</step>
+        <step id="S5">The Exchange Adapter Contract checks the received amount.</step>
+        <step id="S6">The Exchange Adapter Contract transfers the amount above the strike to the Option Holder, keeping the rest for future withdrawal by anti-option holders.</step>
+    </mainSequence>
+</useCase>

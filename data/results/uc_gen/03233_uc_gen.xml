@@ -1,0 +1,21 @@
+<useCase id="001">
+	<name>Change Robot State</name>
+	<description>Update the state of the robot.</description>
+	<actors>
+		<actor>Admin</actor>
+	</actors>
+	<preconditions>
+		<precondition>Admin must be logged in.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Robot state successfully changed.</condition>
+	</successEndConditions>
+	<trigger>Admin requests a state change for the robot.</trigger>
+	<mainSequence>
+		<step id="S1">Admin sends a request for a robot state change to Front-End System.</step>
+		<step id="S2">Front-End System processes the state change request.</step>
+		<step id="S3">Back-End System updates the robot state.</step>
+		<step id="S4">Back-End System sends the state change result to Front-End System.</step>
+		<step id="S5">Front-End System displays the outcome of the state change to Admin.</step>
+	</mainSequence>
+</useCase>

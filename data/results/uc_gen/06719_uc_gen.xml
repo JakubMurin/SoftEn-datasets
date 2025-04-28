@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CustomerManager asks PublishJobOpeningUI to display job openings in the results phase.</step>
+        <step id="S2">PublishJobOpeningUI gets job openings.</step>
+        <step id="S3">PublishJobOpeningController gets job openings from JobOpeningRepository.</step>
+        <step id="S4">JobOpeningRepository provides job openings to PublishJobOpeningController.</step>
+        <step id="S5">PublishJobOpeningController sends job openings to PublishJobOpeningUI.</step>
+        <step id="S6">PublishJobOpeningUI displays job openings.</step>
+        <step id="S7">CustomerManager selects a job opening to publish results.</step>
+        <step id="S8">PublishJobOpeningUI requests to publish job opening results.</step>
+        <step id="S9">PublishJobOpeningController sends a result email request to FollowUpServerProxy.</step>
+        <step id="S10">FollowUpServerProxy creates and connects a ClientSocket.</step>
+        <step id="S11">FollowUpServerProxy sends a request to the ClientSocket.</step>
+        <step id="S12">ClientSocket writes the request to FollowUpServer.</step>
+        <step id="S13">FollowUpServer parses the request using FollowUpMessageParser.</step>
+        <step id="S14">FollowUpMessageParser creates a ResultEmailRequest.</step>
+        <step id="S15">ResultEmailRequest is executed to select candidates by CandidateSelectionService.</step>
+        <step id="S16">CandidateSelectionService returns lists of selected and rejected candidates to ResultEmailRequest.</step>
+        <step id="S17">EmailService sends emails to selected candidates.</step>
+        <step id="S18">Notification is created and saved by NotificationRepository.</step>
+        <step id="S19">EmailService sends notifications to selected candidates.</step>
+        <step id="S20">ResultEmailRequest confirms emails sent to FollowUpServer.</step>
+        <step id="S21">FollowUpServer writes a response to the ClientSocket.</step>
+        <step id="S22">ClientSocket receives the response from FollowUpServer.</step>
+        <step id="S23">ClientSocket closes the connection with FollowUpServer.</step>
+        <step id="S24">FollowUpServer sends the response to FollowUpServerProxy.</step>
+        <step id="S25">FollowUpServerProxy sends the response to PublishJobOpeningController.</step>
+        <step id="S26">PublishJobOpeningController sends the response to PublishJobOpeningUI.</step>
+        <step id="S27">PublishJobOpeningUI confirms the success of the operation to CustomerManager.</step>
+    </mainSequence>
+</useCase>

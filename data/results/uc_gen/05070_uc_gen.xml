@@ -1,0 +1,31 @@
+<useCase id="UC1">
+  <name>Phone Call</name>
+  <actors>
+    <actor>Apelant</actor>
+    <actor>Correspondant</actor>
+  </actors>
+  <successEndConditions>
+    <condition>Phone call completed successfully</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Phone call failed due to busy line</condition>
+    <condition>Phone call failed due to hang up</condition>
+  </failureEndConditions>
+  <mainSequence>
+    <step id="S1">Apelant inserts coins into phone</step>
+    <step id="S2">Standard counts 2 minutes</step>
+    <step id="S3">Apelant dials the phone number</step>
+    <step id="S4">Standard checks if the number is dialed</step>
+    <step id="S5">Standard hangs up if number not dialed</step>
+    <step id="S6">Standard connects the line to Correspondant</step>
+    <step id="S7">Apelant hangs up if line busy</step>
+    <step id="S8">Correspondant answers if line free</step>
+    <step id="S9">Standard counts coins for call duration</step>
+    <step id="S10">Apelant adds more coins</step>
+    <step id="S11">Apelant and Correspondant engage in conversation</step>
+    <step id="S12">Correspondant hangs up</step>
+    <step id="S13">Apelant hangs up</step>
+    <step id="S14">Apelant and Correspondant disconnect the call</step>
+    <step id="S15">Standard returns coins to Apelant</step>
+  </mainSequence>
+</useCase>

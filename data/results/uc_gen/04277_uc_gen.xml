@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>View List of Customers</name>
+    <description>User opens the customers list page and requests all customers to be displayed.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Interface</actor>
+        <actor>Router</actor>
+        <actor>CustomersController</actor>
+        <actor>CustomersRepository</actor>
+        <actor>CustomersModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the customers list page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>List of customers is successfully displayed to the user.</condition>
+    </successEndConditions>
+    <trigger>User opens the customers list page.</trigger>
+    <mainSequence>
+        <step id="S1">User opens customers list page.</step>
+        <step id="S2">Interface displays loading message.</step>
+        <step id="S3">User requests all customers to be displayed.</step>
+        <step id="S4">Interface sends GET request to Router for /customers.</step>
+        <step id="S5">Router calls getAllCustomers() method in CustomersController.</step>
+        <step id="S6">CustomersController calls findAll() method in CustomersRepository.</step>
+        <step id="S7">CustomersRepository calls find() method in CustomersModel.</step>
+        <step id="S8">CustomersModel fetches all customers from Database.</step>
+        <step id="S9">Database returns all customers to CustomersModel.</step>
+        <step id="S10">CustomersModel returns all customers to CustomersRepository.</step>
+        <step id="S11">CustomersRepository returns all customers to CustomersController.</step>
+        <step id="S12">CustomersController responds with 200 OK (all customers) to Router.</step>
+        <step id="S13">Router responds with 200 OK (all customers) to Interface.</step>
+        <step id="S14">Interface displays the list of customers to the User.</step>
+    </mainSequence>
+</useCase>

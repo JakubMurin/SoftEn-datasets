@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Delete Holiday</name>
+    <actors>
+        <actor>navegador</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user wants to delete a holiday.</precondition>
+    </preconditions>
+    <trigger>User triggers the delete action.</trigger>
+    <mainSequence>
+        <step id="S1">User selects the holiday to delete.</step>
+        <step id="S2">System confirms the delete action.</step>
+        <step id="S3">System sends a delete request to holiday.routes.js.</step>
+        <step id="S4">holiday.routes.js calls holiday.controller.js to handle the delete request.</step>
+        <step id="S5">holiday.controller.js calls holiday.model to delete the holiday record.</step>
+        <step id="S6">holiday.model executes the SQL query to delete the holiday record.</step>
+        <step id="S7">SQL query execution is successful.</step>
+        <step id="S8">holiday.model sends a promise back to holiday.controller.js.</step>
+        <step id="S9">holiday.controller.js returns a JSON response.</step>
+        <step id="S10">System displays the confirmation message to the user.</step>
+    </mainSequence>
+</useCase>

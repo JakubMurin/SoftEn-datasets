@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Delete Teacher</name>
+    <actors>
+        <actor>Manager</actor>
+        <actor>FrontEnd</actor>
+        <actor>TeacherController</actor>
+        <actor>TeacherService</actor>
+        <actor>TeacherRepository</actor>
+        <actor>ArchiveService</actor>
+        <actor>ArchiveRepository</actor>
+    </actors>
+
+    <mainSequence>
+        <step id="MS1">Manager requests to Delete Teacher</step>
+        <step id="MS2">FrontEnd forwards Delete Teacher Request to TeacherController</step>
+        <step id="MS3">TeacherController processes Delete Teacher Request</step>
+        <step id="MS4">TeacherService marks Teacher as Deleted</step>
+        <step id="MS5">TeacherRepository confirms the Deletion</step>
+        <step id="MS6">TeacherService archives Teacher Data</step>
+        <step id="MS7">ArchiveService saves Teacher Data</step>
+        <step id="MS8">ArchiveRepository confirms the Archiving</step>
+        <step id="MS9">ArchiveService notifies about Archived Teacher Data to TeacherService</step>
+        <step id="MS10">TeacherService notifies about the Deletion and Archiving to TeacherController</step>
+        <step id="MS11">TeacherController sends Confirmation Message to FrontEnd</step>
+        <step id="MS12">FrontEnd displays Confirmation to Manager</step>
+    </mainSequence>
+</useCase>

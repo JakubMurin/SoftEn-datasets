@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Take Exam</name>
+    <description>Allows a student to choose and take an exam</description>
+    <actors>
+        <actor>Student</actor>
+    </actors>
+    <preconditions>
+        <precondition>The student is logged in to the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The student successfully takes the exam</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The exam cannot be taken due to technical errors</condition>
+    </failureEndConditions>
+    <trigger>The student chooses to take an exam</trigger>
+    <mainSequence>
+        <step id="S1">The student chooses an exam from the user interface</step>
+        <step id="S2">The UI presents the selected exam to the controller</step>
+        <step id="S3">The controller requests the exam details from the repository</step>
+        <step id="S4">The controller obtains relevant grammar tools</step>
+        <step id="S5">The controller generates the exam using external exam generation service</step>
+        <step id="S6">The controller creates ExamToBeTakenDTO for the given exam</step>
+        <step id="S7">The UI presents the exam to the student for taking</step>
+    </mainSequence>
+</useCase>

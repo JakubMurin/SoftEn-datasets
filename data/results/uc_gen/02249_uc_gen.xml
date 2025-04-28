@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>User Authentication using Signicat and BankID</name>
+    <description>Parent use case for authenticating user through Signicat and BankID.</description>
+    <actors>
+        <actor>End-User</actor>
+        <actor>CS</actor>
+        <actor>Application</actor>
+        <actor>Signicat</actor>
+        <actor>IDP</actor>
+    </actors>
+    <trigger>User requests help and provides NIN to CS.</trigger>
+    <mainSequence>
+        <step id="S1">End-User requests help from CS and provides NIN.</step>
+        <step id="S2">CS sends NIN to Application.</step>
+        <step id="S3">CS informs End-User to start Swedish BankID process.</step>
+        <step id="S4">Application initiates Signicat API call to authenticate the user via BankID.</step>
+        <step id="S5">End-User starts BankID process.</step>
+        <step id="S6">End-User authenticates with BankID via IDP.</step>
+        <step id="S7">IDP provides authentication information to Signicat.</step>
+        <step id="S8">Signicat processes the authentication.</step>
+        <step id="S9">Application receives information on successful authentication from Signicat.</step>
+        <step id="S10">CS provides authentication result to the end-user.</step>
+        <step id="S11">CS assists the authenticated end-user as needed.</step>
+    </mainSequence>
+</useCase>

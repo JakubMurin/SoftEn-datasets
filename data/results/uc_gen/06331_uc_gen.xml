@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Buyer completes ASA Escrow Pay with Closeout</name>
+    <actors>
+        <actor>Buyer</actor>
+        <actor>Seller</actor>
+        <actor>ASAEscrow</actor>
+        <actor>ASAOB</actor>
+    </actors>
+    <preconditions>
+        <precondition>ASAEscrow has a minimum of 0.5 Algo balance and ASA to sell.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Buyer initiates ASA Escrow Pay.</step>
+        <step id="S2">ASAEscrow app calls ASAOB with TEAL attached for approval.</step>
+        <step id="S3">Buyer makes Algo payment of partial order amount to Seller.</step>
+        <step id="S4">Buyer opts-in to ASA to buy if necessary.</step>
+        <step id="S5">ASAEscrow performs asset closeout of full sell amount to buyer.</step>
+        <step id="S6">ASAEscrow closes out the remaining ASA balance to Seller.</step>
+        <step id="S7">ASAEscrow closes out escrow algo balance to Seller.</step>
+    </mainSequence>
+</useCase>

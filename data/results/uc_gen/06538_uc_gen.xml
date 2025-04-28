@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>User logs in and views tasks</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>TodoList</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is authenticated and can view tasks</condition>
+    </successEndConditions>
+    <trigger>User initiates login process</trigger>
+    <mainSequence>
+        <step id="S1">User logs in with email and password</step>
+        <step id="S2">System verifies authentication information with DB</step>
+        <step id="S3">DB reports authentication result to System</step>
+        <step id="S4">System retrieves tasks from TodoList</step>
+        <step id="S5">TodoList requests tasks from DB</step>
+        <step id="S6">DB provides list of tasks to TodoList</step>
+        <step id="S7">TodoList sends task list to System</step>
+        <step id="S8">System displays task list to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="MessageDiscussionAssociation">
+  <name>Message discussion association</name>
+  <actors>
+    <actor>authenticated user</actor>
+    <actor>New message UI</actor>
+    <actor>Discussion UI</actor>
+  </actors>
+  <preconditions>
+    <precondition>All declared properties used in requests are mandatory except when "[Opt]" keyword is used</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">User writes a new draft with or without participants</step>
+    <step id="S2">Compose throttles save</step>
+    <step id="S3">API receives POST request to create a message</step>
+    <step id="S4">API acknowledges message creation</step>
+    <step id="S5">API receives GET request to retrieve the message</step>
+    <step id="S6">API responds with message details</step>
+    <step id="S7">User edits the draft</step>
+    <step id="S8">Compose throttles save</step>
+    <step id="S9">API receives PATCH request to update the message</step>
+    <step id="S10">API acknowledges message update</step>
+    <step id="S11">API receives GET request to retrieve the updated message</step>
+    <step id="S12">API responds with updated message details</step>
+    <step id="S13">User hits "Send"</step>
+    <step id="S14">Compose sends the message</step>
+    <step id="S15">API validates participants and calculates discussion ID</step>
+    <step id="S16">API acknowledges message send</step>
+    <step id="S17">API receives GET request to retrieve the sent message</step>
+    <step id="S18">API responds with sent message details</step>
+    <step id="S19">Compose renders the discussion</step>
+    <step id="S20">Compose notifies the user</step>
+  </mainSequence>
+</useCase>

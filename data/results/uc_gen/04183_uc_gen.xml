@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Complete Certificate Signing Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Operator</actor>
+        <actor>CertManagerOperand</actor>
+        <actor>IstioCSROperand</actor>
+        <actor>Istiod</actor>
+        <actor>Proxy</actor>
+        <actor>CA</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has the necessary permissions to create istiocsr CR.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Certificate signing process is completed successfully.</condition>
+    </successEndConditions>
+    <trigger>User creates istiocsr CR.</trigger>
+    <mainSequence>
+        <step id="S1">User creates istiocsr CR.</step>
+        <step id="S2">Operator reconciles istiocsr event and prepares istio-csr manifests based on istiocsr config.</step>
+        <step id="S3">Operator deploys istio-csr operand resources.</step>
+        <step id="S4">Istiod requests a certificate from IstioCSROperand.</step>
+        <step id="S5">IstioCSROperand creates CSR resource.</step>
+        <step id="S6">CertManagerOperand is notified about the CSR creation and sends it to CA for signing.</step>
+        <step id="S7">CA signs the CSR and returns the signed certificate to CertManagerOperand.</step>
+        <step id="S8">CertManagerOperand updates the CSR with the signed certificate.</step>
+        <step id="S9">API notifies IstioCSROperand about the availability of the signed certificate.</step>
+        <step id="S10">Istiod receives the signed certificate from IstioCSROperand.</step>
+        <step id="S11">Istiod updates Proxy with the signed certificate for TLS.</step>
+        <step id="S12">Proxy uses the certificate for TLS communication.</step>
+    </mainSequence>
+</useCase>

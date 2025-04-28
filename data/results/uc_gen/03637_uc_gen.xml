@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Perform Option Trade</name>
+    <description>As an Option Holder, I want to execute an option trade.</description>
+    <actors>
+        <actor>Option Holder</actor>
+        <actor>Option Serie Smart Contract</actor>
+        <actor>Exchange Adapter Contract</actor>
+        <actor>Exchange (e.g. Oasis.Direct)</actor>
+    </actors>
+    <preconditions>
+        <precondition>The option tokens are available in the smart contract.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The option trade is successfully executed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The option trade fails to execute.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Initiate the option trade operation.</step>
+        <step id="S2">Transfer the option tokens to the smart contract.</step>
+        <step id="S3">Initiate the trade via a common interface.</step>
+        <step id="S4">Check if the price is more than the strike price.</step>
+        <step id="S5">Transfer the corresponding amount of underlying tokens.</step>
+        <step id="S6">Put the underlying tokens in the exchange.</step>
+        <step id="S7">Obtain the basis token from the exchange.</step>
+        <step id="S8">Verify if the obtained amount is sufficient.</step>
+        <step id="S9">Transfer the amount above the strike to the Option Holder.</step>
+        <step id="S10">Retain the remaining amount for later withdrawal by anti-option holders.</step>
+    </mainSequence>
+</useCase>

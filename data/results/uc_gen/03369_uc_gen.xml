@@ -1,0 +1,46 @@
+<useCase id="1">
+    <name>Perform Scanner Job</name>
+    <actors>
+        <actor>Admin User</actor>
+        <actor>Admin</actor>
+        <actor>Checkup Collector</actor>
+        <actor>Status Collector</actor>
+        <actor>Explorer</actor>
+        <actor>Worker</actor>
+        <actor>Exporter</actor>
+        <actor>RabbitMQ</actor>
+        <actor>Event Collector</actor>
+        <actor>Result Collector</actor>
+        <actor>Report</actor>
+        <actor>Report User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Start Scanner job</step>
+        <step id="S2">Scanner job started</step>
+        <step id="S3">Consume os2ds_scan_specs</step>
+        <step id="S4">Message received raw</step>
+        <step id="S5">Message received raw</step>
+        <step id="S6">Consume os2ds_conversions</step>
+        <step id="S7">Processor handler</step>
+        <step id="S8">Explorer handler</step>
+        <step id="S9">Match handler</step>
+        <step id="S10">Tagger handler</step>
+        <step id="S11">OS2ds status</step>
+        <step id="S12">Message received raw</step>
+        <step id="S13">Handle message</step>
+        <step id="S14">Censor outgoing message</step>
+        <step id="S15">OS2ds results</step>
+        <step id="S16">Checkup message received raw</step>
+        <step id="S17">Update scheduled checkup</step>
+        <step id="S18">Status message received raw</step>
+        <step id="S19">Update scanner status</step>
+        <step id="S20">Event message received raw</step>
+        <step id="S21">Update document report</step>
+        <step id="S22">Result message received raw</step>
+        <step id="S23">Handle message</step>
+        <step id="S24">Update or create document report</step>
+        <step id="S25">Check for matches</step>
+        <step id="S26">Get document report</step>
+        <step id="S27">Present matches</step>
+    </mainSequence>
+</useCase>

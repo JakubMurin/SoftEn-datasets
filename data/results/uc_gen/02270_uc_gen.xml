@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Hide Story</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Author</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in and has access rights to hide a story.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The story is successfully hidden.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The story could not be hidden due to an error.</condition>
+    </failureEndConditions>
+    <trigger>User clicks on "Hide story" button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on "Hide story" button.</step>
+        <step id="S2">View requests API.</step>
+        <step id="S3">Controller processes DeleteStory() operation.</step>
+        <step id="S4">Controller queries data from the database.</step>
+        <step id="S5">Database returns data to the Controller.</step>
+        <step id="S6">Controller formats response payload.</step>
+        <step id="S7">View displays Stories Management Page.</step>
+    </mainSequence>
+</useCase>

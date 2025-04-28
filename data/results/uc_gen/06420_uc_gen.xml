@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>User interacts with ReflexionAgent to complete a task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflexionAgent</actor>
+        <actor>LLMG</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <preconditions>
+        <precondition>Agent has the necessary data to retrieve relevant memories</precondition>
+    </preconditions>
+    <trigger>User initiates the interaction by running the input text</trigger>
+    <mainSequence>
+        <step id="S1">User runs the input text triggering the ReflexionAgent</step>
+        <step id="S2">ReflexionAgent retrieves relevant memories from Memory</step>
+        <step id="S3">ReflexionAgent invokes the Language Logic Module (LLM) to get a prompt</step>
+        <step id="S4">LLM responds with the prompt to the ReflexionAgent</step>
+        <step id="S5">ReflexionAgent decides to use a tool</step>
+        <step id="S6">Snackbar decides to execute the tool</step>
+        <step id="S7">Snackbar executes the tool triggering observations</step>
+        <step id="S8">Snackbar sends the observations back to ReflexionAgent</step>
+        <step id="S9">LLM prompts the ReflexionAgent for reflection</step>
+        <step id="S10">LLM provides a reflection response to the ReflexionAgent</step>
+        <step id="S11">ReflexionAgent saves episodic memory of the tool use and the reflection</step>
+        <step id="S12">ReflexionAgent initiates memory save of the episodic interaction record</step>
+        <step id="S13">Final result is sent to the User by ReflexionAgent</step>
+    </mainSequence>
+</useCase>

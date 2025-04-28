@@ -1,0 +1,16 @@
+<useCase id="1">
+    <name>Run Transaction Endpoint</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>PluginLedgerConnectorPolkadot</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Activate the Caller</step>
+        <step id="S2">Caller sends transact(RunTransactionRequest) to PluginLedgerConnectorPolkadot</step>
+        <step id="S3">If web3SigningCredential == CACTUSKEYCHAINREF, PluginLedgerConnectorPolkadot performs transactCactusKeychainRef(RunTransactionRequest) and returns RunTransactionResponse</step>
+        <step id="S4">If web3SigningCredential == MNEMONICSTRING, PluginLedgerConnectorPolkadot performs transactMnemonicString(RunTransactionRequest) and returns RunTransactionResponse</step>
+        <step id="S5">If web3SigningCredential == NONE and req.transactionConfig.transferSubmittable is defined, PluginLedgerConnectorPolkadot performs transactSigned(RunTransactionRequest) and returns RunTransactionResponse</step>
+        <step id="S6">If web3SigningCredential == NONE and req.transactionConfig.transferSubmittable is not defined, PluginLedgerConnectorPolkadot throws Error: Expected pre-signed raw transaction</step>
+        <step id="S7">If web3SigningCredential does not match any defined types, PluginLedgerConnectorPolkadot throws Error: Unrecognized Web3SigningCredentialType</step>
+    </mainSequence>
+</useCase>

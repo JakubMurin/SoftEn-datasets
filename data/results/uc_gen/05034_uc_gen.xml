@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Perform DC Shadow Attack</name>
+    <description>This use case involves gaining access to a domain controller through DCSync, extracting user credentials, and using them for unauthorized actions within the domain.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>Target Domain Controller</actor>
+    </actors>
+    <preconditions>
+        <precondition>An account with rights similar to "Replicating Directory Changes" is obtained by the Attacker.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User credentials are successfully obtained from the Target Domain Controller.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Attacker fails to extract user credentials.</condition>
+    </failureEndConditions>
+    <trigger>Attacker requires access to an account with necessary rights.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker gains access to an account with necessary rights.</step>
+        <step id="S2">Attacker issues a DCSync request from the Attacker's Computer.</step>
+        <step id="S3">Target Domain Controller validates the request.</step>
+        <step id="S4">The Target Domain Controller sends the requested data containing user credentials.</step>
+        <step id="S5">Attacker utilizes the obtained credentials to access resources within the domain.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC001">
+  <name>Authenticate Request and Route</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Gateway</actor>
+    <actor>UserSecurityService</actor>
+    <actor>ServiceA</actor>
+    <actor>ServiceB</actor>
+  </actors>
+  <preconditions>
+    <precondition>Request must be valid</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>User successfully receives the response</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Access is denied</condition>
+  </failureEndConditions>
+  <trigger>Request initiated by User or Service</trigger>
+  <mainSequence>
+    <step id="S1">User requests gateway</step>
+    <step id="S2">Gateway forwards request to UserSecurityService for token validation</step>
+    <step id="S3">UserSecurityService validates the token</step>
+    <step id="S4">Token is valid - Gateway forwards request to ServiceA and receives a response</step>
+    <step id="S5">Gateway sends response to User</step>
+    <step id="S6">Token is invalid - Gateway denies access to User</step>
+    <step id="S7">Gateway checks x-server-name header</step>
+    <step id="S8">x-server-name header is present - Gateway validates the service token</step>
+    <step id="S9">Service token is valid - Gateway forwards request to ServiceB and gets a response</step>
+    <step id="S10">Gateway sends the response from ServiceB to ServiceA</step>
+    <step id="S11">Service token is invalid - Gateway denies access to ServiceA</step>
+    <step id="S12">x-server-name header is absent - Gateway denies access to ServiceA</step>
+  </mainSequence>
+</useCase>

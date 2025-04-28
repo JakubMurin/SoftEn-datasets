@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>User accesses Vyne Query Server</name>
+    <description>User accesses the Vyne Query Server to perform a query operation.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Vyne Query Server</actor>
+        <actor>OpenID Provider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has a valid authentication with the OpenID Provider.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully obtains the necessary tokens for accessing the Vyne Query Server.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to authenticate with the OpenID Provider.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the access to the Vyne Query Server.</trigger>
+    <mainSequence>
+        <step id="S1">User accesses Vyne Query Server</step>
+        <step id="S2">User's browser redirected to OpenID with an authentication request.</step>
+        <step id="S3">OpenID interacts with the user for authentication</step>
+        <step id="S4">User authenticates</step>
+        <step id="S5">User's browser redirected back to application with authorization code</step>
+        <step id="S6">Vyne Query Server sends token request to OpenId with the authorization code</step>
+        <step id="S7">OpenID Provider responds with an ID Token, access token and refresh token</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Hub And Spoke - Flow Reroute</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to reroute</step>
+        <step id="S2">NB reroutes the flow</step>
+        <step id="S3">FlowManager starts flow rerouting</step>
+        <step id="S4">FlowManager gets the flow from DB</step>
+        <step id="S5">FlowManager validates the flow</step>
+        <step id="S6">FlowManager starts Flow Reroute workflow</step>
+        <step id="S7">FlowManager finds a path for the flow</step>
+        <step id="S8">FlowManager allocates resources for the found path</step>
+        <step id="S9">FlowManager saves the found path with IN_PROGRESS status</step>
+        <step id="S10">FlowManager updates ISLs available bandwidth</step>
+        <step id="S11">CommandBuilder creates switch rules</step>
+        <step id="S12">SpeakerWorker installs rules</step>
+        <step id="S13">RulesValidator validates installed egress/transit rules</step>
+        <step id="S14">SpeakerWorker dumps egress/transit rules</step>
+        <step id="S15">SpeakerWorker installs an ingress rule</step>
+        <step id="S16">SpeakerWorker dumps ingress rules</step>
+        <step id="S17">DAO updates the flow to reference the found path as active</step>
+        <step id="S18">DAO changes the found path status to INSTALLED</step>
+        <step id="S19">DAO changes the flow status to UP</step>
+        <step id="S20">DAO changes the status of the old path to IN_PROGRESS</step>
+        <step id="S21">SpeakerWorker removes rules</step>
+        <step id="S22">RulesValidator validates removed rules</step>
+        <step id="S23">SpeakerWorker dumps rules</step>
+        <step id="S24">ResourcePool releases used meter</step>
+        <step id="S25">DAO releases used meter</step>
+        <step id="S26">ResourcePool deallocates resources of the old path</step>
+        <step id="S27">DAO removes the old path</step>
+    </mainSequence>
+</useCase>

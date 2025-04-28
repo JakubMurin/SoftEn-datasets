@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Delete Audio Channel</name>
+    <actors>
+        <actor>User</actor>
+        <actor>AudioChannel</actor>
+        <actor>ContextMenu</actor>
+        <actor>ChannelAction</actor>
+        <actor>ChannelSaga</actor>
+        <actor>EventEmitter</actor>
+        <actor>AudioController</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has the necessary permissions to delete an audio channel.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The audio channel is successfully deleted.</condition>
+    </successEndConditions>
+    <trigger>User right-clicks on the audio channel and selects "Delete".</trigger>
+    <mainSequence>
+        <step id="S1">User right-clicks on the audio channel.</step>
+        <step id="S2">AudioChannel activates.</step>
+        <step id="S3">AudioChannel handles the context menu.</step>
+        <step id="S4">ContextMenu renders.</step>
+        <step id="S5">User clicks on "Delete" in the context menu.</step>
+        <step id="S6">ContextMenu sends the delete command to AudioChannel.</step>
+        <step id="S7">AudioChannel deletes the channel.</step>
+        <step id="S8">ChannelAction triggers the deletion of the channel.</step>
+        <step id="S9">ChannelSaga initiates the deletion saga.</step>
+        <step id="S10">EventEmitter emits 'CHANNEL_DELETE_CHANNEL' event.</step>
+        <step id="S11">EventEmitter informs AudioController to remove the channel.</step>
+    </mainSequence>
+</useCase>

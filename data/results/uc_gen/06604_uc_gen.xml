@@ -1,0 +1,19 @@
+<useCase id="UC1">
+	<name>View Dashboard</name>
+	<actors>
+		<actor>Receptionist</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Receptionist requests to view the dashboard</step>
+		<step id="S2">UI receives the request</step>
+		<step id="S3">Router processes GET request for /dashboard</step>
+		<step id="S4">Controller initiates getDashboardData() function</step>
+		<step id="S5">Repository retrieveDashboardData() is executed</step>
+		<step id="S6">DashboardModel fetches dashboard data</step>
+		<step id="S7">DB queries and provides dashboard data to DashboardModel</step>
+		<step id="S8">Repository receives and provides dashboard data to Controller</step>
+		<step id="S9">Controller responds with 200 OK (dashboard data)</step>
+		<step id="S10">Router sends 200 OK (dashboard data) to UI</step>
+		<step id="S11">UI displays the dashboard data to Receptionist</step>
+	</mainSequence>
+</useCase>

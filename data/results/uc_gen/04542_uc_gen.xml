@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Delete Teacher</name>
+    <description>As a manager, I want to delete a teacher from the system.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Teacher is successfully deleted and archived.</condition>
+    </successEndConditions>
+    <trigger>User requests to delete a teacher.</trigger>
+    <mainSequence>
+        <step id="S1">Manager requests to delete a teacher.</step>
+        <step id="S2">FrontEnd forwards the delete teacher request to TeacherController.</step>
+        <step id="S3">TeacherController processes the delete teacher request.</step>
+        <step id="S4">TeacherService marks the teacher as deleted in the repository.</step>
+        <step id="S5">TeacherRepository confirms the deletion.</step>
+        <step id="S6">TeacherService archives the teacher data.</step>
+        <step id="S7">ArchiveRepository saves the teacher data.</step>
+        <step id="S8">ArchiveRepository confirms the archiving.</step>
+        <step id="S9">ArchiveService notifies TeacherService about the archived teacher data.</step>
+        <step id="S10">TeacherService notifies TeacherController about the deletion and archiving.</step>
+        <step id="S11">TeacherController sends a confirmation message to FrontEnd.</step>
+        <step id="S12">FrontEnd displays the confirmation to the Manager.</step>
+    </mainSequence>
+</useCase>

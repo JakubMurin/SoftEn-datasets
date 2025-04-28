@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Enterprise Admission (Recycler)</name>
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Agency</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Enterprise submits information to Vue</step>
+        <step id="S2">EntService submits admission data to MongoDB</step>
+        <step id="S3">EntService saves file association information to MySQL</step>
+        <step id="S4">Results returned to Enterprise</step>
+        <step id="S5">Regulatory Agency queries unapproved enterprise list</step>
+        <step id="S6">Regulatory Agency approves admission</step>
+        <step id="S7">EntService deploys admission contract using JAVA SDK</step>
+        <step id="S8">EntService updates information in MySQL</step>
+        <step id="S9">Results returned to Regulatory Agency</step>
+        <step id="S10">Enterprise queries admission results</step>
+        <step id="S11">EntService queries admission contract content using JAVA SDK</step>
+        <step id="S12">Results returned to Enterprise</step>
+        <step id="S13">Enterprise can resubmit admission information</step>
+    </mainSequence>
+</useCase>

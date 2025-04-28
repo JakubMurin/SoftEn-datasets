@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Adding Other Service to Booking</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>Router</actor>
+        <actor>Controller</actor>
+        <actor>Repository</actor>
+        <actor>BookingModel</actor>
+        <actor>OtherServiceRepo</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+        <precondition>Booking details page is open</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking updated with other service successfully</condition>
+    </successEndConditions>
+    <trigger>User opens booking details page</trigger>
+    <mainSequence>
+        <step id="S1">User opens booking details page</step>
+        <step id="S2">UI receives request to add other service to booking</step>
+        <step id="S3">Router forwards request to Controller</step>
+        <step id="S4">Controller adds other service to booking</step>
+        <step id="S5">Controller updates Repository with other service</step>
+        <step id="S6">Repository fetches booking details from BookingModel</step>
+        <step id="S7">Repository fetches other service details from OtherServiceRepo</step>
+        <step id="S8">Repository adds other service to BookingModel</step>
+        <step id="S9">Repository updates Controller with updated booking</step>
+        <step id="S10">Controller responds with 200 OK to Router</step>
+        <step id="S11">Router responds with 200 OK to UI</step>
+        <step id="S12">UI displays confirmation of added service to User</step>
+    </mainSequence>
+</useCase>

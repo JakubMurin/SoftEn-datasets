@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Manage Entity</name>
+    <description>Allows the client to create, read, and update entities.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>CommandHandler</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+        <actor>DomainEntity</actor>
+        <actor>QueryHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates a create/read/update action.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Entity successfully saved and changes propagated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during entity management process.</condition>
+    </failureEndConditions>
+    <trigger>Client requests entity management operation.</trigger>
+    <mainSequence>
+        <step id="S1">Client initiates create/read/update action.</step>
+        <step id="S2">API forwards command to CommandHandler.</step>
+        <step id="S3">CommandHandler processes the command.</step>
+        <step id="S4">CommandHandler requests entity from Repository.</step>
+        <step id="S5">Repository executes SQL query on Database.</step>
+        <step id="S6">Database returns raw data to Repository.</step>
+        <step id="S7">Repository maps raw data to Entity using Factory.</step>
+        <step id="S8">Repository returns Entity to CommandHandler.</step>
+        <step id="S9">CommandHandler applies business logic to Entity.</step>
+        <step id="S10">CommandHandler saves Entity to Repository.</step>
+        <step id="S11">Repository detects changes in Entity and updates SQL.</step>
+        <step id="S12">Repository saves changes to Database.</step>
+        <step id="S13">Database confirms successful save to Repository.</step>
+        <step id="S14">CommandHandler sends NotificationObject to API.</step>
+        <step id="S15">API forwards NotificationObject to QueryHandler.</step>
+        <step id="S16">QueryHandler processes data and returns DTO to API.</step>
+        <step id="S17">API sends DTO response to Client.</step>
+    </mainSequence>
+</useCase>

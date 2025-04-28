@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Submit Question</name>
+    <actors>
+        <actor>User</actor>
+        <actor>:View</actor>
+        <actor>:Route</actor>
+        <actor>:views.py</actor>
+        <actor>:validate</actor>
+        <actor>:Questions</actor>
+        <actor>:Model</actor>
+        <actor>:AdaptiveTesting</actor>
+        <actor>:database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on "Submit" Question</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks "Submit" Question</step>
+        <step id="S2">View executes "Submit Question"</step>
+        <step id="S3">Route executes quiz()</step>
+        <step id="S4">Views validate on submit</step>
+        <step id="S5">Questions submit response</step>
+        <step id="S6">Model gets student category</step>
+        <step id="S7">Database saves to file</step>
+        <step id="S8">Model gets item responses</step>
+        <step id="S9">ML updates student</step>
+        <step id="S10">Database saves proficiency</step>
+        <step id="S11">Model corrects response</step>
+        <step id="S12">Views show the result</step>
+        <step id="S13">Route directs to /result</step>
+        <step id="S14">View displays result.html</step>
+    </mainSequence>
+</useCase>

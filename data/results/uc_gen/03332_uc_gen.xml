@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Game Lifecycle</name>
+    <description>Manage the lifecycle of the Game object</description>
+    <actors>
+        <actor>Game</actor>
+        <actor>ExtendedVM</actor>
+        <actor>BaseVM</actor>
+        <actor>ViewModelComponent</actor>
+        <actor>Mixin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Game object instantiated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Game object finalized successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during Game object lifecycle management</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Game object instantiated by calling constructor of ExtendedVM</step>
+        <step id="S2">Base constructor called by ExtendedVM</step>
+        <step id="S3">All mixins associated with VM instance initialized by ViewModelComponent</step>
+        <step id="S4">Destructor called to finalize Game object</step>
+        <step id="S5">Original destructor called by BaseVM</step>
+        <step id="S6">Mixins destructed for VM instance by ViewModelComponent</step>
+        <step id="S7">OnFinalize method called to complete lifecycle</step>
+        <step id="S8">Original OnFinalize method executed by BaseVM</step>
+        <step id="S9">Mixins finalized for VM instance by ViewModelComponent</step>
+        <step id="S10">Accessing method and getters/setters in Game object</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">Property access performed by calling original method</step>
+        </asteps>
+        <asteps id="A2" start="S10">
+            <step id="A2S1">MixinInstanceForVMInstance called for property access</step>
+            <step id="A2S2">Property access executed by Mixin</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

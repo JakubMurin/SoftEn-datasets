@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Dataset Operations</name>
+    <actors>
+        <actor>Dataset Developer</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Database</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>The dataset type is registered in the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The dataset instance is successfully created</condition>
+        <condition>The application successfully accesses the dataset instance</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during dataset deployment</condition>
+        <condition>Error in dataset instance creation process</condition>
+        <condition>Failed to provide dataset instance access</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Deploy dataset type by Dataset Developer.</step>
+        <step id="S2">Register dataset type in Dataset Management System.</step>
+        <step id="S3">Create dataset instance on Database.</step>
+        <step id="S4">Check if dataset type exists.</step>
+        <step id="S5">Validate access rights for dataset instance.</step>
+    </mainSequence>
+</useCase>

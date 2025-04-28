@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Online Course Payment</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Learning Center Service</actor>
+        <actor>Order Service</actor>
+        <actor>Third-party Payment Service</actor>
+        <actor>Message Queue</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the payment process by clicking on the payment button.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Course payment is successfully processed.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the payment button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the payment button.</step>
+        <step id="S2">Frontend adds course selection record.</step>
+        <step id="S3">Order Service adds order with order information.</step>
+        <step id="S4">Order Service creates product order, order details table, and payment transaction record.</step>
+        <step id="S5">Frontend generates a QR code based on the payment record ID.</step>
+        <step id="S6">User scans the QR code using Alipay.</step>
+        <step id="S7">Order Service requests payment with the payment record ID.</step>
+        <step id="S8">Order Service checks the payment record and confirms the successful payment.</step>
+        <step id="S9">User is reminded not to make duplicate payments.</step>
+        <step id="S10">User inputs password and completes the payment process.</step>
+        <step id="S11">Order Service updates the order and payment record status based on the payment result.</step>
+        <step id="S12">Order Service sends a course payment success message to the Learning Center Service.</step>
+        <step id="S13">Learning Center Service adds the course to the user's course list for learning.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Content Editing</name>
+    <description>Allows the Content Editor to search for, select, edit, and save content in the CMS.</description>
+    <actors>
+        <actor>Content Editor</actor>
+        <actor>CMS Search Interface</actor>
+        <actor>CMS Database</actor>
+        <actor>Content Page</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Content Editor is logged in and has access to the CMS.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The content edits are successfully saved in the CMS.</condition>
+    </successEndConditions>
+    <trigger>User enters search query (keywords/tags) to find content to edit.</trigger>
+    <mainSequence>
+        <step id="S1">Content Editor enters search query (keywords/tags).</step>
+        <step id="S2">CMS Search Interface queries for content.</step>
+        <step id="S3">CMS Database returns search results.</step>
+        <step id="S4">CMS Search Interface displays search results to Content Editor.</step>
+        <step id="S5">Content Editor selects content from the results.</step>
+        <step id="S6">CMS Search Interface requests selected content details from CMS Database.</step>
+        <step id="S7">CMS Database retrieves content details.</step>
+        <step id="S8">CMS Search Interface displays selected content in the editor.</step>
+        <step id="S9">Content Editor edits the content.</step>
+        <step id="S10">Content Page saves the content changes to CMS Database.</step>
+        <step id="S11">CMS Database confirms that changes are saved.</step>
+        <step id="S12">Content Page displays confirmation to Content Editor (edit successful).</step>
+    </mainSequence>
+</useCase>

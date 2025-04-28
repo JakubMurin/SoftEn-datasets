@@ -1,0 +1,31 @@
+<useCase id="EditSaveTask">
+  <name>User edits and saves a task</name>
+  
+  <actors>
+    <actor>User</actor>
+    <actor>tasks_table_interactions.js</actor>
+    <actor>Flask Backend</actor>
+    <actor>Task Model</actor>
+    <actor>Task Validation</actor>
+    <actor>TaskService</actor>
+    <actor>Logger</actor>
+    <actor>Database</actor>
+  </actors>
+  
+  <mainSequence>
+    <step id="S1">User clicks "Edit Task"</step>
+    <step id="S2">tasks_table_interactions.js initiates modal and fetches task data</step>
+    <step id="S3">Flask Backend fetches task data with GET /api/tasks/&lt;taskId&gt;</step>
+    <step id="S4">Task model retrieves task using Task.query.get(taskId)</step>
+    <step id="S5">Task data is sent back to User</step>
+    <step id="S6">User populates modal fields</step>
+    <step id="S7">User submits "Save Task" form</step>
+    <step id="S8">Flask Backend handles POST request to save the task</step>
+    <step id="S9">Task model creates or updates the task</step>
+    <step id="S10">Task validation ensures hierarchy constraints are respected</step>
+    <step id="S11">Task service checks for circular references</step>
+    <step id="S12">Task data is inserted/updated into the database</step>
+    <step id="S13">Logger logs the save event</step>
+    <step id="S14">User interface is updated or error message is shown</step>
+  </mainSequence>
+</useCase>

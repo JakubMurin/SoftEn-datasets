@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Creating a Data Package</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>DataPackageManagerResource</actor>
+        <actor>Creator</actor>
+        <actor>DataPackageManager</actor>
+        <actor>DataManagerClient</actor>
+        <actor>EMLDataManager</actor>
+        <actor>DataManager</actor>
+        <actor>EMLDataPackage</actor>
+        <actor>EML200DataPackageParser</actor>
+        <actor>DocumentBuilder</actor>
+        <actor>DataPackage</actor>
+        <actor>QualityReport</actor>
+        <actor>QualityCheck</actor>
+        <actor>SolrMetadataCatalog</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates the creation of a Data Package in the system.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client creates a data package.</step>
+        <step id="S2">Data Package Manager Resource runs.</step>
+        <step id="S3">Creator runs and initiates the creation of a data package.</step>
+        <step id="S4">Data Package Manager generates an EML format data package.</step>
+        <step id="S5">Data Package Manager validates and processes the EML data.</step>
+        <step id="S6">Data Package Manager checks for existing data package in the registry.</step>
+        <step id="S7">Data Package Manager processes the new data package.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Processing of the new data package in case of conflicts or validations.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Data Package couldn't be created.</description>
+            <step id="E1S1">An error occurred during the creation of the Data Package.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

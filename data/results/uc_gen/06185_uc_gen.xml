@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Manage Consumer Subscriptions</name>
+    <description>Allows a consumer to subscribe, receive messages, and unsubscribe from topics.</description>
+    <actors>
+        <actor>One Consumer</actor>
+        <actor>Consumer Server</actor>
+        <actor>Consumer Supervisor</actor>
+        <actor>Exchanger</actor>
+        <actor>Topic Supervisor</actor>
+        <actor>One Publisher</actor>
+        <actor>Publisher Supervisor</actor>
+        <actor>Publisher Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Consumer and Publisher entities exist in the system.</precondition>
+    </preconditions>
+    <trigger>Consumer initiates a connection and subscription process.</trigger>
+    <mainSequence>
+        <step id="S1">One Consumer starts connection with Consumer Server.</step>
+        <step id="S2">Consumer Server creates a new Consumer.</step>
+        <step id="S3">Consumer Supervisor creates the Consumer.</step>
+        <step id="S4">One Consumer logs in with a username.</step>
+        <step id="S5">Consumer acknowledges successful login.</step>
+        <step id="S6">One Consumer subscribes to a topic.</step>
+        <step id="S7">Consumer subscribes via Exchanger.</step>
+        <step id="S8">Exchanger creates a topic if not present.</step>
+        <step id="S9">Topic Supervisor creates the topic.</step>
+        <step id="S10">Exchanger adds or checks subscriber pointers.</step>
+        <step id="S11">One Publisher starts connection with Publisher Server.</step>
+        <step id="S12">Publisher Server creates a new Publisher.</step>
+        <step id="S13">Publisher Supervisor creates the Publisher.</step>
+        <step id="S14">One Publisher sends a topic and message.</step>
+        <step id="S15">Publisher sends a topic and message via Exchanger.</step>
+        <step id="S16">Exchanger sends the message to the topic.</step>
+        <step id="S17">Topic sends the message to each subscriber.</step>
+        <step id="S18">One Consumer unsubscribes from the topic.</step>
+        <step id="S19">Consumer unsubscribes via Exchanger.</step>
+        <step id="S20">Exchanger moves the subscriber pointer to the Unsubscribe list.</step>
+    </mainSequence>
+</useCase>

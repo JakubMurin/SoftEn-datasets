@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Authenticate User</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Finance App</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated</condition>
+    </successEndConditions>
+    <trigger>HTTP request</trigger>
+    <mainSequence>
+        <step id="S1">User sends an HTTP request to Finance App</step>
+        <step id="S2">Finance App sends an SQL request to Database</step>
+        <step id="S3">Database responds with an SQL response to Finance App</step>
+        <step id="S4">Finance App sends an HTTP response to User</step>
+        <step id="S5">User sends an Authentication request to Finance App</step>
+        <step id="S6">If valid credentials, Finance App responds with Authentication success to User</step>
+        <step id="S7">If invalid credentials, Finance App responds with Authentication failure to User</step>
+        <step id="S8">If forgot password, User requests forgot password to Finance App, and Finance App sends OTP to User</step>
+        <step id="S9">If server timeout, User pings server 3 times, and Finance App responds with Server available to User</step>
+        <step id="S10">Finance App sends an Authentication response to User</step>
+    </mainSequence>
+</useCase>

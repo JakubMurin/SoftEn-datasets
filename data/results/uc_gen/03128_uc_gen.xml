@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Check Assigned Tasks</name>
+    <actors>
+        <actor>Collaborator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Collaborator asks GUI to check assigned tasks</step>
+        <step id="S2">GUI gets assigned entries by invoking AgendaController's getAssignedEntries()</step>
+        <step id="S3">AgendaController gets Repositories instance by calling Repositories' getInstance()</step>
+        <step id="S4">AgendaController gets agenda by calling Repositories' getAgenda()</step>
+        <step id="S5">AgendaController retrieves assigned entries by calling Agenda's getAssignedEntries()</step>
+        <step id="S6">GUI displays the returned assigned entries</step>
+        <step id="S7">Collaborator asks GUI to filter entries by date or status</step>
+        <step id="S8">GUI filters entries by date and status through AgendaController</step>
+        <step id="S9">AgendaController filters entries by date and status in the Agenda</step>
+        <step id="S10">GUI displays the updated entries to the Collaborator</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Access and Control Locker via BLE Mailbox</name>
+    <actors>
+        <actor>User</actor>
+        <actor>BLE Mailbox Central</actor>
+        <actor>BLE Mailbox Peripheral</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has BLE Mailbox app installed</precondition>
+        <precondition>BLE Mailbox Central and Peripheral are operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully accesses and controls the locker via BLE Mailbox</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Connection failure between BLE Mailbox Central and Peripheral</condition>
+        <condition>Authentication failure</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User opens BLE Mailbox Central</step>
+        <step id="S2">User requests scan</step>
+        <step id="S3">BLE Mailbox Central requests permissions</step>
+        <step id="S4">Permissions granted by User</step>
+        <step id="S5">BLE Mailbox Central scans for devices</step>
+        <step id="S6">User selects BLE Mailbox Peripheral</step>
+        <step id="S7">BLE Mailbox Central requests connection to Peripheral</step>
+        <step id="S8">Connection handshaking between Central and Peripheral</step>
+        <step id="S9">BLE Mailbox Central requests state of locker</step>
+        <step id="S10">Peripheral responds with state of locker</step>
+        <step id="S11">User signs in</step>
+        <step id="S12">BLE Mailbox Central signs in to Peripheral</step>
+        <step id="S13">Peripheral authenticates user</step>
+        <step id="S14">BLE Mailbox Central requests state of authentication</step>
+        <step id="S15">Peripheral responds with state of authentication</step>
+        <step id="S16">User requests to change state of locker</step>
+        <step id="S17">BLE Mailbox Central requests to change state of locker</step>
+        <step id="S18">Peripheral changes state of locker</step>
+        <step id="S19">BLE Mailbox Central requests state of locker</step>
+        <step id="S20">Peripheral responds with state of locker</step>
+    </mainSequence>
+</useCase>

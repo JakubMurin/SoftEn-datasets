@@ -1,0 +1,30 @@
+<useCase id="UniqueATM">
+    <name>Perform ATM Transaction</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>ATM Machine</actor>
+        <actor>Bank System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer has a valid ATM card</precondition>
+        <precondition>ATM is operational</precondition>
+        <precondition>Bank System is connected</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Customer completes desired transaction successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Insufficient funds for withdrawal</condition>
+        <condition>Transaction is canceled</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Customer inserts card into ATM</step>
+        <step id="S2">Customer enters PIN</step>
+        <step id="S3">ATM verifies PIN with Bank System</step>
+        <step id="S4">PIN verification successful</step>
+        <step id="S5">Customer selects transaction type</step>
+        <step id="S6">ATM processes selected transaction</step>
+        <step id="S7">Transaction completed</step>
+        <step id="S8">Customer removes card from ATM</step>
+    </mainSequence>
+</useCase>

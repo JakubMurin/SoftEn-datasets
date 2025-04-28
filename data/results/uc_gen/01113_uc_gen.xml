@@ -1,0 +1,20 @@
+<useCase id="UC1">
+	<name>ChangePassword</name>
+	<description>Allows the customer to change their password</description>
+	<actors>
+		<actor>Customer</actor>
+	</actors>
+	<preconditions>
+		<precondition>The customer must authenticate their identity</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The password change request is successfully processed</condition>
+	</successEndConditions>
+	<trigger>Customer inputs new password</trigger>
+	<mainSequence>
+		<step id="S1">Customer inputs their information</step>
+		<step id="S2">System forwards the information to the AccountClass</step>
+		<step id="S3">AccountClass stores the new password</step>
+		<step id="S4">Database saves the new password</step>
+	</mainSequence>
+</useCase>

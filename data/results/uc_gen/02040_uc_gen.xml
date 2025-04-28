@@ -1,0 +1,22 @@
+<useCase id="UC001">
+  <name>Interagir com robot</name>
+  <description>Permitir ao Gestor de frota interagir com um robot do tipo robDroneGo</description>
+  <actors>
+    <actor>Gestor de frota</actor>
+  </actors>
+  <preconditions>
+    <precondition>O Gestor de frota tem acesso ao sistema robDroneGo</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>O robot é inibido com sucesso pelo Gestor de frota</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>O Gestor de frota não consegue selecionar o robot desejado</condition>
+  </failureEndConditions>
+  <trigger>O Gestor de frota deseja inibir um robot</trigger>
+  <mainSequence>
+    <step id="S1">O Gestor de frota inibe um robot</step>
+    <step id="S2">O Sistema robDroneGo solicita que o Gestor selecione um robot</step>
+    <step id="S3">O Gestor de frota seleciona o robot desejado</step>
+  </mainSequence>
+</useCase>

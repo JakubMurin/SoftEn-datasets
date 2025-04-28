@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Provision Server</name>
+    <actors>
+        <actor>admin</actor>
+        <actor>gateway-agent</actor>
+        <actor>apiserver</actor>
+        <actor>db</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin provisions the server through terraform/ansible.</step>
+        <step id="S2">If not enrolled:</step>
+        <step id="S3">Admin generates password and wireguard private key.</step>
+        <step id="S4">Admin enrolls the gateway by sending EnrollGateway request to apiserver.</step>
+        <step id="S5">Apiserver allocates a private IP and inserts/updates gateway information in the database.</step>
+        <step id="S6">Apiserver sends EnrollGatewayResponse back to admin.</step>
+        <step id="S7">Admin generates GatewayConfiguration.</step>
+        <step id="S8">Admin establishes an SSH connection with the gateway-agent.</step>
+        <step id="S9">Gateway-agent inserts the configuration as an environment variable into a file.</step>
+        <step id="S10">When enrolled:</step>
+        <step id="S11">Gateway-agent establishes a secure connection with apiserver.</step>
+    </mainSequence>
+</useCase>

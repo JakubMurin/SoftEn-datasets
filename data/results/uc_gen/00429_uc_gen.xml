@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>View Chapter Content</name>
+    <description>User views the content of a specific chapter after purchasing it.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ChapterContentView</actor>
+        <actor>TransactionsController</actor>
+        <actor>Database</actor>
+        <actor>MsgService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has logged in and has enough credit to purchase the chapter.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is able to view the content of the selected chapter successfully.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the chapter title and then on the purchase button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the chapter title.</step>
+        <step id="S2">User clicks on the purchase button.</step>
+        <step id="S3">TransactionsController requests the API.</step>
+        <step id="S4">TransactionsController process AddTransactionBuyChapter() function.</step>
+        <step id="S5">TransactionsController queries data from the Database.</step>
+        <step id="S6">Database returns the queried data to TransactionsController.</step>
+        <step id="S7">TransactionsController triggers MsgActionReturn() in MsgService.</step>
+        <step id="S8">MsgService sends the response payload format to ChapterContentView.</step>
+        <step id="S9">ChapterContentView displays the content of the selected chapter to the User.</step>
+    </mainSequence>
+</useCase>

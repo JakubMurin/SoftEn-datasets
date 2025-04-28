@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Application Management</name>
+    <description>Manage the application lifecycle</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Application Analyzer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Application is launched successfully</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Application health is verified</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Application health check failed</condition>
+    </failureEndConditions>
+    <trigger>Developer requests application management</trigger>
+    <mainSequence>
+        <step id="S1">Developer launches the application</step>
+        <step id="S2">Application Orchestrator initiates app launch</step>
+        <step id="S3">Binary component handles app launch</step>
+        <step id="S4">Sails.js selects stack based on name, environment, and configuration</step>
+        <step id="S5">Developer checks the health of the application</step>
+        <step id="S6">Application Analyzer requests application health check</step>
+        <step id="S7">Application Orchestrator performs app health check</step>
+        <step id="S8">Binary component handles app health check</step>
+        <step id="S9">Sails.js checks the application based on name and environment</step>
+        <step id="S10">Application Analyzer rebalances the application instance</step>
+        <step id="S11">Application Orchestrator initiates app rebalance</step>
+        <step id="S12">Binary component rebalances the specified app instance</step>
+        <step id="S13">Sails.js selects environment for the app instance</step>
+    </mainSequence>
+</useCase>

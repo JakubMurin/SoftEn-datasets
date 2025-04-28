@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Provide Similar Video Recommendations</name>
+    <description>User enters search criteria to find similar videos and view detailed segment information.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Search Interface</actor>
+        <actor>Content Identification Service</actor>
+        <actor>Database</actor>
+        <actor>Content Recommendation Engine</actor>
+        <actor>Video Processing Module</actor>
+        <actor>User Interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the content recommendation system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User views similar video recommendations and detailed segment information successfully.</condition>
+    </successEndConditions>
+    <trigger>User triggers the search for similar videos.</trigger>
+    <mainSequence>
+        <step id="S1">User enters search criteria for similar videos.</step>
+        <step id="S2">Search Interface processes search criteria.</step>
+        <step id="S3">Content Identification Service queries video fingerprints and metadata from the Database.</step>
+        <step id="S4">Content Identification Service lists candidate videos based on fingerprinting results.</step>
+        <step id="S5">Content Recommendation Engine suggests perceptually similar videos based on the list of candidates.</step>
+        <step id="S6">User Interface requests detailed comparison and video segments from Video Processing Module.</step>
+        <step id="S7">Video Processing Module retrieves video segments and features from the Database.</step>
+        <step id="S8">Video Processing Module provides detailed segments information for similar videos to the User Interface.</step>
+        <step id="S9">User Interface displays similar videos and segment details to the User.</step>
+    </mainSequence>
+</useCase>

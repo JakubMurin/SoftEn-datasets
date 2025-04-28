@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>List Floors with Passages</name>
+    <description>Retrieve a list of floors with passages to other buildings</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actor wants to list floors with passages to other buildings</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Container returns floors with passages</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Container returns error message</condition>
+    </failureEndConditions>
+    <trigger>Actor requests to list floors with passages</trigger>
+    <mainSequence>
+        <step id="S1">Actor intends to list floors with passages to other buildings</step>
+        <step id="S2">Container sends request to API to get floors with passages</step>
+        <step id="S3">API responds with status code</step>
+        <step id="S4">Container receives floors with passages</step>
+    </mainSequence>
+</useCase>

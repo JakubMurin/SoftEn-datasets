@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Online Course Payment</name>
+    <description>User pays for online course using Alipay</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend System</actor>
+        <actor>Learning Center Service</actor>
+        <actor>Order Service</actor>
+        <actor>Order Database</actor>
+        <actor>Alipay</actor>
+        <actor>Message Queue</actor>
+    </actors>
+    <preconditions>
+        <precondition>User needs to have an active account in the system
+        </precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Payment is successfully processed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Payment process fails</condition>
+    </failureEndConditions>
+    <trigger>User clicks on "Pay" button</trigger>
+    <mainSequence>
+        <step id="S1">User clicks "Pay" button</step>
+        <step id="S2">Frontend adds course selection record</step>
+        <step id="S3">Order service adds order with provided information</step>
+        <step id="S4">Alipay successfully processes payment</step>
+        <step id="S5">User scans Alipay QR code</step>
+        <step id="S6">Frontend requests payment with payment ID</step>
+        <step id="S7">Order service checks payment status</step>
+        <step id="S8">Alipay responds with payment page</step>
+        <step id="S9">User inputs password</step>
+        <step id="S10">User clicks "Complete Payment"</step>
+        <step id="S11">Order service updates payment status based on Alipay response</step>
+        <step id="S12">Send course payment success notification</step>
+        <step id="S13">Order Service confirms payment success</step>
+    </mainSequence>
+</useCase>

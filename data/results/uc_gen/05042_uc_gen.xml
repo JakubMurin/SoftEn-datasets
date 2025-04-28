@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Configure Event Publishing</name>
+    <description>
+        The use case involves configuring event publishing for a component.
+    </description>
+    <actors>
+        <actor>Operations</actor>
+        <actor>Component</actor>
+        <actor>ComponentOperator</actor>
+        <actor>PublishedNotification</actor>
+        <actor>EventPublishingEnablementOperator</actor>
+        <actor>Event Manager (TMFC019)</actor>
+    </actors>
+    <preconditions>
+        <precondition>A component needs to install event publishing functionality.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Event publishing URL is successfully configured.</condition>
+    </successEndConditions>
+    <trigger>Operations initiates the event publishing configuration process.</trigger>
+    <mainSequence>
+        <step id="S1">Operations installs event publishing for the component.</step>
+        <step id="S2">ComponentOperator creates a separate publishedNotification resource for each published notification.</step>
+        <step id="S3">PublishedNotification is created for each published notification.</step>
+        <step id="S4">EventPublishingEnablementOperator searches for a matching topic.</step>
+        <step id="S5">EventPublishingEnablementOperator configures the topic Event Hub.</step>
+        <step id="S6">Component configures the event publishing URL.</step>
+        <step id="S7">PublishedNotification is updated.</step>
+        <step id="S8">ComponentOperator updates the component.</step>
+    </mainSequence>
+</useCase>

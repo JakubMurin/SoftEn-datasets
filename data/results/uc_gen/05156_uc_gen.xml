@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Delete a Task/Activity</name>
+    
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>The Administrator is logged into the system.</precondition>
+    </preconditions>
+    
+    <trigger>User selects a task/activity to be deleted.</trigger>
+    
+    <mainSequence>
+        <step id="S1">Administrator selects the task/activity to be deleted.</step>
+        <step id="S2">Web Interface receives the request for deletion.</step>
+        <step id="S3">Server receives the deletion request from Web Interface.</step>
+        <step id="S4">Server sends a query to the Database to delete the task/activity.</step>
+        <step id="S5">Database confirms the deletion of the task/activity to the Server.</step>
+        <step id="S6">Server confirms the task/activity deletion to the Web Interface.</step>
+        <step id="S7">Web Interface displays a confirmation message to the Administrator.</step>
+    </mainSequence>
+</useCase>

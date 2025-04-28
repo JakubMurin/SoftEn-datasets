@@ -1,0 +1,19 @@
+<useCase id="1">
+  <name>Advanced Staking: early exit</name>
+  <actors>
+    <actor>Staker</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Complete unstake process with unstakeInfo at staking</step>
+    <step id="S2">Transfer stakedAmount using proxy at zkp to staker</step>
+    <step id="S3">Process onAction at RewardMaster upon unstaking</step>
+    <step id="S4">Perform getRewardAdvice at AdvancedStakeController</step>
+    <step id="S5">Initiate earlyUnstake with unstakeInfo at MASP v.1 (w/ proxy)</step>
+    <step id="A1">Generate Leaf using preimage at PublicLeaf</step>
+    <step id="A1S1">Return leafHash</step>
+    <step id="A2">Generate Nullifier using preimage at PublicLeaf</step>
+    <step id="A2S1">Return nullifierHash</step>
+    <step id="S6">Transfer rewardAmount to staker at MASP v.1 (w/ proxy)</step>
+    <step id="S7">Read "EarlyUnstake" events during struct completion step at AdvancedStakeController</step>
+  </mainSequence>
+</useCase>

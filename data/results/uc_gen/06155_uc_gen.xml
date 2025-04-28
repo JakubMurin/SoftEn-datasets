@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Advanced staking</name>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <trigger>%EMPTY%</trigger>
+    <mainSequence>
+        <step id="S1">Staker stakes using zZKPspendPubKey and zZKPcipherText, PRPspendPubKey and PRPcipherText</step>
+        <step id="S2">Staking service creates a stake (_createStake())</step>
+        <step id="S3">Transfers stakedAmount from Staker to Staking</step>
+        <step id="S4">Checks if _terms.isRewarded</step>
+        <step id="S5">If rewarded, sends stakedAmount affirmation (_sendStakedMsg())</step>
+        <step id="S6">RewardMaster receives onAction()</step>
+        <step id="S7">AdvancedStakeController gets RewardAdvice</step>
+        <step id="S8">AdvancedStakeController checks if amount is valid</step>
+        <step id="S9">Transfers rewardAmount from treasury to MASP via ZKPToken</step>
+        <step id="S10">Deposits for features of zZKP and PRP encryption</step>
+        <step id="S11">RewardTreasury forwards rewardAmount to pool</step>
+        <step id="S12">Pool deposits and generates ZKP and PRP UTXOs</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>Edit Question in Quiz</name>
+	<actors>
+		<actor>User</actor>
+		<actor>Controller</actor>
+	    <actor>Course</actor>
+		<actor>Quiz</actor>
+		<actor>Question</actor> 
+	</actors>
+	<preconditions>
+		<precondition>User has appropriate permissions and authorization to edit a question in a quiz.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Question successfully edited and updated in the quiz.</condition>
+	</successEndConditions>
+	<trigger>User requests to edit a question in a quiz within a course.</trigger>			 
+	<mainSequence>
+		<step id="S1">User requests to edit a question in a quiz within a course.</step>
+		<step id="S2">Controller searches for the course by course UUID.</step>
+		<step id="S3">If the course is found, it proceeds to search for the teacher of the course.</step>
+		<step id="S4">If teacher is found, search for the quiz by quiz ID.</step>
+		<step id="S5">If quiz is found, search for the question within the quiz by question ID.</step>
+		<step id="S6">If question is found, Controller edits the question with new data.</step>
+		<step id="S7">If edit is successful, user is notified that question is successfully edited.</step>
+		 
+	</mainSequence>
+	
+</useCase>

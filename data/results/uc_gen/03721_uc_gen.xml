@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Create Product</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>admin-api</actor>
+        <actor>payment-processor</actor>
+        <actor>Stripe</actor>
+        <actor>DAO</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin wants to create a new product.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The product is successfully created and saved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The product creation fails.</condition>
+    </failureEndConditions>
+    <trigger>Admin sends a request to create a product.</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a POST request to admin-api to create a product.</step>
+        <step id="S2">admin-api forwards the request to payment-processor to create a product SKU.</step>
+        <step id="S3">payment-processor sends a POST request to Stripe to create a product with the SKU.</step>
+        <step id="S4">Stripe responds with the product ID to payment-processor.</step>
+        <step id="S5">payment-processor sends the product ID back to admin-api.</step>
+        <step id="S6">admin-api saves the product with the product ID in DAO.</step>
+        <step id="S7">DAO saves the product with the SKU.</step>
+        <step id="S8">admin-api responds with the SKU to Admin.</step>
+    </mainSequence>
+</useCase>

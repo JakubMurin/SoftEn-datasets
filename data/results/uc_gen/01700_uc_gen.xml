@@ -1,0 +1,31 @@
+<useCase id="example_usecase">
+    <name>User interacts with HttpServer to handle client requests</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HttpServer</actor>
+        <actor>GestionDesAccess</actor>
+        <actor>GestionDesErrors</actor>
+        <actor>ServerSocket</actor>
+        <actor>DemandeConnection</actor>
+    </actors>
+    <preconditions>
+        <precondition>HttpServer initiated successfully.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client request handled successfully.</condition>
+    </successEndConditions>
+    <trigger>User calls main to start interacting with HttpServer.</trigger>
+    <mainSequence>
+        <step id="S1">User calls main(String[] args) on HttpServer.</step>
+        <step id="S2">HttpServer initializes.</step>
+        <step id="S3">HttpServer generates List of IP addresses.</step>
+        <step id="S4">HttpServer creates new ServerSocket with available port.</step>
+        <step id="S5">HttpServer creates new GestionDesAccess.</step>
+        <step id="S6">HttpServer creates new GestionDesErrors.</step>
+        <step id="S7">HttpServer creates new DemandeConnection.</step>
+        <step id="S8">HttpServer starts handling client requests.</step>
+        <step id="S9">ServerSocket waits and accepts incoming client connection.</step>
+        <step id="S10">DemandeConnection handles client's request with the given accesses and errors.</step>
+        <step id="S11">HttpServer finishes handling requests and response back to User.</step>
+    </mainSequence>
+</useCase>

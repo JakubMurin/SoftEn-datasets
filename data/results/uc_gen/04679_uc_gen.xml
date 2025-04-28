@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Track Game Stats</name>
+    <description>As a Game, I want to track various game statistics for analysis.</description>
+    <actors>
+        <actor>Game</actor>
+        <actor>StatsTrackingSystem</actor>
+        <actor>StorageManager</actor>
+        <actor>StatsTrackerFactory</actor>
+        <actor>NumBlocksPlacedStatTracker</actor>
+        <actor>EventManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>A Game instance is created.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Game stats are successfully saved to disk.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Game stats fail to save due to technical issues.</condition>
+    </failureEndConditions>
+    <trigger>Game triggers the event GameEndedEvent.</trigger>
+    <mainSequence>
+        <step id="S1">Create an instance of StatsTrackingSystem.</step>
+        <step id="S2">Load stats from storage.</step>
+        <step id="S3">For each stat in statsStorage, create a corresponding StatTracker.</step>
+        <step id="S4">Register the closure for BlockPlacedEvent in NumBlocksPlacedStatTracker.</step>
+        <step id="S5">Register the closure for GameEndedEvent in EventManager.</step>
+        <step id="S6">Play the game.</step>
+        <step id="S7">Fire the GameEndedEvent.</step>
+        <step id="S8">Trigger the GameEndedEvent in EventManager.</step>
+        <step id="S9">Save the game stats.</step>
+        <step id="S10">Save the stats to disk after converting StatTrackers to StatStorage.</step>
+    </mainSequence>
+</useCase>

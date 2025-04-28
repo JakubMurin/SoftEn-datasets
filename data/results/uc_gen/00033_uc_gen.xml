@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Update User Profile</name>
+    <description>As a User, I want to update my profile information.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Profile is successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Profile update fails due to system error.</condition>
+    </failureEndConditions>
+    <trigger>User intends to update profile.</trigger>
+    <mainSequence>
+        <step id="S1">User triggers the update profile action.</step>
+        <step id="S2">Service receives the request to update profile.</step>
+        <step id="S3">Service forwards the update to Message Broker.</step>
+        <step id="S4">Message Broker processes the update request.</step>
+        <step id="S5">Service notifies User about successful profile update.</step>
+        <step id="S6">User requests for profile information from Replica server.</step>
+        <step id="S7">Replica responds with stale profile data.</step>
+        <step id="S8">User shows confusion upon receiving stale data/not finding the updates.</step>
+    </mainSequence>
+</useCase>

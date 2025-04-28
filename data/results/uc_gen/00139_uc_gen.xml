@@ -1,0 +1,23 @@
+<useCase id="UC001">
+	<name>Manage Cloud</name>
+	<description>As an Ops Manager, I want to manage cloud events to ensure smooth operations</description>
+	<actors>
+		<actor>Ops Manager</actor>
+	</actors>
+	<preconditions>
+		<precondition>The Ops Manager has access to the cloud management system</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>All cloud events are successfully updated</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Any error in updating cloud events</condition>
+	</failureEndConditions>
+	<trigger>fleet-events-inc</trigger>
+	<mainSequence>
+		<step id="S1">Ops Manager triggers fleet events increment</step>
+		<step id="S2">fleet sends events increment (name, amount) to Cloud Stack</step>
+		<step id="S3">Cloud Stack updates events with new values</step>
+		<step id="S4">Cloud Stack handles events</step>
+	</mainSequence>
+</useCase>

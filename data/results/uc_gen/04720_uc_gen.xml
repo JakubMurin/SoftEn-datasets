@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Manage Charging Transaction</name>
+    <description>Allows the user to initiate, monitor, and complete a charging transaction for an electric vehicle.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Core System</actor>
+        <actor>Libocpp</actor>
+        <actor>CSMS</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to a charging station.</precondition>
+        <precondition>Core System is operational.</precondition>
+        <precondition>Libocpp is connected to the charging station.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Charging transaction successfully completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Charging transaction failed due to system crash.</condition>
+    </failureEndConditions>
+    <trigger>User initiates a charging transaction.</trigger>
+    <mainSequence>
+        <step id="S1">User swipes ID tag to start transaction.</step>
+        <step id="S2">Core System authorizes the transaction.</step>
+        <step id="S3">User plugs in the cable.</step>
+        <step id="S4">Libocpp sends TransactionEventRequest::Started to CSMS.</step>
+        <step id="S5">Libocpp inserts transaction details into the database.</step>
+        <step id="S6">User pauses charging of the car.</step>
+        <step id="S7">Libocpp updates transaction charging state and sequence number in the database.</step>
+        <step id="S8">Core System constructs ChargePoint in case of power outage or libocpp crash.</step>
+        <step id="S9">Libocpp gets and re-initializes transaction details for each evse_id.</step>
+        <step id="S10">Libocpp continues normal operations.</step>
+        <step id="S11">User resumes charging of the car.</step>
+        <step id="S12">Libocpp updates transaction charging state and sequence number in the database.</step>
+        <step id="S13">Libocpp prints a warning if there is no known transaction.</step>
+        <step id="S14">Libocpp sends TransactionEventRequest::Ended to CSMS and deletes the transaction from the database.</step>
+    </mainSequence>
+</useCase>

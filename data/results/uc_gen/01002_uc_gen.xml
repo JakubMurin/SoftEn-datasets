@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Release Process</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>AnotherDeveloper</actor>
+        <actor>Reviewer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developers have made changes to smart contracts and addresses.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Smart contracts and addresses are successfully updated and packages are built and published.</condition>
+    </successEndConditions>
+    <trigger>Developers complete changes and are ready to release.</trigger>
+    <mainSequence>
+        <step id="S1">Developer changes smart contracts and commits.</step>
+        <step id="S2">Developer creates a changeset and commits it.</step>
+        <step id="S3">Developer pushes changes and opens a PR.</step>
+        <step id="S4">Reviewer approves the PR.</step>
+        <step id="S5">Developer deploys changes to all chains.</step>
+        <step id="S6">Blockchain is updated with new smart contracts.</step>
+        <step id="S7">Addresses JSON files are updated.</step>
+        <step id="S8">Developer pushes updated addresses JSON files.</step>
+        <step id="S9">Developer merges changes to main.</step>
+        <step id="S10">ReleaseGithubAction includes changes to main.</step>
+        <step id="S11">VersionPackagesPR creates a PR with new versions applied to package.jsons.</step>
+        <step id="S12">AnotherDeveloper pushes a new changeset.</step>
+        <step id="S13">ReleaseGithubAction includes the new changeset.</step>
+        <step id="S14">VersionPackagesPR updates PR with new versions applied to package.jsons.</step>
+        <step id="S15">Developer merges changes to main.</step>
+        <step id="S16">ReleaseGithubAction includes new versions in package.jsons.</step>
+        <step id="S17">ReleaseGithubAction builds and publishes packages using npm.</step>
+    </mainSequence>
+</useCase>

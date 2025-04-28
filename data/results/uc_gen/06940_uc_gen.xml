@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>User OAuth Login</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client Application</actor>
+        <actor>API Gateway</actor>
+        <actor>Auth Service</actor>
+        <actor>OAuth Provider</actor>
+        <actor>Auth DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has chosen OAuth login</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Login successful, token returned</condition>
+    </successEndConditions>
+    <trigger>User chooses OAuth login</trigger>
+    <mainSequence>
+        <step id="S1">User chooses OAuth login</step>
+        <step id="S2">User is redirected to authorization on Client Application</step>
+        <step id="S3">User authorizes and grants access to OAuth Provider</step>
+        <step id="S4">OAuth Provider returns with OAuth token to Client Application</step>
+        <step id="S5">Client Application sends POST /oauth/login request with OAuth token to API Gateway</step>
+        <step id="S6">API Gateway forwards POST /oauth/login request with OAuth token to Auth Service</step>
+        <step id="S7">Auth Service verifies OAuth token with OAuth Provider</step>
+        <step id="S8">Auth Service verifies email in Auth DB</step>
+        <step id="S9">Auth Service sends login successful message with token to API Gateway</step>
+        <step id="S10">API Gateway sends login successful message with token to Client Application</step>
+        <step id="S11">Client Application displays successful login message to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">OAuth token verification error occurs</step>
+            <step id="A1S2">Auth Service sends error message "Invalid OAuth token" to API Gateway</step>
+            <step id="A1S3">API Gateway forwards error message "Invalid OAuth token" to Client Application</step>
+            <step id="A1S4">Client Application displays error message "Invalid OAuth token" to User</step>
+        </asteps>
+        <asteps id="A2" start="S8">
+            <step id="A2S1">Email not found error occurs</step>
+            <step id="A2S2">Auth Service sends error message "Email not found" to API Gateway</step>
+            <step id="A2S3">API Gateway forwards error message "Email not found" to Client Application</step>
+            <step id="A2S4">Client Application displays error message "Email not found" to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

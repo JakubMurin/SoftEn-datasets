@@ -1,0 +1,13 @@
+<useCase id="UC001">
+    <name>Perform POST on /foo with ID Poison on CDN by Attacker</name>
+    <actors>
+        <actor>Attacker</actor>
+    </actors>
+    <trigger>Attacker sends POST request to CDN with /foo endpoint including ID Poison</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends POST request to CDN with /foo endpoint containing Poison</step>
+        <step id="S2">CDN forwards the request to Proxy</step>
+        <step id="S3">Proxy forwards the request to Backend</step>
+        <step id="S4">Backend responds to Proxy with status 200 for /foo</step>
+    </mainSequence>
+</useCase>

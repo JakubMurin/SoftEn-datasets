@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Configure camera resolution for device</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User configures image resolution on the device</step>
+        <step id="S2">Mobile App sets the image resolution for the device</step>
+        <step id="S3">Mobile App hands over the device CID</step>
+        <step id="S4">Server finds active TCP connection</step>
+        <step id="S5">Server informs Mobile App about device unavailability (tcpconn_not_found)</step>
+        <step id="S6">Mobile App displays device unavailability message to User (tcpconn_not_found)</step>
+        <step id="S7">Server sets configuration on Esp32 (tcpconn_found)</step>
+        <step id="S8">Esp32 presents the configuration to Server (tcpconn_found)</step>
+        <step id="S9">Server sends current device configuration to Mobile App (tcpconn_found)</step>
+        <step id="S10">Mobile App updates the view (tcpconn_found)</step>
+        <step id="S11">Mobile App displays successful settings update message to User (tcpconn_found)</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Run Transaction Endpoint</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>PluginLedgerConnectorPolkadot</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Caller activates the transaction</step>
+        <step id="S2">Caller sends a RunTransactionRequest to PluginLedgerConnectorPolkadot</step>
+        <step id="S3">PluginLedgerConnectorPolkadot checks the web3SigningCredential</step>
+        <step id="S4">PluginLedgerConnectorPolkadot transacts using CactusKeychainRef if web3SigningCredential is CACTUSKEYCHAINREF</step>
+        <step id="S5">PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller</step>
+        <step id="S6">PluginLedgerConnectorPolkadot transacts using MnemonicString if web3SigningCredential is MNEMONICSTRING</step>
+        <step id="S7">PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller</step>
+        <step id="S8">PluginLedgerConnectorPolkadot transacts using Signed transaction if web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is defined</step>
+        <step id="S9">PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller</step>
+        <step id="S10">PluginLedgerConnectorPolkadot throws an error if web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is not defined</step>
+        <step id="S11">PluginLedgerConnectorPolkadot throws an error if web3SigningCredential is unrecognized</step>
+    </mainSequence>
+</useCase>

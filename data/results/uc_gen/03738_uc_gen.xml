@@ -1,0 +1,26 @@
+<useCase id="UC01">
+    <name>Add New Edge Agent</name>
+    <description>Alice adds a new edge agent to the system</description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>"Edge Agent 1"</actor>
+        <actor>"Edge Agent 2"</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice has chosen 'existing' or 'add new device' from options</precondition>
+        <precondition>"Edge Agent 2" has been provisioned</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice sends 'add' message to "Edge Agent 2"</step>
+        <step id="S2">"Edge Agent 2" provides instructions for adding Agent 2 and selecting authorizations to Alice</step>
+        <step id="S3">Alice sends 'add agent with selected authorizations' to "Edge Agent 1"</step>
+        <step id="S4">"Edge Agent 1" displays provisioning code for adding Agent 2 to Alice</step>
+        <step id="S5">Alice shows the code to "Edge Agent 2"</step>
+        <step id="S6">"Edge Agent 2" scans the code from Agent 1</step>
+        <step id="S7">"Edge Agent 2" sends add request and authentication keys to "Edge Agent 1"</step>
+        <step id="S8">"Edge Agent 1" stores the authentication keys from "Edge Agent 2" in the wallet</step>
+        <step id="S9">"Edge Agent 1" confirms the addition of Agent 2 to Alice</step>
+        <step id="S10">"Edge Agent 1" syncs data, token data, and claims to "Edge Agent 2"</step>
+        <step id="S11">"Edge Agent 2" stores the received data in the wallet</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>View All Job Applications</name>
+    <description>This use case involves viewing all the job applications in the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated and has access to view job applications.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All job applications are successfully displayed to the user.</condition>
+    </successEndConditions>
+    <trigger>User requests to view all the job applications existing in the system.</trigger>
+    <mainSequence>
+        <step id="S1">User requests the display of all job applications.</step>
+        <step id="S2">DisplayApplicationDataUI retrieves job applications data.</step>
+        <step id="S3">At least one job application exists in the system</step>
+        <step id="S4">DisplayApplicationDataController fetches all job applications.</step>
+        <step id="S5">ApplicationRepository returns a list of job applications.</step>
+        <step id="S6">The controller receives a list of job applications.</step>
+        <step id="S7">DisplayApplicationDataUI displays the received list of applications to the user.</step>
+        <step id="S8">User sees the list of applications on the screen.</step>
+        <step id="S9">User selects a specific job application from the list.</step>
+        <step id="S10">DisplayApplicationDataUI sends the selected job application ID to DisplayApplicationDataController.</step>
+        <step id="S11">DisplayApplicationDataController fetches the data of the selected job application.</step>
+        <step id="S12">ApplicationRepository provides the details of the selected job application.</step>
+        <step id="S13">The controller receives the specific job application data.</step>
+        <step id="S14">DisplayApplicationDataUI displays the data of selected job application to the user,</step>
+        <step id="S15">User observes the application details on the screen,</step>
+        <step id="S16">View of all job applications complete.</step>
+    </mainSequence>
+</useCase>

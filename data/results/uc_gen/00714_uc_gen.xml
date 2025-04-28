@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>View List of Components</name>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>DIMS UI</actor>
+        <actor>DIMS Backend</actor>
+        <actor>DAMS Database</actor>
+    </actors>
+    <trigger>Repository Manager selects an object to list components</trigger>
+    <mainSequence>
+        <step id="S1">DIMS UI requests to list components from DIMS Backend</step>
+        <step id="S2">DIMS Backend queries for components of the selected object from DAMS Database</step>
+        <step id="S3">DAMS Database returns components data to DIMS Backend</step>
+        <step id="S4">DIMS Backend sorts components in their appropriate order</step>
+        <step id="S5">DIMS UI shows the sorted components</step>
+        <step id="S6">Repository Manager views and displays components in order</step>
+    </mainSequence>
+</useCase>

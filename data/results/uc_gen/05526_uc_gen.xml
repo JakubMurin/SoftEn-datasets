@@ -1,0 +1,30 @@
+<useCase id="UC_001">
+    <name>Excel Upload Process</name>
+    <description>This use case describes the process of uploading data from Excel.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>GUI CMS</actor>
+        <actor>Batch API Server</actor>
+        <actor>Queue and Log Storage MySQL</actor>
+        <actor>Excel Extraction Batch</actor>
+        <actor>Work Processing Batch</actor>
+        <actor>External Infrastructure Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be authenticated and have permission to upload data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data uploaded successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to upload data.</condition>
+    </failureEndConditions>
+    <trigger>User initiates Excel upload request.</trigger>
+    <mainSequence>
+        <step id="S1">User triggers Excel upload from GUI CMS.</step>
+        <step id="S2">GUI CMS forwards the upload request to the Batch API Server.</step>
+        <step id="S3">Batch API Server saves the Excel data to the database.</step>
+        <step id="S4">Batch API Server stores job metadata.</step>
+        <step id="S5">Batch API Server notifies GUI CMS upon completion.</step>
+    </mainSequence>
+</useCase>

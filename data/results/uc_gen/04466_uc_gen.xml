@@ -1,0 +1,17 @@
+<useCase id="UC123">
+    <name>Delete Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User sends a request to delete a task by ID to the TaskController</step>
+        <step id="S2">TaskController activates to handle the DELETE request</step>
+        <step id="S3">TaskController forwards the request to TaskService to delete the task</step>
+        <step id="S4">TaskService activates to process the deletion of the task</step>
+        <step id="S5">TaskService communicates with TaskRepository to perform the deletion by ID</step>
+        <step id="S6">TaskRepository deletes the task by ID and returns a void to TaskService</step>
+        <step id="S7">TaskService receives void from TaskRepository</step>
+        <step id="S8">TaskService sends a void response back to TaskController</step>
+        <step id="S9">TaskController deactivates and responds with a NO_CONTENT ResponseEntity to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User logs in using username and password</description>
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Login API</actor>
+        <actor>User database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User Agent must include CSRF token in login request</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated and receives session cookie</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User authentication fails and receives unauthorized status</condition>
+    </failureEndConditions>
+    <trigger>Login request received by Login API</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends login request with username, password, and CSRF token</step>
+        <step id="S2">Login API validates login request</step>
+        <step id="S3">Login API retrieves user information (ID, role, password hash, salt) from User database</step>
+        <step id="S4">Login API returns result of request</step>
+        <step id="S5">User receives encrypted session cookie containing user id and timeout</step>
+        <step id="S6">User receives HTTP 401 Unauthorized status</step>
+    </mainSequence>
+</useCase>

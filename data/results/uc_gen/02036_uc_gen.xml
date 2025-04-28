@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Remove Effect from Active Audio Source</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User selects to remove an effect from the active audio source.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the removal process.</step>
+        <step id="S2">Dropdown Item handles the effect removal functionality.</step>
+        <step id="S3">Dropdown closes the effect panel on request.</step>
+        <step id="S4">Audio Effect Action triggers the removal of the effect from the active audio source.</step>
+        <step id="S5">Audio Effect Saga removes the effect using a defined saga.</step>
+        <step id="S6">EventEmitter emits event 'EFFECT_DELETE_EFFECT' to PowerShell.</step>
+        <step id="S7">Audio Controller permanently removes the effect from the active audio source.</step>
+        <step id="S8">Dropdown confirms that effect has been successfully removed.</step>
+    </mainSequence>
+</useCase>

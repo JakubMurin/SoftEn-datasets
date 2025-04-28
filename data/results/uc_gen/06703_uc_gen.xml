@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Keychain Entry Transactions Handling</name>
+    <description>
+        Use case to manage transactions related to keychain entry.
+    </description>
+    <actors>
+        <actor>User A</actor>
+        <actor>API Client</actor>
+        <actor>API Server</actor>
+        <actor>AWS SM Connector</actor>
+    </actors>
+    <preconditions>
+        <precondition>User A requests a keychain entry transaction.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The keychain entry transaction is successfully processed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The specified secret key cannot be found in AWS Secrets Manager.</condition>
+    </failureEndConditions>
+    <trigger>"Tx HasKeychainEntryV1" request triggers the transaction.</trigger>
+    <mainSequence>
+        <step id="S1">API Client receives the "Request" from User A for the transaction.</step>
+        <step id="S2">API Server sends "set(key,value)" request to AWS SM to set key-value pair.</step>
+        <step id="S3">AWS SM gets the AWS client.</step>
+        <step id="S4">AWS SM awaits to describe the secret using the AWS client.</step>
+        <step id="S5">If successful, AWS SM responds "True" to API Server.</step>
+        <step id="S6">If an error occurs, AWS SM sends the error message "Secrets Manager can't find the specified secret" to API Server.</step>
+        <step id="S7">API Server sends the "Response" to API Client.</step>
+        <step id="S8">API Client formats the response.</step>
+        <step id="S9">API Client sets the keychain entry and responds with "SetKeychainEntryResponse" to User A.</step>
+    </mainSequence>
+</useCase>

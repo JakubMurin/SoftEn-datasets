@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Perform Scanner Job</name>
+    <description>As an admin user, I want to start a scanner job to scan for specific specifications.</description>
+    <actors>
+        <actor>admin_user</actor>
+        <actor>admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The scanner job specifications are available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The scanner job has started successfully.</condition>
+    </successEndConditions>
+    <trigger>Start Scanner job</trigger>
+    <mainSequence>
+        <step id="S1">Admin starts the scanner job.</step>
+        <step id="S2">Admin sends the scan specifications to the message queue.</step>
+        <step id="S3">Scanner job started successfully.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC01">
+    <name>Hide Story</name>
+    <description>User clicks on the hide story button to remove a story from view.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryPublishView</actor>
+        <actor>StoriesController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has story management privileges.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Story successfully hidden from user view.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the hide story button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the hide story button.</step>
+        <step id="S2">StoryPublishView receives the request to hide the story.</step>
+        <step id="S3">StoriesController processes the request to delete the story.</step>
+        <step id="S4">StoriesController queries the database for necessary data.</step>
+        <step id="S5">Database returns the requested data to StoriesController.</step>
+        <step id="S6">StoriesController formats the response payload.</step>
+        <step id="S7">StoryPublishView displays the Stories Management Page to the User.</step>
+    </mainSequence>
+</useCase>

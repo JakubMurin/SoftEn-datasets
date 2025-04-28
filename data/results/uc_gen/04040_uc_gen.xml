@@ -1,0 +1,46 @@
+<useCase id="UC1">
+    <name>Charging Transaction Management</name>
+    <description>Manage the charging transactions between user, core system, libocpp, database, and CSMS</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Core System</actor>
+        <actor>Libocpp</actor>
+        <actor>Database</actor>
+        <actor>CSMS</actor>
+    </actors>
+    <preconditions>
+        <precondition>Core system is operational</precondition>
+        <precondition>Libocpp is functioning correctly</precondition>
+        <precondition>Database is accessible</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Charging transaction completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Charging transaction failed due to system crash or power outage</condition>
+    </failureEndConditions>
+    <trigger>User swipes the ID tag to start a transaction</trigger>
+    <mainSequence>
+        <step id="S1">User swipes ID tag</step>
+        <step id="S2">Core authorizes the transaction</step>
+        <step id="S3">User plugs in the cable</step>
+        <step id="S4">Core initiates the transaction</step>
+        <step id="S5">User pauses charging of car</step>
+        <step id="S6">Core updates charging state</step>
+        <step id="S7">Core continues charging</step>
+        <step id="S8">Core finishes the transaction</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">Database does not contain transaction</step>
+            <step id="A1S2">Libocpp retrieves transaction details</step>
+            <step id="A1S3">Libocpp re-initializes transaction</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Libocpp encounters an error</description>
+            <step id="E1S1">No known transaction to end</step>
+        </esteps>
+    </errorSteps>
+</useCase>

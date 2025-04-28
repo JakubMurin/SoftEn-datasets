@@ -1,0 +1,31 @@
+<useCase id="1">
+    <name>Provision Fault Management Job and Report</name>
+    <description>As a Business User, I want to provision a Fault Management Job and Report in order to streamline monitoring and reporting processes.</description>
+    <actors>
+        <actor>Business User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Business User has access to the Fault Management system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management Job and Report are successfully provisioned.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to provision Fault Management Job and Report.</condition>
+    </failureEndConditions>
+    <trigger>Business user requests to provision a Fault Management Job and Report.</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers as a listener for Fault Management Job and Report notifications in the Hub.</step>
+        <step id="S2">Business User creates a Fault Management Job in the SOF:FaultManagement system.</step>
+        <step id="S3">Fault Management Job is created successfully with a response sent to the Business User.</step>
+        <step id="S4">Fault Management Job generates necessary data.</step>
+        <step id="S5">Reporting period elapses.</step>
+        <step id="S6">Fault Management Report is created based on the Job.</step>
+        <step id="S7">Fault Management Report collection process starts.</step>
+        <step id="S8">Fault Management Report data is collected and report is marked as completed.</step>
+        <step id="S9">Report ready event is triggered as scheduled elapses.</step>
+        <step id="S10">Fault Management Job is marked as completed or scheduled.</step>
+        <step id="S11">Business User requests to get the Report from SOF:FaultManagement system.</step>
+        <step id="S12">Fault Management Report is retrieved from the system and response is sent to the Business User.</step>
+    </mainSequence>
+</useCase>

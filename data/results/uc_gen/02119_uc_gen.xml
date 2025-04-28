@@ -1,0 +1,31 @@
+<useCase id="10060">
+    <name>Bereitstellung eines Messenger-Service für eine Organisation</name>
+    <actors>
+        <actor>Akteur in der Rolle Org-Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Mit einem Admin-Account am Registrierungs-Dienst anmelden</step>
+        <step id="S2">POST /login (Client-Credential)</step>
+        <step id="S3">Erfolgreich angemeldet</step>
+        <step id="S4">Messenger Service erstellen</step>
+        <step id="S5">POST /create (Matrix-Domain)</step>
+        <step id="S6">Prüfung auf zulässigen Domainnamen</step>
+        <step id="S7">Starte neuen Messenger-Service für die Organisation mit Matrix-Domain</step>
+        <step id="S8">Messenger-Service erstellen</step>
+        <step id="S9">initial einrichten</step>
+        <step id="S10">Messenger Service erfolgreich erstellt</step>
+        <step id="S11">POST /auth/realms/TI-Provider/protocol/openid-connect/token (client_id, client_secret)</step>
+        <step id="S12">Prüfe client_id und client_secret</step>
+        <step id="S13">ti-provider-accesstoken</step>
+        <step id="S14">GET /ti-provider-authenticate(ti-provider-accesstoken)</step>
+        <step id="S15">Prüfe ti-provider-accesstoken</step>
+        <step id="S16">provider-accesstoken</step>
+        <step id="S17">POST /tim-provider-services/federation (provider-accesstoken, Matrix-Domain, TelematikID, isEnsurance)</step>
+        <step id="S18">Prüfe provider-accesstoken</step>
+        <step id="S19">HTTPS Forward</step>
+        <step id="S20">Föderationsliste aktualisieren</step>
+        <step id="S21">HTTPS Forward</step>
+        <step id="S22">status</step>
+        <step id="S23">Messenger Service erfolgreich erstellt</step>
+    </mainSequence>
+</useCase>

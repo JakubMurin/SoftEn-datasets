@@ -1,0 +1,29 @@
+<useCase id="1">
+    <name>Submit Document to Repository</name>
+    <actors>
+        <actor>Content Provider</actor>
+        <actor>Document Source</actor>
+        <actor>Document Repository</actor>
+        <actor>Document Registry</actor>
+    </actors>
+    <preconditions>
+        <precondition>Content Provider initiates submission process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document(s) and metadata successfully submitted, stored and metadata validated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error response received during submission.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Content Provider initiates submission process.</step>
+        <step id="S2">Document Source collects document(s) and metadata.</step>
+        <step id="S3">Document Source submits document(s) and metadata (ITI-41).</step>
+        <step id="S4">Document Repository processes request.</step>
+        <step id="S5">Document Repository stores document(s).</step>
+        <step id="S6">Document Registry submits metadata (ITI-42).</step>
+        <step id="S7">Document Registry validates metadata.</step>
+        <step id="S8">Document Repository sends error response to Document Source (ITI-41).</step>
+        <step id="S9">Document Registry sends error response to Document Repository (ITI-42).</step>
+    </mainSequence>
+</useCase>

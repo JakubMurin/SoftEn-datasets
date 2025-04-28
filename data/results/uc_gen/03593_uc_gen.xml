@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>View User Profile</name>
+    <actors>
+        <actor>Colaborador</actor>
+    </actors>
+    <preconditions>
+        <precondition>Colaborador is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User profile data is successfully retrieved from the database</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to fetch user profile data from the database</condition>
+    </failureEndConditions>
+    <trigger>User wants to view their profile</trigger>
+    <mainSequence>
+        <step id="S1">Colaborador requests to view their profile</step>
+        <step id="S2">user.routes handles the request by calling user.controller</step>
+        <step id="S3">user.controller retrieves user profile data using user.model</step>
+        <step id="S4">user.model queries the database to fetch user profile</step>
+        <step id="S5">mysql returns profile data to user.model</step>
+        <step id="S6">user.model sends profile data back to user.controller</step>
+        <step id="S7">user.controller renders the profile using myprofile.ejs</step>
+        <step id="S8">myprofile.ejs displays the user profile to Colaborador</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Render Component</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba.create(App) has been called.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Instance.element is successfully attached to element.</condition>
+    </successEndConditions>
+    <trigger>User initiates the creation of the component.</trigger>
+    <mainSequence>
+        <step id="S1">User creates an instance with Liba.create(App).</step>
+        <step id="S2">Liba creates cInstance.</step>
+        <step id="S3">renderC is launched and cInstance is passed.</step>
+        <step id="S4">App receives props and renderLiba.</step>
+        <step id="S5">App creates a button element.</step>
+        <step id="S6">App creates UserCard.</step>
+        <step id="S7">renderLiba creates children for UserCard.</step>
+        <step id="S8">Liba creates UserCard instance.</step>
+        <step id="S9">renderC is launched for UserCInstance.</step>
+        <step id="S10">UserCard receives props and renderLiba.</step>
+        <step id="S11">UserCard creates div elements.</step>
+        <step id="S12">UserCard creates div elements.</step>
+        <step id="S13">UserCard's element is attached to renderC's instance.element.</step>
+    </mainSequence>
+</useCase>

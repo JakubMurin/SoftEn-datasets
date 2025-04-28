@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Rendering Components</name>
+    <description>User rendering components in the application</description>
+    
+    <actors>
+        <actor>User</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Liba component initialized</precondition>
+    </preconditions>
+    
+    <trigger>User requests component creation</trigger>
+    
+    <mainSequence>
+        <step id="S1">User requests Liba to create App component</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">Liba renders cInstance</step>
+        <step id="S4">App receives props and renders Liba</step>
+        <step id="S5">App creates button element</step>
+        <step id="S6">App creates UserCard component</step>
+        <step id="S7">UserCard creation begins</step>
+        <step id="S8">UserCard creates div element</step>
+        <step id="S9">UserCard creates div element</step>
+        <step id="S10">UserCard element is complete</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S8">
+            <step id="A1S1">UserCard dependency previously created in cache</step>
+        </asteps>
+    </alternativeSteps>
+    
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Error creating UserCard</description>
+            <step id="E1S1">AppCInstance required but not provided</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Exchange Asset</name>
+    <description>This use case involves the exchange of assets between two organizations</description>
+    <actors>
+        <actor>org1_client</actor>
+        <actor>frontend</actor>
+        <actor>org1_backend</actor>
+        <actor>hlf_org1_sdk</actor>
+        <actor>hlf_org1_peer</actor>
+        <actor>org2_backend</actor>
+        <actor>hlf_org2_sdk</actor>
+        <actor>hlf_org2_peer</actor>
+        <actor>hlf_orderer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Assets available for exchange</precondition>
+    </preconditions>
+    <trigger>An exchange asset request is initiated by org1_client</trigger>
+    <mainSequence>
+        <step id="S1">Exchange assets request initiated by org1_client</step>
+        <step id="S2">Asset exchange request received and parsed by org1_backend</step>
+        <step id="S3">Exchange request forwarded to Org1 peer for endorsement by hlf_org1_sdk</step>
+        <step id="S4">Exchange request forwarded to Org2 peer for endorsement by hlf_org1_sdk</step>
+        <step id="S5">Org1 peer endorses and generates Read Write set</step>
+        <step id="S6">Org2 peer endorses and generates Read Write set</step>
+        <step id="S7">Transaction endorsed by Org1 peer</step>
+        <step id="S8">Transaction endorsed by Org2 peer</step>
+        <step id="S9">Transaction ordered into block by hlf_org1_sdk</step>
+        <step id="S10">Transaction processed and committed to ledger by hlf_orderer</step>
+        <step id="S11">Commit event captured by sdk for Org1</step>
+        <step id="S12">Commit event captured by sdk for Org2</step>
+        <step id="S13">Event relayed to client by org1_backend</step>
+        <step id="S14">Client informed about the appropriate status by frontend</step>
+    </mainSequence>
+</useCase>

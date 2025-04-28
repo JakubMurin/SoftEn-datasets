@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>View Book Reviews</name>
+    <description>Allow users to view reviews of a specific book</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to view reviews</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully views the review list</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User receives appropriate HTTP status codes if authentication or authorization fails</condition>
+    </failureEndConditions>
+    <trigger>User requests to view reviews of a book</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to view reviews of a book</step>
+        <step id="S2">Gateway verifies the JWT</step>
+        <step id="S3">Gateway sends the request to Keycloak for JWT verification</step>
+        <step id="S4">Keycloak validates the JWT</step>
+        <step id="S5">Keycloak sends the validation result to the Gateway</step>
+        <step id="S6">Gateway checks if the JWT is valid</step>
+        <step id="S7">Gateway forwards the request to the Review service</step>
+        <step id="S8">Review service retrieves reviews for the requested book from MongoDB</step>
+        <step id="S9">Review service sends the review list to the Gateway</step>
+        <step id="S10">Gateway returns the review list to the User</step>
+    </mainSequence>
+</useCase>

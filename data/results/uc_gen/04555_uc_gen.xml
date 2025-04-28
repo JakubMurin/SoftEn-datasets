@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>Get Tracking Information</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TrackingController</actor>
+        <actor>TransactionController</actor>
+        <actor>ShippoTrackingService</actor>
+        <actor>shippo.model.Track</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests tracking information for a transaction.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tracking information successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>User accesses the /api/tracking/{transId} endpoint.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to the TrackingController for tracking information for a specific transaction.</step>
+        <step id="S2">TrackingController retrieves the transaction details using the TransactionController.</step>
+        <step id="S3">TransactionController obtains the shipping order details.</step>
+        <step id="S4">TrackingController queries the ShippoTrackingService for tracking information using the order's carrier and tracking number.</step>
+        <step id="S5">ShippoTrackingService fetches the tracking information from shippo.model.Track using the carrier, tracking number, and shippoApiKey.</step>
+        <step id="S6">shippo.model.Track tracks the shipment.</step>
+        <step id="S7">ShippoTrackingService returns the tracking details to TrackingController.</step>
+        <step id="S8">TrackingController provides the tracking details to the User.</step>
+    </mainSequence>
+</useCase>

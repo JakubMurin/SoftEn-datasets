@@ -1,0 +1,24 @@
+<useCase id="UC1">
+	<name>Claim Mail</name>
+	<description>Recipient claims a mail for retrieval</description>
+	<actors>
+    	<actor>Recipient</actor>
+   	</actors>
+	<preconditions>
+		<precondition>Recipient is authorized as a Receptionist</precondition>
+	</preconditions>
+	<trigger>POST /Mail/{id}/Claim</trigger>
+	<mainSequence>
+		<step id="S1">Recipient triggers the action to claim a mail for retrieval.</step>
+		<step id="S2">MailController checks if the Recipient is authorized as a Receptionist.</step>
+		<step id="S3">MailController invokes MailService to claim the specified mail.</step>
+		<step id="S4">MailService begins a transaction via UnitOfWork.</step>
+		<step id="S5">MailService fetches the mail by ID using MailRepository.</step>
+		<step id="S6">MailService retrieves the user details using UserRepository.</step>
+		<step id="S7">MailService updates the status of the mail using MailRepository.</step>
+		<step id="S8">MailService creates an email notification using EmailNotificationRepository.</step>
+		<step id="S9">MailService commits the transaction via UnitOfWork.</step>
+		<step id="S10">MailService responds with success to MailController.</step>
+		<step id="S11">MailController returns 200 OK response to the Recipient.</step>
+	</mainSequence>
+</useCase>

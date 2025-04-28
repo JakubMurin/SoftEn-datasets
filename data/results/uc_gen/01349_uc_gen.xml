@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Cluster Administration</name>
+    <description>This use case involves setting up a new cluster for administration.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Cluster Admin</actor>
+        <actor>Operator</actor>
+        <actor>Daemon</actor>
+        <actor>BMC_x86</actor>
+        <actor>OpenShift API</actor>
+        <actor>Vendor Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>All necessary hardware available and configured.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Cluster setup completed successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Cluster setup failed.</condition>
+    </failureEndConditions>
+    <trigger>RF install iso command received by BMC_x86.</trigger>
+    <mainSequence>
+        <step id="S1">BMC_x86 installs iso.</step>
+        <step id="S2">Operator starts Daemonset.</step>
+        <step id="S3">Daemon detects DPU type.</step>
+        <step id="S4">Daemon labels node.</step>
+        <step id="S5">OpenShift API gets labels and reconciles changes to node spec.</step>
+        <step id="S6">Operator starts vendor plugin pod.</step>
+        <step id="S7">Vendor Plugin starts grpc.</step>
+        <step id="S8">Daemon initializes and returns ip:port to vendor plugin.</step>
+    </mainSequence>
+</useCase>

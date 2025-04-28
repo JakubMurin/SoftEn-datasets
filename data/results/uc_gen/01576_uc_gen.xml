@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Remove Book From Catalog</name>
+    <description>As a User, I want to be able to remove a book from the catalog.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has access to the catalog.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The book is successfully removed from the catalog.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The book is not found in the catalog.</condition>
+    </failureEndConditions>
+    <trigger>GET Request to CatalogDao.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET Request to CatalogDao.</step>
+        <step id="S2">CatalogDao forwards the RemoveBookFromCatalogRequest to RemoveBookFromCatalogActivity.</step>
+        <step id="S3">RemoveBookFromCatalogActivity executes the removeBookFromCatalog() method.</step>
+        <step id="S4">RemoveBookFromCatalogResponse is returned to CatalogDao.</step>
+        <step id="S5">CatalogDao sends RemoveBookFromCatalogResponse to User.</step>
+        <step id="S6">User receives the RemoveBookFromCatalogResponse and handles the response.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">BookNotFoundException is thrown.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

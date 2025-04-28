@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Manage Teachers</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to teacher management page</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User switches to teacher management page</step>
+        <step id="S2">Frontend sends a request to Controller</step>
+        <step id="S3">Controller calls Service to retrieve all teachers</step>
+        <step id="S4">Service calls TeacherRepository to find all teacher entities</step>
+        <step id="S5">TeacherRepository creates new teacher entity</step>
+        <step id="S6">TeacherRepository returns entities to Service</step>
+        <step id="S7">Service returns entities to Controller</step>
+        <step id="S8">Controller sends entities to Frontend for display</step>
+        <step id="S9">Frontend displays teachers to the User</step>
+        <step id="S10">User clicks on a teacher item to edit</step>
+        <step id="S11">Frontend sends a request to Controller</step>
+        <step id="S12">Controller fetches the selected teacher entity from Service</step>
+        <step id="S13">Service saves the changes made to the entity via TeacherRepository</step>
+        <step id="S14">TeacherRepository updates the entity</step>
+        <step id="S15">Service returns the updated entity to Controller</step>
+        <step id="S16">Controller sends a response to Frontend</step>
+        <step id="S17">Frontend displays success message to the User</step>
+    </mainSequence>
+</useCase>

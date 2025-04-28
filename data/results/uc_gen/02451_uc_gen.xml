@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Manage Fault Management Job and Report</name>
+    <description>As a Buyer/Client, I want to create and retrieve Fault Management Job and Report.</description>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Buyer/Client has access to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Job and Report are successfully created and retrieved.</condition>
+    </successEndConditions>
+    <trigger>Buyer/Client initiates the process by sending a POST request to create a Fault Management Job.</trigger>
+    <mainSequence>
+        <step id="S1">Buyer/Client sends a POST request to create a Fault Management Job to the system.</step>
+        <step id="S2">The system creates the Fault Management Job.</step>
+        <step id="S3">On the scheduled date, the system updates the state of the Job to 'In Progress'.</step>
+        <step id="S4">The system generates the required data for the Job.</step>
+        <step id="S5">The system initiates the creation of the Fault Management Report.</step>
+        <step id="S6">The system updates the state of the Report to 'In Progress'.</step>
+        <step id="S7">The system collects the necessary data for the Report.</step>
+        <step id="S8">The system marks the Report as 'Completed'.</step>
+        <step id="S9">The system updates the state of the Job to 'Completed'.</step>
+        <step id="S10">Buyer/Client sends a GET request to retrieve the Fault Management Report.</step>
+        <step id="S11">The system sends the Fault Management Report content to the Buyer/Client.</step>
+    </mainSequence>
+</useCase>

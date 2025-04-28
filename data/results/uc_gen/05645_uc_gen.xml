@@ -1,0 +1,26 @@
+<useCase id="UC1">
+	<name>User authentication</name>
+	<description>Authenticate user credentials to grant access to Time Reporting</description>
+	<actors>
+		<actor>User</actor>
+		<actor>Spring</actor>
+		<actor>Lewensportal</actor>
+		<actor>DB</actor>
+	</actors>
+	<preconditions>
+		<precondition>User opens the TimeReport application</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>User credentials validated successfully on Lewensportal</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>User credentials not valid on Lewensportal</condition>
+	</failureEndConditions>
+	<trigger>User enters Username and Password</trigger>
+	<mainSequence>
+		<step id="S1">User inputs Username (FnNn) and Password</step>
+		<step id="S2">Spring sends Username and Password to Lewensportal</step>
+		<step id="S3">Lewensportal validates the credentials</step>
+		<step id="S4">Spring saves user data in DB with default USER authorities</step>
+	</mainSequence>
+</useCase>

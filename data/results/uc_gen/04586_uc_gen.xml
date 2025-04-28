@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Cancel Account</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>Open application and navigate to Account Settings</trigger>
+    <mainSequence>
+        <step id="S1">Display "Account Settings"</step>
+        <step id="S2">Navigate to Account Settings</step>
+        <step id="S3">Display Delete Account Dialog - Prompt for confirmation and Confirm cancellation.</step>
+        <step id="S4">Initiate account cancellation via API call.</step>
+        <step id="S5">Forward cancellation request to mark account for deletion in the database.</step>
+        <step id="S6">Confirm account marked for deletion in the database.</step>
+        <step id="S7">Send cancellation confirmation (API) and Display cancellation confirmation.</step>
+        <step id="S8">Navigate back to Homepage, once cancellation is confirmed.</step>
+        <step id="S9">Display confirmation message, Logout and Clear session data.</step>
+    </mainSequence>
+</useCase>

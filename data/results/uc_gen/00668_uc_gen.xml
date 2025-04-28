@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Submit Match Request</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>API Gateway</actor>
+        <actor>Matching Service Controller</actor>
+        <actor>Matching Service</actor>
+        <actor>Matching Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <trigger>User selects question difficulty and clicks submit</trigger>
+    <mainSequence>
+        <step id="S1">User selects question difficulty (Hard/Medium/Easy)</step>
+        <step id="S2">User clicks submit</step>
+        <step id="S3">Frontend sends POST request to API Gateway /api/match/submit with payload: {user, difficulty}</step>
+        <step id="S4">API Gateway forwards request to Matching Service Controller</step>
+        <step id="S5">Matching Service Controller stores the Match Request</step>
+        <step id="S6">Matching Service creates Match Request and saves it to the database</step>
+        <step id="S7">Matching Service generates a requestId</step>
+        <step id="S8">Matching Service Controller responds with 200 OK and payload: {requestId}</step>
+        <step id="S9">API Gateway responds with 200 OK Accepted and payload: {requestId}</step>
+    </mainSequence>
+</useCase>

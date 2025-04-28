@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Find Match</name>
+    <description>Allow the user to find a match based on their request</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has initiated a match request</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User initiates a match request</step>
+        <step id="S2">Frontend sends the request to API Gateway</step>
+        <step id="S3">API Gateway forwards the request to the Controller</step>
+        <step id="S4">Controller checks for a match</step>
+        <step id="S5">Service retrieves user's MatchRequest with the provided request ID</step>
+        <step id="S6">Service finds another MatchRequest</step>
+        <step id="S7">Service gets a random question</step>
+        <step id="S8">Service creates sessionInfo and attaches it to each MatchRequest</step>
+        <step id="S9">Service updates the 2 MatchRequests</step>
+        <step id="S10">Controller sends the user's MatchRequest back to the frontend</step>
+        <step id="S11">Frontend receives the user's MatchRequest and switches to the session page</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="admin-install-RF-iso">
+
+   <name>Install RF iso for administrator</name>
+   
+   <actors>
+      <actor>User</actor>
+      <actor>Cluster Admin</actor>
+   </actors>
+   
+   <mainSequence>
+      <step id="S1">Cluster Admin requests BMC_x86 to install RF ISO.</step>
+      <step id="S2">Operator triggers the start of Daemonset in openshift_api.</step>
+      <step id="S3">Daemon detects DPU type.</step>
+      <step id="S4">Daemon labels the node.</step>
+      <step id="S5">OpenShift API retrieves labels to reconcile changes to node spec.</step>
+      <step id="S6">Operator initiates start of vendor plugin pod in openshift_api.</step>
+      <step id="S7">Vendor plugin initializes with given IP:Port using grpc.</step>
+   </mainSequence>
+   
+</useCase>

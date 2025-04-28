@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>System Initialization</name>
+    <description>Initialize the system by registering services and uploading network and node information.</description>
+    <actors>
+        <actor>SOR</actor>
+        <actor>目录服务器</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is ready for initialization.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>System is successfully initialized.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>System initialization fails.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">SOR registers services and reports network and node information to 目录服务器.</step>
+        <step id="S2">目录服务器 identifies and stores the uploaded device information.</step>
+        <step id="S3">目录服务器 returns forwarding tasks to be executed by SOR.</step>
+        <step id="S4">SOR executes the forwarding tasks.</step>
+    </mainSequence>
+</useCase>

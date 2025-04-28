@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Fine Administration: Update Defendant Account Payment Terms</name>
+    <actors>
+        <actor>FAE User</actor>
+        <actor>View Account (Payment Terms tab)</actor>
+        <actor>Change Payment Terms</actor>
+        <actor>Add Defendant Account Payment Terms</actor>
+        <actor>Payment Terms Database</actor>
+        <actor>GMAS DAC</actor>
+        <actor>Legacy Payment Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to the fine administration system.</precondition>
+        <precondition>Defendant Account is selected in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Defendant Account Payment Terms are successfully updated in the system.</condition>
+    </successEndConditions>
+    <trigger>User selects 'Change' button in the Payment Terms tab.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the Payment Terms tab for the selected account.</step>
+        <step id="S2">User navigates to the Change Payment Terms page.</step>
+        <step id="S3">User inputs the new payment terms data and clicks on 'Save changes' button.</step>
+        <step id="S4">System calls the Add Defendant Account Payment Terms API with the Defendant Account ID and payload.</step>
+        <step id="S5">In Opal Mode, the API communicates with the Payment Terms Database to create Defendant Account Payment Terms.</step>
+        <step id="S6">In Legacy Mode, the API communicates with GMAS DAC to convert JSON to XML and then processes the data in the Legacy Payment Database for creating Defendant Account Payment Terms.</step>
+        <step id="S7">XML data is converted back to JSON by the system.</step>
+        <step id="S8">System displays the updated Defendant Account Payment Terms in the Payment Terms tab.</step>
+    </mainSequence>
+</useCase>

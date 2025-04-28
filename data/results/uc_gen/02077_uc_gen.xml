@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Initialize and Register</name>
+    <actors>
+        <actor>actor</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Actor connects to Bootstrap</step>
+        <step id="S2">Bootstrap initializes and registers</step>
+        <step id="S3">Bootstrap initializes by creating pipeline, adding handlers, setting channel options, and attributes</step>
+        <step id="S4">AbstractBootstrap registers with SingleThreadEventLoop</step>
+        <step id="S5">SingleThreadEventLoop registers with AbstractChannel.AbstractUnsafe</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">AbstractChannel.AbstractUnsafe registers asynchronously</step>
+            <step id="A1S2">AbstractNioChannel performs registration operations</step>
+            <step id="A1S3">DefaultChannelPipeline invokes necessary handlers</step>
+            <step id="A1S4">DefaultChannelPipeline fires channel registered event</step>
+            <step id="A1S5">If active and first registration, DefaultChannelPipeline fires channel active event</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

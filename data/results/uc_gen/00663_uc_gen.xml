@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Submit Match Request</name>
+    <description>User submits a match request with selected difficulty level.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Match request is successfully submitted.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Match request submission fails.</condition>
+    </failureEndConditions>
+    <trigger>User selects question difficulty and clicks submit.</trigger>
+    <mainSequence>
+        <step id="S1">User selects question difficulty (Hard/Medium/Easy).</step>
+        <step id="S2">User clicks submit.</step>
+        <step id="S3">POST /api/match/submit payload: {user, difficulty}</step>
+        <step id="S4">Store match request in the database.</step>
+        <step id="S5">Generate requestId.</step>
+        <step id="S6">Send 200 OK response with requestId.</step>
+    </mainSequence>
+</useCase>

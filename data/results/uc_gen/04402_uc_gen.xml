@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Player Collides with Peg</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>PegModelable</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">GameEngine triggers collision event on PegModelable with Ball, passing deltaTime</step>
+        <step id="S2">PegModelable processes collision event with itself and Ball, passing deltaTime</step>
+        <step id="S3">Ball collides with peg</step>
+        <step id="S4">Ball finds safe position from the peg</step>
+        <step id="S5">FreeBody handles collision with collision point, deltaTime, and peg restitution coefficient</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Ball processes collision with peg</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Steps to handle errors during collision processing</description>
+            <step id="E1S1">Error handling step for collision processing</step>
+        </esteps>
+    </errorSteps>
+</useCase>

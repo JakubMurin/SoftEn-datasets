@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Process USDT Payment</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>Gateway</actor>
+        <actor>Blockchain</actor>
+        <actor>Monitor</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User decides to pay with USDT</step>
+        <step id="S2">UI requests payment information from Gateway</step>
+        <step id="S3">Gateway provides USDT deposit address and amount to User, including QR code</step>
+        <step id="S4">User transfers USDT to Blockchain</step>
+        <step id="S5">Transaction of USDT detected by Monitor</step>
+        <step id="S6">Monitor requests transaction confirmation from Blockchain</step>
+        <step id="S7">Blockchain updates transaction status for 6 confirmations</step>
+        <step id="S8">Monitor notifies Gateway of final transaction approval</step>
+        <step id="S9">Gateway stores transaction and user information in Database</step>
+        <step id="S10">Database confirms payment, converts it to points, and notifies UI</step>
+    </mainSequence>
+</useCase>

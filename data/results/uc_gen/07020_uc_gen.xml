@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Set Embargo</name>
+    <actors>
+        <actor>Collection Curator</actor>
+        <actor>EDRMS System</actor>
+        <actor>Repository</actor>
+        <actor>Embargo Management</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator requests to set embargo on an item.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Curator requests to set embargo on an item.</step>
+        <step id="S2">EDRMS verifies item exists.</step>
+        <step id="S3">EDRMS sets embargo on the item.</step>
+        <step id="S4">Embargo updates item status to "Under Embargo".</step>
+        <step id="S5">EDRMS confirms embargo set.</step>
+        <step id="S6">Curator requests to make metadata discoverable.</step>
+        <step id="S7">EDRMS verifies item is under embargo.</step>
+        <step id="S8">Embargo updates to allow metadata visibility.</step>
+        <step id="S9">Search ensures metadata is indexed and searchable.</step>
+        <step id="S10">EDRMS confirms metadata is discoverable while the item is embargoed.</step>
+        <step id="S11">User searches for item.</step>
+        <step id="S12">Search retrieves item metadata.</step>
+        <step id="S13">Search returns item metadata without access to the item if under embargo, else returns item metadata and access.</step>
+    </mainSequence>
+</useCase>

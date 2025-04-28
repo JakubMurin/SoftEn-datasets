@@ -1,0 +1,25 @@
+<useCase id="UC1">
+  <name>Delete Todo Task</name>
+  <description>Delete a task from the to-do list.</description>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <preconditions>
+    <precondition>A task must be present in the to-do list.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The task is successfully deleted from the to-do list.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>The task could not be deleted due to an error.</condition>
+  </failureEndConditions>
+  <trigger>User clicks on the trash icon.</trigger>
+  <mainSequence>
+    <step id="S1">User clicks on the trash icon.</step>
+    <step id="S2">TodoList calls deleteTodo() to delete the task.</step>
+    <step id="S3">TodoWrapper calls Backend's deleteTodo() method.</step>
+    <step id="S4">Backend returns confirmation to TodoWrapper.</step>
+    <step id="S5">TodoWrapper removes the task from the list.</step>
+    <step id="S6">TodoWrapper updates the task list for the User.</step>
+  </mainSequence>
+</useCase>

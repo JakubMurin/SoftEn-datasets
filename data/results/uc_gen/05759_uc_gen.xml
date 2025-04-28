@@ -1,0 +1,26 @@
+<useCase id="UC1">
+   <name>Retrieve Monthly Lending Information</name>
+   <actors>
+      <actor>Librarian</actor>
+   </actors>
+   <trigger>Librarian wants to retrieve monthly lending information</trigger>
+   <mainSequence>
+      <step id="S1">Librarian sends a request to the Lending Controller to retrieve monthly lending information through the endpoint GET /api/lendings/monthly-lending</step>
+      <step id="S2">Lending Controller activates</step>
+      <step id="S3">Lending Controller requests all readers from Reader Service</step>
+      <step id="S4">Reader Service activates</step>
+      <step id="S5">Reader Service retrieves all readers using Reader Repository</step>
+      <step id="S6">Reader Repository activates and returns a list of readers to Reader Service</step>
+      <step id="S7">For each reader, Reader Service gets the monthly lending information</step>
+      <step id="S8">Reader Service retrieves monthly lending information from Reader Repository and sets the lents</step>
+      <step id="S9">Reader Service updates the reader with the retrieved lents</step>
+      <step id="S10">Loop continues for each reader</step>
+      <step id="S11">Reader Service deactivates</step>
+      <step id="S12">Lending Controller maps the reader lents to a view using Reader Lents View Mapper</step>
+      <step id="S13">Reader Lents View Mapper activates</step>
+      <step id="S14">Reader Lents View Mapper converts the reader lents to an iterable of reader lents views</step>
+      <step id="S15">Reader Lents View Mapper deactivates</step>
+      <step id="S16">Lending Controller responds with HTTP 200 OK containing the iterable of reader lents views to the Librarian</step>
+      <step id="S17">Lending Controller deactivates</step>
+   </mainSequence>
+</useCase>

@@ -1,0 +1,39 @@
+<useCase id="UC1">
+  <name>Authentication</name>
+  <description>Allow the user to log in to the application</description>
+  <actors>
+    <actor>Utilisateur</actor>
+    <actor>Application</actor>
+  </actors>
+  <preconditions>
+    <precondition>None</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>User is successfully authenticated</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Incorrect credentials provided</condition>
+  </failureEndConditions>
+  <trigger>User attempts to log in</trigger>
+  <mainSequence>
+    <step id="S1">User enters their username</step>
+    <step id="S2">Application validates the username</step>
+    <step id="S3">User enters their password</step>
+    <step id="S4">Application validates the password</step>
+    <step id="S5">User is redirected to the homepage</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S2">
+      <step id="A1S1">Incorrect username, user prompted to enter again</step>
+    </asteps>
+    <asteps id="A2" start="S4">
+      <step id="A2S1">Incorrect password, user prompted to enter again</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S3">
+      <description>User requests a new password</description>
+      <step id="E1S1">Application guides user to reset their password</step>
+    </esteps>
+  </errorSteps>
+</useCase>

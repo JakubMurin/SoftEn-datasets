@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Manage Offerings</name>
+    <actors>
+        <actor>Instructor</actor>
+        <actor>OfferingsPage</actor>
+        <actor>OfferingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Lesson</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Instructor opens Manage Offerings Page</step>
+        <step id="S2">OfferingsPage queries available offerings for Instructor</step>
+        <step id="S3">OfferingsPage displays available offerings to Instructor</step>
+        <step id="S4">Instructor selects "Accept Offering" (lessonId)</step>
+        <step id="S5">OfferingValidator validates offering acceptance for Instructor</step>
+        <step id="S6">DatabaseManager checks specialization and availability for Instructor</step>
+        <step id="S7">OfferingValidator displays validation status to OfferingsPage</step>
+        <step id="S8">OfferingsPage displays error if validation fails</step>
+        <step id="S9">OfferingsPage updates lesson status to "assigned" for Instructor</step>
+        <step id="S10">DatabaseManager updates lesson status successfully</step>
+        <step id="S11">OfferingsPage displays successful acceptance to Instructor</step>
+        <step id="S12">Instructor selects "Drop Offering" (lessonId)</step>
+        <step id="S13">OfferingValidator validates offering drop for Instructor</step>
+        <step id="S14">DatabaseManager checks lesson ownership for Instructor</step>
+        <step id="S15">OfferingValidator displays validation status to OfferingsPage</step>
+        <step id="S16">OfferingsPage displays error if validation fails</step>
+        <step id="S17">OfferingsPage updates lesson status to "pending" for Instructor</step>
+        <step id="S18">DatabaseManager updates lesson status successfully</step>
+        <step id="S19">OfferingsPage displays successful drop to Instructor</step>
+        <step id="S20">Instructor views details of a lesson</step>
+        <step id="S21">OfferingsPage fetches lesson details</step>
+        <step id="S22">OfferingsPage displays lesson details to Instructor</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+  <name>Audit Sleep Timer Functionality</name>
+  <actors>
+    <actor>Audit Application Admin</actor>
+  </actors>
+  <preconditions>
+    <precondition>The Audit Application must communicate with the Plug Service to retrieve sleep timer statuses.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The Audit Application successfully receives the sleep timer status response from the Plug Service.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>An error occurred while retrieving the sleep timer status from the Plug Service.</condition>
+  </failureEndConditions>
+  <trigger>User requests the sleep timer status update.</trigger>
+  <mainSequence>
+    <step id="S1">Initiate communication between Audit Application and CowboyPlug to retrieve timer status.</step>
+    <step id="S2">Dispatcher in CowboyPlug sends request to Cowboy to start timer transaction.</step>
+    <step id="S3">CowboyPlug communicates with Plug to kick-off timer service check.</step>
+    <step id="S4">Audit Application contacts Supervisor to request sleep timer activity.</step>
+    <step id="S5">Supervisor communicates with Timer and triggers initialization and monitoring processes.</step>
+    <step id="S6">Timer checks the monitor and wakes up to GET a status update from Monitored Server.</step>
+    <step id="S7">(For successful case) Timer updates its state based on the Monitored Server's response.</step>
+    <step id="S8">(For unsuccessful case) Timer encounters an error and crashes, triggering supervisor to restart.</step>
+    <step id="S9">Server responds to GET.</step>
+    <step id="S10">Audit Application requests status check from Cowboy sever with command /bt_status.</step>
+    <step id="A1">Responding to command, Cowboy communicates with Plug to execute service call.</step>
+    <step id="A1S1">Plug queries Timer for status retrieval.</step>
+    <step id="A1S2">Cowboy communicates status retrieval to Employee Application interface.</step>
+  </mainSequence>
+  
+</useCase>

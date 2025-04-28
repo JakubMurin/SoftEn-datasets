@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Manage Book Details</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>Library Management Interface</actor>
+        <actor>Book Management System</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Librarian has access to book editing section</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book details successfully updated</condition>
+    </successEndConditions>
+    <trigger>User accesses book editing section</trigger>
+    <mainSequence>
+        <step id="S1">Librarian accesses book editing section</step>
+        <step id="S2">Library Management Interface requests book details from Book Management System</step>
+        <step id="S3">Book Management System queries book details from Database</step>
+        <step id="S4">Database returns book details to Book Management System</step>
+        <step id="S5">Book Management System shows book details to Library Management Interface</step>
+        <step id="S6">Library Management Interface displays book details to Librarian</step>
+        <step id="S7">Librarian edits book and location information through Library Management Interface</step>
+        <step id="S8">Library Management Interface sends updated details to Book Management System</step>
+        <step id="S9">Book Management System updates book details and location in Database</step>
+        <step id="S10">Database confirms the success of the update to Book Management System</step>
+        <step id="S11">Book Management System confirms the success of the update to Library Management Interface</step>
+        <step id="S12">Library Management Interface displays update confirmation to Librarian</step>
+    </mainSequence>
+</useCase>

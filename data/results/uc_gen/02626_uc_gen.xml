@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Request access to a service offered by a delegate</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Management UI</actor>
+        <actor>Management API</actor>
+        <actor>Municipality</actor>
+        <actor>Inway</actor>
+        <actor>Management Database</actor>
+        <actor>Saas Organization</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator requests access to a service</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Access request is approved and access grants are displayed</condition>
+    </successEndConditions>
+    <trigger>Administrator requests access to a service</trigger>
+    <mainSequence>
+        <step id="S1">Administrator requests access to a service</step>
+        <step id="S2">Management UI receives access request</step>
+        <step id="S3">Management API processes access request</step>
+        <step id="S4">Inway receives access request</step>
+        <step id="S5">Management API stores access request in Management Database</step>
+        <step id="S6">Administrator views pending access requests</step>
+        <step id="S7">Management UI retrieves pending access requests</step>
+        <step id="S8">Management API retrieves pending access requests from Management Database</step>
+        <step id="S9">Management Database returns pending access requests to Management API</step>
+        <step id="S10">Management API returns pending access requests to Management UI</step>
+        <step id="S11">Administrator approves access request</step>
+        <step id="S12">Management UI approves access request</step>
+        <step id="S13">Inway creates access grant</step>
+        <step id="S14">Management API stores access grant in Management Database</step>
+        <step id="S15">Administrator views access grants for service</step>
+        <step id="S16">Management UI retrieves access grants for service</step>
+        <step id="S17">Inway retrieves access grants for service</step>
+        <step id="S18">Management API retrieves access grants for service from Saas Organization</step>
+        <step id="S19">Management Database returns access grants for service to Management API</step>
+        <step id="S20">Management API returns access grants for service to Management UI</step>
+        <step id="S21">Management UI displays access grants for service</step>
+    </mainSequence>
+</useCase>

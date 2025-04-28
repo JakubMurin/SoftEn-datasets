@@ -1,0 +1,34 @@
+<useCase id="1">
+    <name>Get Translation Case</name>
+    <description>Retrieve translation case details for a given case ID.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>GetTranslationCaseActivity</actor>
+        <actor>TranslationCaseDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP request to API Gateway/Lambda.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>GetTranslationCaseResult successfully returned to the Client.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>TranslationCaseNotFoundException or SecurityException raised and returned to the Client.</condition>
+    </failureEndConditions>
+    <trigger>Client requests translation case details.</trigger>
+    <mainSequence>
+        <step id="S1">Client sends an HTTP request to API Gateway/Lambda.</step>
+        <step id="S2">API Gateway/Lambda forwards the request to GetTranslationCaseActivity.</step>
+        <step id="S3">GetTranslationCaseActivity calls TranslationCaseDao's getTranslationCase method with the provided translationCaseId.</step>
+        <step id="S4">TranslationCaseDao queries DynamoDB to load the translation case data.</step>
+        <step id="S5">DynamoDB returns the translation case data to TranslationCaseDao.</step>
+        <step id="S6">TranslationCaseDao checks for a matching customer ID in the data.</step>
+        <step id="S7">If the customer ID does not match, TranslationCaseDao throws a SecurityException.</step>
+        <step id="S8">If the translationCase does not exist in DynamoDB, TranslationCaseDao throws a TranslationCaseNotFoundException.</step>
+        <step id="S9">If the customer ID matches, TranslationCaseDao returns the TranslationCase object to GetTranslationCaseActivity.</step>
+        <step id="S10">GetTranslationCaseActivity returns the GetTranslationCaseResult to API Gateway/Lambda.</step>
+        <step id="S11">API Gateway/Lambda returns a 200 response with the GetTranslationCaseResult data to the Client.</step>
+    </mainSequence>
+</useCase>

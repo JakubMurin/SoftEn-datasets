@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Delete Financial Goal</name>
+    <description>User can delete a financial goal from their account</description>
+    <actors>
+        <actor>Logged-in User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and viewing their financial account details</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The financial goal is successfully deleted from the account</condition>
+    </successEndConditions>
+    <trigger>User chooses to delete a financial goal</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the garbage bin icon next to the financial goal they want to delete</step>
+        <step id="S2">User enters the needed information (amount) for deletion in the GUI</step>
+        <step id="S3">GUI sends a request to the server to delete the financial goal with the provided ID</step>
+        <step id="S4">Server forwards the deletion request to the database and removes the financial goal from the records</step>
+        <step id="S5">Server sends back the updated financial account data to the GUI</step>
+        <step id="S6">GUI displays the updated financial account details to the user</step>
+    </mainSequence>
+</useCase>

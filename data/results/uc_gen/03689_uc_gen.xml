@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>CPS</actor>
+        <actor>CM</actor>
+        <actor>DG</actor>
+        <actor>SWP</actor>
+        <actor>S</actor>
+        <actor>MGI</actor>
+    </actors>
+    <preconditions>
+        <precondition>Caller initiates the computation of the delivery graph by sending a request.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Caller initiates the computation of the delivery graph by sending a request.</step>
+        <step id="S2">CityMap creates a new TreeMap of mappedRoutes.</step>
+        <step id="S3">For each AbstractWaypoint in the request:</step>
+        <step id="S4">CityMap retrieves the startWaypointIntersection.</step>
+        <step id="S5">CityMap initializes predecessors and durations arrays.</step>
+        <step id="S6">CityMap adds startWaypointIntersection to the greys list.</step>
+        <step id="S7">While greys list is not empty:</step>
+        <step id="S8">CityMap identifies the minimalGreyIntersection.</step>
+        <step id="S9">For each successor of the minimalGreyIntersection:</step>
+        <step id="S10">CityMap retrieves the successorId.</step>
+        <step id="S11">If successor is not in blacks:</step>
+        <step id="S12">CityMap obtains the streetSection between minimalGreyIntersection and successor.</step>
+        <step id="S13">CityMap updates the predecessors and durations arrays.</step>
+        <step id="S14">If successor is in whites:</step>
+        <step id="S15">CityMap removes the successor from whites and adds it to greys.</step>
+        <step id="S16">CityMap removes minimalGreyIntersection from greys.</step>
+        <step id="S17">CityMap identifies the minimalGreyIntersectionId.</step>
+        <step id="S18">CityMap adds minimalGreyIntersection to blacks.</step>
+        <step id="S19">CityMap uses predecessors array to fill mappedRoutes.</step>
+        <step id="S20">DeliveryGraph is created with mappedRoutes.</step>
+        <step id="S21">CityMap returns the deliveryGraph to the Caller.</step>
+    </mainSequence>
+</useCase>

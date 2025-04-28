@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Retrieve Courses for Teacher</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Teacher</actor>
+        <actor>Course</actor>
+    </actors>
+    <preconditions>
+        <precondition>Teacher must be found in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Course card data successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>get_courses_for_teacher(teacher_id)</trigger>
+    <mainSequence>
+        <step id="S1">Retrieve teacher by ID.</step>
+        <step id="S2">Retrieve teachings for the teacher.</step>
+        <step id="S3">Iterate over courses:</step>
+        <step id="S4">Retrieve course ID.</step>
+        <step id="S5">Retrieve course name.</step>
+        <step id="S6">Retrieve course description.</step>
+        <step id="S7">Retrieve course price.</step>
+        <step id="S8">Retrieve course average rating.</step>
+        <step id="S9">Retrieve course banner image URL.</step>
+        <step id="S10">Provide course card data to user.</step>
+    </mainSequence>
+</useCase>

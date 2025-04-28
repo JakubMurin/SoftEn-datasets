@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Account Cancellation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>DeleteAccountDialog</actor>
+        <actor>AuthService</actor>
+        <actor>UsersRouter</actor>
+        <actor>UsersService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in to the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account cancellation is successfully completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Account cancellation process fails.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the account cancellation process.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the application</step>
+        <step id="S2">HomepageScreen displays "Account Settings" to User</step>
+        <step id="S3">User navigates to Account Settings</step>
+        <step id="S4">DeleteAccountDialog displays Delete Account Dialog to User</step>
+        <step id="S5">User confirms cancellation in the dialog</step>
+        <step id="S6">AuthService initiates account cancellation</step>
+        <step id="S7">UsersRouter makes an API call for Account Cancellation</step>
+        <step id="S8">UsersService forwards cancellation request</step>
+        <step id="S9">Database marks account for deletion</step>
+        <step id="S10">UsersService confirms account marked for deletion</step>
+        <step id="S11">UsersService confirms account cancellation</step>
+        <step id="S12">AuthService sends cancellation confirmation</step>
+        <step id="S13">DeleteAccountDialog displays cancellation confirmation</step>
+        <step id="S14">DeleteAccountDialog navigates back to HomepageScreen</step>
+        <step id="S15">HomepageScreen displays confirmation message to User</step>
+        <step id="S16">HomepageScreen logs out User and clears session data</step>
+    </mainSequence>
+</useCase>

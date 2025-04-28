@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Check Status of Monitored Server</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Application</actor>
+        <actor>CowboyPlug</actor>
+        <actor>Supervisor</actor>
+        <actor>Timer</actor>
+        <actor>Monitored Server</actor>
+        <actor>Plug</actor>
+    </actors>
+    <preconditions>
+        <precondition>Timer is monitoring the Monitored Server</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All actors successfully communicate and process the status check</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the status check process</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Application initiates status check</step>
+        <step id="S2">CowboyPlug forwards request to Cowboy</step>
+        <step id="S3">CowboyPlug forwards request to Plug</step>
+        <step id="S4">Supervisor starts the monitoring process</step>
+        <step id="S5">Supervisor initializes Timer</step>
+        <step id="S6">Supervisor monitors the Timer</step>
+        <step id="S7">Timer wakes up</step>
+        <step id="S8">Timer retrieves status from Monitored Server</step>
+        <step id="S9">(Updates state if successful)</step>
+        <step id="S10">Timer crashes in case of failure</step>
+        <step id="S11">Supervisor restarts Timer</step>
+        <step id="S12">Alice checks the status</step>
+        <step id="S13">Cowboy forwards request to Plug for status retrieval</step>
+        <step id="S14">Plug retrieves status from Timer</step>
+        <step id="S15">Plug responds to Cowboy</step>
+        <step id="S16">Cowboy responds to Alice</step>
+    </mainSequence>
+</useCase>

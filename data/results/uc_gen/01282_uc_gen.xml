@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Template Method</name>
+    <actors>
+        <actor>user</actor>
+        <actor>scanner</actor>
+        <actor>switch</actor>
+        <actor>SortingTemplate</actor>
+        <actor>IncreasingOrder</actor>
+        <actor>DecreasingOrder</actor>
+    </actors>
+    <trigger>user creates IncreasingOrder</trigger>
+    <mainSequence>
+        <step id="S1">user creates IncreasingOrder</step>
+        <step id="S2">user creates DecreasingOrder</step>
+        <step id="S3">user initializes scanner loop</step>
+        <step id="S4">scanner sends a message to user</step>
+        <step id="S5">scanner receives input from user</step>
+        <step id="S6">scanner directs to switch</step>
+        <step id="S7">switch directs to IncreasingOrder if answer is 1</step>
+        <step id="S8">switch directs to DecreasingOrder if answer is 2</step>
+        <step id="S9">SortingTemplate uses TemplateMethod</step>
+        <step id="S10">SortingTemplate sorts for IncreasingOrder</step>
+        <step id="S11">SortingTemplate sorts for DecreasingOrder</step>
+        <step id="S12">IncreasingOrder sorts in increasing order</step>
+        <step id="S13">DecreasingOrder sorts in decreasing order</step>
+    </mainSequence>
+</useCase>

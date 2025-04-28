@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>User retrieves analytics for a URL</name>
+    <actors>
+        <actor>User</actor>
+        <actor>AnalyticsPage</actor>
+        <actor>AnalyticsControl</actor>
+        <actor>URLAnalytics</actor>
+        <actor>AnalyticsDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User enters URL or selects from list (Actor: User)</step>
+        <step id="S2">AnalyticsPage forwards request for data analytics (Actor: AnalyticsPage)</step>
+        <step id="S3">AnalyticsControl sends request to gather analytics for URL (Actor: AnalyticsControl)</step>
+        <step id="S4">URLAnalytics retrieves analytics data for the specified URL (Actor: URLAnalytics)</step>
+        <step id="S5">AnalyticsDB queries analytics data for the URL from the database (Actor: AnalyticsDB)</step>
+        <step id="S6">AnalyticsDB returns analytics data to URLAnalytics (Actor: URLAnalytics)</step>
+        <step id="S7">URLAnalytics provides analytics data to AnalyticsControl (Actor: URLAnalytics)</step>
+        <step id="S8">AnalyticsControl forwards analytics data to AnalyticsPage (Actor: AnalyticsControl)</step>
+        <step id="S9">AnalyticsPage sends analytics data back to User's web page (Actor: AnalyticsPage)</step>
+    </mainSequence>
+</useCase>

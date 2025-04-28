@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Make a phone call</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>Phone booth</actor>
+        <actor>Receiver</actor>
+    </actors>
+    <preconditions>
+        <precondition>Caller adds money to the phone booth</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Receiver picks up the call</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Time runs out without Receiver picking up</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Caller adds money to the phone booth</step>
+        <step id="S2">Caller uses the phone booth</step>
+        <step id="S3">Phone booth forwards the call to Receiver</step>
+        <step id="S4">Receiver picks up the call</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Insufficient amount inserted by Caller</step>
+            <step id="A1S2">Return money to Caller</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Issue occurred while forwarding call to Receiver</description>
+            <step id="E1S1">Terminate the call</step>
+        </esteps>
+    </errorSteps>
+</useCase>

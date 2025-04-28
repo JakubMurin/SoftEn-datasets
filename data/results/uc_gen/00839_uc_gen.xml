@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>Assign Vehicles to Agenda Entry Use Case</name>
+
+    <actors>
+      <actor>Green Spaces Manager</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>Availability of agenda entry and vehicles to be assigned</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>Vehicles successfully assigned to agenda entry</condition>
+    </successEndConditions>
+
+    <trigger>Green Spaces Manager assigns vehicles to agenda entry</trigger>
+
+    <mainSequence>
+        <step id="S1">The UI displays available vehicle DTOs to the Green Spaces Manager for selection.</step>
+        <step id="S2">Green Spaces Manager selects a vehicle for assignment.</step>
+        <step id="S3">UI sends the request to assign the selected vehicle to the agenda entry to the controller.</step>
+        <step id="S4">Controller assigns the vehicle to the agenda entry.</step>
+        <step id="S5">Controller updates the vehicle assignment in the Vehicle Repository.</step>
+        <step id="S6">Vehicle Repository updates the assignment.</step>
+        <step id="S7">Controller informs the UI about the successful assignment.</step>
+    </mainSequence>
+</useCase>

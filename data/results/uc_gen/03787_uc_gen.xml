@@ -1,0 +1,23 @@
+<useCase id="UC1">
+  <name>Student takes exam</name>
+  <description>As a student, I want to be able to take an exam</description>
+  <actors>
+    <actor>Student</actor>
+  </actors>
+  <preconditions>
+    <precondition>The student must choose an exam to take</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The exam is presented to the student</condition>
+    <condition>The examToBeTakenDTO is generated successfully</condition>
+  </successEndConditions>
+  <trigger>The student chooses an exam to take</trigger>
+  <mainSequence>
+    <step id="S1">The student chooses an exam</step>
+    <step id="S2">The examToBeTaken method is called in the front-end UI</step>
+    <step id="S3">The unique identity of the exam in the database is requested</step>
+    <step id="S4">The generated exam content is prepared using external grammar tools</step>
+    <step id="S5">The parsed exam content is created</step>
+    <step id="S6">The exam is presented to the student</step>
+  </mainSequence>
+</useCase>

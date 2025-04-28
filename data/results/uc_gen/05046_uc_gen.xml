@@ -1,0 +1,24 @@
+<useCase id="uc101">
+    <name>Install Component</name>
+    <actors>
+        <actor>Operations</actor>
+        <actor>Component</actor>
+        <actor>ComponentOperator</actor>
+        <actor>PublishedNotification</actor>
+        <actor>EventPublishingEnablementOperator</actor>
+        <actor>TMFC019</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Operations installs Component.</step>
+        <step id="S2">ComponentOperator is created.</step>
+        <step id="S3">PublishedNotification is created.</step>
+        <step id="S4">Created PublishedNotification triggers creation flow in EventPublishingEnablementOperator.</step>
+        <step id="S5">Searching for a matching topic related to the created PublishedNotification in Event Manager.</step>
+        <step id="S6">If a matching topic exists, mapping to its URL in EventPublishingEnablementOperator.</step>
+        <step id="S7">If no matching topic is found, Event Publishement flow is initiated for manual topic creation. Approval might be required.</step>
+        <step id="S8">Configuration of Event Hub algorithm in Case of No Match found.</step>
+        <step id="S9">Applying configurations to AudioManager x example(clear/change such label_reordered).</step>
+        <step id="S10">EventManager approving).</step>
+        <step id="S11">Configuration steps links retour definitions.</step>
+    </mainSequence>
+</useCase>

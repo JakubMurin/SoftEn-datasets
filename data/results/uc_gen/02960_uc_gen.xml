@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Complete Ticket Transition Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TicketTransitions</actor>
+        <actor>ClientRestService</actor>
+        <actor>ProfessionalTicket</actor>
+        <actor>CMOReport</actor>
+    </actors>
+    <trigger>User completes a ticket transition process</trigger>
+    <mainSequence>
+        <step id="S1">User completes() on TicketTransitions.</step>
+        <step id="S2">onCMOReviewCompleted() on TicketTransitions.</step>
+        <step id="S3">getCMOReport() on TicketTransitions.</step>
+        <step id="S4">getCategory() on CMOReport.</step>
+        <step id="S5">User selects a valid category.</step>
+        <step id="S6">User types report accuracy comments.</step>
+        <step id="S7">calculateReportQuality() on ProfessionalTicket.</step>
+        <step id="S8">User types report quality comments.</step>
+        <step id="S9">getCMOReport() on ProfessionalTicket.</step>
+        <step id="S10">getAdditionalFactFindings() on CMOReport.</step>
+        <step id="S11">No additional findings exist. Proceeding with CMO completion.</step>
+        <step id="S12">setCMO() on ProfessionalTicket.</step>
+        <step id="S13">setReportQuality() on ProfessionalTicket.</step>
+        <step id="S14">setReportTime() on ProfessionalTicket.</step>
+        <step id="S15">saveTicket() on ClientRestService.</step>
+        <step id="S16">createOrUpdateDicomStudy() on ClientRestService.</step>
+        <step id="S17">createOrUpdateProfessionalTicket() on ClientRestService.</step>
+        <step id="S18">generatePRCMOResponseLetter() on TicketTransitions.</step>
+    </mainSequence>
+</useCase>

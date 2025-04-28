@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Replication Status Summary</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Dashboard</actor>
+        <actor>Dashboard Backend Service</actor>
+        <actor>Replication Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>Curator requests replication status summary</trigger>
+    <mainSequence>
+        <step id="S1">UI Dashboard fetches replication summary request from Dashboard Backend Service</step>
+        <step id="S2">Dashboard Backend Service queries replication statuses from Replication Service</step>
+        <step id="S3">Replication Service retrieves replication data from Database</step>
+        <step id="S4">Replication Service sends collected statuses to Dashboard Backend Service</step>
+        <step id="S5">Dashboard Backend Service returns summary of replication statuses to UI Dashboard</step>
+        <step id="S6">UI Dashboard displays replication status summary to Curator</step>
+    </mainSequence>
+</useCase>

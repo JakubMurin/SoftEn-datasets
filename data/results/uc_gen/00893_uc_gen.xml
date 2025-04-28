@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Check for Concurrent Edits Before Saving a Record</name>
+    <actors>
+        <actor>Archivist</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Archivist requests to edit Record [X]</step>
+        <step id="S2">AMS queries last edit timestamp for Record [X]</step>
+        <step id="S3">RSD provides last edit timestamp</step>
+        <step id="S4">AMS displays Record [X] and last edit info to Archivist</step>
+        <step id="S5">Archivist makes changes to the record</step>
+        <step id="S6">Archivist attempts to save changes</step>
+        <step id="S7">AMS checks if Record [X] has been edited since last timestamp</step>
+        <step id="S8">RSD confirms Record [X] has been modified</step>
+        <step id="S9">AMS displays error message to Archivist: Record has been modified by another user</step>
+        <step id="S10">Archivist reviews the changes or retries later</step>
+        <step id="S11">RSD confirms no changes detected</step>
+        <step id="S12">AMS updates Record [X] with new data and timestamp</step>
+        <step id="S13">RSD confirms Record [X] updated successfully</step>
+        <step id="S14">AMS displays success message to Archivist: Your changes have been saved</step>
+    </mainSequence>
+</useCase>

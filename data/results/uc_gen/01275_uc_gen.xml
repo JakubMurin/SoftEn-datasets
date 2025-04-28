@@ -1,0 +1,22 @@
+<useCase id="UC1">
+  <name>Request Inventory List</name>
+  <description>Allows the Manager to request and view the inventory list.</description>
+  <actors>
+    <actor>Manager</actor>
+  </actors>
+  <preconditions>
+    <precondition>The Manager is logged in.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The inventory list is successfully displayed to the Manager.</condition>
+  </successEndConditions>
+  <trigger>The Manager requests the inventory list.</trigger>
+  <mainSequence>
+    <step id="S1">Manager requests the inventory list.</step>
+    <step id="S2">Management Interface retrieves the inventory data.</step>
+    <step id="S3">Inventory Management Module queries the inventory list from the Database.</step>
+    <step id="S4">Database sends the inventory list data.</step>
+    <step id="S5">Inventory Management Module returns the inventory list to the Management Interface.</step>
+    <step id="S6">Management Interface displays the inventory list to the Manager.</step>
+  </mainSequence>
+</useCase>

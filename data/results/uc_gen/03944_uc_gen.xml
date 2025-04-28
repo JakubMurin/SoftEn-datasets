@@ -1,0 +1,27 @@
+<useCase id="UC1">
+  <name>Login Use Case</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Login Page</actor>
+    <actor>Auth Controller</actor>
+    <actor>Auth Service</actor>
+    <actor>User Repository</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user needs to enter valid credentials</precondition>
+    <precondition>There should be an active connection to the database</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">User enters username and password on the Login Page</step>
+    <step id="S2">User submits login form</step>
+    <step id="S3">Login Page sends an HTTP POST request to Auth Controller with credentials</step>
+    <step id="S4">Auth Controller calls AuthService to authenticate with the provided credentials</step>
+    <step id="S5">AuthService calls UserRepository to check user credentials</step>
+    <step id="S6">User Repository queries the database to verify user credentials</step>
+    <step id="S7">User Repository returns user details to AuthService</step>
+    <step id="S8">AuthService returns user details to Auth Controller</step>
+    <step id="S9">Auth Controller redirects to the home page on LoginPage</step>
+    <step id="S10">LoginPage loads the home page User</step>
+    <step id="S11">HomePage displays the home page to the User</step>
+  </mainSequence>
+</useCase>

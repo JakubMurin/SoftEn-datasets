@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>User interacts with Liba to render elements on the application</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba is initialized and has the necessary components</precondition>
+        <precondition>App is running and ready to render elements</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Liba successfully creates required instances for rendering</condition>
+        <condition>User elements are successfully rendered in the application</condition>
+    </successEndConditions>
+    <trigger>User requests Liba to render elements on the application</trigger>
+    <mainSequence>
+        <step id="S1">User invokes Liba.create(App)</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">Liba passes cInstance to renderC</step>
+        <step id="S4">renderC receives cInstance from Liba</step>
+        <step id="S5">renderC sends props and renderLiba to App</step>
+        <step id="S6">App creates 'button' element</step>
+        <step id="S7">App receives bElement</step>
+        <step id="S8">App creates UserCard element</step>
+        <step id="S9">UserCard calls createChildren with UserCard, props, AppCInstance, and key</step>
+        <step id="S10">createChildren gets instances from cache if already rendered</step>
+        <step id="S11">Liba receives request to create UserCard</step>
+        <step id="S12">renderC receives UserCInstance from Liba</step>
+        <step id="S13">UserCard sends props and renderLiba to renderC</step>
+        <step id="S14">UserCard creates 'div' element</step>
+        <step id="S15">UserCard creates 'div' element</step>
+        <step id="S16">renderLiba passes back element to UserCard</step>
+        <step id="S17">UserCard returns element to renderC</step>
+        <step id="S18">renderC updates instance.element with element</step>
+    </mainSequence>
+</useCase>

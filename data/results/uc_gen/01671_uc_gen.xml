@@ -1,0 +1,45 @@
+<useCase id="UC001">
+    <name>Assemble Computer System</name>
+    <actors>
+        <actor>Technician</actor>
+    </actors>
+    <preconditions>
+        <precondition>A list of all required parts is available.</precondition>
+    </preconditions>
+    <trigger>Technician starts assembling the computer system.</trigger>
+    <mainSequence>
+        <step id="S1">Create SinglePart: monitor</step>
+        <step id="S2">Create SinglePart: keyboard</step>
+        <step id="S3">Create SinglePart: processor</step>
+        <step id="S4">Create SinglePart: ram</step>
+        <step id="S5">Create SinglePart: hardDisk</step>
+        <step id="S6">Create CompoundPart: mainSystem</step>
+        <step id="S7">Add processor to mainSystem</step>
+        <step id="S8">Add ram to mainSystem</step>
+        <step id="S9">Add hardDisk to mainSystem</step>
+        <step id="S10">Create CompoundPart: computer</step>
+        <step id="S11">Add monitor to computer</step>
+        <step id="S12">Add keyboard to computer</step>
+        <step id="S13">Add mainSystem to computer</step>
+        <step id="S14">Describe the monitor</step>
+        <step id="S15">Get price of main system</step>
+        <step id="S16">Get price of processor</step>
+        <step id="S17">Get price of ram</step>
+        <step id="S18">Describe components of main system</step>
+        <step id="S19">Describe the computer</step>
+        <step id="S20">Get price of computer</step>
+        <step id="S21">Get price of monitor</step>
+        <step id="S22">Add 3 keyboards to monitor</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S18">
+            <step id="A1S1">Describe each component in the main system</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S21">
+            <description>Failed to get price of monitor</description>
+            <step id="E1S1">Notify the system administrator</step>
+        </esteps>
+    </errorSteps>
+</useCase>

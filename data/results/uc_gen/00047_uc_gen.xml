@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Get Average Lending Duration Per Book</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Librarian requests average lending duration per book</step>
+        <step id="S2">LendingController receives GET request /api/lendings/average-per-book</step>
+        <step id="S3">LendingController activates</step>
+        <step id="S4">LendingController calls LendingService to get average lending duration per book</step>
+        <step id="S5">LendingService activates</step>
+        <step id="S6">LendingService calls LendingRepository to find average lending duration per book</step>
+        <step id="S7">LendingRepository activates</step>
+        <step id="S8">LendingRepository returns List of Object[] results to LendingService</step>
+        <step id="S9">LendingRepository deactivates</step>
+        <step id="S10">LendingService calls LendingAvgPerBookViewMapper to convert results</step>
+        <step id="S11">LendingAvgPerBookViewMapper activates</step>
+        <step id="S12">LendingAvgPerBookViewMapper converts results to LendingAvgPerBookView list</step>
+        <step id="S13">LendingAvgPerBookViewMapper deactivates</step>
+        <step id="S14">LendingService returns Iterable of LendingAvgPerBookView to LendingController</step>
+        <step id="S15">LendingService deactivates</step>
+        <step id="S16">LendingController returns HTTP 200 OK with Iterable of LendingAvgPerBookView to Librarian</step>
+        <step id="S17">LendingController deactivates</step>
+    </mainSequence>
+</useCase>

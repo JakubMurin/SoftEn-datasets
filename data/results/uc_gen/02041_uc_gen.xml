@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Inibir Robot</name>
+    <description>O gestor de frota inibe um robot.</description>
+    <actors>
+        <actor>Gestor de frota</actor>
+    </actors>
+    <preconditions>
+        <precondition>O gestor de frota tem permissões para inibir robots.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O robot é inibido com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Falha na requisição de inibição do robot.</condition>
+    </failureEndConditions>
+    <trigger>O gestor de frota decide inibir um robot.</trigger>
+    <mainSequence>
+        <step id="S1">O gestor de frota requisita a inibição de um robot.</step>
+        <step id="S2">O sistema solicita que o gestor de frota selecione um robot.</step>
+        <step id="S3">O gestor de frota seleciona o robot a ser inibido.</step>
+    </mainSequence>
+</useCase>

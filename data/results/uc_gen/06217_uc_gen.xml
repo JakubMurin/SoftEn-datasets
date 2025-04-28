@@ -1,0 +1,52 @@
+<useCase id="1">
+    <name>Manage Bookings</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>BookingsPage</actor>
+        <actor>BookingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Booking</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client opens Manage Bookings Page</step>
+        <step id="S2">BookingsPage queries client bookings (clientId)</step>
+        <step id="S3">Database returns bookings</step>
+        <step id="S4">BookingsPage displays bookings list</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Client selects "Cancel Booking" (bookingId)</step>
+            <step id="A1S2">BookingValidator validates cancellation (clientId, bookingId)</step>
+            <step id="A1S3">Database checks booking ownership (clientId, bookingId)</step>
+            <step id="A1S4">Validator checks cancellation rules (bookingId)</step>
+            <step id="A1S5">Validator returns ownership status</step>
+            <step id="A1S6">Validator checks cancellation rules</step>
+            <step id="A1S7">Validator validation fails</step>
+            <step id="A1S8">BookingsPage displays error message: "Cannot cancel this booking"</step>
+            <step id="A1S9">Validator validation passed</step>
+            <step id="A1S10">BookingsPage deletes booking (bookingId)</step>
+            <step id="A1S11">Database returns deletion success</step>
+            <step id="A1S12">BookingsPage displays success message: "Booking successfully canceled"</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Client selects "Edit Booking" (bookingId)</step>
+            <step id="A2S2">BookingValidator validates edit (clientId, bookingId)</step>
+            <step id="A2S3">Database checks booking ownership (clientId, bookingId)</step>
+            <step id="A2S4">Validator checks edit rules (bookingId)</step>
+            <step id="A2S5">Validator returns ownership status</step>
+            <step id="A2S6">Validator checks edit rules</step>
+            <step id="A2S7">Validator validation fails</step>
+            <step id="A2S8">BookingsPage displays error message: "Cannot edit this booking"</step>
+            <step id="A2S9">Validator validation passed</step>
+            <step id="A2S10">BookingsPage updates booking (bookingId, newDetails)</step>
+            <step id="A2S11">Database returns update success</step>
+            <step id="A2S12">BookingsPage displays success message: "Booking successfully updated"</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">Client views booking details (bookingId)</step>
+            <step id="A3S2">BookingsPage fetches booking details (bookingId)</step>
+            <step id="A3S3">Database returns booking details</step>
+            <step id="A3S4">BookingsPage displays booking details</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

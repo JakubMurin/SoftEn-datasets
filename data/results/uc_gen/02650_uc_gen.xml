@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Access Map Data</name>
+    <description>Allow user to access various details on the map</description>
+    <actors>
+        <actor>Application</actor>
+        <actor>MapEngine</actor>
+        <actor>MapImport</actor>
+        <actor>MemSearch</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects map path and type via hadmapconnect</step>
+        <step id="S2">MapEngine parses data and performs map file analysis</step>
+        <step id="S3">MapImport transforms data to data model constructing geometry model</step>
+        <step id="S4">MemSearch inserts map data into Rtree</step>
+        <step id="S5">Returns status code to MapImport</step>
+        <step id="S6">Returns status code to Application</step>
+        <step id="S7">User queries road information using getRoads</step>
+        <step id="S8">MapEngine searches roads in Rtree</step>
+        <step id="S9">MemSearch searches lanes in Rtree</step>
+        <step id="S10">MapEngine returns road pointers collection to MemSearch</step>
+        <step id="S11">Returns road pointers collection to Application</step>
+        <step id="S12">User queries road linking information using getLaneLinks</step>
+        <step id="S13">MapEngine searches lane links in Rtree</step>
+        <step id="S14">MemSearch returns lane links information to MapEngine</step>
+        <step id="S15">MapEngine returns lane links information to Application</step>
+        <step id="S16">User queries object information on roads using getObjects</step>
+        <step id="S17">MapEngine searches objects on roads in Rtree</step>
+        <step id="S18">MemSearch returns object information on roads to MapEngine</step>
+        <step id="S19">MapEngine returns object information on roads to Application</step>
+    </mainSequence>
+</useCase>

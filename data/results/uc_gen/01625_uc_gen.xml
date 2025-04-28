@@ -1,0 +1,16 @@
+<useCase id="UC_001">
+    <name>Access Court Details</name>
+    <description>Allow user to navigate through Court Details section.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks on the "Court Details" link oynchronously.</step>
+        <step id="S2">Account details page navigates to Court Details page.</step>
+        <step id="S3">Local Justice Areas are fetched from database initiated by Fines API. Local Justice Areas records are retrieved using JPA from fines database by syncing through Fines API.</step>
+        <step id="S4">Resolved area details of Local Justice Areas are displayed to the user in JSON format.</step>
+        <step id="S5">Local Justice Areas are auto-populated in the Court Details page.</step>
+        <step id="A1">User enters specific court details and clicks "Return to account details" asynchronously.</step>
+        <step id="S7">Details from court form are transferred back as user navigates back to account details page.</step>
+    </mainSequence>
+</useCase>

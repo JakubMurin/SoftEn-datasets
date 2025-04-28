@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>View Menu</name>
+    <description>Customer requests to view the menu.</description>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Customer is logged in to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The menu items are successfully displayed to the Customer.</condition>
+    </successEndConditions>
+    <trigger>Customer request to view menu</trigger>
+    <mainSequence>
+        <step id="S1">Customer requests to view menu.</step>
+        <step id="S2">Frontend fetches menu items.</step>
+        <step id="S3">Backend queries database for menu items.</step>
+        <step id="S4">Database returns menu items to Backend.</step>
+        <step id="S5">Backend sends menu items data to Frontend.</step>
+        <step id="S6">Frontend displays menu to Customer.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,46 @@
+<useCase id="1">
+    <name>Execute Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>CLI initialized</precondition>
+        <precondition>Task registered</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Task execution completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Task execution failed</condition>
+    </failureEndConditions>
+    <trigger>TimeTrigger - refresh triggered</trigger>
+    <mainSequence>
+        <step id="S1">CLI executes: pomogo --task "programuj pomodoro"</step>
+        <step id="S2">TaskStartHandler registers new task</step>
+        <step id="S3">TaskStartHandler saves new task "programuj pomodoro" with start date and other details</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="S4">TaskStateChangeHandler saves new state - resting and increments rest marker</step>
+            <step id="S5">NotificationPlayer triggers sound notification</step>
+        </asteps>
+        <asteps id="A2" start="S6" continue="S7">
+            <step id="S6">TaskStateChangeHandler saves new state - deep resting and zeroes rest marker</step>
+            <step id="S7">NotificationPlayer triggers sound notification</step>
+        </asteps>
+        <asteps id="A3" start="S8" continue="S9">
+            <step id="S8">TaskStateChangeHandler saves new state - resting and increments rest marker</step>
+            <step id="S9">NotificationPlayer triggers sound notification</step>
+        </asteps>
+        <asteps id="A4" start="S10" continue="S11">
+            <step id="S10">TaskStateChangeHandler marks task as paused</step>
+            <step id="S11">NotificationPlayer triggers sound notification</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S12">
+            <description>Error occurred during task execution</description>
+            <step id="S12">Task paused</step>
+        </esteps>
+    </errorSteps>
+</useCase>

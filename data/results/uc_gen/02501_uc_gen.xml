@@ -1,0 +1,52 @@
+<useCase id="UC001">
+    <name>View Passage Between 2 Buildings</name>
+    <description>User views the passage between 2 buildings.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>:listPassageBetween2BuildingsComponentHTML</actor>
+        <actor>listPassageBetween2BuildingsComponent</actor>
+        <actor>:BuildingServiceFE</actor>
+        <actor>:FloorServiceFE</actor>
+        <actor>:BuildingController</actor>
+        <actor>:FloorController</actor>
+        <actor>:BuildingServiceBE</actor>
+        <actor>:FloorServiceBE</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to building and floor information.</precondition>
+    </preconditions>
+    <trigger>User selects to view the passage between 2 buildings.</trigger>
+    <mainSequence>
+        <step id="S1">User lists the passage between 2 buildings.</step>
+        <step id="S2">User asks to list passage between 2 buildings.</step>
+        <step id="S3">User selects 2 buildings.</step>
+        <step id="S4">:listPassageBetween2BuildingsComponentHTML lists the passage.</step>
+        <step id="S5">listPassageBetween2BuildingsComponent gets the buildings.</step>
+        <step id="S6">:BuildingServiceFE triggers HTTP GET /buildings/list.</step>
+        <step id="S7">:BuildingServiceBE finds all the buildings.</step>
+        <step id="S8">Database queries the buildings.</step>
+        <step id="S9">:BuildingServiceBE receives the list of buildings from the database.</step>
+        <step id="S10">:BuildingController sends the list of buildings.</step>
+        <step id="S11">:listPassageBetween2BuildingsComponentHTML displays the buildings.</step>
+        <step id="S12">User is asked to select 2 buildings.</step>
+        <step id="S13">User selects 2 buildings.</step>
+        <step id="S14">listPassageBetween2BuildingsComponent calls ListPassageBetween2Buildings.</step>
+        <step id="S15">listPassageBetween2BuildingsComponent lists floors from building.</step>
+        <step id="S16">listPassageBetween2BuildingsComponent checks passage between floors.</step>
+        <step id="S17">:FloorController receives the passage query.</step>
+        <step id="S18">Database queries to find the passage.</step>
+        <step id="S19">:FloorController sends the passage response.</step>
+        <step id="S20">listPassageBetween2BuildingsComponent displays the passage.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">If the buildings are not found, display an error message.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S12">
+            <description>User does not select 2 buildings.</description>
+            <step id="E1S1">Show an error message that 2 buildings need to be selected.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

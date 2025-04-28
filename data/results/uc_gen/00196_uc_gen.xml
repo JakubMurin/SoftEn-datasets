@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>View Permissions on Objects</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Interface</actor>
+        <actor>Authentication Service</actor>
+        <actor>Permission Service</actor>
+        <actor>Database</actor>
+        <actor>Permissions Display</actor>
+    </actors>
+    <preconditions>
+        <precondition>A Curator has logged in and requests to view permissions.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Curator requests to view permissions through UI Interface.</step>
+        <step id="S2">UI Interface validates the curator session using Authentication Service.</step>
+        <step id="S3">Authentication Service confirms the session is valid.</step>
+        <step id="S4">UI Interface requests object permissions for the curator from Permission Service.</step>
+        <step id="S5">Permission Service queries permissions by curator ID from the Database.</step>
+        <step id="S6">Database returns permissions data to Permission Service.</step>
+        <step id="S7">Permission Service processes permissions data and communicates back to UI Interface.</step>
+        <step id="S8">UI Interface displays the formatted permissions data requested.</step>
+        <step id="S9">Permission Display module shows an overview of permissions to the Curator.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="VerifyBookingOTP">
+    <name>Verify Booking OTP</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>UI</actor>
+        <actor>Router</actor>
+        <actor>Controller</actor>
+        <actor>Repository</actor>
+        <actor>BookingModel</actor>
+        <actor>OTPService</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>A booking with a valid ID exists in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The booking OTP verification is successful.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The OTP provided for booking verification is invalid.</condition>
+    </failureEndConditions>
+    <trigger>Customer initiates the booking OTP verification process through the UI.</trigger>
+    <mainSequence>
+        <step id="S1">The Customer requests booking verification by OTP.</step>
+        <step id="S2">The UI forwards the request to verify OTP for booking.</step>
+        <step id="S3">The Router processes the request and calls the Controller to verify booking OTP.</step>
+        <step id="S4">The Controller retrieves booking details from the Repository using the booking ID.</step>
+        <step id="S5">The OTPService is called to verify the OTP.</step>
+        <step id="S6">If the OTP is valid:</step>
+        <step id="S7">The Controller updates the booking status to "verified" in the Repository.</step>
+        <step id="S8">The Router sends a response of '200 OK' indicating successful booking verification to the UI.</step>
+        <step id="S9">The UI displays a success message to the Customer.</step>
+        <step id="S10">If the OTP is invalid:</step>
+        <step id="S11">The Controller sends a '400 Bad Request' response to the UI indicating an invalid OTP.</step>
+        <step id="S12">The UI displays an error message to the Customer.</step>
+    </mainSequence>
+</useCase>

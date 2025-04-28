@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Refund Request Submission</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>UI/Interface</actor>
+        <actor>RefundRouter</actor>
+        <actor>RefundController</actor>
+        <actor>RefundRepository</actor>
+        <actor>Refund Model</actor>
+        <actor>CustomerRepository</actor>
+        <actor>Database</actor>
+        <actor>AdminNotificationService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer is logged in and on the refund request page</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Customer opens the refund request page</step>
+        <step id="S2">UI displays the refund request form to the Customer</step>
+        <step id="S3">Customer submits refund request with customerId, orderId, reason, and amount</step>
+        <step id="S4">Router processes the POST /refunds request</step>
+        <step id="S5">Controller creates a new refund request with the provided details</step>
+        <step id="S6">Controller fetches customer details from the CustomerRepository</step>
+        <step id="S7">Controller creates a new Refund with the details and saves it to the Database</step>
+        <step id="S8">Controller notifies AdminService of the refund request</step>
+        <step id="S9">Router responds with 201 Created status</step>
+        <step id="S10">UI displays success message to the Customer</step>
+    </mainSequence>
+</useCase>

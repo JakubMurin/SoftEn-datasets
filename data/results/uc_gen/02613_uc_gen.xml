@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Report Scheduling and Execution</name>
+    <actors>
+        <actor>UI</actor>
+        <actor>Reporting Dashboards</actor>
+        <actor>Reporting OpenSearch</actor>
+        <actor>Reporting JobScheduler</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>UI has access to Report Scheduling feature</precondition>
+        <precondition>Reporting Dashboards is available</precondition>
+        <precondition>Reporting OpenSearch is functioning</precondition>
+        <precondition>Reporting JobScheduler is activated</precondition>
+        <precondition>Notifications OpenSearch Plugin is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Schedule Report completed successfully</condition>
+        <condition>Job scheduler executes job without errors</condition>
+        <condition>On-demand report creation and execution successful</condition>
+    </successEndConditions>
+    <trigger>User requests to schedule a report</trigger>
+    <mainSequence>
+        <step id="S1">Create or update Report Definitions UX information on Reporting Dashboards</step>
+        <step id="S2">Get available Notification Feature Channel list from Notifications OpenSearch Plugin</step>
+        <step id="S3">Retrieve UX information with Channel list for report generation</step>
+        <step id="S4">Save the Report Definition</step>
+        <step id="S5">Schedule Report Definition on Reporting OpenSearch</step>
+        <step id="S6">Execute job to generate the scheduled Report</step>
+        <step id="S7">Update Report Instance with a notification message</step>
+        <step id="S8">Send notification using Notifications OpenSearch Plugin</step>
+        <step id="S9">Update Report Instance status on Reporting OpenSearch</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,49 @@
+<useCase id="UC1">
+    <name>Recruitment and Research Analysis</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>RecruitmentPlatform</actor>
+        <actor>UserDb</actor>
+        <actor>Participant</actor>
+        <actor>AnalysisSystem</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher defines criteria for participant selection.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher receives synthesized results from AnalysisSystem.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Recruitment failure; Researcher adjusts criteria and republishes invitations.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Researcher defines criteria for participant selection.</step>
+        <step id="S2">RecruitmentPlatform queries potential participants based on criteria.</step>
+        <step id="S3">UserDb returns a list of potential participants.</step>
+        <step id="S4">RecruitmentPlatform sends recruitment invitations.</step>
+        <step id="S5">Participant responds to invitation.</step>
+        <step id="S6">RecruitmentPlatform provides a list of participating users.</step>
+        <step id="S7">Researcher conducts user research sessions with Participant.</step>
+        <step id="S8">Participant provides feedback and data to Researcher.</step>
+        <step id="S9">Researcher updates project status to "Complete".</step>
+        <step id="S10">Researcher inputs user research data into AnalysisSystem.</step>
+        <step id="S11">AnalysisSystem analyzes and summarizes findings.</step>
+        <step id="S12">AnalysisSystem provides synthesized results to Researcher.</step>
+        <step id="S13">Researcher archives project data and findings in AnalysisSystem.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Researcher conducts user research sessions with Participant.</step>
+            <step id="A1S2">Participant provides feedback and data to Researcher.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Recruitment failure; Researcher adjusts criteria and republishes invitations.</description>
+            <step id="E1S1">UserDb returns an updated list of potential participants.</step>
+            <step id="E1S2">RecruitmentPlatform resends invitations.</step>
+            <step id="E1S3">Participant responds to invitations.</step>
+            <step id="E1S4">RecruitmentPlatform updates Researcher on participant status.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

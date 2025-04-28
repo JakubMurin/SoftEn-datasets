@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Access OneToOne Session Check</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Routes</actor>
+        <actor>Controller</actor>
+        <actor>OneToOne</actor>
+        <actor>MySQL</actor>
+        <actor>Error</actor>
+        <actor>Question</actor>
+        <actor>Measurable</actor>
+        <actor>Ejs</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Navegador accesses the OneToOne session check route by sending a GET request to /oneToOne/:sessionID.</step>
+        <step id="S2">Routes forwards the request to the Controller to retrieve the OneToOne session data.</step>
+        <step id="S3">Controller fetches the OneToOne session data from MySQL.</step>
+        <step id="S4">Controller checks if there are retrieved rows of data.</step>
+        <step id="S5">If no rows are found, Controller redirects to the error page.</step>
+        <step id="S6">Controller verifies user permissions and redirects to error page if necessary.</step>
+        <step id="S7">Controller retrieves data related to questions for the session from MySQL.</step>
+        <step id="S8">Controller checks if there are any answers associated with the questions.</step>
+        <step id="S9">If there are no answers, Controller renders the oneToOneCheck page with the response.</step>
+        <step id="S10">Controller retrieves measurable data for the session from MySQL.</step>
+        <step id="S11">Controller renders the oneToOneCheck page with the fetched data.</step>
+        <step id="S12">Ejs sends the HTML response back to Navegador.</step>
+    </mainSequence>
+</useCase>

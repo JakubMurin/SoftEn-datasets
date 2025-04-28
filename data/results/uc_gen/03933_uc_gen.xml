@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Create and Place Order</name>
+    <description>Allows the user to create and place an order for a product.</description>
+    <actors>
+        <actor>App</actor>
+        <actor>OrderServiceFacade</actor>
+        <actor>InventoryService</actor>
+        <actor>PaymentService</actor>
+        <actor>ShippingService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Create a new order in the system.</step>
+        <step id="S2">Place an order for a specific product with product ID.</step>
+        <step id="S3">Retrieve the product details by product ID from the Order Service Facade.</step>
+        <step id="S4">Check if the product is available in the inventory at the Inventory Service.</step>
+        <step id="S5">Complete the payment process through the Payment Service.</step>
+        <step id="S6">Initiate the shipping process via the Shipping Service.</step>
+    </mainSequence>
+</useCase>

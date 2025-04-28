@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View Boards and History</name>
+    <actors>
+        <actor>SBAappUser</actor>
+        <actor>ViewBoardsUI</actor>
+        <actor>ViewBoardsController</actor>
+        <actor>SBProtocol</actor>
+        <actor>ServerAJAX</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User views boards</step>
+        <step id="S2">UI creates instance of socket with server IP and server port, and input/output streams</step>
+        <step id="S3">UI requests boards to view</step>
+        <step id="S4">Controller creates protocol, sets code to VIEW_BOARDS, token to AUTH_TOKEN, and sends request</step>
+        <step id="S5">Controller receives content, splits it, and sends to UI</step>
+        <step id="S6">User views boards content</step>
+        <step id="S7">User chooses a board</step>
+        <step id="S8">UI requests history for the selected board</step>
+        <step id="S9">Controller creates protocol, sets code to LIST_HISTORY, content to selected board, token to AUTH_TOKEN, and sends request</step>
+        <step id="S10">Controller receives history content, splits it, and sends to UI</step>
+        <step id="S11">User views history content</step>
+    </mainSequence>
+</useCase>

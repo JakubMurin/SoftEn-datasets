@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Add assessment of subject</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin adds assessment of subject.</step>
+        <step id="S2">SubjectController adds mark type to subject.</step>
+        <step id="S3">SubjectService adds mark type to subject.</step>
+        <step id="S4">SubjectRepository adds mark type to subject in MySQL.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Mark Type exists in subject's assessment.</step>
+            <step id="A1S2">DataIntegrityViolationException is thrown in MySQL.</step>
+            <step id="A1S3">ActionNotAllowedException is thrown in SubjectRepository.</step>
+            <step id="A1S4">Error is displayed to Admin by CustomExceptionHandler.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Mark Type doesn't exist in subject's assessment.</step>
+            <step id="A2S2">Response is returned by MySQL.</step>
+            <step id="A2S3">SubjectService fetches assessment by subject id from MySQL.</step>
+            <step id="A2S4">Response is returned by MySQL.</step>
+            <step id="A2S5">List of tuple is returned by SubjectRepository to SubjectService.</step>
+            <step id="A2S6">Map of mark type and no marks is returned by SubjectService to SubjectController.</step>
+            <step id="A2S7">Assessment is displayed to Admin by SubjectController.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

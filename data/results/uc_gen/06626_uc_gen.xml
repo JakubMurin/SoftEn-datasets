@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Lexorank workflows</name>
+    <actors>
+        <actor>user</actor>
+        <actor>api</actor>
+        <actor>lexorank</actor>
+        <actor>storage</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User shows all rows by making a request to the API.</step>
+        <step id="S2">API activates and requests Lexorank to get all rows.</step>
+        <step id="S3">Lexorank requests storage to get a snapshot of rows and ranks.</step>
+        <step id="S4">Storage provides Lexorank with a snapshot of rows and ranks.</step>
+        <step id="S5">Lexorank orders rows by rank and sends them back to the API.</step>
+        <step id="S6">API deactivates.</step>
+        <step id="S7">User inserts a new row by making a request to the API.</step>
+        <step id="S8">API activates and requests Lexorank to insert the new row.</step>
+        <step id="S9">Lexorank requests storage to lock the snapshot.</step>
+        <step id="S10">Storage provides Lexorank with a snapshot of rows and ranks.</step>
+        <step id="S11">Lexorank checks for rank collisions and applies updates in cascade if needed.</step>
+        <step id="S12">Lexorank inserts the new record into storage.</step>
+        <step id="S13">Lexorank deactivates.</step>
+        <step id="S14">User updates an existing row by making a request to the API.</step>
+        <step id="S15">API activates and requests Lexorank to change the position of the row.</step>
+        <step id="S16">Lexorank requests storage to lock the snapshot.</step>
+        <step id="S17">Storage provides Lexorank with a snapshot of rows and ranks.</step>
+        <step id="S18">Lexorank checks for rank collisions and applies updates in cascade if needed.</step>
+        <step id="S19">Lexorank changes the rank of the row in storage.</step>
+        <step id="S20">Lexorank deactivates.</step>
+    </mainSequence>
+</useCase>

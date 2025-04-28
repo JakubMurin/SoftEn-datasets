@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Login to Dashboard</name>
+    <actors>
+        <actor>Receptionist</actor>
+        <actor>UI/Interface</actor>
+        <actor>AuthRouter</actor>
+        <actor>AuthController</actor>
+        <actor>AuthRepository</actor>
+        <actor>UserModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Login is successful and dashboard data is displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Login fails due to invalid credentials</condition>
+    </failureEndConditions>
+    <trigger>Receptionist enters login credentials</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password)</step>
+        <step id="S2">UI sends POST request to /login</step>
+        <step id="S3">Router forwards request to Controller</step>
+        <step id="S4">Controller validates credentials</step>
+        <step id="S5">Repository fetches user data by username</step>
+        <step id="S6">Controller checks if password matches</step>
+        <step id="S7">Controller sends 200 OK response to UI</step>
+        <step id="S8">UI displays login result</step>
+        <step id="S9">UI sends GET request to /dashboard</step>
+        <step id="S10">Router gets dashboard data from Controller</step>
+        <step id="S11">Repository fetches dashboard data</step>
+        <step id="S12">Controller sends 200 OK response with dashboard data to UI</step>
+        <step id="S13">UI displays dashboard</step>
+    </mainSequence>
+</useCase>

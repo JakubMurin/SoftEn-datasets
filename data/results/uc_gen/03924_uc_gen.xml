@@ -1,0 +1,19 @@
+<useCase id="1">
+    <name>User Booking</name>
+    <description>Allows the user to book a treatment and enter contact details, confirming the booking through the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects treatment, date, and enters contact info</step>
+        <step id="S2">UI sends request to Core to create Booking (name, email, treatment, date)</step>
+        <step id="S3">Core saves Booking to Persistence followed by saving it to a file</step>
+        <step id="S4">Core notifies UI that booking has been created</step>
+        <step id="S5">User submits booking</step>
+        <step id="S6">UI sends POST request to REST for /bookings</step>
+        <step id="S7">REST takes the Booking and adds it to Core, then Core patterns persistence</step>
+        <step id="S8">Core and Persistence go through the process of saving and confirming the new booking</step>
+        <step id="S9">REST confirms Booking to User through sent information</step>
+        <step id="S10">UI displays a confirmation message to User</step>
+    </mainSequence>
+</useCase>

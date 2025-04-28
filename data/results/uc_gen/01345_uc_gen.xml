@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Cluster Administration</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Operator</actor>
+        <actor>Daemon</actor>
+        <actor>OpenShift API</actor>
+        <actor>Vendor Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>RF ISO installed on BMC_x86.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin installs RF ISO on BMC_x86.</step>
+        <step id="S2">Operator starts Daemonset.</step>
+        <step id="S3">Daemon detects DPU type.</step>
+        <step id="S4">Daemon labels node.</step>
+        <step id="S5">OpenShift API gets label and reconciles changes to node spec.</step>
+        <step id="S6">Operator starts vendor plugin pod.</step>
+        <step id="S7">Vendor Plugin starts grpc.</step>
+        <step id="S8">Daemon initializes vendor plugin and returns ip:port.</step>
+    </mainSequence>
+</useCase>

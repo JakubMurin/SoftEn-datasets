@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Read File</name>
+    <description>User reads the file at /dir1/file.txt</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to /dir1/file.txt</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully reads the latest data in /dir1/file.txt</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User is unable to read the file</condition>
+    </failureEndConditions>
+    <trigger>User initiates the action to read the file</trigger>
+    <mainSequence>
+        <step id="S1">User reads the file at /dir1/file.txt</step>
+        <step id="S2">User gets the user version directory location</step>
+        <step id="S3">DFS location of latest directory (LATEST)</step>
+        <step id="S4">User gets /dir1/file.txt content (LINK)</step>
+        <step id="S5">Content of LINK</step>
+        <step id="S6">User reads file at LINK (FILE)</step>
+        <step id="S7">Content of FILE</step>
+        <step id="S8">User receives the latest data in /dir1/file.txt</step>
+    </mainSequence>
+</useCase>

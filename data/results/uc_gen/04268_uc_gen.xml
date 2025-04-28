@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Handle HTTP Request</name>
+    <actors>
+        <actor>HTTPRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Apache input filter is activated by HTTPRequest.</step>
+        <step id="S2">Context enrichment is performed by mod_dup.</step>
+        <step id="S3">Filters are matched by mod_dup.</step>
+        <step id="S4">Delegation to next handler (WS, mod_rewrite) is done by mod_dup.</step>
+        <step id="S5">The answer is collected by PNS_WS.</step>
+        <step id="S6">Request is prepared for duplication by duplicator.</step>
+        <step id="S7">Request is sent back to the client by HTTPRequest.</step>
+        <step id="S8">Duplicated request is sent to mod_compare by duplicator.</step>
+    </mainSequence>
+</useCase>

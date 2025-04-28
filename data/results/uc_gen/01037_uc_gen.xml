@@ -1,0 +1,42 @@
+<useCase id="1">
+    <name>Execute Job Process</name>
+    <description>As a Client, I want to generate a client keypair and execute a job process.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Facilitator</actor>
+        <actor>Validator</actor>
+        <actor>Miner</actor>
+        <actor>Executor</actor>
+        <actor>Job</actor>
+        <actor>Storage</actor>
+    </actors>
+    <trigger>Client generates a client keypair using Facilitator SDK.</trigger>
+    <mainSequence>
+        <step id="S1">Client creates a client keypair using Facilitator SDK.</step>
+        <step id="S2">Client sends job details and the public key to the Facilitator.</step>
+        <step id="S3">Facilitator chooses Validator and Miner.</step>
+        <step id="S4">Facilitator sends job details to the Validator.</step>
+        <step id="S5">Validator sends initial job details to the Miner.</step>
+        <step id="S6">Miner checks for a free executor and possibly spins up a new one.</step>
+        <step id="S7">Miner passes initial job details to the Executor.</step>
+        <step id="S8">Executor reports readiness (initial preparations done) to the Miner.</step>
+        <step id="S9">Miner reports readiness (initial preparations done) to the Validator.</step>
+        <step id="S10">Validator sends all job details to the Miner.</step>
+        <step id="S11">Miner sends all job details to the Executor.</step>
+        <step id="S12">Executor fetches data from Storage (if job requires fetching data).</step>
+        <step id="S13">Executor starts the Job process and attempts connecting to a predefined websocket route.</step>
+        <step id="S14">Executor reports readiness for serving requests to the Job.</step>
+        <!-- Loop until Client terminates the job or timeout occurs -->
+        <step id="S15">Client sends a request, signed with the client keypair, to the Job.</step>
+        <step id="S16">Job replies and signs input/output digest with the Job public key.</step>
+        <step id="S17">Client assesses the validity of the response.</step>
+        <step id="S18">If response is invalid, Client informs Facilitator about malicious Miner.</step>
+        <step id="S19">Job reports finish to the Executor.</step>
+        <step id="S20">Executor uploads data to Storage if job requires uploading data.</step>
+        <step id="S21">Executor uploads stdout and stderr to Storage.</step>
+        <step id="S22">Executor reports job done to the Miner.</step>
+        <step id="S23">Miner reports job done to the Validator.</step>
+        <step id="S24">Validator reports job done to the Facilitator.</step>
+        <step id="S25">Facilitator reports job done to the Client.</step>
+    </mainSequence>
+</useCase>

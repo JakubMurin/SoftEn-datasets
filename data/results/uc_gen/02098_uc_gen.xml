@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Manage Ingredient Expiry Dates</name>
+    <actors>
+        <actor>Chef</actor>
+        <actor>UI Interface</actor>
+        <actor>Server/Controller</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef must be able to access the UI Interface.</precondition>
+    </preconditions>
+    <trigger>Chef requests expiry dates of ingredients from the UI Interface.</trigger>
+    <mainSequence>
+        <step id="S1">Chef requests expiry dates of ingredients.</step>
+        <step id="S2">UI Interface fetches expiry dates from the Server/Controller.</step>
+        <step id="S3">Server/Controller queries the Database for ingredients with expiry dates.</step>
+        <step id="S4">Database returns the expiry dates data to the Server/Controller.</step>
+        <step id="S5">Server/Controller displays the expiry dates on the UI Interface.</step>
+        <step id="S6">UI Interface shows the expiry dates of ingredients to the Chef.</step>
+    </mainSequence>
+</useCase>

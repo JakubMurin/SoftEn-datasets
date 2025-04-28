@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Retrieve Top Readers per Genre</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>LendingController</actor>
+        <actor>GenreService</actor>
+        <actor>GenreRepository</actor>
+        <actor>ReaderService</actor>
+        <actor>ReaderRepository</actor>
+        <actor>ReaderViewMapper</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Librarian sends a request to LendingController to retrieve top readers per genre</step>
+        <step id="S2">LendingController calls GenreService to get the genre by ID</step>
+        <step id="S3">GenreService queries GenreRepository for the genre by ID</step>
+        <step id="S4">GenreRepository returns the genre to GenreService</step>
+        <step id="S5">GenreService provides the genre to LendingController</step>
+        <step id="S6">LendingController checks if the genre is found or not</step>
+        <step id="S7">If genre not found, LendingController notifies Librarian with HTTP 404 Not Found</step>
+        <step id="S8">If genre found, LendingController requests ReaderService to get top readers per genre</step>
+        <step id="S9">ReaderService queries ReaderRepository for top readers per genre</step>
+        <step id="S10">ReaderRepository returns a list of top readers to ReaderService</step>
+        <step id="S11">ReaderService provides the list of top readers to LendingController</step>
+        <step id="S12">LendingController maps the readers to ReaderView using ReaderViewMapper</step>
+        <step id="S13">ReaderViewMapper returns an iterable of ReaderViews to LendingController</step>
+        <step id="S14">LendingController responds to Librarian with HTTP 200 OK along with the iterable of ReaderViews</step>
+    </mainSequence>
+</useCase>

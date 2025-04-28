@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Collaboration with Faculty Members</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>Repository Interface</actor>
+        <actor>SearchSystem</actor>
+        <actor>FacultyProfiles</actor>
+        <actor>CollaborationModule</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher has access to the Repository Interface.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher successfully selects faculty members for collaboration.</condition>
+    </successEndConditions>
+    <trigger>Researcher accesses the Repository Interface to collaborate with faculty members.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher accesses the Repository Interface.</step>
+        <step id="S2">Repository Interface initiates a search for faculty members.</step>
+        <step id="S3">SearchSystem queries faculty data.</step>
+        <step id="S4">FacultyProfiles returns search results.</step>
+        <step id="S5">SearchSystem displays the results to the Researcher.</step>
+        <step id="S6">Researcher reviews faculty interests and expertise.</step>
+        <step id="S7">Repository Interface requests detailed information from FacultyProfiles.</step>
+        <step id="S8">FacultyProfiles provides detailed information to the Repository Interface.</step>
+        <step id="S9">Researcher selects faculty members for collaboration.</step>
+        <step id="S10">Repository Interface saves the selection for collaboration in CollaborationModule.</step>
+        <step id="S11">CollaborationModule confirms the selection and provides next steps to the Researcher.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Mark Order as Completed</name>
+    <actors>
+        <actor>Employee</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Employee is logged in to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The order status is updated successfully in the database.</condition>
+        <condition>The Employee Interface displays a success message.</condition>
+    </successEndConditions>
+    <trigger>The Employee selects the order to mark as completed.</trigger>
+    <mainSequence>
+        <step id="S1">Employee selects an order to mark as completed.</step>
+        <step id="S2">Employee Interface sends a request to mark the order as completed to the Backend Server.</step>
+        <step id="S3">Backend Server updates the order status in the Database.</step>
+        <step id="S4">Backend Server receives confirmation from the Database.</step>
+        <step id="S5">Backend Server sends a response to the Employee Interface that the order is marked as completed.</step>
+        <step id="S6">Employee Interface displays a success message to the Employee.</step>
+    </mainSequence>
+</useCase>

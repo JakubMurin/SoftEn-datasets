@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Performing a malicious POST request</name>
+    <description>As an Attacker, I want to send a malicious POST request to poison the response queue.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Attacker has access to the Proxy server.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Proxy successfully processes the POST request and returns a 200 response.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The POST request fails or the response is not 200.</condition>
+    </failureEndConditions>
+    <trigger>POST /foo request sent to Proxy.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends POST /foo request with [GET /poison] to Proxy.</step>
+        <step id="S2">Proxy activates and forwards the POST /foo request to Backend.</step>
+        <step id="S3">Backend processes the POST /foo request and responds with /foo 200 to Proxy.</step>
+        <step id="S4">Proxy forwards the /foo 200 response to the Attacker.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Backend receives a GET /poison request and activates.</step>
+            <step id="A1S2">Backend responds with /poison 200 to Proxy.</step>
+            <step id="A1S3">The "extra" response now poisons the response queue.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

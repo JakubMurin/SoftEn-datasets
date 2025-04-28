@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Get Issue Details</name>
+    <actors>
+        <actor>Product Owner</actor>
+        <actor>System</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Product Owner requests issue details by providing the sign-in ID and issue ID.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Product Owner requests issue details by calling getIssue(signId, issueId).</step>
+        <step id="S2">System validates the member by calling validateMember(signId).</step>
+        <step id="S3">System validates the issue by calling validateIssue(issueId).</step>
+        <step id="S4">System validates the project by calling validateProject(issue.projectId).</step>
+        <step id="S5">System sends IssueResponseDto back to the Product Owner.</step>
+    </mainSequence>
+</useCase>

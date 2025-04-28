@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Security Assessment and Compliance Report Generation</name>
+    <actors>
+        <actor>Funder</actor>
+        <actor>DMPTool</actor>
+        <actor>SecurityAssessmentModule</actor>
+        <actor>ComplianceDatabase</actor>
+        <actor>ProjectData</actor>
+        <actor>ReportGenerator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Funder requests security details for a specific project from DMPTool.</step>
+        <step id="S2">DMPTool forwards the request to SecurityAssessmentModule to assess security measures and standards.</step>
+        <step id="S3">SecurityAssessmentModule fetches relevant data on security protocols from ProjectData.</step>
+        <step id="S4">ProjectData returns the security protocols to SecurityAssessmentModule.</step>
+        <step id="S5">SecurityAssessmentModule verifies compliance with legal standards using ComplianceDatabase.</step>
+        <step id="S6">ComplianceDatabase returns the compliance status to SecurityAssessmentModule.</step>
+        <step id="S7">SecurityAssessmentModule compiles a security assessment report and forwards it to ReportGenerator.</step>
+        <step id="S8">ReportGenerator generates and formats the report.</step>
+        <step id="S9">DMPTool provides the report on data security and compliance to the Funder.</step>
+    </mainSequence>
+</useCase>

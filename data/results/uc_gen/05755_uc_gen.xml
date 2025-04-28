@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Get Monthly Lendings Information</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>LendingController</actor>
+        <actor>ReaderService</actor>
+        <actor>ReaderRepository</actor>
+        <actor>Reader</actor>
+        <actor>ReaderLentsViewMapper</actor>
+    </actors>
+    <preconditions>
+        <precondition>Librarian needs to access the monthly lendings information.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Librarian successfully retrieves the monthly lendings information.</condition>
+    </successEndConditions>
+    <trigger>Librarian initiates the process by sending a GET request to /api/lendings/monthly-lending.</trigger>
+    <mainSequence>
+        <step id="S1">Librarian sends a GET request to /api/lendings/monthly-lending.</step>
+        <step id="S2">LendingController is activated.</step>
+        <step id="S3">ReaderService is activated.</step>
+        <step id="S4">ReaderRepository is activated.</step>
+        <step id="S5">ReaderRepository finds all readers.</step>
+        <step id="S6">ReaderService retrieves the monthly lending information for each reader.</step>
+        <step id="S7">Reader sets the number of lendings.</step>
+        <step id="S8">ReaderLentsViewMapper maps the reader lendings to the view.</step>
+        <step id="S9">LendingController responds with HTTP 200 OK along with the reader lendings views.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Enterprise Admission Process</name>
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Agency</actor>
+    </actors>
+    <preconditions>
+        <precondition>Enterprise is in pending approval status.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Enterprise submits required documents.</step>
+        <step id="S2">Controller processes admission application.</step>
+        <step id="S3">MongoDB uploads files.</step>
+        <step id="S4">MongoDB sends fileId.</step>
+        <step id="S5">MySQL saves file information.</step>
+        <step id="S6">Controller receives and returns results.</step>
+        <step id="S7">Enterprise receives application result.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Regulatory Agency queries list of unapproved enterprises.</step>
+            <step id="A1S2">Regulatory Agency selects approval or rejection.</step>
+            <step id="A1S3">Regulatory Agency receives approval result.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Admission approval rejected.</description>
+            <step id="E1S1">Enterprise can resubmit admission documents.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

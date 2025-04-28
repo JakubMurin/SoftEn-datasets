@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>A Persisted Queue Transaction using State Machine Replication</name>
+    <actors>
+        <actor>ApplicationA</actor>
+        <actor>CorfuGuidGeneratorA</actor>
+        <actor>CorfuRuntimeA</actor>
+        <actor>CorfuCluster</actor>
+        <actor>CorfuRuntimeB</actor>
+        <actor>CorfuGuidGeneratorB</actor>
+        <actor>ApplicationB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">ApplicationA enqueues object A to CorfuRuntimeA</step>
+        <step id="S2">CorfuGuidGeneratorA generates 8-byte unique Id 0001 for object A</step>
+        <step id="S3">CorfuRuntimeA writes object A to CorfuCluster with Id 0001</step>
+        <step id="S4">CorfuRuntimeA notifies ApplicationA about successful write with Id 0001</step>
+        <step id="S5">ApplicationB enqueues object B to CorfuRuntimeB</step>
+        <step id="S6">CorfuGuidGeneratorB generates 8-byte unique Id 0002 for object B</step>
+        <step id="S7">CorfuRuntimeB writes object B to CorfuCluster with Id 0002</step>
+        <step id="S8">CorfuRuntimeB notifies ApplicationB about successful write with Id 0002</step>
+        <step id="S9">CorfuCluster replicates object A to CorfuRuntimeB</step>
+        <step id="S10">CorfuCluster replicates object B to CorfuRuntimeA</step>
+        <step id="S11">ApplicationA queries CorfuRuntimeA for entry list</step>
+        <step id="S12">ApplicationB queries CorfuRuntimeB for entry list</step>
+    </mainSequence>
+</useCase>

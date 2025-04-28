@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Manage Lexorank workflows</name>
+    <actors>
+        <actor>user</actor>
+        <actor>api</actor>
+        <actor>lexorank</actor>
+        <actor>storage</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to manage Lexorank workflows.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a show all request to the API</step>
+        <step id="S2">API activates and sends a getRows() request to Lexorank</step>
+        <step id="S3">Lexorank activates and requests a snapshot from storage using getSnapshot()</step>
+        <step id="S4">Storage activates, retrieves the snapshot of rows and ranks, and sends it back to Lexorank</step>
+        <step id="S5">Lexorank sends the ordered rows by rank back to API</step>
+        <step id="S6">API deactivates and returns the ordered rows to the User</step>
+        <step id="S7">User views the rows ordered by rank</step>
+        <step id="S8">User sends an insert request to the API for a new row insertion</step>
+        <step id="S9">API activates and requests Lexorank to perform an insertAt()</step>
+        <step id="S10">Lexorank activates and requests a snapshot from storage using lockSnapshot()</step>
+        <step id="S11">Storage activates, retrieves the snapshot of rows and ranks, and sends it back to Lexorank</step>
+        <step id="S12">Lexorank proposes a new row with a rank</step>
+        <step id="S13">If the proposed rank collides, Lexorank applies the update in cascade</step>
+        <step id="S14">Lexorank sends the new row to be inserted to storage and retrieves the updated snapshot</step>
+        <step id="S15">Storage activates, inserts the new row, and sends the new row back to Lexorank</step>
+        <step id="S16">Lexorank sends the new row back to API</step>
+        <step id="S17">API deactivates and returns the new row to the User</step>
+        <step id="S18">User submits an update request to the API for an existing row</step>
+        <step id="S19">API activates and requests Lexorank to update the row with a new position</step>
+        <step id="S20">Lexorank activates and requests a snapshot from storage using lockSnapshot()</step>
+        <step id="S21">Storage activates, retrieves the snapshot of rows and ranks, and sends it back to Lexorank</step>
+        <step id="S22">Lexorank proposes a new position for the row</step>
+        <step id="S23">If the proposed rank collides, Lexorank applies the update in cascade</step>
+        <step id="S24">Lexorank sends the updated row to storage, updates the rank, and retrieves the updated snapshot</step>
+        <step id="S25">Storage activates, changes the rank, and sends the updated row back to Lexorank</step>
+        <step id="S26">Lexorank sends the updated row back to API</step>
+        <step id="S27">API deactivates and returns the updated row to the User</step>
+    </mainSequence>
+</useCase>

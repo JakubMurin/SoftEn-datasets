@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Client Deposits ETH and OAX</name>
+    <actors>
+        <actor>WebClient</actor>
+        <actor>L2Client</actor>
+        <actor>Operator</actor>
+        <actor>Events</actor>
+        <actor>Mediator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">WebClient requests to deposit 5 ETH</step>
+        <step id="S2">L2Client initiates depositTokens(5 ETH)</step>
+        <step id="S3">Mediator processes the deposit request</step>
+        <step id="S4">Operator updates balances for ETH</step>
+        <step id="S5">WebClient requests to deposit 1000 OAX</step>
+        <step id="S6">L2Client initiates depositTokens(1000 OAX)</step>
+        <step id="S7">Mediator processes the deposit request</step>
+        <step id="S8">Operator updates balances for OAX</step>
+    </mainSequence>
+</useCase>

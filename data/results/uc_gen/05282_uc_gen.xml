@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Manage-Environments</name>
+    <actors>
+        <actor>Operations Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The operations manager needs to have authority to manage environments.</precondition>
+    </preconditions>
+    <trigger>The operations manager requests to destroy an environment.</trigger>
+    <mainSequence>
+        <step id="S1">Operations Manager requests CLI to destroy environment with name c3.</step>
+        <step id="S2">CLI forwards the request to the system to destroy the environment with the specified name.</step>
+        <step id="S3">Operations Manager requests Web interface to destroy environment with name c3.</step>
+        <step id="S4">Web interface forwards the request to the system to destroy the environment with the specified name.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Reload OSGI Module Configuration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Karaf Console</actor>
+        <actor>Karaf Configuration</actor>
+        <actor>core.caos</actor>
+        <actor>BackendManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the command to reload OSGI module configuration.</precondition>
+        <precondition>The XML file containing the composition is successfully loaded.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Composition specification is successfully loaded.</condition>
+        <condition>Required modules are listed.</condition>
+        <condition>All required modules are present in the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Any of the required modules are missing.</condition>
+    </failureEndConditions>
+    <trigger>Command to reload OSGI module configuration is initiated.</trigger>
+    <mainSequence>
+        <step id="S1">Read content of XML file.</step>
+        <step id="S2">Set configuration value (composition, XML content).</step>
+        <step id="S3">Reload OSGI Module.</step>
+        <step id="S4">Get configuration (composition).</step>
+        <step id="S5">Load CompositionSpecification.</step>
+        <step id="S6">List of required Modules.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Get backends.</step>
+            <step id="A1S2">Check if all required modules are present.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Error in loading CompositionSpecification.</description>
+            <step id="E1S1">Log unsuccessful reconfiguration.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

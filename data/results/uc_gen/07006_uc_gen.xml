@@ -1,0 +1,31 @@
+<useCase id="UC001">
+  <name>Add Room Category</name>
+  <description>Admin can add a new category for rooms</description>
+  <actors>
+    <actor>Admin</actor>
+  </actors>
+  <preconditions>
+    <precondition>The Admin is logged into the system</precondition>
+  </preconditions>
+  <trigger>Admin requests to add a new room category</trigger>
+  <mainSequence>
+    <step id="S1">Admin requests to add a new room category from the UI</step>
+    <step id="S2">The UI sends a GET request to show the add room category form</step>
+    <step id="S3">The Router activates the Controller to display the form</step>
+    <step id="S4">The Controller retrieves room category form data from the Repository</step>
+    <step id="S5">The room category form data is retrieved successfully</step>
+    <step id="S6">The Controller displays the form for adding a new room category</step>
+    <step id="S7">The Router sends the form information to the UI</step>
+    <step id="S8">The UI displays the add room category form</step>
+    
+    <step id="S9">Admin submits the new room category data from the UI</step>
+    <step id="S10">The UI sends a POST request to add the new category</step>
+    <step id="S11">The Router activates the Controller to add the room category</step>
+    <step id="S12">The Controller saves the new category data in the Repository</step>
+    <step id="S13">The room category is successfully created</step>
+    
+    <step id="S14">The Controller sends a 200 OK response to the Router</step>
+    <step id="S15">The Router sends a 200 OK response to the UI</step>
+    <step id="S16">The UI displays a success message for the newly added category to the Admin</step>
+  </mainSequence>
+</useCase>

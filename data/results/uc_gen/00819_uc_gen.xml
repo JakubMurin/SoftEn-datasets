@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Offer a service on behalf of a delegator</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Management UI</actor>
+        <actor>Inway</actor>
+        <actor>Management API</actor>
+        <actor>Management database</actor>
+        <actor>Directory API</actor>
+        <actor>Directory DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator adds service using an order</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Administrator adds service using an order</step>
+        <step id="S2">Management UI adds service using an order</step>
+        <step id="S3">Management API checks if service name matches with service name in order</step>
+        <step id="S4">Management API stores service</step>
+        <step id="S5">Inway gets config</step>
+        <step id="S6">Management API gets service and orders for inway</step>
+        <step id="S7">Management Database returns services and orders</step>
+        <step id="S8">Management API returns config to Inway</step>
+        <step id="S9">Inway gets claim for publishing the service</step>
+        <step id="S10">Management API gets claim for publishing the service</step>
+        <step id="S11">Management Database gets order</step>
+        <step id="S12">Management API returns order</step>
+        <step id="S13">Management API validates order</step>
+        <step id="S14">Management API creates publication-claim</step>
+        <step id="S15">Management API returns publication-claim</step>
+        <step id="S16">Inway returns publication-claim to Saas Organization</step>
+        <step id="S17">Inway stores publication-claim in memory</step>
+        <step id="S18">Directory API registers service with publication-claim</step>
+        <step id="S19">Directory API gets public key of the municipality</step>
+        <step id="S20">Inway returns public key to Directory API</step>
+        <step id="S21">Directory API validates publication-claim</step>
+        <step id="S22">Directory API registers service in Directory Database</step>
+    </mainSequence>
+</useCase>

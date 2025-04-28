@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>View Boards</name>
+    <actors>
+        <actor>SBAappUser</actor>
+        <actor>ViewBoardsUI</actor>
+        <actor>ViewBoardsController</actor>
+        <actor>SBProtocol</actor>
+        <actor>ServerAJAX</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User views Boards</step>
+        <step id="S2">UI creates instance of socket with serverIp and serverPort, an input stream(inS) and output Stream(outS)</step>
+        <step id="S3">UI requests boards to view</step>
+        <step id="S4">Controller creates protocol</step>
+        <step id="S5">Controller sets code to VIEW_BOARDS</step>
+        <step id="S6">Controller sets token to AUTH_TOKEN</step>
+        <step id="S7">Controller sends protocol</step>
+        <step id="S8">Controller receives content from protocol</step>
+        <step id="S9">Controller splits content and sends to UI</step>
+        <step id="S10">User shows boards</step>
+        <step id="S11">User chooses a board</step>
+        <step id="S12">UI requests history for the chosen board</step>
+        <step id="S13">Controller creates protocol for listing history</step>
+        <step id="S14">Controller sets code to LIST_HISTORY</step>
+        <step id="S15">Controller sets content from the chosen board</step>
+        <step id="S16">Controller sets token to AUTH_TOKEN</step>
+        <step id="S17">Controller sends protocol for history</step>
+        <step id="S18">Controller receives content for history</step>
+        <step id="S19">Controller splits history content</step>
+        <step id="S20">Controller sends history to UI</step>
+        <step id="S21">User shows history</step>
+    </mainSequence>
+</useCase>

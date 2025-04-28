@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Ajouter un groupe</name>
+    <actors>
+        <actor>User</actor>
+        <actor>AddGroupActivity</actor>
+        <actor>AddGroupViewModel</actor>
+        <actor>GroupeFirestore</actor>
+        <actor>FirebaseFirestore</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur appuie sur le bouton "+" pour ajouter un groupe</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User appuie sur le bouton "+" pour ajouter un groupe</step>
+        <step id="S2">AddGroupActivity appelle la méthode isGroupCreated()</step>
+        <step id="S3">AddGroupViewModel vérifie si le groupe est créé</step>
+        <step id="S4">GroupeFirestore récupère le groupe par son nom</step>
+        <step id="S5">FirebaseFirestore crée un nouveau groupe dans la base de données</step>
+        <step id="S6">Le nouveau groupe est ajouté à la liste des groupes</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC_001">
+    <name>Update Content in CMS</name>
+    <description>This use case describes how a content editor updates content within the Content Management System.</description>
+    <actors>
+        <actor>Content Editor</actor>
+        <actor>CMS Database</actor>
+        <actor>Content Page</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Content Editor has logged into the CMS and has appropriate permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Content Editor successfully edits and saves the content in the CMS.</condition>
+    </successEndConditions>
+    <trigger>The Content Editor initiates a content update.</trigger>
+    <mainSequence>
+        <step id="S1">Content Editor enters search query (keywords/tags).</step>
+        <step id="S2">Search Interface queries for content from the CMS Database.</step>
+        <step id="S3">CMS Database retrieves search results.</step>
+        <step id="S4">Search Interface displays search results to Content Editor.</step>
+        <step id="S5">Content Editor selects content from the search results.</step>
+        <step id="S6">Search Interface requests selected content details.</step>
+        <step id="S7">CMS Database retrieves and sends content details back to Search Interface.</step>
+        <step id="S8">Search Interface displays the selected content in a Content Page editor.</step>
+        <step id="S9">Content Editor edits the content in the editor.</step>
+        <step id="S10">Content Page saves changes, which are confirmed by the CMS Database.</step>
+        <step id="S11">Content Editor receives a confirmation that the edit was successful.</step>
+    </mainSequence>
+</useCase>

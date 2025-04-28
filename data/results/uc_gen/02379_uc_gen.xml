@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>Välja att visa sjukfallshistorik för patient på Vårdenhet</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Aktivera "Rehabstöd"</step>
+        <step id="S2">Anrop till "listSickLeavesForPerson" i "Intygstjänsten" för att läsa upp patientens samtliga intyg</step>
+        <step id="S3">Hämta vårdgivarnamn för varje intyg mha "GetUnit v1"</step>
+        <step id="S4">Anrop till "GetPerson" i "PU" för patienten</step>
+        <step id="S5">Filtrera intyg beroende på patientens sekretssmarkeringsstatus</step>
+        <step id="S6">Kontrollera spärr via "CheckBlocks v4" om patient ej är sekretssmarkerad</step>
+        <step id="S7">Uppdatera intygen med spärrstatus</step>
+        <step id="S8">Skicka in intyg till "Sjukfallsmotor" för bruttosjukfall</step>
+        <step id="S9">Kontrollera samtyckesstatus för att visa intyg utanför vårdgivaren</step>
+        <step id="S10">Filtrera intyg baserat på samtyckesstatus</step>
+        <step id="S11">Sammanställ klientsvar med sjukfall och metadata</step>
+        <step id="S12">Skicka in nettolistan av intyg för verkliga sjukfall</step>
+        <step id="S13">Uppdatera lista med namn och sekretessstatus</step>
+        <step id="S14">Anrop till "GetCertificateAdditions" för varje intyg</step>
+        <step id="S15">Uppdatera sjukfallens intyg med kompletteringsstatus</step>
+        <step id="S16">För varje intyg, hämta riskprediktion om SRS-stöd är aktiverat</step>
+        <step id="S17">Logga faktisk visad information i "Loggtjänsten"</step>
+        <step id="S18">Visa patientens sjukfallshistorik inklusive SJF</step>
+    </mainSequence>
+</useCase>

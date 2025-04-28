@@ -1,0 +1,15 @@
+<useCase id="UC-001">
+    <name>Refresh Game</name>
+    <description>As a Controller, I want to refresh the game to update its state based on the time elapsed.</description>
+    <actors>
+        <actor>Controller</actor>
+    </actors>
+    <trigger>Controller initiates the game refresh by calling GameEngine's refresh function with deltaTime.</trigger>
+    <mainSequence>
+        <step id="S1">Controller refreshes the game by calling GameEngine's refresh function with the specified deltaTime.</step>
+        <step id="S2">GameEngine activates and starts handling moves if there is a ball in play.</step>
+        <step id="S3">GameEngine directs the ball to move with external forces and deltaTime.</step>
+        <step id="S4">Ball applies forces, including weight, to move freely.</step>
+        <step id="S5">GameEngine returns snapshots of the game state to GameState.</step>
+    </mainSequence>
+</useCase>

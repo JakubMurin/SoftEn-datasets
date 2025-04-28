@@ -1,0 +1,31 @@
+<useCase id="1">
+    <name>Manage Data</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>CommandHandler</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+        <actor>DomainEntity</actor>
+        <actor>NotificationObject</actor>
+        <actor>QueryHandler</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates, reads, or updates data through API</step>
+        <step id="S2">API sends command to CommandHandler to handle the command</step>
+        <step id="S3">CommandHandler requests entity from Repository</step>
+        <step id="S4">Repository executes SQL on Database</step>
+        <step id="S5">Database sends raw data back to Repository</step>
+        <step id="S6">Repository maps raw data to Entity using Factory</step>
+        <step id="S7">Repository sends Entity back to CommandHandler</step>
+        <step id="S8">CommandHandler applies business logic to DomainEntity</step>
+        <step id="S9">CommandHandler saves changes to Repository</step>
+        <step id="S10">Repository detects entity changes and updates SQL</step>
+        <step id="S11">Repository saves changes to Database</step>
+        <step id="S12">Database confirms save result back to Repository</step>
+        <step id="S13">CommandHandler sends NotificationObject to API</step>
+        <step id="S14">API communicates with QueryHandler</step>
+        <step id="S15">QueryHandler sends Data Transfer Object (DTO) back to API</step>
+        <step id="S16">QueryHandler sends DTO back to Client</step>
+    </mainSequence>
+</useCase>

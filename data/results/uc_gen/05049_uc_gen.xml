@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Enter Player Names and Start Game</name>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>StartScreen</actor>
+        <actor>StartButtonEventHandler</actor>
+        <actor>PlayersInputScreen</actor>
+        <actor>ConfirmButton</actor>
+        <actor>Game</actor>
+        <actor>PlayersNamesInputScreen</actor>
+        <actor>QuestionScreen</actor>
+        <actor>NamesButton</actor>
+        <actor>Player</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks 'Comenzar' button on the start screen.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks 'Comenzar' button triggering the startScreen.</step>
+        <step id="S2">StartScreen handles the event.</step>
+        <step id="S3">StartButtonEventHandler handles the event and sets StartScreen as not visible.</step>
+        <step id="S4">PlayersInputScreen is activated and shown to select and confirm inputs.</step>
+        <step id="S5">User selects and confirms inputs for the game.</step>
+        <step id="S6">App handles the event and PlayersInputScreen is shown.</step>
+        <step id="S7">PlayersInputScreen handles the event to select data.</step>
+        <step id="S8">ConfirmButton requests and selects data.</step>
+        <step id="S9">Selected data is sent to the Game.</step>
+        <step id="S10">Game loads received data.</step>
+        <step id="S11">PlayersNamesInputScreen is created and shown to enter player names.</step>
+        <step id="S12">User enters and confirms player names.</step>
+        <step id="S13">App handles the event and shows the NamesInputScreen.</step>
+        <step id="S14">PlayersNamesInputScreen handles the event to enter player names.</step>
+        <step id="S15">NamesButton executes to register user names.</step>
+        <step id="S16">Game registers each player with a name and score.</step>
+        <step id="S17">QuestionScreen is created and shown with questions and options.</step>
+        <step id="S18">App shows questions for each player on the QuestionScreen.</step>
+    </mainSequence>
+</useCase>

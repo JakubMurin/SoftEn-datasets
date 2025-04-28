@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>User interacts with ReflexionAgent to complete a task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflexionAgent</actor>
+        <actor>LLM</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <preconditions>
+        <precondition>ReflexionAgent is available</precondition>
+        <precondition>User provides input_text</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Task completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Task not completed within max iterations</condition>
+    </failureEndConditions>
+    <trigger>User runs input_text</trigger>
+    <mainSequence>
+        <step id="S1">User runs input_text</step>
+        <step id="S2">ReflexionAgent retrieves relevant memories</step>
+        <step id="S3">ReflexionAgent invokes agent_prompt</step>
+        <step id="S4">LLM responds to agent_prompt</step>
+        <step id="S5">Agent decides to use tool</step>
+        <step id="S6">Registry executes tool</step>
+        <step id="S7">Tool provides observation</step>
+        <step id="S8">Agent reflects on tool usage</step>
+        <step id="S9">Agent saves episodic memory of tool usage</step>
+        <step id="S10">Agent saves reflexion memory</step>
+        <step id="S11">Agent decides to finish</step>
+        <step id="S12">Agent saves episodic memory of interaction</step>
+        <step id="S13">Final result is sent to User</step>
+    </mainSequence>
+</useCase>

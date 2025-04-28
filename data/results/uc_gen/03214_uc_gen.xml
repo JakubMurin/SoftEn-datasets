@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Manage Directories and Files</name>
+    <actors>
+        <actor>User</actor>
+        <actor>DirFileView</actor>
+        <actor>DirectoriesFiles</actor>
+        <actor>DirFileService</actor>
+        <actor>DirFileHandler</actor>
+        <actor>CreateDirFileUtil</actor>
+        <actor>DestroyDirFileUtil</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to directory/file management functionality</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks the "Button" in the user interface</step>
+        <step id="S2">DirectoriesFiles triggers the operation</step>
+        <step id="S3">DirFileView handles the operation with parameters operation, path, and fileName</step>
+        <step id="S4">DirFileService delegates the operation to DirFileHandler</step>
+        <step id="S5">DirFileHandler creates or deletes the directory/file using CreateDirFileUtil or DestroyDirFileUtil</step>
+        <step id="S6">DirFileHandler returns the result to DirFileService</step>
+        <step id="S7">DirFileService returns the result to DirFileView</step>
+        <step id="S8">DirFileView shows a notification to DirectoriesFiles</step>
+        <step id="S9">DirectoriesFiles shows a notification to the User</step>
+    </mainSequence>
+</useCase>

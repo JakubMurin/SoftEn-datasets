@@ -1,0 +1,39 @@
+<useCase id="1">
+    <name>Manage Feature Prioritization</name>
+    <description>Team Member manages the prioritization of features</description>
+    <actors>
+        <actor>Team Member</actor>
+        <actor>Designer</actor>
+        <actor>Engineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Team Member has access to the Feature Backlog</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Feasibility and Design confirmation received for prioritized features</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Re-evaluation and update of feature priorities required</condition>
+    </failureEndConditions>
+    <trigger>Team Member needs to prioritize features</trigger>
+    <mainSequence>
+        <step id="S1">Access Feature Backlog from CMS/Backlog database</step>
+        <step id="S2">Review list of Proposed Features</step>
+        <step id="S3">Consult Prioritization Criteria from Criteria</step>
+        <step id="S4">Apply Criteria to Features</step>
+        <step id="S5">Share Filtered Features with Designer</step>
+        <step id="S6">Provide Design Feasibility</step>
+        <step id="S7">Consult on Technical Feasibility with Engineer</step>
+        <step id="S8">Update Prioritized Features List in CMS</step>
+        <step id="S9">Share Prioritized Features List with Engineer</step>
+        <step id="S10">Share Prioritized Features List with Designer</step>
+        <step id="S11">Input Design Requirements to CMS by Designer</step>
+        <step id="S12">Update Technical Details in CMS by Engineer</step>
+        <step id="S13">Finalize Feature Prioritization</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S13">
+            <step id="A1S1">Re-evaluate and Update Priorities if issues identified</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

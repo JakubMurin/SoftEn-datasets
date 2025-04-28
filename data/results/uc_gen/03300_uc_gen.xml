@@ -1,0 +1,21 @@
+<useCase id="1">
+    <name>Leaderboard Retrieval</name>
+    <actors>
+        <actor>User</actor>
+        <actor>FrontEnd</actor>
+        <actor>BackendServer</actor>
+        <actor>Firebase</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Leaderboard data successfully retrieved</condition>
+    </successEndConditions>
+    <trigger>User visits the Leaderboard Page</trigger>
+    <mainSequence>
+        <step id="S1">User visits Leaderboard Page</step>
+        <step id="S2">FrontEnd fetches leaderboard data from BackendServer</step>
+        <step id="S3">BackendServer retrieves leaderboard info from Firebase</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Check Replication Status</name>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Curator requests the replication status summary.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Curator requests replication status summary from the UI Dashboard.</step>
+        <step id="S2">Dashboard fetches replication summary request from the Backend Service.</step>
+        <step id="S3">Backend Service queries replication statuses from the Replication Service.</step>
+        <step id="S4">Replication Service retrieves replication data from the Database.</step>
+        <step id="S5">Database returns replication data to Replication Service.</step>
+        <step id="S6">Replication Service sends collected statuses to Backend Service.</step>
+        <step id="S7">Backend Service returns summary of replication statuses to the Dashboard.</step>
+        <step id="S8">Dashboard displays replication status summary to the Curator.</step>
+    </mainSequence>
+</useCase>

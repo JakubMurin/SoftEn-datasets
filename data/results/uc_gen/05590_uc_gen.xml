@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Run Automated Tests on Pull Request</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Repo</actor>
+        <actor>GA</actor>
+        <actor>Behave</actor>
+        <actor>Codecov</actor>
+        <actor>MyPy</actor>
+        <actor>Pytest</actor>
+        <actor>Ruff</actor>
+        <actor>Readme</actor>
+        <actor>CodecovService</actor>
+    </actors>
+    <trigger>Pull Request</trigger>
+    <mainSequence>
+        <step id="S1">Developer triggers a Pull Request on Repo</step>
+        <step id="S2">Repo triggers workflows on GA</step>
+        <step id="S3">GA runs automated tests</step>
+        <step id="S4">If all tests are successful:</step>
+        <step id="S5">Behave runs behave tests and uploads results</step>
+        <step id="S6">Behave updates badges on Readme</step>
+        <step id="S7">Codecov runs pytests with coverage report and uploads results</step>
+        <step id="S8">CodecovService uploads coverage report and updates badge on Readme</step>
+        <step id="S9">MyPy runs mypy checks and uploads results</step>
+        <step id="S10">MyPy updates badge on Readme</step>
+        <step id="S11">Pytest runs pytests and uploads results</step>
+        <step id="S12">Pytest updates badge on Readme</step>
+        <step id="S13">Ruff runs ruff checks and uploads results</step>
+        <step id="S14">Ruff updates badge on Readme</step>
+        <step id="S15">If some tests are not successful:</step>
+        <step id="S16">GA reports failing tests to Developer</step>
+        <step id="S17">GA allows Pull-Request on Repo</step>
+    </mainSequence>
+</useCase>

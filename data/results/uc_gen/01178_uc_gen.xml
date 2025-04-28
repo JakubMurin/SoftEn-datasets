@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <description>This is a use case for a user to register on the platform with email/password or social login.</description>
+    
+    <actors>
+        <actor>System</actor>
+        <actor>User</actor>
+        <actor>Authorization Service</actor>
+        <actor>Validation Service</actor>
+        <actor>Email Service</actor>
+        <actor>Data Service</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>User initiating the registration process.</precondition>
+    </preconditions>
+    
+    <trigger>User decides to begin the registration process.</trigger>
+    
+    <mainSequence>
+        <step id="S1">User provides email/password or social login details to start registration.</step>
+        <step id="S2">Authorization Service validates email format and password strength.</step>
+        <step id="S3">Authorization Service checks for existing users in the system.</step>
+        <step id="S4">Data Service saves the initial user data with an unverified status.</step>
+        <step id="S5">Authorization Service sends a confirmation email including a verification link.</step>
+        <step id="S6">Email Service confirms the email was sent and received for verification.</step>
+        <step id="S7">User confirms the email by clicking the verification link.</step>
+        <step id="S8">Authorization Service updates user status to verified after email confirmation.</step>
+        <step id="S9">Registration completed with the user status changed to verified.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+	<name>OpenID Connect Login with Envoy proxy</name>
+	<description>User authenticates through OpenID Connect with Envoy proxy acting as a middleman</description>
+	<actors>
+		<actor>End user</actor>
+		<actor>Envoy</actor>
+		<actor>ID-provider</actor>
+	</actors>
+	<preconditions>
+		<precondition>User requests a resource using OpenID Connect</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>User is authenticated and established a session</condition>
+	</successEndConditions>
+	<trigger>User initiates the authentication flow</trigger>
+	<mainSequence>
+		<step id="S1">End user requests a resource</step>
+		<step id="S2">Redirected to ID-provider for authentication</step>
+		<step id="S3">User logs in and provides consent/authorization to the application</step>
+		<step id="S4">ID-provider responds with authorization code</step>
+		<step id="S5">End user sends authorization code to defined endpoint/callback</step>
+		<step id="S6">Envoy exchanges the authorization code for tokens</step>
+		<step id="S7">Envoy validates the received tokens and caches the session</step>
+		<step id="S8">Envoy provides the user with cookies</step>
+	</mainSequence>
+</useCase>

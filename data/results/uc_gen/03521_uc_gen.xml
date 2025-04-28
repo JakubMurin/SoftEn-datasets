@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Public request directly to Gatekeeper</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Gatekeeper</actor>
+        <actor>PASTA_service</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client sends a public request to Gatekeeper</step>
+        <step id="S2">Gatekeeper generates an internal (public) token</step>
+        <step id="S3">Gatekeeper forwards the request with the internal (public) token to PASTA_service</step>
+        <step id="S4">PASTA_service authorizes the service</step>
+        <step id="S5">PASTA_service authorizes the resource</step>
+        <step id="S6">PASTA_service performs the service</step>
+        <step id="S7">PASTA_service sends a response to Gatekeeper</step>
+        <step id="S8">Gatekeeper drops the internal (public) token</step>
+        <step id="S9">Gatekeeper sends a response to the Client</step>
+    </mainSequence>
+</useCase>

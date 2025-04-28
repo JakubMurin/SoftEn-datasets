@@ -1,0 +1,57 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <description>User creates an account with valid information.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>ServiceUtilisateur</actor>
+        <actor>Repo</actor>
+        <actor>ServiceEmail</actor>
+        <actor>Redirection</actor>
+    </actors>
+    <preconditions>
+        <precondition>User accesses the registration page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User receives confirmation email.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid email or duplicate username.</condition>
+    </failureEndConditions>
+    <trigger>User submits registration information.</trigger>
+    <mainSequence>
+        <step id="S1">Display registration form to User.</step>
+        <step id="S2">User submits registration details.</step>
+        <step id="S3">Check availability of username and email.</step>
+        <step id="S4">Register User in the database.</step>
+        <step id="S5">Send confirmation email to User.</step>
+        <step id="S6">Notify User to verify email.</step>
+        <step id="S7">Confirm successful email sending to User.</step>
+        <step id="S8">Redirect User to confirmation page.</step>
+        <step id="S9">Display confirmation message to User.</step>
+        <step id="S10">Notify User of email sending error.</step>
+        <step id="S11">Display error message to User for email sending failure.</step>
+        <step id="S12">Notify User of invalid email.</step>
+        <step id="S13">Display error message to User for invalid email.</step>
+        <step id="S14">Notify User of duplicate email.</step>
+        <step id="S15">Display error message to User for duplicate email.</step>
+        <step id="S16">Notify User of duplicate username.</step>
+        <step id="S17">Display error message to User for duplicate username.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S10">
+            <step id="A1S1">Check if username is available.</step>
+            <step id="A1S2">Check if email is available.</step>
+            <step id="A1S3">Save User in database.</step>
+        </asteps>
+        <asteps id="A2" start="S3" continue="S12">
+            <step id="A2S1">Notify User of invalid email.</step>
+        </asteps>
+        <asteps id="A3" start="S3" continue="S14">
+            <step id="A3S1">Notify User of duplicate email.</step>
+        </asteps>
+        <asteps id="A4" start="S3" continue="S16">
+            <step id="A4S1">Notify User of duplicate username.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

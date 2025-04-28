@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Assign Position and Shift</name>
+    <actors>
+        <actor>Worker</actor>
+        <actor>Schedule Manager</actor>
+        <actor>Database</actor>
+        <actor>Department</actor>
+        <actor>Position</actor>
+        <actor>Shift</actor>
+        <actor>Absence</actor>
+        <actor>Preference</actor>
+    </actors>
+    <preconditions>
+        <precondition>Worker requests assignment</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Schedule Manager searches worker's department in database</step>
+        <step id="S2">Database searches worker's department</step>
+        <step id="S3">Department is returned by Database</step>
+        <step id="S4">Database returns department to Schedule Manager</step>
+        <step id="S5">Schedule Manager looks for an available position in the department</step>
+        <step id="S6">Database searches for an available position</step>
+        <step id="S7">Position is returned by Database</step>
+        <step id="S8">Database returns position to Schedule Manager</step>
+        <step id="S9">Schedule Manager searches for an available shift</step>
+        <step id="S10">Database searches for an available shift</step>
+        <step id="S11">Shift is returned by Database</step>
+        <step id="S12">Database returns shift to Schedule Manager</step>
+        <step id="S13">Schedule Manager verifies worker's absences and preferences</step>
+        <step id="S14">Database checks worker's absences</step>
+        <step id="S15">Absences are returned by Database</step>
+        <step id="S16">Database checks worker's preferences</step>
+        <step id="S17">Preferences are returned by Database</step>
+        <step id="S18">Schedule Manager assigns position and shift to Worker</step>
+    </mainSequence>
+</useCase>

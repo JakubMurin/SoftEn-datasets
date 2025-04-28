@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Run Reasoning Algorithm</name>
+    <description>As a User, I want to run the reasoning algorithm to determine the final result based on input.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ReWOOAgent</actor>
+        <actor>ReasonLLM</actor>
+        <actor>WorldLLM</actor>
+        <actor>ObserveLLM</actor>
+        <actor>OutcomeLLM</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User initiates the run command.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The ReWOOAgent successfully determines the final result.</condition>
+    </successEndConditions>
+    <trigger>User initiates the run(input) command.</trigger>
+    <mainSequence>
+        <step id="S1">User runs the input command.</step>
+        <step id="S2">ReWOOAgent reasons about the action.</step>
+        <step id="S3">ReWOOAgent simulates the world.</step>
+        <step id="S4">ReWOOAgent observes the effects.</step>
+        <step id="S5">ReWOOAgent determines the outcome.</step>
+        <step id="S6">ReWOOAgent provides the final result to the User.</step>
+    </mainSequence>
+</useCase>

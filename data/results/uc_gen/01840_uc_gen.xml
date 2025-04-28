@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>Collision Resolution</name>
+    <description>Handle the collision between the game engine and boundary</description>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>GameBoundaryDelegate</actor>
+        <actor>Boundary</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>GameBoundaryDelegate is available</precondition>
+        <precondition>Ball object exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Collision resolved successfully</condition>
+    </successEndConditions>
+    <trigger>GameEngine requests collision resolution</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine requests boundary</step>
+        <step id="S2">GameBoundaryDelegate activates</step>
+        <step id="S3">GameBoundaryDelegate requests boundary</step>
+        <step id="S4">Boundary activates</step>
+        <step id="S5">Boundary returns boundary</step>
+        <step id="S6">GameEngine requests collision handling</step>
+        <step id="S7">Ball activates</step>
+        <step id="S8">Ball will collide with boundary</step>
+        <step id="S9">Ball handles collision with boundary</step>
+        <step id="S10">Ball gets safe position from boundary</step>
+        <step id="S11">Ball activates FreeBody</step>
+        <step id="S12">FreeBody handles collision with parameters</step>
+        <step id="S13">Ball deactivates</step>
+        <step id="S14">GameEngine returns new ball</step>
+    </mainSequence>
+</useCase>

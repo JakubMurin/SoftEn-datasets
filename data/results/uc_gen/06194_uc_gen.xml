@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Specify Remote Replication Policy for a Collection</name>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>EDRMS Interface</actor>
+        <actor>Replication Policy Module</actor>
+        <actor>Collection Management</actor>
+        <actor>EDRMS Database</actor>
+        <actor>Remote Storage Service</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Repository Manager accesses Replication Policy Settings through EDRMS Interface.</step>
+        <step id="S2">Replication Policy Module retrieves the current Policy Settings.</step>
+        <step id="S3">EDRMS Database queries existing Policies.</step>
+        <step id="S4">Replication Policy Module shows current Policies through EDRMS Interface.</step>
+        <step id="S5">Repository Manager defines/updates Policy for the Collection through EDRMS Interface.</step>
+        <step id="S6">Policy Patch processes the Policy Specifications.</step>
+        <step id="S7">Policy Patch updates Policy in the EDRMS Database.</step>
+        <step id="S8">Policy Patch initiates Policy Replication Update with Remote Storage Service.</step>
+        <step id="S9">Remote Storage Service acknowledges the Replication Policy Update.</step>
+        <step id="S10">Policy Patch confirms the Policy Update.</step>
+        <step id="S11">EDRMS Interface shows the Policy Update Confirmation to the Repository Manager.</step>
+    </mainSequence>
+</useCase>

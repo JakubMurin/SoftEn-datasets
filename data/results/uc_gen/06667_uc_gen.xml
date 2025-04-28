@@ -1,0 +1,33 @@
+<useCase id="loginProcess">
+    <name>User Login Process</name>
+    <description>Process followed by the user to log in via Adgangsplatformen</description>
+    <actors>
+        <actor>User</actor>
+        <actor>DPL_CMS</actor>
+        <actor>OpenidConnect</actor>
+        <actor>Adgangsplatformen</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user initiates the login process by clicking on the Adgangsplatformen login.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks login into Adgangsplatformen</step>
+        <step id="S2">DPL_CMS gets authorization URL and return URL from OpenidConnect</step>
+        <step id="S3">OpenidConnect creates OAuth state hash</step>
+        <step id="S4">User is redirected to the authorization URL which contains return URL, state hash, and agency ID</step>
+        <step id="S5">User is redirected to the external site for authentication</step>
+        <step id="S6">Internal authentication is performed on Adgangsplatformen</step>
+        <step id="S7">User is redirected to the return URL</step>
+        <step id="S8">User sends Adgangsplatform response to DPL_CMS</step>
+        <step id="S9">Validation of values from the response by OpenidConnect</step>
+        <step id="S10">OpenidConnect requests access token</step>
+        <step id="S11">Access token with expiry time is returned by Adgangsplatformen</step>
+        <step id="S12">User info is requested by OpenidConnect</step>
+        <step id="S13">User info (UUID) is returned by Adgangsplatformen</step>
+        <step id="S14">New user is created in DPL_CMS with an encrypted UUID and assigned the role Patron (If first time login)</step>
+        <step id="S15">If recurrent login, user details are updated in DPL_CMS</step>
+        <step id="S16">Drupal user session is started by OpenidConnect</step>
+        <step id="S17">Access token is saved in the user session by OpenidConnect</step>
+        <step id="S18">Logged-in user is redirected to the front page</step>
+    </mainSequence>
+</useCase>

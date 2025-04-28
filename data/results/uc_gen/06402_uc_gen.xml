@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Search Files by Keyword</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>UI Interface</actor>
+        <actor>Search Controller</actor>
+        <actor>Digital Archive Database</actor>
+        <actor>Indexing Service</actor>
+        <actor>Results Formatter</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist inputs a keyword</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Archivist inputs keyword</step>
+        <step id="S2">UI sends search request with keyword</step>
+        <step id="S3">Search Controller queries keyword</step>
+        <step id="S4">Indexer fetches matching files from DB</step>
+        <step id="S5">Indexer formats matching files</step>
+        <step id="S6">Results Formatter sends formatted results</step>
+        <step id="S7">Search Controller displays search results on UI</step>
+        <step id="S8">UI shows files matching keyword to Archivist</step>
+    </mainSequence>
+</useCase>

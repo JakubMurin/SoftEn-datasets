@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Add New PPoPCode Cases to Derivation Logic</name>
+    <actors>
+        <actor>Broker Team Member</actor>
+        <actor>Broker UI</actor>
+        <actor>Validation Rules API</actor>
+        <actor>Validation Rules DB</actor>
+        <actor>Derivation Logic Module</actor>
+    </actors>
+    <preconditions>
+        <precondition>Broker Team Member selects option to add PPoPCode cases.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Broker Team Member selects option to add PPoPCode cases.</step>
+        <step id="S2">Broker UI sends request to Validation Rules API to add new PPoPCode cases (00*****, 00FORGN).</step>
+        <step id="S3">Validation Rules API updates derivation rules in Validation Rules DB.</step>
+        <step id="S4">Validation Rules API integrates new PP codes into logic in Derivation Logic Module.</step>
+        <step id="S5">Derivation Logic Module retrieves updated rules from Validation Rules DB.</step>
+        <step id="S6">Derivation Logic Module confirms logic update to Validation Rules API.</step>
+        <step id="S7">Validation Rules API displays success message to Broker UI.</step>
+        <step id="S8">Broker UI shows confirmation of PPoPCode addition to Broker Team Member.</step>
+    </mainSequence>
+</useCase>

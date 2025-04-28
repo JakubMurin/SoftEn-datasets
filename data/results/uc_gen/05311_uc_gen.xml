@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Create Components</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba must create an instance</precondition>
+    </preconditions>
+    <trigger>User requests components creation</trigger>
+    <mainSequence>
+        <step id="S1">User requests Liba to create a new component by calling create method of App</step>
+        <step id="S2">Liba creates a new cInstance</step>
+        <step id="S3">Liba passes the cInstance to renderC</step>
+        <step id="S4">renderC receives the cInstance</step>
+        <step id="S5">renderC calls renderLiba with props and cInstance</step>
+        <step id="S6">App creates 'button' element</step>
+        <step id="S7">App creates UserCard component</step>
+        <step id="S8">renderLiba receives UserCard component, props, AppCInstance, and key</step>
+        <step id="S9">createChildren method retrieves instances from cache if already rendered</step>
+        <step id="S10">Liba creates UserCard, AppCInstance, props, and key</step>
+        <step id="S11">renderC passes UserCInstance to UserCard</step>
+        <step id="S12">UserCard creates 'div' element</step>
+        <step id="S13">UserCard creates another 'div' element</step>
+        <step id="S14">renderLiba receives the elements created by UserCard</step>
+        <step id="S15">renderC assigns the elements to instance</step>
+    </mainSequence>
+</useCase>

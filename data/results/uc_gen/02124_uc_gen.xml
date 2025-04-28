@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Agent Recovery and Policy Registry Update</name>
+    <description>
+        Alice performs agent recovery by completing all steps in Offline Recovery diagram or Social Recovery diagram. She can't complete the portion to update the agent policy registry because she is locked out.
+    </description>
+    <actors>
+        <actor>al</actor>
+        <actor>aea</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Generate policy registry address "P'"</step>
+        <step id="S2">Store "P'"</step>
+        <step id="S3">Revoke claim</step>
+        <step id="S4">Revoke claim message (Claim with claim schema S and claim index S_i)</step>
+        <step id="S5">Forward to "Issuers Agent"</step>
+        <step id="S6">Notify issuer (Issuer authenticates Alice using the same methods as before)</step>
+        <step id="S7">Revoke claim (Add claim index S_i to the non-revocation accumulator SO corresponding to claim schema S)</step>
+        <step id="S8">Forward revoke claim (Adds claim index S_i to the non-revocation accumulator corresponding to claim schema S)</step>
+        <step id="S9">Update accumulator</step>
+        <step id="S10">Forward result</step>
+        <step id="S11">Acknowledge</step>
+    </mainSequence>
+</useCase>

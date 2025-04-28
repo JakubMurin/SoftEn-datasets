@@ -1,0 +1,26 @@
+<useCase id = "UC001">
+    <name>Read file at /dir1/file.txt</name>
+    <description>This use case describes the process of reading a file located at /dir1/file.txt</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The file /dir1/file.txt exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully reads the file at /dir1/file.txt and receives the latest data</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The file /dir1/file.txt does not exist or cannot be accessed</condition>
+    </failureEndConditions>
+    <trigger>User initiate the request to read file at /dir1/file.txt</trigger>
+    <mainSequence>
+        <step id="S1">User requests to read my file at /dir1/file.txt</step>
+        <step id="S2">Retrieve the meta information of the version for /dir1/file.txt</step>
+        <step id="S3">Get the user version directory location</step>
+        <step id="S4">Obtain DFS location of latest (LATEST) directory</step>
+        <step id="S5">Access the dataSafe storage to retrieve the content of /dir1/file.txt given the linK</step>
+        <step id="S6">Read the file at the provided LINK to extract the content</step>
+        <step id="S7">Provide the user with the content of the file /dir1/file.txt</step>
+    </mainSequence>
+</useCase>

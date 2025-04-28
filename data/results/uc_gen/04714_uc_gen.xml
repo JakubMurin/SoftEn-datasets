@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>View All Projects</name>
+    <description>Allows a user to view all available projects.</description>
+    <actors>
+        <actor>Project Leader</actor>
+        <actor>System</actor>
+        <actor>Database Management System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated as a Project Leader.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All projects are successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in retrieving projects.</condition>
+    </failureEndConditions>
+    <trigger>PL requests to view all projects.</trigger>
+    <mainSequence>
+        <step id="S1">PL requests to view all projects by signing in.</step>
+        <step id="S2">System validates the Project Leader's sign-in credentials.</step>
+        <step id="S3">System retrieves all projects for the signed-in Project Leader.</step>
+        <step id="S4">System displays the list of projects to the Project Leader.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,43 @@
+<useCase id="UC001">
+    <name>User Queries Cache Data</name>
+    <actors>
+        <actor>UserX</actor>
+        <actor>UserY</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must have access to the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data retrieved successfully from cache</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to retrieve data from cache</condition>
+    </failureEndConditions>
+    <trigger>User initiates a query for cache data</trigger>
+    <mainSequence>
+        <step id="S1">UserX queries Server A for data</step>
+        <step id="S2">Server A forwards the query to Distributed Cache</step>
+        <step id="S3">Distributed Cache responds with data to Server A</step>
+        <step id="S4">Server A returns data to UserX</step>
+        <step id="S5">UserX saves data version in local storage</step>
+        <step id="S6">UserY queries Server B for data</step>
+        <step id="S7">Server B forwards the query to Distributed Cache</step>
+        <step id="S8">Distributed Cache responds with data to Server B</step>
+        <step id="S9">Server B returns data to UserY</step>
+        <step id="S10">UserY saves data version in local storage</step>
+        <step id="S11">UserY queries Server B for data with updated version</step>
+        <step id="S12">Server B retrieves data from local cache</step>
+        <step id="S13">Server B returns data to UserY from local cache</step>
+        <step id="S14">UserY saves updated version in local storage</step>
+        <step id="S15">UserY queries Server A for data with latest version</step>
+        <step id="S16">Server A checks local cache for data with the latest version</step>
+        <step id="S17">Server A queries Distributed Cache for the most recent data</step>
+        <step id="S18">Distributed Cache responds with updated data to Server A</step>
+        <step id="S19">Server A returns updated data to UserY</step>
+        <step id="S20">UserY saves latest version in local storage</step>
+        <step id="S21">UserX queries Server A for data with the latest version</step>
+        <step id="S22">Server A checks local cache for data with the latest version</step>
+        <step id="S23">Server A returns data to UserX from local cache</step>
+        <step id="S24">UserX saves latest version in local storage</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Approve User Registration</name>
+    <description>Admin approves or rejects user registration</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User registration approved successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in user registration approval</condition>
+    </failureEndConditions>
+    <trigger>Admin requests user list for approval</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests user list for approval</step>
+        <step id="S2">Container returns user list</step>
+        <step id="S3">Admin approves or rejects user registration</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="10057">
+    <name>Anmeldung eines Akteurs am Messenger-Service</name>
+    <actors>
+        <actor>Akteur in der Rolle User</actor>
+        <actor>TI-Messenger-Client</actor>
+        <actor>Messenger Proxy</actor>
+        <actor>Matrix-Homeserver</actor>
+    </actors>
+    <trigger>Eingabe Messenger-Service</trigger>
+    <mainSequence>
+        <step id="S1">User gibt Messenger-Service ein</step>
+        <step id="S2">TI-Messenger-Client sendet GET /_matrix/client/login an Messenger Proxy</step>
+        <step id="S3">Messenger Proxy leitet HTTP(S) Forward an Matrix-Homeserver weiter</step>
+        <step id="S4">Matrix-Homeserver unterstützt Authentifizierungsverfahren</step>
+        <step id="S5">Messenger Proxy leitet HTTP(S) Forward an TI-Messenger-Client zurück</step>
+        <step id="S6">TI-Messenger-Client zeigt Authentifizierungsmaske an User</step>
+        <step id="S7">User startet die Authentifizierung</step>
+        <step id="S8">User meldet sich an</step>
+        <step id="S9">TI-Messenger-Client sendet POST /_matrix/client/login an Messenger Proxy</step>
+        <step id="S10">Messenger Proxy leitet HTTP(S) Forward an Matrix-Homeserver weiter</step>
+        <step id="S11">Matrix-Homeserver prüft Client-Credentials</step>
+        <step id="S12">Matrix-Homeserver erstellt Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN</step>
+        <step id="S13">Matrix-Homeserver sendet Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN an Messenger Proxy</step>
+        <step id="S14">Messenger Proxy leitet HTTP(S) Forward an TI-Messenger-Client zurück</step>
+        <step id="S15">TI-Messenger-Client speichert Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN</step>
+        <step id="S16">Anmeldung des Users ist erfolgreich</step>
+    </mainSequence>
+</useCase>

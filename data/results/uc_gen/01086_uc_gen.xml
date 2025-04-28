@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>View and Update Account Details</name>
+    <description>Allows the moderator to view and update account details</description>
+    <actors>
+        <actor>Moderator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Moderator is logged into the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account details are successfully viewed and updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs while viewing or updating account details</condition>
+    </failureEndConditions>
+    <trigger>Moderator navigates to the Account Settings</trigger>
+    <mainSequence>
+        <step id="S1">Moderator navigates to Account Settings</step>
+        <step id="S2">Web Interface receives request to view current account details</step>
+        <step id="S3">Backend Server fetches account details from Account Database</step>
+        <step id="S4">Backend Server displays current account details to Web Interface</step>
+        <step id="S5">Web Interface shows account details form to the Moderator</step>
+        <step id="S6">Moderator inputs updated account details</step>
+        <step id="S7">Web Interface submits the updated account details to the Backend Server</step>
+        <step id="S8">Backend Server updates the account details in the Account Database</step>
+        <step id="S9">Backend Server confirms the successful update</step>
+        <step id="S10">Web Interface acknowledges the successful update to the Moderator</step>
+        <step id="S11">Moderator displays the update success message</step>
+    </mainSequence>
+</useCase>

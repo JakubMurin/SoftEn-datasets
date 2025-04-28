@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Initialisation d'un monstre</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Main</actor>
+        <actor>Labyrinthe</actor>
+        <actor>Monstre</actor>
+    </actors>
+    <preconditions>
+        <precondition>A fichier labyrinthe contenant des coordonnées pour créer un monstre</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User initializes the main application</step>
+        <step id="S2">Main instantiates the Labyrinthe object by reading from a file</step>
+        <step id="S3">Labyrinthe reads the file to set up the labyrinth</step>
+        <step id="S4">Labyrinthe requests the Monstre initialization with given coordinates</step>
+        <step id="S5">Monstre sets its initial position to the given coordinates</step>
+        <step id="S6">Monstre returns back to Labyrinthe</step>
+        <step id="S7">Labyrinthe responds to Main</step>
+        <step id="S8">Main displays the labyrinth</step>
+    </mainSequence>
+</useCase>

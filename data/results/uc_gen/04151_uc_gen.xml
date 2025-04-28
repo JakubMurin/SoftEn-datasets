@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Manage Book Categories</name>
+    <description>Manager selects "Manage Book Categories" in the UI, deletes categories, and receives success or error messages.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager role validation completed</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Category deletion successful</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Access denied or error message displayed</condition>
+    </failureEndConditions>
+    <trigger>User selects "Manage Book Categories" in the UI</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Manage Book Categories" in the UI</step>
+        <step id="S2">Manager role validation is completed</step>
+        <step id="S3">Access to manage book categories granted</step>
+        <step id="S4">Book categories are displayed to the Manager</step>
+        <step id="S5">Manager selects categories to delete</step>
+        <step id="S6">Request for category deletion is sent</step>
+        <step id="S7">Category records are deleted from the database</step>
+        <step id="S8">Confirmation of deletion received from the database</step>
+        <step id="S9">Success message displayed to the Manager</step>
+        <step id="S10">Update shown to the Manager</step>
+    </mainSequence>
+</useCase>

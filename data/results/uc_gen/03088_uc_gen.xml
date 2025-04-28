@@ -1,0 +1,35 @@
+<useCase id="UC1">
+  <name>Perform Query Operation</name>
+  <description>Perform a query operation on the database.</description>
+  <actors>
+    <actor>Developer</actor>
+    <actor>JSEngine</actor>
+    <actor>QueryEngine</actor>
+    <actor>Database</actor>
+  </actors>
+  <preconditions>
+    <precondition>Developer needs to execute a query operation.</precondition>
+    <precondition>JSEngine and QueryEngine need to be active and connected.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Query operation completed successfully.</condition>
+  </successEndConditions>
+  <trigger>Developer runs the JavaScript query statement.</trigger>
+  <mainSequence>
+    <step id="S1">Developer sends a query request to JSEngine with the JavaScript statement.</step>
+    <step id="S2">JSEngine processes the request and calls QueryEngine with the translated query.</step>
+    <step id="S3">QueryEngine executes the query on the database and returns the result to JSEngine.</step>
+    <step id="S4">JSEngine returns the query result to the Developer.</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S3" continue="S3">
+      <step id="A1S1">If the query operation fails, an error is returned to the Developer.</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S2">
+      <description>Error occurred during query execution.</description>
+      <step id="E1S1">QueryEngine failed to execute the query.</step>
+    </esteps>
+  </errorSteps>
+</useCase>

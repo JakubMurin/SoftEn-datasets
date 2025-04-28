@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Create Report Template</name>
+    <description>As a Template Admin, I want to create a new report template.</description>
+    <actors>
+        <actor>Template Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Template Admin is authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The new report template is successfully created.</condition>
+    </successEndConditions>
+    <trigger>The Template Admin initiates the creation of a new report template.</trigger>
+    <mainSequence>
+        <step id="S1">Template Admin creates a report template.</step>
+        <step id="S2">Report Template Factory creates a report template.</step>
+        <step id="S3">Report Template invokes Row Template Factory to create a row template.</step>
+        <step id="S4">Row Template Factory creates a row template.</step>
+        <step id="S5">Row Template returns the created instance to Row Template Factory.</step>
+        <step id="S6">Row Template Factory returns the row template instance to Report Template.</step>
+        <step id="S7">Report Template returns the created instance to Report Template Factory.</step>
+        <step id="S8">Report Template Factory returns the report template instance to Template Admin.</step>
+    </mainSequence>
+</useCase>

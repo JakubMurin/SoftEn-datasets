@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Create Course</name>
+    <description>Use case for creating a new course</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User creates a course</step>
+        <step id="S2">UI creates course</step>
+        <step id="S3">UI asks for course information (name, description, edition)</step>
+        <step id="S4">User provides course information</step>
+        <step id="S5">Controller creates course with Builder</step>
+        <step id="S6">Builder sets the rest of the information for the course</step>
+        <step id="S7">Builder creates the Course entity</step>
+        <step id="S8">Controller accesses Persistence to create repositories</step>
+        <step id="S9">Persistence creates a factory</step>
+        <step id="S10">Persistence gets references to repositories through the factory</step>
+        <step id="S11">Factory creates a CourseRepository instance</step>
+        <step id="S12">Controller saves the created Course using the Repository</step>
+        <step id="S13">Controller returns the created Course to the UI</step>
+    </mainSequence>
+</useCase>

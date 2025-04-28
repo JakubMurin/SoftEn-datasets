@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Process Incoming Connection</name>
+    <description>Server processes incoming client connections</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Server</actor>
+        <actor>ServerHandler</actor>
+        <actor>RequestManager</actor>
+        <actor>QTcpSocket</actor>
+        <actor>QEventLoop</actor>
+    </actors>
+    <preconditions>
+        <precondition>Server, ServerHandler, and RequestManager instances exist</precondition>
+        <precondition>Client establishes new connection with Server</precondition>
+    </preconditions>
+    <trigger>Client sends new connection request</trigger>
+    <mainSequence>
+        <step id="S1">Server creates new ServerHandler instance</step>
+        <step id="S2">ServerHandler sets AutoDelete to true</step>
+        <step id="S3">Server starts ServerHandler within QThreadPool</step>
+    </mainSequence>
+</useCase>

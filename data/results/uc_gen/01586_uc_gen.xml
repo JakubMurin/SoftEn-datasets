@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Enterprise Admission (Recycler)</name>
+    
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Agency</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Enterprise submits data</step>
+        <step id="S2">Controller processes admission application</step>
+        <step id="S3">EntService uploads files to Mongodb</step>
+        <step id="S4">EntService saves file information to MySQL</step>
+        <step id="S5">Controller returns application result</step>
+        <step id="S6">Enterprise receives application result</step>
+        <step id="S7">Regulatory Agency queries unapproved enterprise list</step>
+        <step id="S8">Controller retrieves enterprise list</step>
+        <step id="S9">EntService queries enterprise list from MySQL</step>
+        <step id="S10">Controller returns enterprise list</step>
+        <step id="S11">Regulatory Agency receives enterprise list</step>
+        <step id="S12">Regulatory Agency approves enterprise admission</step>
+        <step id="S13">Controller processes approval</step>
+        <step id="S14">EntService deploys admission contract using JAVA SDK</step>
+        <step id="S15">EntService updates information in MySQL</step>
+        <step id="S16">Controller returns approval result</step>
+        <step id="S17">Regulatory Agency receives approval result</step>
+        <step id="S18">Enterprise queries admission result</step>
+        <step id="S19">Controller retrieves admission result</step>
+        <step id="S20">EntService queries admission information from MySQL</step>
+        <step id="S21">EntService retrieves admission contract content using JAVA SDK</step>
+        <step id="S22">Controller returns admission result</step>
+        <step id="S23">Enterprise receives admission result</step>
+        <step id="S24">Enterprise can resubmit admission data</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S12">
+            <step id="A1S1">Regulatory Agency rejects enterprise admission</step>
+            <step id="A1S2">Controller processes rejection</step>
+            <step id="A1S3">EntService updates information in MySQL</step>
+            <step id="A1S4">Controller returns rejection result</step>
+            <step id="A1S5">Regulatory Agency receives rejection result</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

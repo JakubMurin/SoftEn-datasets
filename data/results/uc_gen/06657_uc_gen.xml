@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Service Registration and Data Upload</name>
+    <actors>
+        <actor>SOR</actor>
+        <actor>目录服务器</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Service registration and data upload completed successfully</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">SOR initiates service registration and reports current node network status and configuration to 目录服务器</step>
+        <step id="S2">目录服务器 initializes storage files</step>
+        <step id="S3">目录服务器 identifies and stores uploaded device information</step>
+        <step id="S4">目录服务器 returns forwarding tasks to be executed by SOR</step>
+        <step id="S5">SOR sequentially executes the forwarding tasks</step>
+    </mainSequence>
+</useCase>

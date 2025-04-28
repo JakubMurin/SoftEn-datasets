@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Alterar dados de utente</name>
+    <description>Alterar as informações do utente no sistema.</description>
+    <actors>
+        <actor>Utente</actor>
+        <actor>SistemaRobDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>Os usuários têm permissão para alterar seus dados.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>As informações do utente foram alteradas com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error: As informações não puderam ser alteradss.</condition>
+    </failureEndConditions>
+    <trigger>Alteração solicitada pelo utente.</trigger>
+    <mainSequence>
+        <step id="S1">Utente solicita alteração dos dados.</step>
+        <step id="S2">SistemaRobDroneGo requesita os dados existentes para modificar.</step>
+        <step id="S3">Utente envia os novos dados para serem alterados.</step>
+        <step id="S4">SistemaRobDroneGo envia a mensagem de sucesso após efetuar a alteração.</step>
+        <step id="S5">SistemaRobDroneGo envia mensagem de erro se não for possível alterar os dados.</step>
+    </mainSequence>
+</useCase>

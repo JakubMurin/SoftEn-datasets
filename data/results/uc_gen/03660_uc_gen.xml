@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>User Subscribes for Service</name>
+    
+    <actors>
+        <actor>User</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>User initiates the subscription process.</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Subscription successfully completed.</condition>
+    </successEndConditions>
+    
+    <trigger>User requests to subscribe for a service.</trigger>
+    
+    <mainSequence>
+        <step id="S1">User initiates the subscription process.</step>
+        <step id="S2">User sends subscription request to Subscription Controller.</step>
+        <step id="S3">Subscription Controller receives the request.</step>
+        <step id="S4">Subscription Controller forwards request to Subscription Service.</step>
+        <step id="S5">Subscription Service processes the subscription request.</step>
+        <step id="S6">Subscription Service interacts with Subscription Repository for data.</step>
+        <step id="S7">Subscription Repository accesses Data Store to store subscription data.</step>
+        <step id="S8">Data Store saves the subscription.</step>
+        <step id="S9">Subscription Repository informs Subscription Service of success.</step>
+        <step id="S10">Subscription Service completes processing.</step>
+        <step id="S11">Subscription Service responds to Subscription Controller.</step>
+        <step id="S12">Subscription Controller sends the response to the User.</step>
+        <step id="S13">User successfully subscribes to the service.</step>
+    </mainSequence>
+</useCase>

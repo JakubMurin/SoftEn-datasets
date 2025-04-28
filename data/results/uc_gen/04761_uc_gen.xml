@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>View Story Detail</name>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryDetailView</actor>
+        <actor>StoriesController</actor>
+        <actor>AuthorsController</actor>
+        <actor>ChaptersController</actor>
+        <actor>CommentsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on the story cover.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks on the story cover.</step>
+        <step id="S2">View requests API for story details.</step>
+        <step id="S3">StoriesController processes GetStoryDetail().</step>
+        <step id="S4">StoriesController queries data from the database.</step>
+        <step id="S5">Database returns data to StoriesController.</step>
+        <step id="S6">MsgService processes MsgReturn().</step>
+        <step id="S7">MsgService sends response payload format to View.</step>
+        <step id="S8">View displays Story Detail Page to User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Retrieve Questions and Options</name>
+    <actors>
+        <actor>Browser</actor>
+        <actor>Http Server</actor>
+        <actor>ListQuestions Controller</actor>
+        <actor>QuestionDao</actor>
+        <actor>OptionDao</actor>
+        <actor>QUESTION_DB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Browser sends a POST request to Http Server for /api/listQuestions</step>
+        <step id="S2">Http Server receives the request and invokes controllers for handling</step>
+        <step id="S3">ListQuestions Controller processes the request and extracts surveyId</step>
+        <step id="S4">ListQuestions Controller queries QuestionDao for questions related to surveyId</step>
+        <step id="S5">ListQuestions Controller queries OptionDao for options related to obtained questions</step>
+        <step id="S6">QuestionDao retrieves questions from QUESTION_DB</step>
+        <step id="S7">OptionDao retrieves options from QUESTION_DB</step>
+        <step id="S8">Http Server responds OK 200 back to Browser</step>
+        <step id="S9">Http Server writes the response to the socket</step>
+        <step id="S10">Browser receives HTTP/1.1 200 OK response</step>
+    </mainSequence>
+</useCase>

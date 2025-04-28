@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>User Login and Accessing Patient Information</name>
+    <description>Use case where a user logs in, accesses patient information, and logs out.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Rehab Support</actor>
+        <actor>Web Certificate Service</actor>
+        <actor>Integrity Service</actor>
+        <actor>Identity Provider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully accesses patient information and logs out.</condition>
+    </successEndConditions>
+    <trigger>User logs in and attempts to access patient information.</trigger>
+    <mainSequence>
+        <step id="S1">User logs in by entering credentials.</step>
+        <step id="S2">Rehab Support forwards the SAML token to the Identity Provider for validation and token exchange upon successful login.</step>
+        <step id="S3">Identity Provider validates the SAML token and exchanges it for AccessToken/RefreshToken and returns them to Rehab Support.</step>
+        <step id="S4">User is successfully logged in.</step>
+        <step id="S5">User selects to view patient information.</step>
+        <step id="S6">Rehab Support fetches a new AccessToken using RefreshToken if current AccessToken is about to expire.</step>
+        <step id="S7">Rehab Support constructs a form with certificate ID, healthcare unit, and AccessToken for POST to Web Certificate Service.</step>
+        <step id="S8">Patient view is rendered on the screen.</step>
+
+        <step id="S9">User clicks to view certificate, which initiates a POST request to Web Certificate Service opening the result in an iFrame.</step>
+        <step id="S10">Web Certificate Service validates AccessToken and creates a session.</step>
+        <step id="S11">Web Certificate Service requests the certificate type from Integrity Service using GetCertificateType.</step>
+        <step id="S12">Integrity Service responds with the certificate type and sets the healthcare unit in the session.</step>
+        <step id="S13">User is redirected to the certificate view.</step>
+        <step id="S14">Web Certificate Service requests the certificate data by calling GetCertificate from Integrity Service.</step>
+        <step id="S15">Integrity Service responds with the certificate data and renders it to the user via the UV framework in the iFrame.</step>
+        <step id="S16">User views the certificate data in Web Certificate's Read-only mode with optional accompanying information.</step>
+
+        <step id="S17">User closes the patient view.</step>
+        <step id="S18">Rehab Support initiates a redirection for local logout in Web Certificate through a hidden iFrame.</step>
+        <step id="S19">Web Certificate performs the local logout, ending the session.</step>
+        <step id="S20">User is redirected back to a logged-out state with an empty page returned by Web Certificate.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Gerenciar tarefas de drone</name>
+    <description>Permite ao usuário solicitar e inserir uma tarefa para um drone robô.</description>
+    <actors>
+        <actor>Utente</actor>
+        <actor>robDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>O usuário possui acesso ao sistema de gerenciamento de drones.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>A tarefa é criada com sucesso e uma mensagem de confirmação é retornada.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>A criação da tarefa falha e uma mensagem de erro é retornada.</condition>
+    </failureEndConditions>
+    <trigger>O usuário solicita uma tarefa para o drone robô.</trigger>
+    <mainSequence>
+        <step id="S1">O usuário requisita o ponto inicial e final da tarefa ao robDroneGo.</step>
+        <step id="S2">O usuário insere os dados necessários para a tarefa.</step>
+    </mainSequence>
+</useCase>

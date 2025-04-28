@@ -1,0 +1,44 @@
+<useCase id="UC001">
+    <name>Authenticate End User with BankID</name>
+    <description>End user needs to authenticate using BankID</description>
+    <actors>
+        <actor>CS</actor>
+        <actor>End-User</actor>
+    </actors>
+    <preconditions>
+        <precondition>End user asks for help</precondition>
+        <precondition>End user provides NIN</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>End user successfully authenticated with BankID</condition>
+    </successEndConditions>
+    <trigger>End user requests to authenticate using BankID</trigger>
+    <mainSequence>
+        <step id="S1">CS receives request for help from End User</step>
+        <step id="S2">CS collects NIN from End User</step>
+        <step id="S3">CS sends NIN to Application</step>
+        <step id="S4">CS informs End User to start Swedish BankID process</step>
+        <step id="S5">Application sends POST request with NIN to Signicat</step>
+        <step id="S6">Signicat responds with session ID</step>
+        <step id="S7">End User starts BankID process</step>
+        <step id="S8">End User authenticates with BankID via IDP</step>
+        <step id="S9">IDP provides authentication information to Signicat</step>
+        <step id="S10">Signicat processes the authentication</step>
+        <step id="S11">Application polls Signicat for authentication result</step>
+        <step id="S12">Application receives authentication success from Signicat</step>
+        <step id="S13">CS provides result of end-user authentication to Application</step>
+        <step id="S14">CS assists the authenticated End User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S11">
+            <step id="A1S1">Signicat responses with error</step>
+            <step id="A1S2">Application handles error response</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Signicat fails to authenticate</description>
+            <step id="E1S1">Application informs End User of authentication failure</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Fault Management Provisioning</name>
+    <description>Manage the fault management process for creating and reporting jobs</description>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operator Framework</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>Business User and System Operator Framework are registered listeners in the Hub</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management Report is successfully created and completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during fault management job or report creation</condition>
+    </failureEndConditions>
+    <trigger>Business User initiates fault management provisioning</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers as a listener in the Hub for job and report notifications</step>
+        <step id="S2">System Operator Framework creates a fault management job</step>
+        <step id="S3">System Operator Framework receives response for fault management job creation</step>
+        <step id="S4">Fault Management Job is created and activated</step>
+        <step id="S5">Fault Management Job generates necessary data</step>
+        <step id="S6">Fault Management Job creates a report</step>
+        <step id="S7">Fault Management Report is created and activated</step>
+        <step id="S8">Fault Management Report collects data and completes</step>
+        <step id="S9">Fault Management Job receives report completion notification</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Fault Management Job fails to create a report</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Error occurs during fault management report creation</description>
+            <step id="E1S1">Fault Management Report creation fails</step>
+        </esteps>
+    </errorSteps>
+</useCase>

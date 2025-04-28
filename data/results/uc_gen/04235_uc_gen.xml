@@ -1,0 +1,47 @@
+<useCase id="1">
+    <name>Message discussion association</name>
+    <actors>
+        <actor>authenticated user</actor>
+        <actor>New message UI</actor>
+        <actor>Discussion UI</actor>
+        <actor>ReST interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>All declared properties used in requests are mandatory except when "[Opt]" keyword is used</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User writes a new draft with or without participants</step>
+        <step id="S2">Compose UI throttles save</step>
+        <step id="S3">API receives POST request to create a new message</step>
+        <step id="S4">API acknowledges message creation</step>
+        <step id="S5">API responds with message details</step>
+        <step id="S6">User edits the draft</step>
+        <step id="S7">Compose UI throttles save</step>
+        <step id="S8">API receives PATCH request to update message</step>
+        <step id="S9">API acknowledges message update</step>
+        <step id="S10">API responds with updated message details</step>
+        <step id="S11">User hits "Send"</step>
+        <step id="S12">API receives POST request to send message</step>
+        <step id="S13">API validates participants and calculates discussion ID</step>
+        <step id="S14">API acknowledges message send</step>
+        <step id="S15">API responds with sent message details</step>
+        <step id="S16">Compose UI renders the discussion</step>
+        <step id="S17">Compose UI presents the discussion to the user</step>
+        <step id="S18">User replies to a discussion</step>
+        <step id="S19">Reply UI throttles save</step>
+        <step id="S20">API receives POST request to reply to a discussion</step>
+        <step id="S21">API acknowledges reply creation</step>
+        <step id="S22">API responds with reply details</step>
+        <step id="S23">User edits the reply</step>
+        <step id="S24">Reply UI throttles save</step>
+        <step id="S25">API receives PATCH request to update reply</step>
+        <step id="S26">API acknowledges reply update</step>
+        <step id="S27">API responds with updated reply details</step>
+        <step id="S28">User hits "Send" to reply</step>
+        <step id="S29">API receives POST request to send reply</step>
+        <step id="S30">API acknowledges reply send</step>
+        <step id="S31">API responds with sent reply details</step>
+        <step id="S32">Reply UI renders the discussion</step>
+        <step id="S33">Reply UI presents the discussion to the user</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Send Message in Group Chat</name>
+    <description>User A sends a message in the group chat that is distributed to other users based on subscribed topics.</description>
+    <actors>
+        <actor>User A</actor>
+        <actor>App Server</actor>
+        <actor>Redis Server</actor>
+        <actor>Other Users</actor>
+    </actors>
+    <preconditions>
+        <precondition>User A is handshaked and subscribed.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User A sends a message to the App Server to post in the group chat.</step>
+        <step id="S2">App Server distributes the message to other users subscribed to the relevant topics.</step>
+        <step id="S3">App Server stores the message in Redis Server for future references.</step>
+    </mainSequence>
+</useCase>

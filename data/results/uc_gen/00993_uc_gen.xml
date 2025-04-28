@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Data Retrieval</name>
+    <description>Retrieve random data based on a specified distribution</description>
+    <actors>
+        <actor>ProblemSolver</actor>
+        <actor>DataServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>ProblemSolver sends a POST request to DataServer with encrypted session key and data</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>DataServer responds with 200 OK containing encrypted session key and data</condition>
+    </successEndConditions>
+    <trigger>ProblemSolver triggers data retrieval process</trigger>
+    <mainSequence>
+        <step id="S1">Decrypt encrypted session key</step>
+        <step id="S2">Decrypt encrypted data</step>
+        <step id="S3">Parse decrypted data</step>
+        <step id="S4">Generate random number</step>
+        <step id="S5">Select distribution based on generated number</step>
+        <step id="S6">Encrypt response data with session key</step>
+        <step id="S7">Send encrypted session key to ProblemSolver</step>
+    </mainSequence>
+</useCase>

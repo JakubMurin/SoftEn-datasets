@@ -1,0 +1,40 @@
+<useCase id="1">
+    <name>Modify Password</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>ModifyPasswordScreen</actor>
+        <actor>AuthService</actor>
+        <actor>UsersRouter</actor>
+        <actor>UsersService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has opened the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Password successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Validation error in password update</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Display "Account Settings" on HomepageScreen</step>
+        <step id="S2">Navigate to Account Settings</step>
+        <step id="S3">Display Modify Password Page on ModifyPasswordScreen</step>
+        <step id="S4">Prompt User for updated password</step>
+        <step id="S5">Enter updated password</step>
+        <step id="S6">Press "Modify" button</step>
+        <step id="S7">Submit updated password to AuthService</step>
+        <step id="S8">API Call to Modify Password in UsersRouter</step>
+        <step id="S9">Forward updated password to UsersService</step>
+        <step id="S10">Validate updated password</step>
+        <step id="S11">Update password in Database</step>
+        <step id="S12">Confirm password updated</step>
+        <step id="S13">Confirm update success in UsersRouter</step>
+        <step id="S14">Send update confirmation to AuthService</step>
+        <step id="S15">Display update success message on ModifyPasswordScreen</step>
+        <step id="S16">Navigate back to Homepage on ModifyPasswordScreen</step>
+        <step id="S17">Display confirmation message on HomepageScreen</step>
+    </mainSequence>
+</useCase>

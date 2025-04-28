@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Trainee Login</name>
+    <description>Trainee requests to login and authenticate with the system</description>
+    <actors>
+        <actor>Trainee</actor>
+        <actor>Authentication Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Trainee has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Trainee is authenticated successfully</condition>
+    </successEndConditions>
+    <trigger>Trainee initiates login request</trigger>
+    <mainSequence>
+        <step id="S1">Trainee requests to login</step>
+        <step id="S2">Authentication Service validates user credentials with User Database</step>
+        <step id="S3">User Database returns user validation</step>
+        <step id="S4">Authentication Service confirms Authentication Success</step>
+    </mainSequence>
+</useCase>

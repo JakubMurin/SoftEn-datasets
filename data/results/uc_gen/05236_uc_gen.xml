@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Remove Book From Catalog</name>
+    <actors>
+        <actor>Me</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Me executes the RemoveBookFromCatalogActivity.</step>
+        <step id="S2">RemoveBookFromCatalogActivity removes a book from the catalog by calling removeBookFromCatalog() in RemoveBookFromCataglogRequest.</step>
+        <step id="S3">RemoveBookFromCataglogRequest sends a request to the source.</step>
+        <step id="S4">If the book is found in the catalog, the source sends a response to RemoveBookFromCatalogResult.</step>
+        <step id="S5">RemoveBookFromCatalogResult processes the response and sends it back to RemoveBookFromCataglogRequest.</step>
+        <step id="S6">RemoveBookFromCataglogRequest sends the response to Me upon encountering a BookNotFoundException.</step>
+        <step id="S7">If the book is not found in the catalog, the source sends a response to RemoveBookFromCatalogResult.</step>
+        <step id="S8">RemoveBookFromCatalogResult processes the response and sends it back to RemoveBookFromCataglogRequest.</step>
+        <step id="S9">RemoveBookFromCataglogRequest sends the response to Me in the form of RemoveBookFromCatalogResponse.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Gateway Enrollment</name>
+    <description>Enroll a gateway device with the system</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Gateway Agent</actor>
+        <actor>API Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin has access to the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Gateway successfully enrolled</condition>
+    </successEndConditions>
+    <trigger>Admin initiates gateway enrollment process</trigger>
+    <mainSequence>
+        <step id="S1">Admin provisions server through terraform/ansible</step>
+        <step id="S2">Admin generates password and wireguard private key</step>
+        <step id="S3">Admin enrolls gateway with API Server</step>
+        <step id="S4">API Server allocates private IP and updates database</step>
+        <step id="S5">Admin generates Gateway Configuration</step>
+        <step id="S6">Admin establishes SSH connection with Gateway Agent</step>
+        <step id="S7">Gateway Agent inserts configuration into file</step>
+        <step id="S8">Gateway Agent establishes secure connection with API Server</step>
+    </mainSequence>
+</useCase>

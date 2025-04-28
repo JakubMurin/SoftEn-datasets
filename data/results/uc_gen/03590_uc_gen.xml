@@ -1,0 +1,19 @@
+<useCase id="10057">
+    <name>Anmeldung eines Akteurs am Messenger-Service</name>
+    <trigger>User gibt Messenger-Service ein</trigger>
+    <mainSequence>
+        <step id="S1">User gibt Messenger-Service ein</step>
+        <step id="S2">Sendet GET /_matrix/client/login an Messenger-Proxy</step>
+        <step id="S3">Messenger-Proxy leitet die Anfrage an Matrix-Homeserver weiter</step>
+        <step id="S4">Matrix-Homeserver zeigt unterstützte Authentifizierungsverfahren</step>
+        <step id="S5">User startet die Authentifizierung</step>
+        <step id="S6">User meldet sich an</step>
+        <step id="S7">Anmeldung durch POST /_matrix/client/login an Messenger-Proxy</step>
+        <step id="S8">Messenger-Proxy leitet die Anfrage an Matrix-Homeserver weiter</step>
+        <step id="S9">Matrix-Homeserver überprüft Client-Credentials</step>
+        <step id="S10">Matrix-Homeserver erstellt Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN</step>
+        <step id="S11">Matrix-Homeserver sendet ACCESS_TOKEN und REFRESH_TOKEN an Messenger-Proxy</step>
+        <step id="S12">Client speichert Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN</step>
+        <step id="S13">Anmeldung erfolgreich</step>
+    </mainSequence>
+</useCase>

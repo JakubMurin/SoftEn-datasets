@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Manage Room Categories</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin has access to the system</precondition>
+        <precondition>Admin wants to add a new room category</precondition>
+    </preconditions>
+    <trigger>Admin requests to add a new room category</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to add a new room category.</step>
+        <step id="S2">Admin accesses the UI to perform the action.</step>
+        <step id="S3">The UI initializes the process and communicates with the Router.</step>
+        <step id="S4">The Router directs the request to the Controller to display the add room category form.</step>
+        <step id="S5">The Controller fetches form data from the Repository.</step>
+        <step id="S6">The Repository retrieves existing room categories data from the RoomCategoryModel.</step>
+        <step id="S7">RoomCategoryModel queries the Database for existing room categories.</step>
+        <step id="S8">The RoomCategoryModel receives existing room categories data from the Database.</step>
+        <step id="S9">The Repository gets the existing room categories from the RoomCategoryModel and passes it to the Controller.</step>
+        <step id="S10">The Controller responds to the Router to display the add room category form.</step>
+        <step id="S11">The Router sends the form to the UI for display.</step>
+        <step id="S12">Admin submits the new room category data to the UI.</step>
+        <step id="S13">The UI communicates the submission to the Router.</step>
+        <step id="S14">The Router directs the new data to the Controller to add the room category.</step>
+        <step id="S15">The Controller saves the new room category data in the Repository.</step>
+        <step id="S16">The Repository creates the room category entry using RoomCategoryModel.</step>
+        <step id="S17">RoomCategoryModel interacts with the Database to store the new room category.</step>
+        <step id="S18">Database acknowledges the successful creation of the new room category to the RoomCategoryModel.</step>
+        <step id="S19">RoomCategoryModel informs the Repository about the successful creation of the new room category.</step>
+        <step id="S20">The Repository informs the Controller about the successful creation of the new room category.</step>
+        <step id="S21">The Controller responds to the Router with a success message (200 OK).</step>
+        <step id="S22">The Router communicates the success message to the UI.</step>
+        <step id="S23">The UI displays a success message to the Admin about the room category addition.</step>
+    </mainSequence>
+</useCase>

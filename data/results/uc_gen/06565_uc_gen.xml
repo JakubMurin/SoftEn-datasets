@@ -1,0 +1,32 @@
+<useCase id="UC1">
+  <name>Make Coffee Use Case</name>
+  
+  <actors>
+    <actor>User</actor>
+    <actor>CoffeeFactory</actor>
+    <actor>Coffee</actor>
+    <actor>Milk</actor>
+    <actor>Chocolate</actor>
+    <actor>Cinnamon</actor>
+    <actor>Sweetener</actor>
+    <actor>StirringStrategyFactory</actor>
+    <actor>StirringStrategy</actor>
+    <actor>CoffeeRequest</actor>
+  </actors>
+  
+  <preconditions>
+    <precondition>Ingredients for coffee preparation are available</precondition>
+  </preconditions>
+  
+  <mainSequence>
+    <step id="S1">User initiates make_coffee operation with coffee_requests and sweetener_requests</step>
+    <step id="S2">CoffeeFactory creates coffee based on requests</step>
+    <step id="S3">CoffeeFactory assigns CoffeeRequest containing coffee type and other details</step>
+    <step id="S4">CoffeeHandlerBase sets up the chain of ingredients (Milk, Chocolate, Cinnamon, Sweetener)</step>
+    <step id="S5">Each ingredient gets initialized and linked</step>
+    <step id="S6">Make_coffee handles the coffee request</step>
+    <step id="S7">Each ingredient in the chain handles the request</step>
+    <step id="S8">Sweetener gets stirring strategy created by StirringStrategyFactory</step>
+    <step id="S9">StirringStrategy stirs the sweetener</step>
+  </mainSequence>
+</useCase>

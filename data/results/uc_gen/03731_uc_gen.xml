@@ -1,0 +1,42 @@
+<useCase id="1">
+    <name>Typing Game</name>
+    <description>A user plays a typing game to improve typing speed and accuracy.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Keyboard</actor>
+        <actor>JavaScript</actor>
+        <actor>HTML DOM</actor>
+        <actor>Fishtext API</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the typing game.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User completes the typing game successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to complete the typing game within the time limit.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the typing game.</trigger>
+    <mainSequence>
+        <step id="S1">User requests text generation from Fishtext API.</step>
+        <step id="S2">Fishtext API returns text to JavaScript.</step>
+        <step id="S3">JavaScript displays the text on the HTML DOM.</step>
+        <step id="S4">User presses a key on the keyboard.</step>
+        <step id="S5">Keyboard outputs the character to the DOM.</step>
+        <step id="S6">JavaScript receives the entered character.</step>
+        <step id="S7">JavaScript checks the length of all entered characters.</step>
+        <step id="S8">JavaScript checks the correctness of the entered character.</step>
+        <step id="S9">JavaScript stops the timer for the attempt.</step>
+        <step id="S10">JavaScript calculates the points earned in the game.</step>
+        <step id="S11">JavaScript creates an object with game data.</step>
+        <step id="S12">JavaScript sends the game data to the Server.</step>
+        <step id="S13">Server updates user and attempt data in the Database.</step>
+        <step id="S14">JavaScript displays the end game window on the DOM.</step>
+        <step id="S15">JavaScript generates speed data for the graph.</step>
+        <step id="S16">JavaScript draws the speed diagram on the DOM.</step>
+        <step id="S17">JavaScript saves the game data in localStorage.</step>
+    </mainSequence>
+</useCase>

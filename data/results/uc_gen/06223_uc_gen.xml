@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Enter Subject Responses</name>
+    <actors>
+        <actor>MRI Operator</actor>
+        <actor>Digital Form Interface</actor>
+        <actor>Subject Responses API</actor>
+        <actor>Neurohub Database</actor>
+    </actors>
+    <trigger>MRI Operator accesses the digital form to enter subject responses</trigger>
+    <mainSequence>
+        <step id="S1">MRI Operator accesses the digital form</step>
+        <step id="S2">Digital Form Interface displays the form</step>
+        <step id="S3">MRI Operator enters subject responses</step>
+        <step id="S4">Digital Form Interface posts responses to Subject Responses API</step>
+        <step id="S5">Subject Responses API saves responses in Neurohub Database</step>
+        <step id="S6">Subject Responses API confirms the saved responses</step>
+        <step id="S7">Subject Responses API confirms success to Digital Form Interface</step>
+        <step id="S8">Digital Form Interface displays success message to MRI Operator</step>
+    </mainSequence>
+</useCase>

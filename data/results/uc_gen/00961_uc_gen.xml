@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Run Reasoning Engine</name>
+    <description>Analyze input to arrive at a final result.</description>
+    
+    <actors>
+        <actor>User</actor>
+        <actor>ReWOOAgent</actor>
+        <actor>ReasonLLM</actor>
+        <actor>WorldLLM</actor>
+        <actor>ObserveLLM</actor>
+        <actor>OutcomeLLM</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>ReWOOAgent initialized</precondition>
+    </preconditions>
+    
+    <trigger>User initiates the execution command.</trigger>
+    
+    <mainSequence>
+        <step id="S1">User runs input for ReWOOAgent</step>
+        <step id="S2">ReWOOAgent reason about actions</step>
+        <step id="S3">ReWOOAgent simulates world state</step>
+        <step id="S4">ReWOOAgent observes the effects</step>
+        <step id="S5">ReWOOAgent determines the outcome</step>
+        <step id="S6">ReWOOAgent provides final result to User</step>
+    </mainSequence>
+</useCase>

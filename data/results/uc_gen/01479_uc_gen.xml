@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Manage Offerings</name>
+    
+    <actors>
+        <actor>Instructor</actor>
+        <actor>OfferingsPage</actor>
+        <actor>OfferingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Lesson</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Instructor is logged in</precondition>
+        <precondition>Offerings are available</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Instructor opens Manage Offerings Page</step>
+        <step id="S2">OfferingsPage queries available offerings for Instructor</step>
+        <step id="S3">OfferingsPage displays available offerings to Instructor</step>
+        
+        <step id="S4">Instructor selects "Accept Offering" (lessonId)</step>
+        <step id="S5">OfferingValidator validates offering acceptance</step>
+        <step id="S6">OfferingValidator checks specialization and availability</step>
+        <step id="S7">OfferingsPage displays error if validation fails</step>
+        <step id="S8">OfferingsPage updates lesson status if validation passes</step>
+        
+        <step id="S9">Instructor selects "Drop Offering" (lessonId)</step>
+        <step id="S10">OfferingValidator validates offering drop</step>
+        <step id="S11">OfferingValidator checks lesson ownership</step>
+        <step id="S12">OfferingsPage displays error if validation fails</step>
+        <step id="S13">OfferingsPage updates lesson status if validation passes</step>
+        
+        <step id="S14">Instructor views offering details</step>
+        <step id="S15">OfferingsPage fetches lesson details</step>
+        <step id="S16">OfferingsPage displays lesson details to Instructor</step>
+    </mainSequence>
+</useCase>

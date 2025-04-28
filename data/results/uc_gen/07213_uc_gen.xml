@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Accessing Ingest Process Documentation</name>
+    <actors>
+        <actor>Batch Submitter</actor>
+        <actor>EDRMS Website</actor>
+        <actor>Authentication Service</actor>
+        <actor>Documentation Server</actor>
+        <actor>Ingest Process Documentation</actor>
+    </actors>
+    <preconditions>
+        <precondition>Batch Submitter needs to navigate to EDRMS Documentation Section</precondition>
+        <precondition>Authentication for accessing Documentation is required</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Ingest Process Documentation successfully accessed</condition>
+    </successEndConditions>
+    <trigger>Batch Submitter navigates to EDRMS Documentation Section</trigger>
+    <mainSequence>
+        <step id="S1">Batch Submitter navigates to EDRMS Documentation Section</step>
+        <step id="S2">Batch Submitter requests for Authentication</step>
+        <step id="S3">Batch Submitter provides Credentials to authenticate</step>
+        <step id="S4">EDRMS Website authenticates the User</step>
+        <step id="S5">EDRMS Website requests Ingest Process Docs</step>
+        <step id="S6">Documentation Server retrieves and returns the Documentation</step>
+        <step id="S7">Documentation Link is sent to EDRMS Website</step>
+        <step id="S8">Documentation Link is displayed to Batch Submitter</step>
+        <step id="S9">Batch Submitter clicks on Documentation Link</step>
+        <step id="S10">Batch Submitter is redirected to Ingest Process Documentation</step>
+        <step id="S11">Ingest Process Documentation is displayed to Batch Submitter</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Display Transactions in Charts</name>
+    <description>Allows Logged-in User to view transactions in charts</description>
+    <actors>
+        <actor>Logged-in User</actor>
+        <actor>GUI Financial Accounts Overview</actor>
+        <actor>GUI Fin. Acc. Details View</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User selects a financial account</trigger>
+    <mainSequence>
+        <step id="S1">User selects a financial account</step>
+        <step id="S2">Open financial account details view</step>
+        <step id="S3">Request all data of financial account (id) from Server</step>
+        <step id="S4">Retrieve full data of financial account from Database</step>
+        <step id="S5">Display transactions in charts in tab "stats"</step>
+    </mainSequence>
+</useCase>

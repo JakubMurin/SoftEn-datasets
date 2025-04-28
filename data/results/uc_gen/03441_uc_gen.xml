@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Criar novo tipo de robo</name>
+    <description>O ator deseja criar um novo tipo de robô.</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>O ator tem permissão para criar um novo tipo de robô.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O novo tipo de robô foi criado com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>O novo tipo de robô não pôde ser criado.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">O ator cria um novo tipo de robô.</step>
+        <step id="S2">O ator requisita os dados do novo tipo de robô.</step>
+        <step id="S3">O ator envia os dados do novo tipo de robô.</step>
+        <step id="S4">O Container envia um POST para a API (/api/robotType).</step>
+        <step id="S5">A API retorna sucesso na criação para o Container.</step>
+        <step id="S6">O Container retorna sucesso na criação para o ator.</step>
+    </mainSequence>
+</useCase>

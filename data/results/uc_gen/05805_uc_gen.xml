@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Receive and Display AGV Data</name>
+    <actors>
+        <actor>Client B (智慧大屏)</actor>
+        <actor>Client A (智慧小车)</actor>
+        <actor>MQTT Broker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client B subscribes to topic: screen/report</precondition>
+        <precondition>Client A publishes data to topic: agv/report</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Broker forwards data to topic: screen/report</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Client B subscribes to topic: screen/report</step>
+        <step id="S2">Client A publishes AGV data to topic: agv/report</step>
+        <step id="S3">Broker forwards AGV data to topic: screen/report</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC1234">
+    <name>List Floors with Passageways</name>
+    <description>Allows the actor to list floors of buildings with passageways to other buildings.</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>GestaoInfoAPI must be reachable and responsive.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Floors with passageways are successfully fetched.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Receive an error message if the request fails.</condition>
+    </failureEndConditions>
+    <trigger>The actor intends to list floors of buildings with passageways to other buildings.</trigger>
+    <mainSequence>
+        <step id="S1">Actor intends to list floors of buildings with passageways.</step>
+        <step id="S2">Actor sends a request to list floors with passageways.</step>
+        <step id="S3">Container forwards the request to GestaoInfoAPI.</step>
+        <step id="S4">GestaoInfoAPI returns the status code as a response.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Container sends floors with passageways data to Actor.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error message from GestaoInfoAPI is sent to Container.</description>
+            <step id="E1S1">Container forwards the error message to Actor.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

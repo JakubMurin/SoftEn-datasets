@@ -1,0 +1,21 @@
+<useCase id="1">
+    <name>Track Order</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user accesses the tracking API endpoint with a valid transaction ID.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user receives tracking information for the specified order.</condition>
+    </successEndConditions>
+    <trigger>/api/tracking/{transId}</trigger>
+    <mainSequence>
+        <step id="S1">User accesses the tracking API endpoint with a valid transaction ID.</step>
+        <step id="S2">TrackingController retrieves the transaction information for the specified transaction ID.</step>
+        <step id="S3">TransactionController retrieves the shipping order details.</step>
+        <step id="S4">ShippoTrackingService retrieves the tracking information based on the carrier and tracking number from the order.</step>
+        <step id="S5">ShippoTrackingService tracks the shipment.</step>
+        <step id="S6">TrackingController sends the tracking details to the user.</step>
+    </mainSequence>
+</useCase>

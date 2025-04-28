@@ -1,0 +1,22 @@
+<useCase id="P132_user_register">
+    <name>P132: User Registration</name>
+    <mainSequence>
+        <step id="S1">CA triggers User Registration Start Request to TAS++</step>
+        <step id="S2">CA prepares ECDH data and signs it</step>
+        <step id="S3">CA performs ECDH</step>
+        <step id="S4">CA generates server token seed</step>
+        <step id="S5">CA prepares to create server token</step>
+        <step id="S6">CA sends Server Token Creation Request to TAS++</step>
+        <step id="S7">TAS verifies signatures and generates server token</step>
+        <step id="S8">TAS encrypts and stores response information</step>
+        <step id="S9">User KYC process occurs</step>
+        <step id="S10">CA sends User DID Key Creation Request to WALLET</step>
+        <step id="S11">WALLET generates keys for key exchange</step>
+        <step id="S12">CA sends User Registration Request to WALLET</step>
+        <step id="S13">WALLET creates DID Document and sends User Registration Request to TAS++</step>
+        <step id="S14">TAS validates serverToken and user mapping information</step>
+        <step id="S15">TAS stores user mapping information in DB</step>
+        <step id="S16">CA sends User Registration Completion Request to TAS++</step>
+        <step id="S17">TAS validates serverToken and closes the transaction</step>
+    </mainSequence>
+</useCase>

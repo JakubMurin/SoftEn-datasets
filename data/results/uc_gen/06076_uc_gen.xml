@@ -1,0 +1,20 @@
+<useCase id="UC1">
+  <name>Create a Post-It</name>
+  <actors>
+    <actor>Client</actor>
+    <actor>Server</actor>
+  </actors>
+  <preconditions>
+    <precondition>Client is connected to the server.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Client calls the method canCreatePostIt().</step>
+    <step id="S2">Server checks if the user has permission to create post-its.</step>
+    <step id="S3">Server sends the list of boards where the user can write.</step>
+    <step id="S4">Client selects a board to create the post-it.</step>
+    <step id="S5">Client calls the method createPostIt(info) with the necessary information.</step>
+    <step id="S6">Server receives the board title, position, and content of the post-it.</step>
+    <step id="S7">Server creates the post-it in the specified board.</step>
+    <step id="S8">Server sends an acknowledgement code to the client.</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User goes to entity page (post, comment, event)</step>
+        <step id="S2">User interface displays entity details and like button</step>
+        <step id="S3">User clicks "Like/Dislike" button</step>
+        <step id="S4">LikeController toggles like (EntityID entityID, EntityType entityType)</step>
+        <step id="S5">LikeController processes like or dislike</step>
+        <step id="S6">LikeService saves or removes like</step>
+        <step id="S7">LikeRepository updates like data in the database</step>
+        <step id="S8">Database updates like count for the entity</step>
+        <step id="S9">LikeRepository returns success</step>
+        <step id="S10">LikeService returns success response</step>
+        <step id="S11">LikeController returns success message</step>
+        <step id="S12">User interface displays success message and updates like count</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Entity is already liked</step>
+            <step id="A1S2">LikeRepository removes like data</step>
+            <step id="A1S3">Database updates like count for the entity</step>
+            <step id="A1S4">LikeRepository returns success</step>
+            <step id="A1S5">LikeService returns success response</step>
+            <step id="A1S6">LikeController returns success message</step>
+            <step id="A1S7">User interface displays success message and updates like count</step>
+            <step id="A1S8">Entity is not yet liked</step>
+            <step id="A1S9">LikeRepository saves like data</step>
+            <step id="A1S10">Database updates like count for the entity</step>
+            <step id="A1S11">LikeRepository returns success</step>
+            <step id="A1S12">LikeService returns success response</step>
+            <step id="A1S13">LikeController returns success message</step>
+            <step id="A1S14">User interface displays success message and updates like count</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

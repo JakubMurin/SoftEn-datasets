@@ -1,0 +1,36 @@
+<useCase id="UC1">
+  <name>Create Account</name>
+  <description>Allow a customer to create a new account on the portal.</description>
+  <actors>
+    <actor>Customer</actor>
+    <actor>Portal UI</actor>
+    <actor>Authentication System</actor>
+    <actor>Accounts Database</actor>
+  </actors>
+  <preconditions>
+    <precondition>Customer wants to create a new account.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Customer requests to create an account</step>
+    <step id="S2">Portal UI displays account creation form to the customer</step>
+    <step id="S3">Customer submits account details (username, email, password)</step>
+    <step id="S4">Authentication System validates account details</step>
+    <step id="S5">Authentication System confirms details are valid</step>
+    <step id="S6">Portal UI creates a new user account in the database</step>
+    <step id="S7">Accounts Database confirms account is created</step>
+    <step id="S8">Portal UI displays account creation success to the customer</step>
+    <step id="S9">Portal UI initiates first-time login sequence with Authentication System</step>
+    <step id="S10">Authentication System requests authentication (login) from the customer</step>
+    <step id="S11">Customer provides credentials to the Authentication System</step>
+    <step id="S12">Authentication System validates customer credentials</step>
+    <step id="S13">Accounts Database confirms customer credentials are valid</step>
+    <step id="S14">Authentication System informs customer of successful authentication</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S4">
+      <step id="A1S1">Details invalid</step>
+      <step id="A1S2">Authentication System displays error message</step>
+      <step id="A1S3">Portal UI displays error message to the customer</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

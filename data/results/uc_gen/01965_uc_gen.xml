@@ -1,0 +1,20 @@
+<useCase id="UC1">
+	<name>Handle GET Request</name>
+	<description>Handle a GET request for a specific resource</description>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>The User sends a GET request for a specific resource</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The PAS successfully handles the GET request</condition>
+	</successEndConditions>
+	<trigger>GET /resource</trigger>
+	<mainSequence>
+		<step id="S1">User sends a GET request for a specific resource</step>
+		<step id="S2">PAS handles the GET request by calling HandleGet(IwebRequest)</step>
+		<step id="S3">PAS parses the request using WebRequestParser</step>
+		<step id="S4">PAS resolves the request using ResourceResolver</step>
+	</mainSequence>
+</useCase>

@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Authorize Client Request</name>
+    <actors>
+        <actor>ClientRequest</actor>
+        <actor>Servlet</actor>
+        <actor>Filter</actor>
+        <actor>AuthCheck</actor>
+        <actor>JWT</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client request is received at the Servlet</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client request is successfully authorized and processed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client request is not authorized or processed due to invalid roles</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Pre-process request at the Servlet</step>
+        <step id="S2">Allow access if endpoint is for guest role only</step>
+        <step id="S3">Proceed with request at the Endpoint</step>
+        <step id="S4">Perform endpoint operations</step>
+        <step id="S5">Send response back to the ClientRequest</step>
+        <step id="S6">Check if Servlet session Principal is valid for role and authorization is not expired</step>
+        <step id="S7">Allow access if session Principal is valid</step>
+        <step id="S8">Proceed with request at the Endpoint</step>
+        <step id="S9">Perform endpoint operations</step>
+        <step id="S10">Send response back to the ClientRequest</step>
+        <step id="S11">Check for JSESSIONIDSSO cookie in AuthorizationCheck</step>
+        <step id="S12">Request database specific roles for SSO principal</step>
+        <step id="S13">Retrieve database specific roles</step>
+        <step id="S14">Request user roles based on session Principal set from authentication endpoint</step>
+        <step id="S15">Retrieve database specific roles</step>
+        <step id="S16">Validate JWT in Authorization header</step>
+        <step id="S17">Extract subject from JWT</step>
+        <step id="S18">Request user roles based on JWT subject</step>
+        <step id="S19">Retrieve database specific roles</step>
+        <step id="S20">Check SecurityContext against endpoint roles</step>
+        <step id="S21">Roles are valid, proceed with request</step>
+        <step id="S22">Perform endpoint operations</step>
+        <step id="S23">Send response back to the ClientRequest</step>
+        <step id="S24">Roles are invalid, reject access</step>
+        <step id="S25">Send error response: 403 Status to the ClientRequest</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Retrieve Local Justice Areas and Courts</name>
+    <description>As an Inputter, I want to retrieve Local Justice Areas and Courts information to populate the respective auto-complete fields.</description>
+    <actors>
+        <actor>Inputter</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in and has navigated to the Account Details page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully retrieved Local Justice Areas and Courts information.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user encountered an error while retrieving Local Justice Areas and Courts information.</condition>
+    </failureEndConditions>
+    <trigger>User clicks the Court Details link in the Account Details page.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks Court Details link</step>
+        <step id="S2">User navigates to Court Details page</step>
+        <step id="S3">Retrieve Local Justice Areas records from Fines Database (JPA)</step>
+        <step id="S4">Local Justice Areas records are retrieved</step>
+        <step id="S5">Display Local Justice Areas (JSON)</step>
+        <step id="S6">Populate Local Justice Areas auto-complete field</step>
+        <step id="S7">Retrieve Courts records from Fines Database (JPA)</step>
+        <step id="S8">Courts records are retrieved</step>
+        <step id="S9">Display Courts (JSON)</step>
+        <step id="S10">Populate Courts auto-complete field</step>
+        <step id="S11">User enters Court details and clicks Return to Account Details</step>
+        <step id="S12">User navigates back to Account Details page</step>
+    </mainSequence>
+</useCase>

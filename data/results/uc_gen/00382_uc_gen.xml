@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Kubernetes as Control Plane for Infrastructure Provisioning</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Platform Engineer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Developer accesses self-service app for app and infrastructure provisioning</step>
+        <step id="S2">Developer pushes changes to the remote Git repository</step>
+        <step id="S3">Platform Engineer reviews and approves changes in Git repository</step>
+        <step id="S4">Git repository syncs changes with ArgoCD</step>
+        <step id="S5">ArgoCD deploys changes through Kubernetes API</step>
+        <step id="S6">ArgoCD reconciles infrastructure and application deployment</step>
+        <step id="S7">ArgoCD provisions a virtual cluster</step>
+        <step id="S8">ArgoCD provisions the application</step>
+        <step id="S9">Virtual cluster creates an ephemeral testing environment through Kubernetes API</step>
+        <step id="S10">ArgoCD provisions necessary cloud resources</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S8">
+            <step id="A1S1">If the virtual cluster provisioning fails, notify Platform Engineer for manual intervention</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Provisioning cloud resources encountered an error</description>
+            <step id="E1S1">Platform Engineer investigates and resolves the issue</step>
+        </esteps>
+    </errorSteps>
+</useCase>

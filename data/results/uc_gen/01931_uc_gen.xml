@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View Dashboard</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Receptionist wants to view the dashboard data.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">The Receptionist requests to view the dashboard.</step>
+        <step id="S2">UI receives the request from the Receptionist.</step>
+        <step id="S3">Router handles the GET request for /dashboard.</step>
+        <step id="S4">Router forwards the request to Controller to fetch dashboard data.</step>
+        <step id="S5">Controller calls Repository to retrieve the dashboard data.</step>
+        <step id="S6">Repository fetches the dashboard data from Model.</step>
+        <step id="S7">Model queries the dashboard data from the Database (bookings, rooms, services, etc.).</step>
+        <step id="S8">Database responds with the dashboard data to Model.</step>
+        <step id="S9">Model provides the data to Repository.</step>
+        <step id="S10">Repository sends the dashboard data back to Controller.</step>
+        <step id="S11">Controller responds with a successful 200 OK status to Router.</step>
+        <step id="S12">Router returns the success status 200 OK to UI.</step>
+        <step id="S13">UI displays the dashboard data to the Receptionist.</step>
+    </mainSequence>
+</useCase>

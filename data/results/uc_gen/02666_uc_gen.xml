@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Resolve Challenge</name>
+    <actors>
+        <actor>Attore</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Attore faces the challenge</step>
+        <step id="S2">Command receives input comando</step>
+        <step id="S3">Logic resolves the temple riddles</step>
+        <step id="S4">Command verifies the result</step>
+        <step id="S5">Logic can access the next room</step>
+        <step id="S6">Command moves to the next room in the specified direction</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Logic cannot resolve the temple riddles</step>
+            <step id="A1S2">Command goes back to the previous room</step>
+        </asteps>
+        <asteps id="A2" start="S5" continue="S6">
+            <step id="A2S1">Logic cannot access the next room</step>
+            <step id="A2S2">Command goes back to the previous room</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

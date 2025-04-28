@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Implement Development Flow</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Reviewer</actor>
+        <actor>User</actor>
+    </actors>
+    <trigger>Developer initiates code editing</trigger>
+    <mainSequence>
+        <step id="S1">Developer edits the code</step>
+        <step id="S2">Developer pushes the changes to the development repository (/dev)</step>
+        <step id="S3">Developer creates a Pull Request from /dev to /calibration repository</step>
+        <step id="S4">Reviewer reviews the pull request and approves it</step>
+        <step id="S5">Developer merges the Pull Request</step>
+        <step id="S6">The changes are deployed to the calibration server (calibration.old.filecoin.tools)</step>
+        <step id="S7">Developer creates a Pull Request from /dev to /main repository</step>
+        <step id="S8">Reviewer approves the Pull Request</step>
+        <step id="S9">Developer merges the Pull Request</step>
+        <step id="S10">The changes are deployed to the main network server (old.filecoin.tools)</step>
+        <step id="S11">User can utilize the new feature</step>
+    </mainSequence>
+</useCase>

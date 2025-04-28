@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>User updates session details</name>
+    <description>Allows an authenticated user to edit and update session details</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Authentication System</actor>
+        <actor>User Dashboard</actor>
+        <actor>Session Management</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Session details successfully updated</condition>
+    </successEndConditions>
+    <trigger>User navigates to edit session details</trigger>
+    <mainSequence>
+        <step id="S1">User accesses platform</step>
+        <step id="S2">Authentication System validates credentials</step>
+        <step id="S3">User is authenticated</step>
+        <step id="S4">User navigates to My Schedule on User Dashboard</step>
+        <step id="S5">User views registered sessions</step>
+        <step id="S6">User selects Edit on a session</step>
+        <step id="S7">Session Management displays session details form</step>
+        <step id="S8">User submits updated session details</step>
+        <step id="S9">Session Management validates and updates session details</step>
+        <step id="S10">Database updates session details</step>
+        <step id="S11">Session Management displays success message</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Translate Text</name>
+    <description>Translate text from one language to another</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Translators</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has provided text to translate</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Text successfully translated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to translate text</condition>
+    </failureEndConditions>
+    <trigger>Request for translation is received</trigger>
+    <mainSequence>
+        <step id="S1">User requests text translation</step>
+        <step id="S2">Translators submit texts to translation service</step>
+        <step id="S3">Translation service retrieves data</step>
+        <step id="S4">Data is bulk inserted into Elasticsearch</step>
+        <step id="S5">User interacts with bot to request translation</step>
+        <step id="S6">Bot sends input text and user info to translation service</step>
+        <step id="S7">Translation service queries Elasticsearch</step>
+        <step id="S8">Translation service responds to bot</step>
+        <step id="S9">Bot communicates response to user</step>
+    </mainSequence>
+</useCase>

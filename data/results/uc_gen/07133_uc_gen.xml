@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Generate Workshop Summary</name>
+    <description>As an Attendee, I want to view a summary of the workshop I attended.</description>
+    <actors>
+        <actor>Attendee</actor>
+    </actors>
+    <preconditions>
+        <precondition>The workshop platform is accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The summary is displayed to the Attendee successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The summary could not be generated.</condition>
+    </failureEndConditions>
+    <trigger>Attendee requests summary</trigger>
+    <mainSequence>
+        <step id="S1">Attendee requests summary from the Workshop Platform</step>
+        <step id="S2">Workshop Platform fetches the request for summary from CMS</step>
+        <step id="S3">CMS queries the workshop data from the Database</step>
+        <step id="S4">Database returns the workshop data to CMS</step>
+        <step id="S5">CMS generates summary content using the Content Editor</step>
+        <step id="S6">Content Editor submits the summary to CMS</step>
+        <step id="S7">CMS updates the Database with the generated summary</step>
+        <step id="S8">Database confirms the update to CMS</step>
+        <step id="S9">CMS publishes the summary on the Summary Page</step>
+        <step id="S10">Summary Page displays the summary content to the Attendee</step>
+    </mainSequence>
+</useCase>

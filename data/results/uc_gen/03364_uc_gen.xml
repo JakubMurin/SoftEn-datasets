@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Perform Scanner Job</name>
+    <actors>
+        <actor>admin_user</actor>
+        <actor>admin</actor>
+        <actor>explorer</actor>
+        <actor>worker</actor>
+        <actor>exporter</actor>
+        <actor>event_collector</actor>
+        <actor>result_collector</actor>
+        <actor>report_user</actor>
+    </actors>
+    <preconditions>
+        <precondition>Scanner job needs to be initialized</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin starts the Scanner job</step>
+        <step id="S2">Explorer consumes os2ds_scan_specs and processes the messages</step>
+        <step id="S3">Worker receives messages and processes based on type</step>
+        <step id="S4">Exporter handles incoming messages and may censor outgoing ones</step>
+        <step id="S5">Checkup Collector updates scheduled checkup details</step>
+        <step id="S6">Status Collector updates scanner status</step>
+        <step id="S7">Event Collector updates document report</step>
+        <step id="S8">Result Collector handles result messages and updates or creates DocumentReport</step>
+        <step id="S9">Reports user checks for matches in the DocumentReport</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Process Payment</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests payment</step>
+        <step id="S2">PaymentController processes payment request</step>
+        <step id="S3">PaymentFacade verifies user existence</step>
+        <step id="S4">UserReader retrieves user information from the database</step>
+        <step id="S5">PaymentFacade confirms temporary seat reservation with ReservationFacade</step>
+        <step id="S6">ReservationFacade checks reservation status in ReservationRepository</step>
+        <step id="S7">PaymentFacade requests payment processing from PaymentService</step>
+        <step id="S8">PaymentService deducts user balance in UserRepository</step>
+        <step id="S9">PaymentRepository saves payment details</step>
+        <step id="S10">PaymentFacade allocates final seat assignment with ReservationFacade</step>
+        <step id="S11">ReservationFacade updates seat status in SeatRepository</step>
+        <step id="S12">PaymentFacade responds to PaymentController with payment success</step>
+        <step id="S13">PaymentController notifies User of successful payment</step>
+    </mainSequence>
+</useCase>

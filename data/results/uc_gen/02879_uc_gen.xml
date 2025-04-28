@@ -1,0 +1,28 @@
+<useCase id="UC1">
+  <name>Selecting Teaching Requirement</name>
+  <description>As an Administrator, selecting a teaching requirement.</description>
+  <actors>
+    <actor>Administrator</actor>
+    <actor>User Interface</actor>
+    <actor>Teacher Database</actor>
+    <actor>Requirements Database</actor>
+  </actors>
+  <preconditions>
+    <precondition>Administrator is logged in.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Teaching requirement details displayed to Administrator.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Technical issue prevents Administrator from selecting requirement.</condition>
+  </failureEndConditions>
+  <trigger>User selects to assign a teaching requirement.</trigger>
+  <mainSequence>
+    <step id="S1">Administrator selects a teaching requirement.</step>
+    <step id="S2">User Interface fetches available teachers.</step>
+    <step id="S3">User Interface fetches teaching requirement details.</step>
+    <step id="S4">Teacher Database returns available teachers.</step>
+    <step id="S5">Requirements Database returns requirement details.</step>
+    <step id="S6">User Interface displays matched teachers for the requirement to Administrator.</step>
+  </mainSequence>
+</useCase>

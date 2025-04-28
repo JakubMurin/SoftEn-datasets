@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Cancel Account</name>
+    <description>Allow the user to cancel their account</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and navigated to Account Settings</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account successfully cancelled</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Account cancellation failed</condition>
+    </failureEndConditions>
+    <trigger>User initiates account cancellation process</trigger>
+    <mainSequence>
+        <step id="S1">User opens the application</step>
+        <step id="S2">Homepage screen displays "Account Settings"</step>
+        <step id="S3">User navigates to Account Settings</step>
+        <step id="S4">Delete Account Dialog is displayed</step>
+        <step id="S5">User is prompted for confirmation</step>
+        <step id="S6">User confirms cancellation</step>
+        <step id="S7">Account cancellation is initiated</step>
+        <step id="S8">API call is made for Account Cancellation</step>
+        <step id="S9">Cancellation request is forwarded</step>
+        <step id="S10">Account is marked for deletion in the database</step>
+        <step id="S11">Confirmation of account marked for deletion is received</step>
+        <step id="S12">Account cancellation is confirmed</step>
+        <step id="S13">Cancellation confirmation is sent to the user</step>
+        <step id="S14">Cancellation confirmation is displayed</step>
+        <step id="S15">User navigates back to Homepage</step>
+        <step id="S16">Confirmation message is displayed to the user</step>
+        <step id="S17">User logs out and session data is cleared</step>
+    </mainSequence>
+</useCase>

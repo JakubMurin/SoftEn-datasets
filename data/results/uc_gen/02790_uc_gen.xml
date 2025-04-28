@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View Ordered Candidates List</name>
+    <description>The Customer Manager requests to see an ordered list of candidates for a job opening based on the job interview grades.</description>
+    <actors>
+        <actor>Customer Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Customer Manager is logged in to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Customer Manager is able to view the ordered candidates list.</condition>
+    </successEndConditions>
+    <trigger>Customer Manager requests to view ordered candidates list.</trigger>
+    <mainSequence>
+        <step id="S1">Customer Manager requests to view ordered candidates list.</step>
+        <step id="S2">UI presents a list of job openings to the Customer Manager.</step>
+        <step id="S3">Customer Manager selects a job opening.</step>
+        <step id="S4">Controller lists candidates for the selected job opening.</step>
+        <step id="S5">Application Service retrieves candidates related to the job opening.</step>
+        <step id="S6">Controller retrieves related job interviews of the candidates.</step>
+        <step id="S7">Controller sorts the interviews based on job interview grades.</step>
+        <step id="S8">UI displays the ordered list of candidates with their grades to the Customer Manager.</step>
+    </mainSequence>
+</useCase>

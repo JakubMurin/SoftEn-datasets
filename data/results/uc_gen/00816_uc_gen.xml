@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Offer a service on behalf of a delegator</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Management UI</actor>
+        <actor>Inway</actor>
+        <actor>Management API</actor>
+        <actor>Management database</actor>
+        <actor>Directory API</actor>
+        <actor>Directory DB</actor>
+        <actor>Municipality</actor>
+    </actors>
+    <preconditions>
+        <precondition>Service needs to be added using an order</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Administrator adds service using an order</step>
+        <step id="S2">Management UI adds service using an order</step>
+        <step id="S3">Management API checks if service name matches with service name in order</step>
+        <step id="S4">Management API stores service</step>
+        <step id="S5">Inway gets config</step>
+        <step id="S6">Management API gets service and orders for inway from Management database</step>
+        <step id="S7">Management database returns services and orders</step>
+        <step id="S8">Management API returns config to Inway</step>
+        <step id="S9">Inway gets claim for publishing the service</step>
+        <step id="S10">Management API of Municipality gets claim for publishing the service</step>
+        <step id="S11">Management API validates order</step>
+        <step id="S12">Management API creates publication-claim</step>
+        <step id="S13">Municipality returns publication-claim to Inway</step>
+        <step id="S14">Inway stores publication-claim in memory</step>
+        <step id="S15">Directory API registers service with publication-claim</step>
+        <step id="S16">Directory API gets public key of the municipality</step>
+        <step id="S17">Directory API validates publication-claim</step>
+        <step id="S18">Directory API registers service in Directory DB</step>
+    </mainSequence>
+</useCase>

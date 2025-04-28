@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Submit Memo</name>
+    <description>User fills out memo form and submits it.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to submit memos.</precondition>
+    </preconditions>
+    <trigger>User submits the memo form.</trigger>
+    <mainSequence>
+        <step id="S1">User fills out the memo form.</step>
+        <step id="S2">User submits the memo form.</step>
+        <step id="S3">View sends POST /memos request to Controller.</step>
+        <step id="S4">Controller creates a new memo object.</step>
+        <step id="S5">Model saves the new memo to the database.</step>
+        <step id="S6">Model returns success/failure to the Controller.</step>
+        <step id="S7">Controller returns the new memo object to View.</step>
+        <step id="S8">Controller redirects to memos show page.</step>
+        <step id="S9">View displays the new memo to the User.</step>
+    </mainSequence>
+</useCase>

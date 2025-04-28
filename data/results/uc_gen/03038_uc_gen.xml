@@ -1,0 +1,30 @@
+<useCase id="UC001">
+	<name>Manage Project Submission</name>
+	<actors>
+		<actor>Requestor</actor>
+		<actor>Approvers</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Requestor submits the project</step>
+		<step id="S2">addproject.py adds the project</step>
+		<step id="S3">performaddproject.py checks for add permission</step>
+		<step id="S4">authutils.py returns the add permission</step>
+		<step id="S5">performaddproject.py validates the content</step>
+		<step id="S6">valutils.py returns the validation result</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S5">
+			<step id="A1S1">performaddproject.py displays failure page with error info</step>
+		</asteps>
+		<asteps id="A2" start="S4">
+			<step id="A2S1">performaddproject.py obtains project_id from Database</step>
+			<step id="A2S2">performaddproject.py displays success page</step>
+		</asteps>
+		<asteps id="A3" start="S5">
+			<step id="A3S1">performaddproject.py adds project with status "awaiting_approval" in Database</step>
+			<step id="A3S2">Database returns project_id</step>
+			<step id="A3S3">performaddproject.py sends email to Approvers</step>
+			<step id="A3S4">performaddproject.py displays success page with message that project is pending approval</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

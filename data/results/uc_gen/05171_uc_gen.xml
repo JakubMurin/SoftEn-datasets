@@ -1,0 +1,14 @@
+<useCase id="UC001">
+    <name>View List of Builds</name>
+    <actors>
+        <actor>DevSecOpsManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The DevSecOpsManager requests to view the list of builds.</step>
+        <step id="S2">The DevSecOpsManager communicates with the DSOM to list the builds.</step>
+        <step id="S3">The DSOM forwards the request to the provisioner to list the builds.</step>
+        <step id="S4">The provisioner queries the EventBus to retrieve the list of builds.</step>
+        <step id="S5">The provisioner sends the list of builds back to the DSOM.</step>
+        <step id="S6">The DSOM presents the list of builds to the DevSecOpsManager.</step>
+    </mainSequence>
+</useCase>

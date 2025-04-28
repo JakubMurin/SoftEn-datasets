@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Deploy AI Ship Bundle</name>
+    <actors>
+        <actor>ApplicationDeveloper</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Application Developer has access to the AI Ship bundle resources and manager.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Create AI Ship bundle resource (name: Ship1, file: ./projects/AISSimulator/AISShip/bundle.js)</step>
+        <step id="S2">Create AI No Contact bundle resource (name: NoContact, file: ./projects/AISSimulator/AISNoContact/bundle.js)</step>
+        <step id="S3">Create AI Aggregator bundle resource (name: Agg1, file: ./projects/AISSimulator/AISAgg/bundle.js)</step>
+        <step id="S4">Create AI Viewer bundle resource (name: Viewer1, file: ./projects/AISSimulator/AISViewer/bundle.js)</step>
+        <step id="S5">Create policies for AI Ship (file: ./projects/AISSimulator/AISShip/policies.js)</step>
+        <step id="S6">Deploy Viewer1 bundle with realtime policies</step>
+        <step id="S7">Deploy NoContact bundle with realtime policies and timeout=10000 parameters</step>
+        <step id="S8">Deploy Agg1 bundle with realtime policies</step>
+        <step id="S9">Deploy Ship1 bundle with realtime policies and sourceFile=../AIS_Simulator/ships/215071000A.csv parameters</step>
+        <step id="S10">Deploy Ship1 bundle with realtime policies and sourceFile=../AIS_Simulator/ships/215031000A.csv parameters</step>
+    </mainSequence>
+</useCase>

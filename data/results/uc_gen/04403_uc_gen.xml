@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Resolve Collision</name>
+    <description>Handle collision between Ball and Peg in the GameEngine</description>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>PegModelable</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">GameEngine triggers onCollision event with Ball and deltaTime</step>
+        <step id="S2">PegModelable is activated</step>
+        <step id="S3">PegModelable triggers onCollision event with Ball and deltaTime</step>
+        <step id="S4">Ball is activated</step>
+        <step id="S5">Ball collides with peg</step>
+        <step id="S6">Ball calculates safe position from peg</step>
+        <step id="S7">Ball triggers onCollision event with collisionPoint, deltaTime, and peg's restitutionCoefficient in FreeBody</step>
+        <step id="S8">Ball is deactivated</step>
+        <step id="S9">Resolve collision and return newBall</step>
+        <step id="S10">Return transformedPeg and newBall</step>
+    </mainSequence>
+</useCase>

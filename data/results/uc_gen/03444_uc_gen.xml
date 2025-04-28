@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Block User</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin clicks "Block User"</step>
+        <step id="S2">UI triggers blockUser(userId) in UserController</step>
+        <step id="S3">UserController calls blockUser(userId) in UserService</step>
+        <step id="S4">UserService retrieves user by userId from UserRepository</step>
+        <step id="S5">UserService sets status to BLOCKED for the user</step>
+        <step id="S6">UserService saves the updated user in UserRepository</step>
+        <step id="S7">UserService updates UserDTO</step>
+        <step id="S8">UserController receives updated UserDTO</step>
+        <step id="S9">UI displays UserDTO as BLOCKED</step>
+    </mainSequence>
+</useCase>

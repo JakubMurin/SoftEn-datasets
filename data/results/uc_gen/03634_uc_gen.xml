@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Option Trading</name>
+    <actors>
+        <actor>Option Holder</actor>
+        <actor>Option Serie Smart Contract</actor>
+        <actor>Exchange Adapter Contract</actor>
+        <actor>Exchange (e.g. Oasis.Direct)</actor>
+    </actors>
+    <preconditions>
+        <precondition>The option tokens exist and are held by the Option Holder.</precondition>
+        <precondition>The price is favorable compared to the option strike price.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Option Holder receives the amount above the strike price.</condition>
+        <condition>The remaining amount is kept in the contract for later withdrawals.</condition>
+    </successEndConditions>
+    <trigger>Initiating trade process in the Option Serie Smart Contract.</trigger>
+    <mainSequence>
+        <step id="S1">Initiate operation: the option tokens are transferred to the smart contract by the Option Holder.</step>
+        <step id="S2">Initiate trade via common interface and check whether the price is above the strike price by the Option Serie Smart Contract.</step>
+        <step id="S3">Transfer the corresponding amount of underlying tokens by the Option Serie Smart Contract.</step>
+        <step id="S4">Put underlying tokens by the Exchange.</step>
+        <step id="S5">Get basis token by the Exchange.</step>
+        <step id="S6">Check the received amount by the Exchange Adapter Contract.</step>
+        <step id="S7">Transfer amount above the strike to the Option Holder.</step>
+        <step id="S8">Retain the rest for later withdraw by anti-option holders by the Exchange Adapter Contract.</step>
+    </mainSequence>
+</useCase>

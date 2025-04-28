@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>Caller (anyone or anything)</actor>
+    </actors>
+    <preconditions>
+        <precondition>CityMap and DeliveryGraph instances are available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Compute Delivery Graph by mapping routes for each start waypoint in the request</step>
+        <step id="S2">Get the intersection for the start waypoint</step>
+        <step id="S3">Initialize predecessors and durations arrays</step>
+        <step id="S4">Add start waypoint intersection to greys set</step>
+        <step id="S5">Find minimal grey intersection</step>
+        <step id="S6">Get neighbour intersections of minimal grey intersection</step>
+        <step id="S7">Get street section and release it</step>
+        <step id="S8">Check if successor intersection is in whites set</step>
+        <step id="S9">Remove minimal grey intersection from greys set</step>
+        <step id="S10">Update blacks set with minimal grey intersection</step>
+        <step id="S11">Create DeliveryGraph with mappedRoutes</step>
+    </mainSequence>
+</useCase>

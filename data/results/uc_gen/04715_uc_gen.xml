@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Get all projects for a signed-in member</name>
+    <description>Retrieve a list of all projects associated with a signed-in member</description>
+    <actors>
+        <actor>System</actor>
+        <actor>DBMS</actor>
+        <actor>PL</actor>
+    </actors>
+    <preconditions>
+        <precondition>A member must be signed in</precondition>
+    </preconditions>
+    <trigger>A request is made to fetch all projects related to the signed-in member</trigger>
+    <mainSequence>
+        <step id="S1">PL initiates call to getAllProject method with the signed-in member's ID</step>
+        <step id="S2">System validates the signed-in member's ID with DBMS</step>
+        <step id="S3">System retrieves all projects associated with the signed-in member from DBMS</step>
+        <step id="S4">System sends the list of projects as ProjectResponseDto back to PL</step>
+    </mainSequence>
+</useCase>

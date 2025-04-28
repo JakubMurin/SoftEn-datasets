@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Performing a Job Process</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Facilitator</actor>
+        <actor>Validator</actor>
+        <actor>Miner</actor>
+        <actor>Executor</actor>
+        <actor>Job</actor>
+        <actor>Storage</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client generates a client keypair via the Facilitator SDK.</step>
+        <step id="S2">Client sends job details and the public key to the Facilitator.</step>
+        <step id="S3">Facilitator chooses a Validator and a Miner.</step>
+        <step id="S4">Facilitator sends job details to the Validator.</step>
+        <step id="S5">Validator sends initial job details to the Miner.</step>
+        <step id="S6">Miner checks for a free Executor, possibly spinning up a new one.</step>
+        <step id="S7">Miner passes initial job details to the Executor.</step>
+        <step id="S8">Executor reports readiness after initial preparations are done.</step>
+        <step id="S9">Validator sends final job details to the Miner.</step>
+        <step id="S10">Miner sends all job details to the Executor.</step>
+        <step id="S6.1">Executor fetches necessary data from the Storage if job requires.</step>
+        <step id="S11">Executor starts the job process.</step>
+        <step id="S12">Executor starts connecting to a predefined websocket route for the job.</step>
+        <step id="S13">Executor reports readiness for serving requests.</step>
+        <step id="S14">Miner and Validator report readiness for serving requests, provide job IP address, port, and Job public key.</step>
+        <step id="S15">Facilitator reports that all are ready to serve the requests.</step>
+        <step id="S16">Client sends a request, it can be a streamed or buffered HTTP or a websocket. Request is signed using client keypair.</step>
+        <step id="S17">Job replies to the Client. Before transmission ends, signs input/output digest with the private counterpart of Job public key.</step>
+        <step id="S18">Client assesses validity of the response in a cross-validation request.</step>
+        <step id="S19">If response is invalid, Client informs Facilitator about malicious Miner, signed with a Validator's hotkey.</step>
+        <step id="S20">Executor reports finishing the job process.</step>
+        <step id="S6.2">Executor uploads data to the Storage if required.</step>
+        <step id="S21">Executor uploads stdout and stderr data.</step>
+        <step id="S22">Executor reports job completion to the Miner.</step>
+        <step id="S23">Miner reports the completion to the Validator.</step>
+        <step id="S24">Validator reports the completion to the Facilitator.</step>
+        <step id="S25">Facilitator reports the completion to the Client.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Arming process</name>
+    <description>Arming the partition through live process</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Panel</actor>
+        <actor>PAI</actor>
+        <actor>MQTT</actor>
+    </actors>
+    <preconditions>
+        <precondition>GUI should be responsive to user input</precondition>
+        <precondition>User authentication should be validated</precondition>
+        <precondition>System should be online and connected</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>System is successfully armed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in arming process, re-playing the steps required</condition>
+    </failureEndConditions>
+    <trigger>User initiates the arm partition action</trigger>
+    <mainSequence>
+        <step id="S1">User arms the partition</step>
+        <step id="S2">Panel receives arming request and forwards to PAI</step>
+        <step id="S3">PAI changes state to armed (arm=True)</step>
+        <step id="S4">PAI signals MQTT with state change "/arm=True"</step>
+        <step id="S5">Exit delay process starts at the Panel</step>
+        
+        <step id="S6">Interval status request sent by PAI to Panel</step>
+        <step id="S7">Panel responds back to PAI</step>
+        
+        <step id="S8">PAI changes exit_delay state to ON (exit_delay=True)</step>
+        <step id="S9">PAI signals MQTT with state change "/exit_delay=True"</step>
+        
+        <step id="S10">Exit delay ended, panel officially armed</step>
+        
+        <step id="S11">Interval status request sent by PAI to Panel compelete</step>
+        <step id="S12">Panel responds back to PAI with status is updated</step>
+        
+        <step id="S13">PAI changes exit_delay state back to OFF (exit_delay=False)</step>
+        <step id="S14">PAI signals MQTT with state change "/exit_delay=False"</step>
+    </mainSequence>
+</useCase>

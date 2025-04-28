@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Update Request Status</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ConsoleUI</actor>
+        <actor>RequestController</actor>
+        <actor>DBManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has login credentials</precondition>
+        <precondition>The User has access to view and update request status</precondition>
+    </preconditions>
+    <trigger>User requests to update the status of a specific request</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with the ConsoleUI to select a certain request ID</step>
+        <step id="S2">User provides the new status for the requested ID (Accept/Reject)</step>
+        <step id="S3">ConsoleUI calls the RequestController to update the status for the given request</step>
+        <step id="S4">RequestController queries the DBManager to fetch request details for the specified ID</step>
+        <step id="S5">DBManager retrieves and returns the necessary data to the RequestController</step>
+        <step id="S6">RequestController executes the necessary queries like UPDATE for database changes with the provided status</step>
+        <step id="S7">DBManager executes the UPDATE operations and returns the success or failure message back to the RequestController</step>
+        <step id="S8">RequestController informs the ConsoleUI of the result received from the DBManager</step>
+        <step id="S9">ConsoleUI displays a success or failure message to the User based on the operation result</step>
+    </mainSequence>
+</useCase>

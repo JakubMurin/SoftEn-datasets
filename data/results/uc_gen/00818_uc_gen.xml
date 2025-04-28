@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Offer a service on behalf of a delegator</name>
+    
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Management UI</actor>
+        <actor>Inway</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>The Administrator adds a service using an order in the Management UI.</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">The Administrator adds a service using an order in the Management UI.</step>
+        <step id="S2">The Management UI adds the service using an order to the Management API.</step>
+        <step id="S3">The Management API checks if the service name matches the one in the order.</step>
+        <step id="S4">The Management API stores the service in the Management database.</step>
+        <step id="S5">The Inway fetches configuration from the Management API.</step>
+        <step id="S6">The Management API retrieves services and orders for the Inway from the Management database.</step>
+        <step id="S7">The Management API returns the services and orders to the Inway.</step>
+        <step id="S8">The Inway receives the configuration from the Management API.</step>
+        <step id="S9">The Inway requests a claim to publish the service from the Municipality's Inway.</step>
+        <step id="S10">The Municipality's Inway gets the claim request to publish the service from the Management API.</step>
+        <step id="S11">The Management API retrieves the order from the Management database.</step>
+        <step id="S12">The Management API validates the order.</step>
+        <step id="S13">The Management API creates a publication claim.</step>
+        <step id="S14">The Management API sends the publication claim to the Municipality's Inway.</step>
+        <step id="S15">The Municipality's Inway receives the publication claim from the Management API.</step>
+        <step id="S16">The Inway receives the publication claim from the Municipality's Inway.</step>
+        <step id="S17">The Inway stores the publication claim in memory.</step>
+        <step id="S18">The Inway registers the service with the publication claim in the Directory API.</step>
+        <step id="S19">The Directory API requests the public key of the Municipality from its Inway.</step>
+        <step id="S20">The Inway of the Municipality provides the public key to the Directory API.</step>
+        <step id="S21">The Directory API validates the publication claim.</step>
+        <step id="S22">The Directory API registers the service in the Directory Database.</step>
+    </mainSequence>
+</useCase>

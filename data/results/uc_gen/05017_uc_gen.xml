@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Đăng nhập hệ thống</name>
+    <actors>
+        <actor>Khách hàng</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Khách hàng nhập email, password và kích nút Đăng nhập</step>
+        <step id="S2">Đăng nhập UI gửi dữ liệu đăng nhập</step>
+        <step id="S3">API Gateway service lấy dữ liệu người dùng dựa trên email</step>
+        <step id="S4">API Gateway DB trả về thông tin liên quan đến user</step>
+        <step id="S5">API Gateway service trả về thông báo lỗi</step>
+        <step id="S6">Đăng nhập UI hiển thị thông báo lỗi</step>
+        <step id="S7">API Gateway service sinh access token và refresh token</step>
+        <step id="S8">API Gateway service lưu trữ refresh token vào bảng refresh_token</step>
+        <step id="S9">API Gateway service trả về thông tin người dùng, access token và refresh token</step>
+        <step id="S10">Đăng nhập UI lưu trữ các thông tin vào local storage, chuyển hướng hiển thị trang chủ</step>
+    </mainSequence>
+</useCase>

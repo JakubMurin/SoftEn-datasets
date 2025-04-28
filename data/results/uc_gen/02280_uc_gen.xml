@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Authenticate User with Nami</name>
+    <actors>
+        <actor>user</actor>
+        <actor>Nami</actor>
+        <actor>OtherWeb</actor>
+        <actor>AuthApp</actor>
+        <actor>AuthServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is accessing the Dapp through OtherWeb</precondition>
+        <precondition>Nami, AuthApp, and AuthServer are functional</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and receives access token</condition>
+    </successEndConditions>
+    <trigger>User initiates the login process</trigger>
+    <mainSequence>
+        <step id="S1">OtherWeb triggers login request to AuthApp with app key</step>
+        <step id="S2">AuthApp fetches app info from AuthServer</step>
+        <step id="S3">AuthApp connects to Nami</step>
+        <step id="S4">AuthApp fetches a random number from AuthServer</step>
+        <step id="S5">AuthApp requests Nami signature</step>
+        <step id="S6">Nami sends signature to AuthApp</step>
+        <step id="S7">AuthApp performs login on AuthServer</step>
+        <step id="S8">AuthServer responds with login success</step>
+        <step id="S9">AuthApp redirects user back to OtherWeb</step>
+    </mainSequence>
+</useCase>

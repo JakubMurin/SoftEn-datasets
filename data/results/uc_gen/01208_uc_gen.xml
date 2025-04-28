@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Collaborative Repository Creation</name>
+    <description>Allow for the creation and collaboration on public and private repositories</description>
+    <actors>
+        <actor>Teacher</actor>
+        <actor>Student</actor>
+    </actors>
+    <preconditions>
+        <precondition>Teacher has a GitHub account</precondition>
+        <precondition>Student has a GitHub account</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Public repository created successfully</condition>
+        <condition>Private repository created successfully</condition>
+        <condition>Teacher becomes collaborator on student's repository</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>GitHub account creation failed</condition>
+        <condition>Repository creation failed</condition>
+        <condition>Collaboration approval failed</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Teacher applies for a GitHub account</step>
+        <step id="S2">Student applies for a GitHub account</step>
+        <step id="S3">Teacher creates public repository TeacherRepo</step>
+        <step id="S4">Student creates private repository StudentRepo</step>
+        <step id="S5">Student sends collaboration request to Teacher for StudentRepo</step>
+        <step id="S6">Teacher approves collaboration and becomes collaborator on StudentRepo</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>Caller (anyone or anything)</actor>
+    </actors>
+    <preconditions>
+        <precondition>CityMap and DeliveryGraph are available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Caller computes the delivery graph by sending a DeliveryRequest to CityMap</step>
+        <step id="S2">CityMap initializes a TreeMap to store mapped routes</step>
+        <step id="S3">CityMap iterates over waypoints in the request</step>
+        <step id="S4">CityMap retrieves the start waypoint intersection</step>
+        <step id="S5">CityMap initializes arrays for predecessors and durations</step>
+        <step id="S6">CityMap adds the start waypoint intersection to the grey set</step>
+        <step id="S7">CityMap finds the minimal grey intersection</step>
+        <step id="S8">CityMap retrieves neighbour intersections of the minimal grey intersection</step>
+        <step id="S9">CityMap checks if the successor intersection is not in the black set</step>
+        <step id="S10">CityMap gets the street section between intersections</step>
+        <step id="S11">CityMap updates durations and predecessors arrays</step>
+        <step id="S12">CityMap removes the successor from the white set and adds it to the grey set</step>
+        <step id="S13">CityMap removes the minimal grey intersection from the grey set</step>
+        <step id="S14">CityMap puts the minimal grey intersection in the black set</step>
+        <step id="S15">CityMap uses predecessors array to fill mapped routes</step>
+        <step id="S16">DeliveryGraph is created with the mapped routes</step>
+        <step id="S17">CityMap sends the delivery graph back to the Caller</step>
+    </mainSequence>
+</useCase>

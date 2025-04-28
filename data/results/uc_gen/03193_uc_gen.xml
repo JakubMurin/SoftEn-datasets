@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Read file from datasafe</name>
+    <description>User reads the file stored in the datasafe system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the datasafe system.</precondition>
+    </preconditions>
+    <trigger>User initiates the request to read the file.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to read file at /dir1/file.txt</step>
+        <step id="S2">Retrieve version directory location for user's file</step>
+        <step id="S3">Get latest version directory location (LATEST)</step>
+        <step id="S4">Retrieve content link of /dir1/file.txt</step>
+        <step id="S5">Read content of the file at LINK</step>
+        <step id="S6">Read file at LINK</step>
+        <step id="S7">Return latest data from /dir1/file.txt to User</step>
+    </mainSequence>
+</useCase>

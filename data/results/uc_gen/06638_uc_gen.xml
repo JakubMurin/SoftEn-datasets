@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Manage Missing Documents</name>
+    <description>Allow staff to identify and handle missing user documents</description>
+    <actors>
+        <actor>Staff</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system must have missing document information</precondition>
+    </preconditions>
+    <trigger>User identifies missing documents on the application detail page</trigger>
+    <mainSequence>
+        <step id="S1">Staff identifies missing documents</step>
+        <step id="S2">Application Detail Page fetches missing documents</step>
+        <step id="S3">Backend Server queries and receives missing documents from the Database</step>
+        <step id="S4">Backend Server notifies Notification System about the missing documents</step>
+        <step id="S5">Notification System confirms notification sent</step>
+        <step id="S6">Backend Server confirms notifications sent to the Application Detail Page</step>        
+        <step id="S7">Application Detail Page displays confirmation to the Staff</step>
+    </mainSequence>
+</useCase>

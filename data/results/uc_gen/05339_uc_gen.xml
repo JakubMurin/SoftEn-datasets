@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Render Components</name>
+    <description>Render various components in the application</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>App</actor>
+        <actor>UserCard</actor>
+        <actor>renderC</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+    </actors>
+    <preconditions>
+        <precondition>Components to be rendered are properly defined</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All components are successfully rendered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Rendering of any component fails</condition>
+    </failureEndConditions>
+    <trigger>User initiates component rendering</trigger>
+    <mainSequence>
+        <step id="S1">User initiates component creation with App</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">RenderC receives cInstance</step>
+        <step id="S4">App creates button bElement</step>
+        <step id="S5">App creates UserCard element</step>
+        <step id="S6">UserCard element receives props and is rendered</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">UserCard element creates 'div' components</step>
+            <step id="A1S2">UserCard element receives and renders created 'div' components</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error occurred while creating 'div' components for UserCard element</description>
+            <step id="E1S1">UserCard element creation of 'div' components failed</step>
+        </esteps>
+    </errorSteps>
+</useCase>

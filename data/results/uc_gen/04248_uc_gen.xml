@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Детальна інсталяція платформи</name>
+    <actors>
+        <actor>Адміністратор платформи</actor>
+        <actor>Bash-installer</actor>
+        <actor>Helm-installer</actor>
+        <actor>Ceph</actor>
+        <actor>Logging</actor>
+        <actor>Service-mesh</actor>
+        <actor>Nexus Registry</actor>
+        <actor>Keycloak</actor>
+        <actor>ControlPlane components</actor>
+        <actor>Cluster-management helm in Gerrit</actor>
+        <actor>Gitops Job Jenkins</actor>
+        <actor>Інші компоненти</actor>
+    </actors>
+    <preconditions>
+        <precondition>Адміністратор платформи запускає інсталлер.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Адміністратор платформи активує шифрування etcd в Bash-installer.</step>
+        <step id="S2">Bash-installer активує catalog-source (Redhat репозиторії) в Helm-installer.</step>
+        <step id="S3">Bash-installer встановлює storage в Ceph.</step>
+        <step id="S4">Bash-installer встановлює logging в Logging.</step>
+	<step id="S5">Bash-installer встановлює service-mesh в Service-mesh.</step>
+        <step id="S6">Bash-installer встановлює control-plane-nexus в Nexus Registry.</step>
+        <step id="S7">Bash-installer встановлює platform-vault в Bash-installer.</step>
+        <step id="S8">Bash-installer встановлює platform-minio в Bash-installer.</step>
+        <step id="S9">Bash-installer завантажує докер імеджі в Nexus Registry.</step>
+        <step id="S10">Bash-installer встановлює user-management в Keycloak.</step>
+        <step id="S11">Bash-installer запускає control-plane-installer в Helm-installer.</step>
+        <step id="S12">Bash-installer завантажує nexus ресурси (*.xsd) в Nexus Registry.</step>
+	<step id="S13">Bash-installer створює backup-credentials в Helm-installer.</step>
+	<step id="S14">Helm-installer встановлює CP компоненти в ControlPlane components.</step>
+	<step id="S15">CP встановлює jenkins-operator та jenkins в Gitops Job Jenkins.</step>
+	<step id="S16">CP встановлює codebase-operator та keycloak-operator в Інші компоненти.</step>
+	<step id="S17">CP встановлює gerrit-operator та gerrit в Cluster-management helm in Gerrit.</step>
+	<step id="S18">CP встановлює codebase cluster-mgmt в Grouped by Selector Services.</step>
+	<step id="S19">Gerrit інціалізує cluster-mgmt repo з helm в Grouped by Selector Lines are Optional.</step>
+	<step id="S20">Gitops Job Jenkins створює gitops job для cluster-mgmt в Universal Selector.</step>
+	<step id="S21">Gitops Job Jenkins запускає gitops job для cluster-mgmt в Signalone Service Or Set of Orion Group Boundaries.</step>
+	<step id="S22">Gitops Job Jenkins checkout helmfile в Uranus to Ganymede Swarm Lambda Negotiations.</step>
+	<step id="S23">Gitops Job Jenkins запускає helmfile в Electro-Magnetic Environment Containment System.</step>
+	<step id="S24">Gitops Job Jenkins встановлює в Gemini Configuration Orbiter.</step>
+	<step id="S25">CP створює realm для Control Plane в Store details for maintain system setup.</step>
+        <step id="S26">CP інтегрує всі компоненти з keycloak вJanus CandiList stably decrease charging Element #321430 .twks 100 coulombs.</step>
+    </mainSequence>
+</useCase>

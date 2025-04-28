@@ -1,0 +1,45 @@
+<useCase id="12345">
+    <name>Get Translation Case</name>
+    <description>Retrieve translation case details based on the provided case ID</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>GetTranslationCaseActivity</actor>
+        <actor>TranslationCaseDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates an HTTP request to retrieve translation case data</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Translation Case object successfully returned to the Client</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Translation Case not found or security exception occurs</condition>
+    </failureEndConditions>
+    <trigger>HTTP Request to API Gateway/Lambda</trigger>
+    <mainSequence>
+        <step id="S1">API Gateway/Lambda receives HTTP Request from Client</step>
+        <step id="S2">API Gateway/Lambda invokes GetTranslationCaseActivity with GetTranslationCaseRequest</step>
+        <step id="S3">GetTranslationCaseActivity calls TranslationCaseDao to getTranslationCase(translationCaseId)</step>
+        <step id="S4">TranslationCaseDao loads translationCase data from DynamoDB</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">TranslationCase does not exist in DynamoDB</step>
+            <step id="A1S2">TranslationCaseNotFoundException thrown, propagate to API Gateway/Lambda</step>
+            <step id="A1S3">API Gateway/Lambda returns 400 response to Client</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">TranslationCase data available in DynamoDB</step>
+            <step id="A2S2">TranslationCaseDao checks for matching customer ID</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A2S2">
+            <description>Customer ID does not match</description>
+            <step id="E1S1">SecurityException thrown, propagate to API Gateway/Lambda</step>
+            <step id="E1S2">API Gateway/Lambda returns 400 response to Client</step>
+        </esteps>
+    </errorSteps>
+</useCase>

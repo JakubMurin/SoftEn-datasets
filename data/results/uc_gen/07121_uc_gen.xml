@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Monitoring Configuration Creation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>PostgreSQL</actor>
+        <actor>Redis</actor>
+        <actor>TD Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User wants to add a new monitoring configuration.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The new monitoring configuration is successfully created and initialized.</condition>
+    </successEndConditions>
+    <trigger>User initiates the creation of a new monitoring configuration in the system.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the addition of a new monitoring configuration in the system.</step>
+        <step id="S2">System checks the validity of the data.</step>
+        <step id="S3">System stores the monitoring configuration in PostgreSQL.</step>
+        <step id="S4">System updates the timestamp in Redis as the heartbeat time received from the client and updates the client heartbeat timeout in Redis.</step>
+        <step id="S5">TD Manager, upon receiving ACTIVE status, initializes the HeartBeatControlService by executing doInit().</step>
+        <step id="S6">TD Manager executes initCache() to clear the timeout configuration in Redis and delete the heartbeat time from the cache.</step>
+    </mainSequence>
+</useCase>

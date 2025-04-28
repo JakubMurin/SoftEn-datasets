@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Process Payment</name>
+    <actors>
+        <actor>Member</actor>
+        <actor>FrontEnd</actor>
+        <actor>PaymentService</actor>
+        <actor>Database</actor>
+        <actor>MobileBanking</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Member selects payment option</step>
+        <step id="S2">FrontEnd initiates payment request</step>
+        <step id="S3">PaymentService requests payment processing</step>
+        <step id="S4">MobileBanking processes transaction</step>
+        <step id="S5">MobileBanking sends transaction authentication to Member</step>
+        <step id="S6">Member authorizes transaction</step>
+        <step id="S7">MobileBanking confirms transaction success</step>
+        <step id="S8">Database updates payment status</step>
+        <step id="S9">PaymentService displays success message on FrontEnd</step>
+        <step id="S10">FrontEnd shows confirmation to Member</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Manage Application</name>
+    <description>As a Developer, I want to manage the application lifecycle via the Application Orchestrator.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Application Analyzer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Developer launches the application.</step>
+        <step id="S2">Application Orchestrator invokes the 'app-launch' function on the binary with specified parameters.</step>
+        <step id="S3">Binary triggers the 'stack/select' function from sailsjs to select the stack with specified configurations.</step>
+        <step id="S4">Developer checks the health of the application.</step>
+        <step id="S5">Application Analyzer requests the Application Orchestrator to check the health of the application.</step>
+        <step id="S6">Application Orchestrator forwards the request to the binary to check the health of the application with specified environment.</step>
+        <step id="S7">Binary executes the 'app-check' function from sailsjs to check the application health with specified name.</step>
+        <step id="S8">Application Analyzer asks the Application Orchestrator to rebalance the application instance.</step>
+        <step id="S9">Application Orchestrator initiates the 'app-rebalance' function on the binary to rebalance the specified application instance.</step>
+        <step id="S10">Binary interacts with sailsjs to select the environment for the specified appInstance.</step>
+    </mainSequence>
+</useCase>

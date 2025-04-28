@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Advanced Staking: early exit</name>
+    <description>
+        The use case describes the process of early exit from the Advanced Staking system by a Staker.
+    </description>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Unstake using unstake information provided by the Staker.</step>
+        <step id="S2">Transfer the staked amount to the Staker.</step>
+        <step id="S3">Trigger the "onAction" event in RewardMaster.</step>
+        <step id="S4">Request reward advice from AdvancedStakeController.</step>
+        <step id="S5">Initiate early unstake in MASPV.1 with proxy.</step>
+        <step id="S6">Generate leaf using preimage in PublicLeaf.</step>
+        <step id="S7">Generate nullifier using preimage in PublicLeaf.</step>
+        <step id="S8">Transfer the reward amount to the Staker.</step>
+        <step id="S9">Emit the EarlyUnstake event.</step>
+        <step id="S10">End the process of Early Unstake event read by AdvancedStakeController.</step>
+    </mainSequence>
+</useCase>

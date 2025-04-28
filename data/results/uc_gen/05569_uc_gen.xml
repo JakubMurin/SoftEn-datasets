@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Execute Task</name>
+    <description>As a Developer, I want to execute a task using the Throttle mechanism.</description>
+    <actors>
+        <actor>Developer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Developer has a task to execute.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The task is successfully executed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The task execution fails.</condition>
+    </failureEndConditions>
+    <trigger>Execution request from Developer to Throttle.</trigger>
+    <mainSequence>
+        <step id="S1">Developer sends an execution request to Throttle.</step>
+        <step id="S2">Throttle stores the task in the Queue.</step>
+        <step id="S3">Throttle retrieves the next task from the Queue.</step>
+        <step id="S4">Throttle asks for execution permit from Throttle Strategy.</step>
+        <step id="S5">Throttle executes the task.</step>
+    </mainSequence>
+</useCase>

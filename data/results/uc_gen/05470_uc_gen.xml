@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Update User Profile</name>
+    <description>As a User, I want to update my profile information.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User must be authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The profile is successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The profile update fails due to unexpected errors.</condition>
+    </failureEndConditions>
+    <trigger>User requests to update profile.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to update profile.</step>
+        <step id="S2">Service receives the update profile request.</step>
+        <step id="S3">Service updates the profile information.</step>
+        <step id="S4">Service notifies the Message Broker about the profile update.</step>
+        <step id="S5">Service informs the User about the successful update.</step>
+        <step id="S6">User requests to get the updated profile.</step>
+        <step id="S7">Replica provides the stale profile to the User.</step>
+        <step id="S8">User encounters confusion due to stale data.</step>
+        <step id="S9">Message Broker notifies the Replica about the profile update.</step>
+    </mainSequence>
+</useCase>

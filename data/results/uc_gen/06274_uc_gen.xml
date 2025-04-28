@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Initialize Database</name>
+    <description>As a database manager, I want to initialize the database from a VPN CSV file.</description>
+    <actors>
+        <actor>Database Manager</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The table is available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Database is successfully initialized from VPN CSV file</condition>
+    </successEndConditions>
+    <trigger>Database manager initiates database initialization process</trigger>
+    <mainSequence>
+        <step id="S1">Check if table is available</step>
+        <step id="S2">Create database if table is not available</step>
+        <step id="S3">Clear all data if table is available</step>
+        <step id="S4">Initialize database from VPN CSV file</step>
+    </mainSequence>
+</useCase>

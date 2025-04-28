@@ -1,0 +1,30 @@
+<useCase id="UC123">
+    <name>Perform Application Start</name>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Application Start process is completed successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Application Start process encounters a failure.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Alice initiates the Application Start process.</step>
+        <step id="S2">CowboyPlug starts the process by interacting with Cowboy and Plug components.</step>
+        <step id="S3">Application communicates with Supervisor to start the process.</step>
+        <step id="S4">Supervisor initializes the Timer for monitoring.</step>
+        <step id="S5">Supervisor monitors the Timer state.</step>
+        <step id="S6">Timer wakes up and sends a GET request to the Monitored Server.</step>
+        <step id="S7">In case of successful response, Timer updates its state.</step>
+        <step id="S8">In case of failure, Timer crashes and Supervisor restarts the Timer.</step>
+        <step id="S9">Alice checks the status by sending a request to Cowboy.</step>
+        <step id="S10">Cowboy forwards the request to Plug.</step>
+        <step id="S11">Plug retrieves the status from Timer.</step>
+        <step id="S12">Plug responds to Cowboy.</step>
+        <step id="S13">Cowboy sends the response back to Alice.</step>
+    </mainSequence>
+</useCase>

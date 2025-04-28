@@ -1,0 +1,29 @@
+<useCase id="uc1">
+    <name>Filling and Submitting a Resource</name>
+    <description>User fills in the required information and submits the resource.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to submit the resource.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The {resource} is successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the creation of the {resource}.</condition>
+    </failureEndConditions>
+    <trigger>User fills and submits the {resource}.</trigger>
+    <mainSequence>
+        <step id="S1">User fills and submits the {resource}.</step>
+        <step id="S2">View sends {resource} create data to Component.</step>
+        <step id="S3">Component requests the creation of {resource} from Service.</step>
+        <step id="S4">Service requests POST to HTTPDriver.</step>
+        <step id="S5">HTTPDriver posts {resources} and receives HTTP response.</step>
+        <step id="S6">HTTPDriver sends response back to Service.</step>
+        <step id="S7">Service responds back to Component.</step>
+        <step id="S8">Service informs Component that the {resource} was created.</step>
+        <step id="S9">Component informs View that the {resource} was created.</step>
+        <step id="S10">View displays success to user.</step>
+    </mainSequence>
+</useCase>

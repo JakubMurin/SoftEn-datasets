@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Delete Account</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>Service_Layer</actor>
+        <actor>Repository</actor>
+        <actor>Logging_Service</actor>
+        <actor>Unit_of_Work</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests to delete their account with a valid email and token.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User account is successfully deleted.</condition>
+    </successEndConditions>
+    <trigger>User sends a GET request to delete their account with email and token.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to delete their account with email and token to API_Controller.</step>
+        <step id="S2">API_Controller validates the email and token.</step>
+        <step id="S3">API_Controller responds with 400 Bad Request if email or token is missing.</step>
+        <step id="S4">API_Controller forwards the request to Service_Layer to validate the delete token asynchronously.</step>
+        <step id="S5">Service_Layer retrieves the user by email asynchronously from Repository.</step>
+        <step id="S6">Service_Layer checks if the user is found.</step>
+        <step id="S7">Service_Layer validates the token.</step>
+        <step id="S8">Service_Layer responds with an exception "User not found" if the user is not found.</step>
+        <step id="S9">Service_Layer deletes the user asynchronously if the token is valid.</step>
+        <step id="S10">Service_Layer removes the user from the Repository.</step>
+        <step id="S11">Service_Layer logs the account deletion in Logging_Service.</step>
+        <step id="S12">Service_Layer commits the deletion in Unit_of_Work.</step>
+        <step id="S13">Service_Layer responds with SystemUserDto to API_Controller.</step>
+        <step id="S14">API_Controller responds with 200 OK and a success message to the User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Actor Pickup Item</name>
+    <actors>
+        <actor>Controller</actor>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actor is in a state where item pickup is possible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Item successfully picked up and added to inventory.</condition>
+    </successEndConditions>
+    <trigger>User initiates the action to pick up an item.</trigger>
+    <mainSequence>
+        <step id="S1">Controller picks up the item.</step>
+        <step id="S2">Actor gets the location.</step>
+        <step id="S3">Actor removes the item from the room.</step>
+        <step id="S4">Actor checks if the item is sticky.</step>
+        <step id="S5">Actor adds the item to the inventory.</step>
+        <step id="S6">Actor checks if the inventory is full.</step>
+        <step id="S7">Actor successfully adds the item to the inventory.</step>
+        <step id="S8">Actor triggers onPickup event for the item.</step>
+    </mainSequence>
+</useCase>

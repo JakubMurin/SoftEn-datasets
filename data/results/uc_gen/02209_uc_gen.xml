@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View Waiter Schedules</name>
+    <description>Manager requests and views waiter schedules from the system.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager must be logged in to the system.</precondition>
+        <precondition>Waiter schedules must be available in the database.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Manager successfully views waiter schedules.</condition>
+    </successEndConditions>
+    <trigger>User requests to view waiter schedules.</trigger>
+    <mainSequence>
+        <step id="S1">Manager requests waiter schedules from the system.</step>
+        <step id="S2">Interface fetches waiter schedules from the server.</step>
+        <step id="S3">Server queries the database for waiter schedules.</step>
+        <step id="S4">Database retrieves waiter schedules data.</step>
+        <step id="S5">Server sends waiter schedules to the Interface.</step>
+        <step id="S6">Interface displays waiter schedules to the Manager.</step>
+    </mainSequence>
+</useCase>

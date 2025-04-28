@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Capture and Send Telemetry Data</name>
+    <description>The Chef Workstation App captures and sends telemetry data to the telemetry service.</description>
+    <actors>
+        <actor>Human</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef Workstation App is installed and running.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The telemetry data is successfully sent to the telemetry service.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The telemetry data fails to be sent to the telemetry service.</condition>
+    </failureEndConditions>
+    <trigger>Human executes the CLI tool to send telemetry data.</trigger>
+    <mainSequence>
+        <step id="S1">Human executes the CLI tool.</step>
+        <step id="S2">The CLI Tool sends a POST request to the Chef Workstation App.</step>
+        <step id="S3">The Chef Workstation App prepares the telemetry data envelope.</step>
+        <step id="S4">The Chef Workstation App sends the telemetry data to telemetry.chef.io.</step>
+        <step id="S5">telemetry.chef.io responds with an HTTP response.</step>
+    </mainSequence>
+</useCase>

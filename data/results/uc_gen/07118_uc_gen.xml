@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>新增业务监控配置</name>
+    <actors>
+        <actor>user</actor>
+        <actor>system</actor>
+        <actor>pg</actor>
+        <actor>redis</actor>
+        <actor>tdm</actor>
+    </actors>
+    <preconditions>
+        <precondition>系统已准备好接收新的业务监控配置</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>业务监控配置成功添加并更新了心跳时间</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>业务监控配置添加失败或心跳时间未更新</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">用户发起新增业务监控配置请求</step>
+        <step id="S2">系统检查数据的合法性</step>
+        <step id="S3">系统将数据落库</step>
+        <step id="S4">系统更新redis中的时间戳作为心跳时间</step>
+        <step id="S5">系统更新redis中客户端心跳超时时间</step>
+        <step id="S6">tdm抢到ACTIVE状态后进行初始化</step>
+        <step id="S7">tdm执行initCache()清空超时时间配置并删除心跳时间缓存</step>
+    </mainSequence>
+</useCase>

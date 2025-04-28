@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Adding Other Service to Booking</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI/Interface</actor>
+        <actor>BookingRouter</actor>
+        <actor>BookingController</actor>
+        <actor>BookingRepository</actor>
+        <actor>OtherServiceRepository</actor>
+        <actor>Booking Model</actor>
+        <actor>OtherService Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user wants to add another service to an existing booking.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User opens the booking details page.</step>
+        <step id="S2">UI receives the request and forwards it to Router.</step>
+        <step id="S3">Router sends a POST request to add the other service to the booking.</step>
+        <step id="S4">Controller handles the request and adds the other service to the booking in the Repository.</step>
+        <step id="S5">Repository fetches the booking details using the Booking Model.</step>
+        <step id="S6">Repository fetches the other service details using the OtherService Model.</step>
+        <step id="S7">Repository updates the booking with the added other service.</step>
+        <step id="S8">Controller sends a success response with the updated booking to Router.</step>
+        <step id="S9">Router responds with a success message to UI.</step>
+        <step id="S10">UI displays a confirmation of the added service to the User.</step>
+    </mainSequence>
+</useCase>

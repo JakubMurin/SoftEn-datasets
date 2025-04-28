@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Storage Planning</name>
+    <description>Manage storage capacity and preservation needs</description>
+    <actors>
+        <actor>Archive Manager</actor>
+        <actor>DMPTool</actor>
+        <actor>Repository API</actor>
+        <actor>Data Manager</actor>
+        <actor>IT System</actor>
+    </actors>
+    <preconditions>
+        <precondition>All actors have access to their respective systems</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Comprehensive storage needs analysis completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to confirm storage planning completion</condition>
+    </failureEndConditions>
+    <trigger>Archive Manager requests data volume information</trigger>
+    <mainSequence>
+        <step id="S1">Request data volume information from DMPTool</step>
+        <step id="S2">Query planned data submissions from Repository API</step>
+        <step id="S3">Return data submission estimates to DMPTool</step>
+        <step id="S4">Request current storage capacity from IT System</step>
+        <step id="S5">Return current storage capacity details to DMPTool</step>
+        <step id="S6">Request additional data preservation details from Data Manager</step>
+        <step id="S7">Provide data format, size, and period to DMPTool</step>
+        <step id="S8">Show comprehensive storage needs analysis to Archive Manager</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">Plan for storage expansion with IT System</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Unable to confirm storage planning completion</description>
+            <step id="E1S1">Confirm storage infrastructure plan with IT System</step>
+        </esteps>
+    </errorSteps>
+</useCase>

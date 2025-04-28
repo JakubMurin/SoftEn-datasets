@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Cluster Requirement Embeddings</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Main</actor>
+        <actor>OpenAI</actor>
+        <actor>Pinecone</actor>
+        <actor>Clustering</actor>
+        <actor>Visualization</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has initiated the script in main.py</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Cluster labels are assigned to each requirement embedding</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Embeddings fail to generate or store correctly</condition>
+    </failureEndConditions>
+    <trigger>User starts the clustering process by calling the main script</trigger>
+    <mainSequence>
+        <step id="S1">Generate embeddings for each requirement</step>
+        <step id="S2">Store embeddings in Pinecone vector database</step>
+        <step id="S3">Query stored embeddings in Pinecone</step>
+        <step id="S4">Group embeddings into clusters using K-Means Clustering</step>
+        <step id="S5">Create scatter plot and textual output using Visualization Module</step>
+    </mainSequence>
+</useCase>

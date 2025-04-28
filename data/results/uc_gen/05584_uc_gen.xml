@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Run GitHub Actions for PR Testing</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Repo</actor>
+        <actor>GA</actor>
+        <actor>Behave</actor>
+        <actor>Codecov</actor>
+        <actor>MyPy</actor>
+        <actor>Pytest</actor>
+        <actor>Ruff</actor>
+        <actor>Readme</actor>
+        <actor>CodecovService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer creates a Pull Request on GitHub Repository</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All tests run successfully and badges are updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Some tests fail, and the developer is notified</condition>
+    </failureEndConditions>
+    <trigger>Trigger workflows from GitHub Actions upon Pull Request</trigger>
+    <mainSequence>
+        <step id="S1">Run behave tests and upload results</step>
+        <step id="S2">Update badges in Readme after behave tests</step>
+        <step id="S3">Run pytests with coverage report and upload</step>
+        <step id="S4">Upload coverage report to Codecov Service and update badge in Readme</step>
+        <step id="S5">Run mypy checks, upload results, and update badge in Readme</step>
+        <step id="S6">Run pytests, upload test results, and update badge in Readme</step>
+        <step id="S7">Run ruff checks, upload linting results, and update badge in Readme</step>
+    </mainSequence>
+</useCase>

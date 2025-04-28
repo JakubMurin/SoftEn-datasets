@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Manage Bookings</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>BookingsPage</actor>
+        <actor>BookingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Booking</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client opens Manage Bookings Page successfully.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client opens Manage Bookings Page</step>
+        <step id="S2">BookingsPage queries Client Bookings for clientId</step>
+        <step id="S3">Database returns bookings to BookingsPage</step>
+        <step id="S4">BookingsPage displays bookings list to Client</step>
+        <step id="S5">Client selects "Cancel Booking" with bookingId</step>
+        <step id="S6">Validator validates cancellation for clientId and bookingId</step>
+        <step id="S7">Validator checks booking ownership for clientId and bookingId</step>
+        <step id="S8">Validator checks cancellation rules for bookingId</step>
+        <step id="S9">Validator returns validation passed</step>
+        <step id="S10">BookingsPage deletes booking with bookingId</step>
+        <step id="S11">Database confirms deletion success</step>
+        <step id="S12">BookingsPage displays cancellation success to Client</step>
+        <step id="S13">Client selects "Edit Booking" with bookingId</step>
+        <step id="S14">Validator validates edit for clientId and bookingId</step>
+        <step id="S15">Validator checks booking ownership for clientId and bookingId</step>
+        <step id="S16">Validator checks edit rules for bookingId</step>
+        <step id="S17">Validator returns validation passed</step>
+        <step id="S18">BookingsPage updates booking with newDetails for bookingId</step>
+        <step id="S19">Database confirms update success</step>
+        <step id="S20">BookingsPage displays update success to Client</step>
+        <step id="S21">Client views booking details for bookingId</step>
+        <step id="S22">BookingsPage fetches booking details for bookingId</step>
+        <step id="S23">Database returns booking details to BookingsPage</step>
+        <step id="S24">BookingsPage displays booking details to Client</step>
+    </mainSequence>
+</useCase>

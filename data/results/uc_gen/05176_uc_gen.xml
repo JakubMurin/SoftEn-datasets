@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Update User Profile</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Profile Page</actor>
+        <actor>Profile Controller</actor>
+        <actor>User Service</actor>
+        <actor>User Repository</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and accessing the profile page</precondition>
+    </preconditions>
+    <trigger>User enters updated profile information and submits the update form</trigger>
+    <mainSequence>
+        <step id="S1">User enters updated profile information</step>
+        <step id="S2">User submits the profile update form</step>
+        <step id="S3">Profile Page sends HTTP POST /profile/update with updated info to Profile Controller</step>
+        <step id="S4">Profile Controller calls UserService to updateUserProfile with updated info</step>
+        <step id="S5">UserService validates the updated info</step>
+        <step id="S6">If validation fails, UserService returns validation errors to Profile Controller and Profile Page</step>
+        <step id="S7">If validation succeeds, UserService saves the updated user info to UserRepository</step>
+        <step id="S8">UserRepository updates the user info in the Database</step>
+        <step id="S9">UserRepository returns update confirmation to UserService</step>
+        <step id="S10">UserService returns update confirmation to Profile Controller</step>
+        <step id="S11">Profile Controller redirects to the profile page</step>
+        <step id="S12">Profile Page displays the updated profile information to the User</step>
+    </mainSequence>
+</useCase>

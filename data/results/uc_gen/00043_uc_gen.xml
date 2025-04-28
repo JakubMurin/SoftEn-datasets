@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Update Ingredient Expiry Date</name>
+    <description>Allows the chef to update the expiry date of an ingredient.</description>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <preconditions>
+        <precondition>The chef is logged in to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The expiry date of the ingredient is successfully updated in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The update process fails due to database connectivity issues.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Chef selects the ingredient to update.</step>
+        <step id="S2">UI layer requests the current expiry date of the ingredient.</step>
+        <step id="S3">Backend server queries the ingredient expiry date from the database.</step>
+        <step id="S4">Database returns the current expiry date.</step>
+        <step id="S5">Backend server shows the current expiry date to the UI.</step>
+        <step id="S6">Chef inputs the new expiry date for the ingredient.</step>
+        <step id="S7">UI layer submits the updated expiry date to the backend.</step>
+        <step id="S8">Backend server updates the expiry date in the database.</step>
+        <step id="S9">Database confirms the successful update.</step>
+        <step id="S10">Backend server confirms the successful update to the UI.</step>
+        <step id="S11">UI layer displays the update confirmation to the chef.</step>
+    </mainSequence>
+</useCase>

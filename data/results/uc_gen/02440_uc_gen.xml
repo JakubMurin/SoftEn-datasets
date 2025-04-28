@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Create Callback</name>
+    <actors>
+        <actor>Пользователь</actor>
+        <actor>Web UI</actor>
+        <actor>Callback GW</actor>
+        <actor>Token API</actor>
+        <actor>CMA</actor>
+        <actor>Resource Inventory</actor>
+        <actor>Action History</actor>
+    </actors>
+    <trigger>клик "Создать коллбек"</trigger>
+    <mainSequence>
+        <step id="S1">Пользователь кликает "Создать коллбек" на Web UI</step>
+        <step id="S2">Web UI отправляет данные Create (callback_name, description) на Callback GW</step>
+        <step id="S3">Callback GW валидирует API ключ с Token API</step>
+        <step id="S4">Callback GW запрашивает статус активации для (customer_id) в CMA</step>
+        <step id="S5">CMA отвечает статусом "активный" для (customer_id)</step>
+        <step id="S6">Callback GW создает Callback в Resource Inventory с application_uuid и callback</step>
+        <step id="S7">Resource Inventory возвращает callback_resource_id в Callback GW</step>
+        <step id="S8">Callback GW запрашивает Application Resource через GetAttributes в Resource Inventory для application_uuid</step>
+        <step id="S9">Resource Inventory возвращает ApplicationResource в Callback GW</step>
+        <step id="S10">Callback GW добавляет информацию в Action History о успешном создании коллбека</step>
+        <step id="S11">Action History возвращает статус 200 OK в Callback GW</step>
+        <step id="S12">Callback GW отправляет callback_resource_id на Web UI</step>
+        <step id="S13">Web UI выводит информацию о новом коллбеке для пользователя</step>
+    </mainSequence>
+</useCase>

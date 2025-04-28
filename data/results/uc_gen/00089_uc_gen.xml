@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Advanced Staking: early exit</name>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ensure the Staker has necessary information: treeId, leafId, and privSpendKey.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Staker initiates the unstake operation with unstakeInfo data in the Staking platform.</step>
+        <step id="S2">Staking database transfers stakedAmount to the Staker using ZKP Token.</step>
+        <step id="S3">Staking returns stakedAmount to the Staker as confirmation of the transaction.</step>
+        <step id="S4">RewardMaster triggers onAction event.</step>
+        <step id="S5">AdvancedStakeController requests reward advice through getRewardAdvice.</step>
+        <step id="S6">AdvancedStakeController calls earlyUnstake in the MAS Pool to release the funds.</step>
+        <step id="S7">MAS Pool generates leaf by processing preimage parameters.</step>
+        <step id="S8">MAS Pool returns the leafHash.</step>
+        <step id="S9">MAS Pool generates nullifier using preimage.</step>
+        <step id="S10">MAS Pool returns the nullifierHash.</step>
+        <step id="S11">MAS Pool ensures Merkle proof verification, checks unspent nullifiers, and marks spent nullifier.</step>
+        <step id="S12">MAS Pool transfers rewardAmount to the Staker using ZKP Token.</step>
+        <step id="S13">MAS Pool returns rewardAmount to the Staker as confirmation.</step>
+        <step id="S14">AdvancedStakeController emits an EarlyUnstake event.</step>
+    </mainSequence>
+</useCase>

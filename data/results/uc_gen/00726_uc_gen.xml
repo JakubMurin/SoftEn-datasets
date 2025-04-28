@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>EditerTache</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepositoryTaches</actor>
+        <actor>ServiceAutorisation</actor>
+        <actor>MoteurTemplates</actor>
+    </actors>
+    <trigger>Utilisateur envoie une demande de modification d'une tâche via GET /taches/{id}/edit</trigger>
+    <mainSequence>
+        <step id="S1">Le Controleur effectue une récupération des données de la tâche à éditer en utilisant le paramètre ID reçu</step>
+        <step id="S2">Le Repository des Tâches trouve la tâche demandée via l'ID</step>
+        <step id="S3">Le Repository retourne la Tâche au Controleur</step>
+        <step id="S4">Le Controleur vérifie si la Tâche appartient à l'utilisateur en envoyant une requête au Service d'Autorisation</step>
+        <step id="S5">Le Service d'Autorisation vérifie si l'utilisateur est propriétaire de la Tâche</step>
+        <step id="S6">Le Service d'Autorisation répond à l'étape précédente en confirmant la possession de la Tâche</step>
+        <step id="S7">Le Controleur demande au Moteur de Templates d'afficher le formulaire d'édition de la Tâche</step>
+        <step id="S8">Le Moteur de Templates génère le formulaire d'édition</step>
+        <step id="S9">Le Controleur affiche le formulaire d'édition à l'Utilisateur</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Si la tâche ne lui appartient pas</step>
+            <step id="A1S2">Le Service d'Autorisation répond négativement à la propriété de la Tâche</step>
+            <step id="A1S3">Le Controleur redirige l'Utilisateur vers un message d'erreur non autorisé</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

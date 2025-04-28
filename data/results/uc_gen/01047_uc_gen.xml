@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Retrieve OneToOne Session Data</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Routes</actor>
+        <actor>Controller</actor>
+        <actor>OneToOne</actor>
+        <actor>MySQL</actor>
+        <actor>Error</actor>
+        <actor>Question</actor>
+        <actor>Measurable</actor>
+        <actor>Ejs</actor>
+    </actors>
+    <preconditions>
+        <precondition>Navegador is active.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>OneToOne session data successfully retrieved and displayed.</condition>
+    </successEndConditions>
+    <trigger>GET /oneToOne/:sessionID</trigger>
+    <mainSequence>
+        <step id="S1">Navegador requests /oneToOne/:sessionID</step>
+        <step id="S2">Routes forwards request to Controller</step>
+        <step id="S3">Controller fetches session data from OneToOne</step>
+        <step id="S4">OneToOne executes query on MySQL</step>
+        <step id="S5">OneToOne receives rows from MySQL</step>
+        <step id="S6">Controller receives rows from OneToOne</step>
+        <step id="S7">Controller checks if rows are empty</step>
+        <step id="S8">Controller checks session role and user ID</step>
+        <step id="S9">Controller fetches session data from Question</step>
+        <step id="S10">Question executes query on MySQL</step>
+        <step id="S11">Question receives answers from MySQL</step>
+        <step id="S12">Controller receives answers from Question</step>
+        <step id="S13">Controller checks if answers are empty</step>
+        <step id="S14">Controller renders oneToOneCheck Ejs</step>
+        <step id="S15">Ejs sends HTML response to Navegador</step>
+        <step id="S16">Controller fetches session data from Measurable</step>
+        <step id="S17">Measurable executes query on MySQL</step>
+        <step id="S18">Measurable receives measures from MySQL</step>
+        <step id="S19">Controller receives measures from Measurable</step>
+        <step id="S20">Controller renders oneToOneCheck Ejs</step>
+        <step id="S21">Ejs sends HTML response to Navegador</step>
+    </mainSequence>
+</useCase>

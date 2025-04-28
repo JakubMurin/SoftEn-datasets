@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Release Workflow</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>AnotherDeveloper</actor>
+        <actor>Reviewer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developers have changes to apply to smart contracts.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Developer makes changes to smart contracts and commits.</step>
+        <step id="S2">Developer creates a changeset and commits it.</step>
+        <step id="S3">Developer pushes changes and opens a pull request.</step>
+        <step id="S4">Reviewer approves the pull request.</step>
+        <step id="S5">Developer deploys changes to all chains.</step>
+        <step id="S6">Blockchain receives updated or new smart contracts.</step>
+        <step id="S7">JSON files with addresses are updated.</step>
+        <step id="S8">Updated JSON files are pushed to the pull request.</step>
+        <step id="S9">Developer merges changes to the main branch.</step>
+        <step id="S10">ReleaseGithubAction incorporates changes to the main branch.</step>
+        <step id="S11">VersionPackagesPR creates a pull request with new versions from changesets.</step>
+        <step id="S12">AnotherDeveloper pushes a new changeset.</step>
+        <step id="S13">ReleaseGithubAction processes the new changeset.</step>
+        <step id="S14">VersionPackagesPR updates the pull request with new versions.</step>
+        <step id="S15">Developer merges updated versions to the main branch.</step>
+        <step id="S16">ReleaseGithubAction triggers the npm build and publish process.</step>
+    </mainSequence>
+</useCase>

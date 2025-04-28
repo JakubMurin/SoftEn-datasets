@@ -1,0 +1,30 @@
+<useCase id="P220_revoke_vc">
+    <name>P220: VC Revocation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Certified App</actor>
+        <actor>Wallet</actor>
+        <actor>TAS</actor>
+        <actor>Issuer</actor>
+        <actor>Blockchain</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User proposes VC revocation with vcId</step>
+        <step id="S2">Certified App retrieves VC meta from blockchain</step>
+        <step id="S3">TAS confirms issuer DID</step>
+        <step id="S4">TAS inspects and prepares to propose revocation with vcId</step>
+        <step id="S5">Issuer checks if revocation is possible, generates issuerNonce, and retrieves authentication type</step>
+        <step id="S6">User prepares ECDH data and signs (ReqEcdh)reqEcdh</step>
+        <step id="S7">Wallet signs provided ECDH request</step>
+        <step id="S8">Certified App sends ECDH request and receives acceptance</step>
+        <step id="S9">Certified App performs ECDH for session key establishment</step>
+        <step id="S10">Wallet validates wallet information and signs, then requests the creation of a server token</step>
+        <step id="S11">Server verifies signatures, generates and stores server token, encrypts response information and sends back the IV and encrypted data</step>
+        <step id="S12">Certified App decrypts and calculates the server token</step>
+        <step id="S13">Certified App requests VC revocation using wallet token, server token, vcId, issuerNonce, and authType</step>
+        <step id="S14">Wallet validates information and prepares revocation data, finally authenticaing user</step>
+        <step id="S15">Sever validates tokens, carries out VC revocation, updates VC status, and returns result</step>
+        <step id="S16">TAS confirms VC revocation</step>
+        <step id="S17">Issuer completes VC revocation</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Place Order</name>
+    <actors>
+        <actor>App</actor>
+        <actor>OrderServiceFacade</actor>
+        <actor>InventoryService</actor>
+        <actor>PaymentService</actor>
+        <actor>ShippingService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">App creates order</step>
+        <step id="S2">App places order for a product</step>
+        <step id="S3">OrderServiceFacade finds the product</step>
+        <step id="S4">OrderServiceFacade checks product availability with InventoryService</step>
+        <step id="S5">OrderServiceFacade makes payment through PaymentService</step>
+        <step id="S6">OrderServiceFacade ships the product using ShippingService</step>
+    </mainSequence>
+</useCase>

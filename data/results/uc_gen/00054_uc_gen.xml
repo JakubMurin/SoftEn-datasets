@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>View Messages</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Messages Page</actor>
+        <actor>GetMessagesByInboxIdActivity</actor>
+        <actor>Message</actor>
+    </actors>
+    <preconditions>
+        <precondition>User opens the "Messages Page"</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User opens the "Messages Page"</step>
+        <step id="S2">Messages Page requests to get Messages by inbox ID</step>
+        <step id="S3">GetMessagesByInboxIdActivity sends a request to Message to get messages by inbox ID</step>
+        <step id="S4">Message retrieves messages by inbox ID</step>
+        <step id="S5">GetMessagesByInboxIdActivity receives messages</step>
+        <step id="S6">Messages Page displays the conversations</step>
+    </mainSequence>
+</useCase>

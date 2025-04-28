@@ -1,0 +1,83 @@
+<useCase id="UC001">
+    <name>Adding Comment to Article</name>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>Controller</actor>
+        <actor>ArticleService</actor>
+        <actor>CommentService</actor>
+        <actor>ArticleRepository</actor>
+        <actor>CommentRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and navigating to article page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Comment successfully added to the article</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while saving the comment</condition>
+    </failureEndConditions>
+    <trigger>User requests to add a comment to an article</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the article page</step>
+        <step id="S2">Controller receives request to add comment</step>
+        <step id="S3">Controller retrieves article details</step>
+        <step id="S4">ArticleService queries article by slug</step>
+        <step id="S5">ArticleService receives article details</step>
+        <step id="S6">Controller adds comment to the article</step>
+        <step id="S7">CommentService saves the comment</step>
+        <step id="S8">CommentService sends success response</step>
+        <step id="S9">Controller updates article page with new comment</step>
+        <step id="S10">System displays updated article page with comment</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1" continue="S2">
+            <step id="A1S1">User navigates to the article page</step>
+            <step id="A1S2">Controller receives request to add comment</step>
+        </asteps>
+        <asteps id="A2" start="S1" continue="S3">
+            <step id="A2S1">User navigates to the article page</step>
+            <step id="A2S2">Controller retrieves article details</step>
+        </asteps>
+        <asteps id="A3" start="S1" continue="S4">
+            <step id="A3S1">User navigates to the article page</step>
+            <step id="A3S2">ArticleService queries article by slug</step>
+        </asteps>
+        <asteps id="A4" start="S1" continue="S6">
+            <step id="A4S1">User navigates to the article page</step>
+            <step id="A4S2">Controller adds comment to the article</step>
+        </asteps>
+        <asteps id="A5" start="S1" continue="S7">
+            <step id="A5S1">User navigates to the article page</step>
+            <step id="A5S2">CommentService saves the comment</step>
+        </asteps>
+        <asteps id="A6" start="S1" continue="S8">
+            <step id="A6S1">User navigates to the article page</step>
+            <step id="A6S2">CommentService sends success response</step>
+        </asteps>
+        <asteps id="A7" start="S1" continue="S9">
+            <step id="A7S1">User navigates to the article page</step>
+            <step id="A7S2">Controller updates article page with new comment</step>
+        </asteps>
+        <asteps id="A8" start="S1" continue="S10">
+            <step id="A8S1">User navigates to the article page</step>
+            <step id="A8S2">System displays updated article page with comment</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>Error occurred while saving the comment</description>
+            <step id="E1S1">User navigates to the article page</step>
+            <step id="E1S2">Controller receives request to add comment</step>
+            <step id="E1S3">Controller retrieves article details</step>
+            <step id="E1S4">ArticleService queries article by slug</step>
+            <step id="E1S5">ArticleService receives article details</step>
+            <step id="E1S6">Controller adds comment to the article</step>
+            <step id="E1S7">CommentService fails to save the comment</step>
+            <step id="E1S8">CommentService sends error response</step>
+            <step id="E1S9">Controller renders error page</step>
+            <step id="E1S10">System displays error message "Error saving comment"</step>
+        </esteps>
+    </errorSteps>
+</useCase>

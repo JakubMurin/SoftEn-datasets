@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Criar edificio</name>
+    <actors>
+        <actor>GestorCampus</actor>
+        <actor>SistemaRobDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>GestorCampus deve ter permissão para criar edifício.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>SistemaRobDroneGo recebeu e processou os dados do edifício com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>SistemaRobDroneGo não conseguiu processar os dados do edifício.</condition>
+    </failureEndConditions>
+    <trigger>GestorCampus solicita a criação de um edifício.</trigger>
+    <mainSequence>
+        <step id="S1">GestorCampus solicita a criação de um edifício.</step>
+        <step id="S2">SistemaRobDroneGo requisita os dados necessários para criar o edifício.</step>
+        <step id="S3">GestorCampus envia os dados do edifício para o SistemaRobDroneGo.</step>
+        <step id="S4">SistemaRobDroneGo envia uma mensagem de sucesso para GestorCampus.</step>
+    </mainSequence>
+</useCase>

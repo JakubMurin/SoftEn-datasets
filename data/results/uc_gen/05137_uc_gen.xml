@@ -1,0 +1,28 @@
+<useCase id="1">
+    <name>Interact with L4 and L3 regulators from Health Workers</name>
+    <actors>
+        <actor>Health Workers</actor>
+    </actors>
+    <trigger>Action: search for patient</trigger>
+    <mainSequence>
+        <step id="S1">Health Worker searches for a patient (created before if needed)</step>
+        <step id="S2">User Interface searches for a patient</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Select the CarePlan (further applications will be based on the selected "registration" Action)</step>
+            <step id="A1S2">Save "inMemory" the PlanDefinition based on Actioncode</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>The following section may be run multiple times.</description>
+            <step id="E1_S1">Save the Action "inMemory"</step>
+            <step id="E1_S2">Skip an activity if already executed, otherwise initiate it</step>
+            <step id="E1S3">Populate and save QuestionnaireResponses</step>
+            <step id="E1_S4">Fill and submit the Questionnaire</step>
+            <step id="E1S5">Run the StructureMap on the QuestionnaireResponse</step>
+            <step id="E1_S6">Classificate diagnostic questionnaires</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Find Match</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>API Gateway</actor>
+        <actor>Matching Service</actor>
+        <actor>Matching Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User sends a PUT request to API Gateway to find a match.</step>
+        <step id="S2">API Gateway forwards the request to the Controller.</step>
+        <step id="S3">Controller calls the Service method to check for a match using the requestId.</step>
+        <step id="S4">Service locates the user's MatchRequest using the requestId in MatchRequests collection.</step>
+        <step id="S5">Service retrieves another user's MatchRequest from the collection.</step>
+        <step id="S6">Service fetches a random question from the Questions collection.</step>
+        <step id="S7">Service creates sessionInfo and links it to the MatchRequests.</step>
+        <step id="S8">Service updates both MatchRequests in the database.</step>
+        <step id="S9">Controller receives and sends user's MatchRequest to the API Gateway.</step>
+        <step id="S10">API Gateway responds with a 200 OK status and returns the user's MatchRequest to the Frontend.</step>
+        <step id="S11">User is redirected to the session page on the Frontend application.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Interact with Server and Archive Board</name>
+    <description>At this point, the user interacts with the server and archives a specific board.</description>
+    <actors>
+        <actor>Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>The server is active and running.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The board is successfully archived by the user.</condition>
+    </successEndConditions>
+    <trigger>create(sock, codeRequest)</trigger>
+    <mainSequence>
+        <step id="S1">Create DataInputStream and DataOutputStream</step>
+        <step id="S2">Get User Logged In</step>
+        <step id="S3">List Boards User Owns Not Archived</step>
+        <step id="S4">Send Board Owned</step>
+        <step id="S5">Create SBProtocol</step>
+        <step id="S6">Send SBProtocol Data</step>
+        <step id="S7">Receive SBProtocol Data</step>
+        <step id="S8">Get Board with "boardName"</step>
+        <step id="S9">Archive Board</step>
+        <step id="S10">Save Board to Repository</step>
+        <step id="S11">List Boards User Owns Archived</step>
+        <step id="S12">Send Board Owned (Archived)</step>
+        <step id="S13">Create SBProtocol for Archiving</step>
+        <step id="S14">Send SBProtocol Data for Archiving</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Update Profile Information</name>
+    <actors>
+        <actor>Buyer</actor>
+    </actors>
+    <trigger>Buyer initiates a request to update their profile information.</trigger>
+    <mainSequence>
+        <step id="S1">Buyer updates their profile information through the UI.</step>
+        <step id="S2">UI sends a PUT request to the Web server to update the user profile.</step>
+        <step id="S3">Web server validates and saves the profile changes received from the UI.</step>
+        <step id="S4">App server updates the user profile data in the database.</step>
+        <step id="S5">App server receives acknowledgment from the database after updating the user profile.</step>
+        <step id="S6">App server notifies the Web server of the successful profile update.</step>
+        <step id="S7">Web server informs the UI of the successful profile update.</step>
+        <step id="S8">UI confirms to the Buyer that the profile has been updated successfully.</step>
+    </mainSequence>
+</useCase>

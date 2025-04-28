@@ -1,0 +1,29 @@
+<useCase id="UC1">
+  <name>Create Booking</name>
+  <description>The use case involves creating a new booking in the system</description>
+  <actors>
+    <actor>Receptionist</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user is logged in</precondition>
+  </preconditions>
+  <trigger>Receptionist requests to create a booking</trigger>
+  <mainSequence>
+    <step id="S1">Receptionist requests to create a booking</step>
+    <step id="S2">UI displays create booking form</step>
+    <step id="S3">Receptionist fills in booking details</step>
+    <step id="S4">UI sends booking details to create booking endpoint</step>
+    <step id="S5">Router forwards create booking request to Controller</step>
+    <step id="S6">Controller creates a new booking</step>
+    <step id="S7">Repository checks room availability</step>
+    <step id="S8">Repository creates a new booking</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S7" continue="S8">
+      <step id="A1S1">Room is available, new booking created</step>
+    </asteps>
+    <asteps id="A2" start="S7" continue="S8">
+      <step id="A2S1">Room is not available, error message displayed</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

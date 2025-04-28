@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Process Payment</name>
+    <description>Allowing Member to make a payment</description>
+    <actors>
+        <actor>Member</actor>
+        <actor>Front End</actor>
+        <actor>Payment Service</actor>
+        <actor>Database Management</actor>
+        <actor>Mobile Banking System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Member selects payment option on Front End</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Payment transaction is confirmed and successfully processed</condition>
+    </successEndConditions>
+    <trigger>Member initiating a payment request</trigger>
+    <mainSequence>
+        <step id="S1">Member selects payment option</step>
+        <step id="S2">Front End initiates payment request</step>
+        <step id="S3">Payment Service requests payment processing from Mobile Banking System</step>
+        <step id="S4">Mobile Banking System processes the transaction</step>
+        <step id="S5">Mobile Banking System sends transaction authentication to Member</step>
+        <step id="S6">Member authorizes the transaction on Mobile Banking System</step>
+        <step id="S7">Payment Service confirms successful transaction, updates payment status in Database, and displays success message on Front End</step>
+        <step id="S8">Front End shows confirmation to Member</step>
+    </mainSequence>
+</useCase>

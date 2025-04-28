@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>Make Coffee</name>
+	<description>User requests to make a coffee with specific ingredients and sweeteners.</description>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>CoffeeFactory, CoffeeHandlerBase, Milk, Chocolate, Cinnamon, Sweetener, StirringStrategyFactory, StirringStrategy, and CoffeeRequest participants are initialized.</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">User requests to make a coffee with specified ingredients and sweeteners.</step>
+		<step id="S2">CoffeeFactory creates a CoffeeRequest based on the specified ingredients.</step>
+		<step id="S3">CoffeeFactory sends CoffeeRequest to make_coffee participant.</step>
+		<step id="S4">make_coffee sets next participant to add Milk.</step>
+		<step id="S5">Milk sets next participant to add Chocolate.</step>
+		<step id="S6">Chocolate sets next participant to add Cinnamon.</step>
+		<step id="S7">Cinnamon sets next participant to add Sweetener.</step>
+		<step id="S8">Sweetener sets null next participant in the chain.</step>
+		<step id="S9">make_coffee delegates the coffee making handling to CoffeeHandlerBase.</step>
+		<step id="S10">CoffeeHandlerBase forwards the request to add Milk based on the CoffeeRequest.</step>
+		<step id="S11">Milk forwards the CoffeeRequest to add Chocolate.</step>
+		<step id="S12">CoffeeHandlerBase forwards the request to add Cinnamon based on the CoffeeRequest.</step>
+		<step id="S13">Cinnamon forwards the CoffeeRequest to add Sweetener.</step>
+		<step id="S14">CoffeeHandlerBase processes the request to add Sweetener.</step>
+		<step id="S15">Sweetener creates a stirring strategy based on the sweetener type.</step>
+		<step id="S16">Sweetener stirs the mixture.</step>
+	</mainSequence>
+</useCase>

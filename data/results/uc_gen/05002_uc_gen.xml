@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Remove Issue Requests</name>
+    <description>A use case for Admin to retrieve and review requests for removing issues.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user logged in is an Admin.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All remove request issues successfully listed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>If no issues are available for removal.</condition>
+    </failureEndConditions>
+    <trigger>Admin triggers the request to view and act on remove requests.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests removal of specific issues by ID</step>
+        <step id="S2">Validate if the member is authorized to remove issues (signId).</step>
+        <step id="S3">Validate if the user accessing the system is an admin (signId).</step>
+        <step id="S4">Retrieve the remove request list (based on signId).</step>
+        <step id="S5">Display list of remove request issues in IssueResponseDto format.</step>
+    </mainSequence>
+</useCase>

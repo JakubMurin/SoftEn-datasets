@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Run Continuous Integration Tests</name>
+    <description>As a Developer, ensure that all tests related to the pull request are successfully passed during the Continuous Integration process.</description>
+    <actors>
+        <actor>Developer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Developer creates a pull request.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All tests related to the pull request are successfully passed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Some tests related to the pull request are not successful.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Developer initiates a pull request.</step>
+        <step id="S2">The GitHub Repo triggers workflow by the pull request from the Developer.</step>
+        <step id="S3">All tests related to the pull request are executed.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Behave tests are run on the pull request.</step>
+            <step id="A1S2">Coverage report is generated using Pytests and sent to Codecov Service for uploading.</step>
+            <step id="A1S3">Mypy checks are executed on the code.</step>
+            <step id="A1S4">Pytests are run to test the pull request changes.</step>
+            <step id="A1S5">Ruff checks are performed on the code.</step>
+        </asteps>
+    </alternativeSteps>
+    
+</useCase>

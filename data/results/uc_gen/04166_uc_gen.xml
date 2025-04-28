@@ -1,0 +1,33 @@
+<useCase id="UC1">
+  <name>Battle System</name>
+  <description>Allows clients to engage in battles</description>
+  <actors>
+    <actor>Client1</actor>
+    <actor>Client2</actor>
+    <actor>Server</actor>
+    <actor>BattleController</actor>
+    <actor>BattleService</actor>
+    <actor>Battle</actor>
+  </actors>
+  <preconditions>
+    <precondition>Both clients must be connected and have requested a battle</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Battle successfully completed</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Failure in starting or conducting the battle</condition>
+  </failureEndConditions>
+  <trigger>Clients request to start a battle</trigger>
+  <mainSequence>
+    <step id="S1">Client1 sends a battle request to the server.</step>
+    <step id="S2">Server processes the battle request from Client1.</step>
+    <step id="S3">Client2 sends a battle request to the server.</step>
+    <step id="S4">BattleController finds or creates a battle based on the requests.</step>
+    <step id="S5">BattleService creates a new battle.</step>
+    <step id="S6">BattleService finds an open battle and Client2 joins it.</step>
+    <step id="S7">The battle is then started.</step>
+    <step id="S8">The battle ends.</step>
+    <step id="S9">Server sends responses to both Client1 and Client2.</step>
+  </mainSequence>
+</useCase>

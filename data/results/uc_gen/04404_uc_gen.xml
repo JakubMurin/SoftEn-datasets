@@ -1,0 +1,30 @@
+<useCase id="123">
+    <name>Dealing with ball-paddle collision</name>
+    <description>Ensure proper interaction between the ball and the paddle to maintain game dynamics.</description>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>PegModelable</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>The ball is required to collide with the paddle.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The ball successfully collides with the paddle and bounces off.</condition>
+    </successEndConditions>
+    <trigger>GameEngine receives a collision event with a ball and the paddle.</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine triggers the onCollision event with specified parameters.</step>
+        <step id="S2">PegModelable is activated for handling onCollision event.</step>
+        <step id="S3">PegModelable triggers the onCollision event with itself and the ball.</step>
+        <step id="S4">Ball is activated for the collision handling process.</step>
+        <step id="S5">The ball collides with the peg.</step>
+        <step id="S6">The ball gets a safe position from the peg.</step>
+        <step id="S7">FreeBody is activated to handle the onCollision event with specified parameters.</step>
+        <step id="S8">The ball interacts with the peg using the respective factors.</step>
+        <step id="S9">The ball deactivates after the interaction.</step>
+        <step id="S10">The interaction completes, new ball needs to be initialized.</step>
+        <step id="S11">A successful response to ensure the transformed peg and the new ball are correctly handled and returned.</step>
+    </mainSequence>
+</useCase>

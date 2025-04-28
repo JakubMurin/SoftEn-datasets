@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Update Account Details</name>
+    <actors>
+        <actor>Moderator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Moderator is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account details successfully updated</condition>
+    </successEndConditions>
+    <trigger>User navigates to Account Settings</trigger>
+    <mainSequence>
+        <step id="S1">Moderator navigates to Account Settings</step>
+        <step id="S2">Web Interface receives request to view current account details</step>
+        <step id="S3">Backend Server fetches account details from Account Database</step>
+        <step id="S4">Backend Server displays current account details to Web Interface</step>
+        <step id="S5">Web Interface shows account details form to Moderator</step>
+        <step id="S6">Moderator inputs updated account details</step>
+        <step id="S7">Web Interface submits updated account details to Backend Server</step>
+        <step id="S8">Backend Server updates account details in Account Database</step>
+        <step id="S9">Backend Server acknowledges successful update to Web Interface</step>
+        <step id="S10">Web Interface displays update success message to Moderator</step>
+    </mainSequence>
+</useCase>

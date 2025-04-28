@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Access Acadsync Application</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Browser</actor>
+        <actor>Web Server</actor>
+        <actor>Django Application</actor>
+        <actor>View</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User opens the Acadsync Application in the browser.</trigger>
+    <mainSequence>
+        <step id="S1">User opens Acadsync Application</step>
+        <step id="S2">Browser sends HTTP Request to Web Server</step>
+        <step id="S3">Web Server forwards the request to Django Application</step>
+        <step id="S4">Django Application calls the appropriate View</step>
+        <step id="S5">View queries/updates data from Database</step>
+        <step id="S6">Database returns data to View</step>
+        <step id="S7">View renders template with data</step>
+        <step id="S8">Django Application returns response to Web Server</step>
+        <step id="S9">Web Server sends HTTP Response to Browser</step>
+        <step id="S10">Browser displays the response to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Token Validation</name>
+    <description>Validate the token provided by the user.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>UserSecurityService</actor>
+        <actor>ServiceA</actor>
+        <actor>ServiceB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Gateway receives a request from the User.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Token is valid.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Token is invalid.</condition>
+    </failureEndConditions>
+    <trigger>User requests access to a service.</trigger>
+    <mainSequence>
+        <step id="S1">User requests access to a service.</step>
+        <step id="S2">Gateway forwards the request to UserSecurityService for token validation.</step>
+        <step id="S3">UserSecurityService checks if the token is valid.</step>
+        <step id="S4">If the token is valid, Gateway forwards the request to the appropriate service (ServiceA).</step>
+        <step id="S5">ServiceA processes the request and sends a response to Gateway.</step>
+        <step id="S6">Gateway sends the response back to the User.</step>
+    </mainSequence>
+</useCase>

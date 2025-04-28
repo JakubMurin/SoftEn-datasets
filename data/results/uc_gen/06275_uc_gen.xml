@@ -1,0 +1,20 @@
+<useCase id="UC1">
+  <name>Data Migration Use Case</name>
+  <actors>
+    <actor>Data Migration Manager</actor>
+  </actors>
+  <preconditions>
+    <precondition>Database manager needs access to databases</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Data successfully migrated from source into the backend system</condition>
+  </successEndConditions>
+  
+  <mainSequence>
+    <step id="S1">Check if the table is available in the backend system</step>
+    <step id="S2">If the table is not available, create the database</step>
+    <step id="S3">If the table is available, clear all data in the database</step>
+    <step id="S4">Initialize backup storage from data file obtained from VPN</step>
+    <step id="S5">Activate the backend system</step>
+  </mainSequence>
+</useCase>

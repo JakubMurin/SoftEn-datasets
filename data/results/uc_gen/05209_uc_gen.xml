@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Upload Material Photo</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>CameraScreen</actor>
+        <actor>DisplayPictureScreen</actor>
+        <actor>ApiService</actor>
+        <actor>MaterialsRouter</actor>
+        <actor>PredictionRouter</actor>
+        <actor>MaterialsService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User opens the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Material successfully added and displayed in the list</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User cancels the process</condition>
+    </failureEndConditions>
+    <trigger>User selects camera button</trigger>
+    <mainSequence>
+        <step id="S1">Display list of materials</step>
+        <step id="S2">Select "Take photo"</step>
+        <step id="S3">Prompt to capture photo</step>
+        <step id="S4">Capture photo</step>
+        <step id="S5">Display captured photo</step>
+        <step id="S6">Review photo quality</step>
+        <step id="S7">Confirm selection</step>
+        <step id="S8">Upload photo</step>
+        <step id="S9">API Call to add material</step>
+        <step id="S10">Process photo</step>
+        <step id="S11">Analyze photo</step>
+        <step id="S12">Save material data</step>
+        <step id="S13">Confirm data saved</step>
+        <step id="S14">Confirm material added</step>
+        <step id="S15">Display success message</step>
+        <step id="S16">Update materials list</step>
+        <step id="S17">Display updated materials list</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>Access Time Report</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Spring</actor>
+        <actor>Lewensportal</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User opens TimeReport</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User enters Username (FnNn) and Password</step>
+        <step id="S2">Spring sends Username and Password to Lewensportal</step>
+        <step id="S3">Lewensportal validates the user</step>
+        <step id="S4">Lewensportal returns Ok to Spring if user is valid</step>
+        <step id="S5">Spring saves the user with Username in DB</step>
+        <step id="S6">DB assigns USER authorities to the user by default</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Lewensportal returns nicht angemeldet to Spring if user is invalid</step>
+            <step id="A1S2">Spring notifies User with Bad creditantials...</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

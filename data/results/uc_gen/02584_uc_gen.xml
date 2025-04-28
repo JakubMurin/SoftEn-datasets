@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Performing a POST Request</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>CDN</actor>
+        <actor>Proxy</actor>
+        <actor>Backend</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Attacker sends a POST request to CDN with /foo [GET /poison]</step>
+        <step id="S2">CDN forwards the request to Proxy</step>
+        <step id="S3">Proxy forwards the request to Backend</step>
+        <step id="S4">Backend responds to Proxy with /foo 200</step>
+        <step id="S5">Proxy forwards the response to CDN</step>
+        <step id="S6">CDN sends the response to Attacker</step>
+        <step id="S7">Proxy sends a GET request to Backend with /poison</step>
+        <step id="S8">Backend responds to Proxy with /poison 200</step>
+        <step id="S9">Proxy closes connections with Backend and Frontend</step>
+        <step id="S10">Smuggled response is dropped</step>
+    </mainSequence>
+</useCase>

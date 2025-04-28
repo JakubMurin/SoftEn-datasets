@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>OAuth2 Authentication Use Case</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>UserService</actor>
+        <actor>OAuth2Server</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User performs OAuth2 Authentication with the Frontend</step>
+        <step id="S2">Frontend sends OAuth2 Authentication request to UserService</step>
+        <step id="S3">UserService sends the OAuth2 Authentication request to OAuth2Server for user authentication</step>
+        <step id="S4">OAuth2Server authenticates the user and provides a token to UserService</step>
+        <step id="S5">UserService sends an Authentication Event (user_id) to NotificationService</step>
+        <step id="S6">NotificationService acknowledges the authentication event with success to UserService</step>
+        <step id="S7">UserService notifies Frontend about successful authentication along with the token</step>
+        <step id="S8">Frontend notifies the User about authentication success along with the token</step>
+    </mainSequence>
+</useCase>

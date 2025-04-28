@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <description>User wants to register on the website.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Browser</actor>
+        <actor>UserService</actor>
+        <actor>Redis</actor>
+        <actor>Mysql</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the registration page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered and logged in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User registration failed.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the registration process.</trigger>
+    <mainSequence>
+        <step id="S1">User enters the registration page.</step>
+        <step id="S2">Browser generates a random string s.</step>
+        <step id="S3">Browser requests and receives a captcha image based on s.</step>
+        <step id="S4">User inputs registration information, captcha, and s.</step>
+        <step id="S5">User clicks the submit button.</step>
+        <step id="S6">Browser sends the registration request to UserService.</step>
+        <step id="S7">UserService validates the captcha.</step>
+        <step id="S8">UserService generates a tokenID.</step>
+        <step id="S9">UserService inserts user information into the Mysql user table.</step>
+        <step id="S10">UserService inserts user-resource relationship data into the Mysql user_resource table.</step>
+        <step id="S11">UserService sets token-related information in Redis.</step>
+        <step id="S12">Browser sets a cookie and redirects to the login homepage.</step>
+    </mainSequence>
+</useCase>

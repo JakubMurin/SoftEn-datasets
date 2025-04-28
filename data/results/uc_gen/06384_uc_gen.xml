@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Retrieve Country Tour Information</name>
+    <description>Retrieve and display tour information for a country</description>
+    <actors>
+        <actor>用户</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user provides form parameters</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The country tour information is successfully retrieved and displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to retrieve the country tour information</condition>
+    </failureEndConditions>
+    <trigger>User submits the form parameters</trigger>
+    <mainSequence>
+        <step id="S1">User submits form parameters</step>
+        <step id="S2">CountryTourScreenController activates to handle the request</step>
+        <step id="S3">CountryTourScreenController calls TbCountryTourService page() method</step>
+        <step id="S4">TbCountryTourService activates to process the request</step>
+        <step id="S5">TbCountryTourService calls statistic() method</step>
+        <step id="S6">TbCountryTourService queries TbCountryTourMapper for data</step>
+        <step id="S7">TbCountryTourMapper retrieves data from the database</step>
+        <step id="S8">TbCountryTourService receives the data successfully</step>
+        <step id="S9">TbCountryTourService sends the retrieved data back to CountryTourScreenController</step>
+        <step id="S10">CountryTourScreenController sends the data to the user interface</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Process Transaction</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserVippsApp</actor>
+        <actor>Merchant</actor>
+        <actor>Vipps</actor>
+    </actors>
+    <preconditions>
+        <precondition>Users have Vipps accounts</precondition>
+        <precondition>Merchant has integrated Vipps payment system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Transaction completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Transaction failed</condition>
+    </failureEndConditions>
+    <trigger>User initiates transaction</trigger>
+    <mainSequence>
+        <step id="S1">User initiates transaction with Merchant</step>
+        <step id="S2">Merchant initiates transaction with Vipps</step>
+        <step id="S3">Vipps establishes session link with Merchant</step>
+        <step id="S4">Merchant triggers transaction session in UserVippsApp</step>
+        <step id="S5">UserVippsApp approves payment and detail sharing with Vipps</step>
+        <step id="S6">Vipps saves consent and generates sub</step>
+        <step id="S7">Vipps performs payment</step>
+        <step id="S8">Vipps sends response to UserVippsApp</step>
+        <step id="S9">UserVippsApp sends response to Merchant</step>
+        <step id="S10">Merchant retrieves transaction details from Vipps</step>
+        <step id="S11">Vipps returns details including sub to Merchant</step>
+        <step id="S12">Merchant gets user info using sub</step>
+        <step id="S13">Vipps returns user info to Merchant</step>
+        <step id="S14">Merchant handles session result</step>
+    </mainSequence>
+</useCase>

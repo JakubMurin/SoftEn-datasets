@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Login for End User</name>
+    <actors>
+        <actor>End user</actor>
+        <actor>Envoy</actor>
+        <actor>ID-provider</actor>
+        <actor>TokenDings</actor>
+    </actors>
+    <preconditions>
+        <precondition>End user needs to authenticate with the ID-provider.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">End user requests a resource from Envoy.</step>
+        <step id="S2">Envoy redirects the end user to the ID-provider.</step>
+        <step id="S3">End user makes a GET request to ID-provider for authorization.</step>
+        <step id="S4">End user logs in and provides consent/authorization to the application.</step>
+        <step id="S5">ID-provider sends a callback with an authorization code to the end user.</step>
+        <step id="S6">End user sends the authorization code to Envoy via a defined callback (e.g., /callback).</step>
+        <step id="S7">Envoy sends a POST request to ID-provider for a token with the authorization code, client_id, and client_secret/client_assertion.</step>
+        <step id="S8">ID-provider returns an id_token, access_token, and potentially a refresh_token to Envoy.</step>
+        <step id="S9">Envoy validates the id_token based on OpenID Connect specifications.</step>
+        <step id="S10">Envoy stores the session in the cache.</step>
+        <step id="S11">Envoy redirects the end user with cookies (id_token, session?).</step>
+    </mainSequence>
+</useCase>

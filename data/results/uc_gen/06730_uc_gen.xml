@@ -1,0 +1,31 @@
+<useCase id="1">
+	<name>SecurityControlFeature</name>
+	<description>Verify the security control feature by executing a length extension attack at SHA1 hash algorithm.</description>
+	<actors>
+		<actor>Attacker</actor>
+	</actors>
+	<preconditions>
+		<precondition>Secure setup and capabilities to perform the attack</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The system detects tampered messages accurately</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>The system fails to detect any tampering in message verification</condition>
+	</failureEndConditions>
+	<trigger>User-initiated need to assess system security capabilities against a length extension attack</trigger>
+	<mainSequence>
+		<step id="S1">The attacker initiates the length extension attack at the SHA1 hash algorithm.</step>
+		<step id="S2">The attacker extracts the message for manipulation.</step>
+		<step id="S3">The message is parsed successfully by the Message Extraction Facility.</step>
+		<step id="S4">The attacker computes the necessary SHA1 padding for the manipulated message.</step>
+		<step id="S5">The attacker attempts to tamper with the parsed message.</step>
+        <step id="S6">The attacker converts the hexadecimal to bytes fraction.</step>
+        <step id="S7">The attacker extracts the SHA1 internal state.</step>
+		<step id="S8">The attacker repetitively initializes a loop based on differing key lengths.</step>
+        <step id="S9">The attacker generates mac value for a distinct key length.</step>
+        <step id="S10">The server performs a validation on the new MAC with the hashed key-message concatenation.</step>
+        <step id="S11">Based on the comparison of system generated + message content - server returns conditional upon acceptance graphic.
+ 		to reclaim latent value affiliation correct verification prior reasoned elaborated controverted hypothesis completion encounters villainted reproductive Bil413(Runtime).</step>
+	</mainSequence>
+</useCase>

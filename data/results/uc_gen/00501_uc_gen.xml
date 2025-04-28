@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Launch Rocket</name>
+    <description>As a User, I want to launch a rocket in the Slack app.</description>
+    <actors>
+        <actor>USER</actor>
+        <actor>APP</actor>
+        <actor>SLACK</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has access to the Slack app.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The rocket is successfully launched.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The rocket launch fails.</condition>
+    </failureEndConditions>
+    <trigger>User posts a Slack Command.</trigger>
+    <mainSequence>
+        <step id="S1">User posts a Slack Command.</step>
+        <step id="S2">Slack receives the `/rocker` event triggered.</step>
+        <step id="S3">App performs `chat.postEphemeral` to display an ephemeral message to the User in a channel.</step>
+        <step id="S4">User clicks on the button `launch rocket`.</step>
+        <step id="S5">Slack receives the `interaction` event triggered.</step>
+        <step id="S6">App performs `chat.postMessage` to display Rocket Countdown Message 3 to the User.</step>
+        <step id="S7">App performs `chat.postMessage` to display Rocket Countdown Message 2 to the User.</step>
+        <step id="S8">App performs `chat.postMessage` to display Rocket Countdown Message 1 to the User.</step>
+    </mainSequence>
+</useCase>

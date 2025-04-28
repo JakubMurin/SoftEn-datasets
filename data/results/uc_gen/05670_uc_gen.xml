@@ -1,0 +1,24 @@
+<useCase id="UC1">
+	<name>View Blog Post Details</name>
+	<description>User views the details of a blog post.</description>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>The blog post exists in the database.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The blog post details are successfully displayed.</condition>
+	</successEndConditions>
+	<trigger>User accesses the /blog/ URL to view a blog post.</trigger>
+	<mainSequence>
+		<step id="S1">User navigates to /blog/ in the browser.</step>
+		<step id="S2">Router processes the URL and directs to the post_detail view.</step>
+		<step id="S3">View retrieves the blog post data based on URL parameters.</step>
+		<step id="S4">Model queries the database and fetches the requested blog post.</step>
+		<step id="S5">View fetches the comments for the post from the database.</step>
+		<step id="S6">Form creates a CommentForm for user to input comments.</step>
+		<step id="S7">Template renders the blog post details including comments and comment form.</step>
+		<step id="S8">User sees the blog post details on the web page.</step>
+	</mainSequence>
+</useCase>

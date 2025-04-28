@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Generate and schedule reports</name>
+    <description>Create and schedule reports based on user-defined criteria</description>
+    <actors>
+        <actor>Reporting Dashboards</actor>
+        <actor>UI</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+        <actor>Reporting OpenSearch</actor>
+        <actor>Reporting JobScheduler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Access to Reporting Dashboards and Notification OpenSearch Plugin</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Report Definitions saved successfully</condition>
+    </successEndConditions>
+    <trigger>User requests to generate and schedule reports</trigger>
+    <mainSequence>
+        <step id="S1">Create/update Report Definitions UX info</step>
+        <step id="S2">GetNotificationFeatureChannelList</step>
+        <step id="S3">Receive Available Channel list for reporting feature</step>
+        <step id="S4">Save Report Definition</step>
+        <step id="S5">Save Report Definition</step>
+        <step id="S6">Report Definition saved</step>
+    </mainSequence>
+</useCase>

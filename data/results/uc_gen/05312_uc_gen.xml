@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Render Component</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>User triggers the creation of the component through Liba.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The component is successfully rendered and attached to the instance.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The component rendering fails.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User triggers the creation of the component through Liba.</step>
+        <step id="S2">cInstance is created.</step>
+        <step id="S3">Liba passes cInstance to renderC.</step>
+        <step id="S4">App receives props and renderLiba from renderC.</step>
+        <step id="S5">App creates a button element.</step>
+        <step id="S6">App creates a UserCard element.</step>
+        <step id="S7">renderLiba creates children for UserCard.</step>
+        <step id="S8">Liba creates UserCard instance and passes props.</step>
+        <step id="S9">renderC receives UserCard instance.</step>
+        <step id="S10">UserCard receives props and renderLiba.</step>
+        <step id="S11">UserCard creates a div element.</step>
+        <step id="S12">UserCard creates another div element.</step>
+        <step id="S13">renderLiba returns the element to UserCard.</step>
+        <step id="S14">UserCard passes the element to renderC.</step>
+        <step id="S15">renderC assigns the element to instance.element.</step>
+    </mainSequence>
+</useCase>

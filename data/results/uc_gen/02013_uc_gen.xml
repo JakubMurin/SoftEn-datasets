@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Assign Position and Shift</name>
+    <actors>
+        <actor>Worker</actor>
+        <actor>SchedulingManager</actor>
+        <actor>Database</actor>
+        <actor>Department</actor>
+        <actor>Position</actor>
+        <actor>Shift</actor>
+        <actor>Absence</actor>
+        <actor>Preference</actor>
+    </actors>
+    <preconditions>
+        <precondition>Worker requests assignment</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Worker is assigned a position and shift</condition>
+    </successEndConditions>
+    <trigger>Worker requests assignment</trigger>
+    <mainSequence>
+        <step id="S1">SchedulingManager searches worker's department</step>
+        <step id="S2">Database looks up worker's department</step>
+        <step id="S3">Database returns department</step>
+        <step id="S4">SchedulingManager searches for available position in the department</step>
+        <step id="S5">Database looks up available position</step>
+        <step id="S6">Database returns position</step>
+        <step id="S7">SchedulingManager searches for available shift</step>
+        <step id="S8">Database looks up available shift</step>
+        <step id="S9">Database returns shift</step>
+        <step id="S10">Database checks worker's absences and preferences</step>
+        <step id="S11">Database verifies absences</step>
+        <step id="S12">Database returns absences</step>
+        <step id="S13">Database verifies preferences</step>
+        <step id="S14">Database returns preferences</step>
+        <step id="S15">SchedulingManager assigns position and shift to worker</step>
+    </mainSequence>
+</useCase>

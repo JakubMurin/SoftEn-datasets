@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Accessing DMPTool and Cost Calculation</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>DMPTool Interface</actor>
+        <actor>IT Resources Estimation</actor>
+        <actor>Cost Calculation Module</actor>
+        <actor>Institutional Systems</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Researcher needs to access the DMPTool interface.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Researcher is presented with the cost estimate and resource requirements.</condition>
+    </successEndConditions>
+    <trigger>Researcher accessing DMPTool.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher accesses DMPTool interface.</step>
+        <step id="S2">Request resource requirements input from IT Resources Estimation.</step>
+        <step id="S3">Input project details (data volume, processing power, etc.) to ITRE.</step>
+        <step id="S4">Return resource estimates to DMPTool from ITRE.</step>
+        <step id="S5">Initiate cost calculation by the Cost Calculation Module.</step>
+        <step id="S6">Request institutional pricing data from Institutional Systems.</step>
+        <step id="S7">Return pricing data to CCM from IS.</step>
+        <step id="S8">Return cost estimate to DMPTool from CCM.</step>
+        <step id="S9">Display cost estimate and resource needs to Researcher.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Battle Sequence</name>
+    <actors>
+        <actor>PlayerA</actor>
+        <actor>PlayerB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both PlayerA and PlayerB are ready to engage in a battle.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The battle between PlayerA and PlayerB concludes with results.</condition>
+    </successEndConditions>
+    <trigger>PlayerA and PlayerB initiate a battle request.</trigger>
+    <mainSequence>
+        <step id="S1">PlayerA sends a POST battle request.</step>
+        <step id="S2">BattleController receives the request.</step>
+        <step id="S3">BattleService initiates a battle with PlayerA.</step>
+        <step id="S4">BattleService finds open battles in BattleRepository.</step>
+        <step id="S5">BattleService opens a battle for PlayerA.</step>
+        <step id="S6">BattleService waits for the battle to start.</step>
+        <step id="S7">PlayerB sends a POST battle request.</step>
+        <step id="S8">BattleController processes PlayerB's request.</step>
+        <step id="S9">BattleService starts a battle with PlayerB.</step>
+        <step id="S10">BattleService finds open battles in BattleRepository.</step>
+        <step id="S11">BattleLogic determines the battle results between PlayerA and PlayerB.</step>
+        <step id="S12">BattleService updates the battle status.</step>
+        <step id="S13">BattleService communicates the battle results to BattleController.</step>
+        <step id="S14">BattleController relays the battle results to PlayerA.</step>
+        <step id="S15">BattleController informs PlayerB of the battle results.</step>
+    </mainSequence>
+</useCase>

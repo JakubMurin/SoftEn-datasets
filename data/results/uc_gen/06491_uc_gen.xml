@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Register User</name>
+    <actors>
+        <actor>User</actor>
+        <actor>AccessController</actor>
+        <actor>AccessService</actor>
+        <actor>bcrypt</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User already exists</condition>
+    </failureEndConditions>
+    <trigger>POST /signup</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to sign up</step>
+        <step id="S2">AccessController receives the sign-up request</step>
+        <step id="S3">AccessService processes the sign-up request</step>
+        <step id="S4">AccessService checks if the user already exists</step>
+        <step id="S5">User already exists: AccessService throws an error</step>
+        <step id="S6">User already exists: AccessController sends an error message to User</step>
+        <step id="S7">User does not exist: AccessService generates a salt</step>
+        <step id="S8">User does not exist: bcrypt receives the salt</step>
+        <step id="S9">User does not exist: bcrypt hashes the password with the salt</step>
+        <step id="S10">User does not exist: AccessService receives the hashed password</step>
+        <step id="S11">User does not exist: AccessService creates a new user with email, hashed password, and role</step>
+        <step id="S12">User does not exist: AccessService sends the new user to AccessController</step>
+        <step id="S13">AccessController returns the user to User</step>
+        <step id="S14">AccessController sends a success message to User</step>
+    </mainSequence>
+</useCase>

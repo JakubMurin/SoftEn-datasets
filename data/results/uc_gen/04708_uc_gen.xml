@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Login and Access Protected Route</name>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>AngularApp</actor>
+        <actor>AngularService</actor>
+        <actor>ExpressServer</actor>
+        <actor>MySQL</actor>
+    </actors>
+    <trigger>Usuario ingresa credenciales</trigger>
+    <mainSequence>
+        <step id="S1">AngularApp solicita autenticación</step>
+        <step id="S2">AngularService solicita autenticación</step>
+        <step id="S3">ExpressServer verifica credenciales en MySQL</step>
+        <step id="S4">ExpressServer genera token de acceso</step>
+        <step id="S5">AngularService genera token de acceso</step>
+        <step id="S6">AngularApp inicia sesión exitosa</step>
+        <step id="S7">AngularApp accede a ruta protegida</step>
+        <step id="S8">AngularApp envía token de acceso</step>
+        <step id="S9">ExpressServer verifica token de acceso</step>
+        <step id="S10">AngularApp recibe token válido y accede</step>
+    </mainSequence>
+</useCase>

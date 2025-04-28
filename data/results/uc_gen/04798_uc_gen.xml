@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Accessing Resources with Different Grant Types</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>UAA</actor>
+        <actor>Laravel</actor>
+        <actor>Spring</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client logs in and obtains a token</step>
+        <step id="S2">Client requests Example resource using JWT</step>
+        <step id="S3">Laravel requests RS256 Public Key</step>
+        <step id="S4">Laravel validates the token</step>
+        <step id="S5">Client requests Hello resource using JWT</step>
+        <step id="S6">Spring validates the token</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,43 @@
+<useCase id="UC001">
+    <name>Manage Board Archives</name>
+    
+    <actors>
+        <actor>SBPServerApp</actor>
+        <actor>ArchiveBoardHandler</actor>
+        <actor>SBProtocol</actor>
+        <actor>BoardService</actor>
+        <actor>Client</actor>
+        <actor>Board</actor>
+        <actor>BoardRepository</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>The client is logged in and requests to manage board archives.</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>The client successfully views the list of owned and archived boards.</condition>
+    </successEndConditions>
+    
+    <trigger>create(sock, codeRequest) </trigger>
+    
+    <mainSequence>
+        <step id="S1">Create socket and SBProtocol codeRequest.</step>
+        <step id="S2">Invoke BoardService to create a new board.</step>
+        <step id="S3">Run the handler.</step>
+        <step id="S4">Receive owner information from the logged-in user.</step>
+        <step id="S5">List boards that the user owns and are not archived.</step>
+        <step id="S6">Send the list of owned boards to the client.</step>
+        <step id="S7">Create SBProtocol instance to handle board data strings.</step>
+        <step id="S8">Send board data to the client.</step>
+        <step id="S9">Receive board name from SBProtocol.</step>
+        <step id="S10">Get the specified board.</step>
+        <step id="S11">Archive the board.</step>
+        <step id="S12">Save the archived board to the repository.</step>
+        <step id="S13">List boards that the user owns and are archived.</step>
+        <step id="S14">Send the list of archived boards to the client.</step>
+        <step id="S15">Create SBProtocol instance to handle archived board data strings.</step>
+        <step id="S16">Send archived board data to the client.</step>
+    </mainSequence>
+    
+</useCase>

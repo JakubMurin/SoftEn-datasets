@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Manage User Profile</name>
+    <description>User should be able to create, read, and update their profile information.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>CommandHandler</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+        <actor>DomainEntity</actor>
+        <actor>NotificationObject</actor>
+        <actor>QueryHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client is authenticated.</precondition>
+        <precondition>Client has access to profile management functionality.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User profile information is successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs while updating user profile.</condition>
+    </failureEndConditions>
+    <trigger>Client initiates profile update request.</trigger>
+    <mainSequence>
+        <step id="S1">Client sends a request to API to create, read, or update user profile information.</step>
+        <step id="S2">API forwards the request to CommandHandler to handle the command.</step>
+        <step id="S3">CommandHandler requests the entity from Repository.</step>
+        <step id="S4">Repository executes the SQL command on Database to fetch raw data.</step>
+        <step id="S5">Repository transforms raw data to Entity using Factory.</step>
+        <step id="S6">CommandHandler applies business logic to the DomainEntity.</step>
+        <step id="S7">CommandHandler instructs Repository to save the entity.</step>
+        <step id="S8">Repository triggers SQL commands to detect changes in the entity and save them to the Database.</step>
+        <step id="S9">Database saves the changes and sends the result back to Repository.</step>
+        <step id="S10">CommandHandler prepares NotificationObject and sends it to API.</step>
+        <step id="S11">API communicates the result with QueryHandler.</step>
+        <step id="S12">QueryHandler responds with Data Transfer Object (DTO) to Client.</step>
+    </mainSequence>
+</useCase>

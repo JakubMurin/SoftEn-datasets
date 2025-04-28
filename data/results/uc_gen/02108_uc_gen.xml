@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Biblioteca: Empréstimo de Livros</name>
+    <description>Este caso de uso descreve o processo de empréstimo de livros para um leitor</description>
+    <actors>
+        <actor>Atendente</actor>
+        <actor>Sistema</actor>
+        <actor>Banco: Leitor</actor>
+        <actor>Banco: Empréstimo/Devolução</actor>
+    </actors>
+    <preconditions>
+        <precondition>O atendente iniciou o processo de empréstimo com o identificador do leitor</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O sistema informa o início do processo de empréstimo ao atendente</condition>
+    </successEndConditions>
+    <trigger>O atendente inicia o processo de empréstimo com o identificador do leitor</trigger>
+    <mainSequence>
+        <step id="S1">Sistema identifica o leitor</step>
+        <step id="S2">Sistema cria o objeto de empréstimo</step>
+        <step id="S3">Sistema associa o empréstimo ao leitor</step>
+    </mainSequence>
+</useCase>

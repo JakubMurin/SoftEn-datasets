@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Change Payment Terms on Account</name>
+    <actors>
+        <actor>FAE User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the Account overview page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Defendant Account Payment Terms are successfully updated</condition>
+    </successEndConditions>
+    <trigger>User selects the 'Change' button on the Payment Terms tab</trigger>
+    <mainSequence>
+        <step id="S1">User selects 'Change' button</step>
+        <step id="S2">User navigates to the Change Payment Terms page</step>
+        <step id="S3">User inputs data and clicks 'Save changes' button on the Change Payment Terms page</step>
+        <step id="S4">API call is made with Defendant Account ID and Payload (JSON) by the Fines API</step>
+        <step id="S5">Defendant Account Payment Terms are created by the Fines DB</step>
+        <step id="S6">The Created Defendant Account Payment Terms are displayed to the user on the Payment Terms tab</step>
+    </mainSequence>
+</useCase>

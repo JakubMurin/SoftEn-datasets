@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Create Operation Request</name>
+    <description>Allows a Doctor to create an operation request.</description>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Doctor is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The operation request is successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the creation of the operation request.</condition>
+    </failureEndConditions>
+    <trigger>Doctor navigates to the Create Operation Request page.</trigger>
+    <mainSequence>
+        <step id="S1">Doctor navigates to Create Operation Request page.</step>
+        <step id="S2">Doctor fills operation request information including Patient ID, Doctor ID, Operation Type ID, Deadline, and Priority.</step>
+        <step id="S3">Doctor submits the form.</step>
+        <step id="S4">UI handles the form submission.</step>
+        <step id="S5">UI sends operation data to Operation Request Service.</step>
+        <step id="S6">Operation Request Service obtains authentication token.</step>
+        <step id="S7">Operation Request Service checks Doctor's role.</step>
+        <step id="S8">Operation Request Service sends a POST request to Backend API to create the operation request.</step>
+        <step id="S9">Backend API returns OperationRequestDto.</step>
+        <step id="S10">Operation Request Service returns success to UI.</step>
+        <step id="S11">UI sets success message and clears the form.</step>
+        <step id="S12">UI shows success message to Doctor.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">An error occurs during the creation of the operation request.</step>
+            <step id="A1S2">Operation Request Service throws an error.</step>
+            <step id="A1S3">UI sets error message.</step>
+            <step id="A1S4">UI shows error message to Doctor.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

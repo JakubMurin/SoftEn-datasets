@@ -1,0 +1,23 @@
+<useCase id="ZStaking">
+   <name>zStaking: Staking</name>
+   <actors>
+      <actor>Anybody (DAO)</actor>
+      <actor>Staker</actor>
+      <actor>Bridge Stakers (PoS)</actor>
+   </actors>
+   <preconditions>
+      <precondition>Smart Contracts on Mainnet and Polygon are deployed and operational.</precondition>
+   </preconditions>
+   <mainSequence>
+      <step id="S1">anybody initiates vestRewards() on RewardPool.</step>
+      <step id="S2">RewardPool successfully releases vests using vest.</step>
+      <step id="S3">RewardPool mints zkp tokens to RewardPool.</step>
+      <step id="S4">zkp retrieves balances in RewardPool.</step>
+      <step id="S5">RewardPool deposits zkpAmount in the Bridge through mBridge.</step>
+      <step id="S6">Mining Bridge locks ZKP with the Bridge.</step>
+      <step id="S7">Mining Bridge confirms the successful deposit by a staker.</step>
+      <step id="S8">Polygon Bridge deposits zkp tokens to RewardBroker using pZkp.</step>
+      <step id="S9">p$ZKP minted to RewardBroker on Polygon.</step>
+      <step id="S10">???</step>
+   </mainSequence>
+</useCase>

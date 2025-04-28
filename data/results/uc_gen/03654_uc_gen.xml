@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Manage Subscription</name>
+    <description>As a User, I want to manage my subscription details.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Subscription details updated successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to update subscription details.</condition>
+    </failureEndConditions>
+    <trigger>User initiates subscription management process.</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with SubscriptionController.</step>
+        <step id="S2">SubscriptionController forwards request to SubscriptionService.</step>
+        <step id="S3">SubscriptionService processes subscription management request.</step>
+        <step id="S4">SubscriptionService interacts with SubscriptionRepository.</step>
+        <step id="S5">SubscriptionRepository retrieves data from Datastore.</step>
+        <step id="S6">Datastore provides necessary data to SubscriptionRepository.</step>
+        <step id="S7">SubscriptionRepository updates the subscription details in Datastore.</step>
+        <step id="S8">SubscriptionRepository notifies SubscriptionService of successful update.</step>
+        <step id="S9">SubscriptionService forwards success response to SubscriptionController.</step>
+        <step id="S10">SubscriptionController sends response to User.</step>
+    </mainSequence>
+</useCase>

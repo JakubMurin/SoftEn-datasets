@@ -1,0 +1,26 @@
+<useCase id="UC-RF-001">
+    <name>Process Refund Request</name>
+    <description>Process customer refund request after submission</description>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer has initiated a refund request</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Refund request successfully submitted and saved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during the refund request processing</condition>
+    </failureEndConditions>
+    <trigger>Customer submits the refund request form</trigger>
+    <mainSequence>
+        <step id="S1">Open refund request page and display form - Customer</step>
+        <step id="S2">Submit refund request with customerId, orderId, reason, and amount - Customer</step>
+        <step id="S3">Create refund request in system for customer - Controller</step>
+        <step id="S4">Retrieve customer information using CustomerRepository for customerId - Controller</step>
+        <step id="S5">Save new refund request with status pending in system - RefundModel</step>
+        <step id="S6">Notify admin of the refund request - AdminService</step>
+        <step id="S7">Return success message to customer - UI</step>
+    </mainSequence>
+</useCase>

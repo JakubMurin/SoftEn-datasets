@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Hide Story</name>
+    <description>User hides a story from the view</description>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryPublishView</actor>
+        <actor>StoriesController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The story is successfully hidden</condition>
+    </successEndConditions>
+    <trigger>User clicks on "Hide story" button</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on "Hide story" button</step>
+        <step id="S2">StoryPublishView requests API</step>
+        <step id="S3">StoriesController processes DeleteStory()</step>
+        <step id="S4">StoriesController queries data from Database</step>
+        <step id="S5">Database returns data to StoriesController</step>
+        <step id="S6">StoriesController formats response payload</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">If error in formatting, display error message</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error occurred during DeleteStory processing</description>
+            <step id="E1S1">Log error and prompt user to try again</step>
+        </esteps>
+    </errorSteps>
+</useCase>

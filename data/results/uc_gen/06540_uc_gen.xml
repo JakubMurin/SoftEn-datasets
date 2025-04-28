@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Authentification Utilisateur</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>System</actor>
+        <actor>TodoList</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur est connecté</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Utilisateur est authentifié</condition>
+    </successEndConditions>
+    <trigger>Se connecter(email, motDePasse)</trigger>
+    <mainSequence>
+        <step id="S1">Vérifie les informations d'authentification</step>
+        <step id="S2">Récupère les tâches</step>
+        <step id="S3">Demande les tâches depuis la DB</step>
+        <step id="S4">Liste des tâches</step>
+        <step id="S5">Renvoie la liste des tâches</step>
+        <step id="S6">Affiche la liste des tâches</step>
+    </mainSequence>
+</useCase>

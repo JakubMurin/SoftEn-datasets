@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Query Orders</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Chat Client</actor>
+        <actor>Application</actor>
+        <actor>LLM Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to query orders.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User queries for orders.</step>
+        <step id="S2">Chat Client receives the query.</step>
+        <step id="S3">Application prompts with function schema (e.g., GetOrderRequest).</step>
+        <step id="S4">LLM Service identifies the appropriate function.</step>
+        <step id="S5">Application executes the function.</step>
+        <step id="S6">LLM Service provides the function execution result.</step>
+        <step id="S7">Application sends the final response to Chat Client.</step>
+        <step id="S8">Chat Client delivers the final response to User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC01">
+    <name>Submit new history data</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User submits new history data</step>
+        <step id="S2">UI interfaces receive the data</step>
+        <step id="S3">HistoryRouter system processes POST request to /histories</step>
+        <step id="S4">HistoryController creates History from the data</step>
+        <step id="S5">HistoryRepository saves the new History</step>
+        <step id="S6">Model interacts with Database to save the new History</step>
+        <step id="S7">Database successfully saves the History</step>
+        <step id="S8">Repository receives confirmation of History being saved</step>
+        <step id="S9">Controller gets the saved History</step>
+        <step id="S10">Router returns 201 Created status along with saved History to UI</step>
+        <step id="S11">UI displays a success message to the User</step>
+    </mainSequence>
+</useCase>

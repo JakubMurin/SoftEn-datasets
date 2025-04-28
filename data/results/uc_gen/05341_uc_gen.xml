@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Submit Refund Request</name>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Refund request submitted successfully</condition>
+    </successEndConditions>
+    <trigger>Customer submits refund request form</trigger>
+    <mainSequence>
+        <step id="S1">Customer opens refund request page</step>
+        <step id="S2">UI displays refund request form to Customer</step>
+        <step id="S3">Customer submits refund request with customerId, orderId, reason, and amount</step>
+        <step id="S4">Router receives POST request /refunds with customerId, orderId, reason, and amount</step>
+        <step id="S5">Controller creates a new refund request for customerId, orderId, reason, and amount</step>
+        <step id="S6">Controller fetches customer details by customerId</step>
+        <step id="S7">Controller creates a new Refund object with status: pending</step>
+        <step id="S8">Refund request is saved in the database</step>
+        <step id="S9">Admin is notified of the refund request</step>
+        <step id="S10">Router responds with 201 Created status</step>
+        <step id="S11">UI displays success message to Customer</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Remove Book from Catalog</name>
+    <actors>
+        <actor>me</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Execute the Remove Book from Catalog Activity</step>
+        <step id="S2">Request to remove a book from the catalog</step>
+        <step id="S3">Process the removal request in the catalog system</step>
+        <step id="S4">Handle the success end conditions for book removal</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Handle BookNotFoundException</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Handle errors during book removal process</description>
+            <step id="E1S1">Handle the RemoveBookFromCatalogResponse</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,13 @@
+<useCase id="UC001">
+    <name>Manage Cloud</name>
+    <actors>
+        <actor>Ops Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Ops Manager initiates fleet-events-inc action.</step>
+        <step id="S2">fleet processes the fleet-events-inc action.</step>
+        <step id="S3">fleet sends events/inc with name and amount to Cloud Stack.</step>
+        <step id="S4">Cloud Stack updates the events with the received name and amount.</step>
+        <step id="S5">Cloud Stack triggers the sails.helpers.handleEvents() function.</step>
+    </mainSequence>
+</useCase>

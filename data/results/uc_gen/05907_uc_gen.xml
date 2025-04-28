@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>계정 생성</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>AccountController</actor>
+        <actor>AccountService</actor>
+        <actor>Account</actor>
+        <actor>EventStore</actor>
+        <actor>AccountProjection</actor>
+        <actor>AccountViewRepository</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client calls POST /accounts API to create an account</step>
+        <step id="S2">AccountController receives createAccount request</step>
+        <step id="S3">AccountService creates a new Account with accountId and owner</step>
+        <step id="S4">Account generates a creation event</step>
+        <step id="S5">AccountService returns AccountCreatedEvent</step>
+        <step id="S6">EventStore saves the AccountCreatedEvent</step>
+        <step id="S7">AccountProjection handles the AccountCreatedEvent</step>
+        <step id="S8">AccountViewRepository saves the new AccountView</step>
+        <step id="S9">AccountProjection completes the projection</step>
+        <step id="S10">AccountController informs Client about successful creation with status 201</step>
+    </mainSequence>
+</useCase>

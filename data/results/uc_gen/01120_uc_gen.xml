@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Returning Recognized Consumer</name>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Merchant</actor>
+        <actor>Browser</actor>
+        <actor>PH</actor>
+        <actor>Page</actor>
+        <actor>DB</actor>
+        <actor>Window</actor>
+        <actor>SRCI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Consumer initiates Checkout Intent</step>
+        <step id="S2">Merchant creates Payment Request using Payment Request API with SRC Payment Method URLs and SRCI URL</step>
+        <step id="S3">Merchant calls HasEnrolledInstruments to check if Consumer can be recognized locally</step>
+        <step id="S4">Browser and PH perform CanMakePayment check to verify Consumer recognition</step>
+        <step id="S5">Merchant displays Pay Button</step>
+        <step id="S6">Consumer clicks Pay Button</step>
+        <step id="S7">Merchant launches Payment Request flow using Show</step>
+        <step id="S8">Browser and PH perform CanMakePayment check for Payment Request execution</step>
+        <step id="S9">Browser invokes Payment Handler to handle checkout process</step>
+        <step id="S10">Payment Handler requests Payment Handler Page from Window</step>
+        <step id="S11">Payment Handler sends Payment Request Data to SRCI for checkout completion</step>
+        <step id="S12">SRCI handles checkout process and returns result to Payment Handler</step>
+        <step id="S13">Payment Handler sends result data back to Browser</step>
+        <step id="S14">Merchant completes checkout and notifies Consumer</step>
+    </mainSequence>
+</useCase>

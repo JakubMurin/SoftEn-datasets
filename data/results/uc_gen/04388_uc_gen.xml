@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Fetch Stock Data</name>
+    <actors>
+        <actor>User</actor>
+        <actor>StockService</actor>
+        <actor>RestTemplate</actor>
+        <actor>ObjectMapper</actor>
+        <actor>StockFactory</actor>
+        <actor>StockPublisher</actor>
+        <actor>StockRepository</actor>
+        <actor>StockObserver</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates fetchStockData operation</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Stock data is fetched successfully and saved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Exception occurs during the process</condition>
+    </failureEndConditions>
+    <trigger>User triggers the fetchStockData method</trigger>
+    <mainSequence>
+        <step id="S1">User fetches Stock Data by symbol</step>
+        <step id="S2">StockService fetches data from the internet</step>
+        <step id="S3">RestTemplate makes a GET request to the specified URL</step>
+        <step id="S4">Valid JSON response received</step>
+        <step id="S5">ObjectMapper parses the JSON into a JsonNode</step>
+        <step id="S6">StockFactory creates a Stock object</step>
+        <step id="S7">StockPublisher notifies StockObservers</step>
+        <step id="S8">StockObserver updates upon receiving notification</step>
+        <step id="S9">StockRepository saves the Stock data</step>
+    </mainSequence>
+</useCase>

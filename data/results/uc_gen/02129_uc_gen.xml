@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Agent Recovery and Claim Handling</name>
+    <description>
+        This use case involves Alice recovering her agent and handling claims through various steps.
+    </description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to control her agent policy registry.</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Alice successfully recovers her agent and handles claims.</condition>
+    </successEndConditions>
+    <trigger>User initiates agent recovery and claim handling process.</trigger>
+    <mainSequence>
+        <step id="S1">Alice performs agent recovery by completing the necessary steps in the Offline Recovery diagram or Social Recovery diagram.</step>
+        <step id="S2">Alice generates a new policy registry address P' and stores it.</step>
+        <step id="S3">Alice revokes all claims, including the old agent policy address P, and petitions the Issuers to reissue her claims.</step>
+        <step id="S4">Alice revokes a claim, sending a revoke claim message to Alice's Cloud Agent.</step>
+        <step id="S5">Alice's Cloud Agent forwards the revoke claim message to the Issuers.</step>
+        <step id="S6">Issuer verifies Alice's identity and revokes the claim by updating the non-revocation accumulator on the Ledger.</step>
+        <step id="S7">Ledger updates the accumulator and provides the result to the Issuers.</step>
+        <step id="S8">Issuers acknowledge the revoke claim message.</step>
+        <step id="S9">Alice reissues claims with a new policy address P by completing the Issue Claim diagram for each claim.</step>
+    </mainSequence>
+</useCase>

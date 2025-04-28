@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>View List of Orders Being Delivered</name>
+    <description>Shipper views list of orders currently in transit for delivery.</description>
+    <actors>
+        <actor>Shipper</actor>
+    </actors>
+    <preconditions>
+        <precondition>Shipper logged into shipper dashboard.</precondition>
+        <precondition>Orders in the status "IN_TRANSIT" are available for display.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Shipper views list of orders being delivered through ShipperDashboard.</step>
+        <step id="S2">Fetch the orders being delivered using getOrdersBeingDelivered() method in ShipperController.</step>
+        <step id="S3">Retrieve orders with status "IN_TRANSIT" through getOrdersByStatus("IN_TRANSIT") method in ShipperService.</step>
+        <step id="S4">Query Database for orders with status "IN_TRANSIT" via findOrdersByStatus("IN_TRANSIT") method in ShipperRepository.</step>
+        <step id="S5">Display the list of orders being delivered back in ShipperDashboard.</step>
+    </mainSequence>
+</useCase>

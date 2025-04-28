@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Create a Post</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User wants to create a Post</step>
+        <step id="S2">UI sends PostDto to PostController</step>
+        <step id="S3">PostController validates the PostDto</step>
+        <step id="S4">PostController retrieves user from Security Context</step>
+        <step id="S5">PostService creates a Post using PostDto and UserId</step>
+        <step id="S6">PostMapper transforms PostDto into Post entity</step>
+        <step id="S7">PostRepository saves the created Post</step>
+        <step id="S8">PostRepository returns Optional&lt;Post&gt; to PostService</step>
+        <step id="S9">PostService returns Optional&lt;Post&gt; to PostController</step>
+        <step id="S10">PostController responds with ResponseEntity 201 code</step>
+        <step id="S11">UI displays message: Post created!</step>
+    </mainSequence>
+</useCase>

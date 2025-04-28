@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>User Authentication</name>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>AngularApp</actor>
+        <actor>AngularService</actor>
+        <actor>ExpressServer</actor>
+        <actor>MySQL</actor>
+    </actors>
+    <preconditions>
+        <precondition>User inputs valid credentials</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User enters credentials</step>
+        <step id="S2">AngularApp requests authentication</step>
+        <step id="S3">AngularService requests authentication</step>
+        <step id="S4">ExpressServer verifies credentials</step>
+        <step id="S5">MySQL validates credentials</step>
+        <step id="S6">ExpressServer generates access token</step>
+        <step id="S7">AngularService generates access token</step>
+        <step id="S8">User successfully logs in</step>
+    </mainSequence>
+</useCase>

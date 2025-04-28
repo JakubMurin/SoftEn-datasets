@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Create User Card</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>App</actor>
+        <actor>RenderC</actor>
+        <actor>CreateChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User creates User Card by calling Liba's create method</step>
+        <step id="S2">cInstance is created in Liba</step>
+        <step id="S3">cInstance is passed to renderC</step>
+        <step id="S4">renderC receives cInstance and calls App with props and renderLiba</step>
+        <step id="S5">App creates a button element</step>
+        <step id="S6">App creates UserCard element</step>
+        <step id="S7">UserCard creates child elements with props, AppCInstance, and key</step>
+        <step id="S8">createChildren method called to create UserCard</step>
+        <step id="S9">Liba creates UserCard instance with props, key, and AppCInstance</step>
+        <step id="S10">renderC receives UserCInstance</step>
+        <step id="S11">UserCard's renderLiba creates a div element</step>
+        <step id="S12">UserCard's renderLiba creates another div element</step>
+        <step id="S13">UserCard element is returned</step>
+    </mainSequence>
+</useCase>

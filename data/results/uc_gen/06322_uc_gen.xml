@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Update Staff Information</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated and has permission to update staff information.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User interacts with the interface.</step>
+        <step id="S2">UI sends a PUT request to the Router to update staff information.</step>
+        <step id="S3">Router forwards the request to the Controller to update staff information.</step>
+        <step id="S4">Controller calls the Repository to update the staff information.</step>
+        <step id="S5">Repository accesses the Model to find and update the staff information in the database.</step>
+        <step id="S6">Model updates the staff information in the Database.</step>
+        <step id="S7">Model notifies Repository about the successful update.</step>
+        <step id="S8">Repository informs the Controller about the successful update.</step>
+        <step id="S9">Controller sends a 200 OK response to the Router with the updated staff information.</step>
+        <step id="S10">Router responds with a 200 OK status to the UI with the updated staff information.</step>
+    </mainSequence>
+</useCase>

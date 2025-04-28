@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Login and Retrieve Archived Boards</name>
+    <actors>
+        <actor>SBPServerApp</actor>
+        <actor>ArchiveBoardHandler</actor>
+        <actor>SBProtocol</actor>
+        <actor>BoardService</actor>
+        <actor>Client</actor>
+        <actor>Board</actor>
+        <actor>BoardRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>SBPServerApp is running.</precondition>
+        <precondition>Client is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Archived boards successfully retrieved and displayed.</condition>
+    </successEndConditions>
+    <trigger>A user requests to view their archived boards.</trigger>
+    <mainSequence>
+        <step id="S1">SBPServerApp creates a socket and receives SBProtocol codeRequest.</step>
+        <step id="S2">ArchiveBoardHandler creates data streams.</step>
+        <step id="S3">ArchiveBoardHandler requests to list boards owned but not archived.</step>
+        <step id="S4">BoardService provides the list of boards.</step>
+        <step id="S5">ArchiveBoardHandler sends the list of owned boards to SBProtocol.</step>
+        <step id="S6">SBProtocol sends the list of owned boards to the user.</step>
+        <step id="S7">ArchiveBoardHandler retrieves and archives a specific board.</step>
+        <step id="S8">BoardRepository saves the archived board.</step>
+        <step id="S9">ArchiveBoardHandler requests to list boards owned and archived.</step>
+        <step id="S10">BoardService provides the list of archived boards.</step>
+        <step id="S11">ArchiveBoardHandler sends the list of archived boards to SBProtocol.</step>
+        <step id="S12">SBProtocol sends the list of archived boards to the user.</step>
+    </mainSequence>
+</useCase>

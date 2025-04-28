@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Adding Visited User</name>
+    <description>As a user, I want to add a visited user to the store.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user "user123" exists.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The visited user "user123" is successfully added to the store.</condition>
+    </successEndConditions>
+    <trigger>User dispatches addVisitedUser("user123").</trigger>
+    <mainSequence>
+        <step id="S1">User dispatches addVisitedUser("user123").</step>
+        <step id="S2">Component dispatches addVisitedUser("user123") to the Store.</step>
+        <step id="S3">Store calls addVisitedUser reducer in the Reducer.</step>
+        <step id="S4">Reducer checks if "user123" is in visitedUsers in the Slice.</step>
+        <step id="S5">Slice updates state if "user123" is not present.</step>
+        <step id="S6">Reducer returns the updated state to the Store.</step>
+        <step id="S7">Store notifies a state change to the Component.</step>
+    </mainSequence>
+</useCase>

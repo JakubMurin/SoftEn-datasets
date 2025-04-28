@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View URL Analytics</name>
+    <actors>
+        <actor>User</actor>
+        <actor>AnalyticsPage</actor>
+        <actor>AnalyticsControl</actor>
+        <actor>URLAnalytics</actor>
+        <actor>AnalyticsDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User enters URL or selects URL from list.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User inputs URL or selects URL from list.</step>
+        <step id="S2">AnalyticsPage sends data analytics request to AnalyticsControl.</step>
+        <step id="S3">AnalyticsControl retrieves analytics data for the specified URL from URLAnalytics.</step>
+        <step id="S4">URLAnalytics queries analytics data from AnalyticsDB.</step>
+        <step id="S5">AnalyticsDB returns analytics data to URLAnalytics.</step>
+        <step id="S6">URLAnalytics provides analytics data to AnalyticsControl.</step>
+        <step id="S7">AnalyticsControl sends analytics data to AnalyticsPage.</step>
+        <step id="S8">AnalyticsPage displays analytics data for the URL.</step>
+    </mainSequence>
+</useCase>

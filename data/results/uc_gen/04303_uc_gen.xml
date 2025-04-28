@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Submit Session</name>
+    <description>User navigates to the 'Submit Session' page, fills in the submission form, and submits the session details.</description>
+    <actors>
+        <actor>Authenticated User</actor>
+        <actor>Web Interface</actor>
+        <actor>Session Database</actor>
+        <actor>Session Review System</actor>
+        <actor>Notification Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access rights to submit sessions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Session submission is successfully completed.</condition>
+    </successEndConditions>
+    <trigger>User decides to submit a session.</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the 'Submit Session' page.</step>
+        <step id="S2">Web Interface displays the 'Session Submission Form'.</step>
+        <step id="S3">User fills in and submits the form.</step>
+        <step id="S4">Web Interface saves the session details in the Session Database.</step>
+        <step id="S5">Session Database triggers the Session Review Process.</step>
+        <step id="S6">Session Review System updates the session status to 'Under Review' in the database.</step>
+        <step id="S7">Session Database triggers a notification to the user through the Notification Service.</step>
+        <step id="S8">Notification Service sends an email notification to the user: 'Session Submitted'.</step>
+        <step id="S9">User refreshes/checks email for the notification.</step>
+        <step id="S10">Session Review System updates the session status to 'Approved' or 'Rejected' in the database.</step>
+        <step id="S11">Session Database triggers a notification to the user through the Notification Service.</step>
+        <step id="S12">Notification Service sends an email notification to the user: 'Session Approved' or 'Session Rejected'.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>CPS</actor>
+        <actor>CM</actor>
+        <actor>DG</actor>
+        <actor>SWP</actor>
+        <actor>S</actor>
+        <actor>MGI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CPS computes the delivery graph by sending a request to CityMap</step>
+        <step id="S2">CityMap initializes data structures for mappedRoutes</step>
+        <step id="S3">CityMap retrieves startWaypoint intersection for each point in the request</step>
+        <step id="S4">CityMap initializes arrays predecessors and durations</step>
+        <step id="S5">CityMap adds startWaypoint intersection to greys</step>
+        <step id="S6">CityMap finds the minimal grey intersection and processes its neighbours</step>
+        <step id="S7">CityMap updates durations and predecessors arrays based on street sections</step>
+        <step id="S8">CityMap updates data structures based on the intersection type</step>
+        <step id="S9">CityMap stores the processed intersection as a black intersection</step>
+        <step id="S10">CityMap creates the DeliveryGraph with the computed mappedRoutes</step>
+    </mainSequence>
+</useCase>

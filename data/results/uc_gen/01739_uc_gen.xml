@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Pomodoro Task Management</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TimeTrigger</actor>
+        <actor>Renderer</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>TaskStateChangeHandler</actor>
+        <actor>TaskFinishHandler</actor>
+        <actor>NotificationPlayer</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has initiated a Pomodoro task using the CLI.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Pomodoro task is successfully completed.</condition>
+    </successEndConditions>
+    <trigger>User initiates a Pomodoro task using the CLI.</trigger>
+    <mainSequence>
+        <step id="S1">User executes: pomogo --task "programuj pomodoro" using CLI.</step>
+        <step id="S2">TaskStartHandler registers a new task.</step>
+        <step id="S3">TaskStartHandler saves new task "programuj pomodoro" with start date and other details in sqlite.</step>
+        <step id="S4">TimeTrigger triggers refresh.</step>
+        <step id="S5">Renderer gets tasks from sqlite.</step>
+        <step id="S6">Renderer renders a progress bar with animations and unicorns for the user.</step>
+        <step id="S7">TimeTrigger triggers TaskStateChangeHandler for refresh.</step>
+        <step id="S8">TaskStateChangeHandler saves new state as resting and increments rest marker, triggers sound notification.</step>
+        <step id="S9">TaskStateChangeHandler saves new state as deep resting and zeroes rest marker, triggers sound notification.</step>
+        <step id="S10">TaskStateChangeHandler saves new state as resting and increments rest marker, triggers sound notification.</step>
+        <step id="S11">TaskStateChangeHandler marks task as paused, triggers sound notification.</step>
+        <step id="S12">TimeTrigger eventually triggers Renderer.</step>
+        <step id="S13">Renderer renders finish message with unicorns for the user.</step>
+    </mainSequence>
+</useCase>

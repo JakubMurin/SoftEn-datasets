@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Add Assessment of Subject</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>SubjectController</actor>
+        <actor>SubjectService</actor>
+        <actor>SubjectRepository</actor>
+        <actor>MySQL</actor>
+        <actor>CustomExceptionHandler</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin adds assessment to subject.</step>
+        <step id="S2">SubjectController requests marking type addition to subject.</step>
+        <step id="S3">SubjectService processes mark type addition on subject.</step>
+        <step id="S4">SubjectRepository stores mark type for subject in MySQL database.</step>
+        <step id="S5">MySQL performs the insertion operation.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Mark type exists in subject's assessment.</step>
+            <step id="A1S2">MySQL throws DataIntegrityViolationException.</step>
+            <step id="A1S3">SubjectRepository handles ActionNotAllowedException.</step>
+            <step id="A1S4">CustomExceptionHandler displays the correct error message to Admin.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Mark type doesn't exist in subject's assessment.</description>
+            <step id="E1S1">MySQL returns response to SubjectRepository.</step>
+            <step id="E1S2">SubjectRepository requests assessment by subject ID to MySQL.</step>
+            <step id="E1S3">MySQL provides the desired assessment information.</step>
+            <step id="E1S4">SubjectRepository sends list of tuples to SubjectService.</step>
+            <step id="E1S5">SubjectService maps mark type with no marks.</step>
+            <step id="E1S6">SubjectController displays the assessment for Admin.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

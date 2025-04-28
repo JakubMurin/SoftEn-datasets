@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Manage Clouds</name>
+    <actors>
+        <actor>Ops Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Ops Manager wants to add a fleet to the system.</precondition>
+    </preconditions>
+    <trigger>fleet-trigger-add(name, event, condition, action)</trigger>
+    <mainSequence>
+        <step id="S1">Ops Manager triggers the addition of a fleet.</step>
+        <step id="S2">The fleet is added to the system.</step>
+        <step id="S3">The trigger to add the fleet is sent to the Cloud Stack.</step>
+        <step id="S4">The Cloud Stack receives the trigger to add the fleet.</step>
+        <step id="S5">The Cloud Stack creates a new trigger with the specified name, event, condition, and action.</step>
+    </mainSequence>
+</useCase>

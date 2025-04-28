@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View Item Details</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>Web Interface</actor>
+        <actor>Search Service</actor>
+        <actor>Archive Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher accesses the digital archive.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher views item details successfully.</condition>
+    </successEndConditions>
+    <trigger>Researcher requests to view item details.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher accesses the digital archive through the Web Interface.</step>
+        <step id="S2">Web Interface receives the request to view item details.</step>
+        <step id="S3">Search Service queries item metadata from the Archive Database.</step>
+        <step id="S4">Archive Database returns metadata including the digitization date.</step>
+        <step id="S5">Search Service displays item details.</step>
+        <step id="S6">Web Interface shows item details, including the digitization date, to the Researcher.</step>
+    </mainSequence>
+</useCase>

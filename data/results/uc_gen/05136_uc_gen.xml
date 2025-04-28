@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>Interact with L4</name>
+    <actors>
+        <actor>Health Workers</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Health Workers search for patient (created before if needed)</step>
+        <step id="S2">User Interface searches for patient</step>
+        <step id="S3">Engine searches for available CarePlan using PlanDefinition/$Apply</step>
+        <step id="S4">Engine evaluates the condition of available PlanDefinitions and creates CarePlan</step>
+        <step id="S5">Engine sends a list of CarePlans to User Interface</step>
+        <step id="S6">Health Workers select a CarePlan</step>
+        <step id="S7">User Interface sends the selected CarePlan to Engine</step>
+        <step id="S8">Engine saves the PlanDefinition for guideline-based-care, determine-diagnosis, dispense-medications, and provide-counseling</step>
+        <step id="S9">Engine creates the encounter</step>
+        <step id="S10">Engine applies PlanDefinition/EmCareDXX/$Apply and receives CarePlan</step>
+        <step id="S11">Health Workers fill and submit questionnaires</step>
+        <step id="S12">Engine runs structureMap on QuestionnaireResponse</step>
+        <step id="S13">Engine saves created bundle</step>
+        <step id="S14">Engine applies PlanDefinition/EmCareDXX/$Apply and receives classification questionnaire</step>
+        <step id="S15">User Interface displays classification questionnaire</step>
+        <step id="S16">Health Workers agree or disagree with classification and add classification</step>
+        <step id="S17">User Interface sends questionnaire response to Engine</step>
+        <step id="S18">Engine runs structureMap on QuestionnaireResponse</step>
+        <step id="S19">Engine saves created bundle</step>
+        <step id="S20">Engine applies PlanDefinition/EmCareDXX/$Apply and receives medication questionnaire</step>
+        <step id="S21">User Interface displays medication questionnaire</step>
+        <step id="S22">Health Workers document medication availability</step>
+        <step id="S23">User Interface sends questionnaire response to Engine</step>
+        <step id="S24">Engine runs structureMap on QuestionnaireResponse</step>
+        <step id="S25">Engine saves created bundle</step>
+        <step id="S26">Engine applies PlanDefinition/EmCareDXX/$Apply and receives counseling questionnaire</step>
+        <step id="S27">User Interface displays counseling questionnaire</step>
+    </mainSequence>
+</useCase>

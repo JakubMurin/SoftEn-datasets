@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Delete Audio Channel</name>
+    <description>This use case describes the process of deleting an audio channel.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>An audio channel must exist.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The audio channel is successfully deleted.</condition>
+    </successEndConditions>
+    <trigger>Right-click on the audio channel.</trigger>
+    <mainSequence>
+        <step id="S1">User right-clicks on the audio channel.</step>
+        <step id="S2">Audio channel handles the context menu selection.</step>
+        <step id="S3">Context menu is rendered.</step>
+        <step id="S4">User clicks on "Delete" in the context menu.</step>
+        <step id="S5">Audio channel handles the delete action.</step>
+        <step id="S6">Channel action deletes the selected channel.</step>
+        <step id="S7">Channel saga initiates the deletion of the channel.</step>
+        <step id="S8">Event emitter emits 'CHANNEL_DELETE_CHANNEL' event.</step>
+        <step id="S9">Audio controller removes the channel.</step>
+    </mainSequence>
+</useCase>

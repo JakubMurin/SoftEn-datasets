@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Register New Identity</name>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>Registration Interface</actor>
+        <actor>Central Repository Database</actor>
+        <actor>Identity Management Module</actor>
+        <actor>DAMS Core System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Repository Manager accesses Registration Interface</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New identity successfully registered</condition>
+    </successEndConditions>
+    <trigger>User requests to register a new identity</trigger>
+    <mainSequence>
+        <step id="S1">Repository Manager accesses Registration Interface</step>
+        <step id="S2">Registration Interface requests existing identities from Central Repository Database</step>
+        <step id="S3">Central Repository Database returns a list of existing identities to Registration Interface</step>
+        <step id="S4">Registration Interface displays the list of identities to Repository Manager</step>
+        <step id="S5">Repository Manager provides new identity details</step>
+        <step id="S6">Registration Interface validates and prepares the new identity record with Identity Management Module</step>
+        <step id="S7">Identity Management Module checks for duplicate in Central Repository Database</step>
+        <step id="S8">Central Repository Database confirms duplicate check result to Identity Management Module</step>
+        <step id="S9">Identity Management Module registers the new identity with DAMS Core System if unique</step>
+        <step id="S10">DAMS Core System stores the new identity record in Central Repository Database</step>
+        <step id="S11">Central Repository Database confirms the storage and provides ID for the new record to DAMS Core System</step>
+        <step id="S12">DAMS Core System confirms new identity registration to Identity Management Module</step>
+        <step id="S13">Identity Management Module displays registration success message to Registration Interface</step>
+        <step id="S14">Registration Interface displays success message and new identity ID to Repository Manager</step>
+    </mainSequence>
+</useCase>

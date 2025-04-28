@@ -1,0 +1,18 @@
+<useCase id="UC001">
+   <name>Get Climate Data</name>
+   <actors>
+      <actor>Level 4 projections producer</actor>
+      <actor>Level 2/3/4 data producer</actor>
+      <actor>Level 2/3/4 data</actor>
+   </actors>
+   <preconditions>
+      <precondition>The Level 4 projections producer needs aggregated time series of air temperature, gridded historical weather observations, and climate model data.</precondition>
+   </preconditions>
+   <mainSequence>
+      <step id="S1">Level 4 projections producer asks the Level 2/3/4 data producer for aggregated time series of air temperature.</step>
+      <step id="S2">Level 4 projections producer asks the Level 2/3/4 data producer for gridded historical weather observations.</step>
+      <step id="S3">Level 4 projections producer asks the Level 2/3/4 data producer for climate model data.</step>
+      <step id="S4">Level 2/3/4 data producer retrieves URIs from the Level 2/3/4 data.</step>
+      <step id="S5">Level 2/3/4 data producer provides the retrieved URIs to the Level 4 projections producer.</step>
+   </mainSequence>
+</useCase>

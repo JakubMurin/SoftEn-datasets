@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Citizen Process</name>
+    <description>Process for Citizen performing various actions in different offices</description>
+    <actors>
+        <actor>Citizen</actor>
+    </actors>
+    <preconditions>
+        <precondition>Citizen has access to necessary applications</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Citizen successfully completes tasks in different offices</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Citizen encounters errors during data handling</condition>
+    </failureEndConditions>
+    <trigger>Citizen navigating to different applications</trigger>
+    <mainSequence>
+        <step id="S1"> Citizen navigates to CitizenApplication</step>
+        <step id="S2"> Citizen logs in with session on CitizenApplication</step>
+        <step id="S3"> Citizen bootstraps on CitizenStorage</step>
+        <step id="S4"> Citizen edits data on CitizenStorage</step>
+        <step id="S5"> Process on CitizenApplication finishes</step>
+        <step id="S6"> Citizen navigates to Office1Application</step>
+        <step id="S7"> Citizen logs in without session on Office1Application</step>
+        <step id="S8"> Access via Access Request and Access Grant on Office1Application</step>
+        <step id="S9"> Reads data and fills form manually on Office1Application</step>
+        <step id="S10"> Saves data from Office1Application to Office1CitizenStorage</step>
+        <step id="S11"> Message sent to the citizen's inbox from CitizenStorage</step>
+        <step id="S12"> Process on Office1Application finishes</step>
+        <step id="S13"> Citizen navigates back to CitizenApplication</step>
+        <step id="S14"> Citizen logs in with session on CitizenApplication</step>
+        <step id="S15"> Merges data from inbox to main data on CitizenStorage</step>
+        <step id="S16"> Process on CitizenApplication finishes</step>
+        <step id="S17"> Citizen navigates to Office2Application</step>
+        <step id="S18"> Citizen logs in without session on Office2Application</step>
+        <step id="S19"> Access via Access Request and Access Grant on Office2Application</step>
+        <step id="S20"> Reads data and fills form manually on Office2Application</step>
+        <step id="S21"> Reads data from reference on Citizen</step>
+        <step id="S22"> Saves data from Office2Application to Office2CitizenStorage</step>
+        <step id="S23"> Message sent to the citizen's inbox from CitizenStorage</step>
+        <step id="S24"> Process on Office2Application finishes</step>
+    </mainSequence>
+</useCase>

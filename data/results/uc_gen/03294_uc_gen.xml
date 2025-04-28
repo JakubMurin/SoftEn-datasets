@@ -1,0 +1,47 @@
+<useCase id="UC1">
+    <name>Verify Booking by OTP</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>UI/Interface</actor>
+        <actor>BookingRouter</actor>
+        <actor>BookingController</actor>
+        <actor>BookingRepository</actor>
+        <actor>BookingModel</actor>
+        <actor>OTPService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer requests to verify booking by OTP</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Customer requests to verify booking by OTP</step>
+        <step id="S2">UI receives request to verify booking by OTP</step>
+        <step id="S3">Router receives GET /bookings/{bookingId}/verify-otp</step>
+        <step id="S4">Controller verifies booking OTP</step>
+        <step id="S5">Repository gets booking details</step>
+        <step id="S6">BookingModel fetches booking by ID</step>
+        <step id="S7">DB queries booking by ID</step>
+        <step id="S8">BookingModel updates status to "verified"</step>
+        <step id="S9">DB updates booking status</step>
+        <step id="S10">Controller updates booking status to "verified"</step>
+        <step id="S11">Router responds with 200 OK (Booking verified)</step>
+        <step id="S12">UI displays success message (Booking verified)</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S10">
+            <step id="A1S1">OTPService validates OTP</step>
+            <step id="A1S2">OTPService confirms OTP valid</step>
+            <step id="A1S3">Repository updates booking status to "verified"</step>
+            <step id="A1S4">Controller updates booking status to "verified"</step>
+            <step id="A1S5">Router responds with 200 OK (Booking verified)</step>
+            <step id="A1S6">UI displays success message (Booking verified)</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S12">
+            <step id="A2S1">OTPService validates OTP</step>
+            <step id="A2S2">OTPService confirms OTP invalid</step>
+            <step id="A2S3">Controller responds with 400 Bad Request (Invalid OTP)</step>
+            <step id="A2S4">Router responds with 400 Bad Request (Invalid OTP)</step>
+            <step id="A2S5">UI displays error message (Invalid OTP)</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Детальна інсталяція платформи</name>
+    <actors>
+        <actor>Адміністратор платформи</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Адміністратор платформи запускає інсталлер</step>
+        <step id="S2">Інсталлер активує шифрування etcd</step>
+        <step id="S3">Інсталлер активує catalog-source (Redhat репозиторії)</step>
+        <step id="S4">Інсталлер встановлює storage в Ceph</step>
+        <step id="S5">Інсталлер встановлює logging</step>
+        <step id="S6">Інсталлер встановлює service-mesh</step>
+        <step id="S7">Інсталлер встановлює control-plane-nexus в Nexus</step>
+        <step id="S8">Інсталлер встановлює platform-vault</step>
+        <step id="S9">Інсталлер встановлює platform-minio</step>
+        <step id="S10">Інсталлер завантажує докер імеджі в Nexus</step>
+        <step id="S11">Інсталлер встановлює user-management в Keycloak</step>
+        <step id="S12">Інсталлер запускає control-plane-installer</step>
+        <step id="S13">Інсталлер завантажує nexus ресурси (*.xsd) в Nexus</step>
+        <step id="S14">Інсталлер створює backup-credentials</step>
+        <step id="S15">Control-plane-installer встановлює CP компоненти</step>
+        <step id="S16">CP компоненти встановлюють jenkins-operator та jenkins</step>
+        <step id="S17">CP компоненти встановлюють codebase-operator</step>
+        <step id="S18">CP компоненти встановлюють keycloak-operator</step>
+        <step id="S19">CP компоненти встановлюють gerrit-operator та gerrit</step>
+        <step id="S20">CP компоненти встановлюють codebase cluster-mgmt в gerrit</step>
+        <step id="S21">Jenkins створює gitops job для cluster-mgmt</step>
+        <step id="S22">Jenkins запускає gitops job для cluster-mgmt</step>
+        <step id="S23">Jenkins checkout helmfile в gerrit</step>
+        <step id="S24">Jenkins запускає helmfile</step>
+        <step id="S25">Jenkins встановлює інші компоненти</step>
+        <step id="S26">CP створює realm для Control Plane в Keycloak</step>
+        <step id="S27">CP інтегрує всі компоненти з keycloak</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Sign Up</name>
+    <description>User signs up with a new account</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New member successfully created</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User not found or not an admin</condition>
+        <condition>Duplicate ID exists</condition>
+    </failureEndConditions>
+    <trigger>User triggers sign up process</trigger>
+    <mainSequence>
+        <step id="S1">Admin signs up with ID, password, and name</step>
+        <step id="S2">System checks if member exists</step>
+        <step id="S3">System validates if admin</step>
+        <step id="S4">System checks for duplicate ID</step>
+        <step id="S5">System creates new member</step>
+        <step id="S6">System returns Member details</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Admin not found</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Admin not an administrator</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">Duplicate ID found</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

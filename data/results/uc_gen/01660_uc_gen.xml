@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Perform malicious POST request to poison response</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker has access to Proxy server</precondition>
+        <precondition>User interacts with Proxy server</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Attacker sends a POST request to Proxy server with payload [GET /poison]</step>
+        <step id="S2">Proxy server activates</step>
+        <step id="S3">Proxy server forwards the request to Backend server</step>
+        <step id="S4">Backend server activates</step>
+        <step id="S5">Backend server processes the POST request and responds with /foo 200</step>
+        <step id="S6">Proxy server forwards the response to Attacker</step>
+        <step id="S7">Proxy server deactivates</step>
+        <step id="S8">Backend server deactivates</step>
+        <step id="S9">Backend server receives a GET request for /poison</step>
+        <step id="S10">Backend server processes the request and responds with /poison 200</step>
+        <step id="S11">Backend server deactivates</step>
+    </mainSequence>
+</useCase>

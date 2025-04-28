@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Manage Subscriptions</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SubscriptionController</actor>
+        <actor>SubscriptionFacadeImpl</actor>
+        <actor>SubscriptionRepository</actor>
+        <actor>SubscriptionJpaPersistenceAdapter</actor>
+        <actor>SubscriptionJpaRepository</actor>
+        <actor>Datastore</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User activates Manage Subscriptions functionality</step>
+        <step id="S2">User sends request to SubscriptionController</step>
+        <step id="S3">SubscriptionController forwards the request to SubscriptionFacadeImpl</step>
+        <step id="S4">SubscriptionFacadeImpl interacts with SubscriptionRepository</step>
+        <step id="S5">SubscriptionRepository uses SubscriptionJpaPersistenceAdapter</step>
+        <step id="S6">SubscriptionJpaPersistenceAdapter accesses SubscriptionJpaRepository</step>
+        <step id="S7">SubscriptionJpaRepository stores/retrieves data in Datastore</step>
+        <step id="S8">Datastore operations complete successfully</step>
+        <step id="S9">Response sent back to User through the layers</step>
+        <step id="S10">Manage Subscriptions functionality complete</step>
+    </mainSequence>
+</useCase>

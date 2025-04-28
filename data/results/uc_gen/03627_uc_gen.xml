@@ -1,0 +1,36 @@
+<useCase id="1">
+    <name>DangXuat</name>
+    <description>Use case for user or manager logging out</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>User or Manager initiates logout process</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Successful logout message displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error message displayed</condition>
+    </failureEndConditions>
+    <trigger>User or Manager presses the "Logout" button</trigger>
+    <mainSequence>
+        <step id="S1">User or Manager presses the "Logout" button on the Main UI</step>
+        <step id="S2">Main UI requests session termination to Session Manager</step>
+        <step id="S3">Session Manager authenticates the current session</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Current session validated</step>
+            <step id="A1S2">Session Manager confirms session termination to Main UI</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Session invalid</description>
+            <step id="E1S1">Session Manager notifies Main UI of error</step>
+            <step id="E1S2">Main UI displays error message to User and Manager</step>
+        </esteps>
+    </errorSteps>
+</useCase>

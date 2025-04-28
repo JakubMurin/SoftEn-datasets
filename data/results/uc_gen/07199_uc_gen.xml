@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Change Permissions on Items</name>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator is logged into the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Permissions on selected items are successfully changed</condition>
+    </successEndConditions>
+    <trigger>User wants to change permissions on certain items</trigger>
+    <mainSequence>
+        <step id="S1">Curator selects items for permission change</step>
+        <step id="S2">User Interface validates curator's credentials with Authorization Service</step>
+        <step id="S3">Authorization Service confirms credentials are validated</step>
+        <step id="S4">User Interface requests current permissions of selected items from Item Management</step>
+        <step id="S5">Item Management queries the current permissions of selected items from Database</step>
+    </mainSequence>
+</useCase>

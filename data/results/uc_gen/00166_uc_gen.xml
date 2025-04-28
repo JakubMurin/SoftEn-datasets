@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Inibir Robot</name>
+    <actors>
+        <actor>Gestor de frota</actor>
+    </actors>
+    <preconditions>
+        <precondition>O Gestor de frota deseja inibir um robot.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">O Gestor de frota solicita a inibição de um robot.</step>
+        <step id="S2">O Container robDroneGo:robDroneGo requisita que o Gestor de frota selecione um robot.</step>
+        <step id="S3">O Gestor de frota seleciona o robot.</step>
+        <step id="S4">Se a inibição do robot for bem-sucedida:</step>
+        <step id="S5">O Container robDroneGo:robDroneGo devolve o robot inibido ao Gestor de frota.</step>
+        <step id="S6">Caso contrário, se houver falha na requisição:</step>
+        <step id="S7">O Container robDroneGo:robDroneGo devolve uma mensagem de erro ao Gestor de frota.</step>
+    </mainSequence>
+</useCase>

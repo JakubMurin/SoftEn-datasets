@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Modify Task</name>
+    <description>User should be able to modify a task</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepositoryTaches</actor>
+        <actor>ServiceAutorisation</actor>
+        <actor>MoteurTemplates</actor>
+    </actors>
+    <preconditions>
+        <precondition>Task to modify exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Task modification form displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User not authorized to modify task</condition>
+    </failureEndConditions>
+    <trigger>GET /tasks/{id}/edit</trigger>
+    <mainSequence>
+        <step id="S1">User requests to edit task</step>
+        <step id="S2">Controller finds task by ID</step>
+        <step id="S3">Repository returns task</step>
+        <step id="S4">Controller checks if task belongs to user</step>
+        <step id="S5">Authorization service verifies ownership of task</step>
+        <step id="S6">Authorization service confirms ownership</step>
+        <step id="S7">Template engine displays task edit form</step>
+        <step id="S8">Template engine returns edit form</step>
+        <step id="S9">Controller displays edit form to user</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Controller redirects user to error page for not owning task</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

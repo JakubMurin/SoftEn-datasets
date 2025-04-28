@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Get Keychain Entry Endpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User A initiates transaction to get keychain entry through API Client.</step>
+        <step id="S2">API Client sends a request to API Server.</step>
+        <step id="S3">API Server forwards the request to AWS SM Connector to retrieve the key and value.</step>
+        <step id="S4">AWS SM Connector gets the AWS client.</step>
+        <step id="S5">AWS SM Connector attempts to get the secret value from AWS SecretsManager.</step>
+        <step id="S6">If successful, AWS SM Connector responds with the retrieved value to API Server.</step>
+        <step id="S7">API Server sends the formatted response back to API Client.</step>
+        <step id="S8">API Client provides the GetKeychainEntryResponse to User A.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>AWS SM Connector catches an exception.</description>
+            <step id="E1S1">AWS SM Connector reports an error: Invalid response received from AWS SecretsManager. Expected "response.SecretString" property chain to be truthy.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Coffee Making Process</name>
+    <description>This use case involves the process of making a coffee with specific ingredients and stirring strategy.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>CoffeeFactory</actor>
+        <actor>CoffeeHandlerBase</actor>
+        <actor>Coffee</actor>
+        <actor>Milk</actor>
+        <actor>Chocolate</actor>
+        <actor>Cinnamon</actor>
+        <actor>Sweetener</actor>
+        <actor>StirringStrategyFactory</actor>
+        <actor>StirringStrategy</actor>
+        <actor>CoffeeRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="M1">User requests a coffee with specific coffee type and sweeteners.</step>
+        <step id="M2">CoffeeFactory creates a CoffeeRequest with the requested details.</step>
+        <step id="M3">CoffeeFactory returns the CoffeeRequest to make_coffee.</step>
+        <step id="M4">make_coffee sets the next ingredient to Milk.</step>
+        <step id="M5">Milk sets the next ingredient to Chocolate.</step>
+        <step id="M6">Chocolate sets the next ingredient to Cinnamon.</step>
+        <step id="M7">Cinnamon sets the next ingredient to Sweetener.</step>
+        <step id="M8">Sweetener sets the next ingredient to null to indicate completion.</step>
+        <step id="M9">make_coffee handles the CoffeeRequest.</step>
+        <step id="M10">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="M11">Milk handles the CoffeeRequest.</step>
+        <step id="M12">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="M13">Chocolate handles the CoffeeRequest.</step>
+        <step id="M14">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="M15">Cinnamon handles the CoffeeRequest.</step>
+        <step id="M16">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="M17">Sweetener handles the CoffeeRequest.</step>
+        <step id="M18">StirringStrategyFactory creates a StirringStrategy based on sweetener type.</step>
+        <step id="M19">StirringStrategy stirs the ingredients based on the strategy.</step>
+    </mainSequence>
+</useCase>

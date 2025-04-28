@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>User Moves Map and Calculates Points</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+        <actor>Split Queue</actor>
+        <actor>Split Map</actor>
+        <actor>Points</actor>
+        <actor>Calculate</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has initiated map movement.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Points in the area are updated.</condition>
+    </successEndConditions>
+    <trigger>User moves the map.</trigger>
+    <mainSequence>
+        <step id="S1">Frontend initiates map movement.</step>
+        <step id="S2">Frontend calculates the area.</step>
+        <step id="S3">Frontend adds the area to the queue.</step>
+        <step id="S4">Backend retrieves the depth in the area.</step>
+        <step id="S5">Backend requests points in the depth.</step>
+        <step id="S6">Points in the area are obtained.</step>
+        <step id="S7">Split Map and Split Queue exchange information.</step>
+        <step id="S8">Backend gets undefined points from Points database.</step>
+        <step id="S9">Backend calculates points.</step>
+        <step id="S10">Points are updated.</step>
+        <step id="S11">Points with undefined depth are inserted.</step>
+        <step id="S12">Backend creates overlay with current points.</step>
+        <step id="S13">Frontend shows the overlay to the User.</step>
+    </mainSequence>
+</useCase>

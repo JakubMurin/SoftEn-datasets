@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Manage Game State</name>
+    <description>Allows the user to manage the game state</description>
+    <actors>
+        <actor>Game</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Game initiates instantiation by calling the constructor of ExtendedVM</step>
+        <step id="S2">ExtendedVM calls the base constructor of BaseVM</step>
+        <step id="S3">ViewModelComponent initializes all mixins associated with this VM</step>
+        <step id="S4">Game destroys the VM instance</step>
+        <step id="S5">ExtendedVM triggers the base destructor of BaseVM</step>
+        <step id="S6">ViewModelComponent destructs all mixins associated with this VM</step>
+        <step id="S7">Game triggers OnFinalize method</step>
+        <step id="S8">ExtendedVM invokes the original OnFinalize method of BaseVM</step>
+        <step id="S9">ViewModelComponent finalizes all mixins associated with this VM</step>
+        <step id="S10">Game accesses methods and getters/setters of ExtendedVM</step>
+        <step id="S11">ExtendedVM accesses properties through BaseVM</step>
+        <step id="S12">ExtendedVM accesses properties through MixinInstanceForVMInstance</step>
+        <step id="S13">Mixin accesses properties and sends response to ExtendedVM</step>
+    </mainSequence>
+</useCase>

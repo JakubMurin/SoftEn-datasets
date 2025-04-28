@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Search Content</name>
+    <description>User searches for content using a single string.</description>
+    <actors>
+        <actor>User Agent</actor>
+    </actors>
+    <preconditions>
+        <precondition>User Agent is authenticated and authorized to search content.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Search results are successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>Search request containing a single string is sent to the API.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a search request to the Search Content API.</step>
+        <step id="S2">Search Content API receives the request and runs a search query on the Content database.</step>
+        <step id="S3">Content database returns the search results to the Search Content API.</step>
+        <step id="S4">Search Content API sends the HTTP 200 OK response with structured search results to the User Agent.</step>
+    </mainSequence>
+</useCase>

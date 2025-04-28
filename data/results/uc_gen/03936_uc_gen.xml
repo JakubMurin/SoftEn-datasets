@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Create Operation Request</name>
+    <description>User navigates to the Create Operation Request page, fills in the necessary information, and submits the form to create a new operation request.</description>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Doctor is authenticated and has appropriate role permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation request is successfully created and returned to the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during the operation request creation process.</condition>
+    </failureEndConditions>
+    <trigger>User navigates to the Create Operation Request page.</trigger>
+    <mainSequence>
+        <step id="S1">Doctor navigates to Create Operation Request page.</step>
+        <step id="S2">Doctor fills in patient ID, doctor ID, operation type ID, deadline, and priority.</step>
+        <step id="S3">Doctor submits the form.</step>
+        <step id="S4">UI handles form submission.</step>
+        <step id="S5">UI creates operation request using the entered data.</step>
+        <step id="S6">ORS retrieves authentication token.</step>
+        <step id="S7">ORS verifies doctor role permissions with the token.</step>
+        <step id="S8">API sends a POST request to create the operation request.</step>
+        <step id="S9">API returns OperationRequestDto to ORS.</step>
+        <step id="S10">ORS returns the created operation request to UI.</step>
+        <step id="S11">UI displays success message and clears the form.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Error occurs during operation request creation.</description>
+            <step id="E1S1">ORS throws an error.</step>
+            <step id="E1S2">UI sets error message and displays it to the user.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

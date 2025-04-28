@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Registering a Fault</name>
+    <description>Registering a new fault in the system</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault is successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during fault registration</condition>
+    </failureEndConditions>
+    <trigger>User wants to register a new fault</trigger>
+    <mainSequence>
+        <step id="S1">User accesses fault registration page</step>
+        <step id="S2">User fills in fault details</step>
+        <step id="S3">User submits fault details</step>
+        <step id="S4">System validates fault details</step>
+        <step id="S5">System creates fault instance</step>
+        <step id="S6">System checks if user exists</step>
+        <step id="S7">System registers fault</step>
+        <step id="S8">System notifies user of successful registration</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S6">
+            <step id="A1S1">Incomplete fields detected</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>User does not exist</description>
+            <step id="E1S1">Redirect to error page</step>
+        </esteps>
+    </errorSteps>
+</useCase>

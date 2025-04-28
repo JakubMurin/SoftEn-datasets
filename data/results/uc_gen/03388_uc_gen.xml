@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>ギルド登録</name>
+    <description>ゲストがメール内リンクをクリックしてギルドを登録する</description>
+    <actors>
+        <actor>ゲスト</actor>
+        <actor>メール内リンク</actor>
+        <actor>ギルド登録画面</actor>
+        <actor>ギルド登録依頼画面</actor>
+        <actor>ギルドAPI/取得byトークン</actor>
+        <actor>guest_token</actor>
+        <actor>guild</actor>
+    </actors>
+    <preconditions>
+        <precondition>ゲストが有効なトークンを持つ</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>ギルド登録が完了する</condition>
+    </successEndConditions>
+    <trigger>ゲストがメール内リンクをクリック</trigger>
+    <mainSequence>
+        <step id="S1">ゲストがメール内リンクをクリック</step>
+        <step id="S2">メール内リンクからトークンを取得</step>
+        <step id="S3">ギルド登録依頼トークンをチェック</step>
+        <step id="S4">既存トークンを取得</step>
+        <step id="S5">仮登録済みギルドを取得</step>
+        <step id="S6">ギルド名を取得</step>
+        <step id="S7">ギルドID、ギルド名、メールアドレスを表示</step>
+    </mainSequence>
+</useCase>

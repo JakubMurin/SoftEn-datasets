@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Chef Workstation App - Telemetry Service</name>
+    <actors>
+        <actor>Human</actor>
+        <actor>CLI Tool</actor>
+        <actor>CWA</actor>
+        <actor>telemetry.chef.io</actor>
+    </actors>
+    <preconditions>
+        <precondition>Human executes CLI Tool</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>CWA prepares envelope</condition>
+        <condition>telemetry.chef.io responds with HTTP response</condition>
+    </successEndConditions>
+    <trigger>POST /telemetry</trigger>
+    <mainSequence>
+        <step id="S1">Human executes CLI Tool</step>
+        <step id="S2">CLI Tool sends POST request to CWA</step>
+        <step id="S3">CWA receives HTTP response 201 from CLI Tool</step>
+        <step id="S4">CWA prepares envelope</step>
+        <step id="S5">CWA sends POST payload to telemetry.chef.io</step>
+        <step id="S6">telemetry.chef.io responds to CWA with HTTP response</step>
+    </mainSequence>
+</useCase>

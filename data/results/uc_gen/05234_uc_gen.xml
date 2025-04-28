@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>TopHat Creation and Distribution</name>
+    <actors>
+        <actor>address1</actor>
+        <actor>address2</actor>
+        <actor>address3</actor>
+    </actors>
+    <preconditions>
+        <precondition>TimeFrameHatModule and HatsModuleFactory are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All hats and tokens are successfully distributed</condition>
+    </successEndConditions>
+    <trigger>address1 initiates the creation and distribution process</trigger>
+    <mainSequence>
+        <step id="S1">Create TopHat in Hats</step>
+        <step id="S2">Create TimeFrameHatModule in HatsModuleFactory and deploy it</step>
+        <step id="S3">Create Hatter Hat in Hats</step>
+        <step id="S4">Mint Hatter Hat in TimeFrameHatModule</step>
+        <step id="S5">Create Role Hat 1 under Hatter Hat</step>
+        <step id="S6">Create Role Hat 2 under Hatter Hat</step>
+        <step id="S7">Mint Role Hat 1 to address1 in TimeFrameHatModule</step>
+        <step id="S8">Mint Role Hat 2 to address2 in TimeFrameHatModule</step>
+        <step id="S9">Mint FractionToken with initial value to address1 (token ID linked to Role Hat 1)</step>
+        <step id="S10">Mint FractionToken with initial value to address2 (token ID linked to Role Hat 2)</step>
+        <step id="S11">Transfer a portion of FractionToken from address2 to address3 (linked to Role Hat 2)</step>
+        <step id="S12">Create Split and request FractionToken balance information</step>
+        <step id="S13">Create PullSplits contract based on distribution information</step>
+        <step id="S14">Transfer ETH or ERC20 to PullSplit</step>
+        <step id="S15">Specify distribution information and distribute through PullSplit</step>
+        <step id="S16">Withdraw from SplitsWarehouse for address1</step>
+        <step id="S17">Withdraw from SplitsWarehouse for address2</step>
+        <step id="S18">Withdraw from SplitsWarehouse for address3</step>
+    </mainSequence>
+</useCase>

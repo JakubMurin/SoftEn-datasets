@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Member Books a Book</name>
+    <description>Allows a member to book a book through the web interface.</description>
+    <actors>
+        <actor>Member</actor>
+        <actor>Web Interface</actor>
+        <actor>Authentication System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Member must be logged in and have available book options.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Member successfully reserves a book.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Member cannot reserve a book due to system error or unavailability.</condition>
+    </failureEndConditions>
+    <trigger>Member initiates the book reservation process.</trigger>
+    <mainSequence>
+        <step id="S1">Member navigates to the Reserve Book page via web interface.</step>
+        <step id="S2">Web Interface displays the search interface for the member.</step>
+        <step id="S3">Member inputs search parameters to find desired book(s).</step>
+        <step id="S4">Reservation System queries the database for books matching search parameters.</step>
+        <step id="S5">Database returns a list of available books based on the search.</step>
+        <step id="S6">Reservation System displays the available books to the member.</step>
+        <step id="S7">Member chooses a book to reserve through the web interface.</step>
+        <step id="S8">Selected book reservation request is processed by the Reservation System.</step>
+        <step id="S9">Database updates reservation status upon successful booking.</step>
+        <step id="S10">Reservation System confirms successful reservation to the member.</step>
+        <step id="S11">Member receives a success message with a confirmation of the booking.</step>
+    </mainSequence>
+</useCase>

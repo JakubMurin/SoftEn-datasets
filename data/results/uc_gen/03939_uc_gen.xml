@@ -1,0 +1,30 @@
+<useCase id="001">
+    <name>Create Operation Request</name>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Doctor navigates to the Create Operation Request page.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">The Doctor navigates to the Create Operation Request page by interacting with the UI.</step>
+        <step id="S2">The Doctor fills in the operation request information, including Patient ID, Doctor ID, Operation Type ID, Deadline, and Priority on the UI.</step>
+        <step id="S3">The Doctor submits the form.</step>
+        <step id="S4">The UI handles the form submission by invoking handleSubmit() method.</step>
+        <step id="S5">The UI calls the Operation Request Service to create the operation request with the provided data.</step>
+        <step id="S6">The Operation Request Service gets an authentication token.</step>
+        <step id="S7">The Operation Request Service checks the Doctor's role based on the token.</step>
+        <step id="S8">The Operation Request Service sends a POST request to the Backend API to create the operation request.</step>
+        <step id="S9">The Backend API receives the request and processes the operation data, then returns an Operation Request DTO.</step>
+        <step id="S10">The UI receives the successful response and displays a success message.</step>
+        <step id="S11">The UI clears the form fields after a successful operation request submission.</step>
+        <step id="S12">The UI shows the success message to the Doctor.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S11" continue="S10">
+            <step id="A1S1">In case of an error, the Operation Request Service throws an error response.</step>
+            <step id="A1S2">The UI receives and displays an error message.</step>
+            <step id="A1S3">The UI notifies the Doctor about the error with an error message.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC-1">
+    <name>Toggle LED</name>
+    <description>Control the LED to turn on or off.</description>
+    <actors>
+        <actor>Led</actor>
+        <actor>Arduino</actor>
+        <actor>Main</actor>
+        <actor>Cfsm</actor>
+        <actor>OnState</actor>
+        <actor>OffState</actor>
+    </actors>
+    <preconditions>
+        <precondition>Arduino is set up correctly.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>LED turned on/off successfully.</condition>
+    </successEndConditions>
+    <trigger>User input signals turning LED on or off.</trigger>
+    <mainSequence>
+        <step id="S1">Initialize the Finite State Machine's context.</step>
+        <step id="S2">Transit to the OnState of the LED state machine.</step>
+        <step id="S3">The OnState turns on the LED.</step>
+    </mainSequence> 
+</useCase>

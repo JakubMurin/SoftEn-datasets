@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Map Items to Target Collection</name>
+    <description>Curator selects item(s) for mapping and confirms the mapping process.</description>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Interface</actor>
+        <actor>Mapping Controller</actor>
+        <actor>Collections Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator is logged in and has access to the mapping feature.</precondition>
+        <precondition>Items and target collection are selected for mapping.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Items successfully mapped to the target collection.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid items or collections selected for mapping.</condition>
+    </failureEndConditions>
+    <trigger>Curator initiates the mapping process from the UI.</trigger>
+    <mainSequence>
+        <step id="S1">Curator selects item(s) for mapping.</step>
+        <step id="S2">UI initiates mapping request (itemIDs, sourceCollection, targetCollection) to Mapping Controller.</step>
+        <step id="S3">Mapping Controller validates itemIDs and collections with Collections Database.</step>
+        <step id="S4">Collections Database responds with validation result.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Mapping Controller maps item(s) to the target collection.</step>
+            <step id="A1S2">Mapping confirmation is sent to UI from Collections Database.</step>
+            <step id="A1S3">Mapping success message is displayed on UI by Mapping Controller.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Invalid items or collections selected for mapping.</description>
+            <step id="E1S1">Error message (Invalid items/collections) is displayed on UI by Mapping Controller.</step>
+            <step id="E1S2">Curator reviews and retries the mapping process.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

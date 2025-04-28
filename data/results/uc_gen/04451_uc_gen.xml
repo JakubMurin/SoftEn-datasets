@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Perform Message Exchange</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Source</actor>
+        <actor>Target</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both Source and Target actors are active</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message exchange is successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Message exchange is not successfully completed</condition>
+    </failureEndConditions>
+    <trigger>User initiates a message exchange</trigger>
+    <mainSequence>
+        <step id="S1">User links to Source</step>
+        <step id="S2">Source offers message 1 to Target</step>
+        <step id="S3">Target accepts message 1</step>
+        <step id="S4">Source offers message 2 to Target</step>
+        <step id="S5">Target postpones message 2</step>
+        <step id="S6">Target consumes message 2</step>
+        <step id="S7">Source completes the message exchange</step>
+    </mainSequence>
+</useCase>

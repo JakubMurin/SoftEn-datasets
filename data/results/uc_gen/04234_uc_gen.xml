@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Compose Message</name>
+    <actors>
+        <actor>Authenticated User</actor>
+        <actor>New Message UI</actor>
+        <actor>ReST Interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to the message composition feature.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message is successfully composed and sent.</condition>
+    </successEndConditions>
+    <trigger>User initiates the message composition process.</trigger>
+    <mainSequence>
+        <step id="S1">User writes a new draft with or without participants.</step>
+        <step id="S2">User throttles save.</step>
+        <step id="S3">New Message UI sends a POST request to ReST Interface to create the message.</step>
+        <step id="S4">ReST Interface acknowledges the creation with status 204.</step>
+        <step id="S5">New Message UI sends a GET request to ReST Interface to retrieve the message.</step>
+        <step id="S6">ReST Interface responds with status 200 and the message details.</step>
+        <step id="S7">New Message UI renders the discussion.</step>
+        <step id="S8">New Message UI notifies the user.</step>
+    </mainSequence>
+</useCase>

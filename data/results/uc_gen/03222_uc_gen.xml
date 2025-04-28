@@ -1,0 +1,46 @@
+<useCase id="UC1">
+    <name>Delete Account</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>AuthService</actor>
+        <actor>AuthInterceptor</actor>
+        <actor>LocalStorage</actor>
+        <actor>HttpClient</actor>
+        <actor>Controller</actor>
+        <actor>IUserAppService</actor>
+        <actor>UserAppService</actor>
+        <actor>UserManager</actor>
+        <actor>Database</actor>
+        <actor>MessageService</actor>
+        <actor>LoginComponent</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks delete account</step>
+        <step id="S2">Frontend activates</step>
+        <step id="S3">Frontend calls AuthService to get user information</step>
+        <step id="S4">AuthService retrieves user data</step>
+        <step id="S5">Frontend calls AuthService to delete account</step>
+        <step id="S6">AuthInterceptor prepares HTTP DELETE request</step>
+        <step id="S7">AuthInterceptor forwards request with Authorization header</step>
+        <step id="S8">HttpClient processes request</step>
+        <step id="S9">Controller deletes account</step>
+        <step id="S10">IUserAppService deletes account</step>
+        <step id="S11">UserAppService deletes account</step>
+        <step id="S12">UserManager finds user by email</step>
+        <step id="S13">UserManager deletes user if found</step>
+        <step id="S14">UserManager reports deletion result</step>
+        <step id="S15">UserAppService reports deletion result</step>
+        <step id="S16">IUserAppService reports deletion result</step>
+        <step id="S17">HttpClient receives response or error</step>
+        <step id="S18">AuthService adds success message</step>
+        <step id="S19">MessageService displays success message</step>
+        <step id="S20">AuthService logs out and clears data</step>
+        <step id="S21">LoginComponent redirects to login</step>
+        <step id="S22">AuthService adds error message</step>
+        <step id="S23">MessageService displays error message</step>
+    </mainSequence>
+</useCase>

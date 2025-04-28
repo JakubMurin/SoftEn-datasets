@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Delete Financial Goal</name>
+    <actors>
+        <actor>Logged-in User</actor>
+        <actor>:GUI Financial Account Details View</actor>
+        <actor>:Server</actor>
+        <actor>:Database</actor>
+    </actors>
+    <trigger>Under "financial goal", user clicks on garbage bin (visible only to owner)</trigger>
+    <mainSequence>
+        <step id="S1">User enters amount</step>
+        <step id="S2">GUI sends delete request for financial-goal-id to Server</step>
+        <step id="S3">Server sends delete request for financial-goal-id to Database</step>
+        <step id="S4">Database deletes financial-goal-id and returns updated financial account data to Server</step>
+        <step id="S5">Server returns updated financial account data to GUI</step>
+        <step id="S6">GUI displays updated financial account details</step>
+    </mainSequence>
+</useCase>

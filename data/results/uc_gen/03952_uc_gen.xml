@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Retrieve Account Search Preferences</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <preconditions>
+        <precondition>Zarządca wybrał listę kont oczekujących</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Nawigator wysyła żądanie pobrania preferencji wyszukiwania dla konta</step>
+        <step id="S2">AccountController przekazuje żądanie do AccountEndpoint - getAccountSearchPreferences</step>
+        <step id="S3">AccountService pobiera preferencje wyszukiwania dla konta</step>
+        <step id="S4">AccountFacade wyszukuje konto na podstawie loginu</step>
+        <step id="S5">AccountService uzyskuje informacje o zakonczeniu wyszukiwania konta</step>
+        <step id="S6">AccountService pobiera preferencje szukania dla konta</step>
+        <step id="S7">ListSearchPreferencesFacade wyszukuje preferencje dla konta</step>
+        <step id="S8">AccountService zakończa pobieranie preferencji szukania dla konta</step>
+        <step id="S9">Konto nie zostanie znalezione</step>
+        <step id="S10"> Preferencje dla konta nie zostaną znalezione</step>
+        <step id="S11"> Preferencje dla konta zostaną znalezione</step>
+        <step id="S12">Lista niezatwierdzonych kont będzie wyszukiwana</step>
+        <step id="S13"> Preferencje dla konta zostają pobrane</step>
+        <step id="S14"> AccountFacade znajduje niezatwierdzone konta</step>
+        <step id="S15"> Lista kont zostana następnie zwrócona</step>
+    </mainSequence>
+</useCase>

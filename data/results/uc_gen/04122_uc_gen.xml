@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>Running Reflective Learning System</name>
+    <description>As a User, I want to run the Reflective Learning System to interact with tools, save memories, and trigger reflection and refinement phases.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflectionAndRefinementAgent</actor>
+        <actor>LLM</actor>
+        <actor>ReflectionLLM</actor>
+        <actor>RefinementLLM</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <preconditions>
+        <precondition>All necessary components of the Reflective Learning System (agents, memory, tools) are properly initialized.</precondition>
+        <precondition>User wants to interact with the Reflective Learning System.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The final result of running the system is delivered to the User.</condition>
+    </successEndConditions>
+    <trigger>User runs the Reflective Learning System by providing input text.</trigger>
+    <mainSequence>
+        <step id="S1">User runs the system by providing input text.</step>
+        <step id="S2">ReflectiveAndRefinementAgent retrieves relevant memories based on the input text.</step>
+        <step id="S3">Agent interacts with LLM to get a response.</step>
+        <step id="S4">Agent decides to use a tool, Registry executes the tool, and relevant observations are made and saved in memory.</step>
+        <step id="S5">In case agent decides not to use a tool, the interactions are saved in episodic memory.</step>
+        <step id="S6">If the reflection phase is triggered, ReflectionLLM triggers reflection and RefinementLLM triggers refinement, and the results are saved in semantic and procedural memories.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Agent decides not to use a tool, interactions are saved in episodic memory.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>During the reflection and refinement phases, an error occurred.</description>
+            <step id="E1S1">Error occurred during reflection or refinement phase.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

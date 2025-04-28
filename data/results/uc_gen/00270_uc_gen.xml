@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Agent Recovery and Policy Registry Update</name>
+    <description>Alice performs agent recovery and updates the agent policy registry.</description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to use for control over her agent policy registry on the ledger.</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice generates policy registry address and stores it.</step>
+        <step id="S2">Alice revokes all claims that include the old agent policy address.</step>
+        <step id="S3">Alice petitions the Issuers to reissue her claims.</step>
+        <step id="S4">Issuer authenticates Alice.</step>
+        <step id="S5">Issuer revokes the claim and updates the non-revocation accumulator.</step>
+        <step id="S6">Ledger updates the accumulator and forwards the result.</step>
+        <step id="S7">Alice completes the Issue Claim diagram for each claim with the new policy address.</step>
+    </mainSequence>
+</useCase>

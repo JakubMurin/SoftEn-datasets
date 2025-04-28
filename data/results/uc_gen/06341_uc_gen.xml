@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Continuous Integration Process</name>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Existing Github repository linked to Buildkite</precondition>
+    </preconditions>
+    <trigger>Bob pushes a commit to the master branch of the repository</trigger>
+    <mainSequence>
+        <step id="S1">Webhook triggers the "Awesome pipeline"</step>
+        <step id="S2">Pipeline performs build process</step>
+        <step id="S3">"Sync pipeline" is triggered</step>
+        <step id="S4">Build information read and integration configuration created</step>
+        <step id="S5">Sync command executed by CI Integration tool</step>
+        <step id="S6">New build data added to Firestore</step>
+        <step id="S7">Sync command finishes execution</step>
+        <step id="S8">Build data export completed</step>
+    </mainSequence>
+</useCase>

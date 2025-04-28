@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Selects "Monthly Popular Dishes" report</name>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Most frequently ordered food report displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No data available message displayed</condition>
+    </failureEndConditions>
+    <trigger>User selects "Monthly Popular Dishes" report</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Monthly Popular Dishes" report</step>
+        <step id="S2">UI Dashboard requests most frequently ordered food of the month</step>
+        <step id="S3">Backend Server processes data to find most frequently ordered dishes</step>
+        <step id="S4">UI Dashboard displays most frequently ordered food report</step>
+    </mainSequence>
+</useCase>

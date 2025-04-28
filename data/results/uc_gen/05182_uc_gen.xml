@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Create Building</name>
+    <actors>
+        <actor>GestorCampus</actor>
+        <actor>SistemaRobDroneGo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">GestorCampus creates a new building</step>
+        <step id="S2">SistemaRobDroneGo requests building details</step>
+        <step id="S3">GestorCampus sends building details</step>
+        <step id="S4">SistemaRobDroneGo sends success message to GestorCampus</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">SistemaRobDroneGo sends error message to GestorCampus</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,40 @@
+<useCase id="1">
+    <name>Creating Payments in Adapter</name>
+    <actors>
+        <actor>User</actor>
+        <actor>MUKTA_ADAPTER</actor>
+        <actor>PROGRAM_SERVICE</actor>
+        <actor>Expense_Service</actor>
+        <actor>MDMS</actor>
+        <actor>ORG_SERVICE</actor>
+        <actor>IND_SERVICE</actor>
+        <actor>BANK_ACC_SERVICE</actor>
+        <actor>KAFKA</actor>
+        <actor>SCHEDULER</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">SCHEDULER calls Payment Create Scheduler</step>
+        <step id="S2">Request for tenants from MDMS</step>
+        <step id="S3">MDMS provides tenants list</step>
+        <step id="S4">Search non-created bills with Expense_Service</step>
+        <step id="S5">Get list of bills from Expense_Service</step>
+        <step id="S6">Process bills and generate payments with MUKTA_ADAPTER</step>
+        <step id="S7">Create payments with Expense_Service</step>
+        <step id="S8">Return payment response from Expense_Service</step>
+        <step id="S9">Push payment details to create topic with KAFKA</step>
+        <step id="S10">Listen payment create topic in MUKTA_ADAPTER</step>
+        <step id="S11">Process payment in MUKTA_ADAPTER</step>
+        <step id="S12">Fetch bills details with Expense_Service</step>
+        <step id="S13">Return bill details from Expense_Service to MUKTA_ADAPTER</step>
+        <step id="S14">Process Bill for each bill lineitem</step>
+        <step id="S15">Fetch organisation details with ORG_SERVICE</step>
+        <step id="S16">Return organisation details from ORG_SERVICE</step>
+        <step id="S17">Fetch individual details with IND_SERVICE</step>
+        <step id="S18">Return individual details from IND_SERVICE</step>
+        <step id="S19">Fetch bank account details with BANK_ACC_SERVICE</step>
+        <step id="S20">Return bank account details from BANK_ACC_SERVICE</step>
+        <step id="S21">Create disburse request in MUKTA_ADAPTER</step>
+        <step id="S22">For each beneficiary, generate disbursement request</step>
+        <step id="S23">Program will create disbuse and provide ACK</step>
+    </mainSequence>
+</useCase>

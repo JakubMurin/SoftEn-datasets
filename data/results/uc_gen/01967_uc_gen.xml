@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Delete Holiday</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>delete</actor>
+        <actor>confirmDeleteHol</actor>
+        <actor>holiday.routes.js</actor>
+        <actor>holiday.controller.js</actor>
+        <actor>holiday.model</actor>
+        <actor>sql</actor>
+    </actors>
+    <preconditions>
+        <precondition>Logged in user wants to delete a holiday record.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Holiday record successfully deleted from the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to delete the holiday record from the database.</condition>
+    </failureEndConditions>
+    <trigger>User triggers the deletion of a holiday record.</trigger>
+    <mainSequence>
+        <step id="S1">User selects a holiday record to delete.</step>
+        <step id="S2">User confirms the deletion.</step>
+        <step id="S3">System sends a DELETE request to /nuclea/holiday/delete/idDiaFeriado.</step>
+        <step id="S4">Holiday routes handle the DELETE request and call the holiday controller to delete the record.</step>
+        <step id="S5">Holiday controller calls the holiday model to delete the record.</step>
+        <step id="S6">Holiday model executes the SQL query to delete the record from the database.</step>
+        <step id="S7">SQL query executes successfully.</step>
+        <step id="S8">Holiday model returns a promise to the holiday controller.</step>
+        <step id="S9">Holiday controller returns a JSON response.</step>
+        <step id="S10">ConfirmDeleteHol formats the data received into HTML.</step>
+    </mainSequence>
+</useCase>

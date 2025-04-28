@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Retrieve Average Lending Duration per Book</name>
+    <description>As a Librarian, I want to retrieve the average lending duration per book.</description>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian has access to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The average lending duration per book is successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>GET /api/lendings/average-per-book</trigger>
+    <mainSequence>
+        <step id="S1">The Librarian sends a request to retrieve the average lending duration per book.</step>
+        <step id="S2">The LendingController receives the request to retrieve the average lending duration per book.</step>
+        <step id="S3">The LendingController calls LendingService's getAverageLendingDurationPerBook method.</step>
+        <step id="S4">The LendingService starts to retrieve the average lending duration per book.</step>
+        <step id="S5">The LendingRepository is queried to find the average lending duration per book.</step>
+        <step id="S6">The LendingRepository returns a list of results to the LendingService.</step>
+        <step id="S7">The LendingAvgPerBookViewMapper maps the results to LendingAvgPerBookView.</step>
+        <step id="S8">The LendingAvgPerBookViewMapper returns an iterable of LendingAvgPerBookView to the LendingService.</step>
+        <step id="S9">The LendingService returns the iterable of LendingAvgPerBookView to the LendingController.</step>
+        <step id="S10">The LendingController sends an HTTP 200 OK response with the iterable of LendingAvgPerBookView to the Librarian.</step>
+    </mainSequence>
+</useCase>

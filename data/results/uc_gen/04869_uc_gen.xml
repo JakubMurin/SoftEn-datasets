@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Sync Pipeline Integration</name>
+    <description>Integrating build data synchronization pipeline with CI tool</description>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob pushes a commit to master branch in the Github repository</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Build data successfully synchronized and exported to Firestore</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Build data synchronization fails or export to Firestore fails</condition>
+    </failureEndConditions>
+    <trigger>Webhook triggers the sync pipeline</trigger>
+    <mainSequence>
+        <step id="S1">Repository receives commit from Bob</step>
+        <step id="S2">Repository triggers the Awesome pipeline</step>
+        <step id="S3">Awesome pipeline performs the build</step>
+        <step id="S4">Awesome pipeline triggers the Sync pipeline</step>
+        <step id="S5">Sync pipeline creates integration_config.yml</step>
+        <step id="S6">Sync pipeline runs the sync command</step>
+        <step id="S7">CI Integration tool adds new build data to Firestore</step>
+        <step id="S8">Sync command finishes</step>
+        <step id="S9">Build data export finishes and is sent to Bob</step>
+    </mainSequence>
+</useCase>

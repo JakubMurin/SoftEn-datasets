@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Manage Storage Expansion</name>
+    <description>A use case to manage the storage expansion based on data volume estimates and current capacity assessment.</description>
+    <actors>
+        <actor>Archive Manager</actor>
+        <actor>DMPTool</actor>
+        <actor>Repository API</actor>
+        <actor>Data Manager</actor>
+        <actor>IT System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The DMPTool has requested data volume information from the Archive Manager.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The storage infrastructure plan has been confirmed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The storage planning completion confirmation was unsuccessful.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">The Archive Manager requests data volume information from the DMPTool.</step>
+        <step id="S2">The DMPTool queries planned data submissions from the Repository API.</step>
+        <step id="S3">The Repository API returns data submission estimates to the DMPTool.</step>
+        <step id="S4">The DMPTool requests the current storage capacity from the IT System.</step>
+        <step id="S5">The IT System returns current storage capacity details to the DMPTool.</step>
+        <step id="S6">The DMPTool requests additional data preservation details from the Data Manager.</step>
+        <step id="S7">The Data Manager provides data format, size, and period information to the DMPTool.</step>
+        <step id="S8">The DMPTool shows a comprehensive storage needs analysis to the Archive Manager.</step>
+        <step id="S9">The Archive Manager plans for storage expansion with the IT System.</step>
+        <step id="S10">The IT System confirms the storage infrastructure plan to the Archive Manager.</step>
+        <step id="S11">The Archive Manager confirms completion of the storage planning to the DMPTool.</step>
+    </mainSequence>
+</useCase>

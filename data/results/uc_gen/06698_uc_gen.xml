@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>HasKeychainEntryEndpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User A initiates transaction by calling Tx HasKeychainEntryV1.</step>
+        <step id="S2">API Client sends a request to API Server.</step>
+        <step id="S3">API Server sets the key and value in AWS Secrets Manager.</step>
+        <step id="S4">AWS Secrets Manager retrieves the AWS client.</step>
+        <step id="S5">AWS Secrets Manager describes the secret.</step>
+        <step id="S6">If successful, AWS Secrets Manager responds with True.</step>
+        <step id="S7">API Server responds with the formatted response.</step>
+        <step id="S8">API Client sets the keychain entry response.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>AWS Secrets Manager catches an exception.</description>
+            <step id="E1S1">AWS Secrets Manager reports an error: Secrets Manager can't find the specified secret.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

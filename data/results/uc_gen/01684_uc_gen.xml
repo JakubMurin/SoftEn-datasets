@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Register Chequing Account</name>
+    <description>Ayeesha wants to register her chequing account from DFSP A using the PISP App</description>
+    <actors>
+        <actor>Ayeesha</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ayeesha has installed the PISP App</precondition>
+        <precondition>Ayeesha has a chequing account with DFSP A</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Chequing account successfully linked with PISP App</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during account linking process</condition>
+    </failureEndConditions>
+    <trigger>User initiates the registration of the chequing account</trigger>
+    <mainSequence>
+        <step id="S1">Ayeesha requests to register her chequing account from DFSP A using the PISP App</step>
+        <step id="S2">DFSP A generates a random UUID and saves it internally</step>
+        <step id="S3">DFSP A provides the random UUID to PISP for account linking</step>
+        <step id="S4">PISP internally associates Ayeesha's chequing account with the provided UUID</step>
+        <step id="S5">DFSP A sends a request to the Switch for account association</step>
+        <step id="S6">Switch acknowledges the creation of the association</step>
+        <step id="S7">Switch informs ALS to create a new key/value pair for the association</step>
+        <step id="S8">ALS confirms the creation of the key/value pair</step>
+        <step id="S9">Switch informs DFSP A about the successful creation of the association</step>
+        <step id="S10">DFSP A informs PISP about the successful creation of the association</step>
+    </mainSequence>
+</useCase>

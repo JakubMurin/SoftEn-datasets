@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View and Choose Boards</name>
+    
+    <actors>
+        <actor>Server Backup App User</actor>
+        <actor>ViewBoardsUI</actor>
+        <actor>ViewBoardsController</actor>
+        <actor>SBProtocol</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">User views Boards</step>
+        <step id="S2">User creates instance of socket with serverIp and serverPort and streams</step>
+        <step id="S3">UI makes Call to Controller to view Boards</step>
+        <step id="S4">Controller gets Boards</step>
+        <step id="S5">Controller sends View Boards communication to Server</step>           
+        <step id="S6"> Check and validate the server's response</step>                 
+        <step id="S7">Controller receives content from Server</step>
+        <step id="S8">Controller displays the content</step>
+        <step id="S9">User chooses a board</step>
+        <step id="S10">UI requests history for the chosen board</step>
+        <step id="S11">Controller gets requested history from Server</step>
+        <step id="S12">Controller sends the request to Server for list of historic changes</step>
+        <step id="S13">Check and process the received history list</step>
+        <step id="S14">Display the historic changes to the User</step>
+    </mainSequence>
+</useCase>

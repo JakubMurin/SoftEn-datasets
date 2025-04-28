@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Manage Storage Expansion</name>
+    <description>As an Archive Manager, I want to analyze data volume, storage capacity, and preservation details to plan for storage expansion.</description>
+    <actors>
+        <actor>Archive Manager</actor>
+        <actor>DMPTool</actor>
+        <actor>Repository API</actor>
+        <actor>Data Manager</actor>
+        <actor>IT System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archive Manager has access to DMPTool.</precondition>
+        <precondition>Data Manager provides data format, size, and period details.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Comprehensive storage needs analysis displayed to Archive Manager.</condition>
+    </successEndConditions>
+    <trigger>Archive Manager requests data volume information from DMPTool.</trigger>
+    <mainSequence>
+        <step id="S1">Archive Manager requests data volume information from DMPTool.</step>
+        <step id="S2">DMPTool queries planned data submissions from Repository API.</step>
+        <step id="S3">Repository API returns data submission estimates to DMPTool.</step>
+        <step id="S4">DMPTool requests current storage capacity from IT System.</step>
+        <step id="S5">IT System returns current storage capacity details to DMPTool.</step>
+        <step id="S6">DMPTool requests additional data preservation details from Data Manager.</step>
+        <step id="S7">Data Manager provides data format, size, and period details to DMPTool.</step>
+        <step id="S8">DMPTool shows comprehensive storage needs analysis to Archive Manager.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">Archive Manager plans for storage expansion.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Storage planning completion confirmation failed.</description>
+            <step id="E1S1">Archive Manager confirms storage planning completion with DMPTool.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

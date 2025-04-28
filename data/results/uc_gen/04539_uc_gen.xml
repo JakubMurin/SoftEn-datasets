@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Add Assessment of Subject</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin adds an assessment to the subject.</step>
+        <step id="S2">SubjectController receives the request to add a mark type to the subject.</step>
+        <step id="S3">SubjectService processes the request to add mark type to the subject.</step>
+        <step id="S4">SubjectRepository initiates the process to add mark type to the subject.</step>
+        <step id="S5">SubjectRepository inserts the mark type into the MySQL database.</step>
+ </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">If the mark type exists in the subject's assessment:</step>
+            <step id="A1S2">MySQL throws DataIntegrityViolationException.</step>
+            <step id="A1S3">SubjectRepository catches the exception and throws ActionNotAllowedException to CustomExceptionHandler.</step>
+            <step id="A1S4">CustomExceptionHandler displays an error message to Admin.</step>
+        </asteps>
+        <asteps id="A2" start="S5" continue="A1S1">
+            <step id="A2S1">If the mark type doesn't exist in the subject's assessment:</step>
+            <step id="A2S2">MySQL returns a successful response.</step>
+            <step id="A2S3">SubjectRepository fetches the assessment by the subject ID from MySQL.</step>
+            <step id="A2S4">MySQL returns the assessment response to SubjectRepository.</step>
+            <step id="A2S5">SubjectRepository returns a list of tuples to SubjectService.</step>
+            <step id="A2S6">SubjectService constructs a map of mark type and the number of marks.</step>
+            <step id="A2S7">SubjectController receives and displays the assessment to Admin.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

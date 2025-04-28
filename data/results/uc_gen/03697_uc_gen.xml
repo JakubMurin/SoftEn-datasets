@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Search Digital Assets</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>SearchController</actor>
+        <actor>DAMS Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user needs to be logged in to access the search functionality.</precondition>
+    </preconditions>
+    <trigger>User enters search terms and role in the UI.</trigger>
+    <mainSequence>
+        <step id="S1">User enters search terms and role (Illustrator, Photographer, etc.) in the UI.</step>
+        <step id="S2">UI sends search request (name, role) to SearchController.</step>
+        <step id="S3">SearchController queries digital assets in DAMS Database by name and role.</step>
+        <step id="S4">DAMS Database filters assets by specific role and returns search results to SearchController.</step>
+        <step id="S5">SearchController displays search results in UI.</step>
+        <step id="S6">UI shows search results (assets by illustrator, photographer, etc.) to the user.</step>
+    </mainSequence>
+</useCase>

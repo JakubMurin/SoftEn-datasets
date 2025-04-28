@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Instructor Manages Offerings</name>
+    <actors>
+        <actor>Instructor</actor>
+        <actor>OfferingsPage</actor>
+        <actor>OfferingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Lesson</actor>
+    </actors>
+    <preconditions>
+        <precondition>Instructor has logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Instructor successfully manages offerings</condition>
+    </successEndConditions>
+    <trigger>Instructor interacts with the Manage Offerings Page</trigger>
+    <mainSequence>
+        <step id="S1">Instructor opens Manage Offerings Page</step>
+        <step id="S2">OfferingsPage displays available offerings</step>
+        <step id="S3">Instructor selects to accept or drop offering</step>
+        <step id="S4">OfferingsPage displays offering details</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Instructor selects "Accept Offering"</step>
+            <step id="A1S2">Validator validates offering acceptance</step>
+            <step id="A1S3">OfferingsPage displays error or success message for acceptance</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Instructor selects "Drop Offering"</step>
+            <step id="A2S2">Validator validates offering drop</step>
+            <step id="A2S3">OfferingsPage displays error or success message for drop</step>
+        </asteps>
+        <asteps id="A3" start="S3">
+            <step id="A3S1">Instructor views details of the offering</step>
+            <step id="A3S2">OfferingsPage fetches lesson details</step>
+            <step id="A3S3">OfferingsPage displays lesson details</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

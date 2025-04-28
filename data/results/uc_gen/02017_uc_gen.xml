@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Asignar Posición y Turno a Trabajador</name>
+    <description>Este caso de uso describe el proceso de asignar una posición y un turno a un trabajador</description>
+    <actors>
+        <actor>Trabajador</actor>
+        <actor>GestorTurnos</actor>
+    </actors>
+    <preconditions>
+        <precondition>El trabajador solicita una asignación de posición y turno</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>El trabajador recibe la asignación de posición y turno</condition>
+    </successEndConditions>
+    <trigger>El trabajador solicita asignación</trigger>
+    <mainSequence>
+        <step id="S1">El Gestor de Turnos busca el departamento del trabajador</step>
+        <step id="S2">El Gestor de Turnos busca una posición disponible en el departamento</step>
+        <step id="S3">El Gestor de Turnos busca un turno disponible</step>
+        <step id="S4">El Gestor de Turnos verifica las ausencias y preferencias del trabajador</step>
+        <step id="S5">El Gestor de Turnos asigna la posición y el turno al trabajador</step>
+    </mainSequence>
+</useCase>

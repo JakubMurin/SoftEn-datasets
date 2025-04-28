@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Modify Vacation Request</name>
+    <actors>
+        <actor>Navegador</actor>
+    </actors>
+    <preconditions>
+        <precondition>Navegador accesses the modify vacation request page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Vacation request is successfully updated.</condition>
+    </successEndConditions>
+    <trigger>POST /update/:vacationID</trigger>
+    <mainSequence>
+        <step id="S1">Navegador accesses the modify vacation request page.</step>
+        <step id="S2">Vacation controller receives request to update vacation.</step>
+        <step id="S3">Vacation data is updated in the model.</step>
+        <step id="S4">Success message is displayed to Navegador upon update.</step>
+    </mainSequence>
+</useCase>

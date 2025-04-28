@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Add New Edge Agent</name>
+    <description>
+        Assumptions: Alice has chosen existing or add new device from options in Edge Agent Start.
+        Edge Agent 2 has been provisioned as described in the Provision New Agent diagram.
+    </description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Edge Agent 1</actor>
+        <actor>Edge Agent 2</actor>
+    </actors>
+    <preconditions>
+        <precondition>The necessary authorizations are available for adding a new agent.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Agent 2 successfully added with selected authorizations.</condition>
+    </successEndConditions>
+    <trigger>Instruction received to add a new edge agent.</trigger>
+    <mainSequence>
+        <step id="S1">Alice adds Agent 2.</step>
+        <step id="S2">Edge Agent 2 provides instructions for adding Agent 2 and selecting authorizations.</step>
+        <step id="S3">Alice adds agent with selected authorizations.</step>
+        <step id="S4">Edge Agent 1 displays provisioning code for adding Agent 2.</step>
+        <step id="S5">Alice shows the code to scan to Agent 2.</step>
+        <step id="S6">Agent 2 sends request with identifier and keys.</step>
+        <step id="S7">Agent 1 stores the keys in the wallet.</step>
+        <step id="S8">Alice confirms Agent 2.</step>
+        <step id="S9">Agent 1 syncs data to Agent 2.</step>
+        <step id="S10">Agent 2 stores data in the wallet.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">If the authorizations fail, retry adding the agent with different settings.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error occurred while adding Agent 2.</description>
+            <step id="E1S1">Contact support for further assistance.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

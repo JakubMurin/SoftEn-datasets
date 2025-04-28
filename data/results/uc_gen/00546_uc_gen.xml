@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Student Reserves a Book</name>
+    <actors>
+        <actor>Student</actor>
+        <actor>Monitor</actor>
+        <actor>Authentication</actor>
+        <actor>Reservation</actor>
+        <actor>BookManagement</actor>
+        <actor>Book</actor>
+    </actors>
+    <preconditions>
+        <precondition>Student is logged in</precondition>
+        <precondition>Student has searched for desired book</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Student successfully reserves the book</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Reservation request is declined due to unavailability of book</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Student opens login page</step>
+        <step id="S2">Monitor displays login page</step>
+        <step id="S3">Student logs in with username and password</step>
+        <step id="S4">Monitor verifies login details</step>
+        <step id="S5">Authentication confirms the login success</step>
+        <step id="S6">Monitor displays library page</step>
+        <step id="S7">Student submits book details</step>
+        <step id="S8">Monitor performs book search using provided details</step>
+        <step id="S9">BookManagement retrieves data of the book</step>
+        <step id="S10">Book updates the book data received</step>
+        <step id="S11">BookManagement lists the available book</step>
+        <step id="S12">Monitor displays the list of books</step>
+        <step id="S13">Student clicks on reserve book</step>
+        <step id="S14">Monitor initiates the book reservation process</step>
+        <step id="S15">Reservation confirms the successful book reservation</step>
+        <step id="S16">Monitor notifies the student of the reservation confirmation</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Retrieve Account Search Preferences</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <preconditions>
+        <precondition>Zarządca selects the list of pending accounts.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Nawigator selects the list of pending accounts.</step>
+        <step id="S2">Nawigator sends a request to retrieve search preferences for the account.</step>
+        <step id="S3">AccountController sends a request to getAccountSearchPreferences to AccountEndpoint.</step>
+        <step id="S4">AccountEndpoint calls getAccountSearchPreferences on AccountService.</step>
+        <step id="S5">AccountService checks if the account exists.</step>
+        <step id="S6">AccountService retrieves the account if it exists.</step>
+        <step id="S7">AccountService checks if preferences for the account exist.</step>
+        <step id="S8">AccountService retrieves preferences for the account if they exist.</step>
+    </mainSequence>
+</useCase>

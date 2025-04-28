@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Upload and License Data File</name>
+    <actors>
+        <actor>Cornell Faculty Member</actor>
+        <actor>Web Browser Interface</actor>
+        <actor>File Upload Service</actor>
+        <actor>Digital Rights Management Service</actor>
+        <actor>Digital Repository</actor>
+        <actor>Licensing Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Cornell Faculty Member selects data file for upload</step>
+        <step id="S2">Web Browser Interface initiates file upload process</step>
+        <step id="S3">File Upload Service stores data file in Digital Repository</step>
+        <step id="S4">Database saves file metadata, including uploader info</step>
+        <step id="S5">Database confirms metadata storage</step>
+        <step id="S6">Digital Repository confirms file storage</step>
+        <step id="S7">File Upload Service displays file upload success to Web Browser Interface</step>
+        <step id="S8">File Upload Service provides file ID and upload confirmation to Cornell Faculty Member</step>
+        <step id="S9">Cornell Faculty Member chooses licensing option (CC-By or CC0) in Web Browser Interface</step>
+        <step id="S10">Web Browser Interface sends license choice and file ID to Licensing Service</step>
+        <step id="S11">Licensing Service applies chosen license to file using Digital Rights Management Service</step>
+        <step id="S12">Digital Rights Management Service updates file metadata with license info in Digital Repository</step>
+        <step id="S13">Database updates file record with license metadata</step>
+        <step id="S14">Database confirms license update</step>
+        <step id="S15">Digital Repository confirms license application to file with Licensing Service</step>
+        <step id="S16">Licensing Service displays license application success to Web Browser Interface</step>
+        <step id="S17">Web Browser Interface confirms license has been set to Cornell Faculty Member</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Delete Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User deletes task.</step>
+        <step id="S2">Frontend sends task to Backend.</step>
+        <step id="S3">Backend sends task to Service Bus Queue: Delete.</step>
+        <step id="S4">KEDA: servicebus-remover removes task from queue.</step>
+        <step id="S5">KEDA: servicebus-remover removes task from Service Bus Queue: Running.</step>
+        <step id="S6">KEDA: servicebus-remover sends volcano job for deletion through Kubernetes API.</step>
+        <step id="S7">UI reads tasks from Service Bus Queue: Running.</step>
+        <step id="S8">UI displays running tasks to User.</step>
+    </mainSequence>
+</useCase>

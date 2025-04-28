@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Retrieve Private File List</name>
+    <actors>
+        <actor>User</actor>
+        <actor>User subservice API router</actor>
+        <actor>User subservice REST API</actor>
+        <actor>Metadata Service</actor>
+        <actor>Lookup DFS Service</actor>
+        <actor>Storage Service</actor>
+        <actor>Storage adapter</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Private file list successfully retrieved</condition>
+    </successEndConditions>
+    <trigger>User requests to get their private file list</trigger>
+    <mainSequence>
+        <step id="S1">User requests private file list with login/password</step>
+        <step id="S2">Lookup server gets User 1 metadata from Lookup DFS</step>
+        <step id="S3">Lookup DFS Service reads private store for User 1 using password</step>
+        <step id="S4">DFS maps file paths and access credentials</step>
+        <step id="S5">User data paths and credentials are retrieved</step>
+        <step id="S6">Access private storage using access credentials</step>
+        <step id="S7">Read keystore from Storage adapter</step>
+        <step id="S8">Decrypt keystore using password</step>
+        <step id="S9">List all private files</step>
+        <step id="S10">Decrypt file paths using keystore: path secret</step>
+        <step id="S11">User receives list of all files across all known user DFS's</step>
+    </mainSequence>
+</useCase>

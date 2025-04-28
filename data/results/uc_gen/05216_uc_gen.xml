@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Upload Material Photo</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>CameraScreen</actor>
+        <actor>DisplayPictureScreen</actor>
+        <actor>ApiService</actor>
+        <actor>MaterialsRouter</actor>
+        <actor>PredictionRouter</actor>
+        <actor>MaterialsService</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1"><![CDATA[User opens the application on HomepageScreen and displays list of materials.]]></step>
+        <step id="S2"><![CDATA[User selects the camera button, prompting the selection dialog to take a photo or upload.]]></step>
+        <step id="S3"><![CDATA[User chooses to take a photo.]]></step>
+        <step id="S4"><![CDATA[CameraScreen activates the camera, prompts user to capture a photo.]]></step>
+        <step id="S5"><![CDATA[User captures a photo, views the captured photo quality on DisplayPictureScreen.]]></step>
+        <step id="S6"><![CDATA[Uploaded material photo is confirmed and processed by ApiService via MaterialsRouter and PredictionRouter, moving to the MaterialsService where the material data is saved in the Database.]]></step>
+        <step id="S7"><![CDATA[MaterialsRouter and ApiService update the DisplayPictureScreen, showing a success message and then from HomepageScreen updates the materials list, displaying it to the User.]]></step>
+    </mainSequence>
+</useCase>

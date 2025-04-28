@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Verify and Execute Block with Updated State</name>
+    <actors>
+        <actor>Rollup</actor>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>Rollup height of last verified block</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Updated State</condition>
+    </successEndConditions>
+    <trigger>GET availability/stream/blocks/height</trigger>
+    <mainSequence>
+        <step id="S1">Rollup requests height of last verified block from L1</step>
+        <step id="S2">Rollup requests block from Espresso Node</step>
+        <step id="S3">Rollup requests leaf and proof of consensus from Espresso Node</step>
+        <step id="S4">Rollup verifies proof of consensus</step>
+        <step id="S5">Rollup executes block</step>
+        <step id="S6">Client receives updated state</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Register User</name>
+    <description>User signs up for an account.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>AccessController</actor>
+        <actor>AccessService</actor>
+        <actor>bcrypt</actor>
+    </actors>
+    <preconditions>
+        <precondition>No existing account with the provided email.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered.</condition>
+    </successEndConditions>
+    <trigger>User sends a POST request to sign up.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to sign up.</step>
+        <step id="S2">AccessController forwards the request to AccessService.</step>
+        <step id="S3">AccessService processes the request by signing up the user.</step>
+        <step id="S4">AccessService queries for an existing user with the provided email.</step>
+        <step id="S5">User is found.</step>
+        <step id="S6">AccessService throws an error as account is already registered.</step>
+        <step id="S7">AccessController sends an error message to the User.</step>
+        <step id="S8">bcrypt generates a salt.</step>
+        <step id="S9">Salt is generated.</step>
+        <step id="S10">bcrypt hashes the password with the salt.</step>
+        <step id="S11">Password is hashed.</step>
+        <step id="S12">AccessService creates a new user with email, hashed password, and role.</step>
+        <step id="S13">New user is created.</step>
+        <step id="S14">AccessService returns the user to AccessController.</step>
+        <step id="S15">AccessController responds with "Registered OK" to the User.</step>
+    </mainSequence>
+</useCase>

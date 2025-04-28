@@ -1,0 +1,31 @@
+<useCase id="UC1">
+  <name>Communication between Consumer and Publisher</name>
+  <actors>
+    <actor>Consumer</actor>
+    <actor>Publisher</actor>
+    <actor>Exchanger</actor>
+    <actor>Topic Supervisor</actor>
+  </actors>
+  <preconditions>
+    <precondition>Consumers, Publishers, and Topics are registered in the system.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Message successfully sent to all subscribers.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Message delivery fails to one or more subscribers.</condition>
+  </failureEndConditions>
+  <trigger>Start connection between Consumer and Publisher.</trigger>
+  <mainSequence>
+    <step id="S1">Consumer starts a connection with the Consumer Server.</step>
+    <step id="S2">Consumer logs in with a username.</step>
+    <step id="S3">Consumer subscribes to a topic.</step>
+    <step id="S4">Publisher starts a connection with the Publisher Server.</step>
+    <step id="S5">Publisher creates a new message and a topic.</step>
+    <step id="S6">Publisher sends the message to the Exchanger.</step>
+    <step id="S7">Exchanger sends the message to the Topic Supervisor.</step>
+    <step id="S8">Topic Supervisor sends the message to all subscribed Consumers.</step>
+    <step id="S9">Consumer unsubscribes from the topic.</step>
+    <step id="S10">Exchanger manages the unsubscription and updates the subscriber list.</step>
+  </mainSequence>
+</useCase>

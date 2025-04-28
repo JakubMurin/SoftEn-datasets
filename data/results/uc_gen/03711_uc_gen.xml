@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Creating a Booking</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create a booking through the UI</step>
+        <step id="S2">UI sends a GET request to the BookingRouter to display the booking form</step>
+        <step id="S3">Controller shows the booking form on the UI</step>
+        <step id="S4">Receptionist fills in the booking details on the UI</step>
+        <step id="S5">UI sends a POST request to the BookingRouter to create the booking</step>
+        <step id="S6">Router calls the createBooking method in the Controller</step>
+        <step id="S7">Controller creates a new booking in the Repository</step>
+        <step id="S8">Repository checks room availability using RoomModel</step>
+        <step id="S9">RoomModel queries the Database for room availability</step>
+        <step id="S10">If room is available, BookingModel creates a new booking in the Database</step>
+        <step id="S11">If room is available, Controller receives booking creation success from Repository</step>
+        <step id="S12">If room is available, Router sends 200 OK response to the UI</step>
+        <step id="S13">If room is available, UI displays a booking success message to the Receptionist</step>
+        <step id="S14">If room is not available, Controller sends a 400 Bad Request response to the UI</step>
+        <step id="S15">If room is not available, Router sends a 400 Bad Request response to the UI</step>
+        <step id="S16">If room is not available, UI displays an error message to the Receptionist</step>
+    </mainSequence>
+</useCase>

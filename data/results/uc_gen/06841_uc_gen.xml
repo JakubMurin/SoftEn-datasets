@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Explore Dataset Properties</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in to the system.</precondition>
+    </preconditions>
+    <trigger>User selects a dataset to explore.</trigger>
+    <mainSequence>
+        <step id="S1">User selects dataset to explore.</step>
+        <step id="S2">User interface sends a request to API Gateway to get dataset properties.</step>
+        <step id="S3">API Gateway forwards the request to Dataset Management Service.</step>
+        <step id="S4">Dataset Management Service fetches dataset properties.</step>
+        <step id="S5">Dataset Management Service retrieves dataset type from Dataset Type Registry.</step>
+        <step id="S6">Dataset Management Service retrieves properties based on dataset type from Dataset Instance.</step>
+        <step id="S7">API Gateway receives dataset properties from Dataset Management Service.</step>
+        <step id="S8">User interface displays updatable properties to the user.</step>
+    </mainSequence>
+</useCase>

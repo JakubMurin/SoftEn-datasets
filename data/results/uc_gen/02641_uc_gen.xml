@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Flow Reroute</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests to reroute flow</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User requests to reroute</step>
+        <step id="S2">Reroute the flow</step>
+        <step id="S3">Get the flow from DB and start validation</step>
+        <step id="S4">Find a path for the flow</step>
+        <step id="S5">Allocate resources for the found path</step>
+        <step id="S6">Persist path changes in DB</step>
+        <step id="S7">Create switch rules for the new path</step>
+        <step id="S8">Install egress/transit rules</step>
+        <step id="S9">Install ingress rules</step>
+        <step id="S10">Change the flow status to UP</step>
+        <step id="S11">Remove old flow rules</step>
+    </mainSequence>
+</useCase>

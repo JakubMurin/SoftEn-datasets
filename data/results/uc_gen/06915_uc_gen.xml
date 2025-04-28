@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Modify Content</name>
+    <actors>
+        <actor>Content Editor</actor>
+        <actor>CMS Search Interface</actor>
+        <actor>CMS Database</actor>
+        <actor>Content Page</actor>
+    </actors>
+    <preconditions>
+        <precondition>Content Editor has access to CMS system</precondition>
+        <precondition>CMS Database has necessary content</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Content edits saved successfully</condition>
+    </successEndConditions>
+    <trigger>User selects content to modify</trigger>
+    <mainSequence>
+        <step id="S1">Content Editor enters search query with keywords/tags</step>
+        <step id="S2">CMS Search Interface queries CMS Database for content</step>
+        <step id="S3">CMS Database retrieves search results</step>
+        <step id="S4">CMS Search Interface displays search results to Content Editor</step>
+        <step id="S5">Content Editor selects content from search results</step>
+        <step id="S6">CMS Search Interface requests selected content from CMS Database</step>
+        <step id="S7">CMS Database retrieves content details for selected content</step>
+        <step id="S8">CMS Search Interface displays content in editor on Content Page</step>
+        <step id="S9">Content Editor edits the content</step>
+        <step id="S10">Content Page saves changes to CMS Database</step>
+        <step id="S11">CMS Database confirms changes are saved</step>
+        <step id="S12">Content Page displays confirmation message of successful edit</step>
+    </mainSequence>
+</useCase>

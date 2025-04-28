@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Create Data Package</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>DataPackageManagerResource</actor>
+        <actor>Creator</actor>
+        <actor>DataPackageManager</actor>
+        <actor>DataManagerClient</actor>
+        <actor>EMLDataManager</actor>
+        <actor>DataManager</actor>
+        <actor>EMLDataPackage</actor>
+        <actor>EML200</actor>
+        <actor>DocumentBuilder</actor>
+        <actor>DataPackage</actor>
+        <actor>QualityReport</actor>
+        <actor>QualityCheck</actor>
+        <actor>SolrMetadataCatalog</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates Data Package</step>
+        <step id="S2">Creator runs</step>
+        <step id="S3">DataPackageManager creates Data Package</step>
+        <step id="S4">DataPackageManager parses EML</step>
+        <step id="S5">DataPackageManager checks DataPackage in Resource Registry</step>
+        <step id="S6">DataPackageManager checks if DataPackage is actively being processed</step>
+        <step id="S7">DataPackageManager creates Data Package Auxiliary</step>
+        <step id="S8">DataPackageManager adds Data Package to working on</step>
+        <step id="S9">DataPackageManager checks for conflicting reservation</step>
+        <step id="S10">DataPackageManager confirms validity of metadata</step>
+        <step id="S11">DataManagerClient creates Data Entities</step>
+        <step id="S12">EMLDataManager downloads online entities</step>
+        <step id="S13">EMLDataManager loads entities into database</step>
+        <step id="S14">DataPackageManager loads metadata into Solr Catalog</step>
+        <step id="S15">DataPackageManager converts to Level One EML</step>
+        <step id="S16">DataPackageManager stores metadata</step>
+        <step id="S17">DataPackageManager generates Dublin Core metadata</step>
+        <step id="S18">DataPackageManager inserts metadata into Solr</step>
+        <step id="S19">DataPackageManager inserts Provenance Record</step>
+        <step id="S20">DataPackageManager inserts into Resource Registry</step>
+        <step id="S21">DataPackageManager registers DOI</step>
+        <step id="S22">DataPackageManager removes from working on</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC-001">
+    <name>Retrieve Random Numbers</name>
+    <actors>
+        <actor>DataServer</actor>
+        <actor>ProblemSolver</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataServer has received a request to retrieve random numbers.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>DataServer successfully returns a response with a random number.</condition>
+    </successEndConditions>
+    <trigger>ProblemSolver makes a POST request to DataServer to fetch random numbers.</trigger>
+    <mainSequence>
+        <step id="S1">ProblemSolver sends an encrypted session key and encrypted data to DataServer through a POST request.</step>
+        <step id="S2">DataServer decrypts the encrypted session key.</step>
+        <step id="S3">DataServer decrypts the encrypted data.</step>
+        <step id="S5">DataServer checks if a random number function should use UniformRandomDistribution or NormalRandomDistribution based on the decrypted data.</step>
+        <step id="S6">If the random choice equals 0:</step>
+        <step id="S6S1">DataServer calls UniformRandomDistribution to get the numbers with specified parameters, producing response data.</step>
+        <step id="S7">Otherwise, if the random choice equals 1:</step>
+        <step id="S7S1">DataServer calls NormalRandomDistribution to get the numbers with specified parameters, producing response data.</step>
+        <step id="S8">DataServer encrypts the response data with session key.</step>
+        <step id="S9">DataServer sends the encrypted session key and encrypted data back to ProblemSolver with a 200 OK status.</step>
+    </mainSequence>
+</useCase>

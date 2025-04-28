@@ -1,0 +1,14 @@
+<useCase id="UC1">
+    <name>Delete istiocsr CR</name>
+    <actors>
+        <actor>User</actor>
+        <actor>OpenShift API Server</actor>
+        <actor>cert-manager-operator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User initiates deletion of istiocsr CR</step>
+        <step id="S2">API receives request to delete istiocsr CR</step>
+        <step id="S3">Operator reconciles istiocsr delete event</step>
+        <step id="S4">Operator stops managing resources created for istio-csr agent installation</step>
+    </mainSequence>
+</useCase>

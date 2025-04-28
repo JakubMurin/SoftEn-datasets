@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Search Users</name>
+    <description>Search for users based on query.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User inputs search query.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Users are found and displayed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No users found or API error.</condition>
+    </failureEndConditions>
+    <trigger>User inputs search query.</trigger>
+    <mainSequence>
+        <step id="S1">User inputs search query.</step>
+        <step id="S2">Debounce delay of 300ms is applied.</step>
+        <step id="S3">Request search query to Internal API.</step>
+        <step id="S4">Return user list from GitHub API.</step>
+        <step id="S5">For each user, get user details from GitHub API.</step>
+        <step id="S6">Return user data to Home Component.</step>
+        <step id="S7">Display search results to User.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Return no data to Home if no users found.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error response from GitHub API.</description>
+            <step id="E1S1">Return error to Home Component.</step>
+            <step id="E1S2">Display "Falha ao pesquisar usuários."</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Generate Workshop Summary</name>
+    <actors>
+        <actor>Attendee</actor>
+        <actor>Workshop Platform</actor>
+        <actor>CMS</actor>
+        <actor>Database</actor>
+        <actor>Content Editor</actor>
+        <actor>Summary Page</actor>
+    </actors>
+    <trigger>Attendee requests the workshop summary</trigger>
+    <mainSequence>
+        <step id="S1">Attendee requests the summary</step>
+        <step id="S2">Workshop Platform fetches request for summary from CMS</step>
+        <step id="S3">CMS queries workshop data from the Database</step>
+        <step id="S4">Database returns workshop data to CMS</step>
+        <step id="S5">CMS generates summary content with Data Editor</step>
+        <step id="S6">Content Editor submits the summary to CMS</step>
+        <step id="S7">CMS updates the Database with the summary</step>
+        <step id="S8">Database confirms the update to CMS</step>
+        <step id="S9">CMS publishes the summary to the Summary Page</step>
+        <step id="S10">Summary Page displays the summary content to the Attendee</step>
+    </mainSequence>
+</useCase>

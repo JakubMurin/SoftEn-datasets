@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Charging Transaction Management</name>
+    <description>Manage the process of charging a car at a charging station</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Core System</actor>
+        <actor>Libocpp</actor>
+        <actor>Database</actor>
+        <actor>CSMS</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Charging transaction completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Charging transaction failed</condition>
+    </failureEndConditions>
+    <trigger>Charging process initiated</trigger>
+    <mainSequence>
+        <step id="S1">User swipes ID tag</step>
+        <step id="S2">Core authorizes the transaction</step>
+        <step id="S3">User plugs in the cable</step>
+        <step id="S4">Libocpp triggers the transaction event</step>
+        <step id="S5">Transaction details are inserted into the database</step>
+        <step id="S6">Charging state of the car is paused</step>
+        <step id="S7">Libocpp updates the charging state</step>
+        <step id="S8">Libocpp updates the sequence number</step>
+        <step id="S9">Libocpp constructs ChargePoint</step>
+        <step id="S10">Libocpp retrieves transaction details for each evse_id</step>
+        <step id="S11">Libocpp re-initializes the transaction</step>
+        <step id="S12">Construction of ChargePoint is completed</step>
+        <step id="S13">User continues charging the car</step>
+        <step id="S14">Libocpp updates the charging state</step>
+        <step id="S15">Libocpp prints a warning if no known transaction</step>
+        <step id="S16">Libocpp triggers the transaction event when finished</step>
+        <step id="S17">Libocpp prints a warning if no known transaction</step>
+        <step id="S18">Libocpp triggers the transaction event when finished</step>
+        <step id="S19">Libocpp deletes the transaction</step>
+    </mainSequence>
+</useCase>

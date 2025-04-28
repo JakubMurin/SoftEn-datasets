@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Payment Cancellation with Redirect approach, implicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>Online_banking</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates Payment Cancellation</step>
+        <step id="S2">TPP checks cancellation possibility based on payment type and ASPSP requirements</step>
+        <step id="S3">TPP calls XS2A to Cancel payment</step>
+        <step id="S4">XS2A retrieves payment details from CMS</step>
+        <step id="S5">XS2A communicates with SPI to initiate payment cancellation</step>
+        <step id="S6">SPI receives payment cancellation call and processes it</step>
+        <step id="S7">XS2A updates payment status with CMS</step>
+        <step id="S8">If payment status is finalized, return 400 error; else proceed without SCA if available</step>
+        <step id="S9">If SCA is not required, SPI cancels payment without further confirmation</step>
+        <step id="S10">Responses sent accordingly back to TPP and PSU</step>
+        <step id="S11">If SCA is required, redirect PSU for authorisation at ASPSP</step>
+        <step id="S12">PSU authorizes the cancellation through Online Banking interface</step>
+        <step id="S13">Confirmation of cancellation sent back to BSP and PSU</step>
+        <step id="S14">Continuous retrieval of payment status and further external API calls</step>
+       </mainSequence>
+    
+    <!-- Add alternative and error steps as needed -->
+</useCase>

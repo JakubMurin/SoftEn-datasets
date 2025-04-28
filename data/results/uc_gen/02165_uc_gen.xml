@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Delete Book Process</name>
+    <actors>
+        <actor>Staff</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Staff selects "Remove Book" option.</step>
+        <step id="S2">UI sends a request to the BookController to delete the book with the specified ID.</step>
+        <step id="S3">BookController calls BookService to delete the book with the provided ID.</step>
+        <step id="S4">BookService queries the BookDB to delete the book using the provided book ID.</step>
+        <step id="S5">BookDB confirms the book deletion to BookService.</step>
+        <step id="S6">BookService notifies BookController about successful deletion.</step>
+        <step id="S7">BookController displays a success message through the UI.</step>
+        <step id="S8">UI shows a message to the Staff confirming that the book has been successfully deleted.</step>
+    </mainSequence>
+</useCase>

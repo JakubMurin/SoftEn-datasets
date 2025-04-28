@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Remove Request Issues</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>System</actor>
+        <actor>DBMS</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <trigger>Admin requests to get and remove issues</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends getRemoveRequestIssues(signId) request to System</step>
+        <step id="S2">System validates the member with signId</step>
+        <step id="S3">System validates that the Admin is authorized</step>
+        <step id="S4">System retrieves the remove request issues from DBMS</step>
+        <step id="S5">System sends the list of issues to Admin</step>
+    </mainSequence>
+</useCase>

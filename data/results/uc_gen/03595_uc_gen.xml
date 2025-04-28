@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>View User Profile</name>
+    <actors>
+        <actor>Colaborador</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Colaborador accesses the endpoint /myprofile</step>
+        <step id="S2">user.routes receives the GET request and forwards it to user.controller</step>
+        <step id="S3">user.controller invokes fetchProfile(id) in user.model</step>
+        <step id="S4">user.model queries the database for user profile data</step>
+        <step id="S5">user.model retrieves user profile data from the database</step>
+        <step id="S6">user.controller sends the user profile data to myprofile.ejs for rendering</step>
+        <step id="S7">myprofile.ejs renders the user profile data into HTML</step>
+        <step id="S8">Colaborador receives the HTML representing the user profile</step>
+    </mainSequence>
+</useCase>

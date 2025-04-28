@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>View Referrer Data</name>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Curator requests item referrer data from EDRMS Interface.</step>
+        <step id="S2">EDRMS Interface queries Database for item ID.</step>
+        <step id="S3">Database returns item ID to EDRMS Interface.</step>
+        <step id="S4">EDRMS Interface requests referrer stats for item ID from Analytics Engine.</step>
+        <step id="S5">Analytics Engine queries Database for referrer logs.</step>
+        <step id="S6">Database returns referrer data to Analytics Engine.</step>
+        <step id="S7">Analytics Engine provides summarized referrer info to EDRMS Interface.</step>
+        <step id="S8">EDRMS Interface displays referrer data to Curator.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">If Database query fails, EDRMS Interface displays an error message.</step>
+        </asteps>
+        <asteps id="A2" start="S7" continue="S8">
+            <step id="A2S1">If Analytics Engine fails to provide referrer info, EDRMS Interface displays an error message.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1">
+            <description>Database query error handling</description>
+            <step id="E1S1">Display error message to Curator about the database query failure.</step>
+        </esteps>
+        <esteps id="E2" start="A2">
+            <description>Analytics Engine failure handling</description>
+            <step id="E2S1">Display error message to Curator about Analytics Engine failure.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Calculate Customer Statement</name>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customer requests statement</step>
+        <step id="S2">Calculate total charge for the customer</step>
+        <step id="S3">Calculate total frequent renter points</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">For each rental, calculate charge</step>
+            <step id="A1S2">Calculate charge for specific movie</step>
+            <step id="A1S3">Calculate charge based on days rented</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">For each rental, calculate frequent renter points</step>
+            <step id="A2S2">Calculate frequent renter points for specific movie</step>
+            <step id="A2S3">Calculate frequent renter points based on days rented</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,18 @@
+<useCase id="UC001">
+  <name>Handle Game Refresh</name>
+  <actors>
+    <actor>Controller</actor>
+    <actor>GameEngine</actor>
+    <actor>Ball</actor>
+    <actor>FreeBody</actor>
+    <actor>GameState</actor>
+  </actors>
+  <trigger>Controller initiates a game refresh with a specified delta time.</trigger>
+  <mainSequence>
+    <step id="S1">Controller refreshes the game using GameEngine with the delta time.</step>
+    <step id="S2">GameEngine activates and handles the moves based on the delta time.</step>
+    <step id="S3">GameEngine instructs Ball to move based on external forces and delta time.</step>
+    <step id="S4">Ball applies weight as external force to FreeBody.</step>
+    <step id="S5">GameEngine activates and returns the snapshot of the GameState.</step>
+  </mainSequence>
+</useCase>

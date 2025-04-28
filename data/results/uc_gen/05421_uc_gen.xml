@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Fault Management Provisioning</name>
+    <description>Register listeners, create job, generate and report data</description>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>Listeners are registered successfully</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Job creation, data generation, and reporting completed</condition>
+    </successEndConditions>
+    <trigger>FaultManagementJobNotification and FaultManagementReportNotification received</trigger>
+    <mainSequence>
+        <step id="S1">BUS registers listeners with Hub for JobNotification and ReportNotification</step>
+        <step id="S2">SOF creates FaultManagementJob</step>
+        <step id="S3">FMJ is created</step>
+        <step id="S4">FMJ creates event and notifies listeners</step>
+        <step id="S5">FMJ generates data</step>
+        <step id="S6">PR is created</step>
+        <step id="S7">PR creates event and notifies listeners</step>
+        <step id="S8">PR collects data</step>
+        <step id="S9">PR completes report</step>
+        <step id="S10">FMJ reports job completion</step>
+        <step id="S11">FMJ reports job scheduling completion</step>
+        <step id="S12">BUS retrieves report from SOF</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Create, Read, Update data via API</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>CommandHandler</actor>
+        <actor>Repository</actor>
+        <actor>Database</actor>
+        <actor>DomainEntity</actor>
+        <actor>NotificationObject</actor>
+        <actor>QueryHandler</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client initiates create/read/update operation.</step>
+        <step id="S2">API forwards the command to CommandHandler.</step>
+        <step id="S3">CommandHandler processes the command.</step>
+        <step id="S4">CommandHandler requests the entity from Repository.</step>
+        <step id="S5">Repository executes the SQL to fetch data from Database.</step>
+        <step id="S6">Repository receives raw data from Database.</step>
+        <step id="S7">Repository maps raw data to Entity using Factory.</step>
+        <step id="S8">Repository sends Entity back to CommandHandler.</step>
+        <step id="S9">CommandHandler implements business logic on the Entity.</step>
+        <step id="S10">CommandHandler saves the Entity in Repository.</step>
+        <step id="S11">Repository detects changes in the Entity and generates SQL.</step>
+        <step id="S12">Repository saves the changes to the Database.</step>
+        <step id="S13">Database confirms the changes were saved.</step>
+        <step id="S14">CommandHandler creates NotificationObject and sends it to API.</step>
+        <step id="S15">API forwards the NotificationObject to QueryHandler.</step>
+        <step id="S16">API receives DTO from QueryHandler.</step>
+        <step id="S17">Client receives DTO from QueryHandler.</step>
+    </mainSequence>
+</useCase>

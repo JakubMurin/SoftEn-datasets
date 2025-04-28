@@ -1,0 +1,27 @@
+<useCase id="register_process">
+    <name>Register Process</name>
+    <description>Allows a user to register on the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Browser</actor>
+        <actor>UserService</actor>
+        <actor>Redis</actor>
+        <actor>MysqlDatabase</actor>
+    </actors>
+    <trigger>User enters the registration page</trigger>
+    <mainSequence>
+        <step id="S1">User enters the registration page</step>
+        <step id="S2">Browser generates a random string</step>
+        <step id="S3">Browser requests and displays a captcha image</step>
+        <step id="S4">User inputs registration information, generated random string, and captcha</step>
+        <step id="S5">User clicks on the submit button</step>
+        <step id="S6">Browser sends registration request to UserService</step>
+        <step id="S7">UserService validates the captcha</step>
+        <step id="S8">UserService retrieves the next user ID from Redis</step>
+        <step id="S9">UserService inserts user information into Mysql</step>
+        <step id="S10">UserService inserts user-resource relationship data into Mysql</step>
+        <step id="S11">UserService creates a token ID for the user</step>
+        <step id="S12">UserService sets token information in Redis</step>
+        <step id="S13">Browser sets a cookie and redirects user to the login page</step>
+    </mainSequence>
+</useCase>

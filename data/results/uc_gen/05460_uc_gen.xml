@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Authenticate User</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User needs to access the Finance App</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Authentication failed</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User sends an HTTP request to the Finance App</step>
+        <step id="S2">Finance App forwards SQL request to the Database</step>
+        <step id="S3">Database responds with SQL data to Finance App</step>
+        <step id="S4">Finance App sends HTTP response back to User</step>
+        <step id="S5">User sends an authentication request to Finance App</step>
+        <step id="S6">If valid credentials, Finance App responds with authentication success to User</step>
+        <step id="S7">If invalid credentials, Finance App responds with authentication failure to User</step>
+        <step id="S8">Finance App sends authentication response to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">If wrong credentials, Finance App responds with authentication failure to User</step>
+            <step id="A1S2">If forgot password, User requests forgot password and receives OTP</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Server timeout occurs</description>
+            <step id="E1S1">User pings server multiple times until it is available</step>
+            <step id="E1S2">Finance App finally responds with server availability to User</step>
+        </esteps>
+    </errorSteps>
+</useCase>

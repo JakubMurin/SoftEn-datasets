@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Perform Fault Management Provisioning</name>
+    <actors>
+        <actor>Business User</actor>
+        <actor>SOF: Fault Management</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system has registered listeners for FaultManagementJobNotification and FaultManagementReportNotification.</precondition>
+    </preconditions>
+    <trigger>The Business User initiates the Fault Management provisioning process.</trigger>
+    <mainSequence>
+        <step id="S1">The Business User requests the creation of a Fault Management Job.</step>
+        <step id="S2">The system creates a Fault Management Job.</step>
+        <step id="S3">The system notifies the Business User about the created Fault Management Job.</step>
+        <step id="S4">The Fault Management Job is activated.</step>
+        <step id="S5">The Fault Management Job creates an event.</step>
+        <step id="S6">The system notifies the Business User about the created event.</step>
+        <step id="S7">The Fault Management Job generates data.</step>
+        <step id="S8">After the scheduled date, the Fault Management Job changes state to inProgress.</step>
+        <step id="S9">The Fault Management Job triggers a state change event.</step>
+        <step id="S10">The system notifies the Business User about the state change event.</step>
+        <step id="S11">The Fault Management Job generates a report.</step>
+        <step id="S12">After the reporting period elapses, the Fault Management Report is created.</step>
+        <step id="S13">The system notifies the Business User about the created Fault Management Report.</step>
+        <step id="S14">The Fault Management Report changes state to inProgress.</step>
+        <step id="S15">The Fault Management Report collects data.</step>
+        <step id="S16">The Fault Management Report changes state to completed.</step>
+        <step id="S17">The system notifies the Business User about the state change event.</step>
+        <step id="S18">The Fault Management Report is linked to the Fault Management Job.</step>
+        <step id="S19">The system notifies the Business User about the report completion.</step>
+        <step id="S20">After the schedule elapses, the Fault Management Job changes state to completed or scheduled.</step>
+        <step id="S21">The Fault Management Job triggers a state change event.</step>
+        <step id="S22">The system notifies the Business User about the state change event.</step>
+        <step id="S23">The Business User requests the retrieval of the Fault Management Report.</step>
+        <step id="S24">The system retrieves the Fault Management Report.</step>
+        <step id="S25">The system notifies the Business User about the retrieved Fault Management Report.</step>
+    </mainSequence>
+</useCase>

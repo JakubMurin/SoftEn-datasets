@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Option Trading</name>
+    <description>Allows the option holder to trade option tokens before expiration</description>
+    <actors>
+        <actor>Option Holder</actor>
+        <actor>Option Serie Smart Contract</actor>
+        <actor>Exchange Adapter Contract</actor>
+        <actor>Exchange</actor>
+    </actors>
+    <preconditions>
+        <precondition>The option tokens are available in the smart contract</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The option holder receives the amount above the strike price</condition>
+    </successEndConditions>
+    <trigger>Initiate option trading operation</trigger>
+    <mainSequence>
+        <step id="S1">Initiate operation: transfer option tokens to smart contract</step>
+        <step id="S2">Initiate trade via common interface</step>
+        <step id="S3">Check if price is more than strike price</step>
+        <step id="S4">Transfer corresponding amount of underlying tokens</step>
+        <step id="S5">Put underlying tokens</step>
+        <step id="S6">Get basis token</step>
+        <step id="S7">Check if received amount is sufficient</step>
+        <step id="S8">Transfer amount above strike to option holder</step>
+        <step id="S9">Remaining amount is kept for later withdrawal by anti-option holders</step>
+    </mainSequence>
+</useCase>

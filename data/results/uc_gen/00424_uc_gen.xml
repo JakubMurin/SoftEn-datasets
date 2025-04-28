@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>View Chapter Content</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ChapterContentView</actor>
+        <actor>TransactionsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+        <precondition>Chapter content is available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Chapter content page is displayed</condition>
+    </successEndConditions>
+    <trigger>User clicks on the chapter title</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the chapter title</step>
+        <step id="S2">User clicks on purchase one</step>
+        <step id="S3">Request API</step>
+        <step id="S4">Process AddTransactionBuyChapter()</step>
+        <step id="S5">Query data</step>
+        <step id="S6">Return data</step>
+        <step id="S7">MsgActionReturn()</step>
+        <step id="S8">Response Payload Format</step>
+        <step id="S9">Display Chapter Content Page</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Define Explore Schema</name>
+    <actors>
+        <actor>User</actor>
+        <actor>WebUI</actor>
+        <actor>DMS</actor>
+        <actor>SS</actor>
+        <actor>DS</actor>
+    </actors>
+    <preconditions>
+        <precondition>WebUI receives request to define explore schema from User</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Explore schema successfully defined and linked with dataset</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error encountered during validation of request</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User requests to define explore schema</step>
+        <step id="S2">WebUI receives request and validates user input</step>
+        <step id="S3">Validation success</step>
+        <step id="S4">DMS stores explore schema</step>
+        <step id="S5">SS confirms schema stored</step>
+        <step id="S6">DMS links explore schema with dataset</step>
+        <step id="S7">DS confirms schema linkage</step>
+        <step id="S8">DMS sends success response to WebUI</step>
+        <step id="S9">WebUI acknowledges schema specification to User</step>
+    </mainSequence>
+</useCase>

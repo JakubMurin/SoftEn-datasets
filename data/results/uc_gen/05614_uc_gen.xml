@@ -1,0 +1,49 @@
+<useCase id="UC001">
+    <name>Recover Document Type</name>
+    <actors>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>Backend is running and accessible</precondition>
+        <precondition>Frontend sends a POST request to recover a document type</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document type is successfully recovered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Document type is not found or already active</condition>
+    </failureEndConditions>
+    <trigger>Frontend sends a POST request to recover a document type</trigger>
+    <mainSequence>
+        <step id="S1">Frontend sends a POST request to recover a document type</step>
+        <step id="S2">Check user role</step>
+        <step id="S3">Validate request</step>
+        <step id="S4">Recover document type by ID</step>
+        <step id="S5">Find document type in the database</step>
+        <step id="S6">Check document type state</step>
+        <step id="S7">Set document type state to ACTIVE</step>
+        <step id="S8">Save updated document type in the database</step>
+        <step id="S9">Return success response to Frontend</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">User has ADMIN role</step>
+            <step id="A1S2">Request is valid</step>
+            <step id="A1S3">Document type found</step>
+            <step id="A1S4">Document type state == DELETED</step>
+            <step id="A1S5">Set document type state to ACTIVE</step>
+            <step id="A1S6">Save updated document type in the database</step>
+            <step id="A1S7">Return success response to Frontend</step>
+            <step id="A1S8">Document type is not found</step>
+            <step id="A1S9">Document type state == ACTIVE</step>
+            <step id="A1S10">Return error response to Frontend</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Request is invalid</description>
+            <step id="E1S1">Return bad request response to Frontend</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,48 @@
+<useCase id="uc1">
+    <name>Payment Cancellation with Redirect Approach</name>
+    <description>Initiate the payment cancellation process using a redirect approach with an implicit authorization mode</description>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>Online_banking</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <preconditions>
+        <precondition>Payment service, payment product, and ASPSP implementation should allow payment cancellation without explicit authorization.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Payment is successfully cancelled.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Payment cancellation is not finalized or authorization is mandated.</condition>
+    </failureEndConditions>
+    <trigger>Initiate Payment Cancellation</trigger>
+    <mainSequence>
+        <step id="S1">Initiate Payment Cancellation - PSU sends a request to TPP to cancel a payment</step>
+        <step id="S2">REST Call Cancel Payment - TPP makes a REST call to XS2A to cancel the payment</step>
+        <step id="S3">Java Call getPaymentById - XS2A retrieves the payment object from CMS</step>
+        <step id="S4">Java Call SPIinitiatePaymentCancellation - XS2A initiates payment cancellation with SPI</step>
+        <step id="S5">Update Payment Status - XS2A updates the payment status in CMS</step>
+        <step id="S6">Return HTTP code 400 - XS2A returns an error code to TPP if payment status is finalized</step>
+        <step id="S7">Proceed without SCA - XS2A cancels payment without strong customer authentication if authorized</step>
+        <step id="S8">Start Authorisation Request - SPI starts the authorization process with ASPSP</step>
+        <step id="S9">Save Authorisation - XS2A saves the authorization in CMS</step>
+        <step id="S10">Start Cancellation Authorisation Response - TPP sends a response to PSU to authorize payment cancellation</step>
+        <step id="S11">PSU Redirect to ASPSP - PSU redirects to the ASPSP authorization webpage through Online_banking</step>
+        <step id="S12">Get Payment By Redirect ID - Online_banking retrieves payment details from CMS</step>
+        <step id="S13">Update PSU ID Payment - Online_banking updates PSU details in CMS</step>
+        <step id="S14">Authorisation Process Response - PSU completes the authorization process</step>
+        <step id="S15">Update Authorisation Status - CMS updates the authorization status</step>
+        <step id="S16">Execute Payment Cancellation - Online_banking executes payment cancellation with ASPSP</step>
+        <step id="S17">Update Payment Status - CMS updates payment status after cancellation</step>
+        <step id="S18">Cancellation Confirmed - PSU receives confirmation of payment cancellation</step>
+        <step id="S19">Redirect Back - PSU is redirected back to TPP</step>
+        <step id="S20">REST Call Get Payment Status - TPP retrieves the payment status from XS2A</step>
+        <step id="S21">REST Call Get Payment Request - TPP retrieves the payment details from XS2A</step>
+        <step id="S22">REST Call Get Cancellation Authorization Sub-Resources Request - TPP requests cancellation authorization details from XS2A</step>
+        <step id="S23">REST Call Get Cancellation Authorisation - TPP retrieves cancellation authorizations from XS2A</step>
+    </mainSequence>
+</useCase>

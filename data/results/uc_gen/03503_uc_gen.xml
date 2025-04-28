@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Upload and License Data File</name>
+    <actors>
+        <actor>Cornell Faculty Member</actor>
+    </actors>
+    <preconditions>
+        <precondition>The faculty member has data file ready for upload</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">The faculty member selects the data file to upload using the web browser interface.</step>
+        <step id="S2">The web browser interface initiates the file upload process.</step>
+        <step id="S3">The file upload service stores the data file in the digital repository.</step>
+        <step id="S4">The digital repository saves the file metadata, including the uploader information, in the database.</step>
+        <step id="S5">The database confirms the storage of file metadata.</step>
+        <step id="S6">The repository confirms the storage of the data file.</step>
+        <step id="S7">The file upload service displays the file upload success message to the faculty member.</step>
+        <step id="S8">The file upload service provides the file ID and upload confirmation to the faculty member.</step>
+        <step id="S9">The faculty member chooses the licensing option (CC-By or CC0) using the web browser interface.</step>
+        <step id="S10">The web browser interface sends the license choice and file ID to the licensing service.</step>
+        <step id="S11">The licensing service applies the chosen license to the file.</step>
+        <step id="S12">The DRM service updates the file metadata with the license information in the repository.</step>
+        <step id="S13">The database updates the file record with the license metadata.</step>
+        <step id="S14">The database confirms the update of the license.</step>
+        <step id="S15">The repository confirms the application of the license to the file.</step>
+        <step id="S16">The licensing service displays the license application success message to the faculty member.</step>
+        <step id="S17">The faculty member confirms that the license has been set for the file.</step>
+    </mainSequence>
+</useCase>

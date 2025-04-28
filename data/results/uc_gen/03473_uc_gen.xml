@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>User Types Characters and Renders Text</name>
+    <description>User types characters in a document, which are then rendered as text.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Document</actor>
+        <actor>TextFactory</actor>
+        <actor>Cache</actor>
+    </actors>
+    <preconditions>
+        <precondition>Document and TextFactory are initialized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Text is successfully rendered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Text rendering fails.</condition>
+    </failureEndConditions>
+    <trigger>User types character(s) in the document.</trigger>
+    <mainSequence>
+        <step id="S1">User types character(s)</step>
+        <step id="S2">Document receives typed character(s) to generate text</step>
+        <step id="S3">TextFactory retrieves text value from Document</step>
+        <step id="S4">If matching flyweight exists in Cache, return it</step>
+        <step id="S5">If no matching flyweight in Cache, create new Flyweight in TextFactory</step>
+        <step id="S6">New Flyweight added to Cache in TextFactory</step>
+        <step id="S7">Text Flyweight returned to Document</step>
+        <step id="S8">Document renders text to User</step>
+    </mainSequence>
+</useCase>

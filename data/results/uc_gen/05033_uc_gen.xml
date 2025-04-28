@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Gain Unauthorized Access to Domain Controller</name>
+    <actors>
+        <actor>Attacker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker has network access to the target Domain Controller.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Attacker successfully obtains user credentials from the Domain Controller.</condition>
+    </successEndConditions>
+    <trigger>Attacker wants to gain unauthorized access to the Domain Controller.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker gains access to an account with necessary rights.</step>
+        <step id="S2">Attacker issues a DCSync request impersonating a domain controller.</step>
+        <step id="S3">Domain Controller validates the request by checking the requesting SID's privileges.</step>
+        <step id="S4">Domain Controller sends the requested data, including user credentials, to the Attacker's machine.</step>
+        <step id="S5">Attacker uses the obtained credentials to access resources or perform actions within the domain.</step>
+    </mainSequence>
+</useCase>

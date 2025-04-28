@@ -1,0 +1,25 @@
+<useCase id="UC01">
+    <name>Book a Room</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Receptionist wants to book a room</precondition>
+    </preconditions>
+    <trigger>The Receptionist requests to create a booking.</trigger>
+    <mainSequence>
+        <step id="S1">Request to create booking is received from the Receptionist.</step>
+        <step id="S2">The booking creation interface is displayed to the Receptionist.</step>
+        <step id="S3">The Receptionist fills in the booking details.</step>
+        <step id="S4">The filled booking details are submitted for processing.</step>
+        <step id="S5">The system checks the availability of the requested room.</step>
+        <step id="S6">The system creates a new booking if the room is available.</step>
+        <step id="S7">The system displays a success message to the Receptionist.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Room is not available.</step>
+            <step id="A1S2">An error message is displayed to the Receptionist.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

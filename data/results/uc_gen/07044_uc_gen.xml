@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Define Explore Schema</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Web UI/API</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Schema Storage</actor>
+        <actor>Dataset Storage</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to define explore schema</step>
+        <step id="S2">Web UI/API validates the user request</step>
+        <step id="S3">Dataset Management System stores explore schema</step>
+        <step id="S4">Schema Storage confirms schema stored</step>
+        <step id="S5">Dataset Management System links explore schema with dataset</step>
+        <step id="S6">Dataset Storage confirms linkage</step>
+        <step id="S7">Dataset Management System sends success response to user</step>
+        <step id="S8">Web UI/API acknowledges schema specification to the user</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">Validation succeeds</step>
+        </asteps>
+        <asteps id="A2" start="S2" continue="S7">
+            <step id="A2S1">Validation fails</step>
+            <step id="A2S2">Error response sent to user</step>
+            <step id="A2S3">Error shown to user</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

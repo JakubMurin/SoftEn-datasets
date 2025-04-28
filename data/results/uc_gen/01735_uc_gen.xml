@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Retrieve Producer Winners</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SpringBoot</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to retrieve producer winners</step>
+        <step id="S2">ProducerController receives the request</step>
+        <step id="S3">ProducerController forwards request to ProducerService</step>
+        <step id="S4">ProducerService finds minimum and maximum winners</step>
+        <step id="S5">ProducerService queries MovieService to find winners</step>
+        <step id="S6">MovieService searches MovieRepository for winners</step>
+        <step id="S7">MovieRepository returns list of movies to MovieService</step>
+        <step id="S8">MovieService sets ProducerWinnerDto</step>
+        <step id="S9">ProducerService maps ProducerWinnerDto to producer years</step>
+        <step id="S10">ProducerMapper maps producer years</step>
+        <step id="S11">ProducerResponseBuilder constructs response</step>
+        <step id="S12">ProducerResponseBuilder builds ProducerResponseDto list</step>
+        <step id="S13">ProducerResponseBuilder builds ProducerWinnerResponse</step>
+        <step id="S14">ProducerService returns ProducerWinnerResponse to ProducerController</step>
+        <step id="S15">ProducerController responds with ProducerWinnerResponse to User</step>
+        <step id="S16">SpringBoot notifies MovieService of ApplicationReadyEvent</step>
+        <step id="S17">MovieService imports CSV using CsvReader</step>
+        <step id="S18">CsvReader returns list of MovieDto to MovieService</step>
+        <step id="S19">MovieService saves all movies to MovieRepository</step>
+    </mainSequence>
+</useCase>

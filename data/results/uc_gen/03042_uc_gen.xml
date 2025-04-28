@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Adding New Video Content</name>
+    <actors>
+        <actor>Content Editor</actor>
+        <actor>CMS</actor>
+        <actor>Video Management Subsystem (Brightcove API)</actor>
+        <actor>NSF Database</actor>
+        <actor>NSF Beta Site</actor>
+    </actors>
+    <preconditions>
+        <precondition>Content Editor is logged in to CMS</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Video metadata successfully stored in NSF Database</condition>
+    </successEndConditions>
+    <trigger>Content Editor selects option to add new video content</trigger>
+    <mainSequence>
+        <step id="S1">Content Editor logs in to CMS</step>
+        <step id="S2">CMS displays dashboard</step>
+        <step id="S3">Content Editor selects option to add new video content</step>
+        <step id="S4">Content Editor uploads video information (Title, Description, Tags)</step>
+        <step id="S5">CMS makes API call to upload video file to Video Management Subsystem</step>
+        <step id="S6">Video Management Subsystem returns Video ID from Brightcove to CMS</step>
+        <step id="S7">CMS stores video metadata (including Brightcove Video ID) in NSF Database</step>
+        <step id="S8">NSF Database confirms video metadata stored</step>
+        <step id="S9">CMS displays success message (Video added)</step>
+        <step id="S10">Content Editor verifies video appears on the site by querying video details in NSF Database</step>
+        <step id="S11">NSF Database returns video details to NSF Beta Site</step>
+        <step id="S12">NSF Beta Site displays the video content to Content Editor</step>
+    </mainSequence>
+</useCase>

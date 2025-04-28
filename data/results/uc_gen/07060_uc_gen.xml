@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Perform actions with different components</name>
+    <description>Allow the user to interact with various components of the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully completes interactions with all components.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user encounters an error while interacting with any component.</condition>
+    </failureEndConditions>
+    <trigger>User initiates actions with system components.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to interact with components.</step>
+        <step id="S2">System identifies the type of component requested.</step>
+        <step id="S3">System presents the available components to the user.</step>
+        <step id="S4">User selects a component to interact with.</step>
+        <step id="S5">System processes the user's interaction with the selected component.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">If the requested component is not available, system informs the user.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Error encountered during interaction with component.</description>
+            <step id="E1S1">System displays an error message to the user.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

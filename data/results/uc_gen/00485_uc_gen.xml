@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Connect flow</name>
+    <actors>
+        <actor>Invitee</actor>
+        <actor>Inviter</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Inviter creates a new connection by sending a POST request to the Inviter Cloud Agent with the label "Bob".</step>
+        <step id="S2">Inviter Cloud Agent generates a new pairwise Peer DID.</step>
+        <step id="S3">Inviter Cloud Agent creates a connection state record.</step>
+        <step id="S4">Inviter receives the connection record containing id, invitation, and state.</step>
+        <step id="S5">Inviter packs the connection invitation into a QR code.</step>
+        <step id="S6">Inviter sends the invitation to the Invitee using an Out-of-band (OOB) mechanism, such as email, with instructions to install the required app and scan the QR code.</step>
+        <step id="S7">Inviter checks the connection state by sending a GET request to the Inviter Cloud Agent with the connection ID.</step>
+        <step id="S8">Inviter receives the connection state as "InvitationGenerated".</step>
+        <step id="S9">Invitee parses the invitation message by scanning the QR code.</step>
+        <step id="S10">Invitee reviews the invitation.</step>
+        <step id="S11">Invitee receives and accepts the invitation by sending a POST request to the Invitee Cloud Agent with the invitation details.</step>
+        <step id="S12">Invitee Cloud Agent creates a pairwise DID.</step>
+        <step id="S13">Invitee Cloud Agent creates a connection state record.</step>
+        <step id="S14">Invitee receives the connection record containing id, invitation, and state.</step>
+        <step id="S15">Invitee's state changes to "ConnectionRequestPending".</step>
+        <step id="S16">Invitee sends a "ConnectionRequest" message to the Inviter Cloud Agent, including the invitee's Peer DID.</step>
+        <step id="S17">Inviter Cloud Agent responds with "OK".</step>
+        <step id="S18">Invitee's state changes to "ConnectionRequestSent".</step>
+        <step id="S19">Inviter Cloud Agent sends a "ConnectionResponse" message to the Invitee Cloud Agent, including the inviter's Peer DID.</step>
+        <step id="S20">Invitee Cloud Agent responds with "OK".</step>
+        <step id="S21">Invitee's state changes to "ConnectionResponseReceived".</step>
+    </mainSequence>
+</useCase>

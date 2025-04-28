@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>An End-to-end version assignment process scenario</name>
+    <description>This scenario describes the process of assigning a new version number in a version control system</description>
+    <actors>
+        <actor>Dataset Developer</actor>
+        <actor>Version Control UI</actor>
+        <actor>Version Control Service</actor>
+        <actor>Version Metadata Store</actor>
+    </actors>
+    <trigger>Accesses Version Control UI</trigger>
+    <mainSequence>
+        <step id="S1">Dataset Developer accesses the Version Control UI</step>
+        <step id="S2">UI receives the request to Assign Version</step>
+        <step id="S3">Version Control Service fetches Current Version Info from the Version Metadata Store</step>
+        <step id="S4">Version Control Service increments the Version / Assigns New Version in the Metadata Store</step>
+        <step id="S5">Service indicates Version Assigned Successfully</step>
+        <step id="S6">UI reflects the success message indicating Version Assignment Successful</step>
+    </mainSequence>
+</useCase>

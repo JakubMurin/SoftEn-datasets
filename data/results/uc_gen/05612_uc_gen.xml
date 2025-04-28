@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Recover Document Type</name>
+    <actors>
+        <actor>Frontend</actor>
+        <actor>DocumentConstructorTypeController</actor>
+        <actor>DocumentConstructorTypeService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has ADMIN role</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document type state is ACTIVE</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Document type state is DELETED</condition>
+    </failureEndConditions>
+    <trigger>POST /api/doctype/{id}/recover</trigger>
+    <mainSequence>
+        <step id="S1">Check user role</step>
+        <step id="S2">Validate request</step>
+        <step id="S3">Recover document type by ID</step>
+        <step id="S4">Find document type by ID</step>
+        <step id="S5">Check document type state</step>
+        <step id="S6">Set document type state = ACTIVE</step>
+        <step id="S7">Save document type</step>
+        <step id="S8">Document type recovered</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Request is invalid</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Document type is not found</description>
+            <step id="E1S1">Document type isn't found</step>
+        </esteps>
+    </errorSteps>
+</useCase>

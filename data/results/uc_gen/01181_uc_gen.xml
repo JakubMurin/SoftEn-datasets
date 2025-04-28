@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Modify Vacation Request</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>vacation.routes</actor>
+        <actor>vacation.controller</actor>
+        <actor>vacation.model</actor>
+        <actor>mysql</actor>
+    </actors>
+    <preconditions>
+        <precondition>Navegador accesses the vacation modification page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Vacation request successfully updated.</condition>
+    </successEndConditions>
+    <trigger>Navegador initiates the modification of the vacation request.</trigger>
+    <mainSequence>
+        <step id="S1">Navegador accesses the vacation modification page.</step>
+        <step id="S2">Vacation.routes receives GET /vacation/check/modify:vacationID request.</step>
+        <step id="S3">Vacation.controller processes getModifyVacation(req, res) request.</step>
+        <step id="S4">Vacation.model fetches data for vacation_id from the database.</step>
+        <step id="S5">Vacation.controller receives vacation data and renders modifyVacation form.</step>
+        <step id="S6">Navegador views the modify vacation form.</step>
+        <step id="S7">Navegador submits POST /update/:vacationID request.</step>
+        <step id="S8">Vacation.routes processes updateVacation(req, res) request.</step>
+        <step id="S9">Vacation.model updates vacation data in the database.</step>
+        <step id="S10">Vacation.controller receives update success and displays a success message.</step>
+        <step id="S11">Navegador views the success message.</step>
+    </mainSequence>
+</useCase>

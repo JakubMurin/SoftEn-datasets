@@ -1,0 +1,50 @@
+<useCase id="UC001">
+    <name>Adding a Comment to an Article</name>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>Controller</actor>
+        <actor>ArticleService</actor>
+        <actor>CommentService</actor>
+        <actor>ArticleRepo</actor>
+        <actor>CommentRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and navigating to an article page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New comment successfully added to the article</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Validation error during adding the comment</condition>
+        <condition>Error while adding the comment</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User navigates to the article page</step>
+        <step id="S2">User requests to add a comment</step>
+        <step id="S3">Controller retrieves article details</step>
+        <step id="S4">ArticleService queries article by slug</step>
+        <step id="S5">ArticleService receives article details</step>
+        <step id="S6">Controller receives article details</step>
+        <step id="S7">Controller adds comment to the article</step>
+        <step id="S8">CommentService saves the comment</step>
+        <step id="S9">CommentService receives success response</step>
+        <step id="S10">System updates article page with new comment</step>
+        <step id="S11">System displays updated article page with new comment to the User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">CommentService receives error while saving the comment</step>
+            <step id="A1S2">Controller receives the error response</step>
+            <step id="A1S3">System renders error page and displays error message "Error saving comment"</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Error in saving the new comment</description>
+            <step id="E1S1">CommentService receives error while saving the comment</step>
+            <step id="E1S2">Controller receives the error response</step>
+            <step id="E1S3">System renders error page and displays error message "Error saving comment"</step>
+        </esteps>
+    </errorSteps>
+</useCase>

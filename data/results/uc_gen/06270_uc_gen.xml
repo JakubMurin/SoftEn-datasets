@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Initialize Database</name>
+    <actors>
+        <actor>Database Manager</actor>
+        <actor>Database</actor>
+        <actor>Backup Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Database Manager needs to check if the table is available.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Database Manager checks if the table is available.</step>
+        <step id="S2">If the table is not available, Database Manager creates the database.</step>
+        <step id="S3">If the table is available, Database Manager clears all data from the Backup Server.</step>
+        <step id="S4">Database Manager initializes the Backup Server from the vpn.cvs file.</step>
+    </mainSequence>
+</useCase>

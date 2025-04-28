@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Translate Texts</name>
+    <description>Translate texts from bot to Elasticsearch</description>
+    <actors>
+        <actor>User</actor>
+        <actor>henrietta</actor>
+        <actor>paratranz2es</actor>
+        <actor>translators</actor>
+    </actors>
+    <preconditions>
+        <precondition>Translators should be available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Texts successfully translated and stored in Elasticsearch</condition>
+    </successEndConditions>
+    <trigger>User calls out henrietta</trigger>
+    <mainSequence>
+        <step id="S1">User initiates translation request.</step>
+        <step id="S2">Translators send translated texts to paratranz.</step>
+        <step id="S3">paratranz2es retrieves data from paratranz.</step>
+        <step id="S4">paratranz2es performs bulk insert to Elasticsearch.</step>
+        <step id="S5">User interacts with henrietta to input text and user info.</step>
+        <step id="S6">henrietta queries Elasticsearch for data.</step>
+        <step id="S7">henrietta responds to User with data from Elasticsearch.</step>
+    </mainSequence>
+</useCase>

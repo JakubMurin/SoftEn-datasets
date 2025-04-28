@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Connect as Host</name>
+    <actors>
+        <actor>Professor</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Professor clicks on "connect as host" button</step>
+        <step id="S2">UIDocument receives click event and triggers connectHost()</step>
+        <step id="S3">ConnectBoxManager creates a relay for the room size</step>
+        <step id="S4">TestRelay requests allocation of a server for the room</step>
+        <step id="S5">RelayService creates an allocation request to UnityServers</step>
+        <step id="S6">UnityServers reserves an allocated server for the room</step>
+        <step id="S7">UnityServers provides the IP and Port of the allocated server</step>
+        <step id="S8">RelayService sends the allocation details to TestRelay</step>
+        <step id="S9">TestRelay requests the join code from RelayService</step>
+        <step id="S10">RelayService generates a join code for the allocated server</step>
+        <step id="S11">TestRelay sets the transport to use the allocated IP and Port</step>
+        <step id="S12">TestRelay starts hosting the room using NetworkManager</step>
+        <step id="S13">ConnectBoxManager receives the join code from TestRelay</step>
+        <step id="S14">UIDocument sets the join code in the textbox</step>
+    </mainSequence>
+</useCase>

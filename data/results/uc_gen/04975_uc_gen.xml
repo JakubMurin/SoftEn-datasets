@@ -1,0 +1,34 @@
+<useCase id="UC-10104">
+    <name>Einladung von Akteuren innerhalb einer Organisation</name>
+    <actors>
+        <actor>Akteur - A in der Rolle User</actor>
+        <actor>Akteur - B in der Rolle User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Suche Akteur B</step>
+        <step id="S2">POST /_matrix/client/user_directory/search</step>
+        <step id="S3">HTTP(S) Forward</step>
+        <step id="S4">Nutzerverzeichnis durchsuchen</step>
+        <step id="S5">MXID</step>
+        <step id="S6">HTTP(S) Forward</step>
+        <step id="S7">Akteur B einladen</step>
+        <step id="S8">POST /_matrix/client/v3/rooms/{roomId}/invite</step>
+        <step id="S9">HTTP(S) Forward</step>
+        <step id="S10">Invite verarbeiten</step>
+        <step id="S11">HTTP 200</step>
+        <step id="S12">POST /_matrix/push/notify</step>
+        <step id="S13">Notification</step>
+        <step id="S14">Status</step>
+        <step id="S15">Sync Request</step>
+        <step id="S16">Sync Response</step>
+        <step id="S17">Einladung anzeigen</step>
+        <step id="S18">Einladung bestätigen</step>
+        <step id="S19">join</step>
+        <step id="S20">join verarbeiten</step>
+        <step id="S21">Room ID</step>
+        <step id="S22">Nutzer ist dem Raum beigetreten</step>
+        <step id="S23">Sync Request</step>
+        <step id="S24">Sync Response</step>
+        <step id="S25">Akteur B ist dem Raum beigetreten</step>
+    </mainSequence>
+</useCase>

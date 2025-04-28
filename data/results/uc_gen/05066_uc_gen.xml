@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Communication téléphonique</name>
+    <actors>
+        <actor>Apelant</actor>
+        <actor>Correspondant</actor>
+    </actors>
+    <preconditions>
+        <precondition>Les deux parties ont de la monnaie pour l'appel.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La communication est établie et les parties discutent.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Une des parties raccroche sans discuter.</condition>
+    </failureEndConditions>
+    <trigger>Apelant compose le numéro.</trigger>
+    <mainSequence>
+        <step id="S1">Apelant insère la monnaie.</step>
+        <step id="S2">Le décompte de 2 minutes commence.</step>
+        <step id="S3">Apelant compose le numéro.</step>
+        <step id="S4">Si le numéro n'est pas composé, Apelant raccroche.</step>
+        <step id="S5">Si le numéro est composé, la ligne est connectée au Correspondant.</step>
+        <step id="S6">Si la ligne est occupée, Apelant raccroche.</step>
+        <step id="S7">Si la ligne est libre, Correspondant décroche.</step>
+        <step id="S8">Le décompte de la monnaie et l'ajout de monnaie se font en boucle.</step>
+        <step id="S9">Les parties discutent.</step>
+        <step id="S10">Correspondant, puis Apelant raccrochent.</step>
+        <step id="S11">Apelant et Correspondant coupent la ligne.</step>
+        <step id="S12">Standard rend la monnaie à Apelant.</step>
+    </mainSequence>
+</useCase>

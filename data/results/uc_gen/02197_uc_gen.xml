@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Data Package Publishing</name>
+    <description>Allows a Publisher to create and publish a data package to a team.</description>
+    <actors>
+        <actor>Publisher</actor>
+        <actor>User Account Management</actor>
+        <actor>Dataset Publishing</actor>
+        <actor>Access Control</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Publisher is logged in via GitHub or Google.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The data package is published successfully to the team.</condition>
+    </successEndConditions>
+    <trigger>User initiates data package creation.</trigger>
+    <mainSequence>
+        <step id="S1">Publisher logs in via GitHub or Google.</step>
+        <step id="S2">User Account Management authenticates the Publisher successfully.</step>
+        <step id="S3">Publisher initiates data package creation.</step>
+        <step id="S4">Dataset Publishing prepares package metadata.</step>
+        <step id="S5">Access Control sets package visibility to private.</step>
+        <step id="S6">Dataset Publishing imports and validates the dataset.</step>
+        <step id="S7">Dataset Publishing saves the dataset package.</step>
+        <step id="S8">Publisher publishes the package to the team.</step>
+        <step id="S9">Access Control verifies team access rights.</step>
+        <step id="S10">Dataset Publishing notifies team members.</step>
+    </mainSequence>
+</useCase>

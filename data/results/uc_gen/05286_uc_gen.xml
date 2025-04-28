@@ -1,0 +1,16 @@
+<useCase id="UC1">
+	<name>Manage Environments</name>
+	<actors>
+		<actor>Operations Manager</actor>
+	</actors>
+	<preconditions>
+		<precondition>An environment named "name" exists</precondition>
+	</preconditions>
+	<trigger>User requests to destroy environment "name"</trigger>
+	<mainSequence>
+		<step id="S1">Operations Manager sends command "c3-env-destroy(name)" to CLI</step>
+		<step id="S2">CLI sends request "env/destroy(name)" to server</step>
+		<step id="S3">Operations Manager initiates destruction of environment "name" through Web interface</step>
+		<step id="S4">Web interface sends request to the server to destroy the environment "name"</step>
+	</mainSequence>
+</useCase>

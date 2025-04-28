@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Manage Bookings</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>BookingsPage</actor>
+        <actor>BookingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Booking</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client opens Manage Bookings Page</step>
+        <step id="S2">BookingsPage queries client bookings</step>
+        <step id="S3">Database returns bookings</step>
+        <step id="S4">BookingsPage displays bookings list</step>
+        <step id="S5">Client selects "Cancel Booking" (bookingId)</step>
+        <step id="S6">BookingsPage validates cancellation</step>
+        <step id="S7">Validator checks booking ownership</step>
+        <step id="S8">Validator checks cancellation rules</step>
+        <step id="S9">Validator validates cancellation</step>
+        <step id="S10">Validator displays validation failed message</step>
+        <step id="S11">BookingsPage displays error message</step>
+        <step id="S12">Validator displays validation passed message</step>
+        <step id="S13">BookingsPage deletes booking</step>
+        <step id="S14">Database confirms deletion successful</step>
+        <step id="S15">BookingsPage displays booking successfully canceled message</step>
+        <step id="S16">Client selects "Edit Booking" (bookingId)</step>
+        <step id="S17">BookingsPage validates edit</step>
+        <step id="S18">Validator checks booking ownership</step>
+        <step id="S19">Validator checks edit rules</step>
+        <step id="S20">Validator validates edit</step>
+        <step id="S21">Validator displays validation failed message</step>
+        <step id="S22">BookingsPage displays error message</step>
+        <step id="S23">Validator displays validation passed message</step>
+        <step id="S24">BookingsPage updates booking</step>
+        <step id="S25">Database confirms update successful</step>
+        <step id="S26">BookingsPage displays booking successfully updated message</step>
+        <step id="S27">Client views booking details</step>
+        <step id="S28">BookingsPage fetches booking details</step>
+        <step id="S29">Database returns booking details</step>
+        <step id="S30">BookingsPage displays booking details</step>
+    </mainSequence>
+</useCase>

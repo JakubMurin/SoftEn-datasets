@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Handle HTTP Request</name>
+    <description>This use case describes the process of handling an HTTP request.</description>
+    <actors>
+        <actor>HTTPRequest</actor>
+    </actors>
+    <preconditions>
+        <precondition>The HTTP request must be received by the server.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Apache input filter is triggered by the HTTPRequest actor.</step>
+        <step id="S2">Context enrichment is performed by mod_dup.</step>
+        <step id="S3">Filters are matched in mod_dup.</step>
+        <step id="S4">Delegation to the next handler (WS, mod_rewrite) in PNS_WS.</step>
+        <step id="S5">PNS_WS collects the answer.</step>
+        <step id="S6">Request is prepared for duplication by duplicator.</step>
+        <step id="S7">Duplicated request is sent to mod_compare.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Acceso al sistema y creación de consulta médica</name>
+    <actors>
+        <actor>Medico</actor>
+        <actor>Frontend</actor>
+        <actor>tRPC</actor>
+        <actor>Prisma</actor>
+        <actor>Database</actor>
+        <actor>ConsultaMedica</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El Medico accede al sistema</step>
+        <step id="S2">Frontend renderiza la vista de médico</step>
+        <step id="S3">ManageView muestra la vista de médico al Medico</step>
+        <step id="S4">El Medico consulta el historial de paciente</step>
+        <step id="S5">Frontend muestra el historial de paciente</step>
+        <step id="S6">El Medico crea una consulta médica</step>
+        <step id="S7">Frontend solicita crear la consulta médica a tRPC</step>
+        <step id="S8">tRPC envía la solicitud a Prisma</step>
+        <step id="S9">Prisma inserta la consulta médica en la base de datos</step>
+        <step id="S10">Prisma retorna la confirmación a Database</step>
+        <step id="S11">Prisma mapea la confirmación a ConsultaMedica</step>
+        <step id="S12">ConsultaMedica retorna la confirmación a tRPC</step>
+        <step id="S13">tRPC envía la confirmación al Frontend</step>
+    </mainSequence>
+</useCase>

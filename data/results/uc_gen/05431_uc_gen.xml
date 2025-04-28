@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Translate Texts</name>
+    <description>Translate texts from users</description>
+    <actors>
+        <actor>User</actor>
+        <actor>translators</actor>
+    </actors>
+    <preconditions>
+        <precondition>Henrietta is activated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Texts are successfully translated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Translation fails</condition>
+    </failureEndConditions>
+    <trigger>Call out Henrietta to translate texts</trigger>
+    <mainSequence>
+        <step id="S1">User calls out Henrietta</step>
+        <step id="S2">Henrietta receives input text and user info from the bot/channel</step>
+        <step id="S3">Henrietta queries Elasticsearch for translation</step>
+        <step id="S4">Henrietta receives response from Elasticsearch</step>
+        <step id="S5">Henrietta sends response back to the bot/channel</step>
+        <step id="S6">User receives translated texts</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Create IOU State</name>
+    <description>Create an IOU state for the transaction.</description>
+    <actors>
+        <actor>Borrower</actor>
+        <actor>Lender</actor>
+    </actors>
+    <preconditions>
+        <precondition>Borrower and Lender are authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>IOU state successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>IOU state creation failed.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Borrower creates IOU state.</step>
+        <step id="S2">Borrower prepares transaction.</step>
+        <step id="S3">Borrower runs CollectEndorsementsView with Lender.</step>
+        <step id="S4">Lender checks transaction.</step>
+        <step id="S5">Lender endorses transaction for Borrower.</step>
+        <step id="S6">Borrower runs OrderingView on Fabric.</step>
+        <step id="S7">Lender endorses transaction for Borrower again.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="1">
+    <name>Update Record in ActiveRecord</name>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Actor requests an update in the application.</step>
+        <step id="S2">The Application forwards the update request to the Application Service.</step>
+        <step id="S3">The Application Service updates the Entity.</step>
+        <step id="S4">The Entity requests an update from the Database.</step>
+        <step id="S5">The Database provides the necessary primitives to the Entity.</step>
+        <step id="S6">The Entity updates its state based on the primitives received.</step>
+        <step id="S7">The Entity converts the updated state to primitives.</step>
+        <step id="S8">The Entity requests an update in the Database.</step>
+        <step id="S9">The Database updates the Entity with the new state.</step>
+        <step id="S10">The Entity notifies the Application Service about the update.</step>
+        <step id="S11">The Application Service informs the Application about the update.</step>
+        <step id="S12">The Application notifies the Actor about the successful update.</step>
+    </mainSequence>
+</useCase>

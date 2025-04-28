@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Excel Data Upload Use Case</name>
+    <description>User uploads Excel data</description>
+    <actors>
+        <actor>User</actor>
+        <actor>GUI CMS</actor>
+        <actor>Batch API Server</actor>
+        <actor>Queue and Log Mysql</actor>
+    </actors>
+    <preconditions>
+        <precondition>GUI CMS and Batch API Server are accessible</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Excel data is successfully uploaded and saved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Excel data upload fails</condition>
+    </failureEndConditions>
+    <trigger>User initiates Excel data upload through GUI</trigger>
+    <mainSequence>
+        <step id="S1">User initiates Excel data upload</step>
+        <step id="S2">GUI CMS receives the request</step>
+        <step id="S3">GUI CMS forwards the request to Batch API Server for Excel upload</step>
+        <step id="S4">Batch API Server saves the Excel data in the Queue and Log Mysql database</step>
+        <step id="S5">Batch API Server saves the metadata of the task</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">If the Excel upload fails, an error response is returned</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error occurred during Excel upload</description>
+            <step id="E1S1">Error steps to handle the failed Excel upload</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Complete Subscription Process</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the subscription process.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User interacts with the Subscription Controller.</step>
+        <step id="S2">Subscription Controller forwards request to Subscription Facade.</step>
+        <step id="S3">Subscription Facade communicates with Subscription Repository.</step>
+        <step id="S4">Subscription Repository accesses data through Subscription JPA Persistence Adapter.</step>
+        <step id="S5">Subscription JPA Persistence Adapter interacts with Subscription JPA Repository.</step>
+        <step id="S6">Data is stored/retrieved from the Datastore through Subscription JPA Repository.</step>
+        <step id="S7">Datastore operation is completed.</step>
+        <step id="S8">Data is sent back through the layers to User via Subscription Controller.</step>
+    </mainSequence>
+</useCase>

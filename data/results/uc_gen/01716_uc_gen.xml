@@ -1,0 +1,32 @@
+<useCase id="001">
+	<name>Mixed Agent Agent Recovery and Claim Revocation</name>
+	<description>Alice recovers agent and revokes claims</description>
+	<actors>
+		<actor>Alice</actor>
+		<actor>Alice's Edge Agent</actor>
+		<actor>Alice's Cloud Agent</actor>
+		<actor>Issuer</actor>
+	</actors>
+	<preconditions>
+		<precondition>Alice no longer has any agent policy keys</precondition>
+		<precondition>An attacker has locked Alice out of the agent policy registry</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Claim revocation and agent recovery completed successfully</condition>
+	</successEndConditions>
+	<trigger>Agent policy registry compromised</trigger>
+	<mainSequence>
+		<step id="S1">Alice generates new policy registry address</step>
+		<step id="S2">Policy registry address stored</step>
+		<step id="S3">Alice revokes claim</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S3">
+			<step id="A1S1">Revoke claim message forwarded</step>
+			<step id="A1S2">Issuer notified</step>
+			<step id="A1S3">Issuer authenticates Alice</step>
+			<step id="A1S4">Issuer revokes claim</step>
+			<step id="A1S5">Claim index added to accumulator</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

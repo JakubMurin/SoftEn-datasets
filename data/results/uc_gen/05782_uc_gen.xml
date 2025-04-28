@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Deletar Tarefa</name>
+    <description>Deletar uma tarefa da lista de afazeres</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TodoList</actor>
+        <actor>TodoWrapper</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>O usuário precisa estar logado</precondition>
+        <precondition>Existem tarefas na lista de afazeres</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tarefa deletada com sucesso</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Falha ao deletar a tarefa</condition>
+    </failureEndConditions>
+    <trigger>O usuário clica no ícone de lixeira</trigger>
+    <mainSequence>
+        <step id="S1">O usuário clica no ícone de lixeira</step>
+        <step id="S2">A tarefa é deletada da lista de afazeres</step>
+        <step id="S3">A lista de tarefas é atualizada</step>
+    </mainSequence>
+</useCase>

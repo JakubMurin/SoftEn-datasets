@@ -1,0 +1,28 @@
+<useCase id="UC1234">
+    <name>Theater Ticket Booking</name>
+    <description>Allows a user to book tickets for a show</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Theater Portal</actor>
+        <actor>Theater Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the booking system</precondition>
+        <precondition>Theater API is accessible</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User receives confirmation of their ticket order</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User receives an error message if the ticket order fails</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User inserts their card details to proceed with the ticket purchasing</step>
+        <step id="S2">User selects the show date from the available options</step>
+        <step id="S3">Theater Portal offers the user available seating options</step>
+        <step id="S4">User submits the ticket order confirming the selection</step>
+        <step id="S5">Theater Portal submits the order to the Theater Server for processing</step>
+        <step id="S6">Theater Server confirms the order with the Theater Portal</step>
+        <step id="S7">Theater Portal confirms the ticket order with the User</step>
+    </mainSequence>
+</useCase>

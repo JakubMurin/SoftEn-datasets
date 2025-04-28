@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Generate Surat Lapas</name>
+    <description>Generate a surat lapas for a specific date and number</description>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Surat lapas successfully generated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Surat lapas generation failed</condition>
+    </failureEndConditions>
+    <trigger>Administrator clicks on the "Surat Lapas" menu</trigger>
+    <mainSequence>
+        <step id="S1">Administrator clicks on the "Surat Lapas" menu</step>
+        <step id="S2">Surat Lapas boundary displays</step>
+        <step id="S3">Administrator inputs the surat number and date</step>
+        <step id="S4">BimbinganController searches for the surat using the number and date</step>
+        <step id="S5">If the surat is available</step>
+        <step id="S6">BimbinganController retrieves information about Napi</step>
+        <step id="S7">NapiController gets details of the Napi for the surat</step>
+        <step id="S8">Model_Napi sends Napi details to NapiController</step>
+        <step id="S9">NapiController redirects to Surat Lapas boundary</step>
+        <step id="S10">Surat Lapas boundary redirects to Administrator</step>
+        <step id="S11">If the surat is not available</step>
+        <step id="S12">BimbinganController redirects to Surat Lapas boundary</step>
+        <step id="S13">Surat Lapas boundary informs Administrator about unavailability of the surat</step>
+    </mainSequence>
+</useCase>

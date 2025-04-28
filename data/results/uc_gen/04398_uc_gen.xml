@@ -1,0 +1,41 @@
+<useCase id="1">
+    <name>Login Process</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must have valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully logs in and views the dashboard</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user fails to log in due to invalid credentials</condition>
+    </failureEndConditions>
+    <trigger>User enters login credentials</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password) in the UI</step>
+        <step id="S2">UI sends POST request to Router</step>
+        <step id="S3">Router forwards request to Controller</step>
+        <step id="S4">Controller validates the user credentials in Repository</step>
+        <step id="S5">Repository fetches user data from UserModel by username</step>
+        <step id="S6">Controller checks if the password matches</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">If login successful, UI displays login success message</step>
+            <step id="A1S2">UI requests dashboard data from Router</step>
+            <step id="A1S3">Router gets dashboard data from Controller</step>
+            <step id="A1S4">Controller fetches dashboard data from Repository</step>
+            <step id="A1S5">Repository queries dashboard data from DB</step>
+            <step id="A1S6">Router sends 200 OK response with dashboard data to UI</step>
+            <step id="A1S7">UI displays the dashboard to the Receptionist</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>User login fails due to invalid credentials</description>
+            <step id="E1S1">UI displays error message for invalid credentials</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Authenticate User</name>
+    <actors>
+        <actor>User</actor>
+        <actor>OtherWeb</actor>
+        <actor>AuthApp</actor>
+        <actor>AuthServer</actor>
+        <actor>Nami</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">OtherWeb initiates login process by sending app-key to AuthApp</step>
+        <step id="S2">AuthApp fetches app information from AuthServer</step>
+        <step id="S3">AuthServer provides app information to AuthApp</step>
+        <step id="S4">AuthApp connects to Nami</step>
+        <step id="S5">AuthApp fetches a random number from AuthServer</step>
+        <step id="S6">AuthServer sends the random number and sets access_cookie on header to AuthApp</step>
+        <step id="S7">AuthApp requests Nami signature</step>
+        <step id="S8">Nami provides signature to AuthApp</step>
+        <step id="S9">AuthApp performs login by sending data, signedData, and address to AuthServer</step>
+        <step id="S10">AuthServer responds to login request and sets access_cookie on header to AuthApp</step>
+        <step id="S11">AuthApp redirects to return_url on OtherWeb</step>
+    </mainSequence>
+</useCase>

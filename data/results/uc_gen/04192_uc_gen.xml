@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Create Course</name>
+    <description>User creates a new course entry in the system.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged in.</precondition>
+    </preconditions>
+    <trigger>Manager selects option to create a course.</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects option to create a course from the UI.</step>
+        <step id="S2">System asks for the course creation data.</step>
+        <step id="S3">Manager inserts the course data and confirms it.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="AS1">
+            <step id="AS1">Service creates a new course.</step>
+            <step id="AS2">Service retrieves existing course details.</step>
+            <step id="AS3">Service initiates course creation process.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="ES1">
+            <description>The operation fails while saving the new course.</description>
+            <step id="ES1">Service attempts to save the new course information.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

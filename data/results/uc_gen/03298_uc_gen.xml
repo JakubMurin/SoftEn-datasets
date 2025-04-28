@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Verify Booking by OTP</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>UI/Interface</actor>
+        <actor>BookingRouter</actor>
+        <actor>BookingController</actor>
+        <actor>BookingRepository</actor>
+        <actor>BookingModel</actor>
+        <actor>OTPService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The customer has requested to verify a booking by OTP.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Customer requests to verify booking by OTP</step>
+        <step id="S2">UI receives the request and sends GET /bookings/{bookingId}/verify-otp to BookingRouter</step>
+        <step id="S3">Router forwards the request to BookingController to verify booking OTP</step>
+        <step id="S4">Controller retrieves booking details from Repository using bookingId</step>
+        <step id="S5">Repository fetches booking details from BookingModel by ID</step>
+        <step id="S6">BookingModel queries the Database for booking data</step>
+        <step id="S7">BookingModel returns booking data to Repository</step>
+        <step id="S8">Repository provides booking data to Controller</step>
+        <step id="S9">Controller verifies OTP using OTPService</step>
+        <step id="S10">OTPService validates the OTP</step>
+        <step id="S11">If OTP is valid, Controller updates booking status to "verified"</step>
+        <step id="S12">Router responds with 200 OK (Booking verified) to UI</step>
+        <step id="S13">UI displays success message to Customer</step>
+        <step id="S14">If OTP is invalid, Controller responds with 400 Bad Request (Invalid OTP) to UI</step>
+        <step id="S15">Router responds with 400 Bad Request (Invalid OTP) to UI</step>
+        <step id="S16">UI displays error message to Customer</step>
+    </mainSequence>
+</useCase>

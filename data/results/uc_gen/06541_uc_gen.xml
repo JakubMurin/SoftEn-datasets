@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Se connecter à la liste de tâches</name>
+    <description>Permet à l'utilisateur de se connecter et afficher sa liste de tâches.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>TodoList</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur doit disposer d'un compte</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>L'utilisateur est authentifié et voit sa liste de tâches</condition>
+    </successEndConditions>
+    <trigger>Se connecter(email, motDePasse)</trigger>
+    <mainSequence>
+        <step id="S1">L'utilisateur se connecte avec son email et mot de passe</step>
+        <step id="S2">Le système vérifie les informations d'authentification</step>
+        <step id="S3">Le système récupère les tâches depuis la TodoList</step>
+        <step id="S4">La TodoList demande les tâches depuis la base de données</step>
+        <step id="S5">La base de données renvoie la liste des tâches</step>
+        <step id="S6">La TodoList renvoie la liste des tâches au système</step>
+        <step id="S7">Le système affiche la liste des tâches à l'utilisateur</step>
+    </mainSequence>
+</useCase>

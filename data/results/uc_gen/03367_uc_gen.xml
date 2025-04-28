@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Perform Scanner Job</name>
+    <actors>
+        <actor>admin_user</actor>
+        <actor>admin</actor>
+        <actor>explorer</actor>
+        <actor>worker</actor>
+        <actor>exporter</actor>
+        <actor>event_collector</actor>
+        <actor>result_collector</actor>
+        <actor>report_user</actor>
+    </actors>
+    <preconditions>
+        <precondition>Scanner job needs to be initiated.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin starts the Scanner job.</step>
+        <step id="S2">Explorer consumes scan specifications from the queue.</step>
+        <step id="S3">Worker processes messages based on the type.</step>
+        <step id="S4">Exporter handles metadata, matches, and problems messages.</step>
+        <step id="S5">Checkup Collector updates scheduled checkups.</step>
+        <step id="S6">Status Collector updates scanner status in the database.</step>
+        <step id="S7">Event Collector updates document reports.</step>
+        <step id="S8">Result Collector handles messages and updates document reports.</step>
+        <step id="S9">Report User checks for matches in the document reports.</step>
+    </mainSequence>
+</useCase>

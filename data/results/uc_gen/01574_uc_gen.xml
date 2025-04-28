@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Remove Book From Catalog</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User sends a GET Request to CatalogDao</step>
+        <step id="S2">CatalogDao forwards the request to RemoveBookFromCatalogActivity with RemoveBookFromCatalogRequest</step>
+        <step id="S3">RemoveBookFromCatalogActivity executes the request</step>
+        <step id="S4">RemoveBookFromCatalogActivity receives BookNotFoundException</step>
+        <step id="S5">RemoveBookFromCatalogActivity responds with BookNotFoundException to RemoveBookFromCatalogResponse</step>
+        <step id="S6">CatalogDao receives BookNotFoundException from RemoveBookFromCatalogActivity</step>
+        <step id="S7">User receives BookNotFoundException from RemoveBookService</step>
+        <step id="S8">RemoveBookFromCatalogResponse performs removeBookFromCatalog()</step>
+        <step id="S9">RemoveBookFromCatalogActivity performs removeBookFromCatalog()</step>
+        <step id="S10">User performs removeBookFromCatalog() via RemoveBookService</step>
+    </mainSequence>
+</useCase>

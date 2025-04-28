@@ -1,0 +1,12 @@
+<useCase id="UC1">
+	<name>Sent a GET with JWT request to get chat list</name>
+	<actors>
+		<actor>User A</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">User A sends a GET request to the Application Server with JWT to retrieve the chat list.</step>
+		<step id="S2">The Application Server checks the JWT BlackList by querying the Redis Server.</step>
+		<step id="S3">The Application Server validates the JWT by querying the Redis Server and retrieves the chat list.</step>
+		<step id="S4">The Application Server sends the chat list retrieval result back to User A.</step>
+	</mainSequence>
+</useCase>

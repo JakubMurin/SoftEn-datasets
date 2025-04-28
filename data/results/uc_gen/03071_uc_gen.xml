@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Implement Marketing Activity Changes</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UMP</actor>
+        <actor>Retail-UMP</actor>
+        <actor>C</actor>
+    </actors>
+    <preconditions>
+        <precondition>User needs to request a change in marketing activity</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Marketing activity change successfully processed and synchronized</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in processing marketing activity change</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User initiates the request for a marketing activity change</step>
+        <step id="S2">UMP activates to handle the request</step>
+        <step id="S3">Retail-UMP processes the requested marketing activity change</step>
+        <step id="S4">Retail-UMP sends a message to C for synchronized/asynchronous processing</step>
+        <step id="S5">C synchronizes/asynchronously processes the message</step>
+        <step id="S6">Retail-UMP returns the processed request</step>
+        <step id="S7">UMP informs the User about the completion</step>
+    </mainSequence>
+</useCase>

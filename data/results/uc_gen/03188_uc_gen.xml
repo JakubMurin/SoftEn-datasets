@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Data Retrieval</name>
+    <description>Retrieve the latest version of a file from the DataSafe system</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has valid access permissions to the DataSafe system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully retrieves the latest version of the file</condition>
+    </successEndConditions>
+    <trigger>User initiates the request to read a specific file from the DataSafe system</trigger>
+    <mainSequence>
+        <step id="S1">User wants to read a specific file located in /dir1/file.txt</step>
+        <step id="S2">The metadata service is queried to get the user version directory location</step>
+        <step id="S3">The directory service provides the DFS location of the latest directory (LATEST)</step>
+        <step id="S4">The file content is retrieved from the storage service using the link</step>
+        <step id="S5">The content of the file (LINK) is read</step>
+        <step id="S6">The content of the file (FILE) is retrieved</step>
+        <step id="S7">The latest data in /dir1/file.txt is provided to the user</step>
+    </mainSequence>
+</useCase>

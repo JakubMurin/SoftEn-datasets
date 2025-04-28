@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Submit Project</name>
+    <actors>
+        <actor>Requestor</actor>
+        <actor>Approvers</actor>
+    </actors>
+    <preconditions>
+        <precondition>Requestor submits a project</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Project is successfully added</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Requestor is not authorized or content is invalid</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Requestor submits project</step>
+        <step id="S2">Add project</step>
+        <step id="S3">Check add permission</step>
+        <step id="S4">Validate content</step>
+        <step id="S5">Display success page</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Display failure page with error info</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S5">
+            <step id="A2S1">Add project with status "approved"</step>
+            <step id="A2S2">Return project_id</step>
+            <step id="A2S3">Display success page</step>
+        </asteps>
+        <asteps id="A3" start="S4" continue="S5">
+            <step id="A3S1">Add project with status "awaiting_approval"</step>
+            <step id="A3S2">Return project_id</step>
+            <step id="A3S3">Send email to Approvers</step>
+            <step id="A3S4">Display success page with message that project is pending approval</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

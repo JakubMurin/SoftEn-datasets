@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>Login Process</name>
+	<description>Allows User to login to a Dapp with Nami authentication.</description>
+	<actors>
+		<actor>user</actor>
+		<actor>OtherWeb</actor>
+		<actor>AuthApp</actor>
+    <actor>AuthServer</actor>
+    <actor>Nami</actor>
+	</actors>
+	<preconditions>
+		<precondition>User is accessing the Dapp login page.</precondition>
+	</preconditions>
+	<trigger>Click on the login button on the Dapp.</trigger>
+	<mainSequence>
+		<step id="S1">OtherWeb -> AuthApp: Initiate login using Dapp with the provided app-key</step>
+		<step id="S2">AuthApp -> AuthServer: Retrieve the application information using the app-key</step>
+		<step id="S3">AuthServer -> AuthApp: Provide application information like name, URL, logo, etc.</step>
+		<step id="S4">AuthApp -> Nami: Connect to Nami Wallet SDK</step>
+		<step id="S5">AuthApp -> AuthServer: Get a random number for token generation</step>
+    <step id="S6">AuthServer -> AuthApp: Provide the random number and set access_cookie in the header</step>
+    <step id="S7">AuthApp -> Nami: Request a signature from Nami Wallet using selected address.</step>
+    <step id="S8">Nami -> AuthApp: Provide the Nami signature</step>
+    <step id="S9">AuthApp -> AuthServer: Initiate login request with the provided data and signature</step>
+		<step id="S10">AuthServer -> AuthApp: Authorization response with the access token in the header.</step>
+		<step id="S11">AuthApp -> OtherWeb: Redirect to Dapp return URL using the obtained access token</step>
+	</mainSequence>
+</useCase>

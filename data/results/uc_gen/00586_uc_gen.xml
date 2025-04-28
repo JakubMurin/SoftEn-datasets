@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Modify Password</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in to the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Password is successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Password update fails due to validation error.</condition>
+    </failureEndConditions>
+    <trigger>User navigates to the Account Settings and attempts to modify the password.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the application.</step>
+        <step id="S2">Homepage screen displays "Account Settings".</step>
+        <step id="S3">User navigates to the Account Settings.</step>
+        <step id="S4">Modify Password Screen is displayed.</step>
+        <step id="S5">User is prompted to enter the updated password.</step>
+        <step id="S6">User enters the updated password and presses the "Modify" button.</step>
+        <step id="S7">AuthService submits the updated password.</step>
+        <step id="S8">UsersRouter makes an API call for Modify Password.</step>
+        <step id="S9">UsersService forwards the updated password and validates it.</step>
+        <step id="S10">UsersService updates the password in the Database.</step>
+        <step id="S11">UsersService confirms the password update.</step>
+        <step id="S12">AuthService sends the update confirmation to Modify Password Screen.</step>
+        <step id="S13">Modify Password Screen displays the update success message.</step>
+        <step id="S14">Modify Password Screen navigates back to Homepage Screen.</step>
+        <step id="S15">Homepage Screen displays the confirmation message.</step>
+    </mainSequence>
+</useCase>

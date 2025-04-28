@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Submit new history data</name>
+    <description>User submits new history data through the UI.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is authenticated and has access to submit new history data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The history data is successfully saved in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during the saving process.</condition>
+    </failureEndConditions>
+    <trigger>User submits new history data through the UI.</trigger>
+    <mainSequence>
+        <step id="S1">User submits new history data</step>
+        <step id="S2">UI receives the data and forwards it to the HistoryRouter.</step>
+        <step id="S3">HistoryRouter receives the data and directs it to the HistoryController.</step>
+        <step id="S4">HistoryController creates a new history record with the received data.</step>
+        <step id="S5">HistoryRepository saves the new history record in the database.</step>
+        <step id="S6">Database successfully saves the new history record.</step>
+        <step id="S7">HistoryController receives confirmation of successful saving and responds with 201 Created status.</step>
+        <step id="S8">HistoryRouter forwards the success response to the UI.</step>
+        <step id="S9">UI displays a success message to the user.</step>
+    </mainSequence>
+</useCase>

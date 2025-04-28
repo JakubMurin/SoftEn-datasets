@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Purchase Course</name>
+    <description>Allows the student to purchase a course.</description>
+    <actors>
+        <actor>Student</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Student accesses the course they want to buy.</step>
+        <step id="S2">View requests course details.</step>
+        <step id="S3">Controller fetches course details from Curso.</step>
+        <step id="S4">Curso provides course details to Controller.</step>
+        <step id="S5">Controller shows course details and price in View.</step>
+        <step id="S6">View sends purchase data.</step>
+        <step id="S7">Controller registers the purchase in Repository.</step>
+        <step id="S8">Repository confirms the purchase.</step>
+        <step id="S9">Controller confirms the purchase to the View.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Controller displays error message in View for purchase processing error.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

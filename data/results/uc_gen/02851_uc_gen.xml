@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Generate Embeddings and Visualize Clusters</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Main</actor>
+        <actor>OpenAI</actor>
+        <actor>Pinecone</actor>
+        <actor>Clustering</actor>
+        <actor>Visualization</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User starts the script in main.py</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User starts the script in main.py</step>
+        <step id="S2">Main generates embeddings for each requirement</step>
+        <step id="S3">OpenAI returns the embeddings</step>
+        <step id="S4">Main stores the embeddings in the vector database</step>
+        <step id="S5">Main queries the stored embeddings</step>
+        <step id="S6">Pinecone returns the queried embeddings</step>
+        <step id="S7">Main groups the embeddings into clusters</step>
+        <step id="S8">Clustering returns the cluster labels</step>
+        <step id="S9">Main creates scatter plot and textual output</step>
+        <step id="S10">Visualization displays the results (plot and text) to the User</step>
+    </mainSequence>
+</useCase>

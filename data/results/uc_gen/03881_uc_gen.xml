@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Restrict Access to Files by IP Address</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>UI: Archive Management System</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist selects files to restrict</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>IP restrictions applied successfully</condition>
+    </successEndConditions>
+    <trigger>Archivist initiates the process</trigger>
+    <mainSequence>
+        <step id="S1">UI: Archive Management System requests restriction options from Backend Server</step>
+        <step id="S2">Backend Server retrieves current access settings from Database</step>
+        <step id="S3">Database returns access settings to Backend Server</step>
+        <step id="S4">Backend Server displays current settings and IP restriction option to UI</step>
+        <step id="S5">Archivist applies IP restrictions by entering IP range in UI</step>
+        <step id="S6">UI sends update access settings request with IP details to Backend Server</step>
+        <step id="S7">Backend Server updates file access settings with IP restrictions in Database</step>
+        <step id="S8">Database confirms settings updated to Backend Server</step>
+        <step id="S9">Backend Server displays success message to UI</step>
+        <step id="S10">UI confirms IP restriction implementation to Archivist</step>
+    </mainSequence>
+</useCase>

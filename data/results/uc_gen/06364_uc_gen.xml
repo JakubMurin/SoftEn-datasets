@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Deposit Dataset with DMP Linkage</name>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>Enhanced Research Data Management Platform</actor>
+        <actor>Data Management Plan Tool</actor>
+        <actor>Dataset Repository</actor>
+        <actor>DMP Repository</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Depositor initiates dataset deposit</step>
+        <step id="S2">ERDMP saves dataset information</step>
+        <step id="S3">DatasetRepo confirms dataset saved</step>
+        <step id="S4">ERDMP prompts Depositor to link with DMP</step>
+        <step id="S5">Depositor provides DMP reference</step>
+        <step id="S6">ERDMP requests DMP details from DMPT</step>
+        <step id="S7">DMPT queries DMP by reference from DMPRepo</step>
+        <step id="S8">DMPRepo returns DMP details to DMPT</step>
+        <step id="S9">DMPT provides DMP details to ERDMP</step>
+        <step id="S10">ERDMP links dataset with DMP</step>
+        <step id="S11">DatasetRepo updates DMP with dataset link</step>
+        <step id="S12">DMPRepo confirms linkage to DatasetRepo</step>
+        <step id="S13">DatasetRepo confirms dataset-DMP linkage to ERDMP</step>
+        <step id="S14">ERDMP confirms dataset linked with DMP to Depositor</step>
+    </mainSequence>
+</useCase>

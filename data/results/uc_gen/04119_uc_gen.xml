@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Run Reflection and Refinement Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflectionAndRefinementAgent</actor>
+        <actor>LLM</actor>
+        <actor>ReflectionLLM</actor>
+        <actor>RefinementLLM</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User runs the reflection and refinement process by providing input text.</step>
+        <step id="S2">ReflectionAndRefinementAgent retrieves relevant memories based on the input text.</step>
+        <step id="S3">ReflectionAndRefinementAgent invokes the LLM to provide a response.</step>
+        <step id="S4">ReflectionAndRefinementAgent decides whether to use a tool or finish the process.</step>
+        <step id="S5">If a tool is used, ReflectionAndRefinementAgent executes the tool and saves the observation in Memory.</step>
+        <step id="S6">If finishing the process, ReflectionAndRefinementAgent saves the interaction record in Memory.</step>
+        <step id="S7">If a reflection phase is triggered, ReflectionAndRefinementAgent invokes the ReflectionLLM for reflection.</step>
+        <step id="S8">ReflectionAndRefinementAgent invokes the RefinementLLM for refinement.</step>
+        <step id="S9">ReflectionAndRefinementAgent saves the reflection in Memory as semantic memory and the refinement as procedural memory.</step>
+        <step id="S10">Final result of the process is sent to the User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>User Searches and Selects Data Package</name>
+    <description>User search for matching data packages based on keywords and selects one for more details.</description>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Search Interface</actor>
+        <actor>Data Registry</actor>
+        <actor>Data Package</actor>
+    </actors>
+    <trigger>User inputs search keywords into the search interface.</trigger>
+    <mainSequence>
+        <step id="S1">Consumer inputs search keywords.</step>
+        <step id="S2">Interface receives search keywords and requests data packages from the Data Registry.</step>
+        <step id="S3">Registry processes the search request and returns a list of matching data packages to the Interface.</step>
+        <step id="S4">Interface displays the list of matching packages to the Consumer.</step>
+        <step id="S5">Consumer selects a data package based on its description.</step>
+        <step id="S6">Interface sends a request for details of the selected data package to the Registry.</step>
+        <step id="S7">Registry provides the details of the selected data package to the Interface.</step>
+        <step id="S8">Interface displays the details of the selected data package to the Consumer.</step>
+    </mainSequence>
+</useCase>

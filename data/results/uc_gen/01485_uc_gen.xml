@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Manage Offerings</name>
+    <actors>
+        <actor>Instructor</actor>
+        <actor>OfferingsPage</actor>
+        <actor>OfferingValidator</actor>
+        <actor>DatabaseManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Instructor has logged in.</precondition>
+        <precondition>OfferingsPage is accessible.</precondition>
+    </preconditions>
+    <trigger>Instructor opens Manage Offerings Page.</trigger>
+    <mainSequence>
+        <step id="S1">Instructor opens Manage Offerings Page.</step>
+        <step id="S2">OfferingsPage queries available offerings for the Instructor.</step>
+        <step id="S3">OfferingsPage displays available offerings to the Instructor.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Instructor selects "Accept Offering" for a specific lesson.</step>
+            <step id="A1S2">OfferingValidator validates the acceptance of the offering.</step>
+            <step id="A1S3">OfferingValidator checks specialization and availability for the offering.</step>
+            <step id="A1S4">OfferingValidator updates lesson status for the accepted offering.</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Instructor selects "Drop Offering" for a specific lesson.</step>
+            <step id="A2S2">OfferingValidator validates the dropping of the offering.</step>
+            <step id="A2S3">OfferingValidator checks lesson ownership for the offering.</step>
+            <step id="A2S4">OfferingValidator updates lesson status for the dropped offering.</step>
+        </asteps>
+        <asteps id="A3" start="S3">
+            <step id="A3S1">Instructor views the details of a specific lesson.</step>
+            <step id="A3S2">OfferingsPage fetches details of the lesson.</step>
+            <step id="A3S3">OfferingsPage displays the details of the lesson to the Instructor.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

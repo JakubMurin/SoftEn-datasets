@@ -1,0 +1,14 @@
+<useCase id="UC1">
+    <name>Handle Remove Request Issues</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <trigger>Admin requests to handle remove request issues</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a request to the system to get remove request issues by signId</step>
+        <step id="S2">System validates the member with signId</step>
+        <step id="S3">System validates that the admin is authorized with signId</step>
+        <step id="S4">System retrieves remove request issues from the database</step>
+        <step id="S5">System sends a list of issues in IssueResponseDto format to Admin</step>
+    </mainSequence>
+</useCase>

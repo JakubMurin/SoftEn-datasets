@@ -1,0 +1,29 @@
+<useCase id="1">
+    <name>Liking an Attendee</name>
+    <description>The use case involves a recruiter liking an attendee.</description>
+    <actors>
+        <actor>Recruiter</actor>
+    </actors>
+    <preconditions>
+        <precondition>Recruiter and attendee information is available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The attendee is successfully liked by the recruiter.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Duplicate like exception occurs if the recruiter has already liked the attendee.</condition>
+    </failureEndConditions>
+    <trigger>POST /attendees/{attendeeId}/like is initiated by the recruiter.</trigger>
+    <mainSequence>
+        <step id="S1">Recruiter initiates POST /attendees/{attendeeId}/like action.</step>
+        <step id="S2">Controller receives the request to like the attendee.</step>
+        <step id="S3">Service invokes likeAttendee() with recruiterId and attendeeId.</step>
+        <step id="S4">Service fetches the recruiter information by Id.</step>
+        <step id="S5">Service fetches the attendee information by Id.</step>
+        <step id="S6">Service checks if the recruiter has already liked the attendee.</step>
+        <step id="S7">If already liked, DuplicateLikeException is thrown.</step>
+        <step id="S8">If not already liked, the like record is saved in LikeRepo.</step>
+        <step id="S9">Service responds with completion.</step>
+        <step id="S10">Controller sends a 200 OK response to the recruiter.</step>
+    </mainSequence>
+</useCase>

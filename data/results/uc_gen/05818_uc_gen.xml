@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>View User's Boards</name>
+    <actors>
+        <actor>Server</actor>
+        <actor>ArchiveBoardHandler</actor>
+        <actor>SBProtocol</actor>
+        <actor>BoardService</actor>
+        <actor>Client</actor>
+        <actor>Board</actor>
+        <actor>BoardRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>Server is active and connected</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Boards owned by the user are successfully displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to display user's boards</condition>
+    </failureEndConditions>
+    <trigger>Client requests to view their boards</trigger>
+    <mainSequence>
+        <step id="S1">Create a socket and SBProtocol codeRequest</step>
+        <step id="S2">Create BoardService</step>
+        <step id="S3">Run the handler</step>
+        <step id="S4">Create DataInputStream as "inS" and DataOutputStream as "outS"</step>
+        <step id="S5">Get the user currently logged in</step>
+        <step id="S6">List boards that the user owns and that are not archived</step>
+        <step id="S7">Send the owned boards to the client</step>
+        <step id="S8">Create SBProtocol and send the owned boards</step>
+        <step id="S9">Receive boardName from SBProtocol</step>
+        <step id="S10">Retrieve the board with the received boardName</step>
+        <step id="S11">Archive the board</step>
+        <step id="S12">Save the archived board</step>
+        <step id="S13">List boards that the user owns and that are archived</step>
+        <step id="S14">Send the archived boards to the client</step>
+        <step id="S15">Create SBProtocol and send the archived boards</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Create Product</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is authenticated and authorized</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Product is successfully created in the system</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Product creation fails due to invalid data</condition>
+    </failureEndConditions>
+    <trigger>Admin requests to create a new product</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a request to create a product</step>
+        <step id="S2">Admin-api receives the request and triggers the creation process</step>
+        <step id="S3">Admin-api sends a request to the payment processor to create the product with SKU</step>
+        <step id="S4">Payment processor forwards the request to Stripe to create a product with SKU</step>
+        <step id="S5">Stripe creates the product and sends back the product ID to the payment processor</step>
+        <step id="S6">Payment processor sends the product ID back to admin-api</step>
+        <step id="S7">Admin-api saves the product with the received product ID in the database</step>
+        <step id="S8">Admin-api responds to Admin with the SKU of the created product</step>
+    </mainSequence>
+</useCase>

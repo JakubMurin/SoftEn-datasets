@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Calculate Point Overlays</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates moving the map in the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Overlay with current points is displayed on the map</condition>
+    </successEndConditions>
+    <trigger>User moves the map triggering calculation of point overlays</trigger>
+    <mainSequence>
+        <step id="S1">Calculate area action is performed by the Backend</step>
+        <step id="S2">Area information is added to the underlying split queue</step>
+        <step id="S3">Depth in the calculated area is retrieved from the Backend</step>
+        <step id="S4">Request for points within the retrieved depth is made to the Points database</step>
+        <step id="S5">The Points database provides the points within the requested area</step>
+        <step id="S6">Check if the points have already been calculated by the Split Map</step>
+        <step id="S7">Retrieve undefined points from the Points queue</step>
+        <step id="S8">Calculate points based on the undefined depths</step>
+        <step id="S9">Update Points database with the newly calculated points</step>
+        <step id="S10">Create an overlay using the updated points</step>
+        <step id="S11">Display the overlay on the map for the User</step>
+    </mainSequence>
+</useCase>

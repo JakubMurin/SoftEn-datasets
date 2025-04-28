@@ -1,0 +1,17 @@
+<useCase id="UC1">
+	<name>Search Books By Author</name>
+	<actors>
+		<actor>Reader</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Reader submits request to search books by author.</step>
+		<step id="S2">ReaderController activates to process the request.</step>
+		<step id="S3">ReaderController sends request to BookService for searching books by author.</step>
+		<step id="S4">BookService activates to handle the search operation.</step>
+		<step id="S5">BookService creates search criteria based on the authorName provided.</step>
+		<step id="S6">Database is activated for retrieving books based on search criteria.</step>
+		<step id="S7">Database returns a List of Books to BookService.</step>
+		<step id="S8">BookService provides the List of Books to ReaderController.</step>
+		<step id="S9">ReaderController sends the List of Books to the Reader.</step>
+	</mainSequence>
+</useCase>

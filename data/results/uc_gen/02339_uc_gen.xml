@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+        <actor>JobOpeningRepository</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CustomerManager asks PublishJobOpeningUI to display job openings in the results phase.</step>
+        <step id="S2">PublishJobOpeningUI gets job openings.</step>
+        <step id="S3">JobOpeningRepository retrieves job openings.</step>
+        <step id="S4">PublishJobOpeningUI displays job openings.</step>
+        <step id="S5">CustomerManager selects a job opening to publish results.</step>
+        <step id="S6">PublishJobOpeningUI requests to publish job opening results.</step>
+        <step id="S7">PublishJobOpeningController sends result email request.</step>
+        <step id="S8">FollowUpServerProxy creates and connects a client socket.</step>
+        <step id="S9">FollowUpServerProxy sends the request through the socket.</step>
+        <step id="S10">FollowUpServer receives and processes the request.</step>
+        <step id="S11">ResultEmailRequest is executed.</step>
+        <step id="S12">CandidateSelectionService selects candidates for the job opening.</step>
+        <step id="S13">EmailService sends emails to selected candidates.</step>
+        <step id="S14">Notification is created and saved in NotificationRepository.</step>
+        <step id="S15">EmailService notifies ResultEmailRequest about the sent emails.</step>
+        <step id="S16">FollowUpServer sends a response through the socket.</step>
+        <step id="S17">ClientSocket receives and processes the response.</step>
+        <step id="S18">FollowUpServer closes the connection.</step>
+        <step id="S19">FollowUpServerProxy receives and processes the response.</step>
+        <step id="S20">PublishJobOpeningController processes the response.</step>
+        <step id="S21">PublishJobOpeningUI confirms the success of the operation.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Search for Similar Images</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>UI</actor>
+        <actor>WebServer</actor>
+        <actor>Image Search Service</actor>
+        <actor>Database</actor>
+        <actor>Results Handler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist uploads a search image.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Results are displayed to the Archivist.</condition>
+    </successEndConditions>
+    <trigger>UI sends image data to WebServer for initiating the search.</trigger>
+    <mainSequence>
+        <step id="S1">Archivist uploads search image.</step>
+        <step id="S2">UI sends image data to WebServer.</step>
+        <step id="S3">WebServer initiates image search.</step>
+        <step id="S4">Image Search Service queries for similar images in Database.</step>
+        <step id="S5">Database returns matching images to Image Search Service.</step>
+        <step id="S6">Image Search Service prepares search results.</step>
+        <step id="S7">Results Handler sends results back to UI.</step>
+        <step id="S8">UI displays search results to the Archivist.</step>
+    </mainSequence>
+</useCase>

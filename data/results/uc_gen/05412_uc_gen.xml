@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Authorization and Data Upload</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Anonlink</actor>
+        <actor>Object Store</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Alice requests temporary object storage credentials</step>
+        <step id="S2">Anonlink creates restricted credentials</step>
+        <step id="S3">Anonlink receives credentials response</step>
+        <step id="S4">Anonlink provides temporary object store credentials to Alice</step>
+        
+        <step id="S5">Alice uploads binary Encoding Data to Object Store</step>
+        
+        <step id="S6">Alice uploads via "/clks" optionally providing blocks to Anonlink</step>
+        <step id="S7">Anonlink sends Upload Receipt to Alice</step>
+        <!-- some time gap -->
+        <step id="S8">Anonlink pulls/copy encoding data to Object Store</step>
+    </mainSequence>
+</useCase>

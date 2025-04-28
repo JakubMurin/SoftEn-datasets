@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>TopHat Creation and Distribution</name>
+    <actors>
+        <actor>address1</actor>
+        <actor>address2</actor>
+        <actor>address3</actor>
+    </actors>
+    <preconditions>
+        <precondition>TimeFrameHatModule and FractionToken are deployed</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>TopHat, Role Hat 1, Role Hat 2, and FractionToken minted and distributed successfully</condition>
+    </successEndConditions>
+    <trigger>address1 triggers the creation and distribution process</trigger>
+    <mainSequence>
+        <step id="S1">Create TopHat and deploy TimeFrameHatModule</step>
+        <step id="S2">Mint Hatter Hat and Role Hats under Hatter Hat</step>
+        <step id="S3">Mint Role Hat 1 for address1</step>
+        <step id="S4">Mint Role Hat 2 for address2</step>
+        <step id="S5">Mint FractionToken for address1 and address2</step>
+        <step id="S6">Transfer FractionToken from address2 to address3</step>
+        <step id="S7">Create and deploy SplitCreator contract</step>
+        <step id="S8">Create PullSplits contract</step>
+        <step id="S9">Transfer ETH or ERC20 to PullSplit contract</step>
+        <step id="S10">Distribute funds based on specified distribution information</step>
+        <step id="S11">Withdraw funds from SplitsWarehouse for address1, address2, and address3</step>
+    </mainSequence>
+</useCase>

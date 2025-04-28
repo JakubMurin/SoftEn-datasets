@@ -1,0 +1,39 @@
+<useCase id="UC-001">
+    <name>Removing a member from a project</name>
+    <description>As an Admin, I want to remove a member from a project.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>System</actor>
+    </actors>
+    <trigger>Admin needs to remove a member from a project.</trigger>
+    <mainSequence>
+        <step id="S1">Admin inputs the signId, projectId, and removeMemberId.</step>
+        <step id="S2">System checks if the member is not found.</step>
+        <step id="S3">System displays an error message "User not found."</step>
+        <step id="S4">System proceeds if the member is found.</step>
+        <step id="S5">System checks if the project is not found.</step>
+        <step id="S6">System displays an error message "Project not found."</step>
+        <step id="S7">System proceeds if the project is found.</step>
+        <step id="S8">System checks if the member is not found again.</step>
+        <step id="S9">System displays an error message "User not found."</step>
+        <step id="S10">System proceeds if the member is found.</step>
+        <step id="S11">System checks if the member is a project leader.</step>
+        <step id="S12">System sets project leader to null if the member is a project leader.</step>
+        <step id="S13">System proceeds if the member is not a project leader.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S13">
+            <step id="A1S1">System removes the member.</step>
+            <step id="A1S2">System displays a ProjectResponseDto with updated details.</step>
+        </asteps>
+        <asteps id="A2" start="S5" continue="S7">
+            <step id="A2S1">System displays an error message "Project not found."</step>
+        </asteps>
+        <asteps id="A3" start="S8" continue="S10">
+            <step id="A3S1">System displays an error message "User not found."</step>
+        </asteps>
+        <asteps id="A4" start="S11" continue="S12">
+            <step id="A4S1">An error message "Project leader cannot be removed."</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

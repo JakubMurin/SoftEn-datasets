@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>A Persisted Queue Transaction using State Machine Replication</name>
+    
+    <actors>
+        <actor>ApplicationA</actor>
+        <actor>CorfuGuidGeneratorA</actor>
+        <actor>CorfuRuntimeA</actor>
+        <actor>CorfuCluster</actor>
+        <actor>CorfuRuntimeB</actor>
+        <actor>CorfuGuidGeneratorB</actor>
+        <actor>ApplicationB</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">ApplicationA enqueues object A</step>
+        <step id="S2">CorfuRuntimeA gets 8 byte unique Id for A from CorfuGuidGeneratorA</step>
+        <step id="S3">CorfuGuidGeneratorA returns Id 0001 to CorfuRuntimeA</step>
+        <step id="S4">CorfuRuntimeA writes object A to CorfuCluster with Id 0001</step>
+        <step id="S5">CorfuRuntimeA returns Id 0001 to ApplicationA</step>
+        
+        <step id="S6">ApplicationB enqueues object B</step>
+        <step id="S7">CorfuRuntimeB gets 8 byte unique Id for B from CorfuGuidGeneratorB</step>
+        <step id="S8">CorfuGuidGeneratorB returns Id 0002 to CorfuRuntimeB</step>
+        <step id="S9">CorfuRuntimeB writes object B to CorfuCluster with Id 0002</step>
+        <step id="S10">CorfuRuntimeB returns Id 0002 to ApplicationB</step>
+        
+        <step id="S11">CorfuCluster assigns address 100 to object B and address 200 to object A based on commit order</step>
+        
+        <step id="S12">CorfuCluster puts object A at Address 200 in CorfuRuntimeB's map</step>
+        <step id="S13">CorfuRuntimeA's map: [0001 -> A, 0002 -> B]</step>
+        
+        <step id="S14">CorfuCluster puts object B at Address 100 in CorfuRuntimeA's map</step>
+        <step id="S15">CorfuRuntimeB's map: [0001 -> A, 0002 -> B]</step>
+        
+        <step id="S16">ApplicationA retrieves entries from CorfuRuntimeA: [100+0002 => B, 200+0001 => A]</step>
+        <step id="S17">Object B is ordered before object A in CorfuRuntimeA</step>
+        
+        <step id="S18">ApplicationB retrieves entries from CorfuRuntimeB: [100+0002 => B, 200+0001 => A]</step>
+        <step id="S19">Object B is ordered before object A in CorfuRuntimeB</step>
+    </mainSequence>
+</useCase>

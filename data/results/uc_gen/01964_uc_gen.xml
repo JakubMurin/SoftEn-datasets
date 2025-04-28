@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Retrieve Resource</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User requests to retrieve a specific resource.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The resource retrieval process completes successfully.</condition>
+    </successEndConditions>
+    <trigger>User sends a GET request to the system to retrieve a specific resource.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates a GET request to retrieve a resource.</step>
+        <step id="S2">The PAS module receives the GET request and calls the HandleGet function.</step>
+        <step id="S3">PAS module interacts with the WebRequestParser to parse the request data.</step>
+        <step id="S4">PAS module directs the request to the ResourceResolver to resolve the route.</step>
+    </mainSequence>
+</useCase>

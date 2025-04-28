@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Remove Book From Catalog</name>
+    <preconditions>
+        <precondition>Book to be removed must exist in the catalog</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book successfully removed from catalog</condition>
+    </successEndConditions>
+    <trigger>User requests to remove a book from the catalog</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request</step>
+        <step id="S2">CatalogDao receives the GET request</step>
+        <step id="S3">RemoveBookFromCatalogActivity processes the request and creates a RemoveBookFromCatalogRequest</step>
+        <step id="S4">RemoveBookFromCatalogActivity executes the RemoveBookFromCatalogRequest</step>
+        <step id="S5">RemoveBookFromCatalogActivity responds with RemoveBookFromCatalogResponse</step>
+        <step id="S6">CatalogDao receives the RemoveBookFromCatalogResponse</step>
+        <step id="S7">RemoveBookService acknowledges the request</step>
+        <step id="S8">CatalogDao removes the specified book from catalog</step>
+        <step id="S9">RemoveBookFromCatalogActivity removes the book from catalog execution</step>
+        <step id="S10">User is notified of the successful book removal</step>
+    </mainSequence>
+</useCase>

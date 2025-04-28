@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Process Refund Request</name>
+    <preconditions>
+        <precondition>The customer is logged in and requests a refund.</precondition>
+        <precondition>The customer enters valid refund details.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The refund request is successfully submitted.</condition>
+    </successEndConditions>
+    <trigger>User requests a refund for an order.</trigger>
+    <mainSequence>
+        <step id="S1">Display the refund request page to the customer.</step>
+        <step id="S2">Customer submits the refund request form providing customerId, orderId, reason, and amount.</step>
+        <step id="S3">Process the submitted refund request with the provided details.</step>
+        <step id="S4">Retrieve customer details for the provided customerId.</step>
+        <step id="S5">Create a new refund request with the provided details.</step>
+        <step id="S6">Save the refund request in the database.</step>
+        <step id="S7">Notify the admin of the submitted refund request.</step>
+        <step id="S8">Display a success message to the customer.</step>
+    </mainSequence>
+</useCase>

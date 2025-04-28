@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Order Processing</name>
+    
+    <actors>
+        <actor>Customer</actor>
+        <actor>Shop</actor>
+        <actor>CEIS</actor>
+        <actor>MaterialFlowMonitor</actor>
+        <actor>ProcessControl</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Customer selects a product and asks for a quote.</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Customer selects the product "Crop Top" and requests a quote.</step>
+        <step id="S2">Shop sends the product ID to CEIS and expects customer-facing information.</step>
+        <step id="S3">CEIS fetches information on "Crop Top" from ProductCookbook.</step>
+        <step id="S4">ProductCookbook provides recipes for "Crop Top" to CEIS.</step>
+        <step id="S5">CEIS requests availability of input materials from MaterialFlowMonitor.</step>
+        <step id="S6">MaterialFlowMonitor provides options for each input material procurable within the deadline to CEIS.</step>
+        <step id="S7">CEIS fetches economical, ecological, and social costs for each alternative from CostAnalyzer.</step>
+        <step id="S8">CostAnalyzer requests GHG impact from WISER for each possibility in the sustained possibilities list.</step>
+        <step id="S9">CostAnalyzer requests costs for each possibility in the sustained possibilities list from ERP.</step>
+        <step id="S10">Shop matches alternatives with company policies.</step>
+        <step id="S11">Shop presents alternatives to the customer, and the customer places an order.</step>
+        <step id="S12">CEIS informs ProcessControl about event orders and deadlines.</step>
+        <step id="S13">ProcessControl schedules and monitors processes for contract fulfillment.</step>
+        <step id="S14">ProcessControl informs MaterialFlowMonitor about results.</step>
+        <step id="S15">MaterialFlowMonitor informs CEIS about actual costs.</step>
+        <step id="S16">CEIS updates data in DigitalProductPassport.</step>
+    </mainSequence>
+</useCase>

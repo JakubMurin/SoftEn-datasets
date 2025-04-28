@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Creating a New Type of Test</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>:TestTypeUI</actor>
+        <actor>:TestTypeController</actor>
+        <actor>:Company</actor>
+        <actor>pcStore: ParameterCategoryStore</actor>
+        <actor>listPC: List of ParameterCategory</actor>
+        <actor>:listPCMapper</actor>
+        <actor>ttStore: TestTypeStore</actor>
+        <actor>tt: TestType</actor>
+        <actor>listPCDto: List of ParameterCategoryDto</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Administrator asks :TestTypeUI to create a new type of test.</step>
+        <step id="S2">:TestTypeUI gets parameter categories</step>
+        <step id="S3">:TestTypeController gets parameter categories</step>
+        <step id="S4">:Company gets parameter category store</step>
+        <step id="S5">:TestTypeController retrieves parameter categories</step>
+        <step id="S6">:listPCMapper maps parameter categories to DTO</step>
+        <step id="S7">Administrator selects a parameter category</step>
+        <step id="S8">:TestTypeUI requests data (description, collecting method, code)</step>
+        <step id="S9">Administrator types requested data</step>
+        <step id="S10">:TestTypeController creates test type with data and categories</step>
+        <step id="S11">UI shows data and requests confirmation</step>
+        <step id="S12">Administrator confirms all data</step>
+        <step id="S13">:TestTypeUI saves test type</step>
+    </mainSequence>
+</useCase>

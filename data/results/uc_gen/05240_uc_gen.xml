@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Remove Book From Catalog</name>
+    <description>Use case to remove a book from the catalog.</description>
+    <actors>
+        <actor>me</actor>
+    </actors>
+    <preconditions>
+        <precondition>The book exists in the catalog.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The book is successfully removed from the catalog.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>BookNotFoundException is encountered.</condition>
+    </failureEndConditions>
+    <trigger>User wants to remove a book from the catalog.</trigger>
+    <mainSequence>
+        <step id="S1">Execute the RemoveBookFromCatalogActivity.</step>
+        <step id="S2">Initiate the removeBookFromCatalog() method in RemoveBookFromCatalogRequest.</step>
+        <step id="S3">Verify availability of source for removal.</step>
+        <step id="S4">If source is present, remove the book from catalog and update RemoveBookFromCatalogResult.</step>
+        <step id="S5">If source is not available, handle the BookNotFoundException and report it.</step>
+    </mainSequence>
+</useCase>

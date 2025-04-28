@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Delete Holiday</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>delete</actor>
+        <actor>confirmDeleteHol</actor>
+        <actor>holiday.routes.js</actor>
+        <actor>holiday.controller.js</actor>
+        <actor>holiday.model</actor>
+        <actor>sql</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Activate navegador</step>
+        <step id="S2">navegador deletes holiday</step>
+        <step id="S3">Activate delete</step>
+        <step id="S4">delete confirms deletion with confirmDeleteHol</step>
+        <step id="S5">Activate confirmDeleteHol</step>
+        <step id="S6">confirmDeleteHol sends DELETE request to holiday.routes.js</step>
+        <step id="S7">holiday.routes.js forwards request to holiday.controller.js</step>
+        <step id="S8">holiday.controller.js triggers deletion in holiday.model</step>
+        <step id="S9">holiday.model executes SQL query to delete holiday</step>
+        <step id="S10">SQL query is successful</step>
+        <step id="S11">holiday.model returns promise to holiday.controller.js</step>
+        <step id="S12">holiday.controller.js responds with JSON</step>
+        <step id="S13">confirmDeleteHol processes JSON data</step>
+        <step id="S14">confirmDeleteHol sends HTML response to navegador</step>
+    </mainSequence>
+</useCase>

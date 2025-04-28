@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>Initialize Video Player</name>
+    <description>Initialize the video player with necessary configurations.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Video URI is set.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Video player is successfully initialized.</condition>
+    </successEndConditions>
+    <trigger>User triggers the initialization process.</trigger>
+    <mainSequence>
+        <step id="S1">User sets the video URI.</step>
+        <step id="S2">IjkVideoView opens the video.</step>
+        <step id="S3">Get AudioManager and retrieve player type from settings.</step>
+        <step id="S4">Initialize IMediaPlayer by creating player, setting data source, keeping screen on, setting MediaController, and preparing asynchronously.</step>
+        <step id="S5">IjkMediaPlayer constructs the method.</step>
+        <step id="S6">IjkMediaPlayer initializes the player and loads necessary libraries.</step>
+        <step id="S7">JNI_OnLoad method is called to load necessary libraries.</step>
+        <step id="S8">Register methods in g_methods array for player control API.</step>
+        <step id="S9">Initialize native components.</step>
+        <step id="S10">Create EventHandler, setup native components, and create necessary objects for video output.</step>
+        <step id="S11">Return IjkMediaPlayer object to IjkVideoView.</step>
+    </mainSequence>
+</useCase>

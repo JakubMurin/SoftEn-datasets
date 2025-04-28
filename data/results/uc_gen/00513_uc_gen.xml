@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Fault Registration</name>
+    <actors>
+        <actor>Browser</actor>
+    </actors>
+    <preconditions>
+        <precondition>Browser is on the fault registration page</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Browser accesses the fault registration page</step>
+        <step id="S2">Fault registration form is displayed</step>
+        <step id="S3">Browser validates form fields</step>
+        <step id="S4">Browser submits fault data</step>
+        <step id="S5">Form fields are validated</step>
+        <step id="S6">New fault instance is created</step>
+        <step id="S7">Collaborator existence is verified</step>
+        <step id="S8">Collaborator does not exist</step>
+        <step id="S9">Error redirection is triggered</step>
+        <step id="S10">Collaborator exists</step>
+        <step id="S11">Fault data is inserted into the database</step>
+        <step id="S12">Fault registration success redirection is triggered</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S8">
+            <step id="A1S1">Incomplete fields detected</step>
+        </asteps>
+        <asteps id="A2" start="S10" continue="S11">
+            <step id="A2S1">Collaborator exists</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Error redirection to faults page</description>
+            <step id="E1S1">Error redirection to faults page</step>
+        </esteps>
+    </errorSteps>
+</useCase>

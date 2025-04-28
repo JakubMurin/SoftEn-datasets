@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Complete Vipps Transaction</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserVippsApp</actor>
+        <actor>Merchant</actor>
+        <actor>Vipps</actor>
+    </actors>
+    <trigger>Initiate Vipps transaction</trigger>
+    <mainSequence>
+        <step id="S1">Initiate transaction with Merchant</step>
+        <step id="S2">Initiate transaction with Vipps</step>
+        <step id="S3">Establish session link between Vipps and Merchant</step>
+        <step id="S4">Trigger transaction session for UserVippsApp</step>
+        <step id="S5">Approve payment and detail sharing on UserVippsApp</step>
+        <step id="S6">Save Consent and generate sub on Vipps</step>
+        <step id="S7">Perform Payment on Vipps</step>
+        <step id="S8">Receive response from Vipps</step>
+        <step id="S9">Provide response to Merchant</step>
+        <step id="S10">Retrieve details from Vipps</step>
+        <step id="S11">Return details to Merchant, including sub</step>
+        <step id="S12">Get user info from Vipps</step>
+        <step id="S13">Return user info to Merchant</step>
+        <step id="S14">Handle session result on Merchant</step>
+    </mainSequence>
+</useCase>

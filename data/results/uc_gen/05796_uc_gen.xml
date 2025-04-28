@@ -1,0 +1,25 @@
+<useCase id="UC-001">
+  <name>Change Marketing Campaign Activity</name>
+  <actors>
+    <actor>User</actor>
+    <actor>UMP</actor>
+    <actor>Retail-UMP</actor>
+    <actor>C</actor>
+  </actors>
+  <preconditions>
+    <precondition>UMP is able to modify marketing campaign activities.</precondition>
+    <precondition>Retail-UMP can receive and process activity change messages.</precondition>
+  </preconditions>
+  <trigger>User initiates a change in a marketing campaign activity.</trigger>
+  <mainSequence>
+    <step id="S1">User requests a change in the marketing campaign activity.</step>
+    <step id="S2">UMP is activated.</step>
+    <step id="S3">UMP sends a message to Retail-UMP to notify the activity change.</step>
+    <step id="S4">Retail-UMP processes the activity type change which can be add, invalidate, delete, or edit.</step>
+    <step id="S5">Retail-UMP sends a synchronized or asynchronous message to C for further processing based on the number of pending store updates.</step>
+    <step id="S6">C is activated for message processing and acknowledgment.</step>
+    <step id="S7">C returns the acknowledgment to Retail-UMP.</step>
+    <step id="S8">Retail-UMP returns the acknowledgment to UMP.</step>
+    <step id="S9">UMP returns the acknowledgment to User.</step>
+  </mainSequence>
+</useCase>

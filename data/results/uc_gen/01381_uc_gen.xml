@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Update Initial Balance Endpoint</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>EditBalanceController</actor>
+        <actor>UserService</actor>
+        <actor>AppUserRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends a POST request to /updateInitialBalance with initialBalance data</precondition>
+    </preconditions>
+    <trigger>Client triggers the update initial balance endpoint</trigger>
+    <mainSequence>
+        <step id="S1">Client sends a POST request to EditBalanceController with initialBalance data</step>
+        <step id="S2">EditBalanceController calls UserService to get the authenticated user</step>
+        <step id="S3">UserService fetches the user from User Database</step>
+        <step id="S4">User Database returns the user</step>
+        <step id="S5">EditBalanceController receives the authenticated user</step>
+        <step id="S6">EditBalanceController sets the initial balance</step>
+        <step id="S7">EditBalanceController saves the user using AppUserRepository</step>
+        <step id="S8">AppUserRepository updates the user in the database</step>
+        <step id="S9">User Database confirms the save operation</step>
+        <step id="S10">EditBalanceController redirects the Client to /premium</step>
+    </mainSequence>
+</useCase>

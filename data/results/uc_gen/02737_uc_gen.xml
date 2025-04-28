@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Generate Preview for Data Package</name>
+    <description>This use case involves generating a preview of data package views</description>
+    <actors>
+        <actor>Publisher</actor>
+        <actor>CLI</actor>
+        <actor>Validator</actor>
+        <actor>Preview</actor>
+        <actor>Registry</actor>
+    </actors>
+    <preconditions>
+        <precondition>Publisher runs the preview command with the data package path</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Preview of data package views generated successfully</condition>
+    </successEndConditions>
+    <trigger>CLI initiates the process by running the preview command</trigger>
+    <mainSequence>
+        <step id="S1">CLI validates the JSON schema of the data package</step>
+        <step id="S2">CLI receives validation success message from Validator</step>
+        <step id="S3">CLI generates a preview of data package views</step>
+        <step id="S4">CLI displays the generated preview</step>
+    </mainSequence>
+</useCase>

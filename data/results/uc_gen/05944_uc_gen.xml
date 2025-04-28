@@ -1,0 +1,29 @@
+<useCase id="UC001">
+  <name>Order Processing</name>
+  <description>Manage the processing of an order</description>
+  <actors>
+    <actor>Client</actor>
+    <actor>Order Service</actor>
+    <actor>Billing Service</actor>
+    <actor>Notification Service</actor>
+  </actors>
+  <preconditions>
+    <precondition>An order is initiated by the Client</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The Client receives the order status</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>The Client does not receive the order status</condition>
+  </failureEndConditions>
+  <trigger>Client initiates an order</trigger>
+  <mainSequence>
+    <step id="S1">Client creates an order</step>
+    <step id="S2">Order Service forms the payment</step>
+    <step id="S3">Billing Service generates the notification</step>
+    <step id="S4">Notification Service sends notifications via Email, SMS, and Push</step>
+    <step id="S5">Billing Service provides notification information to Order Service</step>
+    <step id="S6">Order Service provides payment information to Client</step>
+    <step id="S7">Client receives the order status</step>
+  </mainSequence>
+</useCase>

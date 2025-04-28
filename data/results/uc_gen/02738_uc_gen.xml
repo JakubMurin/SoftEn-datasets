@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Run Transaction Endpoint</name>
+    <description>Execute a transaction on the Polkadot ledger using the Hyperledger Cactus API.</description>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <preconditions>
+        <precondition>User A has access to the Hyperledger Cactus API.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The transaction is successfully executed on the Polkadot ledger.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The transaction fails to be executed on the Polkadot ledger.</condition>
+    </failureEndConditions>
+    <trigger>User A initiates a transaction on the Polkadot ledger through the Hyperledger Cactus API.</trigger>
+    <mainSequence>
+        <step id="S1">User A requests a transaction on the Polkadot ledger through the API Client.</step>
+        <step id="S2">The API Client forwards the request to the API Server.</step>
+        <step id="S3">The API Server calls the transact() method on the Polkadot ledger connector.</step>
+        <step id="S4">The Polkadot ledger connector processes the transaction request.</step>
+        <step id="S5">The Polkadot ledger connector sends a response back to the API Server.</step>
+        <step id="S6">The API Server formats the response.</step>
+        <step id="S7">The API Server sends the formatted response back to the API Client.</step>
+    </mainSequence>
+</useCase>

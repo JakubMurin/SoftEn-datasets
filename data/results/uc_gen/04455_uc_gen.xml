@@ -1,0 +1,25 @@
+<useCase id="UC001">
+	<name>Delete Snippet</name>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>User is logged in and has permission to delete snippets</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Snippet is successfully deleted</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Snippet is not found</condition>
+	</failureEndConditions>
+	<trigger>User clicks on delete button</trigger>
+	<mainSequence>
+		<step id="S1">User clicks on delete button</step>
+		<step id="S2">SnippetService receives request to delete snippet</step>
+		<step id="S3">SnippetService checks if snippet exists</step>
+		<step id="S4">SnippetService deletes snippet if it exists</step>
+		<step id="S5">SnippetService deletes associated assets</step>
+		<step id="S6">Success message displayed - "Snippet deleted successfully"</step>
+		<step id="S7">Success message displayed to User</step>
+	</mainSequence>
+</useCase>

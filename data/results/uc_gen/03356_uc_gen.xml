@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Submit new history data</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI/Interface</actor>
+        <actor>HistoryRouter</actor>
+        <actor>HistoryController</actor>
+        <actor>HistoryRepository</actor>
+        <actor>History</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User submits new history data</trigger>
+    <mainSequence>
+        <step id="S1">User submits new history data</step>
+        <step id="S2">UI receives the data and sends a POST request to Router</step>
+        <step id="S3">Router forwards the request to Controller</step>
+        <step id="S4">Controller creates a new history with the data</step>
+        <step id="S5">Repository saves the new history in the Database</step>
+        <step id="S6">Database saves the history</step>
+        <step id="S7">Repository confirms the saved history</step>
+        <step id="S8">Controller receives confirmation and sends a success response to Router</step>
+        <step id="S9">Router sends a success response to UI</step>
+        <step id="S10">UI displays a success message to the User</step>
+    </mainSequence>
+</useCase>

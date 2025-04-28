@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Регистрация пользователя</name>
+    <actors>
+        <actor>Клиент</actor>
+        <actor>FE. ЭФ Регистрация</actor>
+        <actor>BE. Рег.скрипт</actor>
+        <actor>DB. База данных</actor>
+    </actors>
+    <preconditions>
+        <precondition>Клиент заполняет форму регистрации</precondition>
+        <precondition>Форма отправляет данные</precondition>
+    </preconditions>
+    <trigger>POST запрос с данными (username, password)</trigger>
+    <mainSequence>
+        <step id="S1">Заполнение формы регистрации</step>
+        <step id="S2">Отправка данных</step>
+        <step id="S3">Проверка существования</step>
+        <step id="S4">Вставка пользователя (username, password)</step>
+        <step id="S5">Успешная вставка</step>
+        <step id="S6">Регистрация [Да]</step>
+        <step id="S7">Сообщение о регистрации</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Пользователь добавлен</step>
+        </asteps>
+        <asteps id="A2" start="S3" continue="S6">
+            <step id="A2S1">Пользователь не добавлен</step>
+            <step id="A2S2">Регистрация [Нет]</step>
+            <step id="A2S3">Сообщение [Ошибка]: пользователь существует</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Agent Recovery and Policy Registry Update</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to use for control over her agent policy registry on the ledger.</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice.</precondition>
+    </preconditions>
+    <trigger>Alice needs to recover her agent and update the policy registry.</trigger>
+    <mainSequence>
+        <step id="S1">Alice performs agent recovery by completing all steps in Offline Recovery or Social Recovery diagram.</step>
+        <step id="S2">Alice generates policy registry address (P').</step>
+        <step id="S3">Alice stores the policy registry (P').</step>
+        <step id="S4">Alice revokes all claims that include the old agent policy address P as a blinded attribute.</step>
+        <step id="S5">Alice petitions the Issuers to reissue her claims.</step>
+        <step id="S6">Alice revokes claim.</step>
+        <step id="S7">Alice sends revoke claim message to Alice's Cloud Agent.</step>
+        <step id="S8">Alice forwards the revoke claim message to Issuers Agent.</step>
+        <step id="S9">Issuer verifies Alice's identity.</step>
+        <step id="S10">Issuer revokes the claim and updates the non-revocation accumulator.</step>
+        <step id="S11">Ledger updates the accumulator and forwards the result to Issuers Agent.</step>
+        <step id="S12">Issuers Agent acknowledges the result to Alice's Cloud Agent.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">Issuers Agent notifies the Issuer.</step>
+            <step id="A1S2">Issuer revokes the claim and adds claim index Si to the non-revocation accumulator.</step>
+            <step id="A1S3">Ledger updates the accumulator with the claim index Si.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Send Offer Message</name>
+    <description>A user sends an offer message to a source.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Source</actor>
+        <actor>Target</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Source receives and responds to the offer message properly.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Source fails to receive the offer message or respond adequately.</condition>
+    </failureEndConditions>
+    <trigger>User enables sending an offer message.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks "LinkTo" option from the interface.</step>
+        <step id="S2">Source is linked to the target.</step>
+        <step id="S3">Source offers message (1) to the target.</step>
+        <step id="S4">The target accepts the message.</step>
+        <step id="S5">Source offers message (2) to the target.</step>
+        <step id="S6">The target postpones the message processing.</step>
+    </mainSequence>
+</useCase>

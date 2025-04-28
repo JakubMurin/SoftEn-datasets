@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Sign Up</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to create an account</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User account is successfully created</condition>
+    </successEndConditions>
+    <trigger>POST /signup</trigger>
+    <mainSequence>
+        <step id="S1">User sends signup request to AccessController</step>
+        <step id="S2">AccessController forwards request to AccessService</step>
+        <step id="S3">AccessService checks if user already exists</step>
+        <step id="S4">AccessService generates salt using bcrypt</step>
+        <step id="S5">AccessService hashes the password with the salt using bcrypt</step>
+        <step id="S6">AccessService creates a new user with email, hashed password, and role</step>
+        <step id="S7">AccessService returns the user details to AccessController</step>
+        <step id="S8">AccessController informs User that registration is successful</step>
+    </mainSequence>
+</useCase>

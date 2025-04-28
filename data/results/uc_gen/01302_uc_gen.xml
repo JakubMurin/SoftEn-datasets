@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Creating Comment</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>CommentController</actor>
+        <actor>CommentService</actor>
+        <actor>CommentRepository</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User goes to post page</step>
+        <step id="S2">UserInterface displays post details and comment form</step>
+        <step id="S3">User enters comment content (text)</step>
+        <step id="S4">User submits comment</step>
+        <step id="S5">CommentController creates comment</step>
+        <step id="S6">CommentController returns validation error if invalid comment content</step>
+        <step id="S7">UserInterface displays "Invalid comment content" message</step>
+        <step id="S8">CommentService validates and creates comment</step>
+        <step id="S9">CommentService saves comment to CommentRepository</step>
+        <step id="S10">CommentRepository saves comment data to CommentsDatabase</step>
+        <step id="S11">CommentRepository returns saved comment</step>
+        <step id="S12">CommentService returns CommentResponse</step>
+        <step id="S13">CommentController returns success message</step>
+        <step id="S14">UserInterface displays "Comment created successfully"</step>
+        <step id="S15">UserInterface updates post comments section</step>
+    </mainSequence>
+</useCase>

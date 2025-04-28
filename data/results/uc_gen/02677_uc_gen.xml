@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Deploy new dataset type version</name>
+    <actors>
+        <actor>DatasetDeveloper</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Version Control</actor>
+        <actor>Dataset Type Registry</actor>
+        <actor>Dataset Instance Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Developer deploys new dataset type version</step>
+        <step id="S2">DMS checks current version</step>
+        <step id="S3">VC returns current version details to DMS</step>
+        <step id="S4">DMS registers new version with DTR</step>
+        <step id="S5">DTR confirms successful version registration to DMS</step>
+        <step id="S6">DMS updates available versions list with DIM</step>
+        <step id="S7">DIM notifies DMS that the list has been updated</step>
+        <step id="S8">DMS isolates new version impact through DTR</step>
+        <step id="S9">DTR confirms impact isolation to DMS</step>
+        <step id="S10">DMS creates version branch with VC</step>
+        <step id="S11">VC confirms successful creation of the branch to DMS</step>
+        <step id="S12">DIM assigns new version to new instances, informing DMS</step>
+        <step id="S13">DMS acknowledges successful deployment of the new version to Developer</step>
+    </mainSequence>
+</useCase>

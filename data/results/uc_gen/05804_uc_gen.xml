@@ -1,0 +1,13 @@
+<useCase id="1">
+    <name>Receive data from MQTT Broker</name>
+    <actors>
+        <actor>Client B (智慧大屏)</actor>
+        <actor>Client A (智慧小车)</actor>
+        <actor>MQTT Broker</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client B (智慧大屏) subscribes to topic: screen/report</step>
+        <step id="S2">Client A (智慧小车) publishes data to topic: agv/report</step>
+        <step id="S3">MQTT Broker forwards data to Client B (智慧大屏) on topic: screen/report</step>
+    </mainSequence>
+</useCase>

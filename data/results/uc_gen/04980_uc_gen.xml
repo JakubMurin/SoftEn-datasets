@@ -1,0 +1,26 @@
+<useCase id="UC-10104">
+  <name>Einladung von Akteuren innerhalb einer Organisation</name>
+  <actors>
+    <actor>Akteur A in der Rolle User</actor>
+    <actor>Akteur B in der Rolle User</actor>
+  </actors>
+  <preconditions>
+    <precondition>Akteur B soll im System existieren.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Akteur B erhält Einladung zur Zusammenarbeit.</condition>
+    <condition>Akteur B bestätigt die Einladung.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Akteur B ist nicht auffindbar.</condition>
+  </failureEndConditions>
+  <trigger>User A sucht und lädt Akteur B zur Kommunikation ein.</trigger>
+  <mainSequence>
+    <step id="S1">User A sucht nach Akteur B.</step>    
+    <step id="S2">User A lädt Akteur B ein.</step>
+    <step id="S3">Berechtigungsprüfung erfolgt.</step>
+    <step id="S4">Push-Benachrichtigung.</step>
+    <step id="S5">Einladung wird akzeptiert und verarbeitet.</step>
+    <step id="S6">Akteur B tritt Raum bei und bestätigt Zugang.</step>
+  </mainSequence>
+</useCase>

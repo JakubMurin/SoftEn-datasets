@@ -1,0 +1,31 @@
+<useCase id="UC1">
+  <name>Perform Application Startup</name>
+  <description>Start the necessary components for the application to run smoothly</description>
+  <actors>
+    <actor>Alice</actor>
+  </actors>
+  <preconditions>
+    <precondition>All components required for the startup process are present</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The application components successfully started</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>One or more application components failed to start</condition>
+  </failureEndConditions>
+  <trigger>Application initiates startup</trigger>
+  <mainSequence>
+    <step id="S1">Application sends startup signal to CowboyPlug</step>
+    <step id="S2">CowboyPlug initiates startup process, triggering Cowboy and Plug</step>
+    <step id="S3">Supervisor receives startup signal and initializes Timer</step>
+    <step id="S4">Supervisor begins monitoring Timer's state</step>
+    <step id="S5">Timer awakens and sends GET request to Monitored Server</step>
+    <step id="S6">If successful, Timer updates its state</step>
+    <step id="S7">If unsuccessful, Timer crashes and Supervisor restarts it</step>
+    <step id="S8">Alice queries Cowboy for status information</step>
+    <step id="S9">Cowboy communicates with Plug to fetch status from Timer</step>
+    <step id="S10">Plug requests status from Timer</step>
+    <step id="S11">Plug responds to Cowboy with the Timer's status</step>
+    <step id="S12">Cowboy relays the status response to Alice</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UniqueATM">
+  <name>Unique ATM Use Case</name>
+  <actors>
+    <actor>User</actor>
+    <actor>ATM Machine</actor>
+    <actor>Bank System</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Insert Card</step>
+    <step id="S2">Enter PIN</step>
+    <step id="S3">Verify PIN</step>
+    <step id="S4">PIN Verified</step>
+    <step id="S5">Select Balance Inquiry</step>
+    <step id="S6">Balance Data Displayed</step>
+    <step id="S7">Select Withdrawal</step>
+    <step id="S8">Select Cancel</step>
+    <step id="S9">Transaction Canceled</step>    
+    <step id="S10">Remove Card</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S5" continue="S6">
+      <step id="A1S1">Request Balance</step>
+      <step id="A1S2">Display Balance</step>
+    </asteps>
+    <asteps id="A2" start="S7">
+      <step id="A2S1">Request Withdrawal</step>
+      <step id="A2S2">Validate Funds</step>
+      <step id="A2S3">Enter Amount</step>
+      <step id="A2S4">Confirm Withdrawal</step>
+      <step id="A2S5">Process Withdrawal</step>
+    </asteps>
+    <asteps id="A3" start="A2S5">
+      <step id="A3S1">Withdrawal Approved</step>
+      <step id="A3S2">Dispense Cash</step>
+    </asteps>
+    <asteps id="A4" start="A2S2">
+      <step id="A4S1">Insufficient Funds</step>
+      <step id="A4S2">Display Insufficient Funds</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

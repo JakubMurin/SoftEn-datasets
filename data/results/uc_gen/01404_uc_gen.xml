@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Delete Other Service</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>UI/Interface</actor>
+        <actor>OtherServiceRouter</actor>
+        <actor>OtherServiceController</actor>
+        <actor>OtherServiceRepository</actor>
+        <actor>OtherServiceModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin requests to delete an existing other service</step>
+        <step id="S2">UI receives request</step>
+        <step id="S3">Router receives request and calls Controller for confirmation</step>
+        <step id="S4">Controller retrieves service details</step>
+        <step id="S5">Repository fetches service by ID</step>
+        <step id="S6">OtherServiceModel queries service from Database</step>
+        <step id="S7">Repository receives service data</step>
+        <step id="S8">Controller displays delete confirmation form to UI</step>
+        <step id="S9">Admin confirms delete request in UI</step>
+        <step id="S10">UI sends delete service request to Router</step>
+        <step id="S11">Router processes delete request by calling Controller</step>
+        <step id="S12">Controller initiates service deletion from Repository</step>
+        <step id="S13">Repository deletes service via OtherServiceModel</step>
+        <step id="S14">OtherServiceModel eliminates service in Database</step>
+        <step id="S15">Repository confirms successful deletion to Controller</step>
+        <step id="S16">Controller sends success response to Router</step>
+        <step id="S17">Router informs UI of successful service deletion</step>
+        <step id="S18">UI displays success message to Admin</step>
+    </mainSequence>
+</useCase>

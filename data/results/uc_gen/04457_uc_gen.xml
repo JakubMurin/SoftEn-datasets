@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Delete Snippet</name>
+    <description>User deletes a snippet from the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>PrintscriptUI</actor>
+        <actor>SnippetService</actor>
+        <actor>SnippetRepository</actor>
+        <actor>AssetService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has permission to delete snippets.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The snippet is successfully deleted from the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The snippet could not be found or an error occurred during the deletion process.</condition>
+    </failureEndConditions>
+    <trigger>User clicks on the delete button in the UI to initiate the deletion process.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the delete button in the PrintscriptUI.</step>
+        <step id="S2">PrintscriptUI calls SnippetService to delete the snippet with the specified directory and id.</step>
+        <step id="S3">SnippetService checks if the snippet exists in the system.</step>
+        <step id="S4">SnippetService deletes the snippet by id if it exists.</step>
+        <step id="S5">SnippetService requests AssetService to delete any associated assets.</step>
+        <step id="S6">SnippetService notifies PrintscriptUI that the snippet was successfully deleted.</step>
+        <step id="S7">PrintscriptUI displays a success message to the User.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Snippet does not exist.</step>
+            <step id="A1S2">PrintscriptUI displays an error message indicating the snippet was not found.</step>
+            <step id="A1S3">PrintscriptUI informs the User about the error situation.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

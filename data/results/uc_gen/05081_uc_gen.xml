@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Manage Application</name>
+    <description>As a developer, I want to manage the application's health and rebalance instances if needed.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Application Analyzer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The application is running.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The application health is checked and instances are rebalanced successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The application health check or instance rebalancing fails.</condition>
+    </failureEndConditions>
+    <trigger>Developer launches application and checks health.</trigger>
+    <mainSequence>
+        <step id="S1">Developer launches application.</step>
+        <step id="S2">Application Orchestrator launches the application with the specified environment and configuration.</step>
+        <step id="S3">The Orchestrator sends a request to the service to select the appropriate stack.</step>
+        <step id="S4">Developer checks the application health.</step>
+        <step id="S5">Application Analyzer checks the health of the application.</step>
+        <step id="S6">The Orchestrator initiates a check request for the application with the specified environment.</step>
+        <step id="S7">The service performs the health check for the application.</step>
+        <step id="S8">Application Analyzer requests a rebalance of a specific application instance.</step>
+        <step id="S9">The Orchestrator sends a request to rebalance the specified application instance.</step>
+        <step id="S10">The service selects the environment for the specified application instance.</step>
+    </mainSequence>
+</useCase>

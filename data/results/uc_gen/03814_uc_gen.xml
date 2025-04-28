@@ -1,0 +1,28 @@
+<useCase id="UC01">
+    <name>Scribble, Join scribble rooms sequence diagram development</name>
+    <description>User starts the app and client asks for a nickname, then sends it to the server to join a room with provided nickname, IP and port. In case the nickname is valid, the server adds the nickname, informs the client it successfully joined, updates the chat with the new user, enables the ready-to-play button, chat functionality, and notifies the user it succeeded.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has started the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully joined the scribble room.</condition>
+    </successEndConditions>
+    <trigger>User opens the app.</trigger>
+    <mainSequence>
+        <step id="S1">User starts the app.</step>
+        <step id="S2">Client asks the user for a nickname.</step>
+        <step id="S3">User writes the provided nickname.</step>
+        <step id="S4">Client sends a request to the server to join with the given nickname, IP, and port.</step>
+        <step id="S5">Server checks if the nickname is valid.</step>
+        <step id="S6">If the nickname is valid, the server adds the new user's nickname and informs the client that the user joined.</step>
+        <step id="S7">Server updates the chat room with a message about the user who joined.</step>
+        <step id="S8">Client enables the ready-to-play button.</step>
+        <step id="S9">Client enables the chat functionality.</step>
+        <step id="S10">Client notifies the user that it successfully joined.</step>
+    </mainSequence>
+</useCase>

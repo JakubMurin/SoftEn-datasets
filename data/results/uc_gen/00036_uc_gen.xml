@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Update Profile</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Replica</actor>
+    </actors>
+    <preconditions>
+        <precondition>Profile needs to be updated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Profile successfully updated</condition>
+    </successEndConditions>
+    <trigger>User initiates profile update</trigger>
+    <mainSequence>
+        <step id="S1">User updates profile</step>
+        <step id="S2">Service receives update request</step>
+        <step id="S3">Service updates the profile</step>
+        <step id="S4">Service notifies success</step>
+        <step id="S5">Replica retrieves updated profile</step>
+        <step id="S6">Confusion occurs due to stale data</step>
+        <step id="S7">Message Broker communicates updated profile to Replica</step>
+    </mainSequence>
+</useCase>

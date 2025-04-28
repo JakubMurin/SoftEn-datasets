@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Complete Option Creation and Auction Process</name>
+    <actors>
+        <actor>Option Line Creator</actor>
+        <actor>Writer</actor>
+        <actor>Auction Winner</actor>
+        <actor>Request Handler</actor>
+        <actor>Request Verifier</actor>
+        <actor>ERC721 receiver (initial owner)</actor>
+        <actor>Auction Contract</actor>
+        <actor>Option Serie Contract</actor>
+        <actor>Escrow account</actor>
+    </actors>
+    <preconditions>
+        <precondition>All actors have necessary permissions and access to required contracts.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All steps in the process are successfully completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>If any step in the process fails, the entire process is considered unsuccessful.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Option Line Creator creates a request.</step>
+        <step id="S2">Request Handler verifies the request.</step>
+        <step id="S3">ERC721 receiver mints ERC721 token.</step>
+        <step id="S4">Request Handler creates an escrow account from where only ERC721 owner can withdraw.</step>
+        <step id="S5">Writer writes options.</step>
+        <step id="S6">Option Serie Contract receives the fee, which goes to the escrow account.</step>
+        <step id="S7">ERC721 receiver can withdraw the fee.</step>
+        <step id="S8">ERC721 receiver creates an auction by transferring ERC721 for auction.</step>
+        <step id="S9">Request Handler creates an option serie with the reference to the escrow owner.</step>
+        <step id="S10">Auction Contract transfers the ERC721 token to the auction winner.</step>
+        <step id="S11">Auction winner can withdraw the collected fees.</step>
+        <step id="S12">Writer writes options.</step>
+        <step id="S13">Option Serie Contract receives the fee, which goes to the escrow account.</step>
+        <step id="S14">Auction winner can withdraw the collected fees.</step>
+    </mainSequence>
+</useCase>

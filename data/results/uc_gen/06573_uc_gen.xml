@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Deploy AIS Bundles</name>
+    <preconditions>
+        <precondition>ApplicationDeveloper has access to the AISSimulator project</precondition>
+        <precondition>EventBus is available</precondition>
+    </preconditions>
+    <trigger>ApplicationDeveloper initiates the deployment of AIS bundles</trigger>
+    <mainSequence>
+        <step id="S1">ApplicationDeveloper chooses AIS bundles to deploy</step>
+        <step id="S2">ApplicationDeveloper creates a bundle named Ship1 at location ./projects/AISSimulator/AISShip/bundle.js using sentient agent bundle resources</step>
+        <step id="S3">EventBus triggers bundle creation for Ship1</step>
+        <step id="S4">ApplicationDeveloper creates a bundle named NoContact at location ./projects/AISSimulator/AISNoContact/bundle.js using sentient agent bundle resources</step>
+        <step id="S5">EventBus triggers bundle creation for NoContact</step>
+        <step id="S6">ApplicationDeveloper creates a bundle named Agg1 at location ./projects/AISSimulator/AISAgg/bundle.js using sentient agent bundle resources</step>
+        <step id="S7">EventBus triggers bundle creation for Agg1</step>
+        <step id="S8">ApplicationDeveloper creates a bundle named Viewer1 at location ./projects/AISSimulator/AISViewer/bundle.js using sentient agent bundle resources</step>
+        <step id="S9">EventBus triggers bundle creation for Viewer1</step>
+        <step id="S10">ApplicationDeveloper creates policies.js at location ./projects/AISSimulator/AISShip/policies.js using sentient agent bundle manager</step>
+        <step id="S11">EventBus triggers policy creation</step>
+        <step id="S12">ApplicationDeveloper deploys bundle Viewer1 with policies realtime using sentient agent bundle manager</step>
+        <step id="S13">EventBus triggers deployment of Viewer1 bundle with realtime policies</step>
+        <step id="S14">ApplicationDeveloper deploys bundle NoContact with policies realtime and parameters timeout=10000 using sentient agent bundle manager</step>
+        <step id="S15">EventBus triggers deployment of NoContact bundle with realtime policies and timeout parameter</step>
+        <step id="S16">ApplicationDeveloper deploys bundle Agg1 with policies realtime using sentient agent bundle manager</step>
+        <step id="S17">EventBus triggers deployment of Agg1 bundle with realtime policies</step>
+        <step id="S18">ApplicationDeveloper deploys bundle Ship1 with policies realtime and parameters sourceFile=../AIS_Simulator/ships/215071000A.csv using sentient agent bundle manager</step>
+        <step id="S19">EventBus triggers deployment of Ship1 bundle with realtime policies and sourceFile parameter</step>
+        <step id="S20">ApplicationDeveloper deploys bundle Ship1 with policies realtime and parameters sourceFile=../AIS_Simulator/ships/215031000A.csv using sentient agent bundle manager</step>
+        <step id="S21">EventBus triggers deployment of Ship1 bundle with realtime policies and sourceFile parameter</step>
+    </mainSequence>
+</useCase>

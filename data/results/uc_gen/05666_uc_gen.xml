@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View Blog Post Detail</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Router</actor>
+        <actor>View</actor>
+        <actor>Model</actor>
+        <actor>DB</actor>
+        <actor>Comment</actor>
+        <actor>Form</actor>
+        <actor>Template</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User accesses the URL /blog/</step>
+        <step id="S2">Router directs to post_detail view</step>
+        <step id="S3">View retrieves the post matching the specified criteria</step>
+        <step id="S4">Model fetches the post from the database</step>
+        <step id="S5">View retrieves active comments for the post</step>
+        <step id="S6">View creates a CommentForm</step>
+        <step id="S7">View renders the post, comments, and form using a template</step>
+        <step id="S8">Template displays the blog post detail page to the User</step>
+    </mainSequence>
+</useCase>

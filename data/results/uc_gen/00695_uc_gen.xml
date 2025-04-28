@@ -1,0 +1,20 @@
+<useCase id="UC-001">
+    <name>Retrieve Bookings with Appointments</name>
+    <actors>
+        <actor>User Account</actor>
+        <actor>Appointment Service Page</actor>
+        <actor>Get Booking Activity</actor>
+        <actor>Booking System</actor>
+        <actor>Appointment System</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User Account sends a GET Request to Appointment Service Page</step>
+        <step id="S2">Appointment Service Page forwards the GetBookingRequest to Get Booking Activity</step>
+        <step id="S3">Get Booking Activity retrieves all Bookings from the Booking System</step>
+        <step id="S4">Get Booking Activity receives the Booking ID from the Booking System</step>
+        <step id="S5">Get Booking Activity retrieves all Appointments using the received Booking ID from the Appointment System</step>
+        <step id="S6">Get Booking Activity receives the Appointment ID from the Appointment System</step>
+        <step id="S7">Get Booking Activity sends the GetBookingResult back to Appointment Service Page</step>
+        <step id="S8">Appointment Service Page notifies User Account of the successful retrieval of Bookings with Appointments</step>
+    </mainSequence>
+</useCase>

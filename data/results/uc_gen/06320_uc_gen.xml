@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Update Staff Information</name>
+    <description>As a User, I want to update staff information in the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Interface</actor>
+        <actor>StaffRouter</actor>
+        <actor>StaffController</actor>
+        <actor>StaffRepository</actor>
+        <actor>Staff Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has access to the system.</precondition>
+        <precondition>The staff information to be updated is valid.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The staff information is successfully updated in the database.</condition>
+    </successEndConditions>
+    <trigger>User interacts with the interface to update staff information.</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with the interface.</step>
+        <step id="S2">The Interface sends a PUT request to the StaffRouter with the updated data.</step>
+        <step id="S3">The StaffRouter forwards the request to the StaffController to update the staff information.</step>
+        <step id="S4">The StaffController calls the StaffRepository to update the staff information.</step>
+        <step id="S5">The StaffRepository updates the staff information in the Staff Model.</step>
+        <step id="S6">The Staff Model updates the staff information in the Database.</step>
+        <step id="S7">The Database confirms the successful update.</step>
+        <step id="S8">The updated staff information is propagated back through the layers to the User Interface.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Query Data Usage</name>
+    <actors>
+        <actor>OlderPerson</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User asks "How is my personal data used?"</step>
+        <step id="S2">ALFRED Interface retrieves privacy information</step>
+        <step id="S3">PrivacySettings displays data usage info</step>
+        <step id="S4">ALFRED Interface shows data usage info to user</step>
+        <step id="S5">User requests to update data sharing permissions</step>
+        <step id="S6">ALFRED Interface navigates to Privacy Settings</step>
+        <step id="S7">PrivacySettings displays privacy options</step>
+        <step id="S8">User selects privacy options</step>
+        <step id="S9">PrivacySettings updates permissions</step>
+        <step id="S10">DataManagement confirms update</step>
+        <step id="S11">PrivacySettings shows confirmation message</step>
+        <step id="S12">ALFRED Interface displays confirmation</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">User initiates data sharing for a service</step>
+            <step id="A1S2">ALFRED Interface verifies permission for the service</step>
+            <step id="A1S3">DataManagement requests data for the service</step>
+            <step id="A1S4">ExternalServices share data with the service</step>
+            <step id="A1S5">DataManagement displays sharing success</step>
+            <step id="A1S6">ALFRED Interface shows sharing confirmation to user</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

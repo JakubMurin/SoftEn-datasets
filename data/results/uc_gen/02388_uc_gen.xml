@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Cache Data Query</name>
+    <actors>
+        <actor>UserX</actor>
+        <actor>UserY</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both UserX and UserY have internet connection</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data successfully retrieved from cache</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to retrieve data from cache</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">UserX queries data from Server A for the first time</step>
+        <step id="S2">Server A processes the request by querying Distributed Cache</step>
+        <step id="S3">Distributed Cache returns data to Server A</step>
+        <step id="S4">Server A sends data back to UserX</step>
+        <step id="S5">UserX saves the version in local storage</step>
+        <step id="S6">UserX queries data from Server A for the second time</step>
+        <step id="S7">Server A checks the local cache and returns data to UserX</step>
+        <step id="S8">UserY queries data from Server B for the first time</step>
+        <step id="S9">Server B processes the request by querying Distributed Cache</step>
+        <step id="S10">Distributed Cache returns data to Server B</step>
+        <step id="S11">Server B sends data back to UserY</step>
+        <step id="S12">UserY saves the version in local storage</step>
+        <step id="S13">UserY queries data from Server B for the second time</step>
+        <step id="S14">Server B checks the local cache and returns data to UserY</step>
+        <step id="S15">UserY queries data from Server A for the third time</step>
+        <step id="S16">Server A checks the local cache and then queries Distributed Cache for the most up-to-date data</step>
+        <step id="S17">Distributed Cache returns updated data to Server A</step>
+        <step id="S18">Server A sends the latest data back to UserY</step>
+        <step id="S19">UserY saves the updated version in local storage</step>
+        <step id="S20">UserX queries data from Server A for the third time</step>
+        <step id="S21">Server A checks the local cache and returns data to UserX</step>
+        <step id="S22">UserX saves the version in local storage</step>
+    </mainSequence>
+</useCase>

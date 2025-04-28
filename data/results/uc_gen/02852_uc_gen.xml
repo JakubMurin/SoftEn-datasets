@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Generate scatter plot for embedding clusters</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User receives requirements dataset</trigger>
+    <mainSequence>
+        <step id="S1">Start the script in "main.py"</step>
+        <step id="S2">Generate embeddings using OpenAI API for each requirement</step>
+        <step id="S3">Store the obtained embeddings in Pinecone database</step>
+        <step id="S4">Query the embeddings for clustering</step>
+        <step id="S5">Organize the embeddings using K-Means Clustering</step>
+        <step id="S6">Create scatter plot and textual output using Visualization Module</step>
+        <step id="S7">Display the scatter plot and text to the User</step>
+    </mainSequence>
+</useCase>

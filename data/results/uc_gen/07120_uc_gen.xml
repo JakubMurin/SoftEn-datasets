@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>新增业务监控配置</name>
+    <actors>
+        <actor>user</actor>
+        <actor>system</actor>
+        <actor>pg</actor>
+        <actor>redis</actor>
+        <actor>tdm</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">用户新增业务监控配置</step>
+        <step id="S2">系统检查数据的合法性</step>
+        <step id="S3">系统将数据落库</step>
+        <step id="S4">系统更新当前时间戳到redis，作为客户端心跳时间，并更新心跳超时时间</step>
+        <step id="S5">tdm抢到ACTIVE后进行doInit()和HeartBeatControlService的初始化</step>
+        <step id="S6">tdm执行initCache()，清空redis中的超时时间配置，删除缓存中的心跳时间</step>
+    </mainSequence>
+</useCase>

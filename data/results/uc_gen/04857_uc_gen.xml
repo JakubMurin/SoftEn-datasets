@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Generar orden de evaluación</name>
+    <actors>
+        <actor>Medico</actor>
+        <actor>Frontend</actor>
+        <actor>tRPC</actor>
+        <actor>Prisma</actor>
+        <actor>OrdenCtrl</actor>
+        <actor>Database</actor>
+        <actor>Diagnostico</actor>
+    </actors>
+    <trigger>Pedido del médico para evaluar paciente</trigger>
+    <mainSequence>
+        <step id="S1">Medico genera una orden de evaluación en Frontend.</step>
+        <step id="S2">Frontend envía los datos de la orden a tRPC.</step>
+        <step id="S3">tRPC registra la orden de evaluación en Prisma.</step>
+        <step id="S4">Prisma inserta la orden en la base de datos y confirma la inserción.</step>
+        <step id="S5">Prisma mapea la confirmación y la envía a OrdenCtrl.</step>
+        <step id="S6">OrdenCtrl confirma al médico la orden registrada.</step>
+        <step id="S7">Frontend notifica al médico sobre el registro exitoso.</step>
+        <step id="S8">OrdenCtrl notifica a Diagnostico la nueva orden de evaluación.</step>
+        <step id="S9">Diagnostico accede y procesa órdenes pendientes en Frontend.</step>
+        <step id="S10">Frontend solicita y obtiene un listado de órdenes mediante tRPC y Prisma.</step>
+        <step id="S11">Prisma consulta y retorna órdenes disponibles desde la base de datos.</step>
+        <step id="S12">Prisma mapea los resultados y los envía a OrdenCtrl.</step>
+        <step id="S13">OrdenCtrl transmite el listado de órdenes a tRPC.</step>
+        <step id="S14">tRPC muestra las órdenes pendientes al frente.</step>
+        <step id="S15">Diagnostico selecciona y procesa una orden específica.</step>
+    </mainSequence>
+</useCase>

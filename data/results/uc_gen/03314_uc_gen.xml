@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Soumettre un document</name>
+    <actors>
+        <actor>EEP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">EEP soumet un document</step>
+        <step id="S2">DocumentService enregistre le document</step>
+        <step id="S3">Database confirme l'enregistrement</step>
+        <step id="S4">Document soumis avec succès</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">EEP demande de télécharger un document</step>
+            <step id="A1S2">DocumentService recherche le document par identifiant</step>
+            <step id="A1S3">Database trouve le document</step>
+            <step id="A1S4">Document téléchargé avec succès</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">EEP demande de supprimer le document</step>
+            <step id="A2S2">DocumentService recherche le document par identifiant</step>
+            <step id="A2S3">Database confirme la suppression</step>
+            <step id="A2S4">Document supprimé avec succès</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

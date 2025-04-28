@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Edit Question</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Course</actor>
+        <actor>UserClass</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User edits a question with course ID, quiz ID, question ID, course material data, response, and current user.</step>
+        <step id="S2">Controller searches for a course by ID.</step>
+        <step id="S3">If course is found,</step>
+        <step id="S4">If course is not None, Controller searches for a teacher by course.</step>
+        <step id="S5">If teacher is found,</step>
+        <step id="S6">If teacher is not None, Controller searches for a quiz by ID.</step>
+        <step id="S7">If quiz is found,</step>
+        <step id="S8">If quiz is not None, Controller searches for a question by ID.</step>
+        <step id="S9">If question is found,</step>
+        <step id="S10">If question is not None, Controller edits the question with question text and correctness indicator.</step>
+        <step id="S11">If edit is successful, Controller informs User about the successful question edit.</step>
+        <step id="S12">If edit fails, Controller informs User about the failure.</step>
+        <step id="S13">If question is not found, Controller informs User that the question was not found.</step>
+        <step id="S14">If quiz question is not found, Controller informs User that the quiz question was not found.</step>
+        <step id="S15">If quiz is not found, Controller informs User that the quiz was not found.</step>
+        <step id="S16">If quiz is None, Controller informs User that the quiz is None.</step>
+        <step id="S17">If teacher is not found, Controller informs User that the teacher was not found.</step>
+        <step id="S18">If user is not authorized, Controller informs User that the user is not authorized.</step>
+        <step id="S19">If course is not found, Controller informs User that the course was not found.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>User Interaction and Game Completion</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Keyboard</actor>
+        <actor>JavaScript</actor>
+        <actor>HTML DOM</actor>
+        <actor>Fishtext API</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates text generation request</precondition>
+        <precondition>Game interface is displayed on the screen</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Game completion with score calculation</condition>
+        <condition>Data successfully saved to the database</condition>
+    </successEndConditions>
+    <trigger>Keyboard input for text generation and game interaction</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to the Fishtext API for text generation</step>
+        <step id="S2">Fishtext API processes the request and returns text</step>
+        <step id="S3">JavaScript displays the generated text on the HTML DOM</step>
+        <step id="S4">User interacts with the game by typing on the keyboard</step>
+        <step id="S5">JavaScript checks the correctness of the input and updates the UI</step>
+        <step id="S6">JavaScript stops the timer and calculates the score</step>
+        <step id="S7">Server receives the game data and updates the database</step>
+        <step id="S8">JavaScript displays end game window and generates speed data for the graph</step>
+        <step id="S9">JavaScript draws the speed graph on the HTML DOM</step>
+        <step id="S10">JavaScript saves the data to the localStorage</step>
+    </mainSequence>
+</useCase>

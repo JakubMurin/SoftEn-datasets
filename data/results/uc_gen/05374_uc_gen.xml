@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>View User Details</name>
+    <description>As a User, I want to view the details of a specific user.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UserDetailsPage</actor>
+        <actor>Controller</actor>
+        <actor>Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User is logged in and has access to the UserDetailsPage.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User details are successfully displayed on the UserDetailsPage.</condition>
+    </successEndConditions>
+    <trigger>User initiates the action to view user details.</trigger>
+    <mainSequence>
+        <step id="S1">User views the User Details on the UserDetailsPage.</step>
+        <step id="S2">UserDetailsPage requests the Controller to get the User details.</step>
+        <step id="S3">Controller calls the Model to retrieve the User details.</step>
+        <step id="S4">Model queries the Database to find unique User details based on the UserId.</step>
+        <step id="S5">Database returns the User details to the Model.</step>
+        <step id="S6">Model returns the User details to the Controller.</step>
+        <step id="S7">Controller sends the User details back to the UserDetailsPage.</step>
+        <step id="S8">UserDetailsPage displays the User details.</step>
+    </mainSequence>
+</useCase>

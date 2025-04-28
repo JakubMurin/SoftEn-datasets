@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Review and Deploy Code Changes</name>
+    <description>Review and deploy code changes from development branch to production servers</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Reviewer</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Code changes are ready for deployment</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Code changes successfully deployed to production servers</condition>
+    </successEndConditions>
+    <trigger>Code changes are pushed to the development repository</trigger>
+    <mainSequence>
+        <step id="S1">Developer edits code</step>
+        <step id="S2">Developer pushes code to development repository</step>
+        <step id="S3">Developer creates a pull request from development to calibration repository</step>
+        <step id="S4">Reviewer approves the pull request in the calibration repository</step>
+        <step id="S5">Developer merges the pull request in the calibration repository</step>
+        <step id="S6">Code changes deployed to calibration server</step>
+        <step id="S7">Developer creates a pull request from development to mainnet repository</step>
+        <step id="S8">Reviewer approves the pull request in the mainnet repository</step>
+        <step id="S9">Developer merges the pull request in the mainnet repository</step>
+        <step id="S10">Code changes deployed to mainnet server</step>
+        <step id="S11">User can use new feature</step>
+    </mainSequence>
+</useCase>

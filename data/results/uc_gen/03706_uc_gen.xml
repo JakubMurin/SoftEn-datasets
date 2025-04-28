@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>Joining a Room</name>
+    <description>User joins a room by entering a participation code and code validation is performed.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and room code is provided.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully joins the room.</condition>
+    </successEndConditions>
+    <trigger>User enters a participation code.</trigger>
+    <mainSequence>
+        <step id="S1">User enters the participation code in the diary room.</step>
+        <step id="S2">Client sends POST request to api for joining the room.</step>
+        <step id="S3">API performs JSON validation.</step>
+        <step id="S4">API retrieves the room code from the database.</step>
+        <step id="S5">API verifies the user-entered code with the retrieved code.</step>
+        <step id="S6">If successful, API inserts the account to RoomMember and appends AccountID to Room.Orders.</step>
+        <step id="S7">API responds with status 201 Created.</step>
+    </mainSequence>
+</useCase>

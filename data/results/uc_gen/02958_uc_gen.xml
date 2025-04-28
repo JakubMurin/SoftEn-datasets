@@ -1,0 +1,25 @@
+<useCase id="UC1">
+  <name>Complete Ticket Transition</name>
+  <actors>
+    <actor>User</actor>
+    <actor>TicketTransitions</actor>
+    <actor>ClientRestService</actor>
+    <actor>ProfessionalTicket</actor>
+    <actor>CMOReport</actor>
+  </actors>
+  <preconditions>
+    <precondition>Client service, ticket, and user information is available</precondition>
+  </preconditions>
+  <trigger>User completes a ticket transition via Client Service</trigger>
+  <mainSequence>
+    <step id="S1">User completes ticket transition with client service, ticket, and user</step>
+    <step id="S2">TicketTransitions handle CMO review completion with client service, ticket, and user</step>
+    <step id="S3">TicketTransitions retrieve CMO report entries</step>
+    <step id="S4">Main process flow checks for category validity or report accuracy comments</step>
+    <step id="S5">If category is not valid or report accuracy comments are missing, notify user accordingly</step>
+    <step id="S6">If category is valid, calculate report quality and check for quality comments</step>
+    <step id="S7">If report quality or comments are not suitable, request proper information from the user</step>
+    <step id="S8">If report is valid and complete, update ticket, user records and save ticket status</step>
+    <step id="S9">Generate and send response letter to the user</step>
+  </mainSequence>
+</useCase>

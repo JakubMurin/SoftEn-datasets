@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View Recent Submissions on Dashboard</name>
+    <description>As a curator, I want to view recent submissions on the dashboard.</description>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator is authenticated and logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Curator successfully views recent submissions on the dashboard.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Curator is unable to view recent submissions on the dashboard.</condition>
+    </failureEndConditions>
+    <trigger>Curator requesting dashboard view.</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests Dashboard View</step>
+        <step id="S2">Dashboard fetches Recent Submissions</step>
+        <step id="S3">Submission Service queries Submissions by Date</step>
+        <step id="S4">Database returns Submission Data</step>
+        <step id="S5">Service processes Submission Summary</step>
+        <step id="S6">Dashboard prepares Collection Widget</step>
+        <step id="S7">Widget displays Recent Submissions</step>
+        <step id="S8">Dashboard shows Dashboard with Widget to Curator</step>
+    </mainSequence>
+</useCase>

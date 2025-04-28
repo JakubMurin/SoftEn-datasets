@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Generate Cluster Visualization</name>
+    <description>As a User, I want to generate a scatter plot visualization and textual output for clustered embeddings.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The embeddings for each requirement have already been generated using OpenAI API.</precondition>
+        <precondition>The embeddings have been stored in the Pinecone DB and grouped into clusters using K-Means Clustering.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The scatter plot and textual output have been successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The process failed to create the visualization successfully.</condition>
+    </failureEndConditions>
+    <trigger>Start Script</trigger>
+    <mainSequence>
+        <step id="S1">Generate embeddings for each requirement</step>
+        <step id="S2">Store embeddings in vector database</step>
+        <step id="S3">Query stored embeddings</step>
+        <step id="S4">Group embeddings into clusters</step>
+        <step id="S5">Create scatter plot and textual output</step>
+    </mainSequence>
+</useCase>

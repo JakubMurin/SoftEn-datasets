@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Account Deletion</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>AuthService</actor>
+        <actor>AuthInterceptor</actor>
+        <actor>LocalStorage</actor>
+        <actor>HttpClient</actor>
+        <actor>Controller</actor>
+        <actor>IUserAppService</actor>
+        <actor>UserAppService</actor>
+        <actor>UserManager</actor>
+        <actor>Database</actor>
+        <actor>MessageService</actor>
+        <actor>LoginComponent</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks delete account</step>
+        <step id="S2">Frontend activates</step>
+        <step id="S3">Frontend retrieves User details with GetUserFromToken</step>
+        <step id="S4">AuthService activates and provides User data</step>
+        <step id="S5">AuthService initiates User deletion with OnDeleteAccount</step>
+        <step id="S6">AuthInterceptor prepares HTTP DELETE request with User email</step>
+        <!-- Add more steps as needed -->
+    </mainSequence>
+</useCase>

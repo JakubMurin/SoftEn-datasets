@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Manage Users</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>UsersRepo</actor>
+        <actor>ProductsRepo</actor>
+        <actor>BidsRepo</actor>
+        <actor>OrdersRepo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates a user by sending data to Controller</step>
+        <step id="S2">Controller forwards user creation to Service</step>
+        <step id="S3">Service creates and saves the user via UsersRepo</step>
+        <step id="S4">Service returns the created user to Controller</step>
+        <step id="S5">Controller returns the user to Client</step>
+        <step id="S6">Client retrieves all users</step>
+        <step id="S7">Client retrieves a specific user</step>
+        <step id="S8">Client updates a user by providing ID and updated data</step>
+        <step id="S9">Client removes a user by providing the user ID</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">Service checks if the user exists</step>
+            <step id="A1S2">If the user exists, Service updates the user in UsersRepo</step>
+            <step id="A1S3">If the user does not exist, Service throws UserNotFoundException</step>
+        </asteps>
+        <asteps id="A2" start="S9">
+            <step id="A2S1">Service checks if the user exists</step>
+            <step id="A2S2">If the user exists, Service checks for associated products and bids</step>
+            <step id="A2S3">If there are associated products, Service throws UserDeletionException for products</step>
+            <step id="A2S4">If there are no associated products, Service checks for bids</step>
+            <step id="A2S5">If there are bids, Service throws UserDeletionException for bids</step>
+            <step id="A2S6">If there are no bids, Service checks for orders</step>
+            <step id="A2S7">If there are non-ended orders, Service throws UserDeletionException for orders</step>
+            <step id="A2S8">If there are no non-ended orders, Service removes the user from UsersRepo</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

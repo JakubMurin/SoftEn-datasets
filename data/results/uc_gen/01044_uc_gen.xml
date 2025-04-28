@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Complete One-to-One Session Check</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Routes</actor>
+        <actor>Controller</actor>
+        <actor>OneToOne</actor>
+        <actor>MySQL</actor>
+        <actor>Error</actor>
+        <actor>Question</actor>
+        <actor>Measurable</actor>
+        <actor>Ejs</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Navegador accesses /oneToOne/:sessionID</step>
+        <step id="S2">Routes forwards GET request to Controller</step>
+        <step id="S3">Controller retrieves session data from OneToOne</step>
+        <step id="S4">Controller handles zero rows scenario</step>
+        <step id="S5">Controller handles incorrect role or user scenario</step>
+        <step id="S6">Controller retrieves answers from Question</step>
+        <step id="S7">Controller handles zero answers scenario</step>
+        <step id="S8">Controller retrieves measures from Measurable</step>
+        <step id="S9">Controller renders oneToOneCheck page</step>
+    </mainSequence>
+</useCase>

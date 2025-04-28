@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>Recover Document Type</name>
+    <actors>
+        <actor>Frontend</actor>
+        <actor>DocumentConstructorTypeController</actor>
+        <actor>DocumentConstructorTypeService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Frontend sends a POST request to recover a document type by ID.</precondition>
+        <precondition>User has the ADMIN role.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document type is successfully recovered, and its state is changed to ACTIVE.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Document type is not found in the database.</condition>
+        <condition>An error occurs during the document type recovery process.</condition>
+    </failureEndConditions>
+    <trigger>Frontend triggers the recovery process by sending a POST request to the backend.</trigger>
+    <mainSequence>
+        <step id="S1">Check user role by DocumentConstructorTypeController.</step>
+        <step id="S2">Validate the request by DocumentConstructorTypeController.</step>
+        <step id="S3">Recover document type by calling recoverById(id) in DocumentConstructorTypeService.</step>
+        <step id="S4">Find document type in the database by calling findById(id) in DocumentConstructorTypeService.</step>
+        <step id="S5">Check document type state in DocumentConstructorTypeService.</step>
+        <step id="S6">Set document type state to ACTIVE and save it in the database in DocumentConstructorTypeService.</step>
+        <step id="S7">Return success response to Frontend with code 200: Document type recovered by DocumentConstructorTypeController.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Handle case where the document type is not found in the database and return error 404: Document type isn't found by DocumentConstructorTypeController.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>An error occurs during the document type recovery process.</description>
+            <step id="E1S1">Handle the error condition and return appropriate error response by DocumentConstructorTypeService.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

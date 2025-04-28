@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Set Embargo</name>
+    <description>Curator requests to set embargo on an item</description>
+    <actors>
+        <actor>Collection Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Item exists in the repository</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Embargo successfully set on the item</condition>
+    </successEndConditions>
+    <trigger>Curator requests to set embargo</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests to set embargo on an item</step>
+        <step id="S2">EDRMS verifies item exists</step>
+        <step id="S3">EDRMS sets embargo on the item</step>
+        <step id="S4">Embargo updates item status to "Under Embargo"</step>
+        <step id="S5">EDRMS confirms embargo set</step>
+    </mainSequence>
+</useCase>

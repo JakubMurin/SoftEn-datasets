@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Create Volume</name>
+    <actors>
+        <actor>admin</actor>
+        <actor>user</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin has necessary permissions</precondition>
+        <precondition>User has access to Kubernetes cluster</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin creates storage class</step>
+        <step id="S2">User creates persistent volume claim</step>
+        <step id="S3">Kubernetes communicates with CSI to create volume</step>
+        <step id="S4">CSI controller creates volume on target</step>
+        <step id="S5">Target provides volume details to CSI</step>
+        <step id="S6">CSI sends volume creation response to Kubernetes</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Velge en oppskrift å følge</name>
+    <actors>
+        <actor>Bruker</actor>
+        <actor>Kitchenmanager</actor>
+        <actor>Fridge</actor>
+        <actor>Cookbook</actor>
+        <actor>RecipeManager</actor>
+        <actor>FilterCriteria</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Velge "Foreslå oppskrift" på Kitchenmanager</step>
+        <step id="S2">Hente innhold fra Fridge</step>
+        <step id="S3">Returnere innhold til Kitchenmanager fra Fridge</step>
+        <step id="S4">Opprette filter basert på innhold på FilterCriteria</step>
+        <step id="S5">Hente oppskrifter fra Cookbook på Kitchenmanager</step>
+        <step id="S6">Filtrere oppskrifter mot innhold og kriterier på RecipeManager</step>
+        <step id="S7">Returnere treff til Cookbook fra RecipeManager</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Ingen treff funnet</step>
+            <step id="A1S2">Returnere ingen oppskrifter funnet til Kitchenmanager fra Cookbook</step>
+            <step id="A1S3">Vise "Ingen treff funnet" for Bruker fra Kitchenmanager</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Perform Action</name>
+    <description>Allows the user to perform a specific action</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actor is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Action is successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Action cannot be completed</condition>
+    </failureEndConditions>
+    <trigger>User selects the action</trigger>
+    <mainSequence>
+        <step id="S1">Actor selects the action</step>
+        <step id="S2">Actor provides necessary information</step>
+        <step id="S3">System processes the action</step>
+        <step id="S4">System confirms action completion to Actor</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Actor provides incorrect information</step>
+            <step id="A1S2">System prompts Actor to correct information</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>System encounters an error while processing the action</description>
+            <step id="E1S1">System notifies Actor of the error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

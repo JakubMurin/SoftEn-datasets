@@ -1,0 +1,27 @@
+<useCase id="1">
+  <name>Reconnect Client</name>
+  <actors>
+    <actor>Client</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Actor reconnects</step>
+    
+    <step id="R1">Lookup remote MainServer reference in Registry through RMI</step>
+    <step id="R2">Receive remote ref to MainServer from Registry</step>
+    
+    <step id="S2">Reconnect to MainServer using RMI</step>
+    
+    <step id="S3">Interupt client handler at MainServer</step>
+    
+    <step id="S4">Create new ClientHandler at MainServer</step>
+    <step id="S5">Start ClientHandler at MainServer</step>
+    
+    <step id="S6">Reconnect to MainController</step>
+    
+    <step id="S7">Create new AvailableGamesMessage</step>
+    
+    <step id="S8">Update info with AvailableGamesMessage at ClientHandler</step>
+    
+    <step id="S9">Push AvailableGamesMessage update to Client</step>
+  </mainSequence>
+</useCase>

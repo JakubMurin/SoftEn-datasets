@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Rendering Component</name>
+    <description>Rendering a component and attaching it to an instance</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Instances are available in cache if already rendered</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Component rendered successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Component rendering failed</condition>
+    </failureEndConditions>
+    <trigger>User triggers the creation of a component</trigger>
+    <mainSequence>
+        <step id="S1">User creates a component in App</step>
+        <step id="S2">Liba creates a component instance</step>
+        <step id="S3">Liba renders the component instance</step>
+        <step id="S4">App renders the component with props and renderLiba</step>
+        <step id="S5">App creates a button element</step>
+        <step id="S6">App creates a UserCard element</step>
+        <step id="S7">UserCard creates child elements with props, AppCInstance, and key</step>
+        <step id="S8">Liba creates UserCard with AppCInstance, props, and key</step>
+        <step id="S9">Liba renders the UserCard instance</step>
+        <step id="S10">UserCard renders a 'div' element</step>
+        <step id="S11">UserCard renders another 'div' element</step>
+        <step id="S12">UserCard element is attached to renderC</step>
+    </mainSequence>
+</useCase>

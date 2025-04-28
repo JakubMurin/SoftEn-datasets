@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>View Waiter Schedules</name>
+    <description>As a Manager, I want to view the schedules of waiters in order to manage shifts efficiently.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Manager is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Manager successfully views the waiter schedules.</condition>
+    </successEndConditions>
+    <trigger>The Manager requests to view waiter schedules.</trigger>
+    <mainSequence>
+        <step id="S1">Manager requests waiter schedules from the Manager Interface.</step>
+        <step id="S2">Manager Interface fetches waiter schedules from the Server Back-end.</step>
+        <step id="S3">Server Back-end queries the Database for waiter schedules.</step>
+        <step id="S4">Database returns waiter schedules to the Server Back-end.</step>
+        <step id="S5">Server Back-end returns waiter schedules data to the Manager Interface.</step>
+        <step id="S6">Manager Interface displays waiter schedules to the Manager.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Update User Profile</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <trigger>User requests to update their profile.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates updating their profile.</step>
+        <step id="S2">Service receives the update request.</step>
+        <step id="S3">Service communicates with the Message Broker to update the profile.</step>
+        <step id="S4">Message Broker processes the profile update.</step>
+        <step id="S5">Service notifies the User that the profile has been successfully updated.</step>
+        <step id="S6">User requests to get their updated profile.</step>
+        <step id="S7">(stale) Profile retrieved from the Replica by User.</step>
+        <step id="S8">User expresses confusion due to the inconsistency in the retrieved profile.</step>
+        <step id="S9">Message Broker updates the profile data in the Replica.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Asignar Posicion y Turno a Trabajador</name>
+    <actors>
+        <actor>Trabajador</actor>
+        <actor>GestorTurnos</actor>
+        <actor>BaseDeDatos</actor>
+        <actor>Departamento</actor>
+        <actor>Posicion</actor>
+        <actor>Turno</actor>
+        <actor>Ausencia</actor>
+        <actor>Preferencia</actor>
+    </actors>
+    <preconditions>
+        <precondition>El Trabajador solicita la asignación de una posición y un turno.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>El GestorTurnos asigna la posición y el turno al Trabajador.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">El Trabajador solicita la asignación de una posición y un turno.</step>
+        <step id="S2">El GestorTurnos busca el departamento del Trabajador.</step>
+        <step id="S3">El GestorTurnos busca una posición disponible en el departamento.</step>
+        <step id="S4">El GestorTurnos busca un turno disponible.</step>
+        <step id="S5">El GestorTurnos verifica las ausencias y preferencias del Trabajador.</step>
+        <step id="S6">El GestorTurnos asigna la posición y el turno al Trabajador.</step>
+    </mainSequence>
+</useCase>

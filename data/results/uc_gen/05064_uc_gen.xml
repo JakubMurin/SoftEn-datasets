@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Communication téléphonique</name>
+    <description>Utilisateur insère de la monnaie, compose le numéro, discute et termine l'appel.</description>
+    <actors>
+        <actor>Apelant</actor>
+        <actor>Correspondant</actor>
+    </actors>
+    <preconditions>
+        <precondition>Apelant a de la monnaie à insérer.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La communication a été établie avec succès.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Le numéro composé n'est pas valide.</condition>
+    </failureEndConditions>
+    <trigger>Apelant commence la communication téléphonique.</trigger>
+    <mainSequence>
+        <step id="S1">Apelant insère de la monnaie.</step>
+        <step id="S2">Apelant compose le numéro.</step>
+        <step id="S3">Apelant discute avec le Correspondant.</step>
+        <step id="S4">Apelant raccroche.</step>
+        <step id="S5">Correspondant raccroche.</step>
+        <step id="S6">Apelant coupe la ligne.</step>
+        <step id="S7">Standard rend la monnaie à Apelant.</step>
+    </mainSequence>
+</useCase>

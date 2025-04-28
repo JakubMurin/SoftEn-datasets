@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>ManageCompanyStructure</name>
+    <description>Allows the user to manage the company's organizational structure and employees.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Main</actor>
+        <actor>DepartmentComposite</actor>
+        <actor>HR</actor>
+        <actor>IT</actor>
+        <actor>Development</actor>
+        <actor>QA</actor>
+        <actor>EmployeeLeaf</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system must be running and accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The company structure and employee information is successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Any error that occurs during the process is appropriately handled and logged.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the management of the company structure and employees.</trigger>
+    <mainSequence>
+        <step id="S1">User launches the main application.</step>
+        <step id="S2">Main application executes the runDepartments function.</step>
+        <step id="S3">Main application creates a new DepartmentComposite named "Company".</step>
+        <step id="S4">Main application creates a new DepartmentComposite named "HR".</step>
+        <step id="S5">Main application creates new EmployeeLeaf objects for HR department employees.</step>
+        <!-- More steps can be added here according to the provided sequence diagram -->
+    </mainSequence>
+</useCase>

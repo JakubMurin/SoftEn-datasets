@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Accéder au produit A</name>
+    <description>Le scénario décrit l'accès au produit A par l'utilisateur.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>AuthGuard</actor>
+        <actor>Produit [A]</actor>
+        <actor>Portail</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur est connecté au système.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>L'utilisateur accède avec succès au produit A.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>L'utilisateur est redirigé vers le Portail car l'accès est refusé.</condition>
+    </failureEndConditions>
+    <trigger>Accès au produit A</trigger>
+    <mainSequence>
+        <step id="S1">L'utilisateur accède au produit A.</step>
+        <step id="S2">AuthGuard vérifie l'authentification.</step>
+        <step id="S3">Si authentifié:</step>
+        <step id="S4">AuthGuard redirige vers le produit A.</step>
+        <step id="S5">Sinon:</step>
+        <step id="S6">AuthGuard redirige vers le Portail.</step>
+    </mainSequence>
+</useCase>

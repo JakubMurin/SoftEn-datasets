@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Submit Document</name>
+    <description>Content Provider initiates submission of documents to be stored in the Document Repository.</description>
+    <actors>
+        <actor>Content Provider</actor>
+        <actor>Document Source</actor>
+        <actor>Document Repository</actor>
+        <actor>Document Registry</actor>
+    </actors>
+    <preconditions>
+        <precondition>Content Provider has documents and metadata ready for submission.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Documents and metadata are successfully stored in the Document Repository.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Validation error occurs during metadata validation in the Document Registry.</condition>
+        <condition>Error response received during document submission to the Document Repository.</condition>
+    </failureEndConditions>
+    <trigger>Content Provider initiates submission.</trigger>
+    <mainSequence>
+        <step id="S1">Initiate submission</step>
+        <step id="S2">Collect document(s) and metadata</step>
+        <step id="S3">Submit document(s) and metadata (ITI-41)</step>
+        <step id="S4">Process request</step>
+        <step id="S5">Store document(s)</step>
+        <step id="S6">Submit metadata (ITI-42)</step>
+        <step id="S7">Validate metadata</step>
+        <step id="S8">Error response (ITI-42)</step>
+        <step id="S9">Error response (ITI-41)</step>
+    </mainSequence>
+</useCase>

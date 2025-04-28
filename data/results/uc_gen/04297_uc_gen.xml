@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Submit Session</name>
+    <actors>
+        <actor>AuthenticatedUser</actor>
+        <actor>Web Interface</actor>
+        <actor>Session Database</actor>
+        <actor>Session Review System</actor>
+        <actor>Notification Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Authenticated user is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Session successfully submitted and reviewed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Session submission or review process failed</condition>
+    </failureEndConditions>
+    <trigger>User navigates to 'Submit Session' page</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to 'Submit Session' page</step>
+        <step id="S2">Web Interface displays 'Session Submission Form'</step>
+        <step id="S3">User fills in and submits the form</step>
+        <step id="S4">Web Interface saves session details to Session Database</step>
+        <step id="S5">Session Database triggers Session Review Process in Session Review System</step>
+        <step id="S6">Session Review System updates session status to 'Under Review' in Session Database</step>
+        <step id="S7">Session Database triggers Notification Service to notify the user</step>
+        <step id="S8">Notification Service sends email notification to user: 'Session Submitted'</step>
+        <step id="S9">User refreshes/checks email for notification</step>
+        <step id="S10">Session Review System updates session status to 'Approved/Rejected' in Session Database</step>
+        <step id="S11">Session Database triggers Notification Service to notify the user</step>
+        <step id="S12">Notification Service sends email notification to user: 'Session Approved' or 'Session Rejected'</step>
+    </mainSequence>
+</useCase>

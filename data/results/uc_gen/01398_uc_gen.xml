@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Delete Existing Other Service</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is logged in and has the necessary permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The other service is successfully deleted from the system.</condition>
+    </successEndConditions>
+    <trigger>Admin requests to delete an existing other service.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to delete an existing other service.</step>
+        <step id="S2">UI receives the request and displays the delete confirmation form.</step>
+        <step id="S3">Admin confirms the delete request.</step>
+        <step id="S4">UI sends the confirmation to the Router.</step>
+        <step id="S5">Router directs the request to the Controller to delete the other service.</step>
+        <step id="S6">Controller instructs the Repository to delete the service.</step>
+        <step id="S7">Repository communicates with the OtherServiceModel to delete the service from the database.</step>
+        <step id="S8">OtherServiceModel deletes the service from the database.</step>
+        <step id="S9">Repository confirms the successful deletion of the service to the Controller.</step>
+        <step id="S10">Controller informs the Router that the service has been successfully deleted.</step>
+        <step id="S11">Router sends a success response to the UI.</step>
+        <step id="S12">UI displays a success message to the Admin indicating the service has been deleted.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC001">
+  <name>User Interaction</name>
+  <description>Defines the interaction between the User and the ReflexionAgent.</description>
+  <actors>
+    <actor>User</actor>
+    <actor>ReflexionAgent</actor>
+    <actor>LLM</actor>
+    <actor>ToolRegistry</actor>
+    <actor>Tool</actor>
+    <actor>Memory</actor>
+  </actors>
+  <preconditions>
+    <precondition>User input 'input_text' is received.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Final result provided to the User.</condition>
+  </successEndConditions>
+  <trigger>User runs the function 'run(input_text)'.</trigger>
+  <mainSequence>
+    <step id="S1">User runs the function 'run(input_text)'.</step>
+    <step id="S2">ReflexionAgent retrieves relevant memories.</step>
+    <step id="S3">Agent prompts LLM and receives a response.</step>
+    <step id="S4">Agent decides to use a tool and executes it.</step>
+    <step id="S5">Agent reflects on the observation and saves memories accordingly.</step>
+    <step id="S6">Agent saves episodic memory if decides to finish the interaction.</step>
+  </mainSequence>
+</useCase>

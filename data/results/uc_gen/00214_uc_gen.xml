@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Manage Teachers</name>
+    <description>As a user, I want to be able to manage teachers in the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in and has access rights to manage teachers.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully views and modifies teacher information.</condition>
+    </successEndConditions>
+    <trigger>User navigates to the teacher management page.</trigger>
+    <mainSequence>
+        <step id="S1">User switches to the teacher management page.</step>
+        <step id="S2">Frontend sends a request to the Controller.</step>
+        <step id="S3">Controller calls the Service to retrieve all teachers.</step>
+        <step id="S4">Service queries the TeacherRepository to find all teachers.</step>
+        <step id="S5">TeacherRepository creates new TeacherEntities.</step>
+        <step id="S6">TeacherEntities are returned to the TeacherRepository.</step>
+        <step id="S7">TeacherRepository sends entities back to the Controller.</step>
+        <step id="S8">Controller responds to the frontend with the entities.</step>
+        <step id="S9">Frontend displays the entities to the user.</step>
+        <step id="S10">User clicks on a teacher entry to modify it.</step>
+        <step id="S11">Frontend sends a request to the Controller for the selected entity.</step>
+        <step id="S12">Controller calls the Service with the entity data.</step>
+        <step id="S13">Service saves the modified entity in the TeacherRepository.</step>
+        <step id="S14">TeacherRepository updates the entity.</step>
+        <step id="S15">Service sends the updated entity back to the Controller.</step>
+        <step id="S16">Controller responds to the frontend after successful modification.</step>
+        <step id="S17">Frontend displays a success message to the user.</step>
+    </mainSequence>
+</useCase>

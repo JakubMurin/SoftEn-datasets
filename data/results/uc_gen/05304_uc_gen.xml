@@ -1,0 +1,36 @@
+<useCase id="001">
+  <name>Creation of ERC721 Token Auction</name>
+  <actors>
+    <actor>Option Line Creator</actor>
+    <actor>Writer</actor>
+    <actor>Auction Winner</actor>
+    <actor>ERC721 receiver (initial owner)</actor>
+  </actors>
+  <preconditions>
+    <precondition>The Option Line Creator requests the creation of an ERC721 token auction.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The ERC721 receiver successfully mints the ERC721 token.</condition>
+    <condition>An escrow account is successfully created by the Request Handler for the ERC721 owner to withdraw from.</condition>
+    <condition>Options are successfully written by the Writer.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>The ERC721 receiver fails to mint the ERC721 token.</condition>
+    <condition>An error occurs during the creation of the escrow account.</condition>
+    <condition>An error occurs during the writing of options.</condition>
+  </failureEndConditions>
+  <mainSequence>
+    <step id="S1">The Option Line Creator creates a request for the ERC721 token auction.</step>
+    <step id="S2">The Request Handler verifies the request made by the Option Line Creator.</step>
+    <step id="S3">The Request Handler mints the ERC721 token to the ERC721 receiver.</step>
+    <step id="S4">The Request Handler creates an escrow account for the ERC721 owner to withdraw from.</step>
+    <step id="S5">The Writer writes options for the auction.</step>
+    <step id="S6">The ERC721 receiver receives the minted ERC721 token and can withdraw fees from the escrow account.</step>
+    <step id="S7">The ERC721 receiver creates an auction by transferring the ERC721 token to the Auction Contract.</step>
+    <step id="S8">The Request Handler creates an option series linked to the escrow account owner in the Option Series Contract.</step>
+    <step id="S9">The Auction Contract transfers the ERC721 token to the Auction Winner.</step>
+    <step id="S10">The Auction Winner can withdraw the collected fees. The Writer updates the options.</step>
+    <step id="S11">The Option Series Contract ensures the fee goes to the escrow account.</step>
+    <step id="S12">The Auction Winner can withdraw the collected fees.</step>
+  </mainSequence>
+</useCase>

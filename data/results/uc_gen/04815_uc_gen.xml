@@ -1,0 +1,41 @@
+<useCase id="UC1">
+  <name>Reservation and Data Transfer</name>
+  <actors>
+    <actor>Alice</actor>
+    <actor>Sarad App</actor>
+    <actor>Registration Server 2</actor>
+    <actor>rest api</actor>
+    <actor>device Actor</actor>
+    <actor>device with Instrument Server</actor>
+  </actors>
+  <preconditions>
+    <precondition>Device configuration changes and data request are needed.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Data transfer and reservation are successfully completed.</condition>
+  </successEndConditions>
+  <trigger>Changes Config / Requests Data</trigger>
+  <mainSequence>
+    <step id="S1">User initiates changes configuration and requests data to Sarad App.</step>
+    <step id="S2">Sarad App attempts to reserve a device through the rest api.</step>
+    <step id="S3">rest api relays the reservation request to the device Actor.</step>
+    <step id="S4">device Actor forwards the request to the device with Instrument Server.</step>
+    <step id="S5">The device accepts the request and relays port information back to the device Actor.</step>
+    <step id="S6">device Actor establishes a connection with the device with Instrument Server.</step>
+    <step id="S7">device Actor opens a port for data transfer.</step>
+    <step id="S8">device Actor relays port information back to the rest api.</step>
+    <step id="S9">rest api sends the port information back to Sarad App.</step>
+    <step id="S10">The user initiates changes and requests data again.</step>
+    <step id="S11">The device Actor reconnects.</step>
+    <step id="S12">Sarad App sends data to the device Actor.</step>
+    <step id="S13">The device Actor relays the data to the device.</step>
+    <step id="S14">The device responds back to the device Actor.</step>
+    <step id="S15">The device Actor sends the response to Sarad App.</step>
+    <step id="S16">Sarad App displays the response to the user.</step>
+    <step id="S17">Sarad App disconnects from the device Actor.</step>
+    <step id="S18">Sarad App frees the reserved device through the rest api.</step>
+    <step id="S19">The rest api relays the free device information to the device Actor.</step>
+    <step id="S20">The device Actor relays the freed status to the device with Instrument Server.</step>
+    <step id="S21">The device with Instrument Server confirms the free status.</step>
+  </mainSequence>
+</useCase>

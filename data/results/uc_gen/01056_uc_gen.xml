@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Passer une commande en ligne</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>InterfaceUtilisateur</actor>
+        <actor>CatalogueProduits</actor>
+        <actor>Panier</actor>
+        <actor>SystèmePaiement</actor>
+        <actor>SystèmeNotification</actor>
+    </actors>
+    <preconditions>
+        <precondition>Le client doit être connecté et avoir des produits dans le panier.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Le paiement est effectué avec succès et la commande est confirmée.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Le paiement échoue et l'utilisateur est informé des options alternatives.</condition>
+    </failureEndConditions>
+    <trigger>Le client décide de passer une commande en ligne.</trigger>
+    <mainSequence>
+        <step id="S1">Le client parcourt et sélectionne les produits.</step>
+        <step id="S2">Les détails des produits sont récupérés.</step>
+        <step id="S3">Le client ajoute un produit au panier.</step>
+        <step id="S4">Le panier est mis à jour.</step>
+        <step id="S5">Le client passe la commande.</step>
+        <step id="S6">Le contenu du panier est récupéré.</step>
+        <step id="S7">Le paiement est traité.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Le paiement est confirmé.</step>
+            <step id="A1S2">La confirmation de commande est envoyée.</step>
+            <step id="A1S3">Le client reçoit un email de confirmation.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Le paiement échoue et l'utilisateur est informé des options alternatives.</description>
+            <step id="E1S1">L'utilisateur est alerté de l'échec du paiement.</step>
+            <step id="E1S2">Des options de paiement alternatives sont affichées.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

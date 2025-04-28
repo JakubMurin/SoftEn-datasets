@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Create Operation Type</name>
+    <description>Admin creates a new Operation Type with its attributes.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation Type is successfully created</condition>
+    </successEndConditions>
+    <trigger>User wants to create a new Operation Type</trigger>
+    <mainSequence>
+        <step id="S1">Admin creates Operation Type with its attributes</step>
+        <step id="S2">FrontEnd validates Operation Type attributes</step>
+        <step id="S3">FrontEnd sends Operation Type creation request to Backoffice API</step>
+        <step id="S4">Backoffice API validates Operation Type attributes</step>
+        <step id="S5">Backoffice API saves New Operation Type in Database</step>
+        <step id="S6">Backoffice API logs Operation Type creation</step>
+        <step id="S7">Backoffice API returns confirmation to FrontEnd</step>
+        <step id="S8">FrontEnd returns confirmation to Admin</step>
+    </mainSequence>
+</useCase>

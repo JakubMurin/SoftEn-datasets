@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Remove Requested Issues</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is authenticated</precondition>
+    </preconditions>
+    <trigger>Admin requests to get and remove requested issues</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends request to remove requested issues by signId</step>
+        <step id="S2">System validates the member with the provided signId</step>
+        <step id="S3">System validates the admin with the provided signId</step>
+        <step id="S4">System retrieves the list of requested issues</step>
+        <step id="S5">System sends the list of issues to Admin</step>
+    </mainSequence>
+</useCase>

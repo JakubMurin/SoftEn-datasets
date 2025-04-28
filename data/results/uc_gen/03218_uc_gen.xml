@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Click Button</name>
+    <description>User clicks on the button triggering operations on directory and file views.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User clicks on button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the button.</step>
+        <step id="S2">Trigger operations in directory and file views.</step>
+        <step id="S3">Handle operations in the service layer.</step>
+        <step id="S4">Delegate operations to the handler.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">If operation is to create a directory:</step>
+            <step id="A1S2">Invoke the Create Directory utility.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">If operation is to create a file:</step>
+            <step id="A2S2">Invoke the Create File utility.</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">If operation is to delete a directory:</step>
+            <step id="A3S2">Invoke the Delete Directory utility.</step>
+        </asteps>
+        <asteps id="A4" start="S4">
+            <step id="A4S1">If operation is to delete a file:</step>
+            <step id="A4S2">Invoke the Delete File utility.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error occurred while performing operation in the handler.</description>
+            <step id="E1S1">Handle the error and return.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

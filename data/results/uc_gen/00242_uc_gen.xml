@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Start and End Bike Lease</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Bike</actor>
+        <actor>Lease</actor>
+        <actor>InvoiceGenerator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer selects a bike to start/end lease</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The lease is successfully started and ended</condition>
+    </successEndConditions>
+    <trigger>User decides to start/end the bike lease</trigger>
+    <mainSequence>
+        <step id="S1">Customer starts the lease</step>
+        <step id="S2">Bike confirms the lease is started</step>
+        <step id="S3">Bike is unlocked for use by the Customer</step>
+        <step id="S4">Customer ends the lease</step>
+        <step id="S5">Bike confirms the lease is ended</step>
+        <step id="S6">Lease generates an invoice</step>
+        <step id="S7">InvoiceGenerator adds the invoice</step>
+        <step id="S8">Bike is locked after the lease ends</step>
+    </mainSequence>
+</useCase>

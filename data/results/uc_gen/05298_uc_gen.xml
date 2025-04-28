@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Manage Option Creation and Auction Process</name>
+    <actors>
+        <actor>Option Line Creator</actor>
+        <actor>Writer</actor>
+        <actor>Auction Winner</actor>
+        <actor>Request Handler</actor>
+        <actor>Request Verifier</actor>
+        <actor>ERC721 receiver (initial owner)</actor>
+        <actor>Auction Contract</actor>
+        <actor>Option Serie Contract</actor>
+        <actor>Escrow Account</actor>
+    </actors>
+    <preconditions>
+        <precondition>Option Line Creator creates a request.</precondition>
+    </preconditions>
+    <trigger>Request Handler initiates the process.</trigger>
+    <mainSequence>
+        <step id="S1">Request Handler verifies the request.</step>
+        <step id="S2">Request Handler mints an ERC721 token to ERC721 receiver.</step>
+        <step id="S3">Request Handler creates an escrow account for ERC721 owner only.</step>
+        <step id="S4">Writer writes options.</step>
+        <step id="S5">Option Serie Contract receives fee into the escrow account.</step>
+        <step id="S6">ERC721 receiver withdraws the fee.</step>
+        <step id="S7">ERC721 receiver creates an auction by transferring the ERC721 token.</step>
+        <step id="S8">Request Handler creates an option serie with a reference to the escrow owner.</step>
+        <step id="S9">Auction Contract transfers the ERC721 token to the Auction Winner.</step>
+        <step id="S10">Auction Winner can withdraw the collected fees.</step>
+        <step id="S11">Writer writes options again.</step>
+        <step id="S12">Option Serie Contract receives fee into the escrow account again.</step>
+        <step id="S13">Auction Winner can withdraw the collected fees again.</step>
+    </mainSequence>
+</useCase>

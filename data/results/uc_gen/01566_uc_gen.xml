@@ -1,0 +1,27 @@
+<useCase id="UC1">
+	<name>User Authentication and Help Link Request</name>
+	<description>This use case describes the process of authenticating a user and requesting help links.</description>
+	<actors>
+		<actor>User</actor>
+		<actor>Authentication Service</actor>
+		<actor>Help Link Service</actor>
+		<actor>Database</actor>
+	</actors>
+	<preconditions>
+		<precondition>The user needs to be logged in.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>User successfully authenticated and help links displayed.</condition>
+	</successEndConditions>
+	<trigger>User initiates the authentication process and requests help links.</trigger>
+	<mainSequence>
+		<step id="S1">User authenticates with Authentication Service.</step>
+		<step id="S2">Authentication Service validates user credentials with Database.</step>
+		<step id="S3">Database confirms credentials are valid.</step>
+		<step id="S4">Authentication Service notifies User of successful authentication.</step>
+		<step id="S5">User requests help links from Help Link Service.</step>
+		<step id="S6">Help Link Service fetches contextual links from Database.</step>
+		<step id="S7">Database returns links to Help Link Service.</step>
+		<step id="S8">Help Link Service displays the help links to User.</step>
+	</mainSequence>
+</useCase>

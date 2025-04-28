@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Render Component</name>
+    <description>As a User, I want to render a component with specific elements.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>App</actor>
+        <actor>renderC</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba has created the cInstance.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The component is successfully rendered with all elements.</condition>
+    </successEndConditions>
+    <trigger>User initiates the rendering of the component.</trigger>
+    <mainSequence>
+        <step id="S1">User creates the component with App.</step>
+        <step id="S2">Liba creates the cInstance.</step>
+        <step id="S3">renderC receives the cInstance.</step>
+        <step id="S4">App creates a 'button' element.</step>
+        <step id="S5">renderLiba receives the 'button' element.</step>
+        <step id="S6">App creates a UserCard element.</step>
+        <step id="S7">renderLiba creates children for UserCard.</step>
+        <step id="S8">Liba creates UserCard instance.</step>
+        <step id="S9">renderC receives the UserCInstance.</step>
+        <step id="S10">UserCard creates a 'div' element.</step>
+        <step id="S11">UserCard creates another 'div' element.</step>
+        <step id="S12">UserCard sends the element to renderLiba.</step>
+        <step id="S13">renderC sets instance.element to the element.</step>
+    </mainSequence>
+</useCase>

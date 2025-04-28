@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Generate Surat Lapas</name>
+    <description>Generate a surat lapas for a specific date and number</description>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Surat lapas successfully generated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Surat lapas not available</condition>
+    </failureEndConditions>
+    <trigger>User clicks on the surat lapas menu</trigger>
+    <mainSequence>
+        <step id="S1">Administrator clicks on the surat lapas menu</step>
+        <step id="S2">Surat lapas screen is displayed</step>
+        <step id="S3">Administrator inputs the surat number and date</step>
+        <step id="S4">System searches for the surat based on input</step>
+        <step id="S5">If surat is available:</step>
+        <step id="S6">Retrieve information about the inmate</step>
+        <step id="S7">Display inmate information</step>
+        <step id="S8">If surat is not available:</step>
+        <step id="S9">Display message indicating surat is not available</step>
+    </mainSequence>
+</useCase>

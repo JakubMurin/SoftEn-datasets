@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Interactive Messaging</name>
+    <actors>
+        <actor>Người dùng</actor>
+        <actor>Người nhận</actor>
+        <actor>Hệ thống</actor>
+        <actor>WebSocket</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Mở cuộc trò chuyện</step>
+        <step id="S2">Chọn tin nhắn và nhấn "Thu hồi"</step>
+        <step id="S3">Kiểm tra thời gian thu hồi</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Gửi thông báo thu hồi</step>
+            <step id="A1S2">Gỡ tin nhắn</step>
+            <step id="A1S3">Cập nhật trạng thái tin nhắn</step>
+            <step id="A1S4">Xác nhận cập nhật</step>
+            <step id="A1S5">Gỡ tin nhắn khỏi giao diện</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

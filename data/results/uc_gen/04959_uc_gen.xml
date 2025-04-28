@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Ensure Data Security Compliance</name>
+    <description>Verify and report the compliance status of data security measures</description>
+    <actors>
+        <actor>Funder</actor>
+        <actor>DMPTool</actor>
+        <actor>SecurityAssessmentModule</actor>
+        <actor>ComplianceDatabase</actor>
+        <actor>ProjectData</actor>
+        <actor>ReportGenerator</actor>
+  </actors>
+    <preconditions>
+        <precondition>Funder requests specific project's security details</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Report on data security and compliance provided</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Data security and compliance report not generated</condition>
+    </failureEndConditions>
+    <trigger>User requests security details for a project</trigger>
+    <mainSequence>
+        <step id="S1">Funder requests security details for specific project</step>
+        <step id="S2">DMPTool accesses SecurityAssessmentModule for assessing security measures and standards</step>
+        <step id="S3">SecurityAssessmentModule fetches relevant data and security protocols from ProjectData</step>
+        <step id="S4">ProjectData returns security protocols to SecurityAssessmentModule</step>
+        <step id="S5">SecurityAssessmentModule verifies compliance with legal standards in ComplianceDatabase</step>
+        <step id="S6">ComplianceDatabase returns compliance status to SecurityAssessmentModule</step>
+        <step id="S7">ReportGenerator compiles security assessment report</step>
+        <step id="S8">ReportGenerator formats and generates report for DMPTool</step>
+        <step id="S9">DMPTool provides report on data security and compliance to Funder</step>
+    </mainSequence>
+</useCase>

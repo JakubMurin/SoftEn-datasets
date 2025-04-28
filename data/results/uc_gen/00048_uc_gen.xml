@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>View Average Lending Duration per Book</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Librarian requests average lending duration per book</step>
+        <step id="S2">LendingController receives request to GET /api/lendings/average-per-book</step>
+        <step id="S3">LendingController activates to handle the request</step>
+        <step id="S4">LendingController calls LendingService to get average lending duration per book</step>
+        <step id="S5">LendingService activates and retrieves this information</step>
+        <step id="S6">LendingService communicates with LendingRepository to find average lending duration</step>
+        <step id="S7">LendingRepository retrieves the data successfully</step>
+        <step id="S8">LendingService uses LendingAvgPerBookViewMapper to format the results</step>
+        <step id="S9">LendingAvgPerBookViewMapper maps the results to the desired view</step>
+        <step id="S10">LendingService returns the view list to LendingController</step>
+        <step id="S11">LendingController deactivates after processing</step>
+        <step id="S12">Librarian receives HTTP 200 OK response with the list of average lending durations per book</step>
+    </mainSequence>
+</useCase>

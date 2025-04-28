@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Revert File Version</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Web Interface</actor>
+        <actor>Backend Service</actor>
+        <actor>File Storage</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the file</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects the file version revert option</step>
+        <step id="S2">Web Interface sends a request to revert the file (fileID, version)</step>
+        <step id="S3">Backend Service fetches the older file version (fileID, version) from File Storage</step>
+        <step id="S4">File Storage returns the older file version to Backend Service</step>
+        <step id="S5">Backend Service updates the current file with the older version</step>
+        <step id="S6">File Storage confirms the update to Backend Service</step>
+        <step id="S7">Backend Service confirms the successful revert to Web Interface</step>
+        <step id="S8">Web Interface displays a revert success message to the User</step>
+    </mainSequence>
+</useCase>

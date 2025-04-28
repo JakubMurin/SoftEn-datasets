@@ -1,0 +1,41 @@
+<useCase id="UC-001">
+    <name>Add New Edge Agent</name>
+    
+    <actors>
+        <actor>Alice</actor>
+        <actor>Edge Agent 1</actor>
+        <actor>Edge Agent 2</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Alice has chosen existing or add new device from options in Edge Agent Start.</precondition>
+        <precondition>Edge Agent 2 has been provisioned as described in the Provision New Agent diagram.</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Alice adds agent.</step>
+        <step id="S2">Edge Agent 2 gives instructions for adding Agent 2 and selecting authorizations.</step>
+        <step id="S3">Alice adds agent with selected authorizations.</step>
+        <step id="S4">Edge Agent 1 displays provisioning code for adding agent 2.</step>
+        <step id="S5">Alice shows code.</step>
+        <step id="S6">Alice scans code from agent 1.</step>
+        <step id="S7">Agent 2 adds request, sends A_p^2-pk, A_A^2-vk.</step>
+        <step id="S8">Agent 1 stores A_A^2-vk in wallet.</step>
+        <step id="S9">Agent 1 confirms agent 2.</step>
+        <step id="S10">Agent 1 adds keys and authorizations for agent 2 to the policy registry.</step>
+        <step id="S11">Agent 2 stores data in the wallet.</step>
+    </mainSequence>
+
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Sync data to agent 2.</step>
+        </asteps>
+    </alternativeSteps>
+
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>Error in adding agent.</description>
+            <step id="E1S1">Retry the process.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

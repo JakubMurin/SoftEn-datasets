@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Booking System</name>
+    <description>Manage booking creation process for a hotel reservation system</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Room availability data is up to date in the database</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking successfully created in the system</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Room not available at the requested dates</condition>
+    </failureEndConditions>
+    <trigger>Receptionist requests to create a booking</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create booking</step>
+        <step id="S2">UI displayed booking form</step>
+        <step id="S3">Receptionist fills booking details</step>
+        <step id="S4">Room availability checked</step>
+        <step id="S5">Booking created</step>
+        <step id="S6">Display booking created message</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Room is available for booking</step>
+            <step id="A2S1">Create new booking</step>
+            <step id="A3S1">Display booking created message</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Room is not available for booking</description>
+            <step id="E1S1">Display room not available error message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

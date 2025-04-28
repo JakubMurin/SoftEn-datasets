@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User enters their identifier to log in</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>Application is running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is redirected to the homepage</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Incorrect identifier entered</condition>
+    </failureEndConditions>
+    <trigger>User initiates the login process</trigger>
+    <mainSequence>
+        <step id="S1">User enters their identifier</step>
+        <step id="S2">Application validates the identifier</step>
+        <step id="S3">User is redirected to the homepage</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">User is asked to re-enter the identifier</step>
+        </asteps>
+        <asteps id="A2" start="S2">
+            <step id="A2S1">User requests a new password</step>
+            <step id="A2S2">Application sends a new password</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

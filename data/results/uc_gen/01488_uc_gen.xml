@@ -1,0 +1,21 @@
+<useCase id="1">   
+    <name>Generate Audit Report</name>
+    <actors>
+        <actor> Repoadmin </actor>
+        <actor> ARS </actor>
+        <actor> DB </actor>
+        <actor> RG </actor>
+        <actor> AL </actor>       
+    </actors>
+    <preconditions>      
+        <precondition> Repoadmin requests the generation of an audit report. </precondition>
+        <precondition> ARS queries audit data from DB. </precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1"> Repoadmin requests Audit Report from ARS.</step>   
+        <step id="S2"> ARS queries the audit data from DB. </step>   
+        <step id="S3"> ARS generates the report using the audit data Received. </step>   
+        <step id="S4"> Generated audit Report sent to Repoadmin.</step>                
+        <step id="S5"> ARS logs the audit report request. </step>                           
+    </mainSequence>       
+</useCase>

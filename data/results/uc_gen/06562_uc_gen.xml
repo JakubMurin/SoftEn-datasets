@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Make Coffee</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CoffeeFactory</actor>
+        <actor>CoffeeHandlerBase</actor>
+        <actor>Coffee</actor>
+        <actor>Milk</actor>
+        <actor>Chocolate</actor>
+        <actor>Cinnamon</actor>
+        <actor>Sweetener</actor>
+        <actor>StirringStrategyFactory</actor>
+        <actor>StirringStrategy</actor>
+        <actor>CoffeeRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User makes a request to make coffee with specific coffee and sweetener requests.</step>
+        <step id="S2">CoffeeFactory creates a CoffeeRequest based on the user's request.</step>
+        <step id="S3">CoffeeFactory returns the CoffeeRequest to make_coffee.</step>
+        <step id="S4">make_coffee sets the next ingredient to be Milk.</step>
+        <step id="S5">Milk is set to be followed by Chocolate.</step>
+        <step id="S6">Chocolate is set to be followed by Cinnamon.</step>
+        <step id="S7">Cinnamon is set to be followed by Sweetener.</step>
+        <step id="S8">Sweetener is set to be followed by null.</step>
+        <step id="S9">make_coffee handles the CoffeeRequest.</step>
+        <step id="S10">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="S11">Milk handles the CoffeeRequest.</step>
+        <step id="S12">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="S13">Chocolate handles the CoffeeRequest.</step>
+        <step id="S14">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="S15">Cinnamon handles the CoffeeRequest.</step>
+        <step id="S16">CoffeeHandlerBase handles the CoffeeRequest.</step>
+        <step id="S17">Sweetener handles the CoffeeRequest.</step>
+        <step id="S18">StirringStrategyFactory creates a StirringStrategy based on the sweetener type.</step>
+        <step id="S19">StirringStrategy stirs the Sweetener.</step>
+        <step id="S20">Sweetener returns to CoffeeHandlerBase.</step>
+        <step id="S21">Cinnamon returns to Chocolate.</step>
+        <step id="S22">Chocolate returns to Milk.</step>
+        <step id="S23">Milk returns to Coffee.</step>
+        <step id="S24">Coffee returns to make_coffee.</step>
+        <step id="S25">make_coffee returns the ingredients of the CoffeeRequest to User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Manage Referrals</name>
+    <actors>
+        <actor>Tester</actor>
+        <actor>Usuario</actor>
+        <actor>Referido</actor>
+    </actors>
+    <preconditions>
+        <precondition>Tester is able to instantiate a new Usuario and a new Referido</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Usuario's balance is successfully updated after adding a Referido</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Verification of balance by Tester fails</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Tester instantiates a new Usuario with the name "Juan"</step>
+        <step id="S2">Tester instantiates a new Referido with the name "Pedro"</step>
+        <step id="S3">Tester adds Referido to Usuario</step>
+        <step id="S4">Usuario appends Referido to their list of referrals</step>
+        <step id="S5">Usuario's balance is increased by 100</step>
+        <step id="S6">Tester verifies the updated balance of Usuario</step>
+    </mainSequence>
+</useCase>

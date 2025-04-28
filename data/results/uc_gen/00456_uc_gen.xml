@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Create Translation Client</name>
+    <description>As a Client, I want to create a new translation client in order to manage translations.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>CreateTranslationClientActivity</actor>
+        <actor>TranslationClientDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP Request to API Gateway/Lambda.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New translation client is successfully created and returned to the Client.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>DuplicateTranslationClientException is thrown if the translationClientName/ClientType pair is identical to an existing client.</condition>
+    </failureEndConditions>
+    <trigger>Client sends an HTTP Request to create a new translation client.</trigger>
+    <mainSequence>
+        <step id="S1">Client sends an HTTP Request to API Gateway/Lambda.</step>
+        <step id="S2">API Gateway/Lambda forwards the request to CreateTranslationClientActivity.</step>
+        <step id="S3">CreateTranslationClientActivity calls TranslationClientDao to create a new translation client.</step>
+        <step id="S4">TranslationClientDao loads all existing clients for the customer ID from DynamoDB.</step>
+        <step id="S5">TranslationClientDao checks for the existence of an identical translation client.</step>
+        <step id="S6">If an identical client exists, DuplicateTranslationClientException is thrown.</step>
+        <step id="S7">If no identical client exists, new translation client is saved to DynamoDB.</step>
+        <step id="S8">New translation client is successfully saved to DynamoDB.</step>
+        <step id="S9">CreateTranslationClientActivity returns the new translation client object.</step>
+        <step id="S10">API Gateway/Lambda returns CreateTranslationClientResult to the Client.</step>
+        <step id="S11">Client receives a 200 response with CreateTranslationClientResult data.</step>
+    </mainSequence>
+</useCase>

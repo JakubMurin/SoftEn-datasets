@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Restrict File Access</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>Web Interface</actor>
+        <actor>Authorization Service</actor>
+        <actor>Database</actor>
+        <actor>FileManagementSystem</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist requests to restrict file access.</precondition>
+        <precondition>Archivist credentials are valid.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>File access successfully restricted.</condition>
+    </successEndConditions>
+    <trigger>Archivist requests to restrict file access.</trigger>
+    <mainSequence>
+        <step id="S1">Archivist requests to restrict file access.</step>
+        <step id="S2">Web Interface validates Archivist credentials.</step>
+        <step id="S3">Web Interface displays restriction options form.</step>
+        <step id="S4">Archivist submits restriction details.</step>
+        <step id="S5">Database updates file metadata with restriction details.</step>
+        <step id="S6">FileManagementSystem applies access restrictions.</step>
+        <step id="S7">Web Interface displays success message.</step>
+    </mainSequence>
+</useCase>

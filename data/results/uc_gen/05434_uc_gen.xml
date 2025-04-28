@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Interactive Translation</name>
+
+    <actors>
+        <actor>User</actor>
+        <actor>translators</actor>
+        <actor>henrietta</actor>
+        <actor>elasticsearch</actor>
+        <actor>"bot/channel"</actor>
+        <actor>paratranz</actor>
+        <actor>paratranz2es</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>All actors involved in the translation are available and actively connected.</precondition>
+    </preconditions>
+
+    <successEndConditions>
+        <condition>All translations requested by the users are successfully saved and searchable in Elasticsearch database.</condition>
+    </successEndConditions>
+
+    <failureEndConditions>
+        <condition>If translations fail to proceed due to any technical issues in the process.</condition>
+    </failureEndConditions>
+
+    <mainSequence>
+        <step id="S1">User accesses the "bot/channel" interface.</step>
+        <step id="S2">"bot/channel" establishes websocket connection with henrietta.</step>
+        <step id="S3">henrietta activates and begins interaction based on User's instruction.</step>
+        <step id="S4">translators send translated texts to paratranz.</step>
+        <step id="S5">paratranz fetches data from paratranz2es service.</step>
+        <step id="S6">Queries made to elasticsearch to prepare for bulk insert of translation data.</step>
+        <step id="S7">User contacts henrietta through "bot/channel".</step>
+        <step id="S8">User inputs text and user info.</step>
+        <step id="S9">henrietta polls elasticsearch for results matching data query.</step>
+        <step id="S10">henrietta responds to the user based on the data retrieved from elasticsearch database.</step>
+        <step id="S11">henrietta severs connection with "bot/channel".</step>
+    </mainSequence>
+</useCase>

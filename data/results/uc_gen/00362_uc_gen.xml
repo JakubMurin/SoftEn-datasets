@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View Item Definitions</name>
+    <description>User opens the ItemView to view definitions of items.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>GUI is accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Definitions of items are successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to retrieve definitions of items.</condition>
+    </failureEndConditions>
+    <trigger>User opens the ItemView.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the ItemView.</step>
+        <step id="S2">User adds the ItemView to the StackView.</step>
+        <step id="S3">GUI requests definitions from Web services C++.</step>
+        <step id="S4">Web services C++ retrieves definitions.</step>
+    </mainSequence>
+</useCase>

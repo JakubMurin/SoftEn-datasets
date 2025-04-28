@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Prepare Email Template</name>
+    <actors>
+        <actor>Team Member</actor>
+        <actor>Recruitment Coordinator</actor>
+        <actor>Template Database</actor>
+        <actor>Approval Authority</actor>
+    </actors>
+    <preconditions>
+        <precondition>Team Member requests email templates from Recruitment Coordinator.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Recruitment Coordinator checks existing templates in the Template Database.</step>
+        <step id="S2">If templates are not available, Database informs Recruitment Coordinator about non-availability.</step>
+        <step id="S3">Recruitment Coordinator requests specifics of the template from Team Member.</step>
+        <step id="S4">Team Member provides specifics to Recruitment Coordinator.</step>
+        <step id="S5">Recruitment Coordinator creates a draft of the template.</step>
+        <step id="S6">Recruitment Coordinator submits the draft to Approval Authority for approval.</step>
+        <step id="S7">Approval Authority reviews the template draft.</step>
+        <step id="S8">Approval Authority requests revisions if needed.</step>
+        <step id="S9">Recruitment Coordinator revises the template.</step>
+        <step id="S10">Recruitment Coordinator resubmits the revised template to Approval Authority for approval.</step>
+        <step id="S11">Approval Authority approves the template.</step>
+        <step id="S12">Recruitment Coordinator stores the new template in the Template Database.</step>
+        <step id="S13">Recruitment Coordinator informs Team Member about the availability of the template.</step>
+        <step id="S14">If templates are available, Database provides existing templates to Recruitment Coordinator.</step>
+        <step id="S15">Recruitment Coordinator shares the existing templates with Team Member.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Make Coffee</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CoffeeFactory</actor>
+        <actor>make_coffee</actor>
+        <actor>CoffeeHandlerBase</actor>
+        <actor>Coffee</actor>
+        <actor>Milk</actor>
+        <actor>Chocolate</actor>
+        <actor>Cinnamon</actor>
+        <actor>Sweetener</actor>
+        <actor>StirringStrategyFactory</actor>
+        <actor>StirringStrategy</actor>
+        <actor>CoffeeRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User makes a coffee request with specific coffee and sweetener types.</step>
+        <step id="S2">CoffeeFactory creates a CoffeeRequest object.</step>
+        <step id="S3">CoffeeFactory returns the CoffeeRequest object to make_coffee.</step>
+        <step id="S4">make_coffee sets the next ingredient in the coffee-making process, starting with Milk.</step>
+        <step id="S5">Each ingredient sets the next ingredient until the last one, Sweetener.</step>
+        <step id="S6">make_coffee handles the CoffeeRequest.</step>
+        <step id="S7">The CoffeeHandlerBase handles the CoffeeRequest recursively for each ingredient.</step>
+        <step id="S8">StirringStrategyFactory creates a stirring strategy based on the sweetener type.</step>
+        <step id="S9">The StirringStrategy stirs the Coffee.</step>
+    </mainSequence>
+</useCase>

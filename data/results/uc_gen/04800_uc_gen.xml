@@ -1,0 +1,22 @@
+<useCase id="UC_Auth">
+  <name>Password and ClientCredentials Grant</name>
+  <description>Ensure proper authentication and role-based access for different grants</description>
+  <actors>
+    <actor>a.Client</actor>
+    <actor>b.UAA</actor>
+    <actor>c.Laravel</actor>
+    <actor>d.Spring</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">a acquires JWT by logging in at b</step>
+    <step id="S2">a requests Example Resource using JWT at c</step>
+    <step id="S3">c requests RS256 Public Key from b</step>
+    <step id="S4">RS256 Public Key is returned by b to a</step>
+    <step id="S5">a performs token validation for Example Resource at c</step>
+    <step id="S6">Example Resource is granted</step>
+    <step id="S7">c acquires JWT by logging in at b</step>
+    <step id="S8">c requests Hello Resource using JWT at d</step>
+    <step id="S9">d performs token verification for Hello Resource</step>
+    <step id="S10">Hello Resource is granted</step>
+  </mainSequence>
+</useCase>

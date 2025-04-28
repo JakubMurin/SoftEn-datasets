@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Asignar Posicion y Turno a Trabajador</name>
+    
+    <actors>
+        <actor>Trabajador</actor>
+        <actor>GestorTurnos</actor>
+        <actor>BaseDeDatos</actor>
+        <actor>Departamento</actor>
+        <actor>Posicion</actor>
+        <actor>Turno</actor>
+        <actor>Ausencia</actor>
+        <actor>Preferencia</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>El trabajador solicita asignación de posición y turno</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Trabajador solicita asignación</step>
+        <step id="S2">GestorTurnos busca departamento del trabajador</step>
+        <step id="S3">BaseDeDatos busca departamento del trabajador</step>
+        <step id="S4">BaseDeDatos retorna departamento</step>
+        <step id="S5">GestorTurnos busca posición disponible en el departamento</step>
+        <step id="S6">BaseDeDatos busca posición disponible</step>
+        <step id="S7">BaseDeDatos retorna posición</step>
+        <step id="S8">GestorTurnos busca turno disponible</step>
+        <step id="S9">BaseDeDatos busca turno disponible</step>
+        <step id="S10">BaseDeDatos retorna turno</step>
+        <step id="S11">GestorTurnos verifica ausencias y preferencias del trabajador</step>
+        <step id="S12">BaseDeDatos verifica ausencias</step>
+        <step id="S13">BaseDeDatos verifica preferencias</step>
+        <step id="S14">BaseDeDatos retorna ausencias y preferencias</step>
+        <step id="S15">GestorTurnos asigna posición y turno al trabajador</step>
+    </mainSequence>
+</useCase>

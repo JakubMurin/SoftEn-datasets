@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>CPS</actor>
+        <actor>CM</actor>
+        <actor>DG</actor>
+        <actor>SWP</actor>
+        <actor>S</actor>
+        <actor>MGI</actor>
+    </actors>
+    <preconditions>
+        <precondition>DeliveryRequest is available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">CPS computes delivery graph by sending a request to CM</step>
+        <step id="S2">CM initializes mappedRoutes</step>
+        <step id="S3">For each startPoint in request, CM gets startWaypointIntersection from SWP</step>
+        <step id="S4">CM initializes predecessors, durations arrays, and adds startWaypointIntersection to greys</step>
+        <step id="S5">While greys is not empty, CM finds minimalGreyIntersection</step>
+        <step id="S6">For each successor of minimalGreyIntersection, CM gets successorId from S</step>
+        <step id="S7">If successorId is not in blacks, CM gets streetSection, updates arrays, and adds successor to greys</step>
+        <step id="S8">CM removes minimalGreyIntersection from greys and adds it to blacks</step>
+        <step id="S9">CM uses predecessors array to fill mappedRoutes</step>
+        <step id="S10">CM creates DeliveryGraph with mappedRoutes</step>
+        <step id="S11">CPS receives deliveryGraph from CM</step>
+    </mainSequence>
+</useCase>

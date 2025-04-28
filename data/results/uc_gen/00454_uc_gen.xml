@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Create Translation Client</name>
+    <description>As a Client, I want to create a new translation client in order to manage translation services.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>CreateTranslationClientActivity</actor>
+        <actor>TranslationClientDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP request to API Gateway/Lambda.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New translation client is successfully created and returned to the Client.</condition>
+    </successEndConditions>
+    <trigger>Client sends an HTTP request to create a new translation client.</trigger>
+    <mainSequence>
+        <step id="S1">Client sends an HTTP request.</step>
+        <step id="S2">API Gateway/Lambda receives the HTTP request and forwards it to CreateTranslationClientActivity.</step>
+        <step id="S3">CreateTranslationClientActivity calls TranslationClientDao to create a new translation client.</step>
+        <step id="S4">TranslationClientDao loads all existing clients for the customer ID from DynamoDB.</step>
+        <step id="S5">TranslationClientDao checks for the existence of an identical translation client name and type.</step>
+        <step id="S6">If an identical translation client name and type exist, an exception is thrown and handled.</step>
+        <step id="S7">If no identical translation client name and type exist, a new translation client is saved in DynamoDB.</step>
+        <step id="S8">DynamoDB saves the new translation client and returns a success response.</step>
+        <step id="S9">TranslationClientDao returns the new translation client object to CreateTranslationClientActivity.</step>
+        <step id="S10">CreateTranslationClientActivity returns the CreateTranslationClientResult to API Gateway/Lambda.</step>
+        <step id="S11">API Gateway/Lambda returns a 200 response with the CreateTranslationClientResult data to the Client.</step>
+    </mainSequence>
+</useCase>

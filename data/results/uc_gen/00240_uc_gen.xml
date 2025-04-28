@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Lease Management</name>
+    <description>Manage the leasing process for a bike rental</description>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Bike</actor>
+        <actor>Lease</actor>
+        <actor>InvoiceGenerator</actor>
+    </actors>
+    <preconditions>
+        <precondition>The customer requests to start a lease</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The invoice for the leased bike is successfully generated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The lease could not be completed due to an error</condition>
+    </failureEndConditions>
+    <trigger>The customer starts a lease for a bike</trigger>
+    <mainSequence>
+        <step id="S1">The customer starts the lease on the bike</step>
+        <step id="S2">The customer unlocks the bike</step>
+        <step id="S3">The customer ends the lease on the bike</step>
+        <step id="S4">The invoice for the lease is added</step>
+        <step id="S5">The customer locks the bike</step>
+    </mainSequence>
+</useCase>

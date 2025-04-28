@@ -1,0 +1,16 @@
+<useCase id="1">
+    <name>Authenticate Public Request</name>
+    <description>Provide access to public users by generating and handling tokens</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Gatekeeper</actor>
+        <actor>PASTA Service</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client makes a public request to Gatekeeper</step>
+        <step id="S2">Gatekeeper generates internal token</step>
+        <step id="S3">Gatekeeper passes public token to PASTA Service</step>
+        <step id="S4">PASTA Service authorizes and performs the service</step>
+        <step id="S5">Gatekeeper responds to the client</step>
+    </mainSequence>
+</useCase>

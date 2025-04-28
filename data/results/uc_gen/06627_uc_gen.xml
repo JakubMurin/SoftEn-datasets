@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Lexorank workflows</name>
+    <description>Manage the Lexorank workflow for showing existing rows, inserting a new row, and updating an existing row.</description>
+    <actors>
+        <actor>user</actor>
+        <actor>api</actor>
+        <actor>lexorank</actor>
+        <actor>storage</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to show all rows.</step>
+        <step id="S2">API activates and calls lexorank to retrieve rows.</step>
+        <step id="S3">Lexorank requests a snapshot of rows and ranks from storage.</step>
+        <step id="S4">Storage provides a snapshot to lexorank.</step>
+        <step id="S5">Lexorank orders rows by rank.</step>
+        <step id="S6">API sends back rows ordered by rank to the user.</step>
+        <step id="S7">User requests to insert a new row.</step>
+        <step id="S8">API activates and calls lexorank to insert the new row at a position.</step>
+        <step id="S9">Lexorank locks a snapshot from storage and proposes a new row.</step>
+        <step id="S10">In case of rank collision, lexorank applies updates in cascade.</step>
+        <step id="S11">Lexorank inserts the new record and receives the newly created row.</step>
+        <step id="S12">API sends the new row back to the user.</step>
+        <step id="S13">User requests to update an existing row.</step>
+        <step id="S14">API activates and calls lexorank to change the position of the row.</step>
+        <step id="S15">Lexorank locks a snapshot from storage and proposes the rank change.</step>
+        <step id="S16">In case of rank collision, lexorank applies updates in cascade.</step>
+        <step id="S17">Lexorank changes the rank of the row and receives the updated row.</step>
+        <step id="S18">API sends the updated row back to the user.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>购买iPhone2017</name>
+    <actors>
+        <actor>老王</actor>
+        <actor>奸商</actor>
+        <actor>支付宝</actor>
+        <actor>无良借款公司</actor>
+        <actor>土</actor>
+    </actors>
+    <preconditions>
+        <precondition>老板需要一部新的iPhone2017</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">老王请求奸商购买iPhone2017</step>
+        <step id="S2">奸商提供10000元的价格</step>
+        <step id="S3">老王选择支付宝付款</step>
+        <step id="S4">支付宝打款给奸商</step>
+        <step id="S5">奸商交付iPhone2017给老王</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">老王选择借款10000元</step>
+            <step id="A1S2">无良借款公司提供月息10%的借款</step>
+            <step id="A1S3">老王支付奸商</step>
+            <step id="A1S4">奸商交付iPhone2017给老王</step>
+            <step id="A1S5">老王持续半年吃土</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

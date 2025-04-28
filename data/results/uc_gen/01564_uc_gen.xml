@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Authenticate and Request Help Links</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Authentication Service</actor>
+        <actor>Help Link Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated and help links displayed</condition>
+    </successEndConditions>
+    <trigger>User initiates authentication and requests help links</trigger>
+    <mainSequence>
+        <step id="S1">User authenticates</step>
+        <step id="S2">Authentication Service validates credentials</step>
+        <step id="S3">Database confirms credentials validity</step>
+        <step id="S4">Authentication Service informs User of successful authentication</step>
+        <step id="S5">User requests help links</step>
+        <step id="S6">Help Link Service fetches contextual links</step>
+        <step id="S7">Database returns links to Help Link Service</step>
+        <step id="S8">Help Link Service displays help links to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Remove Book from Catalog</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Load Balancer/ECS</actor>
+        <actor>RemoveBookFromCatalogActivity</actor>
+        <actor>RemoveBookFromCatalogRequest</actor>
+        <actor>CatalogDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">HTTP Request is sent by the Client to the Load Balancer/ECS</step>
+        <step id="S2">RemoveBookFromCatalogActivity gets activated to execute the removeBookRequest</step>
+        <step id="S3">CatalogDao gets activated to remove the specific book from Catalog for the given bookId</step>
+        <step id="S4">Query for the latest version of the book is made to DynamoDB by CatalogDao</step>
+        <step id="S5">DynamoDB returns the book data back to CatalogDao</step>
+        <step id="S6">Book data is received, deactivated DynamoDB</step>
+        <step id="S7">RemoveBookFromCatalogActivity::throw BookNotFoundException if book not found or inactive</step>
+        <step id="S8">Transform the exception to KindlePublishingClientException and return a 400 response back to the client</step>
+        <step id="S9">Continue with processing if the book exists and is active</step>
+        <step id="S10">The data in dynamoDB is returned to CatalogDao</step>
+        <step id="S11">Deactivate CatalogDao after removing book from the catalog</step>
+        <step id="S12">Convert CatalogItemVersion to Coral Model Book within RemoveBookFromCatalogActivity</step>
+        <step id="S13">Create a RemoveBookFromCatalogResponse</step>
+        <step id="S14">Set book content for further processing in RemoveBookFromCatalogActivity</step>
+        <step id="S15">Return the RemoveBookFromCatalogResponse back to the Load Balancer/ECS</step>
+        <step id="S16">Deactivate the RemoveBookFromCatalogActivity after completion of the process</step>
+        <step id="S17">Return a 200 response back to the client along with the resulting data</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>User application sequence</name>
+    <actors>
+        <actor>Main</actor>
+        <actor>StationKeepingMonitorHandler</actor>
+        <actor>Propagator</actor>
+        <actor>EphemerisGenerator</actor>
+        <actor>BoundedPropagator</actor>
+        <actor>AdapterPropagator</actor>
+        <actor>Small maneuver</actor>
+        <actor>J₂ due to maneuver</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Main gets EphemerisGenerator</step>
+        <step id="S2">Main propagates</step>
+        <step id="S3">Main gets generated Ephemeris</step>
+        <step id="S4">Main creates AdapterPropagator</step>
+        <step id="S5">Main creates maneuver</step>
+        <step id="S6">Main adds direct maneuver effect</step>
+        <step id="S7">Main creates J₂ due to maneuver</step>
+        <step id="S8">Main adds indirect J₂ effect</step>
+        <step id="S9">Main registers SK monitor</step>
+        <step id="S10">Main propagates</step>
+        <step id="S11">Main checks Station Keeping goals</step>
+    </mainSequence>
+</useCase>

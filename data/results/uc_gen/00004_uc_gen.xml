@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Answer Generation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Lightspeed Service</actor>
+        <actor>Redactor</actor>
+        <actor>Question Validator</actor>
+        <actor>Document Summarizer</actor>
+        <actor>Conversation Cache</actor>
+        <actor>Vector Database</actor>
+        <actor>LLM</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User asks a question to Lightspeed Service</step>
+        <step id="S2">Lightspeed Service forwards the question to Redactor for redaction</step>
+        <step id="S3">Redactor redacts the query and sends it back to Lightspeed Service</step>
+        <step id="S4">Lightspeed Service retrieves conversation history from Conversation Cache</step>
+        <step id="S5">Lightspeed Service retrieves attachments from the request</step>
+        <step id="S6">Lightspeed Service redacts the attachments</step>
+        <step id="S7">Lightspeed Service validates the question using Question Validator</step>
+        <step id="S8">Question Validator queries LLM for validation</step>
+        <step id="S9">Question Validator informs Lightspeed Service about the validity of the question</step>
+        <step id="S10">If the question is invalid, Lightspeed Service notifies the user</step>
+        <step id="S11">If the question is valid, Lightspeed Service summarizes the document</step>
+        <step id="S12">Document Summarizer reads vector DB (RAG) from Vector Database</step>
+        <step id="S13">Document Summarizer queries LLM for the answer</step>
+        <step id="S14">Document Summarizer provides the summary to Lightspeed Service</step>
+        <step id="S15">Lightspeed Service delivers the answer to the user</step>
+    </mainSequence>
+</useCase>

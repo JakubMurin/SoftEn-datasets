@@ -1,0 +1,33 @@
+<useCase id="UC001">
+  <name>Retrieve Account Search Preferences</name>
+  <actors>
+    <actor>Zarządca</actor>
+    <actor>Nawigator</actor>
+    <actor>AccountController</actor>
+    <actor>AccountEndpoint</actor>
+    <actor>AccountService</actor>
+    <actor>AccountFacade</actor>
+    <actor>ListSearchPreferencesFacade</actor>
+  </actors>
+  <preconditions>
+    <precondition>Zarządca selects list of pending accounts</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Nawigator selects list of pending accounts</step>
+    <step id="S2">Nawigator sends request to fetch search preferences for account</step>
+    <step id="S3">AccountController requests search preferences from AccountEndpoint</step>
+    <step id="S4">AccountEndpoint calls getAccountSearchPreferences from AccountService</step>
+    <step id="S5">If account does not exist, call AccountFacade's findByLogin</step>
+    <step id="S6">If account exists, call AccountFacade's findByLogin and account is found</step>
+    <step id="S7">If preferences for account do not exist, call ListSearchPreferencesFacade's findByAccount</step>
+    <step id="S8">If preferences for account exist, call ListSearchPreferencesFacade's findByAccount and preferences are found</step>
+    <step id="S9">Nawigator sends request to fetch list</step>
+    <step id="S10">AccountController requests list from AccountEndpoint</step>
+    <step id="S11">AccountEndpoint calls getNotConfirmedAccounts from AccountService</step>
+    <step id="S12">If account does not exist, call AccountFacade's findByLogin</step>
+    <step id="S13">If account exists, call AccountFacade's findByLogin and account is found</step>
+    <step id="S14">If preferences for account do not exist, call ListSearchPreferencesFacade's findByAccount and create new preferences</step>
+    <step id="S15">If preferences for account exist, update preferences using ListSearchPreferencesFacade</step>
+    <step id="S16">Call AccountFacade's findNotConfirmedAccounts to get list</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>Deposit ETH and OAX</name>
+    <actors>
+        <actor>WebClient</actor>
+        <actor>L2Client</actor>
+        <actor>Mediator</actor>
+        <actor>Operator</actor>
+        <actor>Events</actor>
+    </actors>
+    <preconditions>
+        <precondition>WebClient starts the deposit process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>WebClient deposits 5 ETH and 1000 OAX successfully.</condition>
+    </successEndConditions>
+    <trigger>WebClient requests to deposit 5 ETH and 1000 OAX.</trigger>
+    <mainSequence>
+        <step id="S1">WebClient asks to deposit 5 ETH.</step>
+        <step id="S2">L2Client facilitates the deposit of 5 ETH through Mediator's token deposit API.</step>
+        <step id="S3">Operator logs and updates deposits, specifically adding 5 ETH to balances.</step>
+        <step id="S4">WebClient requests to deposit 1000 OAX.</step>
+        <step id="S5">L2Client facilitates the deposit of 1000 OAX through Mediator's token deposit API.</step>
+        <step id="S6">Operator logs and updates deposits, specifically adding 1000 OAX to balances.</step>
+    </mainSequence>
+</useCase>

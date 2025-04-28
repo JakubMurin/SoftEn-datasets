@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>PacMan Game</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Foo</actor>
+        <actor>PacManController</actor>
+        <actor>PacManUser</actor>
+        <actor>PacManPersistence</actor>
+        <actor>FileReader</actor>
+        <actor>FileWriter</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User writes username in TextField</step>
+        <step id="S2">PacManController updates GUI</step>
+        <step id="S3">PacManController gets text from TextField</step>
+        <step id="S4">TextField sends username to PacManController</step>
+        <step id="S5">PacManController validates username with PacManUser</step>
+        <step id="S6">PacManUser confirms username validation</step>
+        <step id="S7">PacManController enables startButton</step>
+        <step id="S8">User clicks startButton</step>
+        <step id="S9">startButton click handled by PacManController</step>
+        <step id="S10">PacManController sets username</step>
+        <step id="S11">PacManController sets score</step>
+        <step id="S12">Game starts</step>
+        <step id="S13">Game over</step>
+        <step id="S14">PacManController saves highscore</step>
+        <step id="S15">PacManPersistence reads scores from file</step>
+        <step id="S16">PacManPersistence sends scores to PacManUser</step>
+        <step id="S17">PacManUser receives scores and sends to PacManPersistence</step>
+        <step id="S18">PacManPersistence writes new score to file</step>
+    </mainSequence>
+</useCase>

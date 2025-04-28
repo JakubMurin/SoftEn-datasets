@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>View Chapter Content</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ChapterContentView</actor>
+        <actor>TransactionsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks on the chapter title</step>
+        <step id="S2">User clicks on the purchase option</step>
+        <step id="S3">View requests API</step>
+        <step id="S4">Controller processes AddTransactionBuyChapter()</step>
+        <step id="S5">Controller queries data from the database</step>
+        <step id="S6">Database returns data to the controller</step>
+        <step id="S7">Controller triggers MsgActionReturn()</step>
+        <step id="S8">MsgService responds with payload format</step>
+        <step id="S9">View displays the Chapter Content Page to the user</step>
+    </mainSequence>
+</useCase>

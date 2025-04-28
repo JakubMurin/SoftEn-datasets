@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Publishing Data Package</name>
+    <description>System for publishing data packages</description>
+    <actors>
+        <actor>Publisher</actor>
+        <actor>CLI Tool</actor>
+        <actor>Validation Service</actor>
+        <actor>Preview Service</actor>
+        <actor>Data Package Registry</actor>
+    </actors>
+    <preconditions>
+        <precondition>Data package must be valid</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data package published successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in publishing data package</condition>
+    </failureEndConditions>
+    <trigger>CLI command to publish data package</trigger>
+    <mainSequence>
+        <step id="S1">Publisher runs preview command with data package path</step>
+        <step id="S2">CLI validates JSON schema of data package</step>
+        <step id="S3">CLI displays validation errors if any</step>
+        <step id="S4">CLI shows preview output</step>
+    </mainSequence>
+</useCase>

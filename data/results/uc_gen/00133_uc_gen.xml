@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <description>Allows a user to register in the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>RegistrationPage</actor>
+        <actor>AuthControl</actor>
+        <actor>UserEntity</actor>
+        <actor>UserDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is accessing the registration page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email is already registered</condition>
+    </failureEndConditions>
+    <trigger>User inputs email and password</trigger>
+    <mainSequence>
+        <step id="S1">User inputs email and password</step>
+        <step id="S2">Data is sent to the controller</step>
+        <step id="S3">Controller checks if email is already registered</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Email is already registered</step>
+            <step id="A1S2">Error message is displayed</step>
+            <step id="A1S3">Message "Email is already registered" is sent</step>
+            <step id="A1S4">Error message is shown to the user</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error in registration process</description>
+            <step id="E1S1">New user data is saved</step>
+            <step id="E1S2">Data is saved to the database</step>
+            <step id="E1S3">Status of the save operation is returned</step>
+            <step id="E1S4">Registration confirmation is sent</step>
+            <step id="E1S5">Status of registration is sent</step>
+            <step id="E1S6">User is granted access to the system</step>
+        </esteps>
+    </errorSteps>
+</useCase>

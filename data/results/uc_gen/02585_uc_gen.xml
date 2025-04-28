@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Perform Secure Data Transfer</name>
+    <description>Transfer data securely between User and Backend through CDN and Proxy</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>CDN, Proxy, and Backend are operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data transfer completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Data transfer failed</condition>
+    </failureEndConditions>
+    <trigger>POST /foo request from Attacker</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends POST /foo request to CDN with [GET /poison]</step>
+        <step id="S2">CDN forwards POST /foo request to Proxy</step>
+        <step id="S3">Proxy forwards POST /foo request to Backend</step>
+        <step id="S4">Backend responds to Proxy with /foo 200</step>
+        <step id="S5">Proxy responds to CDN with /foo 200</step>
+        <step id="S6">CDN responds to Attacker with /foo 200</step>
+        <step id="S7">Proxy sends GET /poison request to Backend</step>
+        <step id="S8">Backend responds to Proxy with /poison 200</step>
+        <step id="S9">Proxy closes BE/FE connections and drops smuggled response</step>
+        <step id="S10">User sends GET /bar request to CDN</step>
+        <step id="S11">CDN forwards GET /bar request to Proxy</step>
+        <step id="S12">Proxy forwards GET /bar request to Backend</step>
+        <step id="S13">Backend responds to Proxy with GET /bar 200</step>
+        <step id="S14">Proxy responds to CDN with /bar 200</step>
+        <step id="S15">CDN responds to User with /bar 200</step>
+    </mainSequence>
+</useCase>

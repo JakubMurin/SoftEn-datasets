@@ -1,0 +1,31 @@
+<useCase id="UC1">
+  <name>User Registration</name>
+  <description>Register a new user on the website</description>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <preconditions>
+    <precondition>User should navigate to registration page</precondition>
+  </preconditions>
+  <trigger>User decides to register</trigger>
+  <mainSequence>
+    <step id="S1">User enters the registration page</step>
+    <step id="S2">Browser returns to registration page</step>
+    <step id="S3">Browser generates a random string</step>
+    <step id="S4">Browser fetches captcha image using the random string</step>
+    <step id="S5">UserService generates captcha and image for verification</step>
+    <step id="S6">UserService sets the captcha with 5-minute expiration time</step>
+    <step id="S7">Browser displays the captcha image</step>
+    <step id="S8">User inputs registration information along with captcha and random string</step>
+    <step id="S9">User clicks the submit button</step>
+    <step id="S10">Browser sends user registration request to the UserService</step>
+    <step id="S11">UserService fetches captcha information for the random string</step>
+    <step id="S12">UserService validates the entered captcha</step>
+    <step id="S13">UserService retrieves the next user ID</step>
+    <step id="S14">UserService inserts user information into the user table and user resource table</step>
+    <step id="S15">UserService generates a token ID</step>
+    <step id="S16">UserService sets token-related information</step>
+    <step id="S17">Browser sets cookie and redirects to the login homepage</step>
+    <step id="S18">Browser redirects the User to the login homepage</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Schedule Message Display</name>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>UI Dashboard</actor>
+        <actor>Messaging System</actor>
+        <actor>Schedule Manager</actor>
+        <actor>Repository Database</actor>
+    </actors>
+    <trigger>Manager accessing the message schedule option</trigger>
+    <mainSequence>
+        <step id="S1">Manager accesses the message schedule option in the UI Dashboard.</step>
+        <step id="S2">UI Dashboard sends a request for the message input form to the Messaging System.</step>
+        <step id="S3">Messaging System displays the message input form to the UI Dashboard.</step>
+        <step id="S4">Manager submits the message details, including timeframe and content, in the UI Dashboard.</step>
+        <step id="S5">UI Dashboard initiates the scheduling of the message display with the Schedule Manager.</step>
+        <step id="S6">Schedule Manager saves the scheduled message in the Repository Database.</step>
+        <step id="S7">Repository Database acknowledges the save operation.</step>
+        <step id="S8">Schedule Manager confirms that the message is successfully scheduled to the Messaging System.</step>
+        <step id="S9">UI Dashboard shows the confirmation to the Manager.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8" continue="S9">
+            <step id="A1S1">Display the scheduled message at specified times.</step>
+            <step id="A1S2">Schedule Manager triggers the message display at the scheduled times to the Messaging System.</step>
+			<step id="A1S3">Messaging System displays the message on the pages sent by the UI Dashboard.</step>
+			<step id="A1S4">UI Dashboard logs the message display event in the Repository Database.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

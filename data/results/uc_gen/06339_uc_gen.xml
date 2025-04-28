@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Build Data Export</name>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob pushes a commit to the master branch</precondition>
+    </preconditions>
+    <trigger>Webhook triggers the pipeline in the Github repository</trigger>
+    <mainSequence>
+        <step id="S1">Perform a build in the "Awesome pipeline"</step>
+        <step id="S2">Trigger the "Sync pipeline"</step>
+        <step id="S3">Create integration_config.yml in the "Sync pipeline"</step>
+        <step id="S4">Run the sync command in the "CI Integration tool"</step>
+        <step id="S5">Add new build data to Firestore</step>
+        <step id="S6">Completes the sync command execution in "CI Integration tool"</step>
+        <step id="S7">Finish build data export</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Perform Job Process</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Facilitator</actor>
+        <actor>Validator</actor>
+        <actor>Miner</actor>
+        <actor>Executor</actor>
+        <actor>Job</actor>
+        <actor>Storage</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Generate a client keypair via facilitator sdk.</step>
+        <step id="S2">Send job details and the public key to the facilitator.</step>
+        <step id="S3">Choose Validator and Miner.</step>
+        <step id="S4">Send job details to the Validator.</step>
+        <step id="S5">Send initial job details to the Miner.</step>
+        <step id="S6">Check for a free executor and possibly spin up a new one.</step>
+        <step id="S7">Pass initial job details to the Executor.</step>
+        <step id="S8">Report readiness (initial preparations done) to the Miner.</step>
+        <step id="S9">Report readiness (initial preparations done) to the Validator.</step>
+        <step id="S10">Send all job details to the Miner.</step>
+        <step id="S11">Send all job details to the Executor.</step>
+        <step id="S12">Fetch data from the Storage.</step>
+        <step id="S13">Start Job process.</step>
+        <step id="S14">Attempt connecting to a predefined websocket route.</step>
+        <step id="S15">Report readiness for serving requests to the Executor.</step>
+        <step id="S16">Report readiness for serving requests to the Miner.</step>
+        <step id="S17">Report readiness for serving requests, provide Job IP address, port, and Job public key to the Validator.</step>
+        <step id="S18">Report readiness for serving requests, provide Job IP address, port, and Job public key to the Facilitator.</step>
+        <step id="S19">Report readiness for serving requests, provide Job IP address, port, and Job public key to the Client.</step>
+        <step id="S20">Send request to the Job, signed using the client keypair.</step>
+        <step id="S21">Reply to the Client, sign input/output digest with the private counterpart of Job public key.</step>
+        <step id="S22">Assess validity of the response if it is a cross-validation request.</step>
+        <step id="S23">Send info about malicious miner, signed with a validator hotkey if the response is invalid.</step>
+        <step id="S24">Report finish to the Executor.</step>
+        <step id="S25">Upload data to the Storage if the job requires uploading data.</step>
+        <step id="S26">Upload stdout and stderr to the Storage.</step>
+        <step id="S27">Report job done to the Miner.</step>
+        <step id="S28">Report job done to the Validator.</step>
+        <step id="S29">Report job done to the Facilitator.</step>
+        <step id="S30">Report job done to the Client.</step>
+    </mainSequence>
+</useCase>

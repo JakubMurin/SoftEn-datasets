@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Criar novo edifício</name>
+    <description>O Gestor de campus cria um novo edifício</description>
+    <actors>
+        <actor>Gestor de campus</actor>
+    </actors>
+    <preconditions>
+        <precondition>Nenhuma</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Edifício criado com sucesso</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Falha na requisição de dados do edifício</condition>
+    </failureEndConditions>
+    <trigger>Requisição de criação de novo edifício</trigger>
+    <mainSequence>
+        <step id="S1">Requisitar os dados do edifício</step>
+        <step id="S2">Inserir os dados do edifício</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Devolver o edifício criado</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>Falha na requisição de dados do edifício</description>
+            <step id="E1S1">Devolver mensagem de erro</step>
+        </esteps>
+    </errorSteps>
+</useCase>

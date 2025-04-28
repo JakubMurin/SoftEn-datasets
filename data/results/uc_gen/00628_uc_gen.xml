@@ -1,0 +1,19 @@
+<useCase id="1">
+    <name>Upload Object with Quota Validation</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>RPC Server</actor>
+        <actor>Object Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client requests to create object upload</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Object upload creation successful</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Client requests to create object upload</step>
+        <step id="S2">RPC Server forwards the request to Object Server to create object upload</step>
+        <step id="S3">Object Server checks quota</step>
+    </mainSequence>
+</useCase>

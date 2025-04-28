@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Translate Texts</name>
+    <description>Translate texts between languages.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Translators</actor>
+        <actor>Henrietta</actor>
+    </actors>
+    <preconditions>
+        <precondition>Texts to be translated are available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Texts are successfully translated.</condition>
+    </successEndConditions>
+    <trigger>Text translation request initiated by the User.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates text translation request.</step>
+        <step id="S2">User provides text and user info to the bot/channel.</step>
+        <step id="S3">Henrietta queries the Elasticsearch for translation.</step>
+        <step id="S4">Henrietta receives the translation response from Elasticsearch.</step>
+    </mainSequence>
+</useCase>

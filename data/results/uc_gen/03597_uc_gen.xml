@@ -1,0 +1,18 @@
+<useCase id="UC-1">
+  <name>Obtener perfil de usuario</name>
+  <actors>
+    <actor>Colaborador</actor>
+  </actors>
+  <trigger>El Colaborador accede a su perfil</trigger>
+  <mainSequence>
+    <step id="S1">El Colaborador solicita su perfil accediendo a la ruta /myprofile</step>
+    <step id="S2">El sistema realiza la petición GET /myprofile</step>
+    <step id="S3">El controlador llama a la función getProfile(req, res)</step>
+    <step id="S4">El controlador solicita al modelo los datos del perfil mediante fetchProfile(id)</step>
+    <step id="S5">El modelo realiza una consulta SELECT en la base de datos buscando los datos del usuario</step>
+    <step id="S6">La base de datos entrega los datos del perfil</step>
+    <step id="S7">El modelo retorna los datos al controlador</step>
+    <step id="S8">El controlador renderiza la vista myprofile.ejs para mostrar el perfil</step>
+    <step id="S9">La vista myprofile.ejs muestra el perfil en formato HTML al Colaborador</step>
+  </mainSequence>
+</useCase>

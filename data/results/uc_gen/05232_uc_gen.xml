@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>TopHat Creation and Distribution</name>
+    <actors>
+        <actor>address1</actor>
+        <actor>address2</actor>
+        <actor>address3</actor>
+    </actors>
+    <preconditions>
+        <precondition>Address1 has access to HatsModuleFactory and FractionToken</precondition>
+        <precondition>Address2 and Address3 have access to SplitsWarehouse</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Create TopHat for address1 at Hats</step>
+        <step id="S2">Deploy TimeFrameHatModule at HatsModuleFactory</step>
+        <step id="S3">Create Hatter Hat at Hats for address1</step>
+        <step id="S4">Mint Hatter Hat in TimeFrameHatModule for address1</step>
+        <step id="S5">Create Role Hat 1 under Hatter Hat at Hats for address1</step>
+        <step id="S6">Create Role Hat 2 under Hatter Hat at Hats for address1</step>
+        <step id="S7">Mint Role Hat 1 for address1 in TimeFrameHatModule</step>
+        <step id="S8">Mint Role Hat 2 for address2 in TimeFrameHatModule</step>
+        <step id="S9">Mint FractionToken with initial amount for Role Hat 1 at FractionToken for address1</step>
+        <step id="S10">Mint FractionToken with initial amount for Role Hat 2 at FractionToken for address2</step>
+        <step id="S11">Transfer FractionToken amount from address2 to address3</step>
+        <step id="S12">Create Split at SplitCreator with ratio and wearers information</step>
+        <step id="S13">Request FractionToken balance information at SplitCreator</step>
+        <step id="S14">Create PullSplits contract at PullSplitsFactory with distribution info</step>
+        <step id="S15">Send ETH or ERC20 to PullSplit at address1</step>
+        <step id="S16">Specify distribution info and distribute at PullSplit</step>
+        <step id="S17">Verify and update balances at SplitsWarehouse based on distribution info</step>
+        <step id="S18">Withdraw ERC6909X amount from SplitsWarehouse for address1</step>
+        <step id="S19">Withdraw ERC6909X amount from SplitsWarehouse for address2</step>
+        <step id="S20">Withdraw ERC6909X amount from SplitsWarehouse for address3</step>
+    </mainSequence>
+</useCase>

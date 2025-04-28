@@ -1,0 +1,29 @@
+<useCase id="1"> 
+   <name>Typing Game</name>
+   <actors>
+      <actor>User</actor>
+      <actor>Keyboard</actor>
+   </actors>
+   <preconditions>
+      <precondition>User is ready to play the typing game</precondition>
+   </preconditions>
+   <trigger>User requests to start a typing challenge</trigger>
+   <mainSequence>
+      <step id="S1">User sends a GET request to the Fishtext API for text generation specifying type and quantity</step>
+      <step id="S2">Fishtext API returns the generated text upon successful request</step>
+      <step id="S3">JavaScript displays the text on the HTML DOM</step>
+      <step id="S4">User presses a key on the keyboard</step>
+      <step id="S5">The keyboard input is displayed on the DOM</step>
+      <step id="S6">JavaScript receives the entered character</step>
+      <step id="S7">JavaScript checks the length of all entered characters</step>
+      <step id="S8">JavaScript executes functionality based on character input correctness</step>
+      <step id="S9">JavaScript stops the timer on attempt completion and calculates points</step>
+      <step id="S10">JavaScript sends a POST request to the server with attempt data</step>
+      <step id="S11">Server updates user data in the database</step>
+      <step id="S12">Server adds the attempt data to the Attempts table</step>
+      <step id="S13">JavaScript displays the end game window on the DOM</step>
+      <step id="S14">JavaScript prepares speed data for the graph representation</step>
+      <step id="S15">JavaScript renders the speed diagram on the DOM</step>
+      <step id="S16">JavaScript stores the game data in the localStorage</step>
+   </mainSequence>
+</useCase>

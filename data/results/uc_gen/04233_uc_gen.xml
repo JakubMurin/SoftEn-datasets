@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>Compose a New Message</name>
+    <actors>
+        <actor>Authenticated User</actor>
+        <actor>New Message UI</actor>
+        <actor>ReST Interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message creation acknowledged with status 204</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Message creation failed</condition>
+    </failureEndConditions>
+    <trigger>User writes a new draft message</trigger>
+    <mainSequence>
+        <step id="S1">User writes a new draft message with or without participants</step>
+        <step id="S2">User throttles save</step>
+        <step id="S3">System sends a POST request to create the message</step>
+        <step id="S4">System acknowledges message creation with status 204</step>
+        <step id="S5">System responds with the created message details</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Update Initial Balance</name>
+    <description>This use case describes the process of updating the initial balance for authenticated users.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>EditBalanceController</actor>
+        <actor>UserService</actor>
+        <actor>AppUserRepository</actor>
+        <actor>User Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must be authenticated to update the initial balance.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The initial balance is successfully updated and the user is redirected to the premium page.</condition>
+    </successEndConditions>
+    <trigger>POST /updateInitialBalance (initialBalance)</trigger>
+    <mainSequence>
+        <step id="S1">Client sends a POST request to EditBalanceController to update the initial balance.</step>
+        <step id="S2">EditBalanceController forwards the request to UserService to get the authenticated user.</step>
+        <step id="S3">UserService fetches the user from User Database.</step>
+        <step id="S4">User Database returns the user to UserService.</step>
+        <step id="S5">UserService returns Optional.of(user) to EditBalanceController.</step>
+        <step id="S6">EditBalanceController sets the initial balance.</step>
+        <step id="S7">EditBalanceController saves the user in AppUserRepository.</step>
+        <step id="S8">AppUserRepository updates the user in User Database.</step>
+        <step id="S9">User Database confirms the save operation to AppUserRepository.</step>
+        <step id="S10">EditBalanceController redirects the client to /premium.</step>
+    </mainSequence>
+</useCase>

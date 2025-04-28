@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Create Tenant</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TenantsController</actor>
+        <actor>TenantService</actor>
+        <actor>TenantDbContext</actor>
+        <actor>ApplicationDbContext</actor>
+        <actor>ITenantContextService</actor>
+        <actor>IConfiguration</actor>
+        <actor>IServiceProvider</actor>
+    </actors>
+    <preconditions>
+        <precondition>Tenant data is provided</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends POST request to create a new Tenant with Tenant data</step>
+        <step id="S2">TenantsController validates the model</step>
+        <step id="S3">TenantsController checks if Tenant already exists</step>
+        <step id="S4">TenantService validates the existence of the Tenant in the database</step>
+        <step id="S5">TenantService creates a new Tenant if it does not exist</step>
+        <step id="S6">TenantService inserts the new Tenant into the database</step>
+        <step id="S7">TenantService updates the Tenant context</step>
+        <step id="S8">TenantsController returns the created Tenant</step>
+        <step id="S9">TenantsController returns an error if the Tenant already exists</step>
+        <step id="S10">TenantsController sends a 201 Created response to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">TenantService gets connection string from IConfiguration</step>
+            <step id="A1S2">TenantService gets ApplicationDbContext from IServiceProvider</step>
+            <step id="A1S3">ApplicationDbContext resolves an instance</step>
+            <step id="A1S4">ApplicationDbContext sets connection string</step>
+            <step id="A1S5">ApplicationDbContext checks for pending migrations</step>
+            <step id="A1S6">ApplicationDbContext applies migrations</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

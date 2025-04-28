@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Детальна інсталяція платформи</name>
+    <actors>
+        <actor>Адміністратор платформи</actor>
+    </actors>
+    <preconditions>
+        <precondition>Адміністратор запускає інсталлятор</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Адміністратор активує шифрування etcd</step>
+        <step id="S2">Адміністратор активує catalog-source (Redhat репозиторії)</step>
+        <step id="S3">Адміністратор встановлює storage в Ceph</step>
+        <step id="S4">Адміністратор встановлює logging</step>
+        <step id="S5">Адміністратор встановлює service-mesh</step>
+        <step id="S6">Адміністратор встановлює control-plane-nexus в Nexus</step>
+        <step id="S7">Адміністратор встановлює platform-vault</step>
+        <step id="S8">Адміністратор встановлює platform-minio</step>
+        <step id="S9">Адміністратор завантажує докер імеджі в Nexus</step>
+        <step id="S10">Адміністратор встановлює user-management в Keycloak</step>
+        <step id="S11">Адміністратор запускає control-plane-installer</step>
+        <step id="S12">Адміністратор завантажує nexus ресурси (*.xsd) в Nexus</step>
+        <step id="S13">Адміністратор створює backup-credentials</step>
+        <step id="S14">control-plane-installer встановлює CP компоненти в controlPlane components</step>
+        <step id="S15">control-plane-installer встановлює jenkins-operator та jenkins в Gitops Job Jenkins</step>
+        <step id="S16">control-plane-installer встановлює codebase-operator та keycloak-operator в Інші компоненти</step>
+        <step id="S17">control-plane-installer встановлює gerrit-operator та gerrit в Cluster-management helm in Gerrit</step>
+        <step id="S18">control-plane-installer встановлює codebase cluster-mgmt в Cluster-management helm in Gerrit</step>
+        <step id="S19">gerrit інціалізує cluster-mgmt repo з helm в Cluster-management helm in Gerrit</step>
+        <step id="S20">control-plane-installer створює gitops job для cluster-mgmt в Gitops Job Jenkins</step>
+        <step id="S21">control-plane-installer запускає gitops job для cluster-mgmt в Gitops Job Jenkins</step>
+        <step id="S22">jenkins checkout helmfile в Gitops Job Jenkins</step>
+        <step id="S23">jenkins запускає helmfile в Gitops Job Jenkins</step>
+        <step id="S24">jenkins встановлює в Інші компоненти</step>
+        <step id="S25">control-plane-installer створює realm для Control Plane в Keycloak</step>
+        <step id="S26">control-plane-installer інтегрує всі компоненти з keycloak в ControlPlane components</step>
+    </mainSequence>
+</useCase>

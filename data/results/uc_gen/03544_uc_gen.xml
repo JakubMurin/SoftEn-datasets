@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>企业准入（回收商）</name>
+    <actors>
+        <actor>企业</actor>
+        <actor>监管机构</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">企业提交资料</step>
+        <step id="S2">准入资料提交</step>
+        <step id="S3">文件上传</step>
+        <step id="S4">保存文件关联信息</step>
+        <step id="S5">返回结果</step>
+        <step id="S6">查询未审批企业列表</step>
+        <step id="S7">企业准入审批通过</step>
+        <step id="S8">企业准入审批拒绝</step>
+        <step id="S9">查询准入结果</step>
+        <step id="S10">查询准入合约内容</step>
+        <step id="S11">返回准入合约内容</step>
+        <step id="S12">可再次提交准入资料</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">审批通过流程</step>
+        </asteps>
+        <asteps id="A2" start="S6" continue="S8">
+            <step id="A2S1">审批拒绝流程</step>
+        </asteps>
+        <asteps id="A3" start="S9" continue="S10">
+            <step id="A3S1">查询合约内容成功</step>
+        </asteps>
+        <asteps id="A4" start="S9" continue="S12">
+            <step id="A4S1">准入拒绝流程</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

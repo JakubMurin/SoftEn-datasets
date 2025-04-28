@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Authentification Utilisateur</name>
+    <description>Permet à l'utilisateur de s'authentifier dans l'application</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur a accès à l'application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>L'utilisateur est redirigé vers la page d'accueil</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>L'utilisateur doit saisir à nouveau son identifiant</condition>
+    </failureEndConditions>
+    <trigger>L'utilisateur saisie son identifiant</trigger>
+    <mainSequence>
+        <step id="S1">L'utilisateur saisie son identifiant</step>
+        <step id="S2">Redirection vers la page d'accueil</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">L'utilisateur saisie un identifiant incorrect</step>
+            <step id="A1S2">Nouvelle demande de saisie de l'identifiant</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">L'utilisateur demande un nouveau mot de passe</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

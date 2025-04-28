@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Excel Upload Process</name>
+    <description>Upload Excel file to the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>GUI CMS</actor>
+        <actor>Batch API Server</actor>
+        <actor>Queue and Log Storage (Mysql)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Excel file is available for upload</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Excel file successfully uploaded and stored</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in uploading Excel file</condition>
+    </failureEndConditions>
+    <trigger>User initiates Excel upload process</trigger>
+    <mainSequence>
+        <step id="S1">User uploads Excel file through GUI CMS</step>
+        <step id="S2">GUI CMS triggers the upload process to Batch API Server</step>
+        <step id="S3">Batch API Server saves the Excel file in the database</step>
+        <step id="S4">Batch API Server stores metadata of the upload job in the database</step>
+        <step id="S5">Batch API Server sends completion response to GUI CMS</step>
+    </mainSequence>
+</useCase>

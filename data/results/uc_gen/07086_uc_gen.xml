@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>User Management</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>UsersRepo</actor>
+        <actor>ProductsRepo</actor>
+        <actor>BidsRepo</actor>
+        <actor>OrdersRepo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client POSTs new user data to Controller</step>
+        <step id="S2">Controller activates and forwards data to Service</step>
+        <step id="S3">Service creates and saves user in UsersRepo</step>
+        <step id="S4">Service returns user to Controller</step>
+        <step id="S5">Controller returns user to Client</step>
+        <step id="S6">Client GETs all users from Controller</step>
+        <step id="S7">Controller activates and requests all users from Service</step>
+        <step id="S8">Service finds users in UsersRepo</step>
+        <step id="S9">Service returns users to Controller</step>
+        <step id="S10">Controller returns users to Client</step>
+        <step id="S11">Client GETs user by ID from Controller</step>
+        <step id="S12">Controller activates and requests user by ID from Service</step>
+        <step id="S13">Service finds user by ID in UsersRepo</step>
+        <step id="S14">Service returns user to Controller</step>
+        <step id="S15">Controller returns user to Client</step>
+        <step id="S16">Client PUTs updated user data to Controller</step>
+        <step id="S17">Controller activates and updates user in Service</step>
+        <step id="S18">Service checks if user exists in UsersRepo</step>
+        <step id="S19">Service updates user if exists, throws exception if not</step>
+        <step id="S20">Controller returns updated user or exception to Client</step>
+        <step id="S21">Client DELETEs user by ID from Controller</step>
+        <step id="S22">Controller activates and removes user in Service</step>
+        <step id="S23">Service checks if user exists in UsersRepo</step>
+        <step id="S24">Service handles various scenarios based on user data in other repositories</step>
+        <step id="S25">Service removes user if no associated data found, throws exceptions otherwise</step>
+        <step id="S26">Controller returns success or exception response to Client</step>
+    </mainSequence>
+</useCase>

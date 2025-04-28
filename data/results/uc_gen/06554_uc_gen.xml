@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>View Courses for Teacher</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Teacher</actor>
+        <actor>Course</actor>
+    </actors>
+    <preconditions>
+        <precondition>Teacher must exist in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Teacher found, courses retrieved successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Teacher not found, access forbidden.</condition>
+    </failureEndConditions>
+    <trigger>User requests to view courses for a specific teacher.</trigger>
+    <mainSequence>
+        <step id="S1">User sends request to Controller to get courses for a specific teacher.</step>
+        <step id="S2">Controller retrieves the teacher details by ID.</step>
+        <step id="S3">If Teacher found</step>
+        <step id="S4">Controller fetches the courses taught by the teacher.</step>
+        <step id="S5">User receives search results.</step>
+        <step id="S6">For each course in the list</step>
+        <step id="S7">Controller retrieves the course ID.</step>
+        <step id="S8">Controller retrieves the course name.</step>
+        <step id="S9">Controller retrieves the course description.</step>
+        <step id="S10">Controller retrieves the course price.</step>
+        <step id="S11">Controller retrieves the course average rating.</step>
+        <step id="S12">Controller retrieves the course banner image URL.</step>
+        <step id="S13">User receives course card data.</step>
+    </mainSequence>
+</useCase>

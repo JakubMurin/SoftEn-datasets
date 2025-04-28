@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Delete Task</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User wants to delete a task.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a DELETE request to the TaskController endpoint /api/tasks/{id}.</step>
+        <step id="S2">TaskController activates and forwards the request to TaskService to delete the task.</step>
+        <step id="S3">TaskService activates and calls TaskRepository to perform the deletion by id.</step>
+        <step id="S4">TaskRepository successfully deletes the task and returns void.</step>
+        <step id="S5">TaskService receives void from TaskRepository and returns void to TaskController.</step>
+        <step id="S6">TaskController receives void from TaskService and sends void response back to User.</step>
+    </mainSequence>
+</useCase>

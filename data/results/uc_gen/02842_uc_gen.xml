@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Manage Summit Attendees Email Notifications</name>
+    
+    <description>As a Summit Coordinator, manage email notifications for summit attendees.</description>
+    
+    <actors>
+        <actor>Summit Coordinator</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Summit Coordinator is authenticated.</precondition>
+    </preconditions>
+    
+    <trigger>User request to send email notifications to selected attendees.</trigger>
+    
+    <mainSequence>
+        <step id="S1">Authenticate user with username and password.</step>
+        <step id="S2">Request the list of attendees for a specific summit.</step>
+        <step id="S3">Query attendee details for the specified summit.</step>
+        <step id="SO-3-1">Display the attendee list to the user.</step>
+        <step id="S4">Select attendees to email.</step>
+        <step id="S5">Compose email draft.</step>
+        <step id="S6">Request system to send email to selected attendees.</step>
+        <step id="S7">Send email to selected attendees.</step>
+        <step id="S8">Log email activity in the database.</step>
+        <step id="S9">Confirm the email sent to attendees.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Add new material information</name>
+    <description>Manager adds new material information</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged in and has access rights</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Material information successfully added</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while adding material information</condition>
+    </failureEndConditions>
+    <trigger>User wants to add new material information</trigger>
+    <mainSequence>
+        <step id="S1">Manager accesses Manager Page</step>
+        <step id="S2">Manager clicks on Add new material information</step>
+        <step id="S3">ManagerMaterialController processes addMaterial request</step>
+        <step id="S4">MaterialService adds the new material information</step>
+        <step id="S5">MaterialRepository saves the new material information to the Database</step>
+        <step id="S6">Database executes insert query</step>
+        <step id="S7">MaterialRepository confirms the insertion</step>
+        <step id="S8">MaterialService confirms the insertion</step>
+        <step id="S9">ManagerMaterialController confirms the insertion</step>
+        <step id="S10">ManagerPage displays confirmation of successful addition</step>
+    </mainSequence>
+</useCase>

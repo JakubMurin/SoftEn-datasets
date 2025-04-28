@@ -1,0 +1,50 @@
+<useCase id="UC1">
+    <name>Perform Device Reservation and Data Retrieval</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Sarad App</actor>
+        <actor>Registration Server 2</actor>
+        <actor>rest api</actor>
+        <actor>device Actor</actor>
+        <actor>device with Instrument Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Device reservation and data retrieval functionality is available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Device reservation and data retrieval completed successfully.</condition>
+    </successEndConditions>
+    <trigger>Changes Config and Requests Data are sent to Sarad App.</trigger>
+    <mainSequence>
+        <step id="S1">User Alice sends Changes Config and Requests Data to Sarad App.</step>
+        <step id="S2">Sarad App attempts to reserve a device.</step>
+        <step id="S3">Rest API relays the reservation request to the device Actor.</step>
+        <step id="S4">Device Actor relays the reservation request to the device.</step>
+        <step id="S5">Device accepts the request and relays port information to Device Actor.</step>
+        <step id="S6">Device Actor connects to the device.</step>
+        <step id="S7">Device Actor opens the port.</step>
+        <step id="S8">Device Actor accepts the request and relays port information to Rest API.</step>
+        <step id="S9">Rest API relays the port information to Sarad App.</step>
+        <step id="S10">Sarad App relays the port information to the user.</step>
+        <step id="S11">Device Actor disconnects from the device.</step>
+        <step id="S12">Device Actor sends a free signal to the device.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8" continue="S9">
+            <step id="A1S1">On unexpected disconnect, Sarad App reconnects to Device Actor.</step>
+            <step id="A1S2">Sarad App sends data to Device Actor.</step>
+            <step id="A1S3">Device Actor relays the data to the device.</step>
+            <step id="A1S4">Device Actor refreshes the timeout.</step>
+            <step id="A1S5">Device relays the answer to Device Actor.</step>
+            <step id="A1S6">Device Actor relays the answer to Sarad App.</step>
+            <step id="A1S7">Sarad App displays the answer to the user.</step>
+            <step id="A1S8">Sarad App disconnects from Device Actor.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S12">
+            <description>Timeout reached.</description>
+            <step id="E1S1">Device Actor sends a free signal to the device.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

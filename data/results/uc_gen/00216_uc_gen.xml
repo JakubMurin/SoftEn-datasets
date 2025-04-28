@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Manage Teachers</name>
+    <description>Allow user to manage teachers</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>TeacherRepository</actor>
+        <actor>TeacherEntity</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Teachers successfully managed</condition>
+    </successEndConditions>
+    <trigger>User switches to teacher management page</trigger>
+    <mainSequence>
+        <step id="S1">User switches to teacher management page</step>
+        <step id="S2">Frontend sends a request to Controller</step>
+        <step id="S3">Controller calls Service to get all teachers</step>
+        <step id="S4">Service queries TeacherRepository to find all teachers</step>
+        <step id="S5">TeacherRepository creates new TeacherEntity</step>
+        <step id="S6">TeacherEntity retrieves entities from TeacherRepository</step>
+        <step id="S7">TeacherRepository sends entities to Controller</step>
+        <step id="S8">Controller responds to Frontend with entities</step>
+        <step id="S9">Frontend displays entities to User</step>
+        <step id="S10">User clicks on a teacher item to modify</step>
+        <step id="S11">Frontend sends a request to Controller for modification</step>
+        <step id="S12">Controller requests Service for the entity</step>
+        <step id="S13">Service saves the modified entity in TeacherRepository</step>
+        <step id="S14">TeacherRepository updates entity</step>
+        <step id="S15">Service sends the entity back to Controller</step>
+        <step id="S16">Controller responds to Frontend with success message</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S12">
+            <description>Error occurs while modifying teacher entity</description>
+            <step id="E1S1">Display error message to User</step>
+        </esteps>
+    </errorSteps>
+</useCase>

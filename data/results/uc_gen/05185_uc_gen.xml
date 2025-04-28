@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>View and Change Payment Terms</name>
+    <actors>
+        <actor>FAE User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects 'Change' button on View Account (Payment Terms tab) page.</step>
+        <step id="S2">User navigates to Change Payment Terms page.</step>
+        <step id="S3">User inputs data and clicks 'Save changes' button on Change Payment Terms page.</step>
+        <step id="S4">Call API with Defendant Account ID and Payload (JSON).</step>
+        <step id="S5">API creates Defendant Account Payment Terms.</step>
+        <step id="S6">Created Defendant Account Payment Terms are displayed on the View Account page.</step>
+        <step id="S7">Display Payment Terms tab on the View Account page.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Defendant Account ID and Payload (JPA) are sent to the database.</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S5">
+            <step id="A2S1">Defendant Account ID and Payload JSON (XML Wrapper) are sent to GMAS DAC.</step>
+            <step id="A2S2">GMAS DAC converts JSON to XML.</step>
+            <step id="A2S3">Defendant Account ID and Payload (XML) are sent to the legacy database.</step>
+            <step id="A2S4">Created Defendant Account Payment Terms (XML) are sent back to GMAS DAC.</step>
+            <step id="A2S5">GMAS DAC converts XML to JSON.</step>
+            <step id="A2S6">Created Defendant Account Payment Terms (JSON) are displayed on the View Account page.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

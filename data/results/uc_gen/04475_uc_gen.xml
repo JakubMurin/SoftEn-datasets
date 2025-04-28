@@ -1,0 +1,22 @@
+<useCase id="UC001">
+	<name>Alternative Zuweisung eines E-Rezeptes: Pflege der URLs im APOVZD</name>
+	<actors>
+		<actor>Apotheker</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">ALE registers for AZ</step>
+		<step id="S2">AVS generates URLs for Belieferung</step>
+		<step id="S3">ADL registers</step>
+		<step id="S4">AVS generates dataset</step>
+		<step id="S5">AVS signs dataset (C.HCI.OSIG)</step>
+		<step id="S6">AVS uploads signed dataset to UC</step>
+		<step id="S7">UC verifies signature and stores dataset for sync</step>
+		<step id="S8">UC synchronizes entries with APOVZD daily between 0-6 Uhr</step>
+		<step id="S9">APOVZD updates pharmacy with URLs and certificates</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S2" continue="S3">
+			<step id="A1S1">AVS provides URLs if ADL registration fails</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

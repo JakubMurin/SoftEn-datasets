@@ -1,0 +1,18 @@
+<useCase id="Rocket_Launch">
+    <name>Rocket Launch Process</name>
+    <description>Use case for launching a rocket via Slack command</description>
+    <actors>
+        <actor>USER</actor>
+    </actors>
+    <trigger>USER posts a Slack Command to launch a rocket</trigger>
+    <mainSequence>
+        <step id="S1">User posts a Slack Command to launch the rocket</step>
+        <step id="S2">APP receives the `/rocker` event triggered from Slack</step>
+        <step id="S3">APP posts an ephemeral message in the Slack channel for USER</step>
+        <step id="S4">USER clicks on the `launch rocket` button in the ephemeral message</step>
+        <step id="S5">APP receives the `interaction` event triggered by USER</step>
+        <step id="S6">APP posts a Rocket Countdown Message "3" to USER</step>
+        <step id="S7">APP posts a Rocket Countdown Message "2" to USER</step>
+        <step id="S8">APP posts a Rocket Countdown Message "1" to USER</step>
+    </mainSequence>
+</useCase>

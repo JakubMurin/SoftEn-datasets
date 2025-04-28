@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Add New Material Information</name>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Manager adds new material information</step>
+        <step id="S2">ManagerMaterialController receives newMaterialInfo from ManagerPage</step>
+        <step id="S3">MaterialService adds material with newMaterialInfo</step>
+        <step id="S4">MaterialRepository saves newMaterialInfo</step>
+        <step id="S5">Database executes insert query</step>
+        <step id="S6">Database confirms insert to MaterialRepository</step>
+        <step id="S7">MaterialRepository confirms insert to MaterialService</step>
+        <step id="S8">MaterialService confirms insert to ManagerMaterialController</step>
+        <step id="S9">ManagerMaterialController confirms insert to ManagerPage</step>
+        <step id="S10">ManagerPage displays add confirmation to Manager</step>
+    </mainSequence>
+</useCase>

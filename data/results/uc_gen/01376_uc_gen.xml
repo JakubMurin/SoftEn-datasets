@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Delete Order</name>
+    <description>Allows the Employee to delete an order from the system.</description>
+    <actors>
+        <actor>Employee</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Employee has the necessary permissions to delete orders.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The order is successfully deleted from the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The order cannot be deleted due to an error.</condition>
+    </failureEndConditions>
+    <trigger>Employee selects an order to delete.</trigger>
+    <mainSequence>
+        <step id="S1">Employee selects the order to delete.</step>
+        <step id="S2">Frontend Interface sends a delete request with the orderId to Backend Server.</step>
+        <step id="S3">Backend Server queries Database to delete the order with the orderId.</step>
+        <step id="S4">Database confirms the deletion of the order.</step>
+        <step id="S5">Backend Server returns a success message to Frontend Interface.</step>
+        <step id="S6">Frontend Interface displays a success message to the Employee.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S5">
+            <step id="A1S1">Order is not found or cannot be deleted.</step>
+            <step id="A1S2">Backend Server returns an error message to Frontend Interface.</step>
+            <step id="A1S3">Frontend Interface displays an error message to the Employee.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

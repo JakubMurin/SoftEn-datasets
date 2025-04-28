@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Retrieve Bookings with Appointments</name>
+    <actors>
+        <actor>UserAccount</actor>
+    </actors>
+    <trigger>GET Request</trigger>
+    <mainSequence>
+        <step id="S1">UserAccount sends GET Request to AppointmentServicePage</step>
+        <step id="S2">AppointmentServicePage forwards GetBookingRequest to GetBookingActivity</step>
+        <step id="S3">GetBookingActivity retrieves Booking information from Booking database</step>
+        <step id="S4">GetBookingActivity retrieves Appointment information from Appointment database</step>
+        <step id="S5">Booking and Appointment IDs are returned to GetBookingActivity</step>
+        <step id="S6">GetBookingActivity generates GetBookingResult and sends it to AppointmentServicePage</step>
+        <step id="S7">AppointmentServicePage responds to UserAccount with Successfully retrieved Bookings with Appointments</step>
+    </mainSequence>
+</useCase>

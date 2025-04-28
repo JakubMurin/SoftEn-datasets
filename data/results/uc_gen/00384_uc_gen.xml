@@ -1,0 +1,49 @@
+<useCase id="UC001">
+    <name>Kubernetes as Control Plane for Infrastructure Provisioning</name>
+    
+    <actors>
+        <actor>Developer</actor>
+        <actor>Platform Engineer</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Developer accesses IDP Portal for self-service app and infrastructure provisioning.</precondition>
+        <precondition>Developer pushes changes to GitOps Repository.</precondition>
+        <precondition>Platform Engineer reviews and approves changes on GitOps Repository.</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Cloud resources provisioned successfully.</condition>
+    </successEndConditions>
+    
+    <failureEndConditions>
+        <condition>Failed to reconcile infrastructure and app deployments.</condition>
+    </failureEndConditions>
+    
+    <trigger>Developer initiates self-service app and infrastructure provisioning process.</trigger>
+    
+    <mainSequence>
+        <step id="S1">Developer self-service app and infrastructure provisioning.</step>
+        <step id="S2">Developer pushes changes to GitOps Repository.</step>
+        <step id="S3">Platform Engineer reviews and approves changes on GitOps Repository.</step>
+        <step id="S4">Sync changes to ArgoCD for deployment.</step>
+        <step id="S5">Deploy changes using Kubernetes API.</step>
+        <step id="S6">Reconcile infrastructure and application with ArgoCD.</step>
+        <step id="S7">Provision vcluster for testing environment.</step>
+        <step id="S8">Provision application in Kubernetes cluster.</step>
+        <step id="S9">Provision cloud resources including Resource Group, Storage Account, and Storage Container.</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S8">
+            <step id="A1S1">Alternative step: Redeploy application due to failure.</step>
+        </asteps>
+    </alternativeSteps>
+    
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error description: Failed to reconcile infrastructure and app deployments.</description>
+            <step id="E1S1">Error step: Investigate and resolve deployment issues.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

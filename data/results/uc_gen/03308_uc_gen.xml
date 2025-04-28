@@ -1,0 +1,49 @@
+<useCase id="UC1">
+    <name>Update User Details</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UpdateUserRequest</actor>
+        <actor>QJsonObject</actor>
+        <actor>QMutex</actor>
+        <actor>QMutexLocker</actor>
+        <actor>DB::DatabaseManager</actor>
+        <actor>DB::DbResult</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user requests to update their account details.</precondition>
+        <precondition>The system has access to the necessary data and resources.</precondition>
+        <precondition>The database connection is valid.</precondition>
+    </preconditions>
+    <trigger>User triggers the update of account details.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the update user request.</step>
+        <step id="S2">UpdateUserRequest executes the request with given parameters.</step>
+        <step id="S3">QMutexLocker is activated to handle thread safety.</step>
+        <step id="S4">QJsonObject extracts the required user data from the request.</step>
+        <step id="S5">UpdateUserRequest receives the extracted user data from QJsonObject.</step>
+        <step id="S6">UpdateUserRequest checks the validity of the database connection.</step>
+        <step id="S7">UpdateUserRequest creates a database connection error response if the connection is invalid.</step>
+        
+        <step id="S8">UpdateUserRequest queries the database to select the user's role.</step>
+        <step id="S9">DB::DatabaseManager returns the user's role.</step>
+        
+        <step id="S10">UpdateUserRequest creates an error response if the user is not found in the database.</step>
+        <step id="S11">UpdateUserRequest checks if the user is an admin.</step>
+        <step id="S12">UpdateUserRequest creates an error response if the user is not an admin.</step>
+        
+        <step id="S13">UpdateUserRequest queries the database to select account data.</step>
+        <step id="S14">DB::DatabaseManager returns the account data.</step>
+        
+        <step id="S15">UpdateUserRequest creates an error response if the account is not found.</step>
+        <step id="S16">UpdateUserRequest queries the database to select user data based on the new email.</step>
+        <step id="S17">DB::DatabaseManager returns the user data for the new email.</step>
+        
+        <step id="S18">UpdateUserRequest creates an error response if the new email is already associated with another account.</step>
+        <step id="S19">UpdateUserRequest updates the user details in the database.</step>
+        <step id="S20">DB::DatabaseManager returns the success status after updating user details.</step>
+        
+        <step id="S21">UpdateUserRequest creates an error response if the update process fails.</step>
+        <step id="S22">UpdateUserRequest constructs a success response with updated user details.</step>
+        <step id="S23">QJsonObject returns the success response to the User.</step>
+    </mainSequence>
+</useCase>

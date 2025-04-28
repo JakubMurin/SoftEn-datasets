@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Algo Escrow Pay with Closeout</name>
+    <actors>
+        <actor>Buyer</actor>
+        <actor>Seller</actor>
+        <actor>Algo Escrow</actor>
+    </actors>
+    <preconditions>
+        <precondition>Algo reserved for buy</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Algo Escrow initiates closeout by app call to Algo Order Book with TEAL attached for approval.</step>
+        <step id="S2">Algo Escrow sends Algo amount to Seller with TEAL attached for spend approval. Remaining balance closed back to escrow owner.</step>
+        <step id="S3">Seller sends asset amount to Buyer in exchange for the buy order.</step>
+    </mainSequence>
+</useCase>

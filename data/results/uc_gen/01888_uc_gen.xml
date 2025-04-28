@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>View Referrer Data</name>
+    <description>View the referrer data for a repository item</description>
+    <actors>
+        <actor>Curator</actor>
+        <actor>EDRMS Interface</actor>
+        <actor>Database</actor>
+        <actor>Analytics Engine</actor>
+        <actor>Resolver Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Curator must have access to the referrer data feature</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Curator successfully views the referrer data</condition>
+    </successEndConditions>
+    <trigger>Curator requests item referrer data</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests item referrer data from EDRMS Interface</step>
+        <step id="S2">EDRMS Interface queries for item ID from Database</step>
+        <step id="S3">Database returns item ID to EDRMS Interface</step>
+        <step id="S4">EDRMS Interface requests referrer stats for item ID from Analytics Engine</step>
+        <step id="S5">Analytics Engine queries referrer logs from Database</step>
+        <step id="S6">Database returns referrer data to Analytics Engine</step>
+        <step id="S7">Analytics Engine provides summarized referrer info to EDRMS Interface</step>
+        <step id="S8">EDRMS Interface displays referrer data to Curator</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Database is unavailable, notify Analytics Engine</step>
+            <step id="A1S2">Analytics Engine provides alternative referrer data</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>Curator encounters an error while requesting referrer data</description>
+            <step id="E1S1">EDRMS Interface displays an error message to the Curator</step>
+        </esteps>
+    </errorSteps>
+</useCase>

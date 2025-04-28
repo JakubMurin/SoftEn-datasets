@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Wybranie listy kont oczekujących</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <preconditions>
+        <precondition>Zarządca ma uprawnienia do wyboru listy kont oczekujących</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Zarządca wybiera listę kont oczekujących</step>
+        <step id="S2">Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta</step>
+        <step id="S3">AccountController otrzymuje żądanie i wywołuje getAccountSearchPreferences w AccountEndpoint</step>
+        <step id="S4">AccountEndpoint wywołuje AccountService do pobrania preferencji wyszukiwania dla konta</step>
+        <step id="S5">AccountService sprawdza istnienie konta</step>
+        <step id="S6">Jeśli konto istnieje, AccountService pobiera preferencje wyszukiwania dla konta</step>
+        <step id="S7">Jeśli preferencje dla konta istnieją, pobierane są preferencje wyszukiwania</step>
+        <step id="S8">Jeśli preferencje dla konta nie istnieją, tworzone są nowe preferencje wyszukiwania</step>
+        <step id="S9">AccountService zwraca informację zwrotną do AccountEndpoint</step>
+        <step id="S10">AccountEndpoint zwraca informację zwrotną do AccountController</step>
+        <step id="S11">AccountController wysyła żądanie pobrania listy niepotwierdzonych kont</step>
+        <step id="S12">AccountEndpoint pobiera listę niepotwierdzonych kont</step>
+        <step id="S13">AccountService sprawdza istnienie konta</step>
+        <step id="S14">Jeśli konto istnieje, pobierane są preferencje wyszukiwania</step>
+        <step id="S15">Jeśli preferencje dla konta istnieją, aktualizowane są</step>
+        <step id="S16">Jeśli preferencje dla konta nie istnieją, tworzone są nowe</step>
+        <step id="S17">AccountService zwraca listę kont niepotwierdzonych</step>
+        <step id="S18">AccountEndpoint zwraca listę kont niepotwierdzonych do AccountController</step>
+        <step id="S19">AccountController zwraca listę kont niepotwierdzonych do Nawigatora</step>
+    </mainSequence>
+</useCase>

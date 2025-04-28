@@ -1,0 +1,32 @@
+<useCase id="UC12345">
+    <name>Device Reservation</name>
+    <description>As a User, I want to initiate the process to reserve a device using the Sarad App in order to perform certain actions.</description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Registration Server 2</actor>
+        <actor>rest api</actor>
+        <actor>device Actor</actor>
+        <actor>device</actor>
+        <actor>Instrument Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>All actors (Alice, Registration Server 2, rest api, device Actor, device, Instrument Server) are available and correctly configured.</precondition>
+    </preconditions>
+    <trigger>User changes configuration and requests data on Sarad App.</trigger>
+    <mainSequence>
+        <step id="S1">User changes configuration and requests data.</step>
+        <step id="S2">Registration Server 2 attempts to reserve a device.</step>
+        <step id="S3">Registration Server 2 relays the reservation request to the rest api.</step>
+        <step id="S4">rest api relays the reservation request to the device Actor.</step>
+        <step id="S5">device Actor relays the reservation request to the device.</step>
+        <step id="S6">device accepts the reservation request and relays port information.</step>
+        <step id="S7">device connects and opens port as requested.</step>
+        <step id="S8">device Actor accepts the request and relays port information.</step>
+        <step id="S9">rest api relays port information back to the Registration Server 2.</step>
+        <step id="S10">Registration Server 2 relays port information to the Sarad App.</step>
+        <step id="S11">Timeout starts for device Actor.</step>
+        <step id="S12">Sarad App connects to device Actor.</step>
+        <step id="S13">Timeout refreshes for unexpected disconnect cases.</step>
+        <!-- More steps can be added for other actions as needed -->
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC0001">
+    <name>User downloads embargo metadata from ETDs</name>
+    <actors>
+        <actor>Digital Records Archivist</actor>
+        <actor>Web Interface</actor>
+        <actor>EDRMS Backend</actor>
+        <actor>Repository Database</actor>
+        <actor>File Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Digital Records Archivist wants to download embargo metadata for ETDs from the system.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Digital Records Archivist requests embargo metadata for ETDs from the Web Interface</step>
+        <step id="S2">Web Interface fetches embargo metadata from EDRMS Backend</step>
+        <step id="S3">EDRMS Backend queries embargo metadata from Repository Database</step>
+        <step id="S4">Repository Database returns the embargo metadata</step>
+        <step id="S5">EDRMS Backend displays the metadata to the Web Interface</step>
+        <step id="S6">Web Interface shows embargo metadata to the Digital Records Archivist</step>
+        <step id="S7">Digital Records Archivist requests download of embargo metadata from Web Interface</step>
+        <step id="S8">Web Interface fetches detailed metadata from EDRMS Backend</step>
+        <step id="S9">EDRMS Backend negotiates with the Repository Database to get detailed embargo data</step>
+        <step id="S10">Repository Database returns the detailed embargo data</step>
+        <step id="S11">EDRMS Backend contacts the File Server to prepare the download file</step>
+        <step id="S12">File Server generates a download link</step>
+        <step id="S13">EDRMS Backend provides the download link to the Web Interface</step>
+        <step id="S14">Web Interface sends the download link to the Digital Records Archivist</step>
+        <step id="S15">Digital Records Archivist downloads the file from the File Server using the provided link</step>
+        <step id="S16">File Server delivers the metadata file to the Digital Records Archivist</step>
+    </mainSequence>
+</useCase>

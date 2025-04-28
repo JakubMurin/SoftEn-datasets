@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Handle HTTP Request</name>
+    <actors>
+        <actor>HTTPRequest</actor>
+    </actors>
+    <preconditions>
+        <precondition>Apache input filter is active</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Enrich context in mod_dup</step>
+        <step id="S2">Apply filters in mod_dup</step>
+        <step id="S3">Delegate to next handler (PNS_WS, mod_rewrite..)</step>
+        <step id="S4">Collect the answer in PNS_WS</step>
+        <step id="S5">Prepare request for duplication in duplicator</step>
+        <step id="S6">Send the request back to the client</step>
+        <step id="S7">Send duplicated request to mod_compare</step>
+    </mainSequence>
+</useCase>

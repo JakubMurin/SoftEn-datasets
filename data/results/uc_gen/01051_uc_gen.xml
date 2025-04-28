@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Passer une commande en ligne</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>InterfaceUtilisateur</actor>
+        <actor>CatalogueProduits</actor>
+        <actor>Panier</actor>
+        <actor>SystèmePaiement</actor>
+        <actor>SystèmeNotification</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client doit être connecté et avoir des produits dans le panier</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Commande passée avec succès</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Échec du paiement</condition>
+    </failureEndConditions>
+    <trigger>Client désire passer une commande en ligne</trigger>
+    <mainSequence>
+        <step id="S1">Parcourir et sélectionner les produits</step>
+        <step id="S2">Récupérer les détails des produits</step>
+        <step id="S3">Ajouter produit au panier</step>
+        <step id="S4">Mettre à jour le panier</step>
+        <step id="S5">Passer commande</step>
+        <step id="S6">Récupérer contenu du panier</step>
+        <step id="S7">Traiter le paiement</step>
+        <step id="S8">Confirmation de paiement</step>
+        <step id="S9">Envoyer confirmation de commande</step>
+        <step id="S10">Recevoir email de confirmation</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Alerter utilisateur de l'échec du paiement</step>
+            <step id="A1S2">Afficher options de paiement alternatives</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

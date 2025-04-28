@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Update Job Opening</name>
+    <description>User requests to update a job opening, selects a job opening, and chooses to update the interview model by providing a file path.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has logged in and has necessary permissions to update job openings.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The job opening is successfully updated with the provided file.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The User does not have permission to update job openings.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User requests to update a job opening and the System shows a list of job references.</step>
+        <step id="S2">User selects a job opening and the System requests what the User wants to update.</step>
+        <step id="S3">User chooses to update the interview model and the System requests the file.</step>
+        <step id="S4">User inputs the file path and the System displays the updated job opening along with an operation success message.</step>
+    </mainSequence>
+</useCase>

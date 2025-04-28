@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Battle Simulation</name>
+    <description>A use case to simulate a battle between two clients involving a server, controllers, and services.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Server</actor>
+        <actor>BattleController</actor>
+        <actor>BattleService</actor>
+        <actor>Battle</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both clients are connected and request Battle.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Both clients receive a response after the battle ends.</condition>
+    </successEndConditions>
+    <trigger>Clients send Battle Requests to the Server.</trigger>
+    <mainSequence>
+        <step id="S1">Client1 requests a Battle from Server.</step>
+        <step id="S2">Server processes the Battle Request.</step>
+        <step id="S3">Client2 also requests a Battle from Server.</step>
+        <step id="S4">Server forwards the Battle Request to BattleController.</step>
+        <step id="S5">BattleController finds or creates a Battle via BattleService.</step>
+        <step id="S6">BattleService creates a new Battle and notifies BattleController.</step>
+        <step id="S7">BattleService joins the Battle on behalf of Client2.</step>
+        <step id="S8">Battle starts, and players begin attacking.</step>
+        <step id="S9">Battle concludes with a victor emerging.</step>
+        <step id="S10">Server sends the Battle Response to the participating Clients.</step>
+    </mainSequence>
+</useCase>

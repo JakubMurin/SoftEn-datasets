@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Update Table Status</name>
+    <actors>
+		<actor>Waiter</actor>
+	</actors>
+	<preconditions>
+		<precondition>Waiter selects 'Update Table Status'</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">Waiter selects 'Update Table Status'</step>
+		<step id="S2">Frontend receives the request/signal from the Waiter.</step>
+		<step id="S3">Frontend sends a request to Backend to update waiting time for the table.</step>
+		<step id="S4">Backend receives the request from Frontend.</step>
+		<step id="S5">Backend updates the table status to 'Available' in the Database.</step>
+		<step id="S6">Database updates the table status to 'Amount Reserved' and confirms it.</step>
+		<step id="S7">Backend confirms waiting time cleared.</step>
+		<step id="S8">Frontend receives the confirmation from Backend.</step>
+		<step id="S9">Frontend displays a confirmation message to the Waiter.</step>
+	</mainSequence>
+</useCase>

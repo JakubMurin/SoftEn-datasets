@@ -1,0 +1,24 @@
+<useCase id="UC001">
+  <name>Remove Book from Catalog</name>
+  <actors>
+    <actor>Client</actor>
+    <actor>Load Balancer/ECS</actor>
+    <actor>RemoveBookFromCatalogActivity</actor>
+    <actor>CatalogDao</actor>
+    <actor>DynamoDB</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Client sends an HTTP Request to Load Balancer.</step>
+    <step id="S2">Load Balancer activates and forwards the request to RemoveBookFromCatalogActivity to execute the removeBookRequest.</step>
+    <step id="S3">RemoveBookFromCatalogActivity activates and delegates the operation to CatalogDao to RemoveBookFromCatalog with the bookId.</step>
+    <step id="S4">CatalogDao queries DynamoDB for the latest version of the book.</step>
+    <step id="S5">If the book does not exist or is not active, CatalogDao throws a BookNotFoundException, and the response is transformed to KindlePublishingClientException by Load Balancer and returned to the Client with a 400 response. Otherwise, continue.</step>
+    <step id="S6">DynamoDB returns the book data to CatalogDao.</step>
+    <step id="S7">CatalogDao removes the book from the catalog by calling RemoveBookFromCatalog with the bookId.</step>
+    <step id="S8">RemoveBookFromCatalogActivity converts CatalogItemVersion to Coral Model Book.</step>
+    <step id="S9">RemoveBookFromCatalogActivity creates a RemoveBookFromCatalogResponse.</step>
+    <step id="S10">RemoveBookFromCatalogActivity sets the book.</step>
+    <step id="S11">RemoveBookFromCatalogActivity returns the RemoveBookFromCatalogResponse to Load Balancer.</step>
+    <step id="S12">Load Balancer sends a 200 response containing the data to the Client.</step>
+  </mainSequence>
+</useCase>

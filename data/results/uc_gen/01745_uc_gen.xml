@@ -1,0 +1,35 @@
+<useCase id="initializePomodoroTask">
+    <name>Initialize Pomodoro Task</name>
+    <description>Establishes the initial setup for a Pomodoro task.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>User executes "pomogo --task 'programuj pomodoro'" using CLI.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">CLI registers a new task.</step>
+        <step id="S2">TaskStartHandler saves the new task "programuj pomodoro" with the start date and additional information in sqlite.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">TaskStateChangeHandler saves new state as resting and increments rest marker.</step>
+            <step id="A1S2">TaskStateChangeHandler triggers sound notification through NotificationPlayer.</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">TaskStateChangeHandler saves new state as deep resting and resets the rest marker.</step>
+            <step id="A2S2">TaskStateChangeHandler triggers sound notification through NotificationPlayer.</step>
+        </asteps>
+        <asteps id="A3" start="S1">
+            <step id="A3S1">TaskStateChangeHandler saves new state as resting and increments rest marker.</step>
+            <step id="A3S2">TaskStateChangeHandler triggers sound notification through NotificationPlayer.</step>
+         </asteps>
+         <asteps id="A4" start="S1">
+            <step id="A4S1">TaskStateChangeHandler marks task as paused in sqlite.</step>
+            <step id="A4S2">TaskStateChangeHandler triggers sound notification through NotificationPlayer.</step>
+         </asteps>
+    </alternativeSteps>
+</useCase>

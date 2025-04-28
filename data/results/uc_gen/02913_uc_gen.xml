@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Process Payment for Course Enrollment</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Learning Center Service</actor>
+        <actor>Order Service</actor>
+        <actor>Order Database</actor>
+        <actor>Alipay</actor>
+        <actor>Message Queue</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has selected a course for enrollment and is ready to make payment.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Course enrollment payment is successfully processed.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the payment button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the payment button.</step>
+        <step id="S2">Frontend adds course selection record.</step>
+        <step id="S3">Frontend sends order information to Order Service for order creation.</step>
+        <step id="S4">Order Service creates product order, order details, and payment transaction record in Order Database.</step>
+        <step id="S5">Order Service generates a QR code based on the payment record ID.</step>
+        <step id="S6">User scans the QR code using Alipay.</step>
+        <step id="S7">Frontend requests payment using the payment record ID.</step>
+        <step id="S8">Order Service checks payment status and responds to the frontend.</step>
+        <step id="S9">User inputs password for payment.</step>
+        <step id="S10">User clicks on the 'Complete Payment' button for active payment query.</step>
+        <step id="S11">Order Service updates order and payment record status based on the payment result.</step>
+        <step id="S12">Order Service sends a course payment success message to the Message Queue.</step>
+        <step id="S13">Frontend displays payment success message to the user.</step>
+    </mainSequence>
+</useCase>

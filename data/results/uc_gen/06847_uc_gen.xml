@@ -1,0 +1,20 @@
+<useCase id="UC001">
+  <name>Explore Dataset Properties</name>
+  <description>As a User, I want to explore the properties of a selected dataset.</description>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <trigger>User selects a dataset to explore.</trigger>
+  <mainSequence>
+    <step id="S1">User selects dataset to explore.</step>
+    <step id="S2">User Interface sends request for dataset properties - GET /datasets/{id}/properties.</step>
+    <step id="S3">API Gateway calls Dataset Management Service to fetch properties of the dataset.</step>
+    <step id="S4">Dataset Management Service requests Dataset Type from Dataset Type Registry.</step>
+    <step id="S5">Dataset Type Registry provides the dataset type.</step>
+    <step id="S6">Dataset Management Service gets properties according to dataset type from Dataset Instance.</step>
+    <step id="S7">Dataset Instance returns properties for the dataset.</step>
+    <step id="S8">API Gateway receives properties and passes to User Interface for display.</step>
+    <step id="S9">User Interface shows updatable properties to the User.</step>
+    <step id="S10">User views and interacts with displayed properties.</step>
+  </mainSequence>
+</useCase>

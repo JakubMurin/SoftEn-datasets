@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Enable Security Profile</name>
+    <actors>
+        <actor>SecurityEngineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>A Security Profile has been created and disabled</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Security Engineer enables the Security Profile</step>
+        <step id="S2">Enable Security Profile</step>
+        <step id="S3">Create security profile with name: secProfileESP and file: ./templates/secprofile.yml</step>
+        <step id="S4">Notify EventBus about security profile creation</step>
+        <step id="S5">Disable security profile with name: secProfileESP</step>
+        <step id="S6">Notify EventBus about security profile disable</step>
+        <step id="S7">Enable security profile with name: secProfileESP</step>
+        <step id="S8">Notify EventBus about security profile enable</step>
+        <step id="S9">All attached identities in the system re-evaluate policies</step>
+    </mainSequence>
+</useCase>

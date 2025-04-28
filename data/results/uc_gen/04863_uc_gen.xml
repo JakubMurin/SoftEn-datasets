@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>User Authentication</name>
+    <description>Authenticate user credentials</description>
+    <actors>
+        <actor>User Agent</actor>
+    </actors>
+    <preconditions>
+        <precondition>User Agent sends a login request with username, password, and CSRF token.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Valid user credentials provided, authentication successful.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid user credentials provided, authentication failed.</condition>
+    </failureEndConditions>
+    <trigger>Login request received by the system.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a login request containing username, password, and CSRF token to the Login API.</step>
+        <step id="S2">Login API validates the received login request from the User Agent.</step>
+        <step id="S3">If the validation fails, Login API returns an appropriate status code to the User Agent indicating failure.</step>
+        <step id="S4">If the validation succeeds, Login API fetches user information (ID, role, password hash, salt) from the User database.</step>
+        <step id="S5">If user information exists in the database and authentication against the password hash succeeds, Login API returns an HTTP 200 OK response and sets an encrypted session cookie.</step>
+        <step id="S6">If authentication fails or user information is not found in the database, Login API returns an HTTP 401 Unauthorized response without disclosing the reason.</step>
+    </mainSequence>
+</useCase>

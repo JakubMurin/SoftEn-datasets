@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Inicio de Juego</name>
+    <description>El usuario inicia el juego creando un jugador y asignando créditos iniciales.</description>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>Juego</actor>
+        <actor>Jugador</actor>
+        <actor>SistCreditos</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario ha ingresado al sistema.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Se ha creado un jugador con los créditos iniciales asignados.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No se ha podido crear un jugador con los créditos iniciales asignados.</condition>
+    </failureEndConditions>
+    <trigger>El usuario desea iniciar el juego.</trigger>
+    <mainSequence>
+        <step id="S1">El usuario inicia el juego proporcionando un nombre de usuario.</step>
+        <step id="S2">El juego crea un jugador con el nombre proporcionado por el usuario.</step>
+        <step id="S3">El jugador es creado con los créditos iniciales.</step>
+        <step id="S4">El sistema de créditos asigna los créditos iniciales al jugador.</step>
+        <step id="S5">El sistema de créditos confirma la asignación de créditos al jugador.</step>
+        <step id="S6">El jugador es informado de la asignación de créditos.</step>
+    </mainSequence>
+</useCase>

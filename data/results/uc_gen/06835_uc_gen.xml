@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>GP2GP adaptor, NME as recipient</name>
+    <actors>
+        <actor>Patient</actor>
+        <actor>NME Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is operational</precondition>
+        <precondition>NME has access to patient records</precondition>
+    </preconditions>
+    <trigger>New registration at practice</trigger>
+    <mainSequence>
+        <step id="S1">Patient registers at new practice</step>
+        <step id="S2">NME updates registration GP</step>
+        <step id="S3">PDS acknowledges update</step>
+        <step id="S4">NME requests GP Connect record from Incumbent</step>
+        <step id="S5">Incumbent sends GPC response to NME</step>
+        <step id="S6">NME ingests FHIR record and saves it</step>
+        <step id="S7">NME sends acceptance request to NHAIS</step>
+        <step id="S8">NHAIS approves request and sends business ack to NME</step>
+        <step id="S9">NHAIS deduces the transaction</step>
+        <step id="S10">Incumbent acknowledges deduction to NHAIS</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Retrieve Account Search Preferences</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <preconditions>
+        <precondition>Zarządca selects the list of pending accounts</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Nawigator selects the list of pending accounts</step>
+        <step id="S2">Nawigator sends a request to retrieve search preferences for the account</step>
+        <step id="S3">AccountController processes request to get account search preferences</step>
+        <step id="S4">AccountEndpoint handles getAccountSearchPreferences request</step>
+        <step id="S5">AccountService retrieves account search preferences</step>
+        <step id="S6">AccountFacade finds account by login</step>
+        <step id="S7">AccountService receives account info</step>
+        <step id="S8">Account checks if preferences exist</step>
+        <step id="S9">ListSearchPreferencesFacade finds preferences by account</step>
+        <step id="S10">ListSearchPreferencesFacade receives preferences info</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8" continue="A1S1">
+            <step id="A1S1">Account creates new preferences</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error in finding account</description>
+            <step id="E1S1">AccountFacade fails to find account</step>
+        </esteps>
+    </errorSteps>
+</useCase>

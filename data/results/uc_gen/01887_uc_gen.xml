@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Retrieve Referrer Data</name>
+    <description>Curator requests and views referrer data for a specific item.</description>
+    <actors>
+        <actor>Curator</actor>
+        <actor>EDRMS Interface</actor>
+        <actor>Database</actor>
+        <actor>Analytics Engine</actor>
+        <actor>Resolver Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Curator successfully views referrer data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Curator is unable to access referrer data.</condition>
+    </failureEndConditions>
+    <trigger>Curator requests referrer data for a specific item.</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests item referrer data from EDRMS Interface.</step>
+        <step id="S2">EDRMS Interface queries Database for item ID.</step>
+        <step id="S3">Database returns item ID to EDRMS Interface.</step>
+        <step id="S4">EDRMS Interface requests referrer stats for item ID from Analytics Engine.</step>
+        <step id="S5">Analytics Engine queries Database for referrer logs.</step>
+        <step id="S6">Database returns referrer data to Analytics Engine.</step>
+        <step id="S7">Analytics Engine provides summarized referrer info to EDRMS Interface.</step>
+        <step id="S8">EDRMS Interface displays referrer data to Curator.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">If Analytics Engine is unavailable, EDRMS Interface directly queries Database for referrer logs.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Analytics Engine encounters an error while querying Database for referrer logs.</description>
+            <step id="E1S1">Analytics Engine logs the error and notifies EDRMS Interface.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

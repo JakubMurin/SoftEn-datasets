@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Capture telemetry data from Chef Workstation App</name>
+    <actors>
+        <actor>Human</actor>
+        <actor>CLI Tool</actor>
+        <actor>Chef Workstation App</actor>
+        <actor>telemetry.chef.io</actor>
+    </actors>
+    <preconditions>
+        <precondition>CLI Tool is executed by the Human.</precondition>
+        <precondition>CLI Tool sends a POST request to Chef Workstation App (/telemetry endpoint).</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Chef Workstation App receives a HTTP response with status code 201 from CLI Tool.</condition>
+        <condition>Chef Workstation App successfully prepares the telemetry data envelope.</condition>
+        <condition>Chef Workstation App successfully sends the telemetry data to telemetry.chef.io.</condition>
+        <condition>telemetry.chef.io acknowledges receipt with a HTTP response.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Human executes the CLI Tool.</step>
+        <step id="S2">CLI Tool sends a POST request to Chef Workstation App.</step>
+        <step id="S3">Chef Workstation App prepares the telemetry data envelope.</step>
+        <step id="S4">Chef Workstation App sends the telemetry data to telemetry.chef.io.</step>
+        <step id="S5">telemetry.chef.io acknowledges receipt with a HTTP response.</step>
+    </mainSequence>
+</useCase>

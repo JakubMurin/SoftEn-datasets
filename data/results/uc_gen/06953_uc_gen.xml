@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Grant Embargo Privileges</name>
+    <description>As an archivist, I want to grant embargo privileges to selected repository administrators</description>
+    <actors>
+        <actor>DigitalRecordsArchivist</actor>
+        <actor>AuthenticationSystem</actor>
+        <actor>EDRMS Core</actor>
+        <actor>User Management DB</actor>
+        <actor>Access Control Module</actor>
+    </actors>
+    <preconditions>
+        <precondition>The archivist is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Embargo privileges granted successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to grant embargo privileges</condition>
+    </failureEndConditions>
+    <trigger>Archivist initiates the process to grant embargo privileges</trigger>
+    <mainSequence>
+        <step id="S1">Authenticate the archivist</step>
+        <step id="S2">Access User Management in EDRMS Core</step>
+        <step id="S3">Retrieve the list of users from User Management DB</step>
+        <step id="S4">Display the list of users</step>
+        <step id="S5">Select the repository administrator(s)</step>
+        <step id="S6">Request Access Control Module to update privileges</step>
+        <step id="S7">Grant embargo privileges in User Management DB</step>
+        <step id="S8">Update privileges confirmation</step>
+        <step id="S9">Display confirmation to the archivist</step>
+    </mainSequence>
+</useCase>

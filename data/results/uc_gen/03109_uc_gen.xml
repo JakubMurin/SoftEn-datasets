@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Delete Trick</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepoTrick</actor>
+        <actor>Gestionnaire</actor>
+        <actor>Fichiers</actor>
+        <actor>Redirection</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur demande la suppression d'une figure en fournissant son ID.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La figure est supprimée avec succès.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>La figure n'est pas trouvée ou il y a une erreur lors de la suppression.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Utilisateur demande la suppression d'une figure en fournissant son ID.</step>
+        <step id="S2">Controleur trouve la figure.</step>
+        <step id="S3">Controleur récupère les commentaires de la figure.</step>
+        <step id="S4">Controleur supprime les commentaires de la figure.</step>
+        <step id="S5">Fichiers vérifie la présence de l'image de la figure.</step>
+        <step id="S6">Fichiers supprime l'image de la figure.</step>
+        <step id="S7">Fichiers vérifie la présence de l'image de la figure.</step>
+        <step id="S8">Fichiers supprime l'image de la figure.</step>
+        <step id="S9">Gestionnaire supprime la figure.</step>
+        <step id="S10">Controleur envoie un message de succès à l'Utilisateur.</step>
+        <step id="S11">Redirection redirige l'Utilisateur vers la liste des figures.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Process Online Course Payment</name>
+    <actors>
+        <actor>user</actor>
+        <actor>front</actor>
+        <actor>learning_service</actor>
+        <actor>order_service</actor>
+        <actor>order_db</actor>
+        <actor>alipay</actor>
+        <actor>mq</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on the payment button</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Course payment is successfully processed</condition>
+    </successEndConditions>
+    <trigger>User initiates the payment process</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the payment button</step>
+        <step id="S2">Frontend adds course record</step>
+        <step id="S3">Order information is added by order service</step>
+        <step id="S4">Order service creates product order, order details, and payment transaction record</step>
+        <step id="S5">Frontend receives the payment record id to generate a QR code</step>
+        <step id="S6">User scans the QR code using Alipay</step>
+        <step id="S7">Alipay processes the payment request</step>
+        <step id="S8">User inputs password for payment</step>
+        <step id="S9">User completes the payment verification process</step>
+        <step id="S10">Order service queries the payment result</step>
+        <step id="S11">Order service updates the order and payment status based on the payment result</step>
+        <step id="S12">Learning service is notified of successful payment</step>
+        <step id="S13">Payment process is successful</step>
+    </mainSequence>
+</useCase>

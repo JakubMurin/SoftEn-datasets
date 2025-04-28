@@ -1,0 +1,38 @@
+<useCase id="UC-001">
+    <name>Klik menu surat lapas</name>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Surat successfully found</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Surat not found</condition>
+    </failureEndConditions>
+    <trigger>Klik menu surat lapas</trigger>
+    <mainSequence>
+        <step id="S1">Administrator clicks on surat lapas menu</step>
+        <step id="S2">surat_lapas calls suratpengantar() in welcome</step>
+        <step id="S3">welcome redirects to surat_lapas</step>
+        <step id="S4">surat_lapas redirects to Administrator</step>
+        <step id="S5">Administrator inputs surat number and date</step>
+        <step id="S6">surat_lapas searches for surat using BimbinganController</step>
+        <step id="S7">BimbinganController invokes keteranganNapi() in NapiController</step>
+        <step id="S8">NapiController retrieves napi details using Model_Napi</step>
+        <step id="S9">Model_Napi redirects back through NapiController to surat_lapas and finally to Administrator</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">Surat available</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Surat not available</description>
+            <step id="E1S1">BimbinganController redirects to surat_lapas, surat_lapas then provides message to Administrator</step>
+        </esteps>
+    </errorSteps>
+</useCase>

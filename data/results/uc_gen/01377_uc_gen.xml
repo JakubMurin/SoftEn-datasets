@@ -1,0 +1,27 @@
+<useCase id="UC001">
+   <name>Delete Order</name>
+   <actors>
+      <actor>Employee</actor>
+   </actors>
+   <successEndConditions>
+      <condition>Order successfully deleted</condition>
+   </successEndConditions>
+   <failureEndConditions>
+      <condition>Order deletion failed</condition>
+   </failureEndConditions>
+   <mainSequence>
+      <step id="S1">Employee selects the order to delete</step>
+      <step id="S2">Frontend Interface sends delete request (orderId)</step>
+      <step id="S3">Backend Server queries to delete order from database (orderId)</step>
+      <step id="S4">Database confirms deletion</step>
+      <step id="S5">Backend Server returns success message</step>
+      <step id="S6">Frontend Interface displays success message</step>
+   </mainSequence>
+   <errorSteps>
+      <esteps id="E1" start="S3">
+         <description>Order cannot be deleted</description>
+         <step id="E1S1">Backend Server returns error message</step>
+         <step id="E1S2">Frontend Interface displays error message</step>
+      </esteps>
+   </errorSteps>
+</useCase>

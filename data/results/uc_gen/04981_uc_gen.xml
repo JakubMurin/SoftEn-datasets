@@ -1,0 +1,23 @@
+<useCase id="UC-10104">
+    <name>Einladung von Akteuren innerhalb einer Organisation</name>
+    
+    <description>Die Funktion ermöglicht es einem Benutzer, einen anderen Benutzer in einen Chat-Raum einzuladen.</description>
+    
+    <actors>
+        <actor>Akteur - A in der Rolle User</actor>
+        <actor>Akteur - B in der Rolle User</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Die Benutzer müssen im Messenger-Service angemeldet sein.</precondition>
+    </preconditions>
+    
+    <trigger>Ein Benutzer möchte einen anderen Benutzer in einen Chat-Raum einladen.</trigger>
+    
+    <mainSequence>
+        <step id="S1">Akteur A sucht Akteur B im Nutzerverzeichnis.</step>
+        <step id="S2">Akteur A lädt Akteur B in den Chat-Raum ein und führt Berechtigungsprüfung durch.</step>
+        <step id="S3">Push-Benachrichtigung für Akteur B wird gesendet.</step>
+        <step id="S4">Akteur B bestätigt Einladung und tritt dem Chat-Raum bei. Eine Bestätigung wird an Akteur A gesendet.</step>
+    </mainSequence>
+</useCase>

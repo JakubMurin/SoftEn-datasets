@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Profile Management</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User updates profile</step>
+        <step id="S2">Service processes update</step>
+        <step id="S3">Message Broker notifies profile update</step>
+        <step id="S4">Service informs success to User</step>
+        <step id="S5">User fetches profile from Replica</step>
+        <step id="S6">(Stale) Profile retrieved from Replica</step>
+        <step id="S7">Confusion noted by User</step>
+        <step id="S8">Message Broker reports profile update to Replica</step>
+    </mainSequence>
+</useCase>

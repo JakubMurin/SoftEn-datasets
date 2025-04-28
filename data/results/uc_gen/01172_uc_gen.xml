@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Register User</name>
+    <description>Allow a user to register using email/password or social login</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Authorization Service</actor>
+        <actor>Validation Service</actor>
+        <actor>Email Service</actor>
+        <actor>Data Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User registration completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User registration failed</condition>
+    </failureEndConditions>
+    <trigger>User initiates user registration process</trigger>
+    <mainSequence>
+        <step id="S1">User starts registration by providing email/password or social login</step>
+        <step id="S2">Authorization Service validates email format and password strength</step>
+        <step id="S3">Validation Service returns validation result (valid/invalid)</step>
+        <step id="S4">Authorization Service checks for existing user</step>
+        <step id="S5">Data Service verifies if the user exists</step>
+        <step id="S6">Authorization Service saves initial user data with unverified status</step>
+        <step id="S7">Data Service confirms the data saved successfully</step>
+        <step id="S8">Authorization Service sends confirmation email with a verification link</step>
+        <step id="S9">Email Service sends confirmation email</step>
+        <step id="S10">User confirms email by clicking on the verification link</step>
+        <step id="S11">Email Service confirms email reception to Authorization Service</step>
+        <step id="S12">Authorization Service updates user status to verified</step>
+        <step id="S13">Data Service confirms the status update</step>
+        <step id="S14">Authorization Service notifies the user that registration is completed</step>
+    </mainSequence>
+</useCase>

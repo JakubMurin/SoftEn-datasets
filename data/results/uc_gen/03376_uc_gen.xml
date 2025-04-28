@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Provisioning and Enrolling Gateway</name>
+    <description>Admin provisions and enrolls gateway using Terraform/Ansible and APIs.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Gateway Agent (GA)</actor>
+        <actor>API Server</actor>
+        <actor>Database (DB)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is authenticated and authorized.</precondition>
+    </preconditions>
+    <trigger>Admin needs to provision and enroll a new gateway.</trigger>
+    <mainSequence>
+        <step id="S1">Admin provisions the server through Terraform/Ansible.</step>
+        <step id="S2">If not enrolled:</step>
+        <step id="S3">Admin generates a password and WireGuard private key.</step>
+        <step id="S4">Admin enrolls the gateway by sending an EnrollGateway request to the API Server, providing passhash, WG public key, and public IP.</step>
+        <step id="S5">API Server allocates a private IP and updates the gateway information in the database.</step>
+        <step id="S6">API Server responds to Admin with an EnrollGatewayResponse.</step>
+        <step id="S7">Admin generates a GatewayConfiguration.</step>
+        <step id="S8">Admin establishes an SSH connection to the Gateway Agent (GA).</step>
+        <step id="S9">GA inserts the configuration as an environment variable into a file.</step>
+        <step id="S10">When enrolled:</step>
+        <step id="S11">GA establishes a secure connection with the API Server.</step>
+    </mainSequence>
+</useCase>

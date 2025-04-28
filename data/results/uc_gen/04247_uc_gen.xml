@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Детальна інсталяція платформи</name>
+    <actors>
+        <actor>Адміністратор платформи</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Адміністратор платформи запускає інсталлер</step>
+        <step id="S2">Баш-інсталер активує шифрування etcd</step>
+        <step id="S3">Баш-інсталер активує catalog-source (Redhat репозиторії)</step>
+        <step id="S4">Баш-інсталер встановлює storage в Ceph</step>
+        <step id="S5">Баш-інсталер встановлює logging</step>
+        <step id="S6">Баш-інсталер встановлює service-mesh</step>
+        <step id="S7">Баш-інсталер встановлює control-plane-nexus в Nexus Registry</step>
+        <step id="S8">Баш-інсталер встановлює platform-vault</step>
+        <step id="S9">Баш-інсталер встановлює platform-minio</step>
+        <step id="S10">Баш-інсталер завантажує докер імеджі в Nexus Registry</step>
+        <step id="S11">Баш-інсталер встановлює user-management в Keycloak</step>
+        <step id="S12">Баш-інсталер запускає control-plane-installer</step>
+        <step id="S13">Баш-інсталер завантажує nexus ресурси (*.xsd) в Nexus Registry</step>
+        <step id="S14">Баш-інсталер створює backup-credentials</step>
+        <step id="S15">ControlPlane installer встановлює CP компоненти</step>
+        <step id="S16">CP встановлює jenkins-operator та jenkins</step>
+        <step id="S17">CP встановлює codebase-operator та keycloak-operator</step>
+        <step id="S18">CP встановлює gerrit-operator та gerrit</step>
+        <step id="S19">CP встановлює codebase cluster-mgmt в gerrit</step>
+        <step id="S20">Jenkins створює gitops job для cluster-mgmt</step>
+        <step id="S21">Jenkins запускає gitops job для cluster-mgmt</step>
+        <step id="S22">Jenkins checkout helmfile в gerrit</step>
+        <step id="S23">Jenkins запускає helmfile</step>
+        <step id="S24">Jenkins встановлює інші компоненти</step>
+        <step id="S25">CP створює realm для Control Plane в Keycloak</step>
+        <step id="S26">CP інтегрує всі компоненти з Keycloak</step>
+    </mainSequence>
+</useCase>

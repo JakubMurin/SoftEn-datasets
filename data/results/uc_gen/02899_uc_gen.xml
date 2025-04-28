@@ -1,0 +1,29 @@
+<useCase id="UC-001">
+    <name>Comprar Curso</name>
+    <description>Uso del Flujo Principal y Alternativo para Comprar un Curso</description>
+    <actors>
+        <actor>Estudiante</actor>
+    </actors>
+    <preconditions>
+        <precondition>El estudiante tiene los medios para adquirir un curso</precondition>
+    </preconditions>
+    <failureEndConditions>
+        <condition>Error durante el procesamiento de la compra</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">El Estudiante accede al curso que desea comprar</step>
+        <step id="S2">El View solicita detalles del curso al PurchaseController</step>
+        <step id="S3">El PurchaseController pide al Curso los detalles</step>
+        <step id="S4">El Curso ofrece los detalles al PurchaseController</step>
+        <step id="S5">El PurchaseController muestra los detalles del curso y su precio en la Vista</step>
+        <step id="S6">El View envía los datos de la compra al PurchaseController</step>
+        <step id="S7">El PurchaseController registra la compra en ComprasRepository</step>
+        <step id="S8">ComprasRepository confirma la compra</step>
+        <step id="S9">El PurchaseController muestra la confirmación de la compra realizada en la Vista</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">El Controller muestra mensaje de error en la View</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

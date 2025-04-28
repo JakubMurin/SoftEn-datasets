@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Search Digital Archive</name>
+    <description>As an Archivist, I want to search the digital archive for files matching a keyword.</description>
+    <actors>
+        <actor>Archivist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Archivist is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Archivist receives search results of files matching the keyword.</condition>
+    </successEndConditions>
+    <trigger>The Archivist inputs a keyword to search for files in the digital archive.</trigger>
+    <mainSequence>
+        <step id="S1">Archivist inputs keyword</step>
+        <step id="S2">UI sends search request with keyword to Search Controller</step>
+        <step id="S3">Search Controller queries keyword to Indexing Service</step>
+        <step id="S4">Indexing Service fetches matching files from Digital Archive Database</step>
+        <step id="S5">Indexing Service formats matching files</step>
+        <step id="S6">Results Formatter sends formatted results to Search Controller</step>
+        <step id="S7">Search Controller displays search results to UI</step>
+        <step id="S8">UI shows files matching keyword to Archivist</step>
+    </mainSequence>
+</useCase>

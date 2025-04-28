@@ -1,0 +1,23 @@
+<useCase id="P131_user_register">
+    <name>P132: User Registration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Wallet</actor>
+        <actor>Certified App</actor>
+        <actor>TAS</actor>
+        <actor>Blockchain</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User initiates User Registration Start Request to Certified App.</step>
+        <step id="S2">Certified App prepares ECDH data and sign. If Key Agreement Signature is ON, Wallet signs the request.</step>
+        <step id="S3">Certified App sends ECDH Request to TAS Provider, who verifies and performs ECDH.</step>
+        <step id="S4">Certified App performs ECDH and validates it.</step>
+        <step id="S5">Certified App generates and sends Server Token Creation Request to TAS Provider.</step>
+        <step id="S6">TAS Provider validates the request, generates and stores a server token, and encrypts the response information.</step>
+        <step id="S7">After user KYC, certain identifiers are registered (not covered in this specification).</step>
+        <step id="S8">Certified App sends User Registration Request to Wallet, who validates and creates a DID Document, signs it, and sends it to TAS Provider.</step>
+        <step id="S9">TAS Provider validates various signatures, registers in Blockchain, stores user mapping information, and sends the User Registration Response.</step>
+        <step id="S10">Certified App sends User Registration Completion Request to TAS, which validates the serverToken and closes the transaction effectively.</step>
+        <step id="S11">Certified App receives User Registration Completion Response, completing the process successfully.</step>
+    </mainSequence>
+</useCase>

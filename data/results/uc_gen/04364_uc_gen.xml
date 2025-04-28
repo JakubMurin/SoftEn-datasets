@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Renew Book Loan</name>
+    <description>Allow a borrower to renew a book loan.</description>
+    <actors>
+        <actor>Borrower</actor>
+        <actor>FrontEnd</actor>
+        <actor>LoanController</actor>
+        <actor>LoanService</actor>
+        <actor>LoanRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>The borrower must have an active book loan.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The book loan is successfully renewed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The book loan renewal is not allowed.</condition>
+    </failureEndConditions>
+    <trigger>Borrower requests a book renewal.</trigger>
+    <mainSequence>
+        <step id="S1">Borrower requests a book renewal.</step>
+        <step id="S2">FrontEnd forwards the renewal request to LoanController.</step>
+        <step id="S3">LoanController processes the renewal request.</step>
+        <step id="S4">LoanService checks the renewal eligibility with LoanRepository.</step>
+        <step id="S5">LoanRepository provides the renewal eligibility status to LoanService.</step>
+        <step id="S6">LoanService updates the loan record if renewal is allowed.</step>
+        <step id="S7">LoanRepository confirms the renewal.</step>
+        <step id="S8">LoanService notifies LoanController about the renewal.</step>
+        <step id="S9">LoanController sends the renewal confirmation to FrontEnd.</step>
+        <step id="S10">FrontEnd displays the renewal confirmation message to the Borrower.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Change Marketing Campaign</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UMP</actor>
+        <actor>Retail-UMP</actor>
+        <actor>C</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to change marketing campaign</step>
+        <step id="S2">UMP activates to handle the request</step>
+        <step id="S3">Retail-UMP processes the type of marketing campaign change (add, invalidate, delete, edit)</step>
+        <step id="S4">Retail-UMP synchronously/asynchronously sends a message to C</step>
+        <step id="S4.1">C processes the message and returns</step>
+        <step id="S5">Retail-UMP returns the response</step>
+        <step id="S6">UMP returns the response to the User</step>
+    </mainSequence>
+</useCase>

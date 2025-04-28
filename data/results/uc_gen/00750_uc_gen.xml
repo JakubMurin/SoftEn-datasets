@@ -1,0 +1,35 @@
+<useCase id="UC1">
+  <name>Render User Card</name>
+  <description>Render a User Card component with a button and nested divs.</description>
+  <actors>
+    <actor>User</actor>
+    <actor>Liba</actor>
+    <actor>renderC</actor>
+    <actor>App</actor>
+    <actor>renderLiba</actor>
+    <actor>createChildren</actor>
+    <actor>UserCard</actor>
+  </actors>
+  <preconditions>
+    <precondition>Liba has the capability to create instances.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>User Card component is successfully rendered.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Error occurred during rendering.</condition>
+  </failureEndConditions>
+  <trigger>User triggers the creation of the User Card component.</trigger>
+  <mainSequence>
+    <step id="S1">User creates an instance of the App.</step>
+    <step id="S2">Liba creates an instance (cInstance).</step>
+    <step id="S3">RenderC is invoked with the cInstance.</step>
+    <step id="S4">App calls renderLiba to create a button and UserCard.</step>
+    <step id="S5">RenderLiba successfully creates the button (bElement).</step>
+    <step id="S6">RenderLiba creates a UserCard element.</step>
+    <step id="S7">CreateChildren method is called to create the UserCard component.</step>
+    <step id="S8">Liba creates an instance for the UserCard.</step>
+    <step id="S9">RenderC is invoked with the UserCard instance.</step>
+    <step id="S10">UserCard is successfully created with nested divs.</step>
+  </mainSequence>
+</useCase>

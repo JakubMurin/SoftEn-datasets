@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Data Synchronization</name>
+    <actors>
+        <actor>RepoAdmin</actor>
+        <actor>SymplecticElements</actor>
+        <actor>FedoraConnector</actor>
+        <actor>FedoraInstance</actor>
+        <actor>Hydra</actor>
+    </actors>
+    <preconditions>
+        <precondition>RepoAdmin requests data synchronization</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">SymplecticElements initiates bidirectional communication with FedoraConnector</step>
+        <step id="S2">FedoraConnector verifies access to hidden Fedora instance</step>
+        <step id="S3">FedoraInstance confirms access and provides data</step>
+        <step id="S4">FedoraConnector requests object collection from Hydra</step>
+        <step id="S5">Hydra collects objects from FedoraInstance</step>
+        <step id="S6">Hydra provides the collected objects to FedoraConnector</step>
+        <step id="S7">FedoraConnector updates SymplecticElements with new and modified objects</step>
+        <step id="S8">SymplecticElements notifies RepoAdmin that synchronization is complete</step>
+    </mainSequence>
+</useCase>

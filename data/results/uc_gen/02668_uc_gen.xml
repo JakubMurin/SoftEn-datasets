@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Facing Challenge</name>
+    <description>Actor Attore faces a challenge</description>
+    <actors>
+        <actor>Attore</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Attore faces a challenge by invoking the Command entity.</step>
+        <step id="S2">Command receives input from the actor by executing the receiveInput method.</step>
+        <step id="S3">If the challenge is an enigma, Logic executes the indovinelliTempio method.</step>
+        <step id="S4">Command verifies the result of the enigma challenge.</step>
+        <step id="S5">If the result is correct, Logic executes canAccess and Command navigates to the next room.</step>
+        <step id="S6">If the result is incorrect, Logic instructs Command to navigate back to the previous room.</step>
+        <step id="S7">If the challenge is related to a creature, Logic initiates a fight with the creature.</step>
+        <step id="S8">Command verifies the weapon possessed by the actor.</step>
+        <step id="S9">If the weapon is possessed, Logic executes canAccess and Command moves to the next room.</step>
+        <step id="S10">If the weapon is not possessed, Logic instructs Command to navigate back to the previous room.</step>
+    </mainSequence>
+</useCase>

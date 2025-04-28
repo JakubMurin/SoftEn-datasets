@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Description of obtaining certs from CSR endpoint</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Operator</actor>
+        <actor>CertManagerOperand</actor>
+        <actor>IstioCSROperand</actor>
+        <actor>Proxy</actor>
+        <actor>CA</actor>
+    </actors>
+    <preconditions>
+        <precondition>istio-csr CR is created</precondition>
+    </preconditions>
+    <trigger>User creates istio-csr CR</trigger>
+    <mainSequence>
+        <step id="S1">User creates ISTIO-CSR CR</step>
+        <step id="S2">Operator prepares Istio-CSR manifests based on CR configurations</step>
+        <step id="S3">Operator deploys Istio-CSR resources</step>
+        <step id="S4">ISTIOD requests a certificate from IstioCSROperand</step>
+        <step id="S5">IstioCSROperand creates CSR resource</step>
+        <step id="S6">CertManaherOperand notifies the CSR creation</step>
+        <step id="S7">CA receives and signs the CSR</step>
+        <step id="S8">CertManagerOperand updates CSR with signed certificate</step>
+        <step id="S9">ISTIO-CSROperand is informed about the signed certificate</step>
+        <step id="S10">Istiod handles the CSR response with the signed certificate</step>
+        <step id="S11">Proxy is updated with the validated certificate </step>
+    </mainSequence>
+</useCase>

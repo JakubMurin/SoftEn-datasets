@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View and Edit Advertisements</name>
+    <description>Allows Admin to view and edit advertisements</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Advertisement data is successfully saved</condition>
+    </successEndConditions>
+    <trigger>Admin requests to view and edit advertisements</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to view advertisement list</step>
+        <step id="S2">List advertisements view displays the advertisement list</step>
+        <step id="S3">Admin clicks on the edit button of an advertisement</step>
+        <step id="S4">Redirect to the edit advertisement page</step>
+        <step id="S5">Edit advertisement view displays the advertisement content</step>
+        <step id="S6">Admin edits the advertisement data and clicks save</step>
+        <step id="S7">Information is sent to AdsController</step>
+        <step id="S8">AdsController checks the data and saves it in AdsModel</step>
+        <step id="S9">AdsModel returns the saved data to AdsController</step>
+        <step id="S10">AdsController returns the result to edit advertisement view</step>
+        <step id="S11">Edit advertisement view displays the updated advertisement</step>
+    </mainSequence>
+</useCase>

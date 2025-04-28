@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>User Authentication</name>
+    <description>Authenticate user before processing request</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>UserSecurityService</actor>
+        <actor>ServiceA</actor>
+        <actor>ServiceB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User sends a request to Gateway</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is successfully authenticated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Access denied due to invalid token or missing header</condition>
+    </failureEndConditions>
+    <trigger>User initiates a request</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to Gateway</step>
+        <step id="S2">Gateway validates token with UserSecurityService</step>
+        <step id="S3">UserSecurityService confirms token validity</step>
+        <step id="S4">Gateway forwards request to ServiceA</step>
+        <step id="S5">ServiceA processes request and responds to Gateway</step>
+        <step id="S6">Gateway sends response to User</step>
+    </mainSequence>
+</useCase>

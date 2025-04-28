@@ -1,0 +1,17 @@
+<useCase id="UC1">
+  <name>Create Secret Key from SecureRandom</name>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <preconditions>
+    <precondition>There is a need to generate a secret key using SecureRandom provider</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">User requests a secret key to be generated from SecureRandom</step>
+    <step id="S2">SecretKey object is created</step>
+    <step id="S3">SecureRandom instance is obtained</step>
+    <step id="S4">32 bytes are generated from the SecureRandom instance</step>
+    <step id="S5">Random bytes are converted to Uint8List</step>
+    <step id="S6">Uint8List containing the secret key is returned</step>
+  </mainSequence>
+</useCase>

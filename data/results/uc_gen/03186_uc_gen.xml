@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Read File</name>
+    <description>User reads a file from the datasafe system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to access the file.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully reads the file.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>File access permission denied or file not found.</condition>
+    </failureEndConditions>
+    <trigger>User requests to read a file from the datasafe system.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to read file at /dir1/file.txt</step>
+        <step id="S2">Retrieve the user version directory location from datasafe-metainfo-version.</step>
+        <step id="S3">Get the DFS location of the latest directory (LATEST) from datasafe-directory.</step>
+        <step id="S4">Get the content (LINK) of /dir1/file.txt from datasafe-storage.</step>
+        <step id="S5">Read the file at LINK (FILE) from datasafe-storage.</step>
+        <step id="S6">Retrieve the content of FILE.</step>
+        <step id="S7">Provide the latest data in /dir1/file.txt to the User.</step>
+    </mainSequence>
+</useCase>

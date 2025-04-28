@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>User Opens ble_mailbox_central</name>
+    <description>User requests to open ble_mailbox_central and perform actions with ble_mailbox_perpherial device.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has necessary permissions and ble_mailbox_perpherial device is available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>ble_mailbox_perpherial device responds correctly and user actions are successful.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Permissions are not granted or ble_mailbox_perpherial device doesn't respond properly.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the process by clicking on "Opens ble_mailbox_central" button.</trigger>
+    <mainSequence>
+        <step id="S1">User requests "Scan for devices" from ble_mailbox_central.</step>
+        <step id="S2">ble_mailbox_central scans for available devices.</step>
+        <step id="S3">User selects ble_mailbox_perpherial.</step>
+        <step id="S4">ble_mailbox_central requests connection to ble_mailbox_perpherial.</step>
+        <step id="S5">Handshaking process between ble_mailbox_central and ble_mailbox_perpherial is performed.</step>
+        <step id="S6">ble_mailbox_central requests the state of the locker from ble_mailbox_perpherial.</step>
+        <step id="S7">User signs in the application.</step>
+        <step id="S8">ble_mailbox_central signs in to ble_mailbox_perpherial.</step>
+        <step id="S9">ble_mailbox_perpherial authenticates the user.</step>
+        <step id="S10">ble_mailbox_central requests the state of the authentication from ble_mailbox_perpherial.</step>
+        <step id="S11">User requests to change the state of the locker.</step>
+        <step id="S12">ble_mailbox_central requests to change the state of the locker from ble_mailbox_perpherial.</step>
+        <step id="S13">ble_mailbox_perpherial changes the state of the locker.</step>
+        <step id="S14">ble_mailbox_central requests the state of the locker from ble_mailbox_perpherial.</step>
+    </mainSequence>
+</useCase>

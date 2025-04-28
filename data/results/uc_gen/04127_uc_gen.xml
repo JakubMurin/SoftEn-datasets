@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Access Inventory Management</name>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Chef accesses inventory management in the system.</step>
+        <step id="S2">System checks the current backup food stock in InventoryDB.</step>
+        <step id="S3">InventoryDB returns the current stock levels to the system.</step>
+        <step id="S4">System shows the current backup food list with stock levels to the Chef.</step>
+        <step id="S5">Chef identifies items for renewal.</step>
+        <step id="S6">Chef updates the backup food list in InventoryDB.</step>
+        <step id="S7">InventoryDB confirms the updated list to the system.</step>
+        <step id="S8">System displays confirmation of the renewed list to the Chef.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Chef initiates a restock request for items.</step>
+            <step id="A1S2">System places an order for restock with the Supplier.</step>
+            <step id="A1S3">Supplier confirms the restock order to the system.</step>
+            <step id="A1S4">System updates pending deliveries in InventoryDB.</step>
+            <step id="A1S5">InventoryDB confirms the update to the system.</step>
+            <step id="A1S6">System displays restock order confirmation to the Chef.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

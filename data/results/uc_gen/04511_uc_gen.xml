@@ -1,0 +1,28 @@
+<useCase id="123456">
+	<name>Cointag Creation and Reward Distribution</name>
+	<description>Use case for creating Cointag NFT and distributing rewards to creator</description>
+	<actors>
+		<actor>Creator</actor>
+		<actor>Caller</actor>
+		<actor>1155</actor>
+		<actor>Minter</actor>
+		<actor>Factory</actor>
+		<actor>Cointag</actor>
+		<actor>ProtocolRewards</actor>
+		<actor>UniswapV3Pool</actor>
+		<actor>ERC20</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Creator creates Cointag through Factory</step>
+		<step id="S2">Creator sets reward recipient for Cointag</step>
+		<step id="S3">Caller initiates minting of a new Post</step>
+		<step id="S4">Minter retrieves creator reward recipient</step>
+		<step id="S5">Minter deposits rewards into ProtocolRewards</step>
+		<step id="S6">Caller triggers rewards distribution in Cointag</step>
+		<step id="S7">Cointag withdraws ETH rewards from ProtocolRewards</step>
+		<step id="S8">Cointag calculates split between creator and buyburn amounts</step>
+		<step id="S9">Cointag wraps ETH as WETH and swaps for ERC20 tokens</step>
+		<step id="S10">Cointag deposits remaining ETH rewards into ProtocolRewards</step>
+		<step id="S11">Creator withdraws ETH rewards from ProtocolRewards</step>
+	</mainSequence>
+</useCase>

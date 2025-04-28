@@ -1,0 +1,23 @@
+<useCase id="0">
+    <name>User initiates App rendering by creating and rendering new UserCard</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User creates cInstance in Liba (.create(App))</step>
+        <step id="S2">Instance of cInstance is created (in .create() function)</step>
+        <step id="S3">Liba forwards cInstance to renderC</step>
+        <step id="S4">renderC takes cInstance and runs its logic (parameters-flow-payload details not described)</step>
+        <step id="S5">App sends props and specifies renderLiba component</step>
+        <step id="S6">App generates 'button' element</step>
+        <step id="S7">App creates UserCard component and the process starts</step>
+        <step id="S8">UserCard ready to render in.render-cycle</step>
+        <step id="S9">'div' elements are generated inside the UserCard component</step>
+    </mainSequence>
+</useCase>

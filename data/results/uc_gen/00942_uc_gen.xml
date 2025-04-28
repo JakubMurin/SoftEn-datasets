@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Map Items to Target Collection</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Interface</actor>
+        <actor>Mapping Controller</actor>
+        <actor>Collections Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator has selected item(s) for mapping</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Items successfully mapped to target collection</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid items or collections for mapping</condition>
+    </failureEndConditions>
+    <trigger>Initiate mapping request</trigger>
+    <mainSequence>
+        <step id="S1">Curator selects item(s) for mapping</step>
+        <step id="S2">UI Interface initiates mapping request with itemIDs, sourceCollection, and targetCollection</step>
+        <step id="S3">Mapping Controller validates itemIDs and collections</step>
+        <step id="S4">Collections Database responds with validation result</step>
+        <step id="S5">Mapping Controller maps item(s) to target collection</step>
+        <step id="S6">Collections Database confirms mapping</step>
+        <step id="S7">Mapping Controller displays mapping success message on UI</step>
+        <step id="S8">Curator confirms and closes the mapping process</step>
+    </mainSequence>
+</useCase>

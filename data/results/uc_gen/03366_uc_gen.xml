@@ -1,0 +1,27 @@
+<useCase id="ScannerJob">
+    <name>Perform Scanner Job</name>
+    <actors>
+        <actor>Admin User</actor>
+        <actor>Admin</actor>
+        <actor>Explorer</actor>
+        <actor>Worker</actor>
+        <actor>Exporter</actor>
+        <actor>Event Collector</actor>
+        <actor>Result Collector</actor>
+        <actor>Report User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin User starts Scanner Job</step>
+        <step id="S2">Admin sends scan specs to RabbitMQ to start job</step>
+        <step id="S3">Job started successfully</step>
+        <step id="S4">Explorer consumes scan specs from RabbitMQ</step>
+        <step id="S5">Worker processes messages from RabbitMQ</step>
+        <step id="S6">Exporter handles messages</step>
+        <step id="S7">Checkup Collector updates scheduled checkup</step>
+        <step id="S8">Status Collector updates scanner status</step>
+        <step id="S9">Event Collector updates document report</step>
+        <step id="S10">Result Collector updates or creates document report</step>
+        <step id="S11">Report User checks for matches</step>
+        <step id="S12">Report presents matches to the user</step>
+    </mainSequence>
+</useCase>

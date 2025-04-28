@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Get Developer Issues</name>
+    <description>Retrieve a list of issues assigned to a developer for a specific project.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>System</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The developer and project IDs are valid.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of developer issues is successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>Developer initiates the request to retrieve their assigned issues for a project.</trigger>
+    <mainSequence>
+        <step id="S1">Developer requests to get developer issues with specified signId and projectId.</step>
+        <step id="S2">System validates the developer's signId.</step>
+        <step id="S3">System validates the project's projectId.</step>
+        <step id="S4">System checks if the developer is a member of the specified project.</step>
+        <step id="S5">System retrieves the developer's assigned issues for the project.</step>
+        <step id="S6">System returns the list of issues to the developer.</step>
+    </mainSequence>
+</useCase>

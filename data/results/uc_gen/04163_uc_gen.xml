@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Battle Requests</name>
+    <description>Allow players to initiate and join battles.</description>
+    <actors>
+        <actor>Client1</actor>
+        <actor>Client2</actor>
+        <actor>Server</actor>
+        <actor>BattleController</actor>
+        <actor>BattleService</actor>
+        <actor>Battle</actor>
+    </actors>
+    <preconditions>
+        <precondition>Players have sent battle requests to the server.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Players received responses from the server.</condition>
+    </successEndConditions>
+    <trigger>Clients send battle requests to the server.</trigger>
+    <mainSequence>
+        <step id="S1">Server receives the battle request from Client1.</step>
+        <step id="S2">BattleController processes the request.</step>
+        <step id="S3">Server receives a battle request from Client2.</step>
+        <step id="S4">BattleController finds or creates a battle.</step>
+        <step id="S5">BattleController communicates with BattleService to handle the process.</step>
+        <step id="S6">BattleService creates a new battle.</step>
+        <step id="S7">BattleController finds an open battle.</step>
+        <step id="S8">BattleService joins the battle.</step>
+        <step id="S9">Battle starts.</step>
+        <step id="S10">Battle ends.</step>
+    </mainSequence>
+</useCase>

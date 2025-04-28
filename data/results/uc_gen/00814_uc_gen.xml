@@ -1,0 +1,40 @@
+<useCase id="UC1">
+  <name>Offer a service on behalf of a delegator</name>
+  
+  <actors>
+    <actor>Administrator</actor>
+    <actor>Management UI</actor>
+    <actor>Inway</actor>
+    <actor>Management API</actor>
+    <actor>Management database</actor>
+    <actor>Directory API</actor>
+    <actor>Directory DB</actor>
+  </actors>
+  
+  <preconditions>
+    <precondition>Administrator adds service using an order via Management UI</precondition>
+  </preconditions>
+  
+  <mainSequence>
+    <step id="S1">Administrator adds service using an order via Management UI</step>
+    <step id="S2">Management UI forwards request to Management API</step>
+    <step id="S3">Management API checks if service name matches with the service name in the order</step>
+    <step id="S4">Management API stores the service in the Management database</step>
+    <step id="S5">Inway requests configuration from Management API</step>
+    <step id="S6">Management API retrieves services and orders for Inway from the Management database</step>
+    <step id="S7">Management API returns services and orders to Inway</step>
+    <step id="S8">Inway returns configuration to Saas Organization</step>
+    <step id="S9">Inway requests claim for publishing the service from Inway in Municipality</step>
+    <step id="S10">Inway in Municipality retrieves claim for publishing the service from Management API in Municipality</step>
+    <step id="S11">Management API in Municipality gets order from Management database in Municipality</step>
+    <step id="S12">Management API in Municipality validates the order</step>
+    <step id="S13">Management API in Municipality creates a publication-claim</step>
+    <step id="S14">Management API in Municipality returns the publication-claim to Inway in Municipality</step>
+    <step id="S15">Inway in Municipality returns the publication-claim to Saas Organization</step>
+    <step id="S16">Inway in Saas Organization stores the publication-claim in memory</step>
+    <step id="S17">Inway in Saas Organization registers the service with the publication-claim in Directory API</step>
+    <step id="S18">Directory API retrieves the public key of the municipality from Inway in Municipality</step>
+    <step id="S19">Directory API validates the publication-claim</step>
+    <step id="S20">Directory API registers the service in Directory DB</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="UC1">
+  <name>Remove Comment</name>
+  <actors>
+    <actor>TEST</actor>
+  </actors>
+  <preconditions>
+    <precondition>System receives a request to remove a comment.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Comment is successfully removed.</condition>
+  </successEndConditions>
+  <trigger>TEST triggers the removal of a comment.</trigger>
+  <mainSequence>
+    <step id="S1">TEST initiates the removal of a comment by calling removeComment(signId, commentId) on System.</step>
+    <step id="S2">System validates the member with the provided signId.</step>
+    <step id="S3">System validates the comment with the provided commentId.</step>
+    <step id="S4">System checks if the member with signId is the writer of the comment with commentId.</step>
+    <step id="S5">System removes the comment from the database.</step>
+    <step id="S6">System sends a confirmation message "삭제되었습니다." to TEST.</step>
+  </mainSequence>
+</useCase>

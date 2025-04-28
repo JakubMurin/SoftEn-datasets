@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+        <actor>JobOpeningRepository</actor>
+        <actor>FollowUpServerProxy</actor>
+        <actor>ClientSocket</actor>
+        <actor>FollowUpServer</actor>
+        <actor>FollowUpMessageParser</actor>
+        <actor>ResultEmailRequest</actor>
+        <actor>CandidateSelectionService</actor>
+        <actor>EmailService</actor>
+        <actor>Notification</actor>
+        <actor>NotificationRepository</actor>
+    </actors>
+    <trigger>CustomerManager asks to display job openings</trigger>
+    <mainSequence>
+        <step id="S1">UI displays job openings</step>
+        <step id="S2">UI selects job opening to publish results</step>
+        <step id="S3">Result email requests are sent to selected candidates</step>
+        <step id="S4">Emails are successfully sent to selected candidates</step>
+    </mainSequence>
+</useCase>

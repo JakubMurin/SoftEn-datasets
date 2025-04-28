@@ -1,0 +1,18 @@
+<useCase id="1">
+ <name>Add New Material Information</name>
+ <actors>
+  <actor>Manager</actor>
+ </actors>
+ <mainSequence>
+  <step id="S1">Manager adds new material information</step>
+  <step id="S2">ManagerPage invokes ManagerMaterialController to add new material information by calling addMaterial method with newMaterialInfo parameter</step>
+  <step id="S3">ManagerMaterialController calls MaterialService to add new material information by invoking addMaterial method with newMaterialInfo parameter</step>
+  <step id="S4">MaterialService requests MaterialRepository to save new material information by calling save method with newMaterialInfo parameter</step>
+  <step id="S5">MaterialRepository executes insert query in the Database to save new material information</step>
+  <step id="S6">Database confirms successful insertion of new material information</step>
+  <step id="S7">MaterialRepository confirms successful insert to MaterialService</step>
+  <step id="S8">MaterialService confirms successful insert to ManagerMaterialController</step>
+  <step id="S9">ManagerMaterialController confirms successful insert to ManagerPage</step>
+  <step id="S10">ManagerPage displays confirmation of successful addition</step>
+ </mainSequence>
+</useCase>

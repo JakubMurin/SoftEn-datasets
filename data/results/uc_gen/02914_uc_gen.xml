@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Course Payment</name>
+    <description>Allows a user to pay for a course using Alipay.</description>
+    <actors>
+        <actor>user</actor>
+        <actor>front</actor>
+        <actor>learning_service</actor>
+        <actor>order_service</actor>
+        <actor>order_db</actor>
+        <actor>alipay</actor>
+        <actor>mq</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on the payment option.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Payment is successfully processed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Payment process fails.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the payment process.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the payment option.</step>
+        <step id="S2">Front-end adds course selection record.</step>
+        <step id="S3">Front-end sends order information to order service for order creation.</step>
+        <step id="S4">Order service creates product order, order details, and payment transaction record in the order database.</step>
+        <step id="S5">Front-end receives payment record ID and generates a payment QR code.</step>
+        <step id="S6">User scans the Alipay QR code to initiate payment.</step>
+        <step id="S7">Order service checks payment status and confirms successful payment to the front-end.</step>
+        <step id="S8">Front-end reminds the user not to pay again if payment was successful.</step>
+        <step id="S9">Order service constructs payment request parameters and sends a payment request via Alipay SDK.</step>
+        <step id="S10">User enters password for payment authentication.</step>
+        <step id="S11">User clicks to complete the payment and requests payment status update.</step>
+        <step id="S12">Order service queries Alipay for payment status.</step>
+        <step id="S13">Order service updates order and payment status based on payment callback results.</step>
+        <step id="S14">Order service sends course payment success message to message queue.</step>
+        <step id="S15">Learning service receives payment notification and adds the course to the user's course list in the learning database.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Complete Online Payment Process</name>
+    
+    <actors>
+        <actor>用户</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Platform initiates order and starts payment process.</step>
+        <step id="S2">Platform creates platform order.</step>
+        <step id="S3">Platform requests order creation from payment system.</step>
+        <step id="S4">Payment system generates pre-order.</step>
+        <step id="S5">Payment system sends back pre-order identifier.</step>
+        <step id="S6">Platform generates payment information with signature.</step>
+        <step id="S7">User initiates payment.</step>
+        <step id="S8">User triggers WeChat payment.</step>
+        <step id="S9">WeChat client sends payment request to payment system.</step>
+        <step id="S10">Payment system verifies payment authorization.</step>
+        <step id="S11">Payment system returns payment authorization to user.</step>
+        <step id="S12">User confirms payment and inputs password.</step>
+        <step id="S13">Payment system submits authorization.</step>
+        <step id="S14">Payment system verifies authorization.</step>
+        <step id="S15">Payment system sends platform payment notification async.</step>
+        <step id="S16">Platform saves payment notification.</step>
+        <step id="S17">Platform sends success acknowledgment to payment system.</step>
+        <step id="S18">Payment system returns payment result and sends WeChat message notification to user.</step>
+        <step id="S19">User queries payment status.</step>
+        <step id="S20">Platform queries payment result using check order interface.</step>
+        <step id="S21">Payment system returns payment result to platform.</step>
+        <step id="S22">Payment system displays payment information to user in WeChat client.</step>
+    </mainSequence>
+</useCase>

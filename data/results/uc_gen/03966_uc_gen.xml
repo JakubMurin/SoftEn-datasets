@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Access Authorization</name>
+    <description>Verify user authorization to access specific endpoints</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Servlet</actor>
+        <actor>ContainerRequestFilter</actor>
+        <actor>AuthorizationCheck</actor>
+        <actor>JWT Validator</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client request for accessing an endpoint is received</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client successfully receives a response from the endpoint</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client request is rejected or an error response is sent</condition>
+    </failureEndConditions>
+    <trigger>Client sending a request to access an endpoint</trigger>
+    <mainSequence>
+        <step id="S1">Client sends a request to access a specific endpoint</step>
+        <step id="S2">Servlet receives the request and forwards it to the ContainerRequestFilter for preprocessing</step>
+        <step id="S3">ContainerRequestFilter checks if the client has access based on the endpoint role</step>
+        <step id="S4">If the endpoint allows guest role only, access is granted and the endpoint operations are performed</step>
+        <step id="S5">If the endpoint requires an authorized role, the authorization check process is initiated</step>
+        <step id="S6">AuthorizationCheck checks the validity of the session principal and the expiration of authorization</step>
+        <step id="S7">If the session is valid, the endpoint operations are performed based on the roles assigned</step>
+        <step id="S8">If the session is invalid or authorization has expired, various authorization checks are performed based on different scenarios</step>
+        <step id="S9">AuthorizationCheck validates the JWT provided in the Authorization header</step>
+        <step id="S10">If the JWT is valid, the database is queried for user roles based on the JWT subject</step>
+        <step id="S11">If the JWT is invalid, the client request is not authorized and an error response is sent</step>
+        <step id="S12">The SecurityContext with Principal and normalized OpenDCS Roles is checked against the endpoint roles</step>
+        <step id="S13">If the roles are valid, the client request is authorized and endpoint operations are performed</step>
+        <step id="S14">If the roles are invalid, access is rejected and an error response is sent</step>
+    </mainSequence>
+</useCase>

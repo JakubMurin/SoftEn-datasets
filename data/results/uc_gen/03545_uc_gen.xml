@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Enterprise Admission Process</name>
+    <description>Use case for admitting enterprises as recyclers</description>
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Agency</actor>
+    </actors>
+    <preconditions>
+        <precondition>Enterprise in approval process</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Enterprise admission approved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Enterprise admission rejected</condition>
+    </failureEndConditions>
+    <trigger>Enterprise submits admission application</trigger>
+    <mainSequence>
+        <step id="S1">Enterprise submits data</step>
+        <step id="S2">Controller processes admission application</step>
+        <step id="S3">EntService uploads files</step>
+        <step id="S4">EntService saves file information</step>
+        <step id="S5">Controller returns result</step>
+        <step id="S6">Enterprise receives result</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Regulatory Agency queries unapproved enterprise list</step>
+            <step id="A1S2">Regulatory Agency approves enterprise admission</step>
+            <step id="A1S3">EntService deploys admission contract</step>
+            <step id="A1S4">EntService updates information</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Regulatory Agency rejects enterprise admission</description>
+            <step id="E1S1">EntService updates information</step>
+        </esteps>
+    </errorSteps>
+</useCase>

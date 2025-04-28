@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>OpenShift LightSpeed Service</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Lightspeed Service</actor>
+        <actor>Redactor</actor>
+        <actor>Question Validator</actor>
+        <actor>Document Summarizer</actor>
+        <actor>Conversation cache</actor>
+        <actor>Vector database</actor>
+        <actor>LLM</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User asks a question</step>
+        <step id="S2">Redactor redacts the query</step>
+        <step id="S3">Retrieve conversation history</step>
+        <step id="S4">Retrieve attachments from request</step>
+        <step id="S5">Redact attachments</step>
+        <step id="S6">Validate question</step>
+        <step id="S7">Summarize document</step>
+        <step id="S8">Read vector DB (RAG)</step>
+        <step id="S9">Query LLM</step>
+        <step id="S10">Answer generation</step>
+    </mainSequence>
+</useCase>

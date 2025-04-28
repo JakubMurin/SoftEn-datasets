@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Editing Metadata</name>
+    <actors>
+        <actor>Researcher</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher is logged in</precondition>
+        <precondition>Researcher navigated to My Deposited Items</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher successfully updates metadata</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Editing permission denied</condition>
+    </failureEndConditions>
+    <trigger>Researcher selects an item to edit</trigger>
+    <mainSequence>
+        <step id="S1">Researcher logs in</step>
+        <step id="S2">Researcher authenticates successfully</step>
+        <step id="S3">Researcher navigates to My Deposited Items</step>
+        <step id="S4">Repository fetches deposited items for Researcher</step>
+        <step id="S5">Deposited items are displayed to Researcher</step>
+        <step id="S6">Researcher selects an item to edit</step>
+        <step id="S7">Repository checks editing permission for Researcher</step>
+        <step id="S8">Editing permission granted to Researcher</step>
+        <step id="S9">Researcher edits metadata fields</step>
+        <step id="S10">Repository updates metadata for the selected item</step>
+        <step id="S11">Changes saved successfully</step>
+        <step id="S12">Researcher receives confirmation message</step>
+    </mainSequence>
+</useCase>

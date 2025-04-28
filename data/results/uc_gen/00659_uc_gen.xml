@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Verify and Execute Block</name>
+    <actors>
+        <actor>Rollup</actor>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>Rollup has received the block and leaf with proof of consensus from Espresso Node</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Rollup successfully verifies the proof of consensus</condition>
+        <condition>Rollup successfully executes the block</condition>
+    </successEndConditions>
+    <trigger>Rollup receives the block and leaf with proof of consensus from Espresso Node</trigger>
+    <mainSequence>
+        <step id="S1">Rollup verifies the proof of consensus</step>
+        <step id="S2">Rollup executes the block</step>
+        <step id="S3">Rollup updates the state and notifies Client</step>
+    </mainSequence>
+</useCase>

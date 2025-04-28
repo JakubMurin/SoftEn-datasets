@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>List Questions</name>
+    <description>As a Browser, I want to list questions for a specific survey.</description>
+    <actors>
+        <actor>Browser</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Browser sends a POST request to /api/listQuestions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Browser receives a HTTP/1.1 200 OK response.</condition>
+    </successEndConditions>
+    <trigger>HttpServer receives a POST request to /api/listQuestions.</trigger>
+    <mainSequence>
+        <step id="S1">HttpServer forwards the request to controllers.</step>
+        <step id="S2">controllers call ListQuestionsController to handle the request.</step>
+        <step id="S3">ListQuestionsController parses the surveyId from the request.</step>
+        <step id="S4">ListQuestionsController retrieves questions from QuestionDao for the surveyId.</step>
+        <step id="S5">ListQuestionsController retrieves options from OptionDao for each question.</step>
+        <step id="S6">QuestionDao queries QUESTION_DB for questions related to the surveyId.</step>
+        <step id="S7">OptionDao queries QUESTION_DB for options related to each question.</step>
+        <step id="S8">ListQuestionsController responds with OK 200.</step>
+        <step id="S9">HttpServer writes the response to the Browser.</step>
+    </mainSequence>
+</useCase>

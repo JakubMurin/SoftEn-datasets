@@ -1,0 +1,46 @@
+<useCase id="1">
+  <name>User Login</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Login Page</actor>
+    <actor>Auth Controller</actor>
+    <actor>Auth Service</actor>
+    <actor>User Repository</actor>
+  </actors>
+  <preconditions>
+    <precondition>User enters username and password on the login page</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>User successfully logs in and views the home page</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>User fails to log in due to incorrect credentials</condition>
+  </failureEndConditions>
+  <trigger>User submits the login form</trigger>
+  <mainSequence>
+    <step id="S1">User enters username and password on the login page</step>
+    <step id="S2">User submits the login form</step>
+    <step id="S3">Login page sends HTTP POST request to Auth Controller with credentials</step>
+    <step id="S4">Auth Controller authenticates the credentials using Auth Service</step>
+    <step id="S5">Auth Service checks the user credentials in User Repository</step>
+    <step id="S6">User Repository queries the database for user credentials</step>
+    <step id="S7">User Repository receives user details from the database</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S7">
+      <step id="A1S1">User Repository returns an error</step>
+      <step id="A1S2">Auth Service returns an error</step>
+      <step id="A1S3">Auth Controller displays an error message on the login page</step>
+      <step id="A1S4">Login Page displays an error message to the User</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S7">
+      <description>User Repository returns an error and login process fails</description>
+      <step id="E1S1">Auth Service returns user details</step>
+      <step id="E1S2">Auth Controller redirects to home page</step>
+      <step id="E1S3">Login Page loads the home page</step>
+      <step id="E1S4">Home Page is displayed to the User</step>
+    </esteps>
+  </errorSteps>
+</useCase>

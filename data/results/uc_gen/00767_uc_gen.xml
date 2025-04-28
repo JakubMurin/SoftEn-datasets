@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Adding a New User</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>FrontEnd</actor>
+        <actor>MD</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is authenticated and has permission to add a new user.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New user successfully added.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while adding the new user.</condition>
+    </failureEndConditions>
+    <trigger>Admin requests to add a new user.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests data for the new user from FrontEnd.</step>
+        <step id="S2">FrontEnd sends data for new user to Admin.</step>
+        <step id="S3">Admin sends data for new user and token to FrontEnd.</step>
+        <step id="S4">FrontEnd sends data for new user and token of Admin to MD.</step>
+        <step id="S5">MD checks token of Admin.</step>
+        <step id="S6">MD validates data for new user.</step>
+        <step id="S7">MD adds new user.</step>
+        <step id="S8">MD sends message of success to FrontEnd.</step>
+        <step id="S9">FrontEnd shows success message to Admin.</step>
+    </mainSequence>
+</useCase>

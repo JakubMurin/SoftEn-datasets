@@ -1,0 +1,32 @@
+<useCase id="BattleUseCase">
+    <name>Battle between PlayerA and PlayerB</name>
+
+    <actors>
+        <actor>PlayerA</actor>
+        <actor>PlayerB</actor>
+    </actors>
+
+    <preconditions>
+        <precondition>PlayerA and PlayerB initiate a battle request</precondition>
+    </preconditions>
+
+    <mainSequence>
+        <step id="S1">PlayerA posts a battle request</step>
+        <step id="S2">PlayerA waits for the battle to start</step>
+        <step id="S3">PlayerB posts a battle request</step>
+        <step id="S4">PlayerB engages in the battle with PlayerA</step>
+    </mainSequence>
+
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">BattleController orchestrates the battle between PlayerA and PlayerB</step>
+        </asteps>
+    </alternativeSteps>
+
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Battle could not be completed successfully</description>
+            <step id="E1S1">Notify players that the battle encountered errors</step>
+        </esteps>
+    </errorSteps>
+</useCase>

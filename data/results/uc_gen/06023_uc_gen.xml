@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Retrieve Issue Details</name>
+    <actors>
+        <actor>Project Leader</actor>
+        <actor>System</actor>
+        <actor>Database Management System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Project Leader has signed in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Issue details are successfully retrieved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Issue or member validation fails</condition>
+    </failureEndConditions>
+    <trigger>Project Leader requests to get details of an issue</trigger>
+    <mainSequence>
+        <step id="S1">Project Leader requests to get details of an issue</step>
+        <step id="S2">System validates the Project Leader</step>
+        <step id="S3">System validates the requested Issue</step>
+        <step id="S4">System validates the Project of the Issue</step>
+        <step id="S5">System sends IssueResponseDto to the Project Leader</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Implement Middleware and Router</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>App</actor>
+        <actor>JSONParser</actor>
+        <actor>URLEncodedParser</actor>
+        <actor>Router</actor>
+    </actors>
+    <preconditions>
+        <precondition>App is running and ready to accept middleware</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Middleware and Router successfully implemented</condition>
+    </successEndConditions>
+    <trigger>Client sends requests to the App</trigger>
+    <mainSequence>
+        <step id="S1">Client instructs App to use JSONParser middleware</step>
+        <step id="S2">App registers JSONParser middleware</step>
+        <step id="S3">Client instructs App to use URLEncodedParser middleware</step>
+        <step id="S4">App registers URLEncodedParser middleware</step>
+        <step id="S5">Client instructs App to use Router</step>
+        <step id="S6">App registers Router</step>
+    </mainSequence>
+</useCase>

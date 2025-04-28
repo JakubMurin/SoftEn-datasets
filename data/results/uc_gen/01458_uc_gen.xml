@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Create and send credentials</name>
+    <actors>
+        <actor>Faber</actor>
+        <actor>Acme</actor>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>Faber, Acme, and Alice have established communication channels</precondition>
+        <precondition>Faber has created a DID and SCHEMA</precondition>
+        <precondition>Acme has stored Diem Identifier</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Faber has successfully sent credentials to Alice</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure to communicate or transfer credentials</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Faber requests to create a DID with Faber Indy Wallet</step>
+        <step id="S2">Creation of Faber DID using ED25519 in Faber AnonCreds</step>
+        <step id="S3">Storing Faber DID in Faber Indy Wallet</step>
+        <step id="S4">Faber creates SCHEMA using Faber DID</step>
+        <step id="S5">Storing SCHEMA in Faber Indy Wallet</step>
+        <step id="S6">Faber requests the creation of Diem Identifier and ED25519 keys in Faber Python Diem</step>
+        <step id="S7">Storing Diem Identifier in Faber Mini Wallet</step>
+        <step id="S8">Publishing identifier to Diem Ledger</step>
+        <step id="S9">Creating payment transaction for Trusted Institution in Faber Python Diem</step>
+        <step id="S10">Sending payment transaction to ledger with SCHEMA in Diem Ledger</step>
+        <step id="S11">Accepting or denying payment in Acme</step>
+        <step id="S12">Pulling SCHEMA from Acme payments on ledger in Faber</step>
+        <step id="S13">Creating CRED_DEF using Faber DID and SCHEMA pulled in Faber AnonCreds</step>
+        <step id="S14">Storing CRED_DEF in Faber Indy Wallet</step>
+        <step id="S15">Sending payment transaction to ledger with CRED_DEF in Diem Ledger</step>
+        <step id="S16">Accepting or denying payment in Acme</step>
+        <step id="S17">Creating master secret in Alice AnonCreds</step>
+        <step id="S18">Creating and sending credential offer in Faber</step>
+        <step id="S19">Sending credential offer to Alice</step>
+        <step id="S20">Creating credential request in Alice AnonCreds</step>
+        <step id="S21">Sending credential request to Faber</step>
+        <step id="S22">Creating credential with credential attributes in Faber</step>
+        <step id="S23">Sending credential to Alice</step>
+        <step id="S24">Storing credential in Alice Indy Wallet</step>
+    </mainSequence>
+</useCase>

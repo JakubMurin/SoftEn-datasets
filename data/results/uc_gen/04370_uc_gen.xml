@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View Application List</name>
+    <description>User can view a list of applications available.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and navigated to the Applications page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>List of applications is successfully displayed to the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure to display list of applications.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User requests to view list of applications.</step>
+        <step id="S2">Applications Page fetches the list of applications from the Backend Server.</step>
+        <step id="S3">Backend Server queries the Database for the list of applications.</step>
+        <step id="S4">Database returns the list of applications to Backend Server.</step>
+        <step id="S5">Backend Server returns the list of applications to Applications Page.</step>
+        <step id="S6">Applications Page displays the list of applications to the User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Login Process</name>
+    <description>The use case involves the process of logging in to the system.</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user interface is accessible.</precondition>
+        <precondition>The user has valid login credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user fails to log in due to invalid credentials.</condition>
+    </failureEndConditions>
+    <trigger>User enters login credentials on the UI.</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials on the UI.</step>
+        <step id="S2">UI sends a POST request to the AuthRouter with login credentials.</step>
+        <step id="S3">AuthRouter invokes login() method in AuthController.</step>
+        <step id="S4">AuthController calls validateCredentials() in AuthRepository.</step>
+        <step id="S5">AuthRepository fetches user data by username from UserModel.</step>
+        <step id="S6">UserModel queries user data by username from the Database.</step>
+        <step id="S7">User data is sent back to AuthRepository by Database.</step>
+        <step id="S8">User data is validated by AuthRepository and sent back to AuthController.</step>
+        <step id="S9">AuthController checks if the password matches.</step>
+        <step id="S10">If login is successful, success response is sent back to UI. Otherwise, an error response is sent back to UI.</step>
+    </mainSequence>
+</useCase>

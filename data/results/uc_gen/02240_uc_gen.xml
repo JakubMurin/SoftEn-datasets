@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Ajouter un groupe</name>
+    <description>Permet à l'utilisateur d'ajouter un nouveau groupe.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Aucun groupe avec le même nom n'existe déjà.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Le groupe est ajouté dans la liste des groupes.</condition>
+    </successEndConditions>
+    <trigger>Utilisateur appuie sur le bouton "+" pour ajouter un groupe.</trigger>
+    <mainSequence>
+        <step id="S1">Utilisateur appuie sur "+" pour ajouter un groupe.</step>
+        <step id="S2">Vérifier si le groupe est déjà créé.</step>
+        <step id="S3">Récupérer le groupe (nom du groupe).</step>
+        <step id="S4">Créer un nouveau groupe si le groupe n'existe pas.</step>
+        <step id="S5">Ajouter le groupe créé dans la base de données.</step>
+        <step id="S6">Afficher un message de confirmation à l'utilisateur.</step>
+    </mainSequence>
+</useCase>

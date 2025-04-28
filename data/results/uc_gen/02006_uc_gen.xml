@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Fault Management Process</name>
+    <description>A system for managing fault reports</description>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system must receive a POST request for a fault management job</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The fault management job is completed and a fault management report is generated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The fault management job fails and a report cannot be generated</condition>
+    </failureEndConditions>
+    <trigger>POST request for a fault management process is received</trigger>
+    <mainSequence>
+        <step id="S1">Buyer/Client sends a POST request for a fault management job</step>
+        <step id="S2">Fault Management Job is created</step>
+        <step id="S3">Fault Management Job enters inProgress state</step>
+        <step id="S4">Data for the job is generated</step>
+        <step id="S5">Fault Management Report is created</step>
+        <step id="S6">Fault Management Report enters inProgress state</step>
+        <step id="S7">Data for the report is collected</step>
+        <step id="S8">Fault Management Report is completed</step>
+        <step id="S9">Fault management process completes successfully</step>
+        <step id="S10">Buyer/Client requests the fault management report</step>
+        <step id="S11">Fault Management Report content is sent to Buyer/Client</step>
+    </mainSequence>
+</useCase>

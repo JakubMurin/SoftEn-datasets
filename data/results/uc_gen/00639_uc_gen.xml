@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View Absences List</name>
+    <actors>
+        <actor>Employee</actor>
+        <actor>System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Employee is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of absences is successfully retrieved from the database</condition>
+    </successEndConditions>
+    <trigger>Employee requests to view their absences list</trigger>
+    <mainSequence>
+        <step id="S1">Employee accesses the "Absences" section in the navigation menu</step>
+        <step id="S2">The system routes the request to the controller for processing</step>
+        <step id="S3">The controller fetches all absences associated with the Employee's ID</step>
+        <step id="S4">The controller queries the database for the absences data</step>
+        <step id="S5">The database returns the rows of absences data to the controller</step>
+        <step id="S6">The controller renders the "Absences List" view with the retrieved data</step>
+        <step id="S7">The system displays the HTML view of the absences list to the Employee</step>
+    </mainSequence>
+</useCase>

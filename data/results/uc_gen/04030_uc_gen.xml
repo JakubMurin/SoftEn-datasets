@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Login System</name>
+    <description>User logs in to the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>Sistema de Autenticación</actor>
+        <actor>Servicio de Correo Electrónico</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is successfully authenticated</condition>
+    </successEndConditions>
+    <trigger>User inputs credentials</trigger>
+    <mainSequence>
+        <step id="S1">User introduces credentials</step>
+        <step id="S2">App verifies credentials</step>
+        <step id="S3">App requests verification code</step>
+        <step id="S4">Sistema de Autenticación generates verification code</step>
+        <step id="S5">App requests verification code from User</step>
+        <step id="S6">Servicio de Correo Electrónico sends verification code to User</step>
+        <step id="S7">User inputs verification code</step>
+        <step id="S8">Sistema de Autenticación sends verification code to App</step>
+        <step id="S9">App verifies verification code</step>
+        <step id="S10">App successfully authenticates User</step>
+    </mainSequence>
+</useCase>

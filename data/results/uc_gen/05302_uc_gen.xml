@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Manage Automatic Auction Process</name>
+    <actors>
+        <actor>Option Line Creator</actor>
+        <actor>Writer</actor>
+        <actor>Auction Winner</actor>
+        <actor>Request Handler</actor>
+        <actor>Request Verifier</actor>
+        <actor>ERC721 receiver (initial owner)</actor>
+        <actor>Auction Contract</actor>
+        <actor>Option Serie Contract</actor>
+        <actor>Escrow account</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1"><![CDATA[The Option Line Creator creates a request.]]></step>
+        <step id="S2"><![CDATA[The Request Handler verifies the request.]]></step>
+        <step id="S3"><![CDATA[The Request Handler mints ERC721 token to the ERC721 receiver.]]></step>
+        <step id="S4"><![CDATA[The Request Handler creates an escrow account where only the ERC721 owner can withdraw.]]></step>
+        <step id="S5"><![CDATA[The Writer writes options for the Options Serie Contract.]]></step>
+        <step id="S6"><![CDATA[The Options Serie Contract receives fees in the escrow account.]]></step>
+        <step id="S7"><![CDATA[The ERC721 receiver withdraws the fee.]]></step>
+        <step id="S8"><![CDATA[The ERC721 receiver creates an auction by transferring the ERC721 token.]]></step>
+        <step id="S9"><![CDATA[The Request Handler creates the Option Serie Contract with reference to the escrow owner.]]></step>
+        <step id="S10"><![CDATA[The Auction Contract transfers the ERC721 token to the Auction Winner.]]></step>
+        <step id="S11"><![CDATA[The Auction Winner can withdraw the collected fees.]]></step>
+        <step id="S12"><![CDATA[The Writer writes options for the Options Serie Contract.]]></step>
+        <step id="S13"><![CDATA[The Options Serie Contract receives fees in the escrow account.]]></step>
+        <step id="S14"><![CDATA[The Auction Winner, an ERC721 owner, can withdraw collected fees.]]></step>
+    </mainSequence>
+</useCase>

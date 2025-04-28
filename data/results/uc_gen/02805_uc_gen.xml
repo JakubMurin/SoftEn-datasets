@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Execute Security Scan Job</name>
+    <description>User creates and executes a security scan job through the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Scheduler</actor>
+        <actor>Product Execution</actor>
+        <actor>Product Executor</actor>
+        <actor>Analyzer Product Executor</actor>
+        <actor>Sereco Product Executor</actor>
+        <actor>Product Adapter</actor>
+        <actor>Analyzer Product Adapter</actor>
+        <actor>Security Product XYZ</actor>
+        <actor>Analyzer</actor>
+        <actor>File System</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>SecHub job report status is stored successfully.</condition>
+    </successEndConditions>
+    <trigger>User requests to create and execute a security scan job.</trigger>
+    <mainSequence>
+        <step id="S1">User creates a job with a UUID.</step>
+        <step id="S2">User uploads a zip file.</step>
+        <step id="S3">User requests the status of the job report.</step>
+        <step id="S4">User marks the job as ready to start.</step>
+        <step id="S5">Product Execution triggers the batch job, leading to the process of launching the Analyzer.</step>
+        <step id="S6">Product Execution calls and uses the Security Product XYZ.</step>
+        <step id="S7">Product Execution collects one report from Sereco Product Executor.</step>
+        <step id="S8">Product Execution filters the report result by the given meta-data.</step>
+        <step id="S9">User requests the status of the SecHub job report.</step>
+        <step id="S10">User fetches the filtered SecHub report.</step>
+    </mainSequence>
+</useCase>

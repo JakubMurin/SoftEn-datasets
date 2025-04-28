@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Update User Information</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UpdateUserRequest</actor>
+        <actor>QJsonObject</actor>
+        <actor>QMutex</actor>
+        <actor>QMutexLocker</actor>
+        <actor>DB::DatabaseManager</actor>
+        <actor>DB::DbResult</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to update their information.</precondition>
+        <precondition>Valid database connection is required.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User executes the UpdateUserRequest with JSON object and mutex.</step>
+        <step id="S2">UpdateUserRequest acquires a mutex lock.</step>
+        <step id="S3">UpdateUserRequest extracts email, account number, and new data from JSON object.</step>
+        <step id="S4">JSON object returns user data to UpdateUserRequest.</step>
+        <step id="S5">UpdateUserRequest checks if the database connection is valid.</step>
+        <step id="S6">UpdateUserRequest handles the case of an invalid database connection and returns an error response to the User.</step>
+        <step id="S7">UpdateUserRequest queries the database for the user's role.</step>
+        <step id="S8">UpdateUserRequest handles the case where the user is not found and returns an error response to the User.</step>
+        <step id="S9">UpdateUserRequest checks if the user is an admin.</step>
+        <step id="S10">UpdateUserRequest handles the case where the user is not an admin and returns an error response to the User.</step>
+        <step id="S11">UpdateUserRequest queries the database for the account associated with the account number.</step>
+        <step id="S12">UpdateUserRequest handles the case where the account is not found and returns an error response to the User.</step>
+        <step id="S13">UpdateUserRequest queries the database for the user associated with the new email.</step>
+        <step id="S14">UpdateUserRequest handles the case where the email is already in use and returns an error response to the User.</step>
+        <step id="S15">UpdateUserRequest updates the user information in the database.</step>
+        <step id="S16">UpdateUserRequest handles the case where the update fails and returns an error response to the User.</step>
+        <step id="S17">UpdateUserRequest constructs a success response using JSON object.</step>
+        <step id="S18">JSON object returns the success response to the User.</step>
+    </mainSequence>
+</useCase>

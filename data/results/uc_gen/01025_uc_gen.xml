@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Scan Proxy Repo</name>
+    <actors>
+        <actor>ProxyRepoFileScanner</actor>
+        <actor>ProxyRepoSources</actor>
+        <actor>repo</actor>
+        <actor>db</actor>
+        <actor>ChangeListener</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">ProxyRepoFileScanner scans the repo.</step>
+        <step id="S2">ProxyRepoFileScanner adds source to ProxyRepoSources.</step>
+        <step id="S3">ProxyRepoSources adds 'source' record to db.</step>
+        <step id="S4">ChangeListener is notified of changes.</step>
+    </mainSequence>
+</useCase>

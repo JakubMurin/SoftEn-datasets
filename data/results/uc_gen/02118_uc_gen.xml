@@ -1,0 +1,16 @@
+<useCase id="10060">
+    <name>Bereitstellung eines Messenger-Service für eine Organisation</name>
+    <actors>
+        <actor>Akteur in der Rolle Org-Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Mit einem Admin-Account am Registrierungs-Dienst anmelden</step>
+        <step id="S2">Messenger Service erstellen</step>
+        <step id="S3">Prüfung auf zulässigen Domainnamen</step>
+        <step id="S4">Starte neuen Messenger-Service für die Organisation mit Matrix-Domain</step>
+        <step id="S5">Initial einrichten</step>
+        <step id="S6">POST /auth/realms/TI-Provider/protocol/openid-connect/token (client_id, client_secret)</step>
+        <step id="S7">GET /ti-provider-authenticate(ti-provider-accesstoken)</step>
+        <step id="S8">POST /tim-provider-services/federation (provider-accesstoken, Matrix-Domain, TelematikID, isEnsurance)</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Change Permissions on Items</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>User Interface</actor>
+        <actor>Authorization Service</actor>
+        <actor>Item Management</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Curator selects items for permission change</step>
+        <step id="S2">User Interface validates curator's credentials</step>
+        <step id="S3">User Interface requests current permissions of selected items</step>
+        <step id="S4">Item Management queries current permissions from Database</step>
+        <step id="S5">Database returns current permissions to Item Management</step>
+        <step id="S6">Item Management displays current permissions to User Interface</step>
+        <step id="S7">Curator inputs new permissions for items</step>
+        <step id="S8">User Interface sends new permissions request to Item Management</step>
+        <step id="S9">Item Management checks if curator has rights to change permissions with Authorization Service</step>
+        <step id="S10">Authorization Service confirms authorization to change permissions</step>
+        <step id="S11">Item Management updates permissions in Database</step>
+        <step id="S12">Database confirms permission update to Item Management</step>
+        <step id="S13">Item Management displays success message to User Interface</step>
+        <step id="S14">User Interface informs Curator about successful permission change</step>
+    </mainSequence>
+</useCase>

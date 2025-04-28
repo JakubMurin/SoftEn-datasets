@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>User Request Processing</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>UserSecurityService</actor>
+        <actor>ServiceA</actor>
+        <actor>ServiceB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Token validation service is available</precondition>
+        <precondition>Service token validation service is available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a request to Gateway</step>
+        <step id="S2">Gateway forwards the request to UserSecurityService for token validation</step>
+        <step id="S3">UserSecurityService checks if the token is valid</step>
+        <step id="S4">If the token is valid, Gateway forwards the request to the appropriate service</step>
+        <step id="S5">ServiceA processes the request and sends a response to Gateway</step>
+        <step id="S6">Gateway sends the response back to the User</step>
+        <step id="S7">If the token is invalid, Gateway denies access to the User</step>
+        <step id="S8">If the request is from a service, Gateway checks the x-server-name header</step>
+        <step id="S9">If the x-server-name header is present, Gateway validates the service token</step>
+        <step id="S10">If the service token is valid, Gateway forwards the request to ServiceB</step>
+        <step id="S11">ServiceB processes the request and sends a response to Gateway</step>
+        <step id="S12">Gateway sends the response back to ServiceA</step>
+        <step id="S13">If the service token is invalid, Gateway denies access to ServiceA</step>
+        <step id="S14">If the x-server-name header is absent, Gateway denies access to ServiceA</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>View Messages</name>
+    <description>User opens the Messages Page and views conversations.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Messages Page</actor>
+        <actor>GetMessagesByInboxIdActivity</actor>
+        <actor>Message</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has navigated to the Messages Page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user is able to view conversations successfully.</condition>
+    </successEndConditions>
+    <trigger>User opens the Messages Page.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the "Messages Page".</step>
+        <step id="S2">"Messages Page" triggers "Get Messages by inbox ID" activity.</step>
+        <step id="S3">"Get Messages by inbox ID" activity sends request to the Message database to get messages.</step>
+        <step id="S4">Message database returns messages to the "Get Messages by inbox ID" activity.</step>
+        <step id="S5">"Get Messages by inbox ID" activity provides messages to the "Messages Page".</step>
+        <step id="S6">"Messages Page" displays the conversations to the user.</step>
+    </mainSequence>
+</useCase>

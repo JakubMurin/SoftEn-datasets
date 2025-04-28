@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>新增业务监控配置</name>
+    <actors>
+        <actor>user</actor>
+        <actor>system</actor>
+        <actor>pg</actor>
+        <actor>redis</actor>
+        <actor>tdm</actor>
+    </actors>
+    <preconditions>
+        <precondition>系统接收到新增业务监控配置请求</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>系统成功更新redis中的时间戳</condition>
+        <condition>tdm成功抢到ACTIVE状态</condition>
+    </successEndConditions>
+    <trigger>用户执行新增业务监控配置操作</trigger>
+    <mainSequence>
+        <step id="S1">系统检查数据的合法性</step>
+        <step id="S2">系统将数据落库</step>
+        <step id="S3">系统更新redis中的时间戳</step>
+        <step id="S4">tdm执行doInit()进行HeartBeatControlService的初始化</step>
+        <step id="S5">tdm执行initCache()将redis中的超时时间配置清空并删除缓存中的心跳时间</step>
+    </mainSequence>
+</useCase>

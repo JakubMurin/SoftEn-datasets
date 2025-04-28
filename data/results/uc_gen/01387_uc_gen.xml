@@ -1,0 +1,21 @@
+<useCase id="UC-1">
+    <name>Get Initial Balance Endpoint</name>
+    <description>Allow the Client to retrieve the user's initial balance</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>EditBalanceController</actor>
+        <actor>UserService</actor>
+        <actor>AppUserRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>An initial balance has been set for the user</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The initial balance is successfully fetched and displayed to the client</condition>
+    </successEndConditions>
+    <trigger>Client sends a GET request to /updateInitialBalance to edit initial balance</trigger>
+    <mainSequence>
+        <step id="S1">Client initiates a GET request to the EditBalanceController</step>
+        <step id="S2">EditBalanceController processes the request and shows the edit balance view to the client</step>
+    </mainSequence>
+</useCase>

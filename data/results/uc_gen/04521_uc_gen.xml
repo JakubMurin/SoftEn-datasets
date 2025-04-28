@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Delete Book</name>
+    <description>As an Administrator, I want to delete a book from the database.</description>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Web Client</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Administrator is logged in and has the necessary permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The book is successfully deleted from the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs while trying to delete the book from the database.</condition>
+    </failureEndConditions>
+    <trigger>The Administrator initiates the deletion process by entering the book ID.</trigger>
+    <mainSequence>
+        <step id="S1">Administrator enters the book ID for deletion.</step>
+        <step id="S2">Web Client sends a DELETE request to the Server with the book ID.</step>
+        <step id="S3">Server searches for the book in the Database using the ID.</step>
+        <step id="S4">Database finds the book based on the ID.</step>
+        <step id="S5">Server deletes the book from the Database.</step>
+        <step id="S6">Server informs the Web Client that the book is successfully deleted.</step>
+        <step id="S7">Web Client displays a success message to the Administrator.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Database does not find the book based on the ID.</step>
+            <step id="A1S2">Server informs the Web Client that the book is not found.</step>
+            <step id="A1S3">Web Client displays an error message to the Administrator.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>An error occurs while trying to delete the book.</description>
+            <step id="E1S1">Server encounters an error while deleting the book.</step>
+            <step id="E1S2">Server informs the Web Client about the deletion error.</step>
+            <step id="E1S3">Web Client displays an error message to the Administrator.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

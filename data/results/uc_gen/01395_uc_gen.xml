@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Manage User Profile</name>
+    <description>Use case for updating and fetching user's profile information.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <trigger>User wants to update and retrieve profile information.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates profile update</step>
+        <step id="S2">Service processes the profile update</step>
+        <step id="S3">Updated profile message is sent to the Message Broker</step>
+        <step id="S4">Service notifies User about the successful update</step>
+        <step id="S5">User requests profile data from the Replica</step>
+        <step id="S6">(stale) Profile data is provided by the Replica</step>
+        <step id="S7">User expresses confusion over the stale profile</step>
+        <step id="S8">Replica receives the profile update from the Message Broker</step>
+    </mainSequence>
+</useCase>

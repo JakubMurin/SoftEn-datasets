@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Generate Secret Key</name>
+    <description>Generate a secret key for encryption</description>
+    <actors>
+        <actor>User</actor>
+        <actor>SecretKey</actor>
+        <actor>SecureRandom</actor>
+        <actor>NativeCrypto</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Secret key successfully generated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in generating secret key</condition>
+    </failureEndConditions>
+    <trigger>User requests to generate a secret key</trigger>
+    <mainSequence>
+        <step id="S1">User requests to generate a secret key</step>
+        <step id="S2">SecretKey requests SecureRandom to generate 32 bytes</step>
+        <step id="S3">SecureRandom creates a new instance</step>
+        <step id="S4">SecureRandom generates 32 random bytes</step>
+        <step id="S5">SecureRandom sends the request to NativeCrypto</step>
+        <step id="S6">NativeCrypto generates random bytes</step>
+        <step id="S7">NativeCrypto sends the bytes back to SecureRandom</step>
+        <step id="S8">SecureRandom sends the bytes to SecretKey</step>
+        <step id="S9">SecretKey receives the secret key</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">Error in generating random bytes by NativeCrypto</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error in generating random bytes</description>
+            <step id="E1S1">Retry generating random bytes</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Remove Property from Dataset Instance</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has selected a dataset instance and specified a property to remove</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects dataset instance and specifies property to remove</step>
+        <step id="S2">User requests UI Interface to remove property from dataset instance</step>
+        <step id="S3">API Gateway receives request to remove property from dataset instance</step>
+        <step id="S4">DatasetManagementService validates dataset instance ID</step>
+        <step id="S5">DatasetManagementService retrieves dataset instance details</step>
+        <step id="S6">DatasetInstanceService fetches current properties of the instance from DatasetStore</step>
+        <step id="S7">DatasetInstanceService provides dataset instance metadata to DatasetManagementService</step>
+        <step id="S8">PropertyManagementService removes specified property from DatasetStore</step>
+        <step id="S9">DatasetStore confirms property removal to PropertyManagementService</step>
+        <step id="S10">PropertyManagementService returns success message to DatasetManagementService</step>
+        <step id="S11">DatasetManagementService acknowledges successful property removal to API Gateway</step>
+        <step id="S12">API Gateway displays success message to User</step>
+        <step id="S13">UI Interface shows confirmation of property removal to User</step>
+    </mainSequence>
+</useCase>

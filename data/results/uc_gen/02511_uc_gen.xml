@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Process Incoming Connection</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>Server</actor>
+        <actor>ServerHandler</actor>
+        <actor>RequestManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Server, ServerHandler, and RequestManager instances have been created.</precondition>
+        <precondition>A new client connection has been established.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User instantiates a new connection from Client to Server.</step>
+        <step id="S2">Server instantiates a new ServerHandler.</step>
+        <step id="S3">ServerHandler sets auto-delete to true.</step>
+        <step id="S4">ServerHandler starts processing the connection using the ThreadPool.</step>
+    </mainSequence>
+</useCase>

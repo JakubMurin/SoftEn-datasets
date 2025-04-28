@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Verifier une attestation (sujet différent du détenteur)</name>
+    <actors>
+        <actor>Mère</actor>
+        <actor>MFA - Guichet unique</actor>
+        <actor>Registre distribué</actor>
+    </actors>
+    <preconditions>
+        <precondition>Le demandeur doit demander une place au CPE</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Inscription d'Alice sur la liste d'attente confirmée</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Demander une place au CPE</step>
+        <step id="S2">Demander l'attestation d'identité d'Alice (requête de présentation)</step>
+        <step id="S3">Présenter les informations demandées dans la requête</step>
+        <step id="S4">Valider l'authenticité des informations</step>
+        <step id="S5">Vérifier les règles d'affaires</step>
+        <step id="S6">Confirmer l'inscription d'Alice sur la liste d'attente</step>
+    </mainSequence>
+</useCase>

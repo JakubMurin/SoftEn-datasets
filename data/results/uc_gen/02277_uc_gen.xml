@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Login Procedure</name>
+    <description>Process for user logging in</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Nami</actor>
+        <actor>OtherWeb</actor>
+        <actor>AuthApp</actor>
+        <actor>AuthServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and receives access token</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User unable to log in</condition>
+    </failureEndConditions>
+    <trigger>User attempts to log in to platform</trigger>
+    <mainSequence>
+        <step id="S1">OtherWeb directs AuthApp to login to Dapp with specific app key</step>
+        <step id="S2">AuthApp fetches app info from AuthServer</step>
+        <step id="S3">AuthServer provides app information to AuthApp</step>
+        <step id="S4">AuthApp connects to Nami</step>
+        <step id="S5">AuthApp fetches random number from AuthServer</step>
+        <step id="S6">AuthServer sends random number and sets access cookie on header to AuthApp</step>
+        <step id="S7">AuthApp requests Nami signature</step>
+        <step id="S8">Nami provides signature to AuthApp</step>
+        <step id="S9">AuthApp logs in with Nami signature sent to AuthServer</step>
+        <step id="S10">AuthServer sends login response with access cookie to AuthApp</step>
+        <step id="S11">AuthApp redirects to OtherWeb with access token</step>
+    </mainSequence>
+</useCase>

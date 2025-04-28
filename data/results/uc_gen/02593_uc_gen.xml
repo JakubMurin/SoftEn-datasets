@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Manage Policies</name>
+    <actors>
+        <actor>Operations Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Operations Manager needs to create a new policy for a specific cloud and environment using the CLI or Web interface.</precondition>
+    </preconditions>
+    <trigger>Operations Manager initiates the policy creation process.</trigger>
+    <mainSequence>
+        <step id="S1">Operations Manager sends a request to create a policy named [name] for [cloud] cloud and [env] environment using the CLI.</step>
+        <step id="S2">CLI processes the request and invokes the policy creation API with the provided details.</step>
+        <step id="S3">Operations Manager also sends the same request to create the policy via the Web interface.</step>
+        <step id="S4">Web interface handles the request and calls the policy creation API with the specified parameters.</step>
+    </mainSequence>
+</useCase>

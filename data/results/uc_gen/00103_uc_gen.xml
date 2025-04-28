@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Request Climate Data</name>
+    <description>As a Level 4 projections producer, I want to request climate data from Level 2/3/4 data producer.</description>
+    <actors>
+        <actor>Level 4 projections producer</actor>
+        <actor>Level 2/3/4 data producer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both producers are connected to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Level 4 projections producer receives URIs for the requested data.</condition>
+    </successEndConditions>
+    <trigger>Level 4 projections producer asks for climate data.</trigger>
+    <mainSequence>
+        <step id="S1">Level 4 projections producer asks for aggregated time series of air temperature.</step>
+        <step id="S2">Level 4 projections producer asks for gridded historical weather observations.</step>
+        <step id="S3">Level 4 projections producer asks for climate model data.</step>
+        <step id="S4">Level 2/3/4 data producer gets URIs from Level 2/3/4 data.</step>
+        <step id="S5">Level 2/3/4 data producer gives back URIs to Level 4 projections producer.</step>
+    </mainSequence>
+</useCase>

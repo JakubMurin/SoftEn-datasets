@@ -1,0 +1,39 @@
+<useCase id="UC001">
+  <name>Select OAuth login</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Client Application</actor>
+    <actor>API Gateway</actor>
+    <actor>Auth Service</actor>
+    <actor>OAuth Provider</actor>
+    <actor>Auth DB</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User chooses OAuth login</step>
+    <step id="S2">Client Application redirects to OAuth Provider for authorization</step>
+    <step id="S3">User authorizes and grants access</step>
+    <step id="S4">OAuth Provider returns with OAuth token</step>
+    <step id="S5">Client Application sends POST request to API Gateway with OAuth token</step>
+    <step id="S6">API Gateway forwards POST request to Auth Service with OAuth token</step>
+    <step id="S7">Auth Service verifies the OAuth token</step>
+    <step id="S8">OAuth Provider sends user info (email) to Auth Service</step>
+    <step id="S9">Auth Service verifies the email in Auth DB</step>
+    <step id="S10">Auth Service confirms successful login and provides token to API Gateway</step>
+    <step id="S11">API Gateway informs Client Application that the login was successful with a token</step>
+    <step id="S12">Client Application visually notifies User of successful login</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S7">
+      <step id="A1S1">Auth Service trying to verify OAuth token faces error</step>
+      <step id="A1S2">OAuth Provider sends an error indicating invalid OAuth token</step>
+      <step id="A1S3">API Gateway alerts Client Application about invalid OAuth token</step>
+      <step id="A1S4">Client Application displays error message to User</step>
+    </asteps>
+    <asteps id="A2" start="S9">
+      <step id="A2S1">Auth Service attempts to verify email in Auth DB but it is not found</step>
+      <step id="A2S2">Auth DB shows an error of the email not being present</step>
+      <step id="A2S3">API Gateway informs Client Application of email not found error</step>
+      <step id="A2S4">Client Application displays message to User notifying email not found</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

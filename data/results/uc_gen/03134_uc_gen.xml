@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>ServiceUtilisateur</actor>
+        <actor>Repo</actor>
+        <actor>ServiceEmail</actor>
+        <actor>Redirection</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur accède à la page d'inscription</precondition>
+        <precondition>Controleur affiche le formulaire d'inscription</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Utilisateur soumet les informations d'inscription (nom, mot de passe, photo de profil, email)</step>
+        <step id="S2">ServiceUtilisateur enregistre les informations de l'utilisateur (nom, mot de passe, photo de profil, email)</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">ServiceUtilisateur vérifie la disponibilité du nom d'utilisateur</step>
+            <step id="A1S2">ServiceUtilisateur vérifie la disponibilité de l'email</step>
+            <step id="A1S3">ServiceUtilisateur enregistre l'utilisateur dans la base de données</step>
+            <step id="A1S4">ServiceEmail envoie email de confirmation</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S4">
+            <description>Envoi d'email de confirmation a échoué</description>
+            <step id="E1S1">Controleur affiche message d'erreur (échec d'envoi de l'email)</step>
+        </esteps>
+    </errorSteps>
+</useCase>

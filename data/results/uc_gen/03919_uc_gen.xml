@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Book Treatment Use Case</name>
+    <description>User selects treatment, date, and enters contact info, creates a booking, submits the booking, and receives a confirmation message.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>Core</actor>
+        <actor>Persistence</actor>
+        <actor>REST</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has selected a treatment.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking is successfully confirmed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Booking creation or submission fails.</condition>
+    </failureEndConditions>
+    <trigger>User selects treatment, date, and enters contact info.</trigger>
+    <mainSequence>
+        <step id="S1">User selects treatment, date, and enters contact info.</step>
+        <step id="S2">UI creates a booking with the provided information.</step>
+        <step id="S3">Core saves the booking to the file.</step>
+        <step id="S4">Core notifies UI that the booking is created.</step>
+        <step id="S5">User submits the booking.</step>
+        <step id="S6">UI sends a POST request to REST with the booking details.</step>
+        <step id="S7">REST adds the booking to the system.</step>
+        <step id="S8">Core saves the booking to the file.</step>
+        <step id="S9">Core notifies REST that the booking is added.</step>
+        <step id="S10">REST confirms the booking to UI.</step>
+        <step id="S11">UI displays a confirmation message to the User.</step>
+    </mainSequence>
+</useCase>

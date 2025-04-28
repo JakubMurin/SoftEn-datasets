@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Authenticate User in Adgangsplatformen</name>
+    <description>User logs in using Adgangsplatformen authentication</description>
+    <actors>
+        <actor>User</actor>
+        <actor>DPL_CMS</actor>
+        <actor>OpenidConnect</actor>
+        <actor>Adgangsplatformen</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks login into Adgangsplatformen</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated and redirected to the frontpage</condition>
+    </successEndConditions>
+    <trigger>Click login into Adgangsplatformen</trigger>
+    <mainSequence>
+        <step id="S1">User clicks login into Adgangsplatformen</step>
+        <step id="S2">CMS gets authorization url and return url from OpenidConnect</step>
+        <step id="S3">OpenidConnect creates oauth state hash</step>
+        <step id="S4">OpenidConnect tells browser to redirect to authorization url</step>
+        <step id="S5">User redirects to external site using the full authorization url</step>
+        <step id="S6">External site performs internal authentication</step>
+        <step id="S7">External site redirects user to the return url</step>
+        <step id="S8">User sends Adgangsplatform response to CMS</step>
+        <step id="S9">CMS validates values from the Adgangsplatform response</step>
+        <step id="S10">OpenidConnect requests access token from Adgangsplatformen</step>
+        <step id="S11">Adgangsplatformen returns access token with expiration timestamp to OpenidConnect</step>
+        <step id="S12">OpenidConnect requests user info from Adgangsplatformen</step>
+        <step id="S13">Adgangsplatformen returns user info (UUID) to OpenidConnect</step>
+        <step id="S14">OpenidConnect creates user in CMS (First time login scenario)</step>
+        <step id="S15">OpenidConnect updates user in CMS (Recurrent login scenario)</step>
+        <step id="S16">OpenidConnect begins Drupal user session</step>
+        <step id="S17">OpenidConnect saves access token in active user session in CMS</step>
+        <step id="S18">User is redirected to the frontpage</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S14" continue="S15">
+            <step id="A1S1">Create user in CMS with unique email/username and encrypted UUID mapping</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Errors encountered during access token retrieval</description>
+            <step id="E1S1">Handle access token retrieval errors</step>
+        </esteps>
+    </errorSteps>
+</useCase>

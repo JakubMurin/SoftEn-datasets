@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Custom Administrative Operation Execution</name>
+    
+    <actors>
+        <actor>DMS</actor>
+        <actor>DTI</actor>
+        <actor>SDI</actor>
+        <actor>DB</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Dataset Developer requests a Custom Operation (Compaction/Rebalance) in the Dataset Management System.</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Dataset Developer requests Custom Compaction/Rebalance operation.</step>
+        <step id="S2">Dataset Management System validates the request.</step>
+        <step id="S3">Dataset Type Interface determines the support for the operation.</step>
+        <step id="S4">Specific Dataset Implementation invokes the Custom Operation.</step>
+        <step id="S5">Specific Dataset Implementation validates the operation.</step>
+        <step id="S6">Specific Dataset Implementation executes the operation on the given dataset.</step>
+        <step id="S7">Dataset Developer receives status (Success/Failure) after completing the Operation.</step>
+        <step id="S8">Dataset Management System confirms the Execution and returns the status to Dataset Developer.</step>
+    </mainSequence>
+    
+</useCase>

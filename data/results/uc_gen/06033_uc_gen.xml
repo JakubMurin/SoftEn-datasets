@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Data Retrieval and Indexing</name>
+    <actors>
+        <actor>User</actor>
+        <actor>DataStorage</actor>
+        <actor>Database</actor>
+        <actor>GitLabCrawler</actor>
+        <actor>TDCrawler</actor>
+        <actor>Preprocessor</actor>
+        <actor>SearchEngine</actor>
+        <actor>VectorSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>Database structure needs to be initialized</precondition>
+    </preconditions>
+    <trigger>User initiates the data retrieval and indexing process</trigger>
+    <mainSequence>
+        <step id="S1">User initializes the database structure</step>
+        <step id="S2">GitLab data is retrieved by GitLabCrawler and extracted by DataStorage</step>
+        <step id="S3">TD data is fetched by TDCrawler and processed by DataStorage</step>
+        <step id="S4">Data is preprocessed by Preprocessor and returned by DataStorage</step>
+        <step id="S5">SQLite database is updated and indexed</step>
+        <step id="S6">User sends a search request to SearchEngine</step>
+        <step id="S7">SearchEngine performs vector search using VectorSearch</step>
+        <step id="S8">SearchEngine retrieves bug information from Database</step>
+        <step id="S9">User receives the bug list from SearchEngine</step>
+    </mainSequence>
+</useCase>

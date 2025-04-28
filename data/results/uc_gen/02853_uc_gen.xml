@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Generate Clusters and Visualize Results</name>
+    <description>This use case involves generating clusters from requirement embeddings, visualizing the clusters with a scatter plot, and displaying the results to the user.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>main.py</actor>
+        <actor>OpenAI API</actor>
+        <actor>Pinecone DB</actor>
+        <actor>K-Means Clustering</actor>
+        <actor>Visualization Module</actor>
+    </actors>
+    <preconditions>
+        <precondition>The script is initiated by the User.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Cluster labels are returned successfully.</condition>
+        <condition>Visualization of the clusters is displayed to the User.</condition>
+    </successEndConditions>
+    <trigger>User initiates the script.</trigger>
+    <mainSequence>
+        <step id="S1">Start Script by User.</step>
+        <step id="S2">Generate embeddings for each requirement by Main.</step>
+        <step id="S3">Store embeddings in vector database and query stored embeddings by Main.</step>
+        <step id="S4">Group embeddings into clusters by Clustering.</step>
+        <step id="S5">Create scatter plot and textual output by Visualization.</step>
+        <step id="S6">Display results (plot and text) to the User by Visualization.</step>
+    </mainSequence>
+</useCase>

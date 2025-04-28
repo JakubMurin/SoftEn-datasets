@@ -1,0 +1,36 @@
+<useCase id="UC001">
+  <name>Share Work</name>
+  <description>Allow a member to share their work.</description>
+  <actors>
+    <actor>Member</actor>
+  </actors>
+  <preconditions>
+    <precondition>Member is logged into the application.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Work submission is successfully completed.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Work submission fails.</condition>
+  </failureEndConditions>
+  <trigger>Member selects to share their work.</trigger>
+  <mainSequence>
+    <step id="S1">Member requests to share work.</step>
+    <step id="S2">Application retrieves file share form.</step>
+    <step id="S3">UI manager displays the file share form.</step>
+    <step id="S4">Member views the file share form.</step>
+    <step id="S5">Member fills in work details and attaches the file.</step>
+    <step id="S6">Member adds file to the form.</step>
+    <step id="S7">Member submits the form.</step>
+    <step id="S8">Application analyzes the file.</step>
+    <step id="S9">Application displays the analysis result to the member.</step>
+    <step id="S10">Application requests confirmation for submission.</step>
+    <step id="S11">Member validates the submission.</step>
+    <step id="S12">Application copies the file to the "Moderation" directory.</step>
+    <step id="S13">Application generates a transaction number.</step>
+    <step id="S14">Application logs the transaction.</step>
+    <step id="S15">Application sends transaction and file to the server.</step>
+    <step id="S16">Server notifies librarian of the work submission.</step>
+    <step id="S17">Application notifies member of work moderation wait.</step>
+  </mainSequence>
+</useCase>

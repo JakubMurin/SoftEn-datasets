@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Create Account</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Portal UI</actor>
+        <actor>Authentication System</actor>
+        <actor>Accounts Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer requests to create an account.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account created successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid account details provided.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Customer requests to create an account.</step>
+        <step id="S2">Portal UI displays account creation form to the customer.</step>
+        <step id="S3">Customer submits account details (username, email, password) through Portal UI.</step>
+        <step id="S4">Authentication System validates the account details.</step>
+        <step id="S5">If details are valid:</step>
+        <step id="S6">Authentication System confirms the details are valid.</step>
+        <step id="S7">Portal UI creates a new user account in the Accounts Database.</step>
+        <step id="S8">Accounts Database confirms the account creation.</step>
+        <step id="S9">Portal UI displays account creation success message to the customer.</step>
+        <step id="S10">Portal UI initiates the first-time login sequence.</step>
+        <step id="S11">Authentication System requests authentication (login) from the customer.</step>
+        <step id="S12">Customer provides credentials to Authentication System.</step>
+        <step id="S13">Authentication System validates the provided credentials with the Accounts Database.</step>
+        <step id="S14">Accounts Database confirms the credentials are valid.</step>
+        <step id="S15">Authentication System notifies the customer of successful authentication.</step>
+        <step id="S16">If details are invalid:</step>
+        <step id="S17">Authentication System sends an error message to Portal UI indicating invalid details.</step>
+        <step id="S18">Portal UI displays an error message to the customer indicating invalid details.</step>
+    </mainSequence>
+</useCase>

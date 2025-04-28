@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>User Registration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UC</actor>
+        <actor>TDC</actor>
+        <actor>UM</actor>
+        <actor>SIM</actor>
+        <actor>TS</actor>
+    </actors>
+    <preconditions>
+        <precondition>User sends registration request with UserName, Email, and Password.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends registration request.</step>
+        <step id="S2">UC gets Tenant from Header.</step>
+        <step id="S3">UC checks if Tenant exists.</step>
+        <step id="S4">TDC responds with Tenant status.</step>
+        <step id="S5">UC checks if email exists in the Tenant.</step>
+        <step id="S6">UM responds with email status.</step>
+        <step id="S7">UC creates new user (AppUser).</step>
+        <step id="S8">UM responds with user creation status.</step>
+        <step id="S9">UC assigns role to user (ADMIN or MEMBER).</step>
+        <step id="S10">UM responds with role assignment status.</step>
+        <step id="S11">UC creates JWT token for the user.</step>
+        <step id="S12">TS responds with token generation status.</step>
+        <step id="S13">UC responds with UserDto (Token, Email, UserName).</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>View Book Details</name>
+    <description>User views detailed information of a book from search results.</description>
+    <actors>
+        <actor>Reader</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has selected a book from the search list.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully views the book details.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The book details are not available or there was an error.</condition>
+    </failureEndConditions>
+    <trigger>User chooses a book from the search list to view details.</trigger>
+    <mainSequence>
+        <step id="S1">Reader selects a book from the search list.</step>
+        <step id="S2">Library System retrieves detailed information of the selected book (book ID) from the Book Database.</step>
+        <step id="S3">Book Database returns book details (Title, Author, Cover Image, Status) to Library System.</step>
+        <step id="S4">Library System displays the detailed information of the book to the Reader.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">If the book is available, Library System displays "Available" status to the Reader.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">If the book is not available, Library System displays "Not Available" status to the Reader.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error occurred while retrieving book details.</description>
+            <step id="E1S1">Library System displays an error message to the Reader.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

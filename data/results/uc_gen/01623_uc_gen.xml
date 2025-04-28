@@ -1,0 +1,21 @@
+<useCase id="UC1">
+  <name>User navigates to Court Details</name>
+  <actors>
+    <actor>Inputter</actor>
+    <actor>Account Details</actor>
+    <actor>Court Details</actor>
+    <actor>Get Local Justice Areas</actor>
+    <actor>Get Courts</actor>
+    <actor>Fines Database</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User clicks Court Details link on Account Details</step>
+    <step id="S2">Account Details navigates to Court Details</step>
+    <step id="S3">Local Justice Areas API (Get Local Justice Areas) retrieves Local Justice Areas records from Fines Database using JPA</step>
+    <step id="S4">Court Details populates Local Justice Areas auto-complete</step>
+    <step id="S5">Fines API Get Courts retrieves Courts records from database using JPA</step>
+    <step id="S6">Court Details populates Courts auto-complete</step>
+    <step id="S7">User enters Court details and clicks Return to Account Details on Court Details</step>
+    <step id="S8"> Court Details navigates back to Account Details</step>
+  </mainSequence>
+</useCase>

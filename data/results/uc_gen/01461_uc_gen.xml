@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Operation Abwesenheitsnotiz</name>
+    <description>Configure application identifier</description>
+    <actors>
+        <actor>Leistungserbringer</actor>
+        <actor>Administrationsmodul</actor>
+        <actor>Account-Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client module is accessible</precondition>
+        <precondition>Administrations module is available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Application identifier successfully configured</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure to configure application identifier</condition>
+    </failureEndConditions>
+    <trigger>Anwendungskennzeichen konfigurieren</trigger>
+    <mainSequence>
+        <step id="S1">Leistungserbringer configures application identifier</step>
+        <step id="S2">Administrationsmodul retrieves account information</step>
+        <step id="S3">Account-Manager receives account information</step>
+        <step id="S4">Account-Manager configures application identifier</step>
+        <step id="S5">Leistungserbringer receives configuration status</step>
+    </mainSequence>
+</useCase>

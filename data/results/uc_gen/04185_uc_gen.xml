@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Create istiocsr CR</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Operator</actor>
+        <actor>CertManagerOperand</actor>
+        <actor>IstioCSROperand</actor>
+        <actor>Istiod</actor>
+        <actor>Proxy</actor>
+        <actor>CA</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User creates istiocsr CR</step>
+        <step id="S2">API receives request</step>
+        <step id="S3">Operator reconciles istiocsr event</step>
+        <step id="S4">Operator prepares istio-csr manifests based on istiocsr config</step>
+        <step id="S5">Operator deploys istio-csr operand resources</step>
+        <step id="S6">Istiod requests certificate from IstioCSROperand</step>
+        <step id="S7">IstioCSROperand creates CSR resource</step>
+        <step id="S8">API notifies CertManagerOperand about CSR created</step>
+        <step id="S9">CertManagerOperand sends CSR to CA for signing</step>
+        <step id="S10">CA returns signed certificate to CertManagerOperand</step>
+        <step id="S11">CertManagerOperand updates CSR with signed certificate</step>
+        <step id="S12">API notifies IstioCSROperand about signed certificate availability</step>
+        <step id="S13">IstioCSROperand sends CertificateRequest response with signed certificate to Istiod</step>
+        <step id="S14">Istiod updates Proxy with certificate</step>
+        <step id="S15">Proxy uses certificate for TLS</step>
+    </mainSequence>
+</useCase>

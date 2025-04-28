@@ -1,0 +1,24 @@
+<useCase id="UC001">
+  <name>View Dashboard</name>
+  <description>Curator requests to view the dashboard with recent submission information.</description>
+  <actors>
+    <actor>Curator</actor>
+  </actors>
+  <preconditions>
+    <precondition>Curator is logged in to the application.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Dashboard displays the recent submission widget successfully.</condition>
+  </successEndConditions>
+  <trigger>Curator requests to view the dashboard.</trigger>
+  <mainSequence>
+    <step id="S1">Curator requests the Dashboard view.</step>
+    <step id="S2">Dashboard fetches recent submissions from the SubmissionService.</step>
+    <step id="S3">SubmissionService queries the database for submissions by date.</step>
+    <step id="S4">Database returns submission data to SubmissionService.</step>
+    <step id="S5">SubmissionService processes submission summary.</step>
+    <step id="S6">Dashboard prepares the collection widget.</step>
+    <step id="S7">CollectionWidget is displayed on the Dashboard with recent submissions.</step>
+    <step id="S8">Dashboard shows the dashboard with the widget to the Curator.</step>
+  </mainSequence>
+</useCase>

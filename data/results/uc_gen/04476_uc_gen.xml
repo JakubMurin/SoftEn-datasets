@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Display All Attributes of Classes</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ViewAllClasses</actor>
+        <actor>ModelClass</actor>
+        <actor>Attribute</actor>
+    </actors>
+    <preconditions>
+        <precondition>System must have a list of classes with attributes</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All attributes of classes displayed successfully</condition>
+    </successEndConditions>
+    <trigger>User requests the display of attributes of classes</trigger>
+    <mainSequence>
+        <step id="S1">User requests the display of attributes</step>
+        <step id="S2">ViewAllClasses requests ModelClass to get attributes</step>
+        <step id="S3">ModelClass returns ArrayList&lt;Attribute&gt;</step>
+        <step id="S4">ViewAllClasses retrieves attribute details from Attribute</step>
+        <step id="S5">Attribute returns attribute properties</step>
+        <step id="S6">ViewAllClasses processes attributes for display</step>
+        <step id="S7">ViewAllClasses renders attributes in the UI</step>
+        <step id="S8">User views the complete display</step>
+    </mainSequence>
+</useCase>

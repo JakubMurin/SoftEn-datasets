@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>View All Projects</name>
+    <description>View all projects related to a given signId.</description>
+    <actors>
+        <actor>PL</actor>
+        <actor>System</actor>
+        <actor>DBMS</actor>
+    </actors>
+    <preconditions>
+        <precondition>PL is authenticated.</precondition>
+        <precondition>System is operational.</precondition>
+    </preconditions>
+    <trigger>PL initiates the request to view all projects.</trigger>
+    <mainSequence>
+        <step id="S1">PL requests all projects by signId from System.</step>
+        <step id="S2">System validates the member based on the provided signId.</step>
+        <step id="S3">System retrieves all projects associated with the signId from DBMS.</step>
+        <step id="S4">System sends a List of ProjectResponseDto to PL.</step>
+    </mainSequence>
+</useCase>

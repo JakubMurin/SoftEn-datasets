@@ -1,0 +1,32 @@
+<useCase id="UC01">
+    <name>Returning Recognized Consumer</name>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Merchant</actor>
+        <actor>Browser</actor>
+        <actor>Payment Handler</actor>
+        <actor>Page</actor>
+        <actor>SRCI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Checkout Intent</step>
+        <step id="S2">Create Payment Request using Payment Request API</step>
+        <step id="S3">HasEnrolledInstruments check by Merchant using HasEnrolledInstruments function</step>
+        <step id="S4">Invoke CanMakePayment check using Payment Handler API</step>
+        <step id="S5">Read SRC Profile Long-lived Token from Indexed DB</step>
+        <step id="S6">Handling "low friction" checkout</step>
+        <step id="S7">Display Pay Button by Merchant</step>
+        <step id="S8">Click Pay Button by Consumer</step>
+        <step id="S9">Show Payment Request flow using Payment Request API</step>
+        <step id="S10">Invoke CanMakePayment for Payment Handler Eligibility Check</step>
+        <step id="S11">Invoke SRC Common Payment Handler using Payment Handler API</step>
+        <step id="S12">Send Payment Request data to SRC Common Payment Handler Page</step>
+        <step id="S13">Open SRCI Web App</step>
+        <step id="S14">Handle the checkout process by SRCI</step>
+        <step id="S15">Send Result Data by SRCI to SRC Common Payment Handler Page</step>
+        <step id="S16">Send Result Data back to Payment Handler by SRC Common Payment Handler Page</step>
+        <step id="S17">Close Window</step>
+        <step id="S18">Finalize Payment Result</step>
+        <step id="S19">Checkout Completed</step>
+    </mainSequence>
+</useCase>

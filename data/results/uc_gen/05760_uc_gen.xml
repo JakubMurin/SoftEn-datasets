@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>View Monthly Lending Report</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>LendingController</actor>
+        <actor>ReaderService</actor>
+        <actor>ReaderRepository</actor>
+        <actor>Reader</actor>
+        <actor>ReaderLentsViewMapper</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian requests the monthly lending report.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Librarian sends a GET request to /api/lendings/monthly-lending.</step>
+        <step id="S2">LendingController activates.</step>
+        <step id="S3">LendingController calls getAllReaders() in ReaderService.</step>
+        <step id="S4">ReaderService activates.</step>
+        <step id="S5">ReaderService calls findAll() in ReaderRepository.</step>
+        <step id="S6">ReaderRepository activates.</step>
+        <step id="S7">ReaderRepository returns a list of readers to ReaderService.</step>
+        <step id="S8">ReaderService deactivates.</step>
+        <step id="S9">For each reader, ReaderService calls getMonthlyLending() in ReaderRepository.</step>
+        <step id="S10">ReaderRepository activates.</step>
+        <step id="S11">ReaderRepository returns the number of lents to ReaderService.</step>
+        <step id="S12">ReaderRepository deactivates.</step>
+        <step id="S13">ReaderService sets the number of lents for the reader.</step>
+        <step id="S14">ReaderService loops through all readers.</step>
+        <step id="S15">LendingController calls toReaderLentsView() in ReaderLentsViewMapper.</step>
+        <step id="S16">ReaderLentsViewMapper activates.</step>
+        <step id="S17">ReaderLentsViewMapper returns a list of ReaderLentsView to LendingController.</step>
+        <step id="S18">ReaderLentsViewMapper deactivates.</step>
+        <step id="S19">LendingController responds with HTTP 200 OK and the list of ReaderLentsView to Librarian.</step>
+        <step id="S20">LendingController deactivates.</step>
+    </mainSequence>
+</useCase>

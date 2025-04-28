@@ -1,0 +1,29 @@
+<useCase id="UC1">
+  <name>View Referrer Data</name>
+  <actors>
+    <actor>Curator</actor>
+    <actor>Resolver Service</actor>
+    <actor>Analytics Engine</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Curator requests item referrer data</step>
+    <step id="S2">EDRMS Interface queries for item ID</step>
+    <step id="S3">Database returns item ID</step>
+    <step id="S4">EDRMS Interface requests referrer stats for item ID</step>
+    <step id="S5">Analytics Engine queries referrer logs</step>
+    <step id="S6">Database returns referrer data</step>
+    <step id="S7">Analytics Engine provides summarized referrer info</step>
+    <step id="S8">EDRMS Interface displays referrer data</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S4" continue="S5">
+      <step id="A1S1">Resolver Service redirects visitors to repository item using abstracted links and logs referrer URL for each visitor</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S6">
+      <description>Failure in retrieving referrer data</description>
+      <step id="E1S1">Inform user about error in retrieving referrer data</step>
+    </esteps>
+  </errorSteps>
+</useCase>

@@ -1,0 +1,15 @@
+<useCase id="UC001">
+    <name>User Request Handling</name>
+    <actors>
+        <actor>HTTPRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">HTTPRequest sends Apache input filter request</step>
+        <step id="S2">Context enrichment performed by mod_dup</step>
+        <step id="S3">Filters matched by mod_dup</step>
+        <step id="S4">Delegation to next handler (WS, mod_rewrite) by PNS_WS</step>
+        <step id="S5">Answer collected by PNS_WS</step>
+        <step id="S6">Request prepared for duplication by duplicator</step>
+        <step id="S7">Duplicated request sent to mod_compare</step>
+    </mainSequence>
+</useCase>

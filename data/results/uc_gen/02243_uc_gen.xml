@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Ajouter un groupe</name>
+    <actors>
+        <actor>User</actor>
+        <actor>::AddGroupActivity</actor>
+        <actor>addGroupViewModel :AddGroupViewModel</actor>
+        <actor>:: GroupeFirestore</actor>
+        <actor>:: FirebaseFirestore</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User appuie sur "+" pour ajouter un groupe</step>
+        <step id="S2">AddGroupActivity vérifie si le groupe est créé</step>
+        <step id="S3">GroupeFirestore récupère le groupe par nom</step>
+        <step id="S4">GroupeFirestore indique que le groupe existe</step>
+        <step id="S5">AddGroupActivity vérifie si le groupe existe et le crée si nécessaire</step>
+        <step id="S6">GroupeFirestore crée un nouveau groupe</step>
+        <step id="S7">FirebaseFirestore ajoute le groupe dans la collection</step>
+        <step id="S8">FirebaseFirestore confirme que le groupe est créé dans la base</step>
+        <step id="S9">Le groupe est créé</step>
+        <step id="S10">Ajout du nouveau groupe dans la liste des groupes</step>
+        <step id="S11">User appuie sur "+" pour ajouter un groupe (2ème fois)</step>
+        <step id="S12">AddGroupActivity vérifie si le groupe est créé (2ème fois)</step>
+        <step id="S13">GroupeFirestore récupère le groupe par nom (2ème fois)</step>
+        <step id="S14">FirebaseFirestore récupère les données du groupe</step>
+        <step id="S15">GroupeFirestore indique que le groupe n'existe pas</step>
+        <step id="S16">Le groupe existe déjà</step>
+    </mainSequence>
+</useCase>

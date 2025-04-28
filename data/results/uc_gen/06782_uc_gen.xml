@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Login Process</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin requests to log in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Admin successfully logs in and is shown the dashboard.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Admin's credentials are invalid, and an error message is displayed.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Admin requests to log in.</step>
+        <step id="S2">UI receives the login request.</step>
+        <step id="S3">UI sends a POST request to the AuthRouter.</step>
+        <step id="S4">AuthRouter forwards the request to the AuthController.</step>
+        <step id="S5">AuthController validates the Admin's credentials.</step>
+        <step id="S6">AuthRepository fetches the Admin's data from the database.</step>
+        <step id="S7">AuthController receives the validation result from AuthRepository.</step>
+        <step id="S8">AuthController responds to AuthRouter with the validation result.</step>
+        <step id="S9">AuthRouter sends the response back to UI.</step>
+        <step id="S10">UI displays the dashboard or an error message based on the response.</step>
+    </mainSequence>
+</useCase>

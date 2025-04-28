@@ -1,0 +1,23 @@
+<useCase id="UC_001">
+        <name>Execute Task based on Throttling Strategy</name>
+        <description>Request execution of a task based on the Throttling Strategy</description>
+        <actors>
+            <actor>Developer</actor>
+        </actors>
+        <preconditions>
+            <precondition>An execution request is received by the Throttle</precondition>
+        </preconditions>
+        <successEndConditions>
+            <condition>The task is successfully executed by the Throttle</condition>
+        </successEndConditions>
+        <trigger>An execution request from the Developer arrives</trigger>
+        <mainSequence>
+            <step id="S1">Developer sends an execution request to the Throttle</step>
+            <step id="S2">Throttle stores the task in the Queue</step>
+            <step id="S3">Throttle gets the next task from the Queue</step>
+            <step id="S4">Throttle requests execution permit from Throttle Strategy</step>
+            <step id="S5">Throttle Strategy checks the current time using Timer</step>
+            <step id="S6">Throttle Strategy waits for the next execution time</step>
+            <step id="S7">Throttle executes the task</step>
+        </mainSequence>
+    </useCase>

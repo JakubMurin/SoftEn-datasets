@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Communication téléphonique</name>
+    <description>Utilisateur insère de la monnaie et effectue un appel téléphonique.</description>
+    <actors>
+        <actor>Apelant</actor>
+        <actor>Correspondant</actor>
+    </actors>
+    <preconditions>
+        <precondition>Le téléphone est fonctionnel.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La communication téléphonique est établie avec succès.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>La communication téléphonique n'est pas établie.</condition>
+    </failureEndConditions>
+    <trigger>Utilisateur insère de la monnaie.</trigger>
+    <mainSequence>
+        <step id="S1">Apelant insère de la monnaie dans le téléphone.</step>
+        <step id="S2">Apelant compose le numéro du correspondant.</step>
+        <step id="S3">Si le numéro n'est pas composé, Apelant raccroche.</step>
+        <step id="S4">Si le numéro est composé, Correspondant connecte la ligne.</step>
+        <step id="S5">Si la ligne est occupée, Apelant raccroche.</step>
+        <step id="S6">Si la ligne est libre, Correspondant décroche.</step>
+        <step id="S7">Standard décompte la monnaie pendant la conversation.</step>
+        <step id="S8">Apelant ajoute de la monnaie si nécessaire.</step>
+        <step id="S9">Apelant et Correspondant discutent.</step>
+        <step id="S10">Correspondant raccroche.</step>
+        <step id="S11">Apelant raccroche.</step>
+        <step id="S12">Apelant et Correspondant coupent la ligne.</step>
+        <step id="S13">Standard rend la monnaie à Apelant.</step>
+    </mainSequence>
+</useCase>

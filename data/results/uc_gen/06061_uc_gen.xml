@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Upgrade Client Process</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>AppCenter</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Read local config and update file configurations, and process existing plugins.</step>
+        <step id="S2">Retrieve bucket information from the AppCenter (api/bucket/list).</step>
+        <step id="S3">Check if an upgrade is required (api/client/version).</step>
+        <step id="S4">Compare version numbers from received profiles and local update file.</step>
+        <step id="S5">Retrieval and download of missing plugins based on generated download links.</step>
+        <step id="S6">Retrieve plugin download address from AppCenter (api/filekey/plugin).</step>
+        <step id="S7">Download the required plugins using the prepared bucket information.</step>
+    </mainSequence>
+</useCase>

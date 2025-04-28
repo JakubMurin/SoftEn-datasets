@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Enterprise Admission (Recycler)</name>
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Agency</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Submit Data</step>
+        <step id="S2">Approve Application</step>
+        <step id="S3">Check Admission Result</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Approve Admission</step>
+            <step id="A1S2">Deploy Admission Contract</step>
+            <step id="A1S3">Update Information</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Check Admission Contract</step>
+        </asteps>
+        <asteps id="A3" start="S3">
+            <step id="A3S1">Resubmit Admission Data</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

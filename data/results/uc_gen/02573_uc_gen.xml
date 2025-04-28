@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Controlled Vocabulary Tagging</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Web Interface</actor>
+        <actor>Tagging System</actor>
+        <actor>Controlled Vocabulary DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>System is running and User is authenticated</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User initiates the tagging process through Web Interface.</step>
+        <step id="S2">Web Interface requests available tags from Tagging System.</step>
+        <step id="S3">Tagging System queries Controlled Vocabulary DB for the required tags.</step>
+        <step id="S4">Controlled Vocabulary DB returns the vocabulary list to Tagging System.</step>
+        <step id="S5">Tagging System displays the vocabulary tags to Web Interface.</step>
+        <step id="S6">User selects tags from the controlled vocabulary.</step>
+        <step id="S7">Web Interface assigns the selected tags to the dataset/file using Tagging System.</step>
+        <step id="S8">Tagging System validates and saves the tags via Controlled Vocabulary DB.</step>
+        <step id="S9">Controlled Vocabulary DB confirms the successful tag assignment to Tagging System.</step>
+        <step id="S10">Tagging System confirms the successful tagging to the User.</step>
+        <step id="S11">Web Interface displays a success message to the User.</step>
+    </mainSequence>
+</useCase>

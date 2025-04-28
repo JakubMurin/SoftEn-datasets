@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>View Boards</name>
+    <description>User views the available boards.</description>
+    <actors>
+        <actor>SBAappUser</actor>
+        <actor>ViewBoardsUI</actor>
+        <actor>ViewBoardsController</actor>
+        <actor>SBProtocol</actor>
+        <actor>ServerAJAX</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Boards are successfully displayed to the user.</condition>
+    </successEndConditions>
+    <trigger>User initiates the action to view boards.</trigger>
+    <mainSequence>
+        <step id="S1">User views available boards.</step>
+        <step id="S2">User chooses a specific board.</step>
+        <step id="S3">UI requests history for the selected board.</step>
+        <step id="S4">Controller sends a request to get the history of the board.</step>
+        <step id="S5">Controller receives the history content.</step>
+        <step id="S6">Controller parses and displays the history to the user.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Manage Overdue Book Notifications</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>Web Interface</actor>
+        <actor>Database</actor>
+        <actor>Notification System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian must select the "Late Returns" option.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The overdue book notifications have been successfully triggered and sent.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The system fails to send the overdue book notifications.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Librarian selects the "Late Returns" option.</step>
+        <step id="S2">Web Interface queries overdue books from the Database.</step>
+        <step id="S3">Database returns the list of overdue books to the Web Interface.</step>
+        <step id="S4">Web Interface displays the list of overdue books to the Librarian.</step>
+        <step id="S5">Librarian requests the Notification System to send reminders.</step>
+        <step id="S6">Web Interface triggers the overdue notices.</step>
+        <step id="S7">Notification System looks up borrower contact information from the Database.</step>
+        <step id="S8">Database returns the borrower contact information to the Notification System.</step>
+        <step id="S9">Notification System confirms that notifications have been sent to the Librarian.</step>
+    </mainSequence>
+</useCase>

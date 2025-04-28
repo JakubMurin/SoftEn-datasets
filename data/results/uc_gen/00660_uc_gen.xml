@@ -1,0 +1,17 @@
+<useCase id="1">
+    <name>Verify Block and Execute Block</name>
+    <actors>
+        <actor>Rollup</actor>
+        <actor>EspNode</actor>
+        <actor>Client</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Rollup sends height of last verified block request to L1.</step>
+        <step id="S2">Rollup makes GET request to EspNode for availability/stream/blocks/height.</step>
+        <step id="S3">Rollup makes GET request to EspNode for availability/stream/leaves/height.</step>
+        <step id="S4">Rollup receives Block and Leaf with proof of consensus from EspNode.</step>
+        <step id="S5">Rollup verifies the proof of consensus.</step>
+        <step id="S6">Rollup executes the Block.</step>
+        <step id="S7">Rollup provides the updated state to Client.</step>
+    </mainSequence>
+</useCase>

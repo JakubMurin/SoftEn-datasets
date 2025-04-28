@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>View All Classes Attributes</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ViewAllClasses</actor>
+        <actor>ModelClass</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests display of attributes.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Attributes are successfully rendered in the UI.</condition>
+    </successEndConditions>
+    <trigger>User requests display of attributes.</trigger>
+    <mainSequence>
+        <step id="S1">User requests display of attributes.</step>
+        <step id="S2">ViewAllClasses calls getAttributes() method from ModelClass.</step>
+        <step id="S3">ModelClass returns ArrayList of attributes to ViewAllClasses.</step>
+        <step id="S4">ViewAllClasses renders attributes in the UI.</step>
+    </mainSequence>
+</useCase>

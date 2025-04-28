@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Access and Manage Locker via BLE</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ble_mailbox_central</actor>
+        <actor>ble_mailbox_peripheral</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User opens ble_mailbox_central</step>
+        <step id="S2">User requests scanning</step>
+        <step id="S3">ble_mailbox_central requests permissions</step>
+        <step id="S4">Permissions granted by user</step>
+        <step id="S5">ble_mailbox_central scans for devices</step>
+        <step id="S6">User selects ble_mailbox_peripheral</step>
+        <step id="S7">ble_mailbox_central requests connection</step>
+        <step id="S8">Connection handshaking between ble_mailbox_central and ble_mailbox_peripheral</step>
+        <step id="S9">ble_mailbox_central requests state of locker</step>
+        <step id="S10">Response state of locker received from ble_mailbox_peripheral</step>
+        <step id="S11">User signs in</step>
+        <step id="S12">ble_mailbox_central signs in ble_mailbox_peripheral</step>
+        <step id="S13">ble_mailbox_peripheral authenticates user</step>
+        <step id="S14">ble_mailbox_central requests state of authentication</step>
+        <step id="S15">Response state of authentication received from ble_mailbox_peripheral</step>
+        <step id="S16">User requests to change state of locker</step>
+        <step id="S17">ble_mailbox_central requests to change state of locker</step>
+        <step id="S18">Change of state of locker by ble_mailbox_peripheral</step>
+        <step id="S19">ble_mailbox_central requests state of locker</step>
+        <step id="S20">Response state of locker received from ble_mailbox_peripheral</step>
+    </mainSequence>
+</useCase>

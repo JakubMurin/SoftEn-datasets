@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Retrieve Account Search Preferences</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Zarządca wybiera listę kont oczekujących</step>
+        <step id="S2">Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta</step>
+        <step id="S3">AccountController wysyła żądanie getAccountSearchPreferences do AccountEndpoint</step>
+        <step id="S4">AccountEndpoint przekazuje żądanie do AccountService</step>
+        <step id="S5">AccountService wykonuje operacje w zależności od istnienia konta i preferencji</step>
+    </mainSequence>
+</useCase>

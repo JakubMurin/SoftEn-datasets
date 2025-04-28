@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Visualizar e Editar Mapa de Andares</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SPA</actor>
+        <actor>API</actor>
+    </actors>
+    <preconditions>
+        <precondition>O utilizador tem acesso ao sistema SPA.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O ficheiro do floormap foi inserido e atualizado com sucesso na API.</condition>
+    </successEndConditions>
+    <trigger>O User requisita a página dos andares.</trigger>
+    <mainSequence>
+        <step id="S1">O User requisita a página dos andares.</step>
+        <step id="S2">O SPA retorna a página dos andares ao User.</step>
+        <step id="S3">O User seleciona um andar da lista de andares exibida.</step>
+        <step id="S4">O SPA solicita à API os dados do andar selecionado.</step>
+        <step id="S5">A API mostra os dados do andar selecionado ao SPA.</step>
+        <step id="S6">O SPA solicita a lista de edifícios à API.</step>
+        <step id="S7">A API retorna a lista de edifícios ao SPA.</step>
+        <step id="S8">O SPA exibe os dados do andar selecionado.</step>
+        <step id="S9">O User insere um ficheiro contendo o floormap do andar selecionado.</step>
+        <step id="S10">O SPA atualiza o floormap do andar na API ao enviar o ficheiro.</step>
+        <step id="S11">A API confirma que o floormap foi atualizado com sucesso.</step>
+        <step id="S12">O SPA comunica ao User que a operação foi realizada com sucesso.</step>
+    </mainSequence>
+</useCase>

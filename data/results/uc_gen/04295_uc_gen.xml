@@ -1,0 +1,34 @@
+<useCase id="1">
+    <name>Change Marketing Campaign</name>
+    <description>User wants to change the type of marketing campaign.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ump</actor>
+        <actor>retail-ump</actor>
+        <actor>c</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in.</precondition>
+        <precondition>Marketing campaign exists.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Marketing campaign type changed successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to change marketing campaign type.</condition>
+    </failureEndConditions>
+    <trigger>User initiates a request to change marketing campaign type.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to change marketing campaign.</step>
+        <step id="S2">ump activates.</step>
+        <step id="S3"></step>
+        <step id="S4">ump sends a message to retail-ump.</step>
+        <step id="S5">retail-ump processes the change of marketing campaign type.</step>
+        <step id="S6">retail-ump sends a synchronous/asynchronous message to c based on store count.</step>
+        <step id="S7">c activates and processes the message.</step>
+        <step id="S8">c returns.</step>
+        <step id="S9">retail-ump returns.</step>
+        <step id="S10">ump returns.</step>
+        <step id="S11">User receives the confirmation.</step>
+    </mainSequence>
+</useCase>

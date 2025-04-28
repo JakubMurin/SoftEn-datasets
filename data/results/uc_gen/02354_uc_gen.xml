@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Dataset Creation with Exploration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Dataset Type Registry</actor>
+        <actor>Dataset Storage</actor>
+        <actor>Exploration Service</actor>
+        <actor>Dataset Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests dataset creation with exploration enabled</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Dataset creation successful</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Dataset creation failed due to exploration issues</condition>
+        <condition>Dataset creation failed, type doesn't support exploration</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Verify dataset type supports exploration</step>
+        <step id="S2">Create dataset instance</step>
+        <step id="S3">Enable exploration on dataset</step>
+        <step id="S4">Save dataset details (with explore enabled flag)</step>
+    </mainSequence>
+</useCase>

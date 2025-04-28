@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Process and Duplicate HTTP Request</name>
+    <actors>
+        <actor>HTTP Request</actor>
+        <actor>mod_duplicator</actor>
+        <actor>PNS_WS Delegator</actor>
+        <actor>duplicator</actor>
+        <actor>mod_compare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">HTTP Request actor sends an Apache input filter request to mod_duplicator.</step>
+        <step id="S2">mod_duplicator receives the request and performs context enrichment.</step>
+        <step id="S3">mod_duplicator runs filters to match the specified criteria.</step>
+        <step id="S4">mod_duplicator delegates the request to the next handler, the PNS_WS Delegator.</step>
+        <step id="S5">PNS_WS Delegator collects the answer.</step>
+        <step id="S6">mod_duplicator prepares the request for duplication.</step>
+        <step id="S7">mod_duplicator sends the processed request back to the HTTP Request.</step>
+        <step id="S8">duplicator receives the prepared request for duplication from mod_duplicator.</step>
+        <step id="S9">duplicator sends the duplicated request to mod_compare.</step>
+        <step id="S10">mod_duplicator completes its task and deactivates.</step>
+        <step id="S11">duplicator completes the duplication process and deactivates.</step>
+    </mainSequence>
+</useCase>

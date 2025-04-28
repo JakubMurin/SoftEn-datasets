@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Update Receptionist Information</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>UI/Interface</actor>
+        <actor>ReceptionistRouter</actor>
+        <actor>ReceptionistController</actor>
+        <actor>ReceptionistRepository</actor>
+        <actor>ReceptionistModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in.</precondition>
+        <precondition>Receptionist data exists in the system.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin requests to update receptionist information through the UI.</step>
+        <step id="S2">UI displays the update form through the Router.</step>
+        <step id="S3">Controller retrieves receptionist data from Repository based on the ID.</step>
+        <step id="S4">Repository queries and retrieves receptionist data from the Database.</step>
+        <step id="S5">Controller and Router display the update form with current data.</step>
+        <step id="S6">Admin fills in updated receptionist details and submits them through the UI.</step>
+        <step id="S7">Router sends a POST request to update receptionist using Controller.</step>
+        <step id="S8">Controller processes and saves the updated receptionist data in Repository.</step>
+        <step id="S9">Repository updates the receptionist data in the Database.</step>
+        <step id="S10">Controller and Router respond with 200 OK for successful update.</step>
+        <step id="S11">UI displays success message to Admin after update completion.</step>
+    </mainSequence>
+</useCase>

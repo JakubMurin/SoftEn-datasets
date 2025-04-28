@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>View Ordered Candidates List</name>
+    <actors>
+        <actor>Customer Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer Manager initiates the request to see an ordered list of candidates using the job interview points.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Customer Manager requests to see an ordered list of candidates using the job interview points.</step>
+        <step id="S2">UI receives the request and calls the controller to find all job openings in the result.</step>
+        <step id="S3">Controller invokes the Application service to find all job openings in the result.</step>
+        <step id="S4">Application service interacts with the Job Opening Repository to retrieve job openings.</step>
+        <step id="S5">Job Opening Repository provides the list of job openings back to the Application service.</step>
+        <step id="S6">Application service returns the job openings to the Controller.</step>
+        <step id="S7">Controller sends the list of job openings to the UI.</step>
+        <step id="S8">UI shows the list of job openings to the Customer Manager.</step>
+        <step id="S9">Customer Manager selects a job opening to view related candidates.</step>
+        <step id="S10">UI sends the selected job opening to the Controller to list candidates for the opening.</step>
+        <step id="S11">Controller interacts with the Application service to get applications by the selected job opening.</step>
+        <step id="S12">Application service communicates with the Candidate Management Service to find all candidates.</step>
+        <step id="S13">Candidate Management Service retrieves candidates from the Candidate Repository.</step>
+        <step id="S14">Application service provides the list of candidates back to the Controller.</step>
+        <step id="S15">Controller receives the list of candidates.</step>
+        <step id="S16">Controller interacts with the Application service to get all job interviews of the applications submitted by candidates.</step>
+        <step id="S17">Application service communicates with the Interview Repository to find all interviews related to the applications.</step>
+        <step id="S18">Interview Repository retrieves the interviews.</step>
+        <step id="S19">Application service returns the interviews to the Controller.</step>
+        <step id="S20">Controller sorts the interviews.</step>
+        <step id="S21">Controller sends the sorted interviews to the UI.</step>
+        <step id="S22">UI displays the sorted interviews along with candidate details to the Customer Manager.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Add New Edge Agent</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Edge Agent 1</actor>
+        <actor>Edge Agent 2</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice has chosen existing or add new device from options in Edge Agent Start.</precondition>
+        <precondition>Edge Agent 2 has been provisioned as described in the Provision New Agent diagram.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice adds Agent 2.</step>
+        <step id="S2">Edge Agent 2 provides instructions for adding Agent 2 and selecting authorizations.</step>
+        <step id="S3">Alice adds agent with selected authorizations.</step>
+        <step id="S4">Edge Agent 1 displays provisioning code for adding Agent 2.</step>
+        <step id="S5">Alice shows the code to Edge Agent 2.</step>
+        <step id="S6">Edge Agent 2 sends add request and encryption keys.</step>
+        <step id="S7">Edge Agent 1 stores the encryption key in the wallet.</step>
+        <step id="S8">Edge Agent 1 confirms Agent 2.</step>
+        <step id="S9">Agent 1 adds keys and authorizations for Agent 2 to the policy registry.</step>
+        <step id="S10">Edge Agent 1 syncs data to Agent 2.</step>
+        <step id="S11">Edge Agent 2 stores data in the wallet.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">Edge Agent 2 can resend encryption keys if needed.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

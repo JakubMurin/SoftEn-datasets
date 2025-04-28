@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Middleware Registration</name>
+    <description>Register middleware and router in the application</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>App</actor>
+        <actor>JSONParser</actor>
+        <actor>URLEncodedParser</actor>
+        <actor>Router</actor>
+    </actors>
+    <preconditions>
+        <precondition>App is running and accessible</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All middleware and router successfully registered</condition>
+    </successEndConditions>
+    <trigger>Client triggers middleware and router registration</trigger>
+    <mainSequence>
+        <step id="S1">Client uses JSONParser middleware</step>
+        <step id="S2">App registers JSONParser middleware</step>
+        <step id="S3">Client uses URLEncodedParser middleware</step>
+        <step id="S4">App registers URLEncodedParser middleware</step>
+        <step id="S5">Client uses Router</step>
+        <step id="S6">App registers Router</step>
+    </mainSequence>
+</useCase>

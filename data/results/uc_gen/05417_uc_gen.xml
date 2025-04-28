@@ -1,0 +1,45 @@
+<useCase id="1">
+    <name>Login Process</name>
+    <description>User logs in to the system</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist has login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User login fails</condition>
+    </failureEndConditions>
+    <trigger>User enters login credentials</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password)</step>
+        <step id="S2">UI receives login credentials</step>
+        <step id="S3">Router processes POST /login</step>
+        <step id="S4">Controller initiates login()</step>
+        <step id="S5">Repository validates credentials</step>
+        <step id="S6">Repository fetches user by username</step>
+        <step id="S7">Controller checks if password matches</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Controller responds with 200 OK (login success)</step>
+            <step id="A1S2">UI displays login success</step>
+            <step id="A1S3">Router processes GET /dashboard</step>
+            <step id="A1S4">Controller fetches dashboard data</step>
+            <step id="A1S5">Repository queries dashboard data</step>
+            <step id="A1S6">Controller responds with 200 OK (dashboard data)</step>
+            <step id="A1S7">Router responds with 200 OK (dashboard data)</step>
+            <step id="A1S8">UI displays dashboard</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Login failed due to invalid credentials</description>
+            <step id="E1S1">Controller responds with 401 Unauthorized (invalid credentials)</step>
+            <step id="E1S2">UI displays error message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

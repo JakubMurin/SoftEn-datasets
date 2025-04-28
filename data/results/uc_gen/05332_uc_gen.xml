@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Create User Interface</name>
+    <description>As a User, I want to create a User Interface.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba has been initialized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User Interface is successfully created.</condition>
+    </successEndConditions>
+    <trigger>User triggers the creation of the User Interface.</trigger>
+    <mainSequence>
+        <step id="S1">User creates a new App instance by invoking .create(App).</step>
+        <step id="S2">Liba creates a cInstance.</step>
+        <step id="S3">renderC is triggered with the cInstance.</step>
+        <step id="S4">App is rendered with properties and renderLiba.</step>
+        <step id="S5">App creates a 'button' element.</step>
+        <step id="S6">App creates a UserCard element.</step>
+        <step id="S7">UserCard is created with props, AppCInstance, and a key.</step>
+        <step id="S8">UserCard is rendered with properties and renderLiba.</step>
+        <step id="S9">UserCard creates a 'div' element.</step>
+        <step id="S10">UserCard creates another 'div' element.</step>
+    </mainSequence>
+</useCase>

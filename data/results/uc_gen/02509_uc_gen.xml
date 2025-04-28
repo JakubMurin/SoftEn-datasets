@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Process Incoming Connection</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Server</actor>
+        <actor>ServerHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Server and ServerHandler instances exist</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client initiates a new connection</step>
+        <step id="S2">Server creates a new ServerHandler instance</step>
+        <step id="S3">ServerHandler sets AutoDelete property to true</step>
+        <step id="S4">Server passes ServerHandler instance to ThreadPool for processing</step>
+    </mainSequence>
+</useCase>

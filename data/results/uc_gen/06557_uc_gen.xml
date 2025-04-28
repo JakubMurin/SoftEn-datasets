@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Get Courses for Teacher</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Teacher</actor>
+        <actor>Course</actor>
+    </actors>
+    <preconditions>
+        <precondition>Teacher exists in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Teacher found and courses retrieved successfully.</condition>
+    </successEndConditions>
+    <trigger>User requests to get courses for a specific teacher.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to get courses for a teacher by providing the teacher ID.</step>
+        <step id="S2">Controller retrieves the teacher information by ID.</step>
+        <step id="S3">Controller communicates with Teacher to get the teachings of the teacher.</step>
+        <step id="S4">Controller receives courses from Teacher.</step>
+        <step id="S5">Controller iterates over each course to gather course details.</step>
+        <step id="S6">Controller gets the ID of the course.</step>
+        <step id="S7">Controller gets the name of the course.</step>
+        <step id="S8">Controller gets the description of the course.</step>
+        <step id="S9">Controller gets the price of the course.</step>
+        <step id="S10">Controller gets the average rating of the course.</step>
+        <step id="S11">Controller gets the banner image URL of the course.</step>
+        <step id="S12">Controller sends course card data to the User.</step>
+    </mainSequence>
+</useCase>

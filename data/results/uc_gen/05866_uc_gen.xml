@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Conflict Resolution</name>
+    <description>Resolve conflicts when multiple users update the same file.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>FileService</actor>
+        <actor>FileStorage</actor>
+        <actor>Database</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Notify Frontend about Conflict</step>
+        <step id="S2">Request Conflicting Files from FileStorage</step>
+        <step id="S3">Analyze and Resolve Conflicts</step>
+        <step id="S4">Update File Metadata in Database</step>
+        <step id="S5">Send Conflict Resolution Event to User via NotificationService</step>
+        <step id="S6">Notify Frontend about Conflict Resolution Completion</step>
+    </mainSequence>
+</useCase>

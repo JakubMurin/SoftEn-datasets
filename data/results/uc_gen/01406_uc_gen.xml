@@ -1,0 +1,28 @@
+<useCase id="UC001">
+   <name>Delete Other Service</name>
+   <actors>
+      <actor>Admin</actor>
+   </actors>
+   <trigger>User requests to delete an existing other service</trigger>
+   <mainSequence>
+      <step id="S1">Admin sends a request to delete an existing other service</step>
+      <step id="S2">UI receives the request and triggers GET request to delete {serviceId}</step>
+      <step id="S3">Router redirects the request to Controller for confirmation</step>
+      <step id="S4">Controller delegates to Repository to fetch service details</step>
+      <step id="S5">Repository communicates with OtherServiceModel to fetch service by ID</step>
+      <step id="S6">OtherServiceModel queries Database for service data</step>
+      <step id="S7">OtherServiceModel retrieves the service data from the database</step>
+      <step id="S8">Repository sends service data to Controller</step>
+      <step id="S9">Controller displays delete confirmation form on UI</step>
+      <step id="S10">Admin confirms the delete request on UI</step>
+      <step id="S11">UI sends a POST request to delete {serviceId}</step>
+      <step id="S12">Router forwards the request to Controller for deletion operation</step>
+      <step id="S13">Controller instructs Repository to delete the service</step>
+      <step id="S14">Repository communicates with OtherServiceModel to delete the service by ID</step>
+      <step id="S15">OtherServiceModel deletes the service record from the Database</step>
+      <step id="S16">Repository provides success message to the Controller</step>
+      <step id="S17">Controller responds to Router with 200 OK status</step>
+      <step id="S18">Router relays the success status to UI</step>
+      <step id="S19">UI displays a success message to the Admin </step>
+   </mainSequence>
+</useCase>

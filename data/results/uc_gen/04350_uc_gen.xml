@@ -1,0 +1,27 @@
+<useCase id="UC1">
+  <name>Restrict Access to Collection</name>
+  <actors>
+    <actor>Curator</actor>
+  </actors>
+  <preconditions>
+    <precondition>Curator is authenticated</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Collection access successfully restricted</condition>
+  </successEndConditions>
+  <trigger>Curator initiates restriction settings</trigger>
+  <mainSequence>
+    <step id="S1">Curator initiates restriction settings</step>
+    <step id="S2">Curator authenticates through UI Dashboard</step>
+    <step id="S3">Curator requests to restrict access</step>
+    <step id="S4">Access Control Module fetches collection details</step>
+    <step id="S5">Access Control Module defines IP restriction rule</step>
+    <step id="S6">Access Control Module updates collection with access rule</step>
+    <step id="S7">Restriction applied successfully</step>
+    <step id="S8">Curator receives success message</step>
+    <step id="S9">User tries to access collection</step>
+    <step id="S10">Networking Service checks access for user IP</step>
+    <step id="S11">Access Control Module validates IP against rule</step>
+    <step id="S12">Network Service serves/denies collection based on ACM decision</step>
+  </mainSequence>
+</useCase>

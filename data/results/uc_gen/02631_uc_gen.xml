@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Request Access to a Service Offered by a Delegate</name>
+    <actors>
+        <actor>API Consumer</actor>
+        <actor>Municipality</actor>
+        <actor>Saas Organization</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Administrator requests access to the service</step>
+        <step id="S2">Management UI sends the request to Management API</step>
+        <step id="S3">Management API forwards the request to Inway of Municipality</step>
+        <step id="S4">Inway of Municipality sends the request to Management API of Municipality</step>
+        <step id="S5">Management API of Municipality stores the access request in Management Database</step>
+        <step id="S6">Administrator view pending access requests</step>
+        <step id="S7">Management UI gets pending access request</step>
+        <step id="S8">Management API retrieves pending access requests from Management Database</step>
+        <step id="S9">Management Database responds with pending access requests for display</step>
+        <step id="S10">Management API forwards the pending requests to Management UI for display</step>
+        <step id="S11">Administrator approves an access request</step>
+        <step id="S12">Management UI sends the approval to Management API</step>
+        <step id="S13">Management API creates an access grant in the Inway of the Saas Organization</step>
+        <step id="S14">Inway forwards the grant creation request to Management API of Saas Organization</step>
+        <step id="S15">Management API of Saas Organization stores the access grant in Management Database</step>
+        <step id="S16">Administrator views access grants for the service</step>
+        <step id="S17">Management UI gets access grants for the service</step>
+        <step id="S18">Management API retrieves access grants from the Inway of Saas Organization</step>
+        <step id="S19">Inway provides access grants to Management API of Saas Organization</step>
+        <step id="S20">Management API fetches access grants from the Management Database of Saas Organization</step>
+        <step id="S21">Management Database responds with access grants appropriate for the service</step>
+        <step id="S22">Management API forwards the access grants to Inway of Municipality</step>
+        <step id="S23">Inway sends access grants to Management API of Municipality</step>
+        <step id="S24">Management API of Municipality returns the access grants</step>
+        <step id="S25">Management returns access grants suitable for display for the Municipality</step>
+        </mainSequence>
+</useCase>

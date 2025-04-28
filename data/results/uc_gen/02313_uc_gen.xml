@@ -1,0 +1,23 @@
+<useCase id="UC001">
+  <name>Login to System</name>
+  <description>User logs in to the system with email and password.</description>
+  <actors>
+    <actor>Actor</actor>
+  </actors>
+  <preconditions>
+    <precondition>User has valid login credentials.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>User successfully logs in and receives a user session.</condition>
+  </successEndConditions>
+  <trigger>User presses the login button on the UI.</trigger>
+  <mainSequence>
+    <step id="S1">User interacts with the login UI.</step>
+    <step id="S2">UI requests user information (E-Mail, Password).</step>
+    <step id="S3">User provides E-Mail and Password.</step>
+    <step id="S4">UI sends authentication request to AuthServ with role and maxAttempts.</step>
+    <step id="S5">AuthServ authenticates user's credentials.</step>
+    <step id="S6">AuthServ returns UserSession to UI.</step>
+    <step id="S7">UI displays successful login message to Actor.</step>
+  </mainSequence>
+</useCase>

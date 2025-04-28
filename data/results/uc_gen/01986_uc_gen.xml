@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Expiration of Items</name>
+    <actors>
+        <actor>Collection Curator</actor>
+        <actor>Web Interface</actor>
+        <actor>EDRMS Server</actor>
+        <actor>Repository Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The curator selects items for expiration.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The items are successfully updated with the expiration date.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The items fail to update with the expiration date.</condition>
+    </failureEndConditions>
+    <trigger>Selecting item(s) for expiration.</trigger>
+    <mainSequence>
+        <step id="S1">Collection Curator selects item(s) for expiration through the Web Interface.</step>
+        <step id="S2">The Web Interface sends the item(s) and expiration parameters to the EDRMS Server.</step>
+        <step id="S3">The EDRMS Server queries the Repository Database to update the item(s) with the expiration date.</step>
+        <step id="S4">The EDRMS Server schedules a task for the item(s) expiration.</step>
+        <step id="S5">The EDRMS Server confirms the expiration date is set and notifies the Web Interface.</step>
+        <step id="S6">The Web Interface displays a confirmation message to the Collection Curator.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Every night at 12:00 AM, the EDRMS Server checks for expired items.</step>
+            <step id="A1S2">The EDRMS Server queries the Repository Database for items to hide or delete.</step>
+            <step id="A1S3">The Repository Database returns the expired items to the EDRMS Server.</step>
+            <step id="A1S4">The EDRMS Server updates the item(s) status to hidden or deletes the item(s) from the database.</step>
+            <step id="A1S5">The Repository Database confirms the item(s) are successfully updated or removed.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Handle Bullet Collision</name>
+    <actors>
+        <actor>Bullet Actor</actor>
+        <actor>Model</actor>
+        <actor>Balloon Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The bullet entity is updated in the game.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The bullet has successfully interacted with the game entities.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The bullet is out of the screen.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Update bullet position.</step>
+        <step id="S2">Check for collision between bullet and balloon.</step>
+        <step id="S3">Explode if collision detected.</step>
+        <step id="S4">Update game entities if no collision.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Start explosion if bullet hits balloons.</step>
+            <step id="A1S2">Handle balloon hit.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Handle error steps for explosion.</description>
+            <step id="E1S1">Handle error steps for explosion.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Reboot Use Case</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Host</actor>
+        <actor>DPU</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User initiates top level reboot</step>
+        <step id="S2">User coredons the node</step>
+        <step id="S3">User reboots the system</step>
+        <step id="S4">User uncordons the node</step>
+        <step id="S5">Host detects reboot is necessary</step>
+        <step id="S6">Host coredons the node</step>
+        <step id="S7">Host signals DPU readiness for reboot</step>
+        <step id="S8">DPU updates PDB and reboots</step>
+        <step id="S9">Host reconnects to DPU</step>
+        <step id="S10">DPU updates PDB after reboot</step>
+        <step id="S11">Host uncordons the node</step>
+    </mainSequence>
+</useCase>

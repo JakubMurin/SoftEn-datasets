@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Manage Voter List Changes</name>
+    <description>As an EHS operator, I want to manage voter list changes effectively.</description>
+    <actors>
+        <actor>EHS operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>EHS operator is logged in and has access to VIS system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Voter list changes are successfully imported.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Issues with loading voter list changes are resolved.</condition>
+    </failureEndConditions>
+    <trigger>Request for voter list changes is received.</trigger>
+    <mainSequence>
+        <step id="S1">EHS operator provides voter list changes.</step>
+        <step id="S2">VIS changes the list based on the provided changes.</step>
+        <step id="S3">EHS imports the changed list.</step>
+        <step id="S4">EHS addresses any issue with loading the changes.</step>
+        <step id="S5">EHS provides voter list changes again.</step>
+        <step id="S6">VIS updates the list with the new changes.</step>
+        <step id="S7">EHS imports the updated list successfully.</step>
+        <step id="S8">EHS provides voter list changes once more.</step>
+        <step id="S9">Conflict arises during the change process.</step>
+        <step id="S10">EHS resolves the conflict and continues with the changes.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">EHS operator signs directive to skip certain changes.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Conflict occurs during the change process.</description>
+            <step id="E1S1">EHS operator encounters a sequence number error while loading changes.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

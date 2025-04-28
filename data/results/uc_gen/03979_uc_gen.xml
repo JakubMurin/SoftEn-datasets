@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Reserver un cours</name>
+    <description>Permet à l'utilisateur de réserver un cours en fonction de son abonnement et de ses crédits disponibles.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>Base de Données</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur doit être connecté au système.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La réservation est effectuée avec succès.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Les crédits de l'utilisateur sont insuffisants pour la réservation.</condition>
+    </failureEndConditions>
+    <trigger>L'utilisateur sélectionne un cours à réserver.</trigger>
+    <mainSequence>
+        <step id="S1">Utilisateur sélectionne un cours à réserver.</step>
+        <step id="S2">Système vérifie l'abonnement et les crédits de l'utilisateur.</step>
+        <step id="S3">Base de Données fournit les détails de l'abonnement et des crédits de l'utilisateur.</step>
+        <step id="S4">Système enregistre la réservation.</step>
+        <step id="S5">Base de Données confirme la réservation.</step>
+        <step id="S6">Système envoie une confirmation de la réservation à l'utilisateur.</step>
+    </mainSequence>
+</useCase>

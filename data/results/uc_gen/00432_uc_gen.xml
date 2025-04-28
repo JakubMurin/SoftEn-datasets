@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Perform Chapter Purchase</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ChapterContentView</actor>
+        <actor>TransactionsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <trigger>User clicks on the chapter title to purchase</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the chapter title</step>
+        <step id="S2">User clicks on the purchase option</step>
+        <step id="S3">View requests API</step>
+        <step id="S4">Controller processes AddTransactionBuyChapter() method</step>
+        <step id="S5">Controller queries data from Database</step>
+        <step id="S6">Database returns the data to Controller</step>
+        <step id="S7">Controller triggers MsgActionReturn() method in MsgService</step>
+        <step id="S8">MsgService formats the response payload</step>
+        <step id="S9">View displays the Chapter Content Page</step>
+    </mainSequence>
+</useCase>

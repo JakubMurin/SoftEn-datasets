@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Hide Story</name>
+    <description>The user hides a story from view on the Stories Management Page.</description>
+    <actors>
+        <actor>Author</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in to the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The story is successfully hidden from view.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the hide story option.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on "Hide Story" option.</step>
+        <step id="S2">Request to hide story is sent to the controller.</step>
+        <step id="S3">The controller processes the request by calling DeleteStory() method.</step>
+        <step id="S4">Query data from the database to hide the story.</step>
+        <step id="S5">Return success result from the database.</step>
+        <step id="S6">Format the response payload to the view.</step>
+        <step id="S7">Display the Stories Management Page.</step>
+    </mainSequence>
+</useCase>

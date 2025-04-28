@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Manage Backup Food Stock</name>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef needs to access the inventory management system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Chef successfully renews the backup food list.</condition>
+    </successEndConditions>
+    <trigger>The Chef identifies items for renewal.</trigger>
+    <mainSequence>
+        <step id="S1">The Chef accesses the inventory management system.</step>
+        <step id="S2">The system checks the current backup food stock in the InventoryDB.</step>
+        <step id="S3">The InventoryDB returns the current stock levels to the system.</step>
+        <step id="S4">The system shows the current backup food list with stock levels to the Chef.</step>
+        <step id="S5">The Chef identifies items for renewal.</step>
+        <step id="S6">The system updates the backup food list in the InventoryDB.</step>
+        <step id="S7">The InventoryDB confirms the updated list to the system.</step>
+        <step id="S8">The system displays the confirmation of the renewed list to the Chef.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">The Chef initiates a restock request for items.</step>
+            <step id="A1S2">The system places an order for restock with the Supplier.</step>
+            <step id="A1S3">The Supplier confirms the restock order to the system.</step>
+            <step id="A1S4">The system updates pending deliveries in the InventoryDB.</step>
+            <step id="A1S5">The InventoryDB confirms the update to the system.</step>
+            <step id="A1S6">The system displays the restock order confirmation to the Chef.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

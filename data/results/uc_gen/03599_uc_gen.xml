@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Consultar Perfil de Usuario</name>
+    <actors>
+        <actor>Colaborador</actor>
+    </actors>
+    <preconditions>
+        <precondition>El Colaborador ha iniciado sesión</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Se muestra la información del perfil de usuario correctamente</condition>
+    </successEndConditions>
+    <trigger>El Colaborador requiere consultar su perfil de usuario</trigger>
+    <mainSequence>
+        <step id="S1">El Colaborador solicita la consulta de su perfil</step>
+        <step id="S2">El sistema responde con la página "/myprofile"</step>
+        <step id="S3">El Colaborador visualiza la página "/myprofile"</step>
+        <step id="S4">El Colaborador realiza una solicitud GET a la ruta "/myprofile"</step>
+        <step id="S5">El controlador user.routes llama a la función "getProfile(req, res)"</step>
+        <step id="S6">El controlador user.controller se activa</step>
+        <step id="S7">El controlador user.controller llama a user.model para obtener el perfil</step>
+        <step id="S8">El model user.model activa la consulta del perfil del usuario en la base de datos mysql</step>
+        <step id="S9">mysql ejecuta la consulta SELECT * FROM users WHERE userId = ?</step>
+        <step id="S10">mysql devuelve los datos del perfil al model user.model</step>
+        <step id="S11">El model user.model transmite los datos al controlador user.controller</step>
+        <step id="S12">El controlador user.controller renderiza la vista myprofile.ejs con los datos</step>
+        <step id="S13">La vista myprofile.ejs muestra la información en formato HTML</step>
+    </mainSequence>
+</useCase>

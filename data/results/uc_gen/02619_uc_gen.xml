@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Calculate Points in Area</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+        <actor>Split Queue</actor>
+        <actor>Split Map</actor>
+        <actor>Depth Calculation Process</actor>
+        <actor>Points</actor>
+        <actor>Calculate</actor>
+    </actors>
+    <preconditions>
+        <precondition>User moves the map to a specific area</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Points in the area are successfully calculated</condition>
+    </successEndConditions>
+    <trigger>User triggers the calculation process</trigger>
+    <mainSequence>
+        <step id="S1">User moves the map</step>
+        <step id="S2">Frontend calculates the area in the map</step>
+        <step id="S3">Frontend adds the area to the Split Queue</step>
+        <step id="S4">Frontend retrieves the depth in the area</step>
+        <step id="S5">Backend requests Points in the depth from the Points database</step>
+        <step id="S6">Points in the Area are obtained</step>
+        <step id="S7">Split Queue requests points that are not calculated</step>
+        <step id="S8">Split Map gets undefined points</step>
+        <step id="S9">Calculate calculates the points</step>
+        <step id="S10">Update Points</step>
+        <step id="S11">Split Map inserts points with undefined depth</step>
+        <step id="S12">Backend creates an overlay with current points</step>
+        <step id="S13">Frontend shows the overlay to the User</step>
+    </mainSequence>
+</useCase>

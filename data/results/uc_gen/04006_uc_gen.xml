@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Payment Cancellation with Redirect approach, implicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>Online_banking</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates Payment Cancellation</step>
+        <step id="S2">TPP initiates REST Call to Cancel payment</step>
+        <step id="S3">XS2A performs Java Call to get Payment by ID</step>
+        <step id="S4">XS2A initiates Java Call to SPI for payment cancellation</step>
+        <step id="S5">XS2A updates payment status in CMS</step>
+        <step id="S6">TPP returns message to PSU if payment cannot be cancelled</step>
+        <step id="S7">XS2A proceeds with cancellation without SCA if not mandated</step>
+        <step id="S8">XS2A initiates authorisation request with SPI if SCA mandated</step>
+        <step id="S9">PSU redirects to Online_banking for authorisation</step>
+        <step id="S10">Online_banking performs REST Call to CMS to get payment information</step>
+        <step id="S11">Online_banking updates PSU data with CMS</step>
+        <step id="S12">Online_banking receives authorisation process response</step>
+        <step id="S13">PSU authorises the cancellation</step>
+        <step id="S14">Online_banking updates authorisation status in CMS</step>
+        <step id="S15">Online_banking executes payment cancellation with ASPSP</step>
+        <step id="S16">Online_banking updates payment status in CMS</step>
+        <step id="S17">PSU receives confirmation of cancellation</step>
+        <step id="S18">PSU redirects back to TPP</step>
+        <step id="S19">TPP performs REST Call to get payment status</step>
+        <step id="S20">XS2A retrieves payment status from CMS</step>
+        <step id="S21">XS2A retrieves transaction status from SPI</step>
+        <step id="S22">XS2A updates transaction status in CMS</step>
+        <step id="S23">TPP retrieves payment request from XS2A</step>
+        <step id="S24">XS2A retrieves payment information from CMS and SPI</step>
+        <step id="S25">XS2A updates payment information in CMS</step>
+        <step id="S26">TPP retrieves cancellation authorisation sub-resources from XS2A</step>
+        <step id="S27">XS2A retrieves cancellation authorisation details from CMS</step>
+        <step id="S28">TPP retrieves specific cancellation authorisation from XS2A</step>
+        <step id="S29">XS2A retrieves SCA status for cancellation authorisation from CMS</step>
+    </mainSequence>
+</useCase>

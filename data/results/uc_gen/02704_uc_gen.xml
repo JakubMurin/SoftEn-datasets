@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Deposit Dataset</name>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>Web Interface</actor>
+        <actor>Pure Integration Module</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Bath Data Archive</actor>
+    </actors>
+    <preconditions>
+        <precondition>Depositor accesses the deposit interface.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Dataset deposit is confirmed and DOI is generated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Dataset deposit is unsuccessful.</condition>
+    </failureEndConditions>
+    <trigger>Depositor initiates the deposit process.</trigger>
+    <mainSequence>
+        <step id="S1">Access deposit interface.</step>
+        <step id="S2">Request authentication from Pure Integration Module.</step>
+        <step id="S3">Authenticate depositor.</step>
+        <step id="S4">Show dataset deposit form to Depositor.</step>
+        <step id="S5">Depositor fills in form (including metadata and files).</step>
+        <step id="S6">Process deposit form in Dataset Management System.</step>
+        <step id="S7">Check if dataset metadata aligns with Pure requirements.</step>
+        <step id="S8">Confirm metadata alignment with Pure.</step>
+        <step id="S9">Deposit dataset and metadata in Bath Data Archive.</step>
+        <step id="S10">Confirm deposit and generate DOI in Archive.</step>
+        <step id="S11">Link dataset DOI with Pure records.</step>
+        <step id="S12">Update Pure records with Dataset Management System.</step>
+        <step id="S13">Confirm dataset deposit and provide DOI to depositor from Dataset Management System.</step>
+        <step id="S14">Display confirmation with DOI link to Depositor.</step>
+    </mainSequence>
+</useCase>

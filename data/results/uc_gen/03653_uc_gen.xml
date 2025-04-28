@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>View Menu</name>
+    <description>Customer wants to view the available menu items.</description>
+    <actors>
+        <actor>Customer</actor>
+        <actor>FrontEnd</actor>
+        <actor>BackEnd</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer must be connected to the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Menu items are successfully displayed to the customer.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs while fetching or displaying menu items.</condition>
+    </failureEndConditions>
+    <trigger>Customer requests to view the menu.</trigger>
+    <mainSequence>
+        <step id="S1">Customer requests to view menu</step>
+        <step id="S2">FrontEnd fetches menu items</step>
+        <step id="S3">BackEnd queries menu items from Database</step>
+        <step id="S4">Database returns menu items to BackEnd</step>
+        <step id="S5">BackEnd provides menu items data to FrontEnd</step>
+        <step id="S6">FrontEnd displays the menu to the Customer</step>
+    </mainSequence>
+</useCase>

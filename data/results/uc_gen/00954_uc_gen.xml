@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Reconfigure System based on new configuration file</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has a new configuration file ready</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>System successfully reconfigured</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">User loads the new composition from the file using Karaf Console</step>
+        <step id="S2">Karaf Console reads the content of the XML file</step>
+        <step id="S3">Karaf Console sets configuration values based on the XML content</step>
+        <step id="S4">Karaf Configuration reloads OSGi modules</step>
+        <step id="S5">Karaf Configuration retrieves the composition configuration</step>
+        <step id="S6">Core.caos loads Composition Specification</step>
+        <step id="S7">Core.caos gets list of required modules from the Composition Specification</step>
+        <step id="S8">Core.caos checks if all required modules are present</step>
+        <step id="S9">Core.caos logs successful reconfiguration</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Create Operation Type</name>
+    <description>Allows an Admin to create a new Operation Type with its attributes.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>FrontEnd</actor>
+        <actor>Backoffice API</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation Type is successfully created and saved in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Operation Type creation fails due to invalid attributes.</condition>
+    </failureEndConditions>
+    <trigger>User requests to create a new Operation Type.</trigger>
+    <mainSequence>
+        <step id="S1">Admin creates Operation Type with its attributes.</step>
+        <step id="S2">FrontEnd sends Operation Type creation request to Backoffice API.</step>
+        <step id="S3">Backoffice API validates Operation Type attributes.</step>
+        <step id="S4">Backoffice API saves the new Operation Type in the Database.</step>
+        <step id="S5">Backoffice API logs the creation of the Operation Type.</step>
+        <step id="S6">Backoffice API returns confirmation to FrontEnd.</step>
+        <step id="S7">FrontEnd returns confirmation to Admin.</step>
+    </mainSequence>
+</useCase>

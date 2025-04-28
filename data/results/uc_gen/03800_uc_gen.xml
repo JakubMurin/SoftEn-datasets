@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Retrieve User Private File List</name>
+    <description>As a User, I want to retrieve my private file list from various storage services.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to access private files.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully receives a list of all files across all known user DFS's.</condition>
+    </successEndConditions>
+    <trigger>User requests to get their private file list.</trigger>
+    <mainSequence>
+        <step id="S1">User requests private file list from User subservice API router.</step>
+        <step id="S2">User subservice API router forwards the request to User subservice REST API.</step>
+        <step id="S3">Metadata Service retrieves User 1 metadata from Lookup DFS.</step>
+        <step id="S4">Lookup DFS Service reads private store for User 1 using password.</step>
+        <step id="S5">Lookup DFS Service provides a map of [s3:bucket1 : access1, minio:bucket2 : access2] to Metadata Service.</step>
+        <step id="S6">Metadata Service receives user data paths and credentials from Lookup DFS Service.</step>
+        <step id="S7">For each path, Metadata Service accesses private storage using access credentials.</step>
+        <step id="S8">Storage Service reads keystore from Storage adapter.</step>
+        <step id="S9">Storage Service decrypts keystore using password.</step>
+        <step id="S10">Storage adapter lists all private files.</step>
+        <step id="S11">Storage Service decrypts file paths using keystore: path secret.</step>
+        <step id="S12">Metadata Service receives the file list.</step>
+        <step id="S13">User receives a list of all files across all known user DFS's.</step>
+    </mainSequence>
+</useCase>

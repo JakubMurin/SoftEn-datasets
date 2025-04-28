@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Add Comment to Article</name>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>Controller</actor>
+        <actor>ArticleService</actor>
+        <actor>CommentService</actor>
+        <actor>ArticleRepo</actor>
+        <actor>CommentRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+        <precondition>User navigated to the article page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Comment successfully added to the article</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while adding the comment to the article</condition>
+    </failureEndConditions>
+    <trigger>User requests to add a comment to the article</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the article page</step>
+        <step id="S2">Controller receives request to add comment</step>
+        <step id="S3">Controller retrieves article details</step>
+        <step id="S4">ArticleService queries article by slug</step>
+        <step id="S5">ArticleService receives article details</step>
+        <step id="S6">Controller receives article details</step>
+        <step id="S7">CommentService adds comment to the article</step>
+        <step id="S8">CommentRepo saves the comment</step>
+        <step id="S9">CommentService sends success response</step>
+        <step id="S10">Controller updates article page with new comment</step>
+        <step id="S11">System displays updated article page with comment</step>
+    </mainSequence>
+</useCase>

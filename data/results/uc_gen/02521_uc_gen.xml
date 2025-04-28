@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>Register User</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User enters details (username, email, password) on Registration Form</step>
+        <step id="S2">App requests registration</step>
+        <step id="S3">Handler calls Service to create user</step>
+        <step id="S4">Service calls Repository to create user</step>
+        <step id="S5">Repository checks if email is unique</step>
+        <step id="S6">Repository sends OK if email is unique</step>
+        <step id="S7">Service sends OK to Handler</step>
+        <step id="S8">Handler displays success to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S6">
+            <step id="A1S1">Repository sends error if email is not unique</step>
+            <step id="A1S2">Service sends error to Handler</step>
+            <step id="A1S3">Handler displays error to User</step>
+        </asteps>
+        <asteps id="A2" start="S1" continue="S3">
+            <step id="A2S1">App shows invalid error to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

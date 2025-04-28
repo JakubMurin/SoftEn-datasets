@@ -1,0 +1,28 @@
+<useCase id="1">
+    <name>Perform Reconfiguration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Karaf Console</actor>
+        <actor>Karaf Configuration</actor>
+        <actor>core.caos</actor>
+        <actor>BackendManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system is running and accessible.</precondition>
+    </preconditions>
+    <trigger>Reconfiguration of the system is required.</trigger>
+    <mainSequence>
+        <step id="S1">User loads composition specifications from a new XML file via Karaf Console.</step>
+        <step id="S2">Karaf Console reads the content of the XML file.</step>
+        <step id="S3">Karaf Console sets configuration value (composition, xml content).</step>
+        <step id="S4">Karaf Configuration reloads OSGi module.</step>
+        <step id="S5">core.caos retrieves configuration related to the composition.</step>
+        <step id="S6">core.caos creates CompositionSpecification and loads it.</step>
+        <step id="S7">core.caos receives a list of required modules from CompositionSpecification.</step>
+        <step id="S8">core.caos requests all current backends from BackendManager.</step>
+        <step id="S9">BackendManager provides currently connected backends to core.caos.</step>
+        <step id="S10">core.caos checks if all required modules are present based on the provided backends.</step>
+        <step id="S11">core.caos finishes the reconfiguration process.</step>
+        <step id="S12">core.caos logs successful reconfiguration via Karaf Console.</step>
+    </mainSequence>
+</useCase>

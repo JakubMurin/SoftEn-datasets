@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Cache Data Retrieval Process</name>
+    <actors>
+        <actor>UserX</actor>
+        <actor>UserY</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">UserX queries Server A for data with version=null</step>
+        <step id="S2">Server A requests data from Distributed Cache for itemID=1, version=null</step>
+        <step id="S3">Distributed Cache replies with itemID=1, version=12:00, inventory=10 to Server A</step>
+        <step id="S4">Server A returns data itemID=1, version=12:00, inventory=10 to UserX</step>
+        <step id="S5">UserX saves version=12:00 in cookie/local storage</step>
+        <step id="S6">UserX queries Server A for data with version=12:00</step>
+        <step id="S7">Server A checks local cache and serves data itemID=1, version=12:00, inventory=10 to UserX</step>
+        <step id="S8">UserY queries Server B for data with version=null</step>
+        <step id="S9">Server B requests data from Distributed Cache for itemID=1, version=null</step>
+        <step id="S10">Distributed Cache replies with itemID=1, version=12:05, inventory=8 to Server B</step>
+        <step id="S11">Server B returns data itemID=1, version=12:05, inventory=8 to UserY</step>
+        <step id="S12">UserY saves version=12:05 in cookie/local storage</step>
+        <step id="S13">UserY queries Server B for data with version=12:05</step>
+        <step id="S14">Server B checks local cache and serves data itemID=1, version=12:05, inventory=8 to UserY</step>
+        <step id="S15">UserY queries Server A for data with version=12:05</step>
+        <step id="S16">Server A checks local cache for version=12:00, then requests latest data from Distributed Cache for itemID=1, version=12:05</step>
+        <step id="S17">Distributed Cache replies with itemID=1, version=12:10, inventory=8 to Server A</step>
+        <step id="S18">Server A returns data itemID=1, version=12:10, inventory=8 to UserY</step>
+        <step id="S19">UserY saves version=12:10 in cookie/local storage</step>
+        <step id="S20">UserX queries Server A for data with version=12:00</step>
+        <step id="S21">Server A checks local cache for version=12:10 and serves data itemID=1, version=12:10, inventory=8 to UserX</step>
+    </mainSequence>
+</useCase>

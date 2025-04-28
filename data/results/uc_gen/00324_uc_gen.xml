@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Searching Content in API</name>
+    <description>User Agent initiates a search request to the Search Content API to retrieve content based on a specified search string.</description>
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Search Content API</actor>
+        <actor>Content Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Search Content API is operational.</precondition>
+        <precondition>Content Database is accessible.</precondition>
+    </preconditions>
+    <trigger>User Agent sends a search request to the Search Content API.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a search request to the Search Content API containing the search string.</step>
+        <step id="S2">Search Content API receives the request and activates.</step>
+        <step id="S3">Search Content API runs a search query on the Content Database.</step>
+        <step id="S4">Content Database executes the search query and returns the results to the API.</step>
+        <step id="S5">Search Content API processes the query result and deactivates.</step>
+        <step id="S6">Search Content API sends the search results back to the User Agent with an HTTP 200 OK response.</step>
+    </mainSequence>
+</useCase>

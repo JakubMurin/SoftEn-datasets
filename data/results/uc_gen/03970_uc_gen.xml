@@ -1,0 +1,57 @@
+<useCase id="1">
+    <name>Client Request Authorization</name>
+    <actors>
+        <actor>ClientRequest</actor>
+        <actor>Servlet</actor>
+        <actor>Filter</actor>
+        <actor>AuthCheck</actor>
+        <actor>JWT</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends a request to access an endpoint</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client successfully receives a response with authorized access</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client receives an error response with unauthorized access</condition>
+    </failureEndConditions>
+    <trigger>Client sends a request to access an endpoint</trigger>
+    <mainSequence>
+        <step id="S1">ClientRequest sends a request to Servlet for a specific endpoint</step>
+        <step id="S2">Servlet pre-processes the request</step>
+        <step id="S3">Filter checks if the endpoint allows guest role only</step>
+        <step id="S4">Endpoint proceeds with the request if guest role is allowed</step>
+        <step id="S5">Endpoint performs operations for the requested endpoint</step>
+        <step id="S6">Servlet sends a response back to the ClientRequest</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Filter checks if the endpoint requires an authorized role</step>
+            <step id="A1S2">Filter allows access if session Principal is valid and authorization is not expired</step>
+            <step id="A1S3">Endpoint proceeds with the request</step>
+            <step id="A1S4">Endpoint performs operations for the requested endpoint</step>
+            <step id="A1S5">Servlet sends a response back to the ClientRequest</step>
+        </asteps>
+        <asteps id="A2" start="A1S1" continue="A1S2">
+            <step id="A2S1">AuthCheck performs authorization check</step>
+            <step id="A2S2">AuthCheck checks for JSESSIONIDSSO cookie</step>
+            <step id="A2S3">Database provides specific roles for SSO principal</step>
+        </asteps>
+        <asteps id="A3" start="A1S1" continue="A1S3">
+            <step id="A3S1">AuthCheck performs authorization check</step>
+            <step id="A3S2">AuthCheck validates JWT in Authorization header</step>
+            <step id="A3S3">AuthCheck extracts subject from valid JWT</step>
+            <step id="A3S4">Database provides user roles based on JWT subject</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A2S2">
+            <description>AuthCheck rejects ClientRequest due to unauthorized access</description>
+            <step id="E1S1">Filter rejects access</step>
+            <step id="E1S2">Servlet sends an error response with status code 401</step>
+        </esteps>
+    </errorSteps>
+</useCase>

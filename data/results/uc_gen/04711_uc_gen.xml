@@ -1,0 +1,20 @@
+<useCase id="UC1">
+	<name>View All Projects</name>
+	<description>Allows the user to view all projects associated with a particular signId.</description>
+	<actors>
+		<actor>Project Leader (PL)</actor>
+	</actors>
+	<preconditions>
+		<precondition>The user is authenticated and has a valid signId.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The user successfully views all projects.</condition>
+	</successEndConditions>
+	<trigger>PL requests to view all projects using a specific signId.</trigger>
+	<mainSequence>
+		<step id="S1">PL triggers the getAllProject(signId) function.</step>
+		<step id="S2">System validates the member based on the signId.</step>
+		<step id="S3">System retrieves all projects associated with the signId from the Database.</step>
+		<step id="S4">System sends the list of projects as ProjectResponseDto to PL.</step>
+	</mainSequence>
+</useCase>

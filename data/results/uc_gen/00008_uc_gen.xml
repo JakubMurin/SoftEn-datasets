@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>OpenShift LightSpeed Service</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Lightspeed Service</actor>
+        <actor>Redactor</actor>
+        <actor>Question Validator</actor>
+        <actor>Document Summarizer</actor>
+        <actor>Conversation Cache</actor>
+        <actor>Vector Database</actor>
+        <actor>LLM</actor>
+    </actors>
+    <preconditions>
+        <precondition>User asks a question</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Answer to user's question provided</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid question</condition>
+    </failureEndConditions>
+    <trigger>Question asked by the user</trigger>
+    <mainSequence>
+        <step id="S1">User asks a question</step>
+        <step id="S2">Lightspeed Service receives question</step>
+        <step id="S3">Redactor redacts query</step>
+        <step id="S4">Redacted query sent back to Lightspeed Service</step>
+        <step id="S5">Conversation history retrieved from cache</step>
+        <step id="S6">Attachments retrieved from the request</step>
+        <step id="S7">Attachments redacted by Redactor</step>
+        <step id="S8">Question validated by Question Validator</step>
+        <step id="S9">Document summarized by Document Summarizer</step>
+        <step id="S10">Vector Database read for RAG</step>
+        <step id="S11">Answer provided to user</step>
+    </mainSequence>
+</useCase>

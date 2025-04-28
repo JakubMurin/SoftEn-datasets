@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>User makes a translation request</name>
+    <actors>
+        <actor>User</actor>
+        <actor>henrietta</actor>
+        <actor>paratranz2es</actor>
+        <actor>translators</actor>
+    </actors>
+    <preconditions>
+        <precondition>henrietta establishes a websocket connection with "bot/channel"</precondition>
+        <precondition>paratranz receives translation texts from translators</precondition>
+        <precondition>paratranz2es fetches data from paratranz</precondition>
+        <precondition>elasticsearch performs bulk insert operation</precondition>
+    </preconditions>
+    <trigger>henrietta queries elasticsearch</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the request by calling out henrietta through "bot/channel"</step>
+        <step id="S2">"bot/channel" sends user information and text input to henrietta</step>
+        <step id="S3">henrietta queries elasticsearch</step>
+        <step id="S4">elasticsearch responds to henrietta</step>
+        <step id="S5">henrietta communicates the response to "bot/channel"</step>
+        <step id="S6">User receives the translated text from "bot/channel"</step>
+    </mainSequence>
+</useCase>

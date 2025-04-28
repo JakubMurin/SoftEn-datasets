@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>HasKeychainEntryV1</name>
+    <description>As a User A, I want to set a key-value pair in AWS Secrets Manager via Hyperledger Cactus API.</description>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ensure the API Client and Server are properly connected.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The key-value pair is successfully set in AWS Secrets Manager.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs when setting the key-value pair in AWS Secrets Manager.</condition>
+    </failureEndConditions>
+    <trigger>Request to set a key-value pair in AWS Secrets Manager.</trigger>
+    <mainSequence>
+        <step id="S1">User A triggers the transaction to set a key-value pair via Hyperledger Cactus API.</step>
+        <step id="S2">API Client forwards the request to the API Server.</step>
+        <step id="S3">API Server calls the AWS Secrets Manager to set the key-value pair.</step>
+        <step id="S4">AWS Secrets Manager gets the AWS client.</step>
+        <step id="S5">AWS Secrets Manager describes the secret using the AWS client.</step>
+        <step id="S6">AWS Secrets Manager confirms the existence of the secret.</step>
+        <step id="S7">API Server responds with success to the API Client.</step>
+        <step id="S8">API Client formats the response.</step>
+        <step id="S9">API Client sends the formatted response to User A.</step>
+    </mainSequence>
+</useCase>

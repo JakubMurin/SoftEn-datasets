@@ -1,0 +1,36 @@
+<useCase id="1">
+    <name>Manage Task Progress</name>
+    <description>As a user, I want to manage the progress of my tasks using the Pomodoro technique.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TimeTrigger</actor>
+        <actor>Renderer</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>TaskStateChangeHandler</actor>
+        <actor>TaskFinishHandler</actor>
+        <actor>NotificationPlayer</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has initiated the task "programuj pomodoro".</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully completes a work-rest cycle with periodic notifications and progress updates.</condition>
+    </successEndConditions>
+    <trigger>User executes "pomogo --task 'programuj pomodoro'".</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the task "programuj pomodoro" using the CLI.</step>
+        <step id="S2">TaskStartHandler registers the new task.</step>
+        <step id="S3">TaskStartHandler saves the new task "programuj pomodoro" with start date and other details in the sqlite database.</step>
+        <step id="S4">TimeTrigger triggers a screen refresh.</step>
+        <step id="S5">Renderer retrieves tasks from the sqlite database.</step>
+        <step id="S6">Renderer renders a progress bar with animations and unicorns for the user.</step>
+        <step id="S7">TimeTrigger triggers TaskStateChangeHandler for state update.</step>
+        <step id="S8">TaskStateChangeHandler saves the new state as resting and increments the rest marker if work mode finishes.</step>
+        <step id="S9">TaskStateChangeHandler triggers a sound notification using NotificationPlayer.</step>
+        <step id="S10">If work mode finishes and resting mode starts, saving new state as resting and triggering notification occurs.</step>
+        <step id="S11">If deep rest mode finishes, task is marked as paused, and a sound notification is triggered.</step>
+        <step id="S12">TimeTrigger may eventually trigger Renderer to display the finish message with unicorns.</step>
+    </mainSequence>
+</useCase>

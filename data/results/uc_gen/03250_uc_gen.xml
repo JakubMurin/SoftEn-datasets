@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Execute Order Query</name>
+    <description>As a User, I want to query the application to show my orders.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Chat Client</actor>
+        <actor>LLM Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the application.</precondition>
+        <precondition>Chat Client is connected to the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Orders are successfully displayed to the User.</condition>
+    </successEndConditions>
+    <trigger>User queries the application with a request (e.g., "Show my orders").</trigger>
+    <mainSequence>
+        <step id="S1">User queries the Chat Client with the request.</step>
+        <step id="S2">Chat Client forwards the query to the Application.</step>
+        <step id="S3">Application prompts with the function schema (e.g., GetOrderRequest).</step>
+        <step id="S4">Application executes the function.</step>
+        <step id="S5">Application sends the function execution result to the Chat Client.</step>
+        <step id="S6">Chat Client sends the final response to the User.</step>
+    </mainSequence>
+</useCase>

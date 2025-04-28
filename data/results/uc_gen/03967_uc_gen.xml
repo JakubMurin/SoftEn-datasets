@@ -1,0 +1,55 @@
+<useCase id="UC1">
+    <name>Perform Authorization Check</name>
+    <actors>
+        <actor>ClientRequest</actor>
+        <actor>Servlet</actor>
+        <actor>Filter</actor>
+        <actor>AuthCheck</actor>
+        <actor>JWT</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client request is received</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client request is successfully authorized</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client request is not authorized</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">ClientRequest sends a request to Servlet</step>
+        <step id="S2">Servlet pre-processes the request</step>
+        <step id="S3">Filter allows access if endpoint is for guest role only</step>
+        <step id="S4">Servlet proceeds with the request</step>
+        <step id="S5">Endpoint performs endpoint operations</step>
+        <step id="S6">Endpoint responds to Servlet</step>
+        <step id="S7">Servlet responds to ClientRequest</step>
+        <step id="S8">Filter allows access if session Principal is valid for role and authorization is not expired</step>
+        <step id="S9">Servlet proceeds with the request</step>
+        <step id="S10">Endpoint performs endpoint operations</step>
+        <step id="S11">Endpoint responds to Servlet</step>
+        <step id="S12">Servlet responds to ClientRequest</step>
+        <step id="S13">AuthCheck performs Authorization check</step>
+        <step id="S14">AuthCheck checks for JSESSIONIDSSO cookie in the database</step>
+        <step id="S15">AuthCheck requests db specific roles for SSO principal</step>
+        <step id="S16">Database provides database specific roles to AuthCheck</step>
+        <step id="S17">AuthCheck validates JWT in Authorization header</step>
+        <step id="S18">AuthCheck extracts subject if JWT is valid</step>
+        <step id="S19">AuthCheck requests user roles based on JWT subject from Database</step>
+        <step id="S20">Database provides database specific roles to AuthCheck</step>
+        <step id="S21">AuthCheck rejects access if JWT is invalid</step>
+        <step id="S22">Filter rejects access if ClientRequest is not authorized</step>
+        <step id="S23">Servlet responds with Error response: 401 Status to ClientRequest</step>
+        <step id="S24">AuthCheck provides SecurityContext with Principal and normalized OpenDCS Roles to Filter</step>
+        <step id="S25">Filter checks SecurityContext against endpoint roles</step>
+        <step id="S26">Filter allows access if roles are valid</step>
+        <step id="S27">Servlet proceeds with the request</step>
+        <step id="S28">Endpoint performs endpoint operations</step>
+        <step id="S29">Endpoint responds to Servlet</step>
+        <step id="S30">Servlet responds to ClientRequest</step>
+        <step id="S31">Filter rejects access if roles are invalid</step>
+        <step id="S32">Servlet responds with Error response: 403 Status to ClientRequest</step>
+    </mainSequence>
+</useCase>

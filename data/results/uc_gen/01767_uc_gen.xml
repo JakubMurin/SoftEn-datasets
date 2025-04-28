@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Remove Book from Catalog</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Load Balancer/ECS</actor>
+        <actor>RemoveBookFromCatalogActivity</actor>
+        <actor>CatalogDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client sends HTTP Request to Load Balancer</step>
+        <step id="S2">Load Balancer activates and executes removeBookRequest in RemoveBookFromCatalogActivity</step>
+        <step id="S3">RemoveBookFromCatalogActivity activates and calls RemoveBookFromCatalog(bookId) in CatalogDao</step>
+        <step id="S4">CatalogDao activates and queries DynamoDB for latest version of the book</step>
+        <step id="S5">DynamoDB returns book data to CatalogDao</step>
+        <step id="S6">CatalogDao removes book from catalog, converts CatalogItemVersion to Coral Model Book, and creates RemoveBookFromCatalogResponse</step>
+        <step id="S7">RemoveBookFromCatalogActivity sends RemoveBookFromCatalogResponse to Load Balancer</step>
+        <step id="S8">Load Balancer sends 200 response with data to Client</step>
+    </mainSequence>
+</useCase>

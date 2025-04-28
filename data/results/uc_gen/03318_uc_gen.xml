@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Soumettre un document</name>
+    <description>Permet à l'utilisateur EEP de soumettre un document</description>
+    <actors>
+        <actor>EEP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Soumettre un document</step>
+        <step id="S2">Enregistrer le document</step>
+        <step id="S3">Confirmer l'enregistrement du document</step>
+        <step id="S4">Récupérer la confirmation de soumission du document</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Demander le téléchargement d'un document</step>
+            <step id="A1S2">Rechercher le document par identifiant</step>
+            <step id="A1S3">Trouver le document</step>
+            <step id="A1S4">Télécharger le document</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">Demander la suppression du document</step>
+            <step id="A2S2">Rechercher le document par identifiant</step>
+            <step id="A2S3">Confirmer la suppression du document</step>
+            <step id="A2S4">Supprimer le document</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

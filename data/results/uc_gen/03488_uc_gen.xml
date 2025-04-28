@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Link Email</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Email is successfully linked to the user.</condition>
+    </successEndConditions>
+    <trigger>User selects "Link Email".</trigger>
+    <mainSequence>
+        <step id="S1">User selects "Link Email".</step>
+        <step id="S2">UI requests email linking.</step>
+        <step id="S3">User Profile Service checks if the email exists.</step>
+        <step id="S4">User Profile Service links email to user.</step>
+        <step id="S5">Email Service sends confirmation email.</step>
+        <step id="S6">User Profile Service shows success message.</step>
+    </mainSequence>
+</useCase>

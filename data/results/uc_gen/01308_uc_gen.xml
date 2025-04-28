@@ -1,0 +1,43 @@
+<useCase id="PostComment">
+    <name>Post Comment</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>CommentController</actor>
+        <actor>CommentService</actor>
+        <actor>CommentRepository</actor>
+        <actor>CommentsDatabase</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the post page</precondition>
+    </preconditions>
+    <trigger>User enters comment content and submits a comment</trigger>
+    <mainSequence>
+        <step id="S1">User goes to post page</step>
+        <step id="S2">User Interface displays post details and comment form</step>
+        <step id="S3">User enters comment content</step>
+        <step id="S4">User submits comment</step>
+        <step id="S5">User Interface calls CommentController createComment(CommentDTO commentDTO)</step>
+        <step id="S6">CommentController validates comment content</step>
+        <step id="S7">CommentService validates and creates comment</step>
+        <step id="S8">CommentRepository saves comment data</step>
+        <step id="S9">Comments Database inserts comment data</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">CommentController returns validation error</step>
+        </asteps>
+        <asteps id="A2" start="S7">
+            <step id="A2S1">Save operation fails</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A2S1">
+            <description>Save operation fails</description>
+            <step id="E1S1">CommentRepository returns exception</step>
+            <step id="E1S2">CommentService returns failure response to CommentController</step>
+            <step id="E1S3">CommentController returns error message to UserInterface</step>
+            <step id="E1S4">UserInterface displays "Failed to create comment" message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>User Access to Integrated Interface</name>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>UI</actor>
+        <actor>Auth</actor>
+        <actor>SI</actor>
+        <actor>UnivSys</actor>
+        <actor>DMP</actor>
+    </actors>
+    <preconditions>
+        <precondition>Depositor has access to the platform</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Depositor accesses the platform</step>
+        <step id="S2">UI requests authentication from Auth</step>
+        <step id="S3">Auth authenticates the Depositor</step>
+        <step id="S4">Depositor provides credentials to Auth</step>
+        <step id="S5">Auth confirms successful authentication to UI</step>
+        <step id="S6">Depositor requests a familiar interface from UI</step>
+        <step id="S7">UI fetches user preferences from SI</step>
+        <step id="S8">SI requests user-specific settings from UnivSys</step>
+        <step id="S9">UnivSys provides the user settings to SI</step>
+        <step id="S10">SI applies settings and customization to UI</step>
+        <step id="S11">UI requests integration features from SI</step>
+        <step id="S12">SI fetches integration capabilities from UnivSys</step>
+        <step id="S13">UnivSys provides capabilities (APIs, data formats) to SI</step>
+        <step id="S14">SI integrates with University Systems</step>
+        <step id="S15">UI renders a unified management interface through DMP</step>
+        <step id="S16">DMP indicates the interface is ready to UI</step>
+        <step id="S17">UI displays a familiar and integrated interface to the Depositor</step>
+    </mainSequence>
+</useCase>

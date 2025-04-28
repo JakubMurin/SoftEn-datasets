@@ -1,0 +1,36 @@
+<useCase id="1">
+<name>Reboot Sequence</name>
+<description>DPU reboot sequence initiated by Host</description>
+<actors>
+    <actor>User</actor>
+    <actor>Host</actor>
+    <actor>DPU</actor>
+</actors>
+<preconditions>
+    <precondition>User must have privileged access</precondition>
+    <precondition>Host system must have the necessary resources to reboot DPU</precondition>
+</preconditions>
+<successEndConditions>
+    <condition>DPU reboot completed successfully</condition>
+</successEndConditions>
+<failureEndConditions>
+    <condition>Failure in rebooting DPU</condition>
+</failureEndConditions>
+<trigger>Reboot command given</trigger>
+<mainSequence>
+    <step id="S1">User coredons the node in Host</step>
+    <step id="S2">User initiates the reboot process on Host</step>
+    <step id="S3">User uncoredons the node</step>
+</mainSequence>
+<alternativeSteps>
+    <asteps id="A1" start="S1" continue="S2">
+        <step id="A1S1">Routine triggered by Host to livestream coredon action</step>
+    </asteps>
+</alternativeSteps>
+<errorSteps>
+    <esteps id="E1" start="S1">
+        <description>Feedback loop required for coredon action in Host</description>
+        <step id="E1S1">Reboot process missed due to liveliness check</step>
+    </esteps>
+</errorSteps>
+</useCase>

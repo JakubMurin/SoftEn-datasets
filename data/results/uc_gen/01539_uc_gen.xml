@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Select date and time for session booking</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Tandem Session System</actor>
+        <actor>Partner</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has logged into the session system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Session booked successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Session not available due to partner unavailability</condition>
+    </failureEndConditions>
+    <trigger>User selects date and time for session booking</trigger>
+    <mainSequence>
+        <step id="S1">User selects date and time for session booking</step>
+        <step id="S2">Tandem Session System checks partner availabilities</step>
+        <step id="S3">Tandem Session System sends session invitation to Partner</step>
+        <step id="S4">Partner accepts invitation</step>
+        <step id="S5">Session booked message is sent to User</step>
+        <step id="S6">Session not available message is sent to User</step>
+    </mainSequence>
+</useCase>

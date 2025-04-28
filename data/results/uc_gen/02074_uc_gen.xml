@@ -1,0 +1,45 @@
+<useCase id="UC001">
+  <name>Connect Bootstrap and Initialize</name>
+  <actors>
+    <actor>actor</actor>
+    <actor>Bootstrap</actor>
+    <actor>AbstractBoostrap</actor>
+    <actor>ChannelFactory</actor>
+    <actor>SingleThreadEventLoop</actor>
+    <actor>AbstractChannel.AbstractUnsafe</actor>
+    <actor>AbstractNioChannel</actor>
+    <actor>DefaultChannelPipeline</actor>
+    <actor>AbstractChannelHandlerContext</actor>
+    <actor>AbstractNioChannel.AbstractNioUnsafe</actor>
+  </actors>
+  <preconditions>
+    <precondition>Bootstrap and related classes are instantiated</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Bootstrap and related classes are successfully connected and initialized</condition>
+  </successEndConditions>
+  <trigger>actor initiates the connection process</trigger>
+  <mainSequence>
+    <step id="S1">actor connects to Bootstrap</step>
+    <step id="S2">Bootstrap validates and resolves connection</step>
+    <step id="S3">Bootstrap initializes and registers with AbstractBootstrap</step>
+    <step id="S4">AbstractBootstrap creates a new channel with ChannelFactory</step>
+    <step id="S5">AbstractBootstrap initializes the channel by creating a pipeline, adding handlers, setting channel options, and attributes</step>
+    <step id="S6">AbstractBootstrap registers with SingleThreadEventLoop</step>
+    <step id="S7">SingleThreadEventLoop registers with AbstractChannel.AbstractUnsafe</step>
+    <step id="S8">AbstractChannel.AbstractUnsafe registers the channel with AbstractNioChannel</step>
+    <step id="S9">AbstractNioChannel registers with AbstractNioChannel and invokes necessary handlers</step>
+    <step id="S10">AbstractNioChannel performs necessary operations for registration and event triggering</step>
+    <step id="S11">AbstractChannel.AbstractUnsafe invokes necessary handler methods in DefaultChannelPipeline</step>
+    <step id="S12">AbstractChannel.AbstractUnsafe fires channel registered event</step>
+    <step id="S13">AbstractChannel.AbstractUnsafe fires channel active event if needed</step>
+    <step id="S14">Bootstrap proceeds with connection initialization and resolution</step>
+    <step id="S15">Bootstrap connects to AbstractChannel for further connection setup</step>
+    <step id="S16">AbstractChannel connects to DefaultChannelPipeline</step>
+    <step id="S17">DefaultChannelPipeline connects to AbstractChannelHandlerContext</step>
+    <step id="S18">AbstractChannelHandlerContext handles connection invocation</step>
+    <step id="S19">AbstractChannelHandlerContext triggers connection handling in AbstractNioChannel.AbstractNioUnsafe</step>
+    <step id="S20">AbstractNioChannel.AbstractNioUnsafe handles connection process</step>
+    <step id="S21">AbstractNioChannel.AbstractNioUnsafe finishes the connection process and fires channel active event</step>
+  </mainSequence>
+</useCase>

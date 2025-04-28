@@ -1,0 +1,19 @@
+<useCase id="POA_REQUEST_LIST">
+    <name>Access POA Request List View</name>
+    <actors>
+        <actor>AccreditedRepresentative</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">AccreditedRepresentative accesses POA Request List View</step>
+        <step id="S2">Frontend shows list of VSO POA Requests</step>
+        <step id="S3">If AccreditedRepresentative is Logged In:</step>
+        <step id="S4">Frontend GETs /v0/accredited_representative_portal/poa_requests</step>
+        <step id="S5">Backend verifies AccreditedRepresentative Authentication</step>
+        <step id="S6">Backend interacts with VA.gov Database to retrieve POA Request List Data</step>
+        <step id="S7">Backend returns POA Request List Data to Frontend</step>
+        <step id="S8">Frontend displays POA Request List to AccreditedRepresentative</step>
+        <step id="S9">Else, if AccreditedRepresentative is Not Logged In:</step>
+        <step id="S10">Frontend displays Login Required Message</step>
+        <step id="S11">Frontend redirects to Login Page</step>
+    </mainSequence>
+</useCase>

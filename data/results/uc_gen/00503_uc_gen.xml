@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Process Payment via WeChat</name>
+    <actors>
+        <actor>用户</actor>
+        <actor>商户系统后台</actor>
+        <actor>微信客户端</actor>
+        <actor>微信支付系统</actor>
+    </actors>
+    <preconditions>
+        <precondition>用户 initiates a payment process via WeChat</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User places an order and initiates payment</step>
+        <step id="S2">Merchant system generates platform order</step>
+        <step id="S3">Merchant system requests order creation from WeChat Pay system</step>
+        <step id="S4">WeChat Pay system generates prepay order</step>
+        <step id="S5">WeChat Pay system returns prepay order identifier to Merchant system</step>
+        <step id="S6">Merchant system generates signed payment information</step>
+        <step id="S7">User initiates payment</step>
+        <step id="S8">User triggers WeChat payment</step>
+        <step id="S9">WeChat client sends payment request to WeChat Pay system</step>
+        <step id="S10">WeChat Pay system verifies payment authorization</step>
+        <step id="S11">WeChat Pay system returns payment authorization to User</step>
+        <step id="S12">User confirms payment and enters password</step>
+        <step id="S13">WeChat Pay system submits authorization</step>
+        <step id="S14">WeChat Pay system verifies authorization</step>
+        <step id="S15">WeChat Pay system notifies Merchant system of payment result</step>
+        <step id="S16">Merchant system saves payment notification</step>
+        <step id="S17">Merchant system informs WeChat Pay system of successful processing</step>
+        <step id="S18">WeChat Pay system returns payment result to User and sends notification</step>
+        <step id="S19">User queries payment status from Merchant system</step>
+        <step id="S20">Merchant system checks payment status with WeChat Pay system</step>
+        <step id="S21">WeChat Pay system returns payment status to Merchant system</step>
+        <step id="S22">WeChat Pay system displays payment message to User</step>
+    </mainSequence>
+</useCase>

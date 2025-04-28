@@ -1,0 +1,30 @@
+<useCase id="UC1">
+  <name>UMA protocol flow</name>
+  <description>Describe the flow of UMA protocol.</description>
+  <actors>
+    <actor>requesting party</actor>
+    <actor>client</actor>
+    <actor>authorization server</actor>
+    <actor>resource server</actor>
+    <actor>resource owner</actor>
+  </actors>
+  <trigger>Set policy conditions (anytime)</trigger>
+  <mainSequence>
+    <step id="S1">The resource owner sets policy conditions.</step>
+    <step id="S2">The client sends a Resource Request without an access token to the resource server.</step>
+    <step id="S3">The client receives a 401 response from the resource server containing an initial permission ticket and the authorization server location.</step>
+    <step id="S4">The client requests an Access token (RPT) from the authorization server along with the permission ticket and a claim token (push claims).</step>
+    <step id="S5">The authorization server assesses the request.</step>
+    <step id="S6">The authorization server sends a 403 response to the client with a new permission ticket, a need_info error, and a redirect_user hint.</step>
+    <step id="S7">The client redirects the user with the new permission ticket.</step>
+    <step id="S8">The requester follows the redirect to the authorization server.</step>
+    <step id="S9">The authorization server and the requester interactively gather claims.</step>
+    <step id="S10">The authorization server redirects back to the requester with the new permission ticket.</step>
+    <step id="S11">The requester follows the redirect to the client.</step>
+    <step id="S12">The client sends an RPT request to the authorization server with the permission ticket.</step>
+    <step id="S13">The authorization server assesses the request.</step>
+    <step id="S14">The authorization server responds to the client with an RPT and PCT.</step>
+    <step id="S15">The client sends a Resource request with the RPT to the resource server.</step>
+    <step id="S16">The resource server provides the Protected Resource to the client.</step>
+  </mainSequence>
+</useCase>

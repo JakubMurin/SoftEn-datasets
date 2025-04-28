@@ -1,0 +1,29 @@
+<useCase id="1001">
+    <name>Deposit Collection</name>
+    <description>Curator initiates the deposit process for a collection.</description>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator selects a collection for deposit.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Deposit is successfully saved in the EDRMS database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Validation of deposit details fails, causing the deposit process to fail.</condition>
+    </failureEndConditions>
+    <trigger>Curator initiates the deposit process.</trigger>
+    <mainSequence>
+        <step id="S1">Curator selects a collection.</step>
+        <step id="S2">Curator initiates the deposit process.</step>
+        <step id="S3">Curator provides deposit details (including embargo date).</step>
+        <step id="S4">Deposit Interface requests deposit details from Curator.</step>
+        <step id="S5">Deposit Interface validates details (including embargo date) with Validation Service.</step>
+        <step id="S6">Validation Service passes validation.</step>
+        <step id="S7">Deposit Interface saves deposit details in the EDRMS database.</step>
+        <step id="S8">Database confirms the successful save.</step>
+        <step id="S9">Notification Service sends confirmation to Curator.</step>
+        <step id="S10">Curator receives deposit successful notification.</step>
+    </mainSequence>
+</useCase>

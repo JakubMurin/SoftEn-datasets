@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Enable Security Profile</name>
+    <actors>
+        <actor>SecurityEngineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>A Security Profile has been created and disabled</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Security Engineer enables the Security Profile</step>
+        <step id="S2">Security Profile Manager enables the Security Profile</step>
+        <step id="S3">Security Profile Manager creates secProfileESP file ./templates/secprofile.yml</step>
+        <step id="S4">storageresource receives create event (securityprofile.create)</step>
+        <step id="S5">Security Profile Manager disables secProfileESP</step>
+        <step id="S6">securityprofile receives disable event (securityprofile.disable)</step>
+        <step id="S7">Security Profile Manager enables secProfileESP</step>
+        <step id="S8">securityprofile receives enable event (securityprofile.enable)</step>
+        <step id="S9">All attached identities in the system re-evaluate the policies</step>
+    </mainSequence>
+</useCase>

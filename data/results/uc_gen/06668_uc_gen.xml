@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Logging into Adgangsplatformen</name>
+    <actors>
+        <actor>User</actor>
+        <actor>DPL_CMS</actor>
+        <actor>OpenidConnect</actor>
+        <actor>Adgangsplatformen</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on login into Adgangsplatformen</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks login into Adgangsplatformen</step>
+        <step id="S2">DPL_CMS gets authorization URL and return URL from OpenidConnect</step>
+        <step id="S3">OpenidConnect gets URLs and creates OAuth state hash</step>
+        <step id="S4">OpenidConnect tells the browser to redirect to the authorization URL</step>
+        <step id="S5">User redirects to external site using the full authorization URL</step>
+        <step id="S6">Adgangsplatformen performs internal authentication</step>
+        <step id="S7">Adgangsplatformen redirects user to the return URL</step>
+        <step id="S8">User sends Adgangsplatform response to DPL_CMS</step>
+        <step id="S9">DPL_CMS validates values from the Adgangsplatform response</step>
+        <step id="S10">OpenidConnect requests access token from Adgangsplatformen</step>
+        <step id="S11">Adgangsplatformen returns access token with an expiration timestamp to OpenidConnect</step>
+        <step id="S12">OpenidConnect requests user info from Adgangsplatformen</step>
+        <step id="S13">Adgangsplatformen returns user info (UUID) to OpenidConnect</step>
+        <step id="S14">OpenidConnect creates or updates user in DPL_CMS based on user existence</step>
+        <step id="S15">OpenidConnect begins Drupal user session in DPL_CMS</step>
+        <step id="S16">OpenidConnect saves access token in the active user session in DPL_CMS</step>
+        <step id="S17">User is redirected to the front page</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S14">
+            <step id="A1S1">Create user in DPL_CMS with random unique email/username and encrypted UUID for mapping</step>
+            <step id="A1S2">Assign Drupal role: Patron to the new user</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

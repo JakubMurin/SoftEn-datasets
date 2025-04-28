@@ -1,0 +1,15 @@
+<useCase id="UC001">
+    <name>Update Staff Information</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User interacts with the interface to update staff information</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with the interface</step>
+        <step id="S2">Router receives PUT request /staff/{id} with data</step>
+        <step id="S3">Controller calls updateStaff(id, data)</step>
+        <step id="S4">Repository updates staff information using updateStaff(id, data)</step>
+        <step id="S5">Model finds and updates staff (findByIdAndUpdate(id, data)) in the Database</step>
+        <step id="S6">Database updates the staff record</step>
+    </mainSequence>
+</useCase>

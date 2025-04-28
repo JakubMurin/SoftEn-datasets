@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Package ML Dataset</name>
+    <actors>
+        <actor>Machine Learning Expert</actor>
+        <actor>DPIE System</actor>
+        <actor>ML Dataset</actor>
+        <actor>Data Validation</actor>
+        <actor>Data Packaging</actor>
+        <actor>ML Platform</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Machine Learning Expert requests to package the ML dataset.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The ML dataset is successfully packaged and imported.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The validation of the ML dataset fails.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">The Machine Learning Expert requests DPIE to package the ML dataset.</step>
+        <step id="S2">DPIE fetches the ML dataset from the ML Dataset.</step>
+        <step id="S3">The ML Dataset returns the ML dataset to DPIE.</step>
+        <step id="S4">DPIE validates the ML dataset using Data Validation.</step>
+        <step id="S5">Data Validation returns the validation results to DPIE.</step>
+        <step id="S6">If validation is successful, DPIE initiates the packaging process with Data Packaging.</step>
+        <step id="S7">Packaging Service notifies DPIE that the data package is ready.</step>
+        <step id="S8">DPIE notifies the Machine Learning Expert that the data package is ready.</step>
+        <step id="S9">The Machine Learning Expert requests DPIE to import the data package.</step>
+        <step id="S10">DPIE sends the data package to the ML Platform.</step>
+        <step id="S11">ML Platform confirms receipt to DPIE.</step>
+        <step id="S12">DPIE confirms to the Machine Learning Expert that the data package is imported.</step>
+        <step id="S13">If validation fails, DPIE notifies the Machine Learning Expert about the validation failure.</step>
+    </mainSequence>
+</useCase>

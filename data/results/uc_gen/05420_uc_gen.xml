@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Fault Management Provisioning</name>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operator Framework</actor>
+    </actors>
+    <preconditions>
+        <precondition>System Operator Framework is operational</precondition>
+    </preconditions>
+    <trigger>Business User initiates fault management job creation</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers listeners for Fault Management Job and Report notifications with Hub</step>
+        <step id="S2">System Operator Framework creates a Fault Management Job</step>
+        <step id="S3">Fault Management Job is created and response is sent to Business User</step>
+        <step id="S4">Fault Management Job generates data</step>
+        <step id="S5">Fault Management Job creates an event</step>
+        <step id="S6">Hub notifies listeners about the fault management job create event</step>
+        <step id="S7">Fault Management Job enters in-progress state</step>
+        <step id="S8">Fault Management Job schedules reporting period</step>
+        <step id="S9">Fault Management Job creates a Fault Management Report</step>
+        <step id="S10">Fault Management Report is created and response is sent to Business User</step>
+        <step id="S11">Fault Management Report generates data</step>
+        <step id="S12">Fault Management Report creates an event</step>
+        <step id="S13">Hub notifies listeners about the fault management report create event</step>
+        <step id="S14">Fault Management Report enters in-progress state</step>
+        <step id="S15">Fault Management Report collects data</step>
+        <step id="S16">Fault Management Report completes data collection</step>
+        <step id="S17">Fault Management Report enters completed state</step>
+        <step id="S18">Hub notifies listeners about the fault management report state change event</step>
+        <step id="S19">Fault Management Job receives the completed report</step>
+        <step id="S20">Fault Management Job marks the report as ready</step>
+        <step id="S21">Hub notifies listeners about the fault management job report ready event</step>
+        <step id="S22">Fault Management Job enters completed or scheduled state</step>
+        <step id="S23">Hub notifies listeners about the fault management job state change event</step>
+        <step id="S24">Business User requests the Fault Management Report</step>
+        <step id="S25">System Operator Framework retrieves the Fault Management Report</step>
+        <step id="S26">Fault Management Report is retrieved and response is sent to Business User</step>
+    </mainSequence>
+</useCase>

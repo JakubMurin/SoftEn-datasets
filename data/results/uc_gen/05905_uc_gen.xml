@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Account Creation</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>AccountController</actor>
+        <actor>AccountService</actor>
+        <actor>Account</actor>
+        <actor>EventStore</actor>
+        <actor>AccountProjection</actor>
+        <actor>AccountViewRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client requests to create an account.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client sends a POST request to AccountController to create an account.</step>
+        <step id="S2">AccountController forwards the request to AccountService.</step>
+        <step id="S3">AccountService creates a new Account with the provided details.</step>
+        <step id="S4">Account generates a creation event.</step>
+        <step id="S5">AccountService returns the AccountCreatedEvent to AccountController.</step>
+        <step id="S6">AccountService saves the AccountCreatedEvent to EventStore.</step>
+        <step id="S7">EventStore stores the event.</step>
+        <step id="S8">EventStore confirms the event is saved.</step>
+        <step id="S9">AccountProjection handles the AccountCreatedEvent.</step>
+        <step id="S10">AccountProjection saves the new AccountView to AccountViewRepository.</step>
+        <step id="S11">AccountViewRepository confirms the AccountView is saved.</step>
+        <step id="S12">AccountProjection completes the projection.</step>
+        <step id="S13">AccountService informs AccountController that the account creation is completed.</step>
+        <step id="S14">AccountController responds to the Client with '201 Created'.</step>
+    </mainSequence>
+</useCase>

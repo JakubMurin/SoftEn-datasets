@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Login to User Account</name>
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Login API</actor>
+        <actor>User Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User Agent sends a login request containing a tuple of (username, password, CSRF token)</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and receives an encrypted session cookie</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Login request validation fails or user authentication fails</condition>
+    </failureEndConditions>
+    <trigger>HTTP POST request for login</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a login request with username, password, and CSRF token to Login API</step>
+        <step id="S2">Login API validates the login request</step>
+        <step id="S3">Login API attempts to retrieve user information from User Database</step>
+        <step id="S4">User Database returns the result of the request</step>
+        <step id="S5">User Agent receives the appropriate response based on the validation and authentication results</step>
+    </mainSequence>
+</useCase>

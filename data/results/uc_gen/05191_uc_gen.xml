@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>DDO Publishing Flow</name>
+    
+    <actors>
+        <actor>End User</actor>
+        <actor>Consumer (Ocean CLI)</actor>
+        <actor>Ocean.js</actor>
+        <actor>Ocean Node</actor>
+        <actor>Smart Contracts</actor>
+        <actor>DDO.js</actor>
+        <actor>Database (Ocean Node's Database)</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">End User requests to publish a dataset with selected file.</step>
+        <step id="S2">Consumer calls asset creation function in Ocean.js.</step>
+        <step id="S3">Ocean.js deploys data NFT, datatoken, and pricing schema in Smart Contracts.</step>
+        <step id="S4">Ocean.js retrieves NFTCreated and DatatokenCreated events from Smart Contracts.</step>
+        <step id="S5">If Datatoken is template 4 for EVM credentials</step>
+        <step id="S6">No encryption for service files needed.</step>
+        <step id="S7">If Datatoken NOT template 4 for EVM credentials, Ocean.js requests encryption for DDO services files from Ocean Node.</step>
+        <step id="S8">Ocean Node returns encryption status.</step>
+        <step id="S9">Ocean.js requests encryption for DDO object from Ocean Node.</step>
+        <step id="S10">Ocean Node returns encryption status.</step>
+        <step id="S11">Ocean.js requests DDO validation from Ocean Node.</step>
+        <step id="S12">DDO.js validates DDO structure using SHACL schemas.</step>
+        <step id="S13">DDO.js response with success validates the DDO structure.</step>
+        <step id="S14">Ocean Node returns validation success response.</step>
+        <step id="S15">Ocean Node indexes new DDOs from Smart Contracts metadata.</step>
+        <step id="S16">Ocean Node stores DDO in the database.</step>
+        <step id="S17">Ocean.js returns DID to Consumer and End User.</step>
+    </mainSequence>
+</useCase>

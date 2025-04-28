@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Manage Energy Grid Selection</name>
+    <description>This use case involves the PowerUser selecting an energy grid from a list.</description>
+    <actors>
+        <actor>PowerUser</actor>
+    </actors>
+    <preconditions>
+        <precondition>The PowerUser is authenticated and authorized to manage energy grids.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The PowerUser successfully selects an energy grid.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The PowerUser fails to select an energy grid.</condition>
+    </failureEndConditions>
+    <trigger>An energy grid selection request is initiated.</trigger>
+    <mainSequence>
+        <step id="S1">PowerUser selects a grid.</step>
+        <step id="S2">InputUtils displays a list of available grids to the PowerUser.</step>
+        <step id="S3">PowerUser selects a grid by index from the displayed list.</step>
+        <step id="S4">InputUtils retrieves the selected grid from the EnergyGridList.</step>
+        <step id="S5">EnergyGridList returns the EnergyGrid to InputUtils.</step>
+    </mainSequence>
+</useCase>

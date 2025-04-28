@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Update Component Name</name>
+    <description>User can update the name of a component in the system.</description>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>DIMS Interface</actor>
+        <actor>Component Management System</actor>
+        <actor>DIMS Database</actor>
+    </actors>
+    <trigger>User wants to update the name of a component.</trigger>
+    <mainSequence>
+        <step id="S1">RM accesses component update form.</step>
+        <step id="S2">DI requests current component details.</step>
+        <step id="S3">CMS queries current component information.</step>
+        <step id="S4">DB returns component information to CMS.</step>
+        <step id="S5">CMS displays current component information.</step>
+        <step id="S6">RM inputs new component name.</step>
+        <step id="S7">DI validates new name and prepares update.</step>
+        <step id="S8">CMS updates component name in DB.</step>
+        <step id="S9">DB confirms name update to CMS.</step>
+        <step id="S10">CMS confirms update to DI.</step>
+        <step id="S11">DI displays update confirmation to RM.</step>
+    </mainSequence>
+</useCase>

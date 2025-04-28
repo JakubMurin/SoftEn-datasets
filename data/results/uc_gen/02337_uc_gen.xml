@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+        <actor>JobOpeningRepository</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CustomerManager asks PublishJobOpeningUI to display job openings in the results phase.</step>
+        <step id="S2">PublishJobOpeningUI gets job openings.</step>
+        <step id="S3">JobOpeningRepository retrieves job openings.</step>
+        <step id="S4">JobOpeningRepository provides job openings to PublishJobOpeningUI.</step>
+        <step id="S5">PublishJobOpeningUI displays job openings.</step>
+        <step id="S6">CustomerManager selects a job opening to publish results.</step>
+        <step id="S7">PublishJobOpeningUI requests to publish job opening results.</step>
+        <step id="S8">PublishJobOpeningController sends a result email request for the job opening.</step>
+        <step id="S9">FollowUpServerProxy creates a socket to connect.</step>
+        <step id="S10">FollowUpServerProxy sends a request through the socket.</step>
+        <step id="S11">FollowUpServer receives and processes the request.</step>
+        <step id="S12">ResultEmailRequest is executed by FollowUpServer.</step>
+        <step id="S13">CandidateSelectionService selects candidates for the job opening.</step>
+        <step id="S14">EmailService sends emails to selected candidates.</step>
+        <step id="S15">NotificationRepository saves the notification.</step>
+        <step id="S16">EmailService notifies the ResultEmailRequest about the sent emails.</step>
+        <step id="S17">FollowUpServer sends a response through the socket.</step>
+        <step id="S18">FollowUpServer closes the connection.</step>
+        <step id="S19">FollowUpServerProxy receives and processes the response.</step>
+        <step id="S20">PublishJobOpeningController processes the response.</step>
+        <step id="S21">PublishJobOpeningUI confirms the success of the operation.</step>
+    </mainSequence>
+</useCase>

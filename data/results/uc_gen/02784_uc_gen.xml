@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>View Ordered List of Candidates</name>
+    <actors>
+        <actor>Customer Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Agent requests to see an ordered list of candidates using job interview points</step>
+        <step id="S2">UI receives request and calls findAllJobOpeningInResult()</step>
+        <step id="S3">Controller finds all job openings in the result</step>
+        <step id="S4">Application Service retrieves all job openings</step>
+        <step id="S5">Job Opening Repository gets job openings from persistence</step>
+        <step id="S6">Application Service receives openings and sends them to Controller</step>
+        <step id="S7">Controller receives openings and sends them to UI</step>
+        <step id="S8">UI shows the list of job openings to the Agent</step>
+        <step id="S9">Agent selects a job opening</step>
+        <step id="S10">UI lists candidates for the selected opening</step>
+        <step id="S11">Controller gets applications by job opening</step>
+        <step id="S12">Application Service retrieves all candidates</step>
+        <step id="S13">Candidate Management Service finds all candidates</step>
+        <step id="S14">Application Service receives candidates and sends them to Controller</step>
+        <step id="S15">Controller receives candidates and calls getAllJobInterviewsOfApplications()</step>
+        <step id="S16">Application Service retrieves all job interviews of applications</step>
+        <step id="S17">Interview Repository finds all interviews</step>
+        <step id="S18">Application Service receives interviews and sends them to Controller</step>
+        <step id="S19">Controller sorts the interviews</step>
+        <step id="S20">Controller sends sorted interviews to UI</step>
+        <step id="S21">UI shows the list of candidates related to the selected job opening with their grades</step>
+    </mainSequence>
+</useCase>

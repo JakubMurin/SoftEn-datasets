@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Remove Property from Dataset Instance</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI Interface</actor>
+        <actor>API Gateway</actor>
+        <actor>DatasetManagementService</actor>
+        <actor>DatasetInstanceService</actor>
+        <actor>PropertyManagementService</actor>
+        <actor>DatasetStore</actor>
+    </actors>
+    <preconditions>
+        <precondition>User selects a dataset instance and specifies a property to remove.</precondition>
+    </preconditions>
+    <trigger>User triggers the removal of a property from a dataset instance.</trigger>
+    <mainSequence>
+        <step id="S1">User selects a dataset instance and specifies a property to remove.</step>
+        <step id="S2">UI Interface sends a request to remove the property from the dataset instance.</step>
+        <step id="S3">API Gateway validates the dataset instance ID.</step>
+        <step id="S4">DatasetManagementService retrieves dataset instance details.</step>
+        <step id="S5">DatasetInstanceService fetches the current properties of the instance from DatasetStore.</step>
+        <step id="S6">DatasetInstanceService returns the instance details to DatasetManagementService.</step>
+        <step id="S7">DatasetManagementService provides dataset instance metadata to PropertyManagementService.</step>
+        <step id="S8">PropertyManagementService removes the specified property from DatasetStore.</step>
+        <step id="S9">DatasetStore confirms the removal of the property to PropertyManagementService.</step>
+        <step id="S10">PropertyManagementService returns a success message to DatasetManagementService.</step>
+        <step id="S11">DatasetManagementService acknowledges the successful property removal to API Gateway.</step>
+        <step id="S12">API Gateway displays a success message to the UI Interface.</step>
+        <step id="S13">UI Interface shows a confirmation of the property removal to the User.</step>
+    </mainSequence>
+</useCase>

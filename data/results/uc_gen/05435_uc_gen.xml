@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Language Translation Service</name>
+    <description>Allow users to translate texts using translation bot.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>henrietta</actor>
+        <actor>paratranz</actor>
+        <actor>paratranz2es</actor>
+        <actor>translators</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bot/channel connection established</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Texts translated successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during translation</condition>
+    </failureEndConditions>
+    <trigger>Initiation of translation request</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with bot/channel via websocket</step>
+        <step id="S2">Translators send texts to paratranz</step>
+        <step id="S3">Paratranz2es retrieves data from paratranz</step>
+        <step id="S4">Elasticsearch performs bulk insert</step>
+        <step id="S5">User calls out henrietta through bot/channel</step>
+        <step id="S6">Bot/channel inputs text and user info to henrietta</step>
+        <step id="S7">Henrietta queries elasticsearch</step>
+        <step id="S8">Henrietta receives response from elasticsearch</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Handle Refresh</name>
+    <actors>
+        <actor>Controller</actor>
+        <actor>GameEngine</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>Controller needs to refresh the game</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All necessary updates are applied successfully</condition>
+    </successEndConditions>
+    <trigger>refresh(deltaTime: deltaTime)</trigger>
+    <mainSequence>
+        <step id="S1">Controller refreshes the game</step>
+        <step id="S2">GameEngine handles moves</step>
+        <step id="S3">Ball moves with external forces and delta time</step>
+        <step id="S4">FreeBody applies weight forces</step>
+        <step id="S5">GameState is activated</step>
+        <step id="S6">GameEngine returns the game state snapshot</step>
+    </mainSequence>
+</useCase>

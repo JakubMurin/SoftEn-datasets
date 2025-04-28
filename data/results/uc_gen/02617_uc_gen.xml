@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Calculate Points in Area</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+        <actor>Split Queue</actor>
+        <actor>Split Map</actor>
+        <actor>Points</actor>
+        <actor>Calculate</actor>
+    </actors>
+    <preconditions>
+        <precondition>User moves the map</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Points in Area updated successfully</condition>
+    </successEndConditions>
+    <trigger>User triggers the calculation process</trigger>
+    <mainSequence>
+        <step id="S1">Calculate area in the map</step>
+        <step id="S2">Add area to the queue</step>
+        <step id="S3">Retrieve depth in the area</step>
+        <step id="S4">Request Points in the depth</step>
+        <step id="S5">Get undefined points</step>
+        <step id="S6">Calculate points</step>
+        <step id="S7">Update Points</step>
+        <step id="S8">Create overlay with current points</step>
+        <step id="S9">Show overlay to the User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Search Books By Author</name>
+    <actors>
+        <actor>Reader</actor>
+    </actors>
+    <preconditions>
+        <precondition>Reader wants to search books by author</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Reader sends a request to search books by author.</step>
+        <step id="S2">ReaderController receives the request to search books by author.</step>
+        <step id="S3">ReaderController sends a search request to BookService with the author's name.</step>
+        <step id="S4">BookService creates a search criteria based on the author's name.</step>
+        <step id="S5">BookService queries the Database for books by the specified author.</step>
+        <step id="S6">Database returns a List of Books matching the search criteria to BookService.</step>
+        <step id="S7">BookService returns the List of Books to ReaderController.</step>
+        <step id="S8">ReaderController returns a List of BookViews to the Reader.</step>
+    </mainSequence>
+</useCase>

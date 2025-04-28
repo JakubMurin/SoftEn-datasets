@@ -1,0 +1,23 @@
+<useCase id="forgotPasswordRecovery">
+    <name>Forgot password recovery</name>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>AngularApp</actor>
+        <actor>SpringBootApp</actor>
+        <actor>MySQL</actor>
+        <actor>ExpressServer</actor>
+        <actor>EmailServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has requested a password recovery</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User solicits password recovery</step>
+        <step id="S2">AngularApp receives request</step>
+        <step id="S3">ExpressServer handles recovery request</step>
+        <step id="S4">MySQL verifies email</step>
+        <step id="S5">EmailServer sends recovery email</step>
+        <step id="S6">AngularApp confirms email sent</step>
+        <step id="S7">Recovery email successfully sent to user</step>
+    </mainSequence>
+</useCase>

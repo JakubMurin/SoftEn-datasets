@@ -1,0 +1,29 @@
+<useCase id="1">
+    <name>Length Extension Attack at SHA1</name>
+    <actors>
+        <actor>Attacker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker is capable of tampering messages</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Valid MAC key length found</condition>
+    </successEndConditions>
+    <trigger>Message extraction and manipulation at SHA1</trigger>
+    <mainSequence>
+        <step id="S1">The attacker performs a length extension attack at SHA1</step>
+        <step id="S2">The attacker extracts the message</step>
+        <step id="S3">The extracted message is returned</step>
+        <step id="S4">The attacker computes SHA1 padding for the message</step>
+        <step id="S5">The padded message is returned</step>
+        <step id="S6">The attacker tampers the message and tries</step>
+        <step id="S7">The message's MAC in byte format is obtained</step>
+        <step id="S8">Internal state of SHA1 is extracted from the MAC</step>
+        <step id="S9">The attacker attempts to hash the message varying key lengths</step>
+        <step id="S10">The new MAC is generated</step>
+        <step id="S11">The server validates the new MAC</step>
+        <step id="S12">The server's key is prepended to the message</step>
+        <step id="S13">The combined key and message are hashed</step>
+        <step id="S14">The server confirms if the hash equals the new MAC</step>
+    </mainSequence>
+</useCase>

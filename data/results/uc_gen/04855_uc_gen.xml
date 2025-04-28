@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Generar y Notificar Orden de Evaluación</name>
+    <actors>
+        <actor>Medico</actor>
+        <actor>Servicio de Diagnóstico</actor>
+    </actors>
+    <preconditions>
+        <precondition>El médico debe estar autenticado en el sistema</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La orden de evaluación se registra correctamente en la base de datos</condition>
+    </successEndConditions>
+    <trigger>El médico genera una orden de evaluación desde el Frontend</trigger>
+    <mainSequence>
+        <step id="S1">El médico genera una orden de evaluación desde el Frontend</step>
+        <step id="S2">El Frontend envía los datos de la orden al sistema</step>
+        <step id="S3">El sistema registra la orden de evaluación en la base de datos</step>
+        <step id="S4">El sistema notifica al médico el registro exitoso</step>
+        <step id="S5">El sistema notifica al Servicio de Diagnóstico sobre la nueva orden</step>
+    </mainSequence>
+</useCase>

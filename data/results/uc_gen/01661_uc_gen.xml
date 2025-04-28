@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>User accesses poisoned data</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Attacker</actor>
+        <actor>Proxy</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>Proxy and Backend are active.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully accesses poisoned data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User is unable to access poisoned data.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Attacker sends POST request to Proxy with /foo to GET the poison.</step>
+        <step id="S2">Proxy activates and forwards the POST request to Backend.</step>
+        <step id="S3">Backend processes the POST request and responds with /foo 200 to Proxy.</step>
+        <step id="S4">Proxy forwards the /foo 200 response to Attacker.</step>
+        <step id="S5">Backend receives a GET request for /poison to poison the response queue.</step>
+        <step id="S6">Backend processes the GET request and responds with /poison 200 to Proxy.</step>
+        <step id="S7">Proxy deactivates after poisoning response queue.</step>
+        <step id="S8">User sends a GET request to Proxy with /bar.</step>
+        <step id="S9">Proxy activates and forwards the GET request to Backend.</step>
+        <step id="S10">Backend processes the GET request and responds with /poison 200 to User.</step>
+        <step id="S11">Proxy deactivates after sending response to User.</step>
+        <step id="S12">Backend responds with /bar 200 to Proxy.</step>
+    </mainSequence>
+</useCase>

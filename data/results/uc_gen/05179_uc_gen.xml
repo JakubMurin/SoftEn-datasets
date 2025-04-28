@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Update User Profile</name>
+    <description>A user updates their profile information.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and on their profile page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User profile is successfully updated in the database</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Validation errors occur during profile update</condition>
+    </failureEndConditions>
+    <trigger>User enters updated profile information and submits the update form</trigger>
+    <mainSequence>
+        <step id="S1">User enters updated profile information</step>
+        <step id="S2">User submits the profile update form</step>
+        <step id="S3">ProfilePage sends HTTP POST request to ProfileController with updated info</step>
+        <step id="S4">ProfileController calls UserService to update user's profile</step>
+        <step id="S5">UserService validates the updated profile information</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Validation fails</step>
+            <step id="A1S2">UserService returns validation errors to ProfileController</step>
+            <step id="A1S3">ProfileController displays validation errors to the User</step>
+            <step id="A1S4">ProfilePage displays validation errors to the User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>User profile update fails due to system error</description>
+            <step id="E1S1">Failure in updating user profile</step>
+        </esteps>
+    </errorSteps>
+</useCase>

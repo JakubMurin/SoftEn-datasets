@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Create Operation Request</name>
+    <description>Allows a Doctor to create an operation request.</description>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Doctor is logged in and has necessary permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The operation request is successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the operation request creation process.</condition>
+    </failureEndConditions>
+    <trigger>Doctor navigates to the Create Operation Request page.</trigger>
+    <mainSequence>
+        <step id="S1">Doctor navigates to Create Operation Request page.</step>
+        <step id="S2">Doctor fills in operation request information including Patient ID, Doctor ID, Operation Type ID, Deadline, and Priority.</step>
+        <step id="S3">Doctor submits the form.</step>
+        <step id="S4">UI handles the form submission.</step>
+        <step id="S5">UI creates the operation request with the provided data.</step>
+        <step id="S6">ORS gets the authentication token.</step>
+        <step id="S7">ORS checks the Doctor's role using the token.</step>
+        <step id="S8">API sends a POST request to create the operation request.</step>
+        <step id="S9">API returns the OperationRequestDto.</step>
+        <step id="S10">ORS returns success to UI.</step>
+        <step id="S11">UI sets a success message and clears the form.</step>
+        <step id="S12">UI shows the success message to the Doctor.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">An error occurs during the operation request creation process.</step>
+            <step id="A1S2">ORS throws an error.</step>
+            <step id="A1S3">UI sets an error message.</step>
+            <step id="A1S4">UI shows the error message to the Doctor.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

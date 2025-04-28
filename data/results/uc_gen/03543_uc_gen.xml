@@ -1,0 +1,42 @@
+<useCase id="UC-001">
+    <name>Enterprise Admission (Recycler)</name>
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Body</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Enterprise submits data to Vue</step>
+        <step id="S2">Controller processes /ent/apply request</step>
+        <step id="S3">EntService handles admission data submission</step>
+        <step id="S4">File upload to Mongodb</step>
+        <step id="S5">Save file association info to MySQL</step>
+        <step id="S6">Return processing result</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Regulatory Body queries unapproved enterprise list</step>
+            <step id="A1S2">Controller processes /ent/list request</step>
+            <step id="A1S3">EntService queries enterprise list from MySQL</step>
+            <step id="A1S4">Return enterprise list result</step>
+        </asteps>
+        <asteps id="A2" start="A1S4">
+            <step id="A2S1">Regulatory Body approves enterprise admission</step>
+            <step id="A2S2">Controller processes /ent/pass request</step>
+            <step id="A2S3">EntService deploys admission contract using JAVA_SDK</step>
+            <step id="A2S4">Update information in MySQL with admission status</step>
+            <step id="A2S5">Return approval result</step>
+        </asteps>
+        <asteps id="A3" start="A1S4">
+            <step id="A3S1">Regulatory Body rejects enterprise admission</step>
+            <step id="A3S2">Controller processes /ent/reject request</step>
+            <step id="A3S3">Update information in MySQL with rejection status</step>
+            <step id="A3S4">Return rejection result</step>
+        </asteps>
+        <asteps id="A4" start="A2S5">
+            <step id="A4S1">Enterprise queries admission result</step>
+            <step id="A4S2">Controller processes /ent/accessResult request</step>
+            <step id="A4S3">EntService retrieves admission information from MySQL</step>
+            <step id="A4S4">Return admission result based on approval status</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

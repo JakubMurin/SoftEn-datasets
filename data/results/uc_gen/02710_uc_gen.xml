@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Fault Management Provisioning</name>
+    <description>Handle fault management job and report creation and processing</description>
+    <actors>
+        <actor>Business User (B)</actor>
+        <actor>SOF: Fault Management (SOF)</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>Business User is registered as a listener for Fault Management notifications</precondition>
+        <precondition>SOF is able to create Fault Management jobs</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault Management report is successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to generate or process Fault Management data</condition>
+    </failureEndConditions>
+    <trigger>Business User initiates the Fault Management process</trigger>
+    <mainSequence>
+        <step id="S1">Business User registers as a listener for Fault Management notifications with the Hub</step>
+        <step id="S2">Business User requests SOF to create a Fault Management job</step>
+        <step id="S3">Fault Management Job is created</step>
+        <step id="S4">Fault Management Job state set to inProgress</step>
+        <step id="S5">Fault Management Job generates data</step>
+        <step id="S6">Fault Management Report is created</step>
+        <step id="S7">Fault Management Report state set to inProgress</step>
+        <step id="S8">Fault Management Report collects data</step>
+        <step id="S9">Fault Management Report state set to completed</step>
+        <step id="S10">Fault Management Job state set to completed or scheduled</step>
+        <step id="S11">Business User requests SOF to get the Fault Management report</step>
+        <step id="S12">Fault Management Report is retrieved</step>
+    </mainSequence>
+</useCase>

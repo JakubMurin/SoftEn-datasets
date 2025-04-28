@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Access Embargo Metadata</name>
+    <actors>
+        <actor>Digital Records Archivist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist is logged in</precondition>
+    </preconditions>
+    <trigger>Archivist requests embargo metadata for ETDs</trigger>
+    <mainSequence>
+        <step id="S1">Archivist requests embargo metadata for ETDs from Web Interface</step>
+        <step id="S2">Web Interface fetches embargo metadata from EDRMS Backend</step>
+        <step id="S3">EDRMS Backend queries embargo metadata from Repository Database</step>
+        <step id="S4">Repository Database returns metadata to EDRMS Backend</step>
+        <step id="S5">EDRMS Backend displays metadata to Web Interface</step>
+        <step id="S6">Web Interface shows embargo metadata to Archivist</step>
+    </mainSequence>
+</useCase>

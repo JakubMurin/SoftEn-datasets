@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>User Registration</name>
+    <description>User initiates the registration process providing email, password, or opting for social login.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Authorization Service</actor>
+        <actor>Validation Service</actor>
+        <actor>Email Service</actor>
+        <actor>Data Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Authorization Service, Validation Service, Email Service, and Data Service are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User registration successfully completed</condition>
+    </successEndConditions>
+    <trigger>User triggers the registration process</trigger>
+    <mainSequence>
+        <step id="S1">User starts registration by providing email and password, or selecting social login</step>
+        <step id="S2">Authorization Service validates email format and password strength</step>
+        <step id="S3">Authorization Service then checks for existing user in Data Service</step>
+        <step id="S4">Data Service confirms if the User Exists or not</step>
+        <step id="S5">If user already exists, display error message to User</step>
+        <step id="S6">If user doesn't exist, save initial user data as unverified status in Data Service</step>
+        <step id="S7">Data Service confirms successful saving of user data</step>
+        <step id="S8">Send confirmation email to the user</step>
+        <step id="S9">Confirmation email successfully sent</step>
+        <step id="S10">User confirms email by clicking on the link</step>
+        <step id="S11">Email Service receives the email confirmation</step>
+        <step id="S12">Data Service updates user status to verified</step>
+        <step id="S13">Confirmation of status update received between Authorization Service and Data Service</step>
+        <step id="S14">Notify User registration completion with verified status</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Register Patient</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>PatientController</actor>
+        <actor>PatientService</actor>
+        <actor>IPatientRepository</actor>
+        <actor>Patient</actor>
+        <actor>IUnitOfWork</actor>
+        <actor>IEmailService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin sends a request to the PatientController to register a new patient using the API endpoint POST /api/Patient/Register(CreatePatientDto).</step>
+        <step id="S2">PatientController activates upon receiving the request.</step>
+        <step id="S3">PatientController adds the patient asynchronously by calling AddAsync(CreatePatientDto) on PatientService.</step>
+        <step id="S4">PatientService activates to handle the addition process.</step>
+        <step id="S5">PatientService checks if the email provided is unique by calling IsEmailUniqueAsync(dto.Email) on IPatientRepository.</step>
+        <step id="S6">PatientService checks if the phone number provided is unique by calling IsPhoneNumberUniqueAsync(dto.PhoneNumber) on IPatientRepository.</step>
+        <step id="S7">PatientService generates a unique medical number for the patient.</step>
+        <step id="S8">PatientService creates a new Patient object.</step>
+        <step id="S9">PatientService adds the patient asynchronously by calling AddAsync(Patient) on IPatientRepository.</step>
+        <step id="S10">PatientService commits the changes by calling CommitAsync() on IUnitOfWork.</step>
+        <step id="S11">PatientService sends an email notification asynchronously by calling SendEmailAsync(...) on IEmailService.</step>
+        <step id="S12">PatientService deactivates and returns the PatientDto to the PatientController.</step>
+        <step id="S13">PatientController responds with a 200 OK status along with the PatientDto to the Admin.</step>
+        <step id="S14">PatientController deactivates.</step>
+    </mainSequence>
+</useCase>

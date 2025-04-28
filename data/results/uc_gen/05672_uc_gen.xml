@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Access Blog Post Detail</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Django.Router</actor>
+        <actor>Django.Template</actor>
+        <actor>post_detail View</actor>
+        <actor>CommentForm Form</actor>
+        <actor>Post Model</actor>
+        <actor>Comment</actor>
+        <actor>DB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User accesses the blog post detail page by navigating to the URL: /blog/</step>
+        <step id="S2">Router directs the request to the post_detail View</step>
+        <step id="S3">View retrieves the requested Post object based on the provided parameters</step>
+        <step id="S4">Model queries the database to fetch the Post</step>
+        <step id="S5">View retrieves active comments associated with the Post</step>
+        <step id="S6">Form generates a CommentForm for user input</step>
+        <step id="S7">View renders the post detail page using the retrieved data and the form</step>
+        <step id="S8">Template renders the post detail template</step>
+        <step id="S9">User views the post detail page at /blog/post/list.html</step>
+    </mainSequence>
+</useCase>

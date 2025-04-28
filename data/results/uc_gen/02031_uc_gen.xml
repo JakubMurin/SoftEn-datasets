@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Remove Audio Effect</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User invokes handleRemoveEffect()</step>
+        <step id="S2">Dropdown item handles remove effect action</step>
+        <step id="S3">Audio effect panel is closed by AudioEffectAction</step>
+        <step id="S4">Effect removal is initiated by calling removeEffectSaga() in AudioEffectSaga</step>
+        <step id="S5">EventEmitter emits 'EFFECT_DELETE_EFFECT' event</step>
+        <step id="S6">Effect is removed by calling removeEffect() in AudioController</step>
+        <step id="S7">Dropdown item executes removeEffect() action</step>
+    </mainSequence>
+</useCase>

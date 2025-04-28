@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Report Data from AGV to Screen</name>
+    <actors>
+        <actor>Client A (智慧小车)</actor>
+        <actor>Client B (智慧大屏)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client A subscribes to topic: screen/report.</precondition>
+        <precondition>Client B publishes data to topic: agv/report.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client A subscribes to topic: screen/report.</step>
+        <step id="S2">Client B publishes data to topic: agv/report.</step>
+        <step id="S3">Broker forwards data to topic: screen/report.</step>
+    </mainSequence>
+</useCase>

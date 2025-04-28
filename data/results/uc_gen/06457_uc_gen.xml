@@ -1,0 +1,53 @@
+<useCase id="UC1">
+    <name>Manage Company Departments</name>
+    <description>As a user, I want to manage the departments and employees within a company.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Main</actor>
+        <actor>Company</actor>
+        <actor>HR</actor>
+        <actor>IT</actor>
+        <actor>Development</actor>
+        <actor>QA</actor>
+        <actor>Employee1</actor>
+        <actor>Employee2</actor>
+        <actor>Employee3</actor>
+        <actor>Employee4</actor>
+        <actor>Employee5</actor>
+        <actor>Employee6</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has access to the main system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The company's departments and employees are successfully managed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurred while managing the company's departments and employees.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User launches the main system.</step>
+        <step id="S2">Main invokes the runDepartments() method.</step>
+        <step id="S3">Main creates a new DepartmentComposite named "Company".</step>
+        <step id="S4">Main creates a new DepartmentComposite named "HR".</step>
+        <step id="S5">Main creates new EmployeeLeaf instances for Employee1 and Employee2.</step>
+        <step id="S6">HR adds Employee1 and Employee2.</step>
+        <step id="S7">Company adds HR.</step>
+        <step id="S8">Main creates a new DepartmentComposite named "IT".</step>
+        <step id="S9">Main creates a new DepartmentComposite named "Development".</step>
+        <step id="S10">Main creates new EmployeeLeaf instances for Employee3 and Employee4.</step>
+        <step id="S11">Development adds Employee3 and Employee4.</step>
+        <step id="S12">IT adds Development.</step>
+        <step id="S13">Main creates a new DepartmentComposite named "Quality Assurance".</step>
+        <step id="S14">Main creates new EmployeeLeaf instances for Employee5 and Employee6.</step>
+        <step id="S15">QA adds Employee5 and Employee6.</step>
+        <step id="S16">IT adds QA.</step>
+        <step id="S17">Company adds IT.</step>
+        <step id="S18">Main prints the company's name.</step>
+        <step id="S19">Company retrieves and prints the company's name.</step>
+        <step id="S20">Main prints the company's budget.</step>
+        <step id="S21">Company retrieves and prints the company's budget.</step>
+        <step id="S22">Main prints the count of workers in the company.</step>
+        <step id="S23">Company retrieves and prints the count of workers in the company.</step>
+    </mainSequence>
+</useCase>

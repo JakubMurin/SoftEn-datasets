@@ -1,0 +1,45 @@
+<useCase id="UC1">
+  <name>Performing Security Scan</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Scheduler</actor>
+    <actor>ProductExecution</actor>
+    <actor>ProductExecutor</actor>
+    <actor>AnalyzerProductExecutor</actor>
+    <actor>SerecoProductExecutor</actor>
+    <actor>ProductAdapter</actor>
+    <actor>AnalyzerProductAdapter</actor>
+    <actor>SecurityProductXYZ</actor>
+    <actor>Analyzer</actor>
+    <actor>FileSystem</actor>
+    <actor>SchedulerDB</actor>
+    <actor>Storage</actor>
+    <actor>AnalyzerDB</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User creates a job with UUID</step>
+    <step id="S2">Scheduler stores SecHub job in SchedulerDB</step>
+    <step id="S3">User uploads a zip file</step>
+    <step id="S4">Scheduler stores the zip file in Storage</step>
+    <step id="S5">User requests job status</step>
+    <step id="S6">Scheduler reads the SecHub job report status in SchedulerDB</step>
+    <step id="S7">User marks job as ready to start</step>
+    <step id="S8">ProductExecution triggers batch job which leads to Analyzer execution</step>
+    <step id="S9">Analyzer triggers REST call to fetch analyzer queue ID</step>
+    <step id="S10">Analyzer fetches zip data from Storage</step>
+    <step id="S11">Analyzer stores file in FileSystem</step>
+    <step id="S12">Analyzer stores result in AnalyzerDB</step>
+    <step id="S13">ProductExecution calls ProductExecutor which uses ProductAdapter to interact with SecurityProductXYZ</step>
+    <step id="S14">ProductAdapter returns a string result</step>
+    <step id="S15">ProductAdapter returns a product result</step>
+    <step id="S16">ProductAdapter returns a list</step>
+    <step id="S17">ProductExecution collects one report from SerecoProductExecutor</step>
+    <step id="S18">ProductExecution receives Sereco result</step>
+    <step id="S19">ProductExecution filters report results based on given meta data</step>
+    <step id="S20">ProductExecution filters report by given meta data and returns filtered report</step>
+    <step id="S21">Scheduler stores SecHub job report in SchedulerDB</step>
+    <step id="S22">User fetches SecHub report from Scheduler</step>
+    <step id="S23">Scheduler reads SecHub job report status from SchedulerDB</step>
+    <step id="S24">User fetches filtered SecHub report from Scheduler</step>
+  </mainSequence>
+</useCase>

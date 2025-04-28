@@ -1,0 +1,33 @@
+<useCase id="UC1">
+  <name>Carregar o mapa do piso</name>
+  <description>O ator Gestor de Campus carrega e insere os dados do mapa de piso utilizando a SPA e a GestaoInfoAPI.</description>
+  <actors>
+    <actor>Gestor de campus</actor>
+  </actors>
+  <preconditions>
+    <precondition>O ator possui os dados necessários para o mapa de piso.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>O mapa de piso é criado com sucesso. A SPA retorna o mapa para o ator.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Ocorre um erro na requisição e a SPA retorna uma mensagem de erro para o ator.</condition>
+  </failureEndConditions>
+  <trigger>Carregar o mapa de piso.</trigger>
+  <mainSequence>
+    <step id="S1">Requisitar os dados do mapa de piso da SPA.</step>
+    <step id="S2">Inserir os dados do mapa de piso na SPA.</step>
+    <step id="S3">Realizar patch na GestaoInfoAPI (/api/floorMap).</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S3">
+      <step id="A1S1">Verificar o status code retornado pela API.</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S3">
+      <description>Ocorre um erro na requisição feita para a API.</description>
+      <step id="E1S1">Retornar mensagem de erro para o ator.</step>
+    </esteps>
+  </errorSteps>
+</useCase>

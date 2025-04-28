@@ -1,0 +1,26 @@
+<useCase id="UC1">
+  <name>Build Data Export Process</name>
+  <description>Manage the process of exporting build data from CI Integration</description>
+  <actors>
+    <actor>Bob</actor>
+  </actors>
+  <preconditions>
+    <precondition>Bob pushes a commit to the master branch</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Exporting build data to Firestore is successful</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Exporting build data to Firestore fails</condition>
+  </failureEndConditions>
+  <trigger>Webhook triggers the export process</trigger>
+  <mainSequence>
+    <step id="S1">Bob pushes a commit to the master branch</step>
+    <step id="S2">Repository triggers the export process</step>
+    <step id="S3">Awesome pipeline performs the build</step>
+    <step id="S4">Sync pipeline is triggered and creates integration_config.yml</step>
+    <step id="S5">CI Integration tool adds new build data to Firestore</step>
+    <step id="S6">Sync pipeline finishes the sync command</step>
+    <step id="S7">Bob receives the exported build data</step>
+  </mainSequence>
+</useCase>

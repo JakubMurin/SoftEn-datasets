@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Attend Event Use Case</name>
+    <description>Use case to attend an event by creating a new member and purchasing a ticket</description>
+    <actors>
+        <actor>Entrant</actor>
+        <actor>Member</actor>
+    </actors>
+    <preconditions>
+        <precondition>There is an upcoming event in the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Entrant successfully attends the event</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Event is canceled or member creation fails</condition>
+    </failureEndConditions>
+    <trigger>User seeks to attend an event</trigger>
+    <mainSequence>
+        <step id="S1">Entrant sends Attend Event Request to Ticket</step>
+        <step id="S2">Ticket creates a new Member</step>
+        <step id="S3">Member creates a new Member</step>
+        <step id="S4">Ticket creates a new Ticket</step>
+        <step id="S5">Entrant receives Attend Event Response</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>View OneToOne Check</name>
+	<description>Fetch and display oneToOne check data for a specific session</description>
+	<actors>
+		<actor>Navegador</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Navegador requests to view oneToOne data for specific session.</step>
+		<step id="S2">Routes receive GET request for /oneToOne/:sessionID.</step>
+		<step id="S3">Controller handles the getCheck request.</step>
+		<step id="S4">Controller calls fetchSessionData with sessionID from request params on the OneToOne model.</step>
+		<step id="S5">OneToOne executes query in MySQL to retrieve data.</step>
+		<step id="S6">OneToOne retrieves rows from MySQL database.</step>
+		<step id="S7">Controller gets rows from OneToOne model.</step>
+		<step id="S9">Error: Redirect response to '/error' page if rows length is 0.</step>
+		<step id="S10">Error: Redirect response to '/error' page if role is not "Human Resources" and oneOnOneUserIDFK does not match request session userID.</step>
+		<step id="S12">Controller calls fetchSessionData with sessionID from request params on the Question model.</step>
+		<step id="S13">Question executes query in MySQL to retrieve answers.</step>
+		<step id="S14">Question retrieves answers from MySQL database.</step>
+		<step id="S15">Controller gets answers from Question model.</step>
+		<step id="S16">Error: Render 'oneToOneCheck' template with empty data evaluation when answers length is 0.</step>
+		<step id="S18">Controller calls fetchSessionData with sessionID from request params on the Measurable model.</step>
+		<step id="S19">Measurable executes query in MySQL to retrieve measures.</step>
+		<step id="S20">Measurable retrieves measures from MySQL database.</step>
+		<step id="S21">Controller gets measures from Measurable model.</step>
+		<step id="S22">Render 'oneToOneCheck' template with fetched data.</step>
+	</mainSequence>
+</useCase>

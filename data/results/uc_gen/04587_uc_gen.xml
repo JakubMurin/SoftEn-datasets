@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>User Account Cancellation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully cancels their account.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Account cancellation is not completed.</condition>
+    </failureEndConditions>
+    <trigger>User wants to cancel their account.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the application.</step>
+        <step id="S2">Frontend displays "Account Settings" to the User.</step>
+        <step id="S3">User navigates to Account Settings.</step>
+        <step id="S4">Frontend displays the Delete Account Dialog to the User.</step>
+        <step id="S5">User is prompted for confirmation.</step>
+        <step id="S6">User confirms cancellation.</step>
+        <step id="S7">Frontend initiates account cancellation.</step>
+        <step id="S8">Backend makes an API call for Account Cancellation.</step>
+        <step id="S9">Backend forwards the cancellation request to the Users Service.</step>
+        <step id="S10">Users Service marks the account for deletion in the Database.</step>
+        <step id="S11">Database confirms the account is marked for deletion.</step>
+        <step id="S12">Users Service confirms the account cancellation to the frontend.</step>
+        <step id="S13">Frontend displays the cancellation confirmation to the User.</step>
+        <step id="S14">Frontend navigates back to the Homepage.</step>
+        <step id="S15">Frontend displays a confirmation message to the User.</step>
+        <step id="S16">Frontend logs out the User and clears the session data.</step>
+    </mainSequence>
+</useCase>

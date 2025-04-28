@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Login Process</name>
+    <description>User logs in using OAuth2 authentication.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>UserService</actor>
+        <actor>OAuth2Server</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has account credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is successfully authenticated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User cannot be authenticated.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User initiates OAuth2 authentication.</step>
+        <step id="S2">Frontend submits OAuth2 authentication request to UserService.</step>
+        <step id="S3">UserService sends authentication request to OAuth2Server.</step>
+        <step id="S4">OAuth2Server provides a token to UserService.</step>
+        <step id="S5">UserService notifies NotificationService about successful authentication for the specified user.</step>
+        <step id="S6">NotificationService confirms success to UserService.</step>
+        <step id="S7">UserService sends the token to Frontend.</step>
+        <step id="S8">Frontend informs the User about successful authentication with the provided token.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Display List of Customers</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has successfully opened the customers list page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The UI displays a list of all customers successfully.</condition>
+    </successEndConditions>
+    <trigger>User requests to see all customers.</trigger>
+    <mainSequence>
+        <step id="S1">Open the customers list page.</step>
+        <step id="S2">Display a loading message to the User.</step>
+        <step id="S3">Request to retrieve all customers.</step>
+        <step id="S4">Route the request to the Controller class to get all customers.</step>
+        <step id="S5">Call the method getAllCustomers() in the Controller to retrieve customers.</step>
+        <step id="S6">Ask the Repository class to find all customers.</step>
+        <step id="S7">Execute the find() method in the Model class to receive all customers.</step>
+        <step id="S8">Fetch all customers from the Database.</step>
+        <step id="S9">Respond to the Model class indicating all customers have been fetched.</step>
+        <step id="S10">Ensure Model sends all customers back to the Repository.</step>
+        <step id="S11">Assure Repository confirms having all customers available.</step>
+        <step id="S12">Hand over the customer data from Repository to the Controller.</step>
+        <step id="S13">Provide a successful response (200 OK) with all customers to the Router.</step>
+        <step id="S14">Return a positive response (200 OK) with all customers to the User Interface.</step>
+        <step id="S15">Render the User Interface to display all fetched customers.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Data Storage Planning</name>
+    <description>Manage the planning for storage needs</description>
+    <actors>
+        <actor>Archive Manager</actor>
+        <actor>DMPTool</actor>
+        <actor>Repository API</actor>
+        <actor>Data Manager</actor>
+        <actor>IT System</actor>
+    </actors>
+    <preconditions>
+        <precondition>All actors have necessary permissions</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Comprehensive storage needs analysis completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Analysis incomplete</condition>
+    </failureEndConditions>
+    <trigger>Request for data volume information</trigger>
+    <mainSequence>
+        <step id="S1">Request data volume information from DMPTool by Archive Manager</step>
+        <step id="S2">Query planned data submissions with Repository API</step>
+        <step id="S3">Return data submission estimates to DMPTool</step>
+        <step id="S4">Request current storage capacity from IT System</step>
+        <step id="S5">Return current storage capacity details to DMPTool</step>
+        <step id="S6">Request additional data preservation details from Data Manager</step>
+        <step id="S7">Provide data format, size, and period to DMPTool</step>
+        <step id="S8">Show comprehensive storage needs analysis to Archive Manager</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Plan for storage expansion with IT System</step>
+            <step id="A1S2">Confirm storage infrastructure plan with IT System</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Data preservation details not provided</description>
+            <step id="E1S1">Provide necessary data preservation details to DMPTool</step>
+        </esteps>
+    </errorSteps>
+</useCase>

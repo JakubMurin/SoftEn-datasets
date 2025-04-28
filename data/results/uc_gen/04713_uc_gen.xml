@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Show all projects</name>
+    <actors>
+        <actor>PL</actor>
+        <actor>System</actor>
+        <actor>DBMS</actor>
+    </actors>
+    <trigger>PL initiates displaying all projects.</trigger>
+    <mainSequence>
+        <step id="S1">PL calls getAllProject() with signId for System.</step>
+        <step id="S2">System validates the member with the provided signId.</step>
+        <step id="S3">System retrieves all projects associated with the signId from DBMS.</step>
+        <step id="S4">System returns the list of projects as ProjectResponseDto to PL.</step>
+     </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Staking</name>
+    <actors>
+        <actor>Anybody (DAO)</actor>
+        <actor>Staker</actor>
+        <actor>Bridge Stakers (PoS)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Smart Contracts on Mainet and Polygon are deployed</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Staking process completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Staking process failed</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Anybody (DAO) initiates vesting of rewards</step>
+        <step id="S2">RewardPool releases vested rewards</step>
+        <step id="S3">RewardPool mints ZKP tokens to RewardPool</step>
+        <step id="S4">RewardPool checks ZKP token balance</step>
+        <step id="S5">RewardPool deposits ZKP tokens to Bridge on Mainnet</step>
+        <step id="S6">Bridge on Mainnet locks ZKP tokens</step>
+        <step id="S7">Bridge on Mainnet notifies Staker of new deposit</step>
+        <step id="S8">Bridge on Polygon deposits pZKP tokens to RewardBroker</step>
+        <step id="S9">pZKP tokens minted to RewardBroker on Polygon</step>
+        <step id="S10">RewardBroker processes onTokenTransfer event</step>
+    </mainSequence>
+</useCase>

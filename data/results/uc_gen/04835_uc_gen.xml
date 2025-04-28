@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Register Patient</name>
+    <description>As an Admin, I want to register a new patient in the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is authenticated and has access rights to register patients.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The patient is successfully registered in the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurred during the registration process.</condition>
+    </failureEndConditions>
+    <trigger>Admin triggers the registration process by sending a POST request to /api/Patient/Register(CreatePatientDto).</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a POST request to /api/Patient/Register(CreatePatientDto).</step>
+        <step id="S2">PatientController activates and adds the patient details.</step>
+        <step id="S3">PatientService is activated and checks if the email and phone number are unique.</step>
+        <step id="S4">PatientService generates a unique medical number for the patient.</step>
+        <step id="S5">PatientService creates a new patient instance.</step>
+        <step id="S6">PatientService adds the patient to the database.</step>
+        <step id="S7">PatientService commits the changes using the Unit of Work.</step>
+        <step id="S8">PatientService sends an email notification to the patient.</step>
+        <step id="S9">PatientService deactivates and sends the PatientDto back to the PatientController.</step>
+        <step id="S10">PatientController responds with a 200 OK status and the PatientDto to the Admin.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>User Login</name>
+    <description>Allows a user to log in to the application</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is on the login page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user is redirected to the homepage</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user is prompted to enter a correct identifier or password</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">The user enters their identifier</step>
+        <step id="S2">The application verifies the identifier</step>
+        <step id="S3">If the identifier is correct, redirect the user to the homepage</step>
+        <step id="S4">If the identifier is incorrect, prompt the user to enter a correct identifier or password</step>
+        <step id="S5">If the user forgets the password, request a new password</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Delete Task</name>
+    <description>As a User, I want to delete a task from the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User is authenticated and authorized to delete tasks.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The task is successfully deleted from the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs while deleting the task.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the deletion of a task.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a DELETE request to /api/tasks/{id}.</step>
+        <step id="S2">TaskController receives the DELETE request.</step>
+        <step id="S3">TaskController activates the TaskService to delete the task.</step>
+        <step id="S4">TaskService calls TaskRepository to delete the task by id.</step>
+        <step id="S5">TaskRepository successfully deletes the task.</step>
+        <step id="S6">TaskService receives confirmation from TaskRepository.</step>
+        <step id="S7">TaskService deactivates and returns void.</step>
+        <step id="S8">TaskController receives void from TaskService.</step>
+        <step id="S9">TaskController deactivates and returns void to User.</step>
+    </mainSequence>
+</useCase>

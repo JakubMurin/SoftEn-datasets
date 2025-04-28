@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User logs in to the system</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in</condition>
+    </failureEndConditions>
+    <trigger>User attempts to log in</trigger>
+    <mainSequence>
+        <step id="S1">User enters username and password</step>
+        <step id="S2">User submits login form</step>
+        <step id="S3">LoginPage sends HTTP POST /login with credentials to AuthController</step>
+        <step id="S4">AuthController calls AuthService to authenticate(username, password)</step>
+        <step id="S5">AuthService checks user credentials in UserRepository</step>
+        <step id="S6">UserRepository queries Database for user credentials</step>
+        <step id="S7">Database returns user details to UserRepository</step>
+        <step id="S8">UserRepository returns user details to AuthService</step>
+        <step id="S9">AuthService returns user details to AuthController</step>
+        <step id="S10">AuthController redirects user to HomePage</step>
+        <step id="S11">HomePage loads and displays home page to User</step>
+    </mainSequence>
+</useCase>

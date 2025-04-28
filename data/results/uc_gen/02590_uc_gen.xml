@@ -1,0 +1,32 @@
+<useCase id="1">
+    <name>Complete Data Transaction Securely</name>
+    <description>Ensure secure data transmission between actors</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actors Attacker and User are identifiable</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data transaction completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Security breach detected</condition>
+    </failureEndConditions>
+    <trigger>POST and GET requests initiated</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends POST request to /foo</step>
+        <step id="S2">CDN forwards POST request to Proxy</step>
+        <step id="S3">Proxy sends POST request to Backend</step>
+        <step id="S4">Backend responds to Proxy with 200</step>
+        <step id="S5">Proxy sends response to CDN</step>
+        <step id="S6">CDN sends response to Attacker</step>
+        <step id="S7">User sends GET request to /bar</step>
+        <step id="S8">CDN forwards GET request to Proxy</step>
+        <step id="S9">Proxy sends GET request to Backend</step>
+        <step id="S10">Backend responds to Proxy with 200</step>
+        <step id="S11">Proxy sends response to CDN</step>
+        <step id="S12">CDN sends response to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Make Coffee</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CoffeeFactory</actor>
+        <actor>CoffeeHandlerBase</actor>
+        <actor>Coffee</actor>
+        <actor>Milk</actor>
+        <actor>Chocolate</actor>
+        <actor>Cinnamon</actor>
+        <actor>Sweetener</actor>
+        <actor>StirringStrategyFactory</actor>
+        <actor>StirringStrategy</actor>
+        <actor>CoffeeRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User makes a request to make coffee with specific coffee and sweetener requests.</step>
+        <step id="S2">CoffeeFactory creates a CoffeeRequest based on the provided requests.</step>
+        <step id="S3">CoffeeFactory returns the created CoffeeRequest.</step>
+        <step id="S4">Make_coffee receives the CoffeeRequest.</step>
+        <step id="S5">Make_coffee sets the next ingredient to Milk.</step>
+        <step id="S6">Milk sets the next ingredient to Chocolate.</step>
+        <step id="S7">Chocolate sets the next ingredient to Cinnamon.</step>
+        <step id="S8">Cinnamon sets the next ingredient to Sweetener.</step>
+        <step id="S9">Sweetener sets the next ingredient to NULL.</step>
+        <step id="S10">Make_coffee starts handling the CoffeeRequest.</step>
+        <step id="S11">CoffeeHandlerBase starts handling the CoffeeRequest.</step>
+        <step id="S12">Milk starts handling the CoffeeRequest.</step>
+        <step id="S13">CoffeeHandlerBase continues handling the CoffeeRequest.</step>
+        <step id="S14">Chocolate starts handling the CoffeeRequest.</step>
+        <step id="S15">CoffeeHandlerBase continues handling the CoffeeRequest.</step>
+        <step id="S16">Cinnamon starts handling the CoffeeRequest.</step>
+        <step id="S17">CoffeeHandlerBase continues handling the CoffeeRequest.</step>
+        <step id="S18">Sweetener starts handling the CoffeeRequest.</step>
+        <step id="S19">StirringStrategyFactory creates a StirringStrategy based on the sweetener type.</step>
+        <step id="S20">StirringStrategy stirs the mixture.</step>
+        <step id="S21">Sweetener returns to CoffeeHandlerBase.</step>
+        <step id="S22">Cinnamon returns to CoffeeHandlerBase.</step>
+        <step id="S23">Chocolate returns to Milk.</step>
+        <step id="S24">Milk returns to Coffee.</step>
+        <step id="S25">Coffee returns to make_coffee.</step>
+        <step id="S26">Make_coffee returns the ingredients of the created coffee to the User.</step>
+    </mainSequence>
+</useCase>

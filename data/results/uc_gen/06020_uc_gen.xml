@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Buyer interacts with the Market to purchase items</name>
+    <actors>
+        <actor>Buyer</actor>
+        <actor>Seller</actor>
+        <actor>Market</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Buyer needs to have funds available to purchase items.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All items are successfully purchased by Buyer.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Buyer does not have enough funds to purchase all items.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Buyer registers itself as an observer with the Market.</step>
+        <step id="S2">Seller puts an item up for sale on the Market.</step>
+        <step id="S3">Market notifies the Buyer of new items for sale.</step>
+        <step id="S4">Buyer buys the item from the Seller.</step>
+        <step id="S5">Seller removes the sold item from the Market.</step>
+        <step id="S6">Seller transfers the sold item to the Buyer.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S2">
+            <step id="A1S1">Buyer registers itself as an observer after items are already on sale.</step>
+            <step id="A1S2">Market notifies the Buyer of new items for sale after registration.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

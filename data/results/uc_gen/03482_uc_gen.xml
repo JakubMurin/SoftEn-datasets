@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Scheduling Operations in Operation Queue</name>
+    <description>This use case involves scheduling operations in the operation queue</description>
+    <actors>
+        <actor>sidetree-core-go</actor>
+    </actors>
+    <preconditions>
+        <precondition>The operation queue is initialized and ready to receive operations</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation scheduled successfully in the operation queue</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Operation scheduling failed in the operation queue</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Subscribe to the operation queue</step>
+        <step id="S2">Add operation to the operation queue</step>
+        <step id="S3">Publish operation in the queue and receive acknowledgment</step>
+        <step id="S4">Put operation in the operation queue database with expiration</step>
+        <step id="S5">Acknowledge the successful operation addition</step>
+    </mainSequence>
+</useCase>

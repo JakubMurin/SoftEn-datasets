@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Search Articles</name>
+    <actors>
+        <actor>Visitor</actor>
+        <actor>UI Interface</actor>
+        <actor>SearchController</actor>
+        <actor>ArticlesDatabase</actor>
+    </actors>
+    <preconditions>
+        <precondition>Visitor enters search keywords</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>UI displays search results</condition>
+    </successEndConditions>
+    <trigger>User searches for articles</trigger>
+    <mainSequence>
+        <step id="S1">Visitor enters search keywords</step>
+        <step id="S2">UI invokes search(query)</step>
+        <step id="S3">SearchController queries database for searchTerm</step>
+        <step id="S4">ArticlesDatabase returns search results</step>
+        <step id="S5">SearchController displays search results on UI</step>
+        <step id="S6">UI shows articles matching criteria to Visitor</step>
+    </mainSequence>
+</useCase>

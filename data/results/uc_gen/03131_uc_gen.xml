@@ -1,0 +1,69 @@
+<useCase id="UC001">
+    <name>User Registration</name>
+    <description>User registers on the platform</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>ServiceUtilisateur</actor>
+        <actor>Repo</actor>
+        <actor>ServiceEmail</actor>
+        <actor>Redirection</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the registration page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User receives a confirmation email</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in sending confirmation email</condition>
+        <condition>Invalid email address</condition>
+        <condition>Email address already in use</condition>
+        <condition>Username already taken</condition>
+    </failureEndConditions>
+    <trigger>User accesses the registration page</trigger>
+    <mainSequence>
+        <step id="S1">Display registration form to the user</step>
+        <step id="S2">User submits registration information (name, password, profile picture, email)</step>
+        <step id="S3">Check if username is available</step>
+        <step id="S4">Check if email is already in use</step>
+        <step id="S5">Save user information in the database</step>
+        <step id="S6">Send confirmation email</step>
+        <step id="S7">Confirm email sent</step>
+        <step id="S8">Redirect to confirmation page</step>
+        <step id="S9">Display confirmation message to the user</step>
+        <step id="S10">Display error message for invalid email</step>
+        <step id="S11">Display error message for email already in use</step>
+        <step id="S12">Display error message for username already taken</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Username available</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Email available</step>
+        </asteps>
+        <asteps id="A3" start="S6">
+            <step id="A3S1">Email sent successfully</step>
+            <step id="A3S2">Error in sending email</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error in sending confirmation email</description>
+            <step id="E1S1">Error sending confirmation email</step>
+        </esteps>
+        <esteps id="E2" start="S7">
+            <description>Invalid email address</description>
+            <step id="E2S1">Invalid email address</step>
+        </esteps>
+        <esteps id="E3" start="S8">
+            <description>Email address already in use</description>
+            <step id="E3S1">Email address already in use</step>
+        </esteps>
+        <esteps id="E4" start="S9">
+            <description>Username already taken</description>
+            <step id="E4S1">Username already taken</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User logs in to the system</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logged in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User failed to login</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User enters credentials and selects "Remember Me"</step>
+        <step id="S2">LoginPage authenticates user</step>
+        <step id="S3">BackendServer verifies credentials</step>
+        <step id="S4">BackendServer returns authentication result</step>
+        <step id="S5">BackendServer returns 'Remember Me' enabled</step>
+        <step id="S6">LoginPage stores 'Remember Me' token</step>
+        <step id="S7">BackendServer saves token</step>
+        <step id="S8">Database confirms token saved</step>
+        <step id="S9">User receives login confirmation</step>
+    </mainSequence>
+</useCase>

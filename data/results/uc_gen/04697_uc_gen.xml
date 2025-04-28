@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Login Process</name>
+    <actors>
+        <actor>End user</actor>
+        <actor>Envoy (with WASM oicd filter)</actor>
+        <actor>ID-provider</actor>
+        <actor>TokenDings</actor>
+    </actors>
+    <preconditions>
+        <precondition>End user requests a resource from Envoy</precondition>
+    </preconditions>
+    <trigger>End user initiates the OpenID Connect login process</trigger>
+    <mainSequence>
+        <step id="S1">End user requests a resource from Envoy</step>
+        <step id="S2">Envoy redirects the end user to ID-provider</step>
+        <step id="S3">End user performs login and provides consent/authorization to the application</step>
+        <step id="S4">ID-provider sends callback with authorization code to end user</step>
+        <step id="S5">End user sends authorization code to Envoy</step>
+        <step id="S6">Envoy exchanges authorization code for tokens with ID-provider</step>
+        <step id="S7">Envoy validates id_token according to OpenID Connect</step>
+        <step id="S8">Envoy stores the session in cache</step>
+        <step id="S9">Envoy redirects end user with cookies (id_token, session)</step>
+    </mainSequence>
+</useCase>

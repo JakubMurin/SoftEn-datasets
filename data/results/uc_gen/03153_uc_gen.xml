@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Gestion des fermes</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>Se connecter à l'application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Opérations CRUD effectuées avec succès</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Admin sélectionne "Gestion des fermes"</step>
+        <step id="S2">Affichage de la liste des fermes pour Admin</step>
+        <step id="S3">Admin effectue une opération CRUD (Ajout, Modification, Suppression)</step>
+        <step id="S4">Confirmation de l'opération par le système</step>
+        <step id="S5">Client sélectionne "Gestion des fermes"</step>
+        <step id="S6">Affichage de la liste des fermes pour Client</step>
+        <step id="S7">Client effectue une opération CRUD</step>
+        <step id="S8">Vérification des permissions par le système</step>
+        <step id="S9">Action autorisée ou refusée par le système</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Erreur de validation: Nom déjà utilisé</step>
+        </asteps>
+        <asteps id="A2" start="S7" continue="S9">
+            <step id="A2S1">Permissions insuffisantes: Type de compte inadéquat</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1">
+            <description>Erreur lors de l'ajout d'une ferme</description>
+            <step id="E1S1">Affichage de l'erreur (nom déjà utilisé)</step>
+        </esteps>
+        <esteps id="E2" start="A2">
+            <description>Permissions insuffisantes lors de la modification d'une ferme</description>
+            <step id="E2S1">Refus de la permission (type de compte inadéquat)</step>
+        </esteps>
+    </errorSteps>
+</useCase>

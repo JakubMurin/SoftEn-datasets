@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Manage Settings</name>
+    <description>Allows the Admin to view and edit settings</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Admin successfully views and edits settings</condition>
+    </successEndConditions>
+    <trigger>Admin requests to view or edit settings</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to view settings</step>
+        <step id="S2">List Settings View sends request to Settings Controller</step>
+        <step id="S3">Settings Controller checks data and retrieves settings list from Settings Model</step>
+        <step id="S4">Settings Controller sends settings list result to List Settings View</step>
+        <step id="S5">List Settings View displays settings list to Admin</step>
+        <step id="S6">Admin edits settings and saves</step>
+        <step id="S7">List Settings View sends new settings data to Settings Controller</step>
+        <step id="S8">Settings Controller checks data and saves settings in Settings Model</step>
+        <step id="S9">Settings Controller sends save result to List Settings View</step>
+        <step id="S10">List Settings View displays updated settings list to Admin</step>
+    </mainSequence>
+</useCase>

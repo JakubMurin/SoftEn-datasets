@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Initial setup</name>
+    <actors>
+        <actor>admin</actor>
+        <actor>ga</actor>
+        <actor>apiserver</actor>
+        <actor>db</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">admin provisions server through terraform/ansible</step>
+        <step id="S2">admin generates password and wireguard private key</step>
+        <step id="S3">admin enrolls gateway by sending EnrollGateway request to apiserver</step>
+        <step id="S4">apiserver allocates private IP and updates gateway information in the database</step>
+        <step id="S5">apiserver responds to admin with EnrollGateway response</step>
+        <step id="S6">admin generates GatewayConfiguration</step>
+        <step id="S7">admin establishes an SSH connection with ga</step>
+        <step id="S8">ga inserts configuration into a file as environment variables</step>
+        <step id="S9">ga establishes a secure connection with apiserver</step>
+    </mainSequence>
+</useCase>

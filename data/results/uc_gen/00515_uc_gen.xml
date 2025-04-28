@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Crear nueva falta</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>fault.routes</actor>
+        <actor>fault.controller</actor>
+        <actor>faltModelInstance</actor>
+        <actor>mysql</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El actor navegador accede a /fault/add</step>
+        <step id="S2">La interfaz fault.routes recibe la solicitud GET /fault/add</step>
+        <step id="S3">El controlador fault.controller obtiene la página faultAdd </step>
+        <step id="S4">La vista faultAdd.ejs muestra el formulario de la falta</step>
+        <step id="S5">El actor navegador valida los campos</step>
+        <step id="S6">El actor navegador envía los datos al servidor con POST /fault/add</step>
+        <step id="S7">La interfaz fault.routes recibe la solicitud POST /fault/add</step>
+        <step id="S8">El controlador fault.controller valida los campos</step>
+        <step id="S9">El modelo faultModelInstance crea una nueva instancia de la falta</step>
+        <step id="S10">El controlador fault.controller guarda la falta</step>
+        <step id="S11">El modelo faultModelInstance consulta si el colaborador existe</step>
+        <step id="S12">El modelo faultModelInstance inserta la falta si el colaborador existe</step>
+        <step id="S13">El controlador notifica el éxito</step>
+    </mainSequence>
+    <alternativeSteps>
+         <asteps id="A1" start="S8" continue="S9">
+            <step id="A1S1">En caso de campos incompletos, redirige a /error</step>
+        </asteps>
+    </alternativeSteps>
+     <errorSteps>
+        <esteps id="E1" start="S11">
+            <description>Colaborador no existe. Redirige a /faults con advertencia</description>
+            <step id="E1S1">El modelo faultModelInstance lanza un error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

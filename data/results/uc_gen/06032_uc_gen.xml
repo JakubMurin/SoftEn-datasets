@@ -1,0 +1,36 @@
+<useCase id="UC_001">
+    <name>Data Storage and Search Process</name>
+    <description>A use case describing the process of storing data and searching for information</description>
+    <actors>
+        <actor>User</actor>
+        <actor>DataStorage</actor>
+        <actor>Database</actor>
+        <actor>GitLabCrawler</actor>
+        <actor>TDCrawler</actor>
+        <actor>Preprocessor</actor>
+        <actor>SearchEngine</actor>
+        <actor>VectorSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>Database and necessary modules are set up and functional</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data successfully stored in the database, search results returned</condition>
+    </successEndConditions>
+    <trigger>User initiates the data storage and search process</trigger>
+    <mainSequence>
+        <step id="S1">User initializes the database creation process</step>
+        <step id="S2">User requests to crawl GitLab data</step>
+        <step id="S3">GitLabCrawler returns GitLab data to DataStorage</step>
+        <step id="S4">User requests to crawl TD data</step>
+        <step id="S5">TDCrawler returns TD data to DataStorage</step>
+        <step id="S6">DataStorage preprocesses the data</step>
+        <step id="S7">Preprocessed data stored in the Database and index updated</step>
+        <step id="S8">User sends a search request to SearchEngine</step>
+        <step id="S9">SearchEngine performs vector search with VectorSearch</step>
+        <step id="S10">VectorSearch returns top N results to SearchEngine</step>
+        <step id="S11">SearchEngine retrieves complete bug info from the Database</step>
+        <step id="S12">Database sends complete bug info back to SearchEngine</step>
+        <step id="S13">SearchEngine returns bug list to User</step>
+    </mainSequence>
+</useCase>

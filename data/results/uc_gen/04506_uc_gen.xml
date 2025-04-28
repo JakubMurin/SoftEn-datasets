@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Update Authors and Organizations</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>AdvancedSearch.jsp</actor>
+        <actor>AuthorSearch</actor>
+        <actor>DataPackageManagerClient</actor>
+        <actor>Umbra</actor>
+    </actors>
+    <preconditions>
+        <precondition>The client triggers the updateAuthorsAndOrganizations function from AdvancedSearch.jsp.</precondition>
+        <precondition>AuthorSearch needs to get the names from Umbra.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Authors and organizations are successfully updated.</condition>
+    </successEndConditions>
+    
+    <mainSequence>
+        <step id="S1">Client triggers updateAuthorsAndOrganizations function from AdvancedSearch.jsp.</step>
+        <step id="S2">AuthorSearch gets names from Umbra.</step>
+        <step id="S3">AuthorSearch builds author query.</step>
+        <step id="S4">AuthorSearch updates authors using the author query.</step>
+    </mainSequence>
+</useCase>

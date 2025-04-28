@@ -1,0 +1,24 @@
+<useCase id="1">
+  <name>Battle between PlayerA and PlayerB</name>
+  <actors>
+    <actor>PlayerA</actor>
+    <actor>PlayerB</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">PlayerA posts battle request to BattleController</step>
+    <step id="S2">BattleController activates</step>
+    <step id="S3">BattleService battles PlayerA</step>
+    <step id="S4">BattleRepository finds open battles</step>
+    <step id="S5">BattleService opens battle for PlayerA</step>
+    <step id="S6">BattleService waits for battle with battleId</step>
+    <step id="S7">PlayerB posts battle request to BattleController</step>
+    <step id="S8">BattleController activates for PlayerB</step>
+    <step id="S9">BattleService battles PlayerB</step>
+    <step id="S10">BattleRepository finds open battles</step>
+    <step id="S11">BattleLogic processes battle between PlayerA and PlayerB</step>
+    <step id="S12">BattleRepository updates battle</step>
+    <step id="S13">BattleService returns battle results to BattleController</step>
+    <step id="S14">BattleController delivers battle results to PlayerA</step>
+    <step id="S15">BattleController delivers battle results to PlayerB</step>
+  </mainSequence>
+</useCase>

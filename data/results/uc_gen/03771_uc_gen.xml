@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Make a Booking</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist has access to the booking system</precondition>
+    </preconditions>
+    <trigger>User requests to create a booking</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create a booking</step>
+        <step id="S2">UI displays booking form</step>
+        <step id="S3">Receptionist fills in booking details</step>
+        <step id="S4">UI sends booking data to create a booking</step>
+        <step id="S5">Router forwards booking request to Controller</step>
+        <step id="S6">Controller creates a new booking in the system</step>
+        <step id="S7">Repository creates a new booking in the system</step>
+        <step id="S8">Room availability is checked</step>
+        <step id="S9">If room is available, a new booking is created</step>
+        <step id="S10">If room is not available, an error message is displayed</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8" continue="S9">
+            <step id="A1S1">Room availability is confirmed</step>
+            <step id="A1S2">New booking is created successfully</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Room is not available for the selected dates</description>
+            <step id="E1S1">Error message is displayed to the Receptionist</step>
+        </esteps>
+    </errorSteps>
+</useCase>

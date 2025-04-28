@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Add Operation to Queue</name>
+    <actors>
+        <actor>sidetree-core-go</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client subscribes to Operation Queue</step>
+        <step id="S2">Client adds operation op1 to handler1</step>
+        <step id="S3">Handler1 publishes op1 to opQueue</step>
+        <step id="S4">Handler1 receives acknowledgment for publishing op1</step>
+        <step id="S5">Handler1 receives op2 from opQueue</step>
+        <step id="S6">Handler1 puts op2 with handler1 ID and expiry to opQueueDB</step>
+        <step id="S7">Handler1 acknowledges op2 to opQueue</step>
+        <step id="S8">Handler2 receives op1 from opQueue</step>
+        <step id="S9">Handler2 puts op1 with handler2 ID and expiry to opQueueDB</step>
+        <step id="S10">Handler2 acknowledges op1 to opQueue</step>
+    </mainSequence>
+</useCase>

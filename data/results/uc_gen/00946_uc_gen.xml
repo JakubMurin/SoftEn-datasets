@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Reconfigure System Composition</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Karaf Console</actor>
+        <actor>Karaf Configuration</actor>
+        <actor>core.caos</actor>
+        <actor>BackendManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system composition needs to be reconfigured.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The system composition is successfully reconfigured.</condition>
+    </successEndConditions>
+    <trigger>User initiates the reconfiguration process by loading a new composition file.</trigger>
+    <mainSequence>
+        <step id="S1">User loads the new composition file using the command "netide:loadcomposition new.xml".</step>
+        <step id="S2">Karaf Console reads the content of the XML file.</step>
+        <step id="S3">Karaf Console sets the configuration value based on the composition and XML content.</step>
+        <step id="S4">Karaf Configuration reloads the OSGi module.</step>
+        <step id="S5">core.caos retrieves the configuration for the composition.</step>
+        <step id="S6">core.caos creates a CompositionSpecification and loads it.</step>
+        <step id="S7">core.caos receives a list of required modules from CompositionSpecification.</step>
+        <step id="S8">core.caos gets the list of currently connected backends from BackendManager.</step>
+        <step id="S9">core.caos checks if all required modules are present.</step>
+        <step id="S10">core.caos finishes the reconfiguration process.</step>
+        <step id="S11">core.caos logs the successful reconfiguration to Karaf Console.</step>
+    </mainSequence>
+</useCase>

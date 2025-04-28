@@ -1,0 +1,49 @@
+<useCase id="UC001">
+    <name>Epic Transaction Workflow</name>
+    <actors>
+        <actor>Sender</actor>
+        <actor>Recipient</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Create Transaction UUID (for reference and maintaining correct state) - Sender</step>
+        <step id="S2">Set lock_height for transaction kernel (current chain height) - Sender</step>
+        <step id="S3">Select inputs using desired selection strategy - Sender</step>
+        <step id="S4">Calculate sum inputs blinding factors xI - Sender</step>
+        <step id="S5">Create change_output - Sender</step>
+        <step id="S6">Select blinding factor xC for change_output - Sender</step>
+        <step id="S7">Create lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS linking inputs + outputs (Not executed at this point) - Sender</step>
+        <step id="S8">Calculate tx_weight: MAX(-1 * num_inputs + 4 * (num_change_outputs + 1), 1) - Sender</step>
+        <step id="S9">Calculate fee: tx_weight * 1_000_000 nG - Sender</step>
+        <step id="S10">Calculate total blinding excess sum for all inputs and outputs xS1 = xC - xI (private scalar) - Sender</step>
+        <step id="S11">Select a random nonce kS (private scalar) - Sender</step>
+        <step id="S12">Subtract random kernel offset oS from xS1. Calculate xS = xS1 - oS - Sender</step>
+        <step id="S13">Multiply xS and kS by generator G to create public curve points xSG and kSG - Sender</step>
+        <step id="S14">Add values to Slate for passing to other participants: UUID, inputs, change_outputs, fee, amount, lock_height, kSG, xSG, oS - Sender</step>
+        <step id="S15">Check fee against number of inputs, change_outputs +1 * receiver_output - Recipient</step>
+        <step id="S16">Create receiver_output - Recipient</step>
+        <step id="S17">Choose random blinding factor for receiver_output xR (private scalar) - Recipient</step>
+        <step id="S18">Calculate message M = fee | lock_height - Recipient</step>
+        <step id="S19">Choose random nonce kR (private scalar) - Recipient</step>
+        <step id="S20">Multiply xR and kR by generator G to create public curve points xRG and kRG - Recipient</step>
+        <step id="S21">Compute Schnorr challenge e = SHA256(kRG + kSG | xRG + xSG | M) - Recipient</step>
+        <step id="S22">Compute Recipient Schnorr signature sR = kR + e * xR - Recipient</step>
+        <step id="S23">Add sR, xRG, kRG to Slate - Recipient</step>
+        <step id="S24">Create wallet output function rF that stores receiver_output in wallet with status "Unconfirmed" and identifying transaction log entry TR linking receiver_output with transaction - Recipient</step>
+        <step id="S25">Calculate message M = fee | lock_height - Sender</step>
+        <step id="S26">Compute Schnorr challenge e = SHA256(kRG + kSG | xRG + xSG | M) - Sender</step>
+        <step id="S27">Verify sR by verifying kRG + e * xRG = sRG - Sender</step>
+        <step id="S28">Compute Sender Schnorr signature sS = kS + e * xS - Sender</step>
+        <step id="S29">Calculate final signature s = (kSG+kRG, sS+sR) - Sender</step>
+        <step id="S30">Calculate public key for s: xG = xRG + xSG - Sender</step>
+        <step id="S31">Verify s against excess values in final transaction using xG - Sender</step>
+        <step id="S32">Create Transaction Kernel Containing: Excess signature s, Public excess xG, fee, lock_height - Sender</step>
+        <step id="S33">Create final transaction tx from Slate - Sender</step>
+        <step id="S34">Post tx to mempool - Sender</step>
+        <step id="S35">Confirm receiver_output - Recipient</step>
+        <step id="S36">Change status of receiver_output to "Confirmed" - Recipient</step>
+        <step id="S37">Change status of inputs to "Spent" - Sender</step>
+        <step id="S38">Change status of change_output to "Confirmed" - Sender</step>
+        <step id="S39">Manually remove receiver_output from wallet using transaction log entry TR - Recipient</step>
+        <step id="S40">Unlock inputs and delete change_output identified in transaction log entry TS - Sender</step>
+    </mainSequence>
+</useCase>

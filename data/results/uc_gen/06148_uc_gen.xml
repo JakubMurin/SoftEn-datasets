@@ -1,0 +1,24 @@
+<useCase id="UC01">
+	<name>Add New Other Service</name>
+	<description>This use case involves the process of adding a new other service by an admin.</description>
+	<actors>
+		<actor>Admin</actor>
+	</actors>
+	<preconditions>
+		<precondition>Admin is logged in</precondition>
+	</preconditions>
+	<successEndConditions>
+	    <condition>New other service is successfully added</condition>
+	</successEndConditions>
+	<trigger>Admin requests to add a new other service</trigger>
+	<mainSequence>
+		<step id="S1">Admin requests to add a new other service</step>
+		<step id="S2">UI displays add service form.</step>
+		<step id="S3">Admin submits new service data.</step>
+		<step id="S4">Service data is sent to addOtherService controller.</step>
+		<step id="S5">Repository loads OtherServiceModel to save the new service.</step>
+		<step id="S6">Database inserts a new service into the database.</step>
+                <step id="S7">Repository notifies successful service addition.</step>
+		<step id="S8">UI displays success message (service added).</step>		
+	</mainSequence>
+</useCase>

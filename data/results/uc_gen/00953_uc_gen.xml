@@ -1,0 +1,28 @@
+<useCase id="1">
+    <name>Loading Composition Specification</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Karal Console engaged</precondition>
+        <precondition>Karaf Configuration utilized</precondition>
+        <precondition>Karaf Configuration modified to allow composition loading</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Composition specification loaded successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Unable to load composition specification</condition>
+    </failureEndConditions>
+    <trigger>netide:loadcomposition new.xml</trigger>
+    <mainSequence>
+        <step id="S1">Read content of xml file</step>
+        <step id="S2">Set configuration value</step>
+        <step id="S3">Reload OSGI Module</step>
+        <step id="S4">Get configuration (the composition)</step>
+        <step id="S5">Load Composition specifications</step>
+        <step id="S6">Check if all required modules are present</step>
+        <step id="S7">Reconfiguration completed successfully</step>
+        <step id="S8">Log successful reconfiguration from Karaf Console</step>
+    </mainSequence>
+</useCase>

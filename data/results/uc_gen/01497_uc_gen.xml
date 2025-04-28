@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Launch Rocket from Slack Command</name>
+    <actors>
+        <actor>USER</actor>
+        <actor>SLACK</actor>
+        <actor>APP</actor>
+    </actors>
+    <trigger>Post a Slack Command</trigger>
+    <mainSequence>
+        <step id="S1">User posts a `/rocker` command</step>
+        <step id="S2">App triggers `chat.postEphemeral`</step>
+        <step id="S3">App displays an ephemeral message to the user in a channel</step>
+        <step id="S4">User clicks on the button `launch rocket`</step>
+        <step id="S5">App triggers `interaction` event</step>
+        <step id="S6">App posts a message using `chat.postMessage`</step>
+        <step id="S7">User sees a Rocket Countdown Message 3</step>
+        <step id="S8">App posts a message with Countdown Message 2</step>
+        <step id="S9">App posts a message with Countdown Message 1</step>
+    </mainSequence>
+</useCase>

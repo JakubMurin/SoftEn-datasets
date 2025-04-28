@@ -1,0 +1,43 @@
+<useCase id="UC001">
+    <name>User OAuth Login</name>
+    <description>User logs in via OAuth authentication.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Client Application</actor>
+        <actor>API Gateway</actor>
+        <actor>Auth Service</actor>
+        <actor>OAuth Provider</actor>
+        <actor>Auth DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has selected OAuth login.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logged in with OAuth token.</condition>
+    </successEndConditions>
+    <trigger>User chooses OAuth login on the Client Application.</trigger>
+    <mainSequence>
+        <step id="S1">User chooses OAuth login</step>
+        <step id="S2">User is redirected to authorization by Client Application</step>
+        <step id="S3">User authorizes and grants access on OAuth Provider</step>
+        <step id="S4">OAuth Provider returns with OAuth token to Client Application</step>
+        <step id="S5">Client Application sends OAuth token to API Gateway</step>
+        <step id="S6">API Gateway sends OAuth token to Auth Service</step>
+        <step id="S7">Auth Service verifies OAuth token with OAuth Provider</step>
+        <step id="S8">Auth Service verifies email with Auth DB</step>
+        <step id="S9">API Gateway sends success notification and token to Client Application</step>
+        <step id="S10">Client Application displays successful login message to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S9">
+            <step id="A1S1">Auth Service encounters an OAuth token verification error</step>
+            <step id="A1S2">API Gateway sends error notification to Client Application</step>
+            <step id="A1S3">Client Application displays error message to User</step>
+        </asteps>
+        <asteps id="A2" start="S8" continue="S9">
+            <step id="A2S1">Auth Service does not find the email in Auth DB</step>
+            <step id="A2S2">API Gateway sends error notification to Client Application</step>
+            <step id="A2S3">Client Application displays error message to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Truy cập và đổi mật khẩu</name>
+    <description>Người dùng có thể truy cập trang cài đặt tài khoản và đổi mật khẩu</description>
+    <actors>
+        <actor>Người dùng</actor>
+        <actor>Hệ thống</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <trigger>Người dùng chọn truy cập trang cài đặt tài khoản</trigger>
+    <mainSequence>
+        <step id="S1">Hiển thị biểu mẫu đổi mật khẩu cho Người dùng</step>
+        <step id="S2">Người dùng nhập thông tin (mật khẩu hiện tại, mới)</step>
+        <step id="S3">Hệ thống kiểm tra mật khẩu hiện tại và mật khẩu mới</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Cập nhật mật khẩu mới trong MongoDB</step>
+            <step id="A1S2">Hệ thống hiển thị thông báo "Đổi mật khẩu thành công" cho Người dùng</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Mật khẩu hiện tại không đúng:</description>
+            <step id="E1S1">Hệ thống hiển thị lỗi "Mật khẩu hiện tại không đúng" cho Người dùng</step>
+            <step id="E1S2">Người dùng nhập lại thông tin</step>
+        </esteps>
+        <esteps id="E2" start="S3">
+            <description>Mật khẩu mới không hợp lệ:</description>
+            <step id="E2S1">Hệ thống hiển thị lỗi định dạng cho Mật khẩu mới</step>
+            <step id="E2S2">Người dùng nhập lại thông tin</step>
+        </esteps>
+    </errorSteps>
+</useCase>

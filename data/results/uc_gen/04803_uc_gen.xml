@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Editing Metadata of Deposited Item</name>
+    <description>User can edit metadata of a deposited item in the system.</description>
+    <actors>
+        <actor>Researcher</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher is logged into the system.</precondition>
+        <precondition>Researcher has necessary permission to edit metadata.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher successfully edits metadata of deposited item.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Researcher does not have permission to edit metadata.</condition>
+        <condition>System encounters an error while updating metadata.</condition>
+    </failureEndConditions>
+    <trigger>Researcher selects an item to edit metadata.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher logs into the system.</step>
+        <step id="S2">Researcher navigates to "My Deposited Items".</step>
+        <step id="S3">Researcher selects an item to edit.</step>
+        <step id="S4">Researcher edits metadata of the selected item.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>System encounters an error while updating metadata.</description>
+            <step id="E1S1">Display error message to the Researcher.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

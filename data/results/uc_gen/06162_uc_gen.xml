@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Create Data Package</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>DataPackageManagerResource</actor>
+        <actor>Creator</actor>
+        <actor>DataPackageManager</actor>
+        <actor>DataManagerClient</actor>
+        <actor>EMLDataManager</actor>
+        <actor>DataManager</actor>
+        <actor>EMLDataPackage</actor>
+        <actor>EML200DataPackageParser</actor>
+        <actor>DocumentBuilder</actor>
+        <actor>DataPackage</actor>
+        <actor>QualityReport</actor>
+        <actor>QualityCheck</actor>
+        <actor>SolrMetadataCatalog</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client creates a data package</step>
+        <step id="S2">Creator runs</step>
+        <step id="S3">DataPackageManager creates a data package</step>
+        <step id="S4">DataPackageManager parses EML</step>
+        <step id="S5">DataPackageManager checks EML metadata</step>
+        <step id="S6">DataPackageManager creates EMLDataPackage</step>
+        <step id="S7">DataPackageManager checks if DataPackage already exists</step>
+        <step id="S8">DataPackageManager checks if DataPackage is being processed</step>
+        <step id="S9">DataPackageManager creates auxiliary data package</step>
+        <step id="S10">DataPackageManager adds DataPackage to working on list</step>
+        <step id="S11">DataPackageManager checks for conflicting reservations</step>
+        <step id="S12">DataPackageManager validates metadata</step>
+        <step id="S13">DataManagerClient creates data entities</step>
+        <step id="S14">EMLDataManager downloads and loads entities</step>
+        <step id="S15">DataPackageManager stores metadata in SolrMetadataCatalog</step>
+        <step id="S16">DataPackageManager processes EML metadata</step>
+        <step id="S17">DataPackageManager generates Dublin Core metadata</step>
+        <step id="S18">DataPackageManager inserts metadata into Solr</step>
+        <step id="S19">DataPackageManager inserts provenance record</step>
+        <step id="S20">DataPackageManager registers DOI</step>
+        <step id="S21">DataPackageManager removes DataPackage from working on list</step>
+    </mainSequence>
+</useCase>

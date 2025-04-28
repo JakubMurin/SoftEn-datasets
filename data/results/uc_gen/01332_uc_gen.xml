@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>zStaking: Staking</name>
+    <actors>
+        <actor>Anybody (DAO)</actor>
+        <actor>Staker</actor>
+        <actor>Bridge Stakers (PoS)</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">anybody calls vestRewards()</step>
+        <step id="S2">RewardPool triggers release() in Vesting</step>
+        <step id="S3">Vesting mints ZKP tokens to RewardPool</step>
+        <step id="S4">RewardPool checks ZKP token balance</step>
+        <step id="S5">ZKP responds with ZKP amount to RewardPool</step>
+        <step id="S6">RewardPool deposits ZKP tokens to Bridge on mainnet</step>
+        <step id="S7">Bridge on mainnet locks ZKP tokens</step>
+        <step id="S8">Bridge on mainnet notifies staker of new deposit</step>
+        <step id="S9">Bridge on Polygon receives ZKP tokens from staker</step>
+        <step id="S10">Bridge on Polygon mints pZKP tokens to RewardBroker</step>
+        <step id="S11">pZKP tokens on Polygon handled by RewardBroker</step>
+    </mainSequence>
+</useCase>

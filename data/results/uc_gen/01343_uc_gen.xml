@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Hunting Snipe</name>
+    <actors>
+        <actor>Player</actor>
+        <actor>Guide</actor>
+        <actor>Snipe</actor>
+        <actor>FoodItems</actor>
+    </actors>
+    <preconditions>
+        <precondition>Player is equipped for hunting</precondition>
+    </preconditions>
+    <trigger>Player decides to start the hunt</trigger>
+    <mainSequence>
+        <step id="S1">Player queries the Guide for Snipe information</step>
+        <step id="S2">Guide returns the type of Snipe</step>
+        <step id="S3">Player starts the hunt</step>
+        <step id="S4">Player encounters the Snipe</step>
+        <step id="S5">Snipe damages the Player</step>
+        <step id="S6">Player checks health points</step>
+        <step id="S7">Player receives warnings</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Player's health points are above 0</step>
+            <step id="A1S2">Player uses FoodItems to heal</step>
+            <step id="A1S3">FoodItems restore Player's health</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Player's health points reach 0</description>
+            <step id="E1S1">Player dies</step>
+        </esteps>
+    </errorSteps>
+</useCase>

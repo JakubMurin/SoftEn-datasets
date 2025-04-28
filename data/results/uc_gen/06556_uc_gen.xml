@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Display Course Information for Teacher</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Teacher</actor>
+        <actor>Course</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests course information for a specific teacher</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Controller successfully retrieves and displays course information</condition>
+    </successEndConditions>
+    <trigger>get_courses_for_teacher(teacher_id)</trigger>
+    <mainSequence>
+        <step id="S1">Controller retrieves teacher information by ID</step>
+        <step id="S2">Controller interacts with Teacher to get teaching information</step>
+        <step id="S3">Controller receives course results</step>
+        <step id="S4">Controller parses and displays course data to User</step>
+    </mainSequence>
+</useCase>

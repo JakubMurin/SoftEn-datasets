@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Add User</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin adds user</step>
+        <step id="S2">UserController checks user limit</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">User addition possible</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>User addition not possible due to limit reached</description>
+            <step id="E1S1">Error: Maximum user limit reached</step>
+        </esteps>
+    </errorSteps>
+</useCase>

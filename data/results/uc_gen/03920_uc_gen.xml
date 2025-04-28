@@ -1,0 +1,25 @@
+<useCase id="UC1">
+  <name>Make a Booking</name>
+  <actors>
+    <actor>User</actor>
+    <actor>UI</actor>
+    <actor>Core</actor>
+    <actor>Persistence</actor>
+    <actor>REST</actor>
+  </actors>
+  <preconditions>
+    <precondition>User is logged in</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">User selects treatment, date, and enters contact info</step>
+    <step id="S2">UI creates a booking for the User</step>
+    <step id="S3">Core saves the booking to file</step>
+    <step id="S4">Core notifies UI that the booking is created</step>
+    <step id="S5">User submits the booking</step>
+    <step id="S6">UI sends booking information to REST endpoint</step>
+    <step id="S7">REST adds the booking</step>
+    <step id="S8">Core saves the booking to file</step>
+    <step id="S9">Core notifies UI that the booking is added</step>
+    <step id="S10">UI confirms the booking to the User</step>
+  </mainSequence>
+</useCase>

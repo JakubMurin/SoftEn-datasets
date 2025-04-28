@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Access Platform and Integrate with University Systems</name>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>User Interface</actor>
+        <actor>Authentication Service</actor>
+        <actor>System Integration</actor>
+        <actor>University Systems (Pure, Opus)</actor>
+        <actor>Data Management Platform</actor>
+    </actors>
+    <preconditions>
+        <precondition>Depositor has access to the platform</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Depositor successfully accesses the platform and integrates with University Systems</condition>
+    </successEndConditions>
+    <trigger>Depositor accesses the platform</trigger>
+    <mainSequence>
+        <step id="S1">Depositor accesses the platform</step>
+        <step id="S2">UI requests authentication from Auth</step>
+        <step id="S3">Auth authenticates Depositor</step>
+        <step id="S4">Depositor provides credentials to Auth</step>
+        <step id="S5">Auth confirms authentication success to UI</step>
+        <step id="S6">UI requests familiar interface</step>
+        <step id="S7">UI fetches user preferences from SI</step>
+        <step id="S8">SI requests user-specific settings from UnivSys</step>
+        <step id="S9">UnivSys provides user settings to SI</step>
+        <step id="S10">SI applies settings and customization to UI</step>
+        <step id="S11">UI requests integration features from SI</step>
+        <step id="S12">SI fetches integration capabilities from UnivSys</step>
+        <step id="S13">UnivSys provides capabilities to SI</step>
+        <step id="S14">SI integrates with University Systems</step>
+        <step id="S15">UI renders unified management interface from DMP</step>
+        <step id="S16">DMP confirms interface readiness to UI</step>
+        <step id="S17">UI displays familiar, integrated interface to Depositor</step>
+    </mainSequence>
+</useCase>

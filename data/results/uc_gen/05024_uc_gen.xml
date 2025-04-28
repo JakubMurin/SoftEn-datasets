@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Initialize cloud connection info</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Tumblebug</actor>
+        <actor>Spider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Cloud connection info successfully initialized</condition>
+    </successEndConditions>
+    <trigger>User initiates the process to initialize cloud connection info</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to Spider to add a driver</step>
+        <step id="S2">Spider adds the driver to the spider database and sends a response to the user</step>
+        <step id="S3">User sends a POST request to Spider to add a region</step>
+        <step id="S4">Spider adds the region to the spider database and sends a response to the user</step>
+        <step id="S5">User sends a POST request to Spider to add a credential</step>
+        <step id="S6">Spider adds the credential to the spider database and sends a response to the user</step>
+        <step id="S7">User sends a POST request to Spider to add a connection config</step>
+        <step id="S8">Spider adds the connection config to the spider database and sends a response to the user</step>
+        <step id="S9">User sends a POST request to Tumblebug to add a namespace</step>
+        <step id="S10">Tumblebug adds the namespace to the tumblebug database and sends a response to the user</step>
+    </mainSequence>
+</useCase>

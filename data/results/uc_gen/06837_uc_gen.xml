@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Patient Registers at new practice</name>
+    <description>The patient registers at a new medical practice and engages with the National Medical Software</description>
+    <actors>
+        <actor>Patient</actor>
+        <actor>NME Admin</actor>
+        <actor>PDS</actor>
+        <actor>Incumbent System</actor>
+        <actor>NHAIS System</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Successfully registers with new practice and connects data systems</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in registration process or data system connection</condition>
+    </failureEndConditions>
+    <trigger>Patient registers at new practice triggering a series of interactions above</trigger>
+    <mainSequence>
+        <step id="S1">Patient registers at new practice</step>
+        <step id="S2">NME updates registration GP</step>
+        <step id="S3">PDS acknowledges update</step>
+        <step id="S4">NME requests GP Connect record from Incumbent System</step>
+        <step id="S5">Incumbent System responds with GP Connect data</step>
+        <step id="S6">NME ingests FHIR record</step>
+        <step id="S7">NME saves new record</step>
+        <step id="S8">NME makes an acceptance request to NHAIS System</step>
+        <step id="S9">NHAIS System approves the request</step>
+        <step id="S10">NHAIS deducts necessary data</step>
+        <step id="S11">Incumbent System acknowledges the deduction</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Accessing and Displaying X-Drive Files</name>
+    
+    <actors>
+        <actor>Archivist</actor>
+        <actor>Authentication System</actor>
+        <actor>User Management System</actor>
+        <actor>File Management System</actor>
+        <actor>Access Restriction Controls</actor>
+        <actor>XDrive</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Archivist credentials are valid</precondition>
+        <precondition>Archivist is authorized for X-drive access</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>X-drive files are displayed to the archivist</condition>
+    </successEndConditions>
+    
+    <trigger>Archivist requests access to X-drive files</trigger>
+    
+    <mainSequence>
+        <step id="S1">Archivist submits credentials</step>
+        <step id="S2">Authentication System validates credentials</step>
+        <step id="S3">Authentication successfully grants access</step>
+        <step id="S4">Archivist requests access to File Management System</step>
+        <step id="S5">File Management System verifies permissions</step>
+        <step id="S6">Access Restriction Controls retrieve archivist permissions</step>
+        <step id="S7">Access Restriction Controls permit access</step>
+        <step id="S8">File Management System fetches X-drive files</step>
+        <step id="S9">XDrive returns requested files</step>
+        <step id="S10">File Management System displays files to the archivist</step>
+    </mainSequence>
+</useCase>

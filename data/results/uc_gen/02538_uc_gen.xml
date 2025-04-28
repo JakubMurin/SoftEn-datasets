@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Manage Menu Items</name>
+    <actors>
+        <actor>Manager</actor>
+        <actor>Management Interface</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Manager wants to update menu items.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Manager accesses Menu Management in the Management Interface.</step>
+        <step id="S2">Management Interface requests current menu items from the Backend Server.</step>
+        <step id="S3">Backend Server fetches menu items from the Database.</step>
+        <step id="S4">Backend Server displays menu items data to the Management Interface.</step>
+        <step id="S5">Manager selects items to update.</step>
+        <step id="S6">Manager submits updated menu items.</step>
+        <step id="S7">Management Interface sends an update menu items request to the Backend Server.</step>
+        <step id="S8">Backend Server updates menu items in the Database.</step>
+        <step id="S9">Database confirms the updated items to the Backend Server.</step>
+        <step id="S10">Backend Server confirms successful update to the Management Interface.</step>
+        <step id="S11">Management Interface displays a success message to the Manager.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Buying Item from Market</name>
+    <description>As a Buyer, I want to buy an item from the Market.</description>
+    <actors>
+        <actor>Buyer</actor>
+        <actor>Market</actor>
+        <actor>Seller</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Buyer is registered as an observer in the Market.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Buyer successfully purchases an item from the Seller.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Buyer does not have enough money to buy the item.</condition>
+    </failureEndConditions>
+    <trigger>Buyer puts item up for sale.</trigger>
+    <mainSequence>
+        <step id="S1">Buyer registers itself as an observer in the Market.</step>
+        <step id="S2">Seller puts item up for sale in the Market.</step>
+        <step id="S3">Market notifies Buyer of new items.</step>
+        <step id="S4">Buyer buys item from Seller.</step>
+        <step id="S5">Seller removes item from the Market.</step>
+        <step id="S6">Seller transfers item to the Buyer.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="1">
+  <name>Compose Message</name>
+  <actors>
+    <actor>authenticated user</actor>
+    <actor>New message UI</actor>
+  </actors>
+  <trigger>User writes a new draft message with or without participants</trigger>
+  <mainSequence>
+    <step id="S1">User writes a new draft message with or without participants</step>
+    <step id="S2">User throttles save</step>
+    <step id="S3">Draft message is created: [POST: /api/vx/messages]\n{ message_id: String, participants: [Opt] Array }</step>
+    <step id="S4">API acknowledges message creation [status 204]</step>
+    <step id="S5">User retrieves message details: [GET: /api/vx/messages/{message_id}]</step>
+    <step id="S6">API responds with message details [status 200]\n{ message_id: String}</step>
+    <step id="S7">User edits the draft message with or without participants</step>
+    <step id="S8">User throttles save</step>
+    <step id="S9">Draft message is patched: [PATCH: /api/vx/messages/{message_id}]\n{ current_state: object, participants: [Opt] Array }</step>
+    <step id="S10">API acknowledges patching [status 204]</step>
+    <step id="S11">User retrieves message details: [GET: /api/vx/messages/{message_id}]</step>
+    <step id="S12">API responds with message details [status 200]\n{ message_id: String}</step>
+    <step id="S13">User sends the message</step>
+    <step id="S14">User hits "Send"</step>
+    <step id="S15">User sends the message: [POST: /api/vx/messages/{message_id}/actions]\n{ actions: ["send"] }</step>
+    <step id="S16">API validates participants and discussion_id</step>
+    <step id="S17">Discussion ID is calculated</step>
+    <step id="S18">Patch is acknowledged [status 204]</step>
+    <step id="S19">User retrieves sent message details: [GET: /api/vx/messages/{message_id}]</step>
+    <step id="S20">API responds with sent message details [status 200]</step>
+    <step id="S21">Message discussion is rendered</step>
+    <step id="S22">Discussion is displayed to the user</step>
+  </mainSequence>
+</useCase>

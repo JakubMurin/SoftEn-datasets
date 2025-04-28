@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Claiming Mail</name>
+    <description>As a recipient, I want to claim a specific mail in order to mark it as claimed.</description>
+    <actors>
+        <actor>Recipient</actor>
+        <actor>MailController</actor>
+        <actor>IMailService</actor>
+        <actor>IMailRepository</actor>
+        <actor>IUserRepository</actor>
+        <actor>IEmailNotificationRepository</actor>
+        <actor>UnitOfWork</actor>
+    </actors>
+    <preconditions>
+        <precondition>Recipient is authorized as a Receptionist.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The mail is successfully claimed and an email notification is sent.</condition>
+    </successEndConditions>
+    <trigger>Recipient initiates a claim on a specific mail.</trigger>
+    <mainSequence>
+        <step id="S1">Recipient initiates a claim on a specific mail.</step>
+        <step id="S2">MailController verifies if the Recipient is authorized as a Receptionist.</step>
+        <step id="S3">MailService processes the claim request.</step>
+        <step id="S4">UnitOfWork begins the transaction.</step>
+        <step id="S5">MailService retrieves the mail by ID from MailRepository.</step>
+        <step id="S6">MailService retrieves the Recipient by ID from UserRepository.</step>
+        <step id="S7">MailService updates the mail status in MailRepository.</step>
+        <step id="S8">EmailNotificationRepository creates an email notification.</step>
+        <step id="S9">UnitOfWork commits the transaction.</step>
+        <step id="S10">MailService responds with success to MailController.</step>
+        <step id="S11">MailController responds with 200 OK to the Recipient.</step>
+    </mainSequence>
+</useCase>

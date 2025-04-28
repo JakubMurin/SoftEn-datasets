@@ -1,0 +1,25 @@
+<useCase id="001">
+    <name>Reminder to Return Books</name>
+    <actors>
+        <actor>Reader</actor>
+        <actor>Library System</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Library System sends reminder to return books (1 day before due date).</step>
+        <step id="S2">IF overdue</step>
+        <step id="S3">Library System sends immediate reminder to return books from the next day.</step>
+        <step id="S4">Reader inputs book code into scanning device or manually inputs book code.</step>
+        <step id="S5">Library System checks book code against Book Database.</step>
+        <step id="S6">IF book returned on time</step>
+        <step id="S7">Library System displays "Return Successful" message.</step>
+        <step id="S8">ELSE</step>
+        <step id="S9">Library System displays number of days overdue and late fee ($0.3/day).</step>
+        <step id="S10">Library System displays Library's QR code for payment.</step>
+        <step id="S11">Reader makes late fee payment via Payment Gateway.</step>
+        <step id="S12">Payment Gateway confirms payment completion.</step>
+        <step id="S13">Library System displays "Book returned successfully" message.</step>
+        <step id="S14">Library System updates borrowing history (book title, on-time/overdue status).</step>
+        <step id="S15">Book Database confirms history update.</step>
+        <step id="S16">Library System switches to voting screen.</step>
+    </mainSequence>
+</useCase>

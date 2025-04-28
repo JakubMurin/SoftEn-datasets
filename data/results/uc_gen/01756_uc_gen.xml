@@ -1,0 +1,32 @@
+<useCase id="uc1">
+  <name>Accessing Patient View</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Rehab support system</actor>
+    <actor>Webcert system</actor>
+    <actor>Certificate service</actor>
+    <actor>Identity Provider</actor>
+  </actors>
+  <trigger>Data: User wants to access the patient view.</trigger>
+  <mainSequence>
+    <step id="S1">User logs in</step>
+    <step id="S2">Identity Provider exchanges SAML token for AccessToken/RefreshToken upon successful login</step>
+    <step id="S3">Identity Provider ensures SAML certificate validity and exchanges for tokens</step>
+    <step id="S4">Identity Provider returns AccessToken/RefreshToken to Rehab support system</step>
+    <step id="S5">User is successfully logged in</step>
+    <step id="S6">User chooses to view patient view</step>
+    <step id="S7">Rehab support system gets new AccessToken if current is expiring</step>
+    <step id="S8">Rehab support system builds form with patient ID, medical unit, and AccessToken for POST to Webcert</step>
+    <step id="S9">Patient view is rendered</step>
+    <step id="S10">User clicks 'View Certificate' which posts a form to Webcert and opens result in an iFrame</step>
+    <step id="S11">Webcert validates AccessToken and creates session</step>
+    <step id="S12">Webcert calls GetCertificateType to get certificate type from Certificate service</step>
+    <step id="S13">Webcert sets medical unit in the session</step>
+    <step id="S14">Webcert redirects to certificate view</step>
+    <step id="S15">Certificate is opened in a readonly mode in Webcert’s iFrame</step>
+    <step id="S16">User closes the patient view</step>
+    <step id="S17">Rehab support system redirects to localized logout in Webcert via hidden iFrame</step>
+    <step id="S18">Local logout at Webcert:</step>
+    <step id="S19">Webcert terminates session and returns HTTP 200 with an empty page to the hidden iFrame</step>
+  </mainSequence>
+</useCase>

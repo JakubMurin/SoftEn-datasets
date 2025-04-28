@@ -1,0 +1,28 @@
+<useCase id="1">
+    <name>Battle Scenario</name>
+    <actors>
+        <actor>PlayerA</actor>
+        <actor>PlayerB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PlayerA requests a battle by sending a POST request to the BattleController.</step>
+        <step id="S2">BattleController forwards the battle request to the BattleService.</step>
+        <step id="S3">BattleService initiates the battle by calling the battle method for PlayerA. </step>
+        <step id="S4">BattleService retrieves the open battles from the BattleRepository.</step>
+        <step id="S5">BattleRepository returns an empty list of open battles to the BattleService.</step>
+        <step id="S6">BattleService opens a new battle for PlayerA with the openBattle method.</step>
+        <step id="S7">BattleRepository provides the BattleService with the unique battleId.</step>
+        <step id="S8">The BattleService informs that it is waiting for the battle to start.</step>
+        <step id="S9">PlayerB sends a POST request to the BattleController to join the battle.</step>
+        <step id="S10">BattleController forwards the battle request from PlayerB to the BattleService.</step>
+        <step id="S11">BattleService processes the battle request for PlayerB.</step>
+        <step id="S12">BattleService retrieves the open battles from the BattleRepository.</step>
+        <step id="S13">BattleRepository returns the open battle information to the BattleService.</step>
+        <step id="S14">BattleLogic calculates the battle results between PlayerA and PlayerB.</step>
+        <step id="S15">The BattleService receives the battle results from the BattleLogic module.</step>
+        <step id="S16">BattleService updates the battle information in the BattleRepository.</step>
+        <step id="S17">The BattleService provides the battle results to the BattleController.</step>
+        <step id="S18">The BattleController sends the battle results to PlayerA.</step>
+        <step id="S19">The BattleController sends the battle results to PlayerB.</step>
+    </mainSequence>
+</useCase>

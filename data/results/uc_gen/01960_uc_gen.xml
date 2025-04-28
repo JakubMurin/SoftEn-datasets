@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Get Resource</name>
+    <actors>
+        <actor>User</actor>
+        <actor>PAS</actor>
+        <actor>WebRequestParser</actor>
+        <actor>ResourceResolver</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Resource successfully retrieved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while retrieving resource</condition>
+    </failureEndConditions>
+    <trigger>User initiates GET request for /resource</trigger>
+    <mainSequence>
+        <step id="S1">User sends GET /resource request</step>
+        <step id="S2">PAS handles the GET request by invoking HandleGet(IwebRequest)</step>
+        <step id="S3">PAS parses the web request by calling Parse: IRequestData</step>
+        <step id="S4">PAS resolves the resource route by calling Resolve: IRoute</step>
+    </mainSequence>
+</useCase>

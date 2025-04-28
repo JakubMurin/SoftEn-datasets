@@ -1,0 +1,31 @@
+<useCase id="useCaseID001">
+    <name>Reflection and Refinement Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflectionAndRefinementAgent</actor>
+        <actor>LLM</actor>
+        <actor>ReflectionLLM</actor>
+        <actor>RefinementLLM</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <trigger>Sequence diagram execution</trigger>
+    <mainSequence>
+        <step id="S1">User runs with input text to start the process</step>
+        
+        <step id="S2">ReflectionAndRefinementAgent retrieves relevant memories for the input text</step>
+        
+        <step id="S3">ReflectionAndRefinementAgent invokes LLM for agent prompts and receives a response</step>
+        
+        <step id="S4">Agent decides to use a tool.</step>
+        <step id="S5">Registry executes the tool through Tool leading to an observation exchange</step>
+        <step id="S6">Episodic memory saves the tool's use record; otherwise,</step>
+        <step id="S7">Episodic memory saves the interaction record.</step>
+
+        <step id="S8">If reflection phase is triggered, ReflectionLLM and RefinementLLM are invoked for reflection and refinement prompts.</step>
+        <step id="S9">Semantic and Procedural memory save the reflection and refinement results respectively.</step>
+        
+        <step id="S10">Repeat loop until the process is complete showing the result to User</step>
+    </mainSequence>
+</useCase>

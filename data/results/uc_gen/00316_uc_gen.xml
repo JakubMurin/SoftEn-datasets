@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Search Content</name>
+    <actors>
+        <actor>User Agent</actor>
+    </actors>
+    <preconditions>
+        <precondition>User Agent sends a search request to the Search Content API.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Search results are successfully retrieved from the Content database.</condition>
+    </successEndConditions>
+    <trigger>User Agent initiates a search request.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a search request to the Search Content API containing a single string to be searched for in the content database.</step>
+        <step id="S2">Search Content API runs a search query (prepared statement) on the Content database.</step>
+        <step id="S3">Search Content API returns the result of the query to the User Agent.</step>
+        <step id="S4">User Agent receives an HTTP 200 OK response from the Search Content API, with the body containing search results in a structured format.</step>
+    </mainSequence>
+</useCase>

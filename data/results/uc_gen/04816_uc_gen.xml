@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Register Device with Instrument Server</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Sarad App</actor>
+        <actor>Registration Server 2</actor>
+        <actor>rest api</actor>
+        <actor>device Actor</actor>
+        <actor>device with Instrument Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Device registration is required for data retrieval</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Device successfully registered and data retrieved</condition>
+    </successEndConditions>
+    <trigger>Changes Config /\n Requests Data</trigger>
+    <mainSequence>
+        <step id="S1">User initiates changes configuration and data request</step>
+        <step id="S2">App attempts to reserve device</step>
+        <step id="S3">API relays reservation request to device actor</step>
+        <step id="S4">Device actor relays request to device</step>
+        <step id="S5">Device accepts request and relays port information</step>
+        <step id="S6">Device connects and opens port</step>
+        <step id="S7">Device actor accepts request and relays port information</step>
+        <step id="S8">API relays port information to app</step>
+        <step id="S9">App displays port information</step>
+        <step id="S10">App frees device</step>
+        <step id="S11">Device actor relays free request to device</step>
+        <step id="S12">Device sends free signal</step>
+    </mainSequence>
+</useCase>

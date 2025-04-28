@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Retrieve Medical Conditions</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>AllergyService</actor>
+        <actor>Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User initiates a request to retrieve medical conditions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The API_Controller successfully responds with the list of medical conditions.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The API_Controller returns an error response due to invalid input or if the medical condition is not found.</condition>
+    </failureEndConditions>
+    <trigger>GET /medicalCondition/{name}</trigger>
+    <mainSequence>
+        <step id="S1">User initiates a request to retrieve medical conditions.</step>
+        <step id="S2">API_Controller validates the Path Parameter.</step>
+        <step id="S3">API_Controller receives a valid name.</step>
+        <step id="S4">AllergyService fetches medical conditions based on the provided name.</step>
+        <step id="S5">AllergyService receives a list of medical conditions from the Repository.</step>
+        <step id="S6">Repository provides a list of medical conditions to AllergyService.</step>
+        <step id="S7">AllergyService sends the list of medical conditions to API_Controller.</step>
+        <step id="S8">API_Controller responds with a 200 OK status along with the medicalCondition data.</step>
+    </mainSequence>
+</useCase>

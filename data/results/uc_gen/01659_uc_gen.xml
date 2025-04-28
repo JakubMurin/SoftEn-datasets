@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Perform POST request to /foo with poison payload</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>Proxy</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker has access to Proxy</precondition>
+        <precondition>Proxy forwards requests to Backend</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Proxy successfully forwards POST request to Backend</condition>
+        <condition>Backend responds with status code 200</condition>
+        <condition>Proxy forwards response to Attacker</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Backend fails to respond with status code 200</condition>
+    </failureEndConditions>
+    <trigger>Attacker initiates POST request to /foo with poison payload</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends POST request to Proxy with poison payload</step>
+        <step id="S2">Proxy forwards POST request to Backend</step>
+        <step id="S3">Backend responds with status code 200 to Proxy</step>
+        <step id="S4">Proxy forwards response to Attacker</step>
+    </mainSequence>
+</useCase>

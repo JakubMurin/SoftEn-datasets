@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Adding Other Service to Booking</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI/Interface</actor>
+        <actor>BookingRouter</actor>
+        <actor>BookingController</actor>
+        <actor>BookingRepository</actor>
+        <actor>OtherServiceRepository</actor>
+        <actor>Booking Model</actor>
+        <actor>OtherService Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User can access booking details page</precondition>
+    </preconditions>
+    <trigger>User initiates the action to add another service to booking</trigger>
+    <mainSequence>
+        <step id="S1">User opens booking details page</step>
+        <step id="S2">UI receives request</step>
+        <step id="S3">Router POSTs /bookings/{bookingId}/other-services (otherServiceId, data)</step>
+        <step id="S4">Controller adds other service to booking</step>
+        <step id="S5">Repository adds other service to booking</step>
+        <step id="S6">Repository finds booking by id</step>
+        <step id="S7">Booking Model fetches booking from the Database</step>
+        <step id="S8">Booking Model sends booking details to the Repository</step>
+        <step id="S9">Repository finds other service by id</step>
+        <step id="S10">OtherService Repository fetches other service from the Database</step>
+        <step id="S11">OtherService Repository sends other service details to the Repository</step>
+        <step id="S12">Repository adds other service to the Booking Model</step>
+        <step id="S13">Booking Model saves updated booking with other service to the Database</step>
+        <step id="S14">Booking Model sends updated booking details to the Repository</step>
+        <step id="S15">Repository sends updated booking with other service to the Controller</step>
+        <step id="S16">Controller responds with 200 OK (updated booking with other service)</step>
+        <step id="S17">Router responds with 200 OK (updated booking with other service)</step>
+        <step id="S18">UI displays confirmation of added service</step>
+    </mainSequence>
+</useCase>

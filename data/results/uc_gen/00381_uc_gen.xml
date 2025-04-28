@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Provision Infrastructure and Application</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Platform Engineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer needs to access IDP Portal for self-service app and infrastructure provisioning.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Infrastructure and application provisioned successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in provisioning infrastructure or application.</condition>
+    </failureEndConditions>
+    <trigger>Developer initiates self-service app and infrastructure provisioning through the IDP Portal.</trigger>
+    <mainSequence>
+        <step id="S1">Developer accesses IDP Portal for unified UI experience.</step>
+        <step id="S2">Developer pushes changes to the GitOps Repository.</step>
+        <step id="S3">Platform Engineer reviews and approves changes in the GitOps Repository.</step>
+        <step id="S4">GitOps Repository syncs changes with ArgoCD.</step>
+        <step id="S5">ArgoCD deploys changes using Kubernetes API.</step>
+        <step id="S6">ArgoCD provisions vcluster for the application.</step>
+        <step id="S7">ArgoCD provisions the application.</step>
+        <step id="S8">Kubernetes API creates an ephemeral testing environment in the vcluster.</step>
+        <step id="S9">ArgoCD provisions necessary cloud resources.</step>
+    </mainSequence>
+</useCase>

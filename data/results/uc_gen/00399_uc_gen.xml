@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>User interacts with Liba component</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User triggers the creation of the App component</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The UserCard component is successfully rendered</condition>
+    </successEndConditions>
+    <trigger>User triggers the creation of the App component</trigger>
+    <mainSequence>
+        <step id="S1">User creates the App component</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">renderC receives cInstance</step>
+        <step id="S4">App creates renderLiba with props</step>
+        <step id="S5">renderLiba creates 'button' element</step>
+        <step id="S6">App creates UserCard component</step>
+        <step id="S7">renderLiba creates 'div' elements in UserCard</step>
+        <step id="S8">renderC receives UserCard instance</step>
+    </mainSequence>
+</useCase>

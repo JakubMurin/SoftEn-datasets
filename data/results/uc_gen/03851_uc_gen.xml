@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Authenticate User</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>UserService</actor>
+        <actor>OAuth2Server</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates OAuth2 Authentication process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated and received a token.</condition>
+    </successEndConditions>
+    <trigger>OAuth2 Authentication()</trigger>
+    <mainSequence>
+        <step id="S1">User initiates OAuth2 Authentication process.</step>
+        <step id="S2">Frontend sends OAuth2 Auth Request to UserService.</step>
+        <step id="S3">UserService authenticates User with OAuth2Server.</step>
+        <step id="S4">OAuth2Server provides Token to UserService.</step>
+        <step id="S5">UserService sends Authentication Event to NotificationService for user_id.</step>
+        <step id="S6">NotificationService acknowledges success to UserService.</step>
+        <step id="S7">UserService informs Frontend about successful authentication with Token.</step>
+        <step id="S8">Frontend notifies User about successful authentication with Token.</step>
+    </mainSequence>
+</useCase>

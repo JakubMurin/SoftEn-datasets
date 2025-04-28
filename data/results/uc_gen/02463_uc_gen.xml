@@ -1,0 +1,32 @@
+<useCase id="UC001">
+  <name>Access Roles in DMPTool</name>
+  <description>As a Faculty Data Steward, I want to access and view roles information in the Data Management Planning Tool.</description>
+  <actors>
+    <actor>Faculty Data Steward</actor>
+    <actor>UI Interface</actor>
+    <actor>Authentication Service</actor>
+    <actor>Role Management Module</actor>
+    <actor>Data Management Planning Tool (DMPTool)</actor>
+    <actor>Database</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user must be authenticated to access DMPTool.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The user successfully views the roles section in DMPTool.</condition>
+  </successEndConditions>
+  <trigger>Faculty Data Steward selects "View Roles" in the UI Interface.</trigger>
+  <mainSequence>
+    <step id="S1">Access DMPTool</step>
+    <step id="S2">Request login using Authentication Service</step>
+    <step id="S3">Wait for Authentication Success message</step>
+    <step id="S4">Select "View Roles" in the UI Interface</step>
+    <step id="S5">Fetch Roles data from Role Management Module</step>
+    <step id="S6">Request Roles information from Data Management Planning Tool</step>
+    <step id="S7">Query Roles data from the Database</step>
+    <step id="S8">Wait for Roles data from DMPTool</step>
+    <step id="S9">Return Roles info to Role Management Module</step>
+    <step id="S10">Display Roles on UI Interface</step>
+    <step id="S11">Show Roles section to Faculty Data Steward</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Delete Holiday</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>delete</actor>
+        <actor>confirmDeleteHol</actor>
+        <actor>holiday.routes.js</actor>
+        <actor>holiday.controller.js</actor>
+        <actor>holiday.model</actor>
+        <actor>sql</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user wants to delete a holiday entry.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The holiday entry is successfully deleted from the database.</condition>
+    </successEndConditions>
+    <trigger>User initiates the delete process.</trigger>
+    <mainSequence>
+        <step id="S1">User selects the holiday entry to delete.</step>
+        <step id="S2">Confirmation dialog for delete operation is displayed.</step>
+        <step id="S3">User confirms the delete operation.</step>
+        <step id="S4">HTTP DELETE request is sent to holiday.routes.js.</step>
+        <step id="S5">holiday.routes.js calls holiday.controller.js to handle the delete request.</step>
+        <step id="S6">holiday.controller.js instructs holiday.model to delete the holiday entry.</step>
+        <step id="S7">holiday.model executes the SQL query to delete the entry from the database.</step>
+        <step id="S8">Successful query execution response is sent back to holiday.controller.js.</step>
+        <step id="S9">holiday.controller.js returns the response to confirmDeleteHol.</step>
+        <step id="S10">confirmDeleteHol processes the response and prepares HTML data.</step>
+        <step id="S11">HTML response is sent back to the user's navegador.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="RegistrationAndLogin">
+    <name>User Registration and Login</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserController</actor>
+        <actor>TenantDbContext</actor>
+        <actor>UserManager</actor>
+        <actor>SignInManager</actor>
+        <actor>TokenService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User sends registration request to UserController with details (UserName, Email, and Password).</step>
+        <step id="S2">UserController gets Tenant information from the header.</step>
+        <step id="S3">UserController checks if the Tenant exists by communicating with TenantDbContext and handles the response.</step>
+        <step id="S4">UserController requests UserManager to check if the email already exists in the specified Tenant.</step>
+        <step id="S5">UserManager responds with the email status to UserController.</step>
+        <step id="S6">UserController instructs UserManager to create a new user (AppUser).</step>
+        <step id="S7">UserManager provides feedback to UserController about the user creation process.</step>
+        <step id="S8">UserController directs UserManager to assign a role (ADMIN or MEMBER) to the user.</step>
+        <step id="S9">UserManager assigns the role to the user and informs UserController.</step>
+        <step id="S10">UserController communicates with TokenService to generate a JWT token for the user.</step>
+        <step id="S11">TokenService generates the JWT token and responds to UserController.</step>
+        <step id="S12">UserController sends UserDto (Token, Email, UserName) to the User.</step>
+        <step id="S13">User sends a login request to UserController with specified details (Email, Password).</step>
+        <step id="S14">...</step> <!-- steps for User Login continue here -->
+        <step id="S15">UserController instructs UserManager to assign a role to the new user.</step>
+        <step id="S16">...</step> <!-- more steps for User Registration and Login continue -->
+        <step id="S17">...</step> <!-- sequence of steps continues here -->
+    </mainSequence>
+</useCase>

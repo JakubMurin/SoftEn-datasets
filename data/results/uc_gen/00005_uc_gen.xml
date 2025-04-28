@@ -1,0 +1,32 @@
+<useCase id="123">
+    <name>Question Validation and Answer Generation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Lightspeed Service</actor>
+        <actor>Redactor</actor>
+        <actor>Document Summarizer</actor>
+        <actor>Question Validator</actor>
+        <actor>Conversation Cache</actor>
+        <actor>Vector Database</actor>
+        <actor>LLM</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to Lightspeed Service</precondition>
+    </preconditions>
+    <trigger>User asks a question to the Lightspeed Service</trigger>
+    <mainSequence>
+        <step id="S1">User asks a question to the Lightspeed Service</step>
+        <step id="S2">Lightspeed Service forwards the question to the Redactor for redaction</step>
+        <step id="S3">Redactor redacts the query and sends it back to the Lightspeed Service</step>
+        <step id="S4">Lightspeed Service retrieves conversation history from the cache</step>
+        <step id="S5">Lightspeed Service retrieves attachments from the request</step>
+        <step id="S6">Attachments are redacted by the Redactor</step>
+        <step id="S7">Lightspeed Service validates the question using the Question Validator</step>
+        <step id="S8">If the question is invalid, Lightspeed Service informs the user that the question is not valid</step>
+        <step id="S9">If the question is valid, Lightspeed Service proceeds to answer generation</step>
+        <step id="S10">Document Summarizer summarizes the document</step>
+        <step id="S11">Document Summarizer reads the vector database for additional information</step>
+        <step id="S12">Document Summarizer queries LLM for the answer</step>
+        <step id="S13">Document Summarizer provides the summary and answer to the user through Lightspeed Service</step>
+    </mainSequence>
+</useCase>

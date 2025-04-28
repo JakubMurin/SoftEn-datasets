@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Signing Up</name>
+    <description>Allows an Admin to create a new member account.</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>System</actor>
+    </actors>
+    <trigger>Admin initiates the sign-up process.</trigger>
+    <mainSequence>
+        <step id="S1">Admin signs up with signId, password, name, and role.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Member not found.</step>
+            <step id="A1S2">System displays error message: "존재하지 않는 사용자입니다."</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">Admin is not ADMIN.</step>
+            <step id="A2S2">System displays error message: "관리자가 아닙니다."</step>
+        </asteps>
+        <asteps id="A3" start="S1">
+            <step id="A3S1">Duplicate ID exists.</step>
+            <step id="A3S2">System displays error message: "중복되는 ID가 존재합니다."</step>
+        </asteps>
+        <asteps id="A4" start="S1">
+            <step id="A4S1">System creates Member.</step>
+            <step id="A4S2">System returns MemberResponseDto(id, role, name).</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

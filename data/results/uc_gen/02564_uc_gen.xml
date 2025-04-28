@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Authentication Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Authentication Center</actor>
+        <actor>Cache</actor>
+        <actor>Other Services</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to access a protected service</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User receives information from the service</condition>
+    </successEndConditions>
+    <trigger>User initiates an authentication request</trigger>
+    <mainSequence>
+        <step id="S1">User sends login request to Authentication Center</step>
+        <step id="S2">Authentication Center stores token in Cache based on user's token and IP</step>
+        <step id="S3">Authentication Center sends token back to User</step>
+        <step id="S4">User includes token in headers for subsequent requests</step>
+        <step id="S5">Cache retrieves token based on user's token and IP</step>
+        <step id="S6">Other Services checks and validates token received from Authentication Center</step>
+        <step id="S7">Other Services sends information to User</step>
+    </mainSequence>
+</useCase>

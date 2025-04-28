@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Manage Offerings</name>
+    <actors>
+        <actor>Instructor</actor>
+        <actor>OfferingsPage</actor>
+        <actor>OfferingValidator</actor>
+        <actor>DatabaseManager</actor>
+        <actor>Lesson</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Open Manage Offerings Page - Instructor opens the Manage Offerings Page.</step>
+        <step id="S2">Query available offerings - OfferingsPage queries available offerings based on the instructor's ID. DatabaseManager returns available offerings. OfferingsPage displays available offerings to the Instructor.</step>
+        <step id="S3">Select "Accept Offering" - Instructor selects to accept an offering with a specific lesson ID.</step>
+        <step id="S4">Validate Offering Acceptance - OfferingValidator validates the acceptance of the chosen lesson for the Instructor.</step>
+        <step id="S5">Check Specialization and Availability - DatabaseManager checks the specialization and availability of the Instructor for the selected lesson.</step>
+        <step id="S6">Validation Failed - If the validation fails, OfferingsPage displays an error message indicating the reason.</step>
+        <step id="S7">Display Error: "Cannot accept this offering" - OfferingsPage displays an error message stating that the Instructor cannot accept the offering.</step>
+        <step id="S8">Validation Passed - If the validation passes, DatabaseManager updates the lesson status to "assigned" for the Instructor.</step>
+        <step id="S9">Update Successful - OfferingsPage receives successful update confirmation and displays a message to the Instructor indicating the successful acceptance of the offering.</step>
+        <step id="S10">Select "Drop Offering" - Instructor selects to drop an offering with a lesson ID.</step>
+        <step id="S11">Validate Offering Drop - OfferingValidator validates the dropping of the selected lesson by the Instructor.</step>
+        <step id="S12">Check Lesson Ownership - DatabaseManager checks if the Instructor is the owner of the lesson to be dropped.</step>
+        <step id="S13">Validation Failed - If the validation fails, OfferingsPage displays an error message indicating the reason.</step>
+        <step id="S14">Display Error: "Cannot drop this offering" - OfferingsPage displays an error message stating that the Instructor cannot drop the offering.</step>
+        <step id="S15">Validation Passed - If the validation passes, DatabaseManager updates the lesson status to "pending" with no instructor assigned.</step>
+        <step id="S16">Update Successful - OfferingsPage receives successful update confirmation and displays a message to the Instructor indicating the successful dropping of the offering.</step>
+        <step id="S17">View Details - Instructor views the details of a specific lesson by providing the lesson ID.</step>
+        <step id="S18">Fetch Lesson Details - OfferingsPage fetches the details of the lesson using the lesson ID from DatabaseManager and displays them to the Instructor.</step>
+        <step id="S19">Display Lesson Details - OfferingsPage displays the retrieved lesson details to the Instructor.</step>
+    </mainSequence>
+</useCase>

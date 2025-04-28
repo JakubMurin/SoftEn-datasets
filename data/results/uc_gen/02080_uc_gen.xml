@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Establish Connection</name>
+    <description>Use case to establish a network connection</description>
+    <actors>
+        <actor>actor</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The actor initiates connection by sending a connect request to a Bootstrap object</step>
+        <step id="S2">The Bootstrap object connects and validates the connection</step>
+        <step id="S3">The Bootstrap then performs resolution and connection</step>
+        <step id="S4">The Bootstrap initializes and registers with an AbstractBoostrap</step>
+        <step id="S5">A new channel is created by AbstractBoostrap utilizing ChannelFactory</step>
+        <step id="S6">Pipeline is created for the channel and handlers are added by Bootstrap</step>
+        <step id="S7">Channel options are set by Bootstrap</step>
+        <step id="S8">Attributes are set for the channel by Bootstrap</step>
+        <step id="S9">Registration takes place by the SingleThreadEventLoop</step>
+        <step id="S10">Channels are registered appropriately by the AbstractChannel</step>
+        <step id="S11">Future is returned asynchronously</step>
+        <step id="S12">Connection resolution and registration process begin</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S12">
+            <step id="A1S1">Connection registration occurs asynchronously with Future</step>
+            <step id="A1S2">Reacting to the Future's listener callbacks triggers the connection process</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S11">
+            <description>Errors may occur during the connection establishment process:</description>
+            <step id="E1S1">If connection connection times out before completion</step>
+        </esteps>
+    </errorSteps>
+</useCase>

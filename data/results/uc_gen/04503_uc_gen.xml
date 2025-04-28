@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Update Authors and Organizations</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>AdvancedSearch.jsp</actor>
+        <actor>AuthorSearch</actor>
+        <actor>DataPackageManagerClient</actor>
+        <actor>Umbra</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client is interacting with the AdvancedSearch.jsp page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Authors and organizations have been successfully updated.</condition>
+    </successEndConditions>
+    <trigger>Client triggers the updateAuthorsAndOrganizations() function in AdvancedSearch.jsp.</trigger>
+    <mainSequence>
+        <step id="S1">AdvancedSearch.jsp updates authors and organizations by calling AuthorSearch's updateAuthorsAndOrganizations() function.</step>
+        <step id="S2">AuthorSearch fetches names by calling Umbra's getNames() function.</step>
+        <step id="S3">Umbra returns authors to AuthorSearch.</step>
+        <step id="S4">AuthorSearch builds an author query.</step>
+        <step id="S5">AuthorSearch updates authors based on the query.</step>
+        <step id="S6">AuthorSearch executes the query by calling DataPackageManagerClient's executeQuery() function.</step>
+        <step id="S7">DataPackageManagerClient returns authors in XML format to AuthorSearch.</step>
+        <step id="S8">AuthorSearch parses the query results and extracts authors.</step>
+        <step id="S9">AuthorSearch composes author name options by calling AuthorSearch's composeAuthorNameOptions() function.</step>
+        <step id="S10">AuthorSearch builds an HTML author list.</step>
+        <step id="S11">AuthorSearch sends the HTML author list back to AdvancedSearch.jsp.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Search Users</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Home Component</actor>
+        <actor>Internal API</actor>
+        <actor>GitHub API</actor>
+    </actors>
+    <preconditions>
+        <precondition>User inputs a search query</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User data is successfully retrieved and displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during API call</condition>
+    </failureEndConditions>
+    <trigger>User inputs search query</trigger>
+    <mainSequence>
+        <step id="S1">User inputs search query</step>
+        <step id="S2">Debounce delay of 300ms is applied</step>
+        <step id="S3">Request search query is sent to Internal API</step>
+        <step id="S4">Internal API forwards request to GitHub API</step>
+        <step id="S5">GitHub API returns user list</step>
+        <step id="S6">For each user, Internal API fetches user details from GitHub API</step>
+        <step id="S7">User data is returned to Home Component</step>
+        <step id="S8">Search results are displayed to User</step>
+    </mainSequence>
+</useCase>

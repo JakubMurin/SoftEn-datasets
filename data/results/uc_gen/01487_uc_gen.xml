@@ -1,0 +1,23 @@
+<useCase id="UC01">
+    <name>Generate Audit Report</name>
+    <description>As a Repoadmin, I want to generate an audit report for analysis and review.</description>
+    <actors>
+        <actor>Repoadmin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Repoadmin has access rights to request audit reports.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The audit report is successfully generated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The audit report generation fails due to unavailable data.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Repoadmin requests the audit report.</step>
+        <step id="S2">ARS queries audit data from the EDRMS Database.</step>
+        <step id="S3">ARS generates the report using the retrieved audit data.</step>
+        <step id="S4">ARS logs the audit report request.</step>
+        <step id="S5">ARS delivers the audit report to the Repoadmin.</step>
+    </mainSequence>
+</useCase>

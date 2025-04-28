@@ -1,0 +1,32 @@
+<useCase id="GetTranslationCase">
+    <name>Get Translation Case</name>
+    <description>Retrieve translation case information based on the provided ID.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>GetTranslationCaseActivity</actor>
+        <actor>TranslationCaseDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Translation case ID must be provided.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Translation case data successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Translation case not found or security exception occurred.</condition>
+    </failureEndConditions>
+    <trigger>HTTP Request made by the Client to the API Gateway/Lambda.</trigger>
+    <mainSequence>
+        <step id="S1">Client makes an HTTP Request to the API Gateway/Lambda.</step>
+        <step id="S2">API Gateway/Lambda forwards GetTranslationCaseRequest to GetTranslationCaseActivity.</step>
+        <step id="S3">GetTranslationCaseActivity invokes TranslationCaseDao's getTranslationCase(translationCaseId) method.</step>
+        <step id="S4">TranslationCaseDao loads translationCaseId data from DynamoDB.</step>
+        <step id="S5">DynamoDB returns translationCase data to TranslationCaseDao.</step>
+        <step id="S6">TranslationCaseDao checks for matching customer ID.</step>
+        <step id="S7">TranslationCaseDao returns TranslationCase object to GetTranslationCaseActivity.</step>
+        <step id="S8">GetTranslationCaseActivity returns GetTranslationCaseResult to API Gateway/Lambda.</step>
+        <step id="S9">API Gateway/Lambda returns 200 response with GetTranslationCaseResult data to the Client.</step>
+    </mainSequence>
+</useCase>

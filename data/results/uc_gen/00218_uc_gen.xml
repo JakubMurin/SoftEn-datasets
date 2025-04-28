@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Manage Teachers</name>
+    <description>Allow the user to manage teachers</description>
+    <actors>
+        <actor>user</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Teachers are successfully managed</condition>
+    </successEndConditions>
+    <trigger>User wants to manage teachers</trigger>
+    <mainSequence>
+        <step id="S1">User switches to the teacher management page</step>
+        <step id="S2">Frontend sends a request</step>
+        <step id="S3">Controller calls the service to get all teachers</step>
+        <step id="S4">Service requests all teachers from the Teacher Repository</step>
+        <step id="S5">Teacher Repository finds all teacher entities</step>
+        <step id="S6">Teacher Entity creates new entities</step>
+        <step id="S7">Teacher Repository sends entities back to Controller</step>
+        <step id="S8">Controller sends entities to the frontend for display</step>
+        <step id="S9">User views the displayed teacher information</step>
+        <step id="S10">User clicks on a teacher item to make modifications</step>
+        <step id="S11">Frontend sends a request to modify the teacher entity</step>
+        <step id="S12">Controller forwards the request to the service</step>
+        <step id="S13">Service updates the teacher entity</step>
+        <step id="S14">Teacher Repository saves the updated entity</step>
+        <step id="S15">Service sends the updated entity back to the Controller</step>
+        <step id="S16">Controller sends a response to the frontend</step>
+        <step id="S17">Frontend displays a success message to the user</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">User cancels the modification process</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S11">   
+            <description>Failed to update teacher entity</description>    
+            <step id="E1S1">An error occurred while updating the teacher entity</step>
+        </esteps>
+    </errorSteps>
+</useCase>

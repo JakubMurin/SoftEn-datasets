@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Manage Directories and Files</name>
+    <actors>
+        <actor>User</actor>
+        <actor>DirFileView</actor>
+        <actor>DirectoriesFiles</actor>
+        <actor>DirFileService</actor>
+        <actor>DirFileHandler</actor>
+        <actor>CreateDirFileUtil</actor>
+        <actor>DestroyDirFileUtil</actor>
+    </actors>
+    <preconditions>
+        <precondition>User clicks on a button in the application.</precondition>
+    </preconditions>
+    <trigger>User triggers an operation in the application.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on a button triggering an operation.</step>
+        <step id="S2">DirFileView receives the trigger operation.</step>
+        <step id="S3">DirFileService handles the operation with the provided path and file name.</step>
+        <step id="S4">DirFileHandler processes the operation with the provided path and file name.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">DirFileHandler creates a directory at the specified path.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">DirFileHandler creates a file at the specified path with the given file name.</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">DirFileHandler deletes the directory at the specified path.</step>
+        </asteps>
+        <asteps id="A4" start="S4">
+            <step id="A4S1">DirFileHandler deletes the file at the specified path with the given file name.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Handling the operation encountered an error.</description>
+            <step id="E1S1">An error occurred while processing the operation.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

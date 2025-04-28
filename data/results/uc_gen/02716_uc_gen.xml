@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Fault Management Provisioning</name>
+    <actors>
+        <actor>Business User</actor>
+        <actor>System Operator Facility</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Business User registers for Fault Management notifications with the hub</step>
+        <step id="S2">System Operator Facility creates a Fault Management Job</step>
+        <step id="S3">Fault Management Job is transitioned to in-progress state</step>
+        <step id="S4">Fault Management Job generates necessary data</step>
+        <step id="S5">Fault Management Job creates a Fault Management Report</step>
+        <step id="S6">Fault Management Report is transitioned to in-progress state</step>
+        <step id="S7">Fault Management Report collects data</step>
+        <step id="S8">Fault Management Report transitions to completed state</step>
+        <step id="S9">Fault Management Job receives the completed report</step>
+        <step id="S10">Fault Management Job schedules the next job</step>
+        <step id="S11">Fault Management Job transitions to completed or scheduled state</step>
+        <step id="S12">Business User requests to get the generated report</step>
+        <step id="S13">System Operator Facility retrieves and sends back the Fault Management Report</step>
+    </mainSequence>
+</useCase>

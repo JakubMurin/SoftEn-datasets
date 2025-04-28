@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Get File By Id</name>
+    <actors>
+        <actor>User</actor>
+        <actor>gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>books</actor>
+        <actor>Postgres (pg_books)</actor>
+        <actor>Minio</actor>
+    </actors>
+    <preconditions>
+        <precondition>Request is made to retrieve a file by its ID</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>File successfully retrieved and returned to the user</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>File data does not exist or JWT is invalid or absent</condition>
+    </failureEndConditions>
+    <trigger>GET /api/v1/books/{bookId}/files/{fileId}</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to retrieve a file by its ID</step>
+        <step id="S2">Gateway forwards the request to Keycloak to verify the JWT</step>
+        <step id="S3">Books service attempts to get file by ID from Postgres</step>
+        <step id="S4">Book file ID is retrieved from Postgres</step>
+        <step id="S5">File data is retrieved from Minio</step>
+        <step id="S6">File is sent back to the User via the gateway</step>
+    </mainSequence>
+</useCase>

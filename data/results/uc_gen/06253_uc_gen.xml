@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Specify schema</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User specifies schema input as a JSON string.</trigger>
+    <mainSequence>
+        <step id="S1">User specifies schema input as a JSON string.</step>
+        <step id="S2">UI component sends the JSON string to the API Gateway using POST /schema endpoint.</step>
+        <step id="S3">API Gateway forwards the JSON string to the Schema Management Service for schema creation.</step>
+        <step id="S4">Schema Management Service saves the schema in the Schema Database.</step>
+        <step id="S5">Schema Database confirms the schema is saved.</step>
+        <step id="S6">Schema Management Service sends the Schema ID to the API Gateway.</step>
+        <step id="S7">API Gateway sends the Schema ID back to the UI component.</step>
+        <step id="S8">UI component displays a confirmation message containing the Schema ID to the User.</step>
+    </mainSequence>
+</useCase>

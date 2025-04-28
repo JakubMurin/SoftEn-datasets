@@ -1,0 +1,20 @@
+<useCase id="UC1">
+	<name>Verify Block and Execute Block</name>
+	<actors>
+		<actor>Client</actor>
+		<actor>Rollup</actor>
+		<actor>Espresso Node</actor>
+	</actors>
+	<preconditions>
+		<precondition>Client requests the height of the last verified block</precondition>
+	</preconditions>
+	<trigger>Client triggers the verification and execution of a block</trigger>
+	<mainSequence>
+		<step id="S1">Rollup requests availability/stream/blocks/height from Espresso Node</step>
+		<step id="S2">Rollup requests availability/stream/leaves/height from Espresso Node</step>
+		<step id="S3">Rollup receives Block and Leaf with proof of consensus from Espresso Node</step>
+		<step id="S4">Rollup verifies the proof of consensus</step>
+		<step id="S5">Rollup executes the Block</step>
+		<step id="S6">Client receives updated state</step>
+	</mainSequence>
+</useCase>

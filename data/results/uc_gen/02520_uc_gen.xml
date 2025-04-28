@@ -1,0 +1,29 @@
+<useCase id="1">
+    <name>Register User</name>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>Handler</actor>
+        <actor>Service</actor>
+        <actor>Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User fills registration form with valid details</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email is not unique</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User enters username, email, and password on Registration Form</step>
+        <step id="S2">A requests Register</step>
+        <step id="S3">H calls the Create() function of S</step>
+        <step id="S4">S calls the Create() function of R</step>
+        <step id="S5">R checks email uniqueness</step>
+        <step id="S6">R sends OK to S if email is unique</step>
+        <step id="S7">S sends OK to H on email unique case</step>
+        <step id="S8">H displays success to the User</step>
+    </mainSequence>
+</useCase>

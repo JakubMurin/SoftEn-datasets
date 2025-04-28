@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Access and Manage Locker through BLE Mailbox System</name>
+    <actors>
+        <actor>User</actor>
+        <actor>BLE_Mailbox_Central</actor>
+        <actor>BLE_Mailbox_Peripheral</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>BLE mailbox system is operational</precondition>
+    </preconditions>
+    
+    <trigger>User opens BLE mailbox central</trigger>
+    
+    <mainSequence>
+        <step id="S1">User requests scan</step>
+        <step id="S2">BLE mailbox central requests permissions</step>
+        <step id="S3">User grants permissions</step>
+        <step id="S4">BLE mailbox central scans for devices</step>
+        <step id="S5">User selects BLE mailbox peripheral</step>
+        <step id="S6">BLE mailbox central requests connection</step>
+        <step id="S7">Connection handshaking between central and peripheral</step>
+        <step id="S8">BLE mailbox central requests state of locker</step>
+        <step id="S9">Peripherals responds with locker state</step>
+        <step id="S10">User signs in</step>
+        <step id="S11">BLE mailbox central signs in</step>
+        <step id="S12">Peripheral authenticates user</step>
+        <step id="S13">BLE mailbox central requests state of authentication</step>
+        <step id="S14">Peripheral responds with authentication state</step>
+        <step id="S15">User requests change in locker state</step>
+        <step id="S16">BLE mailbox central requests locker state change</step>
+        <step id="S17">Peripherals changes locker state</step>
+        <step id="S18">BLE mailbox central requests state of locker</step>
+        <step id="S19">Peripheral responds with locker state</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>View Interview List</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Interviews Page</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Information about interviews is stored in the database</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>List of interviews is successfully displayed to the User</condition>
+    </successEndConditions>
+    <trigger>User requests to view the list of interviews</trigger>
+    <mainSequence>
+        <step id="S1">User requests list of interviews from Interviews Page</step>
+        <step id="S2">Interviews Page fetches list of interviews from Backend Server</step>
+        <step id="S3">Backend Server queries Database for list of interviews</step>
+        <step id="S4">Database returns list of interviews to Backend Server</step>
+        <step id="S5">Backend Server returns list of interviews to Interviews Page</step>
+        <step id="S6">Interviews Page displays list of interviews to the User</step>
+     </mainSequence>
+</useCase>

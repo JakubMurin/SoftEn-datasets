@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Editing Project</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Project Controller</actor>
+        <actor>quart_auth</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests editing a project.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Project Controller successfully authenticates the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Project Controller fails to find the project ID in the database.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User requests editing a project.</step>
+        <step id="S2">Project Controller checks authentication.</step>
+        <step id="S3">Project Controller checks project ID in the database.</step>
+        <step id="S4">Project Controller informs the user that the project ID is not in the database.</step>
+    </mainSequence>
+</useCase>

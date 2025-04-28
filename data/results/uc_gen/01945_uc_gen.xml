@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Data Type Information Request</name>
+    <description>Requesting and confirming data type information</description>
+    <actors>
+        <actor>DataManager</actor>
+        <actor>DMPTool Interface</actor>
+        <actor>Metadata Repository</actor>
+        <actor>Support Services Module</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataManager needs to access data type information</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data type information is displayed and support services are confirmed</condition>
+    </successEndConditions>
+    <trigger>User requests data type information</trigger>
+    <mainSequence>
+        <step id="S1">DataManager requests data type information from DMPTool Interface</step>
+        <step id="S2">DMPTool Interface queries Metadata Repository for stored projects metadata</step>
+        <step id="S3">Metadata Repository returns metadata including data types to DMPTool Interface</step>
+        <step id="S4">DMPTool Interface displays data types to DataManager</step>
+        <step id="S5">DataManager selects a data type</step>
+        <step id="S6">DMPTool Interface queries Support Services Module for required support services</step>
+        <step id="S7">Support Services Module returns a list of basic support services and functionalities to DMPTool Interface</step>
+        <step id="S8">DMPTool Interface displays support services and functionalities to DataManager</step>
+        <step id="S9">DataManager confirms understanding and requirements</step>
+        <step id="S10">DMPTool Interface logs the interaction and requirements confirmation with Metadata Repository</step>
+    </mainSequence>
+</useCase>

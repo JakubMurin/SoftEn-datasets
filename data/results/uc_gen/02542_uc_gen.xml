@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Perform Station Keeping Maneuver</name>
+    <description>Ensure the satellite stays within its designated orbit by executing station keeping maneuvers.</description>
+    <actors>
+        <actor>User application</actor>
+        <actor>Propagator</actor>
+        <actor>EphemerisGenerator</actor>
+        <actor>BoundedPropagator</actor>
+        <actor>AdapterPropagator</actor>
+        <actor>Small maneuver</actor>
+        <actor>J₂ due to maneuver</actor>
+        <actor>StationKeepingMonitorHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>The satellite is in orbit and requires station keeping maneuvers.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The satellite successfully completes the station keeping maneuvers.</condition>
+    </successEndConditions>
+    <trigger>Initiate station keeping maneuver process.</trigger>
+    <mainSequence>
+        <step id="S1">User application requests EphemerisGenerator from Propagator.</step>
+        <step id="S2">Propagator creates EphemerisGenerator.</step>
+        <step id="S3">User application requests propagation from Propagator.</step>
+        <step id="S4">Propagator propagates using EphemerisGenerator.</step>
+        <step id="S5">User application retrieves generated ephemeris from EphemerisGenerator.</step>
+        <step id="S6">EphemerisGenerator creates BoundedPropagator.</step>
+        <step id="S7">User application performs optimization attempts.</step>
+        <step id="S8">AdapterPropagator is created.</step>
+        <step id="S9">User application performs maneuvers.</step>
+        <step id="S10">Small maneuver is created.</step>
+        <step id="S11">User application adds direct maneuver effect to AdapterPropagator.</step>
+        <step id="S12">J₂ due to maneuver is created.</step>
+        <step id="S13">User application adds indirect J₂ effect to AdapterPropagator.</step>
+        <step id="S14">User application registers SK monitor with AdapterPropagator.</step>
+        <step id="S15">User application propagates with AdapterPropagator.</step>
+        <step id="S16">AdapterPropagator propagates reference with BoundedPropagator.</step>
+        <step id="S17">User application applies maneuvers.</step>
+        <step id="S18">User application handles step with StationKeepingMonitorHandler.</step>
+        <step id="S19">User application checks Station Keeping goals with StationKeepingMonitorHandler.</step>
+    </mainSequence>
+</useCase>

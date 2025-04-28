@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Generate Secret Key</name>
+    <description>As a user, I want to generate a secure secret key of 32 bytes length.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>SecretKey</actor>
+        <actor>SecureRandom</actor>
+        <actor>NativeCrypto</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to generate a secret key from SecureRandom.</step>
+        <step id="S2">SecretKey object sends a creation request to SecureRandom.</step>
+        <step id="S3">SecureRandom object is created.</step>
+        <step id="S4">SecretKey object requests SecureRandom to generate 32 bytes.</step>
+        <step id="S5">SecureRandom generates 32 bytes using NativeCrypto.</step>
+        <step id="S6">NativeCrypto returns Uint8List(32) to SecureRandom.</step>
+        <step id="S7">SecureRandom sends Uint8List(32) back to SecretKey.</step>
+        <step id="S8">SecretKey receives the generated secret key.</step>
+    </mainSequence>
+</useCase>

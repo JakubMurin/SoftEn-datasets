@@ -1,0 +1,29 @@
+<useCase id="UC-1">
+    <name>User purchases a chapter in the content view</name>
+    <actors>
+        <actor>User</actor>
+        <actor>View</actor>
+        <actor>TransactionsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is viewing a chapter in the content view</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Chapter content page is displayed with the purchased chapter</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during the purchase process</condition>
+    </failureEndConditions>
+    <trigger>User clicks on the purchase button for a chapter</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the chapter title</step>
+        <step id="S2">User clicks on the purchase button for the chapter</step>
+        <step id="S3">Request API to initiate the purchase</step>
+        <step id="S4">Process transaction through AddTransactionBuyChapter() method</step>
+        <step id="S5">Query data from the database</step>
+        <step id="S6">Return data to the controller</step>
+        <step id="S7">Execute MsgActionReturn() to handle messages</step>
+    </mainSequence>
+</useCase>

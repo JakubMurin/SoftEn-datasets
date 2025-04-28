@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Create Booking</name>
+    <description>User selects treatment, date, and enters contact info to create a booking.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>Core</actor>
+        <actor>Persistence</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking is successfully created</condition>
+    </successEndConditions>
+    <trigger>User selects treatment, date, and enters contact info</trigger>
+    <mainSequence>
+        <step id="S1">User selects treatment, date, and enters contact info</step>
+        <step id="S2">BookingService creates booking</step>
+        <step id="S3">BookingRepository saves booking to file</step>
+        <step id="S4">Core confirms booking created to UI</step>
+    </mainSequence>
+</useCase>

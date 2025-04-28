@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Register User</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User enters valid details (username, email, password) on Registration Form.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Registration is successful</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Registration fails due to invalid details or non-unique email</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User enters details (username, email, password) on Registration Form.</step>
+        <step id="S2">App requests register.</step>
+        <step id="S3">Handler calls Service to create user.</step>
+        <step id="S4">Service calls Repository to create user.</step>
+        <step id="S5">Repository checks email uniqueness.</step>
+        <step id="S6">If email is unique, Repository sends OK response.</step>
+        <step id="S7">If email is not unique, Repository sends error response.</step>
+        <step id="S8">Handler displays success or error based on Repository response.</step>
+        <step id="S9">App shows the result to the User.</step>
+    </mainSequence>
+</useCase>

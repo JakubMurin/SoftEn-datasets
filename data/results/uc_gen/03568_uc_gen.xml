@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Manage User Visits</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Component</actor>
+        <actor>Store</actor>
+        <actor>Reducer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The User dispatches the action addVisitedUser("user123").</step>
+        <step id="S2">Component receives the action and renders the changes to the store.</step>
+        <step id="S3">The Store dispatches the addVisitedUser("user123") action to the Reducer.</step>
+        <step id="S4">The Reducer calls the addVisitedUser reducer function.</step>
+        <step id="S5">The Slice checks if user123 is in the visitedUsers list.</step>
+        <step id="S6">If user123 is not present, the Slice updates the state accordingly.</step>
+        <step id="S7">The Reducer returns the updated state to the Store.</step>
+        <step id="S8">The Store notifies the Component of the state change.</step>
+    </mainSequence>
+</useCase>

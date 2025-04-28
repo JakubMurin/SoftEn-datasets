@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Retrieve Account Search Preferences</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Zarządca selects list of pending accounts</step>
+        <step id="S2">Nawigator sends request to retrieve search preferences for account</step>
+        <step id="S3">AccountController sends getAccountSearchPreferences request to AccountEndpoint</step>
+        <step id="S4">AccountEndpoint invokes getAccountSearchPreferences on AccountService</step>
+        <step id="S5">AccountService calls findByLogin on AccountFacade</step>
+        <step id="S6">AccountFacade responds with failure information to AccountService</step>
+        <step id="S7">AccountService calls findByAccount on ListSearchPreferencesFacade</step>
+        <step id="S8">ListSearchPreferencesFacade responds with failure information to AccountService</step>
+        <step id="S9">AccountService responds to AccountEndpoint</step>
+        <step id="S10">AccountEndpoint responds to AccountController</step>
+        <step id="S11">AccountController responds to Nawigator</step>
+        <step id="S12">Nawigator sends request to retrieve list</step>
+        <step id="S13">AccountController sends getNotConfirmedAccounts request to AccountEndpoint</step>
+        <step id="S14">AccountEndpoint invokes getNotConfirmedAccounts on AccountService</step>
+        <step id="S15">AccountService calls findByLogin on AccountFacade</step>
+        <step id="S16">AccountFacade responds with failure information to AccountService</step>
+        <step id="S17">AccountService calls findByAccount on ListSearchPreferencesFacade</step>
+        <step id="S18">ListSearchPreferencesFacade responds with no preferences info to AccountService</step>
+        <step id="S19">AccountService calls create on ListSearchPreferencesFacade</step>
+        <step id="S20">AccountService calls findNotConfirmedAccounts on AccountFacade</step>
+        <step id="S21">AccountFacade responds with list of accounts to AccountService</step>
+        <step id="S22">AccountService responds with list of accounts to AccountEndpoint</step>
+        <step id="S23">AccountEndpoint responds with list of accounts to AccountController</step>
+        <step id="S24">AccountController responds with list of accounts to Nawigator</step>
+    </mainSequence>
+</useCase>

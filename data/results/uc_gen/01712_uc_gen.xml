@@ -1,0 +1,26 @@
+<useCase id="UC007">
+    <name>Agent Recovery and Policy Registry Update</name>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice performs agent recovery</step>
+        <step id="S2">Alice generates policy registry address **//P'//**</step>
+        <step id="S3">Alice stores **//P'//**</step>
+        <step id="S4">Alice revokes all claims</step>
+        <step id="S5">Alice petitions the Issuers to reissue her claims</step>
+        <step id="S6">Issuer authenticates Alice</step>
+        <step id="S7">Alice invalidates non-revocable claims</step>
+        <step id="S8">Alice completes reissue claims process</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Include Update Agent Policy Registry diagram with all authorizations</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="POARequestList">
+    <name>Access POA Request List View</name>
+    <actors>
+        <actor>AccreditedRepresentative</actor>
+    </actors>
+    <preconditions>
+        <precondition>AccreditedRepresentative is Logged In</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">AccreditedRepresentative accesses the POA Request List View</step>
+        <step id="S2">Frontend shows a list of VSO POA Requests</step>
+        <step id="S3">Frontend sends a GET request to Backend for /v0/accredited_representative_portal/poa_requests</step>
+        <step id="S4">Backend verifies AccreditedRepresentative authentication</step>
+        <step id="S5">Backend queries VAGovDB for POA Request List Data using user account email</step>
+        <step id="S6">Backend returns POA Request List Data to Frontend</step>
+        <step id="S7">Backend returns POA Request List Response to Frontend</step>
+        <step id="S8">Frontend displays the POA Request List to AccreditedRepresentative</step>
+    </mainSequence>
+</useCase>

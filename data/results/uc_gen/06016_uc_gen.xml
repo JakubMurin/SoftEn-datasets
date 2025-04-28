@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Buyer buys item from Market</name>
+    <actors>
+        <actor>Buyer</actor>
+        <actor>Market</actor>
+        <actor>Seller</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Buyer registers itself as an observer in Market</step>
+        <step id="S2">Seller puts item up for sale in Market</step>
+        <step id="S3">Market notifies Buyer of new items available</step>
+        <step id="S4">Buyer buys item from Seller</step>
+        <step id="S5">Seller removes item from Market</step>
+        <step id="S6">Seller transfers the item to Buyer</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Buyer registers itself as an observer in Market</step>
+            <step id="A1S2">Market notifies Buyer of new items available</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

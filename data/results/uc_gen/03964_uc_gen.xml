@@ -1,0 +1,50 @@
+<useCase id="UC001">
+    <name>Authorize Client Request</name>
+    <description>Authorize the client request based on endpoint roles and user authentication</description>
+    <actors>
+        <actor>ClientRequest</actor>
+        <actor>Servlet</actor>
+        <actor>Filter</actor>
+        <actor>AuthCheck</actor>
+        <actor>JWT</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client request has been received</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client request is authorized</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client request is not authorized</condition>
+    </failureEndConditions>
+    <trigger>Client request is made to access an endpoint</trigger>
+    <mainSequence>
+        <step id="S1">Pre-process client request in Servlet</step>
+        <step id="S2">Allow access in Filter for guest role only</step>
+        <step id="S3">Proceed with request in Endpoint</step>
+        <step id="S4">Perform endpoint operations in Endpoint</step>
+        <step id="S5">Send response back to the client in Servlet</step>
+        <step id="S6">Allow access in Filter for authorized roles</step>
+        <step id="S7">Proceed with request in Endpoint</step>
+        <step id="S8">Perform endpoint operations in Endpoint</step>
+        <step id="S9">Send response back to the client in Servlet</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Authorization check in AuthCheck</step>
+            <step id="A1S2">Validate JWT in Authorization header</step>
+            <step id="A1S3">Check JWT validity</step>
+            <step id="A1S4">Extract subject from JWT</step>
+            <step id="A1S5">Request user roles based on JWT subject from Database</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S5">
+            <description>ClientRequest not authorized</description>
+            <step id="E1S1">Reject access in Filter</step>
+            <step id="E1S2">Send error response with 401 status in Servlet</step>
+        </esteps>
+    </errorSteps>
+</useCase>

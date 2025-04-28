@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Complete Ticket Transition</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TicketTransitions</actor>
+        <actor>ClientRestService</actor>
+        <actor>ProfessionalTicket</actor>
+        <actor>CMOReport</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User completes ticket transition with client service, ticket, and user</step>
+        <step id="S2">TicketTransitions processes on CMO Review completion with client service, ticket, and user</step>
+        <step id="S3">TicketTransitions requests CMO Report from ProfessionalTicket</step>
+        <step id="S4">ProfessionalTicket retrieves category from CMO Report</step>
+        <step id="S5">ProfessionalTicket calculates report quality</step>
+        <step id="S6">TicketTransitions prompts User to select a category</step>
+        <step id="S7">TicketTransitions prompts User to enter report accuracy comments</step>
+        <step id="S8">TicketTransitions prompts User to enter report quality comments</step>
+        <step id="S9">TicketTransitions requests CMO Report from ProfessionalTicket</step>
+        <step id="S10">ProfessionalTicket retrieves additional fact findings from CMO Report</step>
+        <step id="S11">TicketTransitions sets CMO, report quality, and report time in ProfessionalTicket</step>
+        <step id="S12">ClientRestService saves completed ticket with client service, ticket, and user</step>
+        <step id="S13">ClientRestService creates or updates Dicom Study</step>
+        <step id="S14">ClientRestService creates or updates Professional Ticket</step>
+        <step id="S15">TicketTransitions generates PRCMO Response Letter with client service, ticket, and user</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>Garanteed Idempotency Using CorrelationIds</name>
+    <actors>
+        <actor>Client-Service</actor>
+        <actor>Client Persistence</actor>
+        <actor>Callback</actor>
+        <actor>Service</actor>
+        <actor>Service Persistence</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client-Service creates and stores a correlationId</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client-Service calls Client Persistence to create and store a correlationId</step>
+        <step id="S2">Client Persistence returns the correlationId (cId1) to Client-Service</step>
+        <step id="S3">Client-Service calls Service to perform a service using cId1</step>
+        <step id="S4">Service checks if cId1 exists in Service Persistence</step>
+        <step id="S5">Service finds cId1 in Service Persistence</step>
+        <step id="S6">Service accepts the request</step>
+        <step id="S7">Service asynchronously answers with cId1 to Callback</step>
+        <step id="S8">Callback finds cId1 in Client Persistence</step>
+        <step id="S9">Callback returns the state to Callback</step>
+        <step id="S10">Callback sets cId1 as answered in Client Persistence</step>
+        <step id="S11">Callback informs Client-Service that the process is done</step>
+        <step id="S12">Callback informs Service that the correlationId is unknown</step>
+    </mainSequence>
+</useCase>

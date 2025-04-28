@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Búsqueda de un Camino en un Grafo</name>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>Principal</actor>
+        <actor>Graph</actor>
+    </actors>
+    <preconditions>
+        <precondition>El grafo debe estar correctamente definido con sus vértices y aristas.</precondition>
+    </preconditions>
+    <trigger>El usuario ejecuta una búsqueda de camino en el grafo.</trigger>
+    <mainSequence>
+        <step id="S1">Usuario ejecuta la búsqueda de un camino.</step>
+        <step id="S2">Principal crea el grafo con vértices y aristas.</step>
+        <step id="S3">Usuario solicita un camino entre vértice v1 y v2.</step>
+        <step id="S4">Principal llama a onePath(v1, v2) en Graph.</step>
+        <step id="S5">Graph inicializa la traza y la pila abierta.</step>
+        <step id="S6">Mientras la pila no esté vacía y el destino no haya sido encontrado: </step>
+        <step id="S7">Graph extrae el vértice actual y comprueba si es el destino.</step>
+        <step id="S8">Si el vértice es el destino, Graph reconstruye el camino desde la traza y lo devuelve a Principal.</step>
+        <step id="S9">En caso contrario, Graph agrega los vecinos a la pila y los registra en la traza.</step>
+        <step id="S10">Principal muestra el resultado del camino al usuario.</step>
+        <step id="S11">El usuario finaliza la ejecución de la búsqueda.</step>
+    </mainSequence>
+</useCase>

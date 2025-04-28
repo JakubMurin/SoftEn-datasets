@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Manage Application Instances</name>
+    <description>As a developer, I want to manage application instances to ensure the application runs smoothly.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Application Analyzer</actor>
+        <actor>Application Orchestrator</actor>
+        <actor>Binary</actor>
+        <actor>Sails.js</actor>
+    </actors>
+    <preconditions>
+        <precondition>The developer has launched the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The application instances are successfully managed.</condition>
+    </successEndConditions>
+    <trigger>Developer needs to manage application instances.</trigger>
+    <mainSequence>
+        <step id="S1">Developer launches the application.</step>
+        <step id="S2">Application Orchestrator receives the launch request and triggers the binary to select the stack based on provided parameters.</step>
+        <step id="S3">Developer checks the health of the application.</step>
+        <step id="S4">Application Analyzer requests the Application Orchestrator to check the health of the application.</step>
+        <step id="S5">Application Orchestrator instructs the binary to perform health check on the application.</step>
+        <step id="S6">Binary checks the health of the application by sending a request to Sails.js.</step>
+        <step id="S7">Application Analyzer decides to rebalance an application instance.</step>
+        <step id="S8">Application Orchestrator triggers the binary to rebalance the specified application instance.</step>
+        <step id="S9">Binary selects the environment for the specified application instance using Sails.js.</step>
+    </mainSequence>
+</useCase>

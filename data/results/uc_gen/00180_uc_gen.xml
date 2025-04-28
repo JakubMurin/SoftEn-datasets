@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Access Training Information</name>
+    <actors>
+        <actor>Trainee</actor>
+    </actors>
+    <preconditions>
+        <precondition>Trainee must be authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Trainee successfully accesses training information</condition>
+    </successEndConditions>
+    <trigger>User requests to view signed up trainings</trigger>
+    <mainSequence>
+        <step id="S1">Trainee requests to login</step>
+        <step id="S2">Authenticate user credentials with Authentication Service</step>
+        <step id="S3">User Database validates user credentials</step>
+        <step id="S4">Authentication Service returns user validation</step>
+        <step id="S5">Trainee successfully authenticates</step>
+        <step id="S6">Trainee requests signed up trainings</step>
+        <step id="S7">Training Service fetches trainings for user</step>
+        <step id="S8">Training Database returns list of trainings</step>
+        <step id="S9">Training Service displays signed up trainings</step>
+    </mainSequence>
+</useCase>

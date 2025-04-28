@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>View and Change Payment Terms</name>
+    <actors>
+        <actor>FAE User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the Payment Terms tab</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects the 'Change' button on the Payment Terms tab</step>
+        <step id="S2">User navigates to the Change Payment Terms page</step>
+        <step id="S3">User inputs data and clicks the 'Save changes' button</step>
+        <step id="S4">Call API with Defendant Account ID and Payload (JSON)</step>
+        <step id="S5">Created Defendant Account Payment Terms</step>
+        <step id="S6">Display Payment Terms tab with the updated information</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Defendant Account ID and Payload (JPA) used for API call</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S5">
+            <step id="A2S1">Defendant Account ID and Payload JSON (XML Wrapper) used for API call</step>
+            <step id="A2S2">Convert JSON to XML</step>
+            <step id="A2S3">Defendant Account ID and Payload (XML) used for creating Payment Terms</step>
+            <step id="A2S4">Created Defendant Account Payment Terms (XML)</step>
+            <step id="A2S5">Convert XML to JSON</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

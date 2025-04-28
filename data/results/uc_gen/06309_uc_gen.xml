@@ -1,0 +1,63 @@
+<useCase id="UC1">
+	<name>Perform Epic Transaction</name>
+	<description>This use case describes the workflow for performing an epic transaction between a sender and recipient.</description>
+	<actors>
+		<actor>Sender</actor>
+		<actor>Recipient</actor>
+	</actors>
+	<preconditions>
+		<precondition>Both sender and recipient are authenticated and authorized to perform the transaction.</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">Create Transaction UUID for reference.</step>
+		<step id="S2">Set lock_height for transaction kernel.</step>
+		<step id="S3">Select inputs using desired selection strategy.</step>
+		<step id="S4">Calculate sum inputs blinding factors xI.</step>
+		<step id="S5">Create change_output.</step>
+		<step id="S6">Select blinding factor xC for change_output.</step>
+		<step id="S7">Create lock function sF that locks inputs and stores change_output in wallet.</step>
+		<step id="S8">Calculate tx_weight based on the number of inputs and change outputs.</step>
+		<step id="S9">Calculate fee based on tx_weight.</step>
+		<step id="S10">Calculate total blinding excess sum for all inputs and outputs.</step>
+		<step id="S11">Select a random nonce kS.</step>
+		<step id="S12">Calculate xS and oS.</step>
+		<step id="S13">Multiply xS and kS by generator G to create public curve points.</step>
+		<step id="S14">Add values to Slate for passing to other participants.</step>
+		<step id="S15">Check fee against the number of inputs, change outputs, and receiver output.</step>
+		<step id="S16">Create receiver_output.</step>
+		<step id="S17">Choose a random blinding factor for receiver_output.</step>
+		<step id="S18">Calculate message M.</step>
+		<step id="S19">Choose random nonce kR.</step>
+		<step id="S20">Multiply xR and kR by generator G to create public curve points.</step>
+		<step id="S21">Compute Schnorr challenge e.</step>
+		<step id="S22">Compute Recipient Schnorr signature sR.</step>
+		<step id="S23">Add sR, xRG, kRG to Slate.</step>
+		<step id="S24">Create wallet output function rF.</step>
+		<step id="S25">Calculate message M.</step>
+		<step id="S26">Compute Schnorr challenge e.</step>
+		<step id="S27">Verify sR by verifying kRG + e * xRG = sRG.</step>
+		<step id="S28">Compute Sender Schnorr signature sS.</step>
+		<step id="S29">Calculate final signature s.</step>
+		<step id="S30">Calculate public key for s.</step>
+		<step id="S31">Verify s against excess values in final transaction using xG.</step>
+		<step id="S32">Create Transaction Kernel Containing Excess signature s.</step>
+		<step id="S33">Create final transaction tx from Slate.</step>
+		<step id="S34">Post tx to mempool.</step>
+		<step id="S35">Confirm receiver_output.</step>
+		<step id="S36">Change status of receiver_output to Confirmed.</step>
+		<step id="S37">Confirm change_output.</step>
+		<step id="S38">Change status of inputs to Spent.</step>
+		<step id="S39">Change status of change_output to Confirmed.</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S20">
+			<step id="A1S1">Abort transaction.</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="S27">
+			<description>Manually remove receiver_output from wallet using transaction log entry TR.</description>
+			<step id="E1S1">Abort transaction.</step>
+		</esteps>
+	</errorSteps>
+</useCase>

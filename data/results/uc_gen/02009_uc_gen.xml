@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Manage Fault Management Job and Report</name>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The buyer/client has access to Fault Management system.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">The Buyer/Client initiates a POST request to create a Fault Management Job.</step>
+        <step id="S2">The Fault Management Job is created in response to the request.</step>
+        <step id="S3">The Fault Management Job transitions to 'inProgress' state.</step>
+        <step id="S4">Data is generated for the Fault Management Job.</step>
+        <step id="S5">The generated data causes the creation of a Fault Management Report.</step>
+        <step id="S6">The Fault Management Report is created and transitions to 'inProgress' state.</step>
+        <step id="S7">Data is collected for the Fault Management Report.</step>
+        <step id="S8">The Fault Management Report transitions to 'completed' state.</step>
+        <step id="S9">The completed Fault Management Report is linked to the Fault Management Job.</step>
+        <step id="S10">The Fault Management Job completes its execution.</step>
+        <step id="S11">The Buyer/Client requests to get the Fault Management Report.</step>
+        <step id="S12">The Fault Management Report content is provided to the Buyer/Client.</step>
+    </mainSequence>
+</useCase>

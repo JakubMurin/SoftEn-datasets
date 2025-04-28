@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Modify Password</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>ModifyPasswordScreen</actor>
+        <actor>AuthService</actor>
+        <actor>UsersRouter</actor>
+        <actor>UsersService</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User opens the application</step>
+        <step id="S2">HomepageScreen displays "Account Settings"</step>
+        <step id="S3">User navigates to Account Settings</step>
+        <step id="S4">ModifyPasswordScreen displays Modify Password Page</step>
+        <step id="S5">User is prompted for an updated password</step>
+        <step id="S6">User enters the updated password</step>
+        <step id="S7">User presses the "Modify" button</step>
+        <step id="S8">AuthService submits the updated password</step>
+        <step id="S9">UsersRouter makes an API call for Modify Password</step>
+        <step id="S10">UsersService forwards the updated password</step>
+        <step id="S11">UsersService validates the updated password</step>
+        <step id="S12">Database updates the password</step>
+        <step id="S13">Database confirms password updated</step>
+        <step id="S14">UsersRouter confirms the update success</step>
+        <step id="S15">AuthService sends update confirmation</step>
+        <step id="S16">ModifyPasswordScreen displays update success message</step>
+        <step id="S17">ModifyPasswordScreen navigates back to Homepage</step>
+        <step id="S18">HomepageScreen displays confirmation message</step>
+    </mainSequence>
+</useCase>

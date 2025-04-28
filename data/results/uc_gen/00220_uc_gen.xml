@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Manage Teachers</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>TeacherRepository</actor>
+        <actor>TeacherEntity</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user wants to manage teachers information</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully modified the teacher information</condition>
+    </successEndConditions>
+    <trigger>User switches to the teacher management page</trigger>
+    <mainSequence>
+        <step id="S1">The user switches to the teacher management page</step>
+        <step id="S2">The frontend sends a request</step>
+        <step id="S3">The controller requests all teachers from the service</step>
+        <step id="S4">The service retrieves all teachers from the repository</step>
+        <step id="S5">A new teacher entity is created</step>
+        <step id="S6">The entities are passed back to the controller</step>
+        <step id="S7">The controller sends back the entities to the frontend</step>
+        <step id="S8">The frontend displays the entities to the user</step>
+        <step id="S9">The user clicks on a teacher entry to make modifications</step>
+        <step id="S10">The frontend sends a request with the modified entity</step>
+        <step id="S11">The controller sends the modified entity to the service</step>
+        <step id="S12">The service saves the modified entity in the repository</step>     
+        <step id="S13">The repository saves the entity</step>
+        <step id="S14">The service notifies the controller</step>
+        <step id="S15">The controller sends a response to the frontend</step>
+        <step id="S16">The frontend displays a success message to the user</step>
+    </mainSequence>
+</useCase>

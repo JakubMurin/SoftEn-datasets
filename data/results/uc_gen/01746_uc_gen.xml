@@ -1,0 +1,32 @@
+<useCase id="1">
+    <name>Manage Pomodoro Task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TimeTrigger</actor>
+        <actor>Renderer</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>TaskStateChangeHandler</actor>
+        <actor>TaskFinishHandler</actor>
+        <actor>NotificationPlayer</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to manage a Pomodoro task</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User executes: pomogo --task "programuj pomodoro" using CLI</step>
+        <step id="S2">CLI registers a new task</step>
+        <step id="S3">TaskStartHandler saves the new task "programuj pomodoro" with start date and other details in sqlite</step>
+        <step id="S4">TimeTrigger triggers refresh</step>
+        <step id="S5">Renderer gets tasks from sqlite</step>
+        <step id="S6">Renderer renders a progress bar with animations and unicorns for the User</step>
+        <step id="S7">TimeTrigger triggers refresh for TaskStateChangeHandler</step>
+        <step id="S8">TaskStateChangeHandler saves a new state "resting" and increments the rest marker, triggers a sound notification</step>
+        <step id="S9">OR TaskStateChangeHandler saves a new state "deep resting", zeroes rest marker, and triggers a sound notification</step>
+        <step id="S10">OR TaskStateChangeHandler saves a new state "resting" and increments the rest marker, triggers a sound notification</step>
+        <step id="S11">OR TaskStateChangeHandler marks the task as paused and triggers a sound notification</step>
+        <step id="S12">TimeTrigger eventually triggers Renderer</step>
+        <step id="S13">Renderer renders a finish message with unicorns for the User</step>
+    </mainSequence>
+</useCase>

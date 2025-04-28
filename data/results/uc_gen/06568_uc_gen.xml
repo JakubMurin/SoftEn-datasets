@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Make Coffee</name>
+    <description>Allow the user to make a coffee with specified ingredients</description>
+    <actors>
+        <actor>User</actor>
+        <actor>CoffeeFactory</actor>
+        <actor>CoffeeHandlerBase</actor>
+        <actor>Coffee</actor>
+        <actor>Milk</actor>
+        <actor>Chocolate</actor>
+        <actor>Cinnamon</actor>
+        <actor>Sweetener</actor>
+        <actor>StirringStrategyFactory</actor>
+        <actor>StirringStrategy</actor>
+        <actor>CoffeeRequest</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the coffee making process</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Coffee is successfully made with the requested ingredients</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Coffee making process fails due to missing ingredients</condition>
+    </failureEndConditions>
+    <trigger>User requests to make a coffee with specific ingredients</trigger>
+    <mainSequence>
+        <step id="S1">User makes a request to make coffee with specified ingredients</step>
+        <step id="S2">CoffeeFactory creates a CoffeeRequest object with the requested ingredients</step>
+        <step id="S3">CoffeeHandlerBase handles the CoffeeRequest object</step>
+        <step id="S4">Coffee is successfully made with the specified ingredients</step>
+        <step id="S5">CoffeeFactory returns the CoffeeRequest object</step>
+        <step id="S6">User receives the coffee ingredients</step>
+    </mainSequence>
+</useCase>

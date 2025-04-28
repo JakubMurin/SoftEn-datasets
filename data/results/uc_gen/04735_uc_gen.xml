@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>List Passage Between 2 Buildings</name>
+    <actors>
+        <actor>User</actor>
+        <actor>:listPassageBetween2BuildingsComponentHTML</actor>
+        <actor>listPassageBetween2BuildingsComponent</actor>
+        <actor>:BuildingServiceFE</actor>
+        <actor>:FloorServiceFE</actor>
+        <actor>:BuildingController</actor>
+        <actor>:FloorController</actor>
+        <actor>:BuildingServiceBE</actor>
+        <actor>:FloorServiceBE</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User lists Passage Between 2 Buildings</step>
+        <step id="S2">UI lists Passage Between 2 Buildings</step>
+        <step id="S3">Component gets Buildings from Building Service FE</step>
+        <step id="S4">Building Service FE sends HTTP GET request to Building Controller</step>
+        <step id="S5">Building Controller queries Database to get Buildings</step>
+        <step id="S6">Database returns List of Buildings to Building Service BE</step>
+        <step id="S7">Building Service BE sends List of Buildings to Building Controller</step>
+        <step id="S8">Building Controller responds with List of Buildings to Building Service FE</step>
+        <step id="S9">Building Service FE logs Buildings</step>
+        <step id="S10">Component displays Buildings to UI</step>
+        <step id="S11">UI asks for 2 buildings</step>
+        <step id="S12">User selects 2 buildings</step>
+        <step id="S13">UI requests ListPassageBetween2Buildings from Component</step>
+        <step id="S14">Component lists Floors from Building using Floor Service FE</step>
+        <step id="S15">Component checks Passage using Floor Service FE and Floor Controller</step>
+        <step id="S16">Floor Controller queries Database to find passage</step>
+        <step id="S17">Database returns passage information to Floor Service BE</step>
+        <step id="S18">Floor Service BE sends passage information to Floor Controller</step>
+        <step id="S19">Floor Controller responds with passage information to Floor Service FE</step>
+        <step id="S20">Floor Service FE displays Passage to UI</step>
+        <step id="S21">UI shows Passage Between Buildings to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Access File by Id</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Books Service</actor>
+        <actor>Postgres</actor>
+        <actor>Minio</actor>
+    </actors>
+    <trigger>GET /api/v1/books/{bookId}/files/{fileId}</trigger>
+    <mainSequence>
+        <step id="S1">User requests to get file by ID from Books Service</step>
+        <step id="S2">Gateway forwards the request to Keycloak for JWT verification</step>
+        <step id="S3">Keycloak verifies the JWT</step>
+        <step id="S4">Books Service fetches file by ID from Postgres</step>
+        <step id="S5">Postgres returns the file link to Books Service</step>
+        <step id="S6">Books Service retrieves file from Minio using the link</step>
+        <step id="S7">Minio provides the file to Books Service</step>
+        <step id="S8">Books Service sends the file to Gateway</step>
+        <step id="S9">Gateway returns the file to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S9">
+            <step id="A1S1">JWT is invalid</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S9">
+            <step id="A2S1">File data does not exist</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

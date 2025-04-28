@@ -1,0 +1,24 @@
+<useCase id="UC01">
+    <name>Create Course</name>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <trigger>User requests to create a course.</trigger>
+    <mainSequence>
+        <step id="S1">User instructs the system to create a course.</step>
+        <step id="S2">UI is activated to facilitate course creation.</step>
+        <step id="S3">UI directs Controller to start course creation process.</step>
+        <step id="S4">Actor provides course details: name, description, edition.</step>
+        <step id="S5">Controller receives course information from UI.</step>
+        <step id="S6">Controller uses CourseBuilder to create a course entity in the correct state.</step>
+        <step id="S7">Controller seeks necessary information to complete course data.</step>
+        <step id="S8">Builder creates Course entity with provided data from Domain.</step>
+        <step id="S9">Builder hands created Course back to Controller.</step>
+        <step id="S10">Persistence module is called to determine repository choices.</step>
+        <step id="S11">Controller selects Factory to instantiate a CourseRepository.</step>
+        <step id="S12">Factory generates a Course object, ready for storage.</step>
+        <step id="S13">Factory prepares the CourseRepository object in Controller.</step>
+        <step id="S14">Controller uses the Repository to save the Course object.</step>
+        <step id="S15">Controller provides the final Course back to the UI for successful creation.</step>
+    </mainSequence>
+</useCase>

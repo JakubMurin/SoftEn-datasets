@@ -1,0 +1,18 @@
+<useCase id="UC1">
+  <name>View Orders Being Delivered</name>
+  <actors>
+    <actor>Shipper</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">View list of orders being delivered (from ShipperDashboard).</step>
+    <step id="S2">ShipperDashboard invokes getOrdersBeingDelivered() method in ShipperController.</step>
+    <step id="S3">ShipperController calls getOrdersByStatus("IN_TRANSIT") in ShipperService.</step>
+    <step id="S4">ShipperService queries ShipperRepository to retrieve orders with status "IN_TRANSIT".</step>
+    <step id="S5">ShipperRepository executes database query to fetch orders.</step>
+    <step id="S6">Database retrieves orders with status "IN_TRANSIT" and sends data to ShipperRepository.</step>
+    <step id="S7">ShipperRepository returns order data to ShipperService.</step>
+    <step id="S8">ShipperService returns order data to ShipperController.</step>
+    <step id="S9">ShipperController provides order data to ShipperDashboard.</step>
+    <step id="S10">ShipperDashboard displays the list of orders being delivered.</step>
+  </mainSequence>
+</useCase>

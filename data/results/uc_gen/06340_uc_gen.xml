@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Automated Build and Integration Process</name>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob has code changes to push to the master branch</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Integration process completes successfully</condition>
+    </successEndConditions>
+    <trigger>Bob pushes commit to master</trigger>
+    <mainSequence>
+        <step id="S1">Bob pushes commit to the master branch in the Github Repository</step>
+        <step id="S2">Repository webhook triggers the Awesome pipeline</step>
+        <step id="S3">Awesome pipeline performs the build</step>
+        <step id="S4">Sync pipeline is triggered</step>
+        <step id="S5">Sync pipeline creates integration_config.yml</step>
+        <step id="S6">CI Integration tool runs the sync command</step>
+        <step id="S7">CI Integration tool adds new build data to Firestore</step>
+        <step id="S8">Sync command finishes and notifies the Sync pipeline</step>
+        <step id="S9">Build data export finishes and notifies Bob</step>
+    </mainSequence>
+</useCase>

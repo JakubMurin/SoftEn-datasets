@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>Delete Trick</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepoTrick</actor>
+        <actor>Gestionnaire</actor>
+        <actor>Fichiers</actor>
+        <actor>Redirection</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur demande la suppression d'une figure avec un ID spécifique.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La figure est supprimée avec succès.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>La figure n'est pas trouvée ou il y a une erreur lors de la suppression.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Utilisateur demande la suppression d'une figure avec un ID spécifique.</step>
+        <step id="S2">Controleur trouve la figure.</step>
+        <step id="S3">Controleur récupère les commentaires.</step>
+        <step id="S4">Commentaires trouvés.</step>
+        <step id="S5">Controleur supprime les commentaires.</step>
+        <step id="S6">Commentaires supprimés.</step>
+        <step id="S7">Controleur vérifie l'image.</step>
+        <step id="S8">Image trouvée.</step>
+        <step id="S9">Controleur supprime l'image.</step>
+        <step id="S10">Image supprimée.</step>
+        <step id="S11">Erreur suppression.</step>
+        <step id="S12">Message erreur (image) envoyé à l'Utilisateur.</step>
+        <step id="S13">Redirection vers la page d'accueil.</step>
+        <step id="S14">Redirection vers la liste des figures.</step>
+        <step id="S15">Figure supprimée.</step>
+        <step id="S16">Message succès envoyé à l'Utilisateur.</step>
+        <step id="S17">Redirection vers la liste des figures.</step>
+        <step id="S18">Figure non trouvée.</step>
+        <step id="S19">Message erreur (figure) envoyé à l'Utilisateur.</step>
+        <step id="S20">Redirection vers la liste des figures.</step>
+    </mainSequence>
+</useCase>

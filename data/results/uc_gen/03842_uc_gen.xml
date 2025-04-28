@@ -1,0 +1,42 @@
+<useCase id="1">
+    <name>Perform Fault Management Provisioning</name>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>The BUS must be registered as a listener for Fault Management notifications in the Hub.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Provisioning process is successfully completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Fault Management Provisioning process encounters an error.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">BUS registers as a listener for FaultManagementJobNotification and FaultManagementReportNotification in the Hub.</step>
+        <step id="S2">BUS creates a Fault Management Job in SOF.</step>
+        <step id="S3">SOF creates a Fault Management Job entity.</step>
+        <step id="S4">SOF responds with the created Fault Management Job to BUS.</step>
+        <step id="S5">Fault Management Job entity is activated.</step>
+        <step id="S6">Fault Management Job entity creates an event in the Hub.</step>
+        <step id="S7">Hub notifies listeners about the faultManagementJobCreateEvent.</step>
+        <step id="S8">Fault Management Job entity generates data.</step>
+        <step id="S9">Fault Management Job entity enters the inProgress state.</step>
+        <step id="S10">Fault Management Job entity creates a Fault Management Report entity.</step>
+        <step id="S11">Fault Management Report entity is activated.</step>
+        <step id="S12">Fault Management Report entity creates an event in the Hub.</step>
+        <step id="S13">Hub notifies listeners about the faultManagementReportCreateEvent.</step>
+        <step id="S14">Fault Management Report entity enters the inProgress state.</step>
+        <step id="S15">Fault Management Report entity collects data.</step>
+        <step id="S16">Fault Management Report entity enters the completed state.</step>
+        <step id="S17">Hub notifies listeners about the faultManagementReportStateChangeEvent.</step>
+        <step id="S18">Fault Management Job entity receives report completion notification.</step>
+        <step id="S19">Hub notifies listeners about the faultManagementJobReportReadyEvent.</step>
+        <step id="S20">Fault Management Job entity enters the completed or scheduled state.</step>
+        <step id="S21">Hub notifies listeners about the faultManagementJobStateChangeEvent.</step>
+        <step id="S22">BUS retrieves the Fault Management Report from SOF.</step>
+        <step id="S23">SOF responds with the retrieved Fault Management Report to BUS.</step>
+    </mainSequence>
+</useCase>

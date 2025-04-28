@@ -1,0 +1,20 @@
+<useCase id="UC-001">
+    <name>View Components of an Object</name>
+    <description>This use case involves the repository manager selecting an object to view and sort the components in their appropriate order.</description>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>DIMS UI</actor>
+        <actor>DIMS Backend</actor>
+        <actor>DAMS Database</actor>
+    </actors>
+    <trigger>Repository Manager selects an object to view.</trigger>
+    <mainSequence>
+        <step id="S1">Repository Manager selects an object to list components.</step>
+        <step id="S2">UI sends a request to Backend to list components of the object.</step>
+        <step id="S3a">Backend queries Database for components data of the object.</step>
+        <step id="S3b">Database returns components data to Backend.</step>
+        <step id="S4">Backend sorts the components in their appropriate order.</step>
+        <step id="S5a">Backend shows sorted components to UI.</step>
+        <step id="S5b">UI displays the sorted components in order.</step>
+    </mainSequence>
+</useCase>

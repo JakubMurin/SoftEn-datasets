@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Take Attendance</name>
+    <description>As a Counselor, I need to take attendance for my assigned campers.</description>
+    <actors>
+        <actor>Counselor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Counselor is logged into the Camp Platform.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Attendance for all assigned campers is successfully marked and saved.</condition>
+    </successEndConditions>
+    <trigger>User selects "Take Attendance" option from the Campers List.</trigger>
+    <mainSequence>
+        <step id="S1">Counselor logs into the Camp Platform.</step>
+        <step id="S2">Counselor fetches the list of assigned campers.</step>
+        <step id="S3">Camp Platform displays the list of assigned campers to the Counselor.</step>
+        <step id="S4">Counselor selects "Take Attendance" for a camper.</step>
+        <step id="S5">For each camper, Counselor marks attendance.</step>
+        <step id="S6">Camp Platform updates the attendance status in the database.</step>
+        <step id="S7">Camp Platform displays confirmation of the attendance update to the Counselor.</step>
+        <step id="S8">Camp Platform saves the attendance records in the database.</step>
+        <step id="S9">Camp Platform displays final confirmation of attendance recording to the Counselor.</step>
+    </mainSequence>
+</useCase>

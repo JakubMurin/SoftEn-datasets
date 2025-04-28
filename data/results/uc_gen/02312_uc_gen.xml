@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Login Use Case</name>
+    <description>User logs in to the system</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in</condition>
+    </failureEndConditions>
+    <trigger>User initiates the login process</trigger>
+    <mainSequence>
+        <step id="S1">User logs in</step>
+        <step id="S2">UI creates role and maximum attempts</step>
+        <step id="S3">UI shows login interface</step>
+        <step id="S4">User provides email and password</step>
+        <step id="S5">UI asks for user information</step>
+        <step id="S6">UI sends email and password to AuthServ for authentication</step>
+        <step id="S7">AuthServ authenticates user</step>
+        <step id="S8">AuthServ creates UserSession</step>
+        <step id="S9">UI displays operation success message</step>
+    </mainSequence>
+</useCase>

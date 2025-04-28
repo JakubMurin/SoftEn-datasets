@@ -1,0 +1,29 @@
+<useCase id="1">
+   <name>Hub And Spoke - Flow Reroute</name>
+   <actors>
+      <actor>User</actor>
+   </actors>
+   <mainSequence>
+      <step id="S1">User requests to reroute the flow</step>
+      <step id="S2">FlowManager reroutes the flow</step>
+      <step id="S3">FlowManager starts flow rerouting</step>
+      <step id="S4">FlowManager retrieves the flow from the database</step>
+      <step id="S5">FlowManager validates the flow existence</step>
+      <step id="S6">PathComputer finds a path for the flow</step>
+      <step id="S7">ResourcePool allocates resources for the found path</step>
+      <step id="S8">FlowManager persists path changes in the database</step>
+      <step id="S9">CommandBuilder creates switch rules</step>
+      <step id="S10">SpeakerWorker installs rules for the new path</step>
+      <step id="S11">RulesValidator validates installed egress/transit rules</step>
+      <step id="S12">SpeakerWorker installs ingress rules</step>
+      <step id="S13">RulesValidator validates installed ingress rules</step>
+      <step id="S14">DAO updates the flow to reference the active path</step>
+      <step id="S15">History marks flow as UP</step>
+      <step id="S16">FlowManager removes old flow rules</step>
+      <step id="S17">CommandBuilder removes rules from the old path</step>
+      <step id="S18">RulesValidator validates removed rules</step>
+      <step id="S19">ResourcePool deallocates resources of the old path</step>
+      <step id="S20">DAO removes the old path</step>
+      <step id="S21">History logs resources deallocation</step>
+   </mainSequence>
+</useCase>

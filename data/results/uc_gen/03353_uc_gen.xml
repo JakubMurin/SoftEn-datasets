@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Submit new history data</name>
+    <description>User submits new history data through the UI.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in and wants to save new history data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user receives a success message after the saved History is displayed.</condition>
+    </successEndConditions>
+    <trigger>User triggers the action by submitting new history data through the UI.</trigger>
+    <mainSequence>
+        <step id="S1">User submits new history data through the UI.</step>
+        <step id="S2">UI sends the data to Router via POST /histories.</step>
+        <step id="S3">Router receives the request and forwards it to Controller to create a new history.</step>
+        <step id="S4">Controller calls Repository to store the new data as a History entity.</step>
+        <step id="S5">Repository creates a new History object with the submitted data.</step>
+        <step id="S6">Model saves the History object in the Database.</step>
+        <step id="S7">Model confirms successful save to Repository.</step>
+        <step id="S8">Repository confirms the successful save to Controller.</step>
+        <step id="S9">Controller responds to Router with status 201 Created.</step>
+        <step id="S10">Router sends the success response back to the UI.</step>
+        <step id="S11">UI displays a success message to the user.</step>
+    </mainSequence>
+</useCase>

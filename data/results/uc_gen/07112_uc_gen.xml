@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Feature Prioritization</name>
+    <actors>
+        <actor>Team Member</actor>
+        <actor>Designer</actor>
+        <actor>Engineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Access to Feature Backlog</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Feasibility and Design Confirmation</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Feasibility or Design Issues</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Review Proposed Features in Backlog</step>
+        <step id="S2">Consult Prioritization Criteria</step>
+        <step id="S3">Apply Criteria to Features</step>
+        <step id="S4">Share Filtered Features with Designer</step>
+        <step id="S5">Consult Engineer on Technical Feasibility</step>
+        <step id="S6">Update Prioritized Features List</step>
+        <step id="S7">Share Prioritized Features List with Engineer</step>
+        <step id="S8">Share Prioritized Features List with Designer</step>
+        <step id="S9">Finalize Feature Prioritization</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">Re-evaluate and Update Priorities</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Feasibility or Design Issues Detected</description>
+            <step id="E1S1">Re-evaluate and Update Priorities</step>
+        </esteps>
+    </errorSteps>
+</useCase>

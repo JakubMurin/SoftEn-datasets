@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>View List of Candidates Ordered by Interview Points</name>
+    <actors>
+        <actor>Customer Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer Manager has access to the application</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Customer Manager requests to see a list of candidates ordered by interview points</step>
+        <step id="S2">UI receives the request from Customer Manager</step>
+        <step id="S3">UI forwards the request to Application Controller</step>
+        <step id="S4">Application Controller retrieves job openings from Application Service</step>
+        <step id="S5">Application Service fetches job openings from Job Opening Repository</step>
+        <step id="S6">Application Service sends the openings back to Application Controller</step>
+        <step id="S7">Application Controller returns openings to UI</step>
+        <step id="S8">UI displays the list of job openings to Customer Manager</step>
+        <step id="S9">Customer Manager selects a job opening</step>
+        <step id="S10">UI forwards the selected opening to Application Controller</step>
+        <step id="S11">Application Controller lists candidates for the selected opening</step>
+        <step id="S12">Application Controller gets applications related to the opening from Application Service</step>
+        <step id="S13">Application Service retrieves candidates from Candidate Management Service</step>
+        <step id="S14">Application Service gets interviews for the applications from Interview Repository</step>
+        <step id="S15">Application Controller sorts the interviews</step>
+        <step id="S16">Application Controller sends the sorted interviews back to UI</step>
+        <step id="S17">UI displays the sorted interviews to Customer Manager</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>User Sign Up</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully signed up and registered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Account already registered error returned.</condition>
+    </failureEndConditions>
+    <trigger>POST /signup request received.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request for signing up.</step>
+        <step id="S2">AccessController calls AccessService's signUp method with request body.</step>
+        <step id="S3">AccessService finds the user in database by email.</step>
+        <step id="S4">AccessService found the user.</step>
+        <step id="S5">AccessService generates a salt using 'bcrypt'.</step>
+        <step id="S6">bcrypt provides the generated salt.</step>
+        <step id="S7">AccessService hashes the password with the generated salt using 'bcrypt'.</step>
+        <step id="S8">bcrypt provides the hashed password.</step>
+        <step id="S9">AccessService creates a new entry with email, hashed password, and role.</step>
+        <step id="S10">User's account created successfully.</step>
+        <step id="S11">AccessService returns the user details after creation.</step>
+        <step id="S12">AccessController returns user registration success response to the User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Time Report</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Spring</actor>
+        <actor>Lewensportal</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User opens Time Report</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User provides Username (FnNn) and Password</step>
+        <step id="S2">Spring sends Username and Password to Lewensportal</step>
+        <step id="S3">Lewensportal validates the user</step>
+        <step id="S4">Spring saves the user in the database with default authorities</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Lewensportal responds with 'Ok'</step>
+            <step id="A1S2">Spring saves the user in the database with default authorities</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>User is not valid</description>
+            <step id="E1S1">Lewensportal responds with 'not logged in'</step>
+            <step id="E1S2">Spring informs User about bad credentials</step>
+        </esteps>
+    </errorSteps>
+</useCase>

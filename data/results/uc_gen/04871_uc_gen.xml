@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Integrate CI tool with Firestore</name>
+    <actors>
+        <actor>Bob</actor>
+    </actors>
+    <trigger>Bob pushes commit to master</trigger>
+    <mainSequence>
+        <step id="S1">Repository triggers Awesome pipeline</step>
+        <step id="S2">Awesome pipeline performs build</step>
+        <step id="S3">Awesome pipeline triggers Sync pipeline</step>
+        <step id="S4">Sync pipeline creates integration_config.yml</step>
+        <step id="S5">Sync pipeline runs sync command</step>
+        <step id="S6">CI Integration tool adds new build data to Firestore</step>
+        <step id="S7">Sync command finishes</step>
+        <step id="S8">Build data export finishes</step>
+    </mainSequence>
+</useCase>

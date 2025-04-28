@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Request Access to Restricted Object</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Repository Interface</actor>
+        <actor>Access Control System</actor>
+        <actor>Email Notification System</actor>
+        <actor>Collection Curator</actor>
+    </actors>
+    <trigger>User searches and selects a restricted object and requires access.</trigger>
+    <mainSequence>
+        <step id="S1">User searches for the restricted object in the Repository Interface.</step>
+        <step id="S2">Interface requests Access Details from the Access Control System.</step>
+        <step id="S3">ACS displays the "Contact Curator" option on the Interface.</step>
+        <step id="S4">User clicks on "Contact Curator".</step>
+        <step id="S5">Interface generates an Email Template.</step>
+        <step id="S6">User fills in the Template and sends the access request to the Email Notification System.</step>
+        <step id="S7">Email forwards the User's request to the Collection Curator.</step>
+        <step id="S8">Curator reviews the request.</step>
+        <step id="S9">If approved, Curator updates access permissions on ACS.</step>
+        <step id="S10">ACS notifies the User of the access decision through Email.</step>
+        <step id="S11">Email displays the access decision notification to the User.</step>
+    </mainSequence>
+</useCase>

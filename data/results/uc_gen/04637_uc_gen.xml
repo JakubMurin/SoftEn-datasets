@@ -1,0 +1,26 @@
+<useCase id="UC1">
+  <name>Realizar monitoreo de la planta nuclear</name>
+  <actors>
+    <actor>Usuario</actor>
+    <actor>PlantaNuclear</actor>
+    <actor>ReactorNuclear</actor>
+    <actor>Reportador</actor>
+    <actor>Sensor</actor>
+    <actor>EstadoReactor</actor>
+    <actor>Operadores</actor>
+    <actor>Duenio</actor>
+  </actors>
+  <preconditions>
+    <precondition>Los componentes de la planta están inicializados y la simulación está en curso.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">El Usuario inicia la simulación e inicializa los componentes de la Planta Nuclear.</step>
+    <step id="S2">El Sensor peticiona medir la temperatura al Planta Nuclear.</step>
+    <step id="S3">El Sensor pide al Reactor Nuclear el estado más reciente.</step>
+    <step id="S4">El Sensor chequa el estado con el Estado del Reactor.</step>
+    <step id="S5">El Sensor notifica a los Operadores sobre el estado actual.</step>
+    <step id="S6">Los Operadores manejan la situación reportada por el Sensor.</step>
+    <step id="S7">El Estado del Reactor envía un reporte de la situación al Reportador.</step>
+    <step id="S8">El Reportador envía el reporte, incluyendo la temperatura, al Dueño.</step>
+  </mainSequence>
+</useCase>

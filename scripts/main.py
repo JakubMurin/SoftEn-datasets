@@ -99,7 +99,7 @@ def seq_uc():
             seq_data = json.loads(seq)
             print(seq_data["file"])
             
-            if seq_data["origin"] == Origin.CHAT_GPT:
+            if seq_data["origin"] == Origin.CHAT_GPT.value:
                 continue
                         
             for value, is_temp in product(*params.values()):
@@ -107,7 +107,7 @@ def seq_uc():
                 
                 temp, top_p = (round(value + 0.4, 1), 1) if is_temp else (1, value)
                 
-                seq_path = os.path.join(RESULT_DATA_PATH, "seq", seq_data["file"])
+                seq_path = os.path.join(RESULT_DATA_PATH, seq_data["file"])
                 with open(seq_path, "r", encoding="utf-8") as file:
                     sequence_diag = file.read()
 
@@ -123,27 +123,31 @@ def seq_uc():
                 
                 price += calculate_price(result["usage"]["prompt_tokens"], result["usage"]["completion_tokens"])
                 
-                usecase = content.replace("```xml", "").replace("```", "").replace('<!DOCTYPE useCase SYSTEM "usecase.dtd">', "")
+                usecase = re.search(r"(<useCase[\s\S]*</useCase>)", content, re.DOTALL)
+                if usecase is None:
+                    save_error(os.path.join(RESULT_DATA_PATH, "wrong_uc.jsonl"), seq_data, temp, top_p, "Wrong response", content)
+                    continue
+                
+                usecase = usecase.group(1).replace('<!DOCTYPE useCase SYSTEM "usecase.dtd">', "")
                             
-                uc_data = xml_files.process_usecase(usecase, Origin.CHAT_GPT, "", context.ai_model, temp, top_p)
+                uc_data = xml_files.process_usecase(usecase, Origin.CHAT_GPT, "", None, context.ai_model, temp, top_p)
                 
                 if uc_data is None:
-                    # with open(os.path.join(RESULT_DATA_PATH, "wrong_uc.jsonl"), "a", encoding="utf-8") as wrong_file:
-                    #     data = {"seq": seq_data, "temperature": temp, "top_p": top_p, "content": content}
-                    #     print(json.dumps(data), file=wrong_file)
                     save_error(os.path.join(RESULT_DATA_PATH, "wrong_uc.jsonl"), seq_data, temp, top_p, "Wrong format", content)
                     continue
                     
-                name = seq_data["title"]
+                name = seq_data["title"] if seq_data["title"] else uc_data["title"]
                 print(json.dumps(uc_data), file=usecase_file)
                 print(json.dumps(merge_metadata(uc_data, seq_data, name=name)), file=output_file)
-                
-                        
+
+            
     output_file.close()
     usecase_file.close()
     
     total = time.perf_counter() - start
     print(f"Total time: {total}", f"Average time: {total / counter}", f"price: {price}$")
+
+seq_uc()
 
 ############### USECASE -> SEQUENCE ###############
 def uc_seq():
@@ -161,7 +165,7 @@ def uc_seq():
             uc_data = json.loads(uc)
             print(uc_data["file"])
             
-            if uc_data["origin"] == Origin.CHAT_GPT:
+            if uc_data["origin"] == Origin.CHAT_GPT.value:
                 continue
                         
             for value, is_temp in product(*params.values()):
@@ -187,10 +191,7 @@ def uc_seq():
                 seq_diag = re.search(r"(@startuml.*@enduml)", content, re.DOTALL)
                 
                 if seq_diag is None:
-                    # with open(os.path.join(RESULT_DATA_PATH, "wrong_seq.jsonl"), "a", encoding="utf-8") as wrong_file:
-                    #     data = {"uc": uc_data, "temperature": temp, "top_p": top_p, "content": content}
-                    #     print(json.dumps(data), file=wrong_file)
-                    save_error(os.path.join(RESULT_DATA_PATH, "wrong_seq.jsonl"), uc_data, temp, top_p, "Empty response", content)
+                    save_error(os.path.join(RESULT_DATA_PATH, "wrong_seq.jsonl"), uc_data, temp, top_p, "Wrong response", content)
                     continue
                 
                 seq_data = plantumlfiles.process_diagram(seq_diag.group(1), Origin.CHAT_GPT, "", None, context.ai_model, temp, top_p)
@@ -199,7 +200,7 @@ def uc_seq():
                     save_error(os.path.join(RESULT_DATA_PATH, "wrong_seq.jsonl"), uc_data, temp, top_p, "Wrong diagram", content)
                     continue
                     
-                name = uc_data["title"]
+                name = uc_data["title"] if uc_data["title"] else seq_data["title"]
                 print(json.dumps(seq_data), file=seq_file)
                 print(json.dumps(merge_metadata(uc_data, seq_data, name=name)), file=output_file)
                 
@@ -210,7 +211,7 @@ def uc_seq():
     total = time.perf_counter() - start
     print(f"Total time: {total}", f"Average time: {total / counter}", f"price: {price}$")
     
-uc_seq()
+# uc_seq()
 
 # Using temperature
 # with open(os.path.join(WORKING_DIR, "data\\usecases\\01.xml"), "r", encoding="utf-8") as file:

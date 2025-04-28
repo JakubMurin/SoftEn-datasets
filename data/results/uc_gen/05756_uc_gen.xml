@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>View Monthly Lending Report</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>LendingController</actor>
+        <actor>ReaderService</actor>
+        <actor>ReaderRepository</actor>
+        <actor>Reader</actor>
+        <actor>ReaderLentsViewMapper</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian wants to view the monthly lending report.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Librarian sends a request to the LendingController to get the monthly lending report.</step>
+        <step id="S2">LendingController activates and processes the request.</step>
+        <step id="S3">LendingController calls ReaderService to retrieve all readers.</step>
+        <step id="S4">ReaderService activates and fetches all readers from ReaderRepository.</step>
+        <step id="S5">ReaderRepository provides a list of readers to ReaderService.</step>
+        <step id="S6">For each reader, ReaderService retrieves the monthly lending information from ReaderRepository.</step>
+        <step id="S7">ReaderRepository calculates the number of items lent to the reader.</step>
+        <step id="S8">ReaderService updates the reader's lending information.</step>
+        <step id="S9">ReaderService sets the lending information for the reader.</step>
+        <step id="S10">ReaderService repeats the process for each reader.</step>
+        <step id="S11">ReaderService deactivates after processing all readers.</step>
+        <step id="S12">LendingController maps the reader lending information to a view.</step>
+        <step id="S13">ReaderLentsViewMapper activates and processes the mapping.</step>
+        <step id="S14">ReaderLentsViewMapper provides an iterable of ReaderLentsView to LendingController.</step>
+        <step id="S15">LendingController deactivates after receiving the mapped views.</step>
+        <step id="S16">LendingController sends an HTTP 200 OK response with the ReaderLentsView to the Librarian.</step>
+    </mainSequence>
+</useCase>

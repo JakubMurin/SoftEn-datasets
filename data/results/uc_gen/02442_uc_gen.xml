@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Count User Errors</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>ErrorHandler</actor>
+        <actor>ErrorCounter</actor>
+    </actors>
+    <preconditions>
+        <precondition>UI is active</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User performs an operation</step>
+        <step id="S2">UI detects user error</step>
+        <step id="S3">ErrorCounter counts user error</step>
+        <step id="S4">UI displays user error count</step>
+        <step id="S5">User performs a normal operation</step>
+        <step id="S6">UI notifies ErrorHandler of normal operation</step>
+        <step id="S7">ErrorCounter decreases count</step>
+        <step id="S8">UI displays decreased count</step>
+        <step id="S9">ErrorHandler checks if count reached threshold</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">ErrorHandler informs UI of error occurrence</step>
+            <step id="A1S2">UI displays error message</step>
+            <step id="A1S3">UI requests error logging</step>
+            <step id="A1S4">LogManager records error in ErrorLog</step>
+            <step id="A1S5">UI requests recovery process</step>
+            <step id="A1S6">ErrorHandler completes recovery process</step>
+            <step id="A1S7">UI displays recovery completion message to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

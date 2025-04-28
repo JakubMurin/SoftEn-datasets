@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>User Login and Access Patient Information</name>
+    <actors>
+        <actor>Webbläsare</actor>
+        <actor>Rehabstöd</actor>
+        <actor>Webcert</actor>
+        <actor>Intygstjänst</actor>
+        <actor>IdP</actor>
+    </actors>
+    <preconditions>
+        <precondition>Användaren har behörighet att logga in och visa patientinformation.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Användaren har framgångsrikt loggat in och kunnat visa patientinformation.</condition>
+    </successEndConditions>
+    <trigger>Användaren initierar inloggning och visning av patientinformation.</trigger>
+    <mainSequence>
+        <step id="S1">Användaren loggar in via Webbläsaren.</step>
+        <step id="S2">SAML-intyg växlas mot AccessToken/RefreshToken vid lyckad inloggning.</step>
+        <step id="S3">IdP säkerställer giltigheten av SAML-intyget och biljettväxlar.</step>
+        <step id="S4">IdP returnerar AccessToken/RefreshToken till Rehabstöd.</step>
+        <step id="S5">Användaren är inloggad.</step>
+        <step id="S6">Användaren väljer att visa patientvy.</step>
+        <step id="S7">Hämtar ny AccessToken med RefreshToken om AccessToken är på väg att gå ut.</step>
+        <step id="S8">Bygger upp formulär med intygsid, vårdenhet och AccessToken för POST till Webcert.</step>
+        <step id="S9">Patientvy renderas.</step>
+        <step id="S10">Klickar på Visa intyg för att öppna intygsvyn i Webcert.</step>
+        <step id="S11">Validerar AccessToken och skapar session i Webcert.</step>
+        <step id="S12">Anropar GetCertificateType i Intygstjänst.</step>
+        <step id="S13">Sätter vårdenhet på sessionen i Webcert.</step>
+        <step id="S14">Omdirigerar användaren till intygsvyn i Webcert.</step>
+        <step id="S15">Öppnar intygsvyn i Webcert.</step>
+        <step id="S16">GetCertificate anropas för att hämta intyget från Intygstjänst.</step>
+        <step id="S17">Intyget renderas i Webcerts Readonly-läge.</step>
+        <step id="S18">Användaren stänger patientvyn.</step>
+        <step id="S19">Redirect till lokal logout i Webcert via dold iFrame.</step>
+        <step id="S20">Lokal logout i Webcert genom att avsluta sessionen.</step>
+        <step id="S21">HTTP 200 med tom sida returneras till den dolda iFramen.</step>
+    </mainSequence>
+</useCase>

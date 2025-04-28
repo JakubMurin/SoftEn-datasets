@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Adding a New Group</name>
+    <description>User wants to add a new group to the list of groups.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>AddGroupActivity</actor>
+        <actor>AddGroupViewModel</actor>
+        <actor>GroupeFirestore</actor>
+        <actor>FirebaseFirestore</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New group successfully added to the list of groups.</condition>
+    </successEndConditions>
+    <trigger>User presses the "+" button to add a new group.</trigger>
+    <mainSequence>
+        <step id="S1">User presses the "+" button to add a new group.</step>
+        <step id="S2">Appuyer sur "+" (ajouter un groupe)</step>
+        <step id="S3">isGroupCreated() method is called by AddGroupActivity.</step>
+        <step id="S4">getGroup(nomGroupe) method is called by GroupeFirestore.</step>
+        <step id="S5">checkGroupExistsAndCreate(nomGroupe) method is called by AddGroupViewModel.</step>
+        <step id="S6">create(new Groupe(nomGroupe)) method is called by GroupeFirestore.</step>
+        <step id="S7">getCollection().add(groupe) method is called by FirebaseFirestore.</step>
+        <step id="S8">groupe crée dans la base</step>
+        <step id="S9">groupe créé</step>
+        <step id="S10">Ajout nouveau groupe dans la liste de la liste des groupes</step>
+    </mainSequence>
+</useCase>

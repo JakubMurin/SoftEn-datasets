@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Calculate Average Lending Duration Per Book</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Librarian initiates a request to get the average lending duration per book</step>
+        <step id="S2">LendingController handles the request</step>
+        <step id="S3">LendingController invokes LendingService to calculate the average lending duration per book</step>
+        <step id="S4">LendingService calls LendingRepository to retrieve the data</step>
+        <step id="S5">LendingRepository provides a list of average lending duration per book data to LendingService</step>
+        <step id="S6">LendingService maps the data using LendingAvgPerBookViewMapper</step>
+        <step id="S7">LendingAvgPerBookViewMapper creates a list of LendingAvgPerBookView objects</step>
+        <step id="S8">LendingService returns the list of LendingAvgPerBookViews to LendingController</step>
+        <step id="S9">LendingController sends a successful response with the list of LendingAvgPerBookViews to the Librarian</step>
+    </mainSequence>
+</useCase>

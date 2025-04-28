@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Deploy AIS Bundles</name>
+    <actors>
+        <actor>ApplicationDeveloper</actor>
+    </actors>
+    <trigger>ApplicationDeveloper triggers the deployment process</trigger>
+    <mainSequence>
+        <step id="S1">ApplicationDeveloper requests deployment for AIS bundles</step>
+        <step id="S2">AISSimulator creates bundle Ship1 from file ./projects/AISSimulator/AISShip/bundle.js</step>
+        <step id="S3">Bundle Ship1 creation sent to EventBus for processing</step>
+        <step id="S4">AISSimulator creates bundle NoContact from file ./projects/AISSimulator/AISNoContact/bundle.js</step>
+        <step id="S5">Bundle NoContact creation sent to EventBus for processing</step>
+        <step id="S6">AISSimulator creates bundle Agg1 from file ./projects/AISSimulator/AISAgg/bundle.js</step>
+        <step id="S7">Bundle Agg1 creation sent to EventBus for processing</step>
+        <step id="S8">AISSimulator creates bundle Viewer1 from file ./projects/AISSimulator/AISViewer/bundle.js</step>
+        <step id="S9">Bundle Viewer1 creation sent to EventBus for processing</step>
+        <step id="S10">AISSimulator requests policy.js creation from AISShip policies</step>
+        <step id="S11">Policy.js creation sent to EventBus by AISBundleManager</step>
+        <step id="S12">AISSimulator deploys Viewer1 bundle with realtime policies</step>
+        <step id="S13">Viewer1 bundle deployment sent to EventBus for processing</step>
+        <step id="S14">AISSimulator deploys NoContact bundle with realtime policies and parameters (timeout=10000)</step>
+        <step id="S15">NoContact bundle deployment sent to EventBus for processing</step>
+        <step id="S16">AISSimulator deploys Agg1 bundle with realtime policies</step>
+        <step id="S17">Agg1 bundle deployment sent to EventBus for processing</step>
+        <step id="S18">AISSimulator deploys Ship1 bundle with realtime policies and parameters (sourceFile=../AIS_Simulator/ships/215071000A.csv)</step>
+        <step id="S19">Ship1 bundle deployment sent to EventBus for processing</step>
+        <step id="S20">AISSimulator deploys Ship1 bundle with realtime policies and parameters (sourceFile=../AIS_Simulator/ships/215031000A.csv)</step>
+        <step id="S21">Ship1 bundle deployment sent to EventBus for processing</step>
+    </mainSequence>
+</useCase>

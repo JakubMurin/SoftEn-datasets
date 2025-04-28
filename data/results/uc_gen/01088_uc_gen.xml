@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>File Upload Process</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>File Selection Interface</actor>
+        <actor>Upload Service</actor>
+        <actor>Database</actor>
+        <actor>FileManager</actor>
+        <actor>MetadataService</actor>
+        <actor>UserNotificationService</actor>
+        <actor>Digital Archive</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Archivist selects files in the File Selection Interface.</step>
+        <step id="S2">File Selection Interface initiates the upload process.</step>
+        <step id="S3">Upload Service validates the selected files.</step>
+        <step id="S4">FileManager extracts metadata from the validated files.</step>
+        <step id="S5">MetadataService stores the extracted metadata in the Database.</step>
+        <step id="S6">MetadataService confirms the successful storage of metadata in the Database.</step>
+        <step id="S7">MetadataService sends a confirmation of metadata storage to Upload Service.</step>
+        <step id="S8">Upload Service saves the files in the Digital Archive.</step>
+        <step id="S9">Digital Archive confirms the successful saving of files to Upload Service.</step>
+        <step id="S10">Upload Service sends a success notification to UserNotificationService.</step>
+        <step id="S11">UserNotificationService displays a success message to the Archivist.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S10">
+            <step id="A1S1">FileManager returns an error message to Upload Service.</step>
+            <step id="A1S2">Upload Service sends a failure notification to UserNotificationService.</step>
+            <step id="A1S3">UserNotificationService displays an error message to the Archivist.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Manage Consumer-Server Communication </name>
+    <actors>
+        <actor>One Consumer</actor>
+        <actor>Consumer Supervisor</actor>
+        <actor>Publisher Supervisor</actor>
+        <actor>Topic Supervisor</actor>
+        <actor>Exchanger</actor>
+        <actor>One Publisher</actor>
+        <actor>Consumer</actor>
+        <actor>Publisher</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">One Consumer starts connection with Consumer Server.</step>
+        <step id="S2">Consumer Server adds a new Consumer.</step>
+        <step id="S3">Consumer creates a Consumer entity.</step>
+        <step id="S4">One Consumer logs Username.</step>
+        <step id="S5">Consumer verifies successful creation.</step>
+        <step id="S6">One Consumer subscribes for services.</step>
+        <step id="S7">Consumer subscribes via Exchanger.</step>
+        <step id="S8">Exchanger creates topic if not already available in Topic Supervisor.</step>
+        <step id="S9">Topic Supervisor adds or checks the subscriber pointer in the Topics collection.</step>
+        <step id="S10">One Publisher starts connection with Publisher Server.</step>
+        <step id="S11">Publisher Server registers a new Publisher.</step>
+        <step id="S12">Publisher creates a Publisher entity.</step>
+        <step id="S13">One Publisher sends topics and messages.</step>
+        <step id="S14">Publisher transfers the message to Exchanger.</step>
+        <step id="S15">Exchanger sends topics and message to Topics collection.</step>
+        <step id="S16">Topic transmits message to each Subscriber in the collection.</step>
+        <step id="S17">One Consumer unsubscribes from services.</step>
+        <step id="S18">Consumer initiates unsubscribe via Exchanger.</step>
+        <step id="S19">Exchanger moves the subscriber pointer to the Unsubscribe list.</step>
+    </mainSequence>
+</useCase>

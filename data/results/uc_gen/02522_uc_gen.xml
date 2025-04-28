@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Register Use Case</name>
+    <actors>
+      <actor>User</actor>
+      <actor>App</actor>
+      <actor>Handler</actor>
+      <actor>Service</actor>
+      <actor>Repository</actor>
+    </actors>
+    <preconditions>
+      <precondition>User enters details (username, email, password) on registration form.</precondition>
+    </preconditions>
+    <successEndConditions>
+      <condition>Details are valid.</condition>
+      <condition>Email is unique.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+      <condition>Details are invalid.</condition>
+      <condition>Email is not unique.</condition>
+    </failureEndConditions>
+    <mainSequence>
+      <step id="S1">User enters details (username, email, password) on registration form.</step>
+      <step id="S2">Request register is made by the handler.</step>
+      <step id="S3">Handler calls create() function of the service.</step>
+      <step id="S4">Service creates user in the repository.</step>
+      <step id="S5">Repository checks for unique email.</step>
+      <step id="S6">System responds with OK if email is unique or Error if not.</step>
+      <step id="S7">Handler provides either success or error response to the User.</step>
+    </mainSequence>
+  </useCase>

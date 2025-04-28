@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>User interacts with Liba and App to render UserCard</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>User triggers the process of rendering UserCard</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>UserCard successfully rendered with all elements</condition>
+    </successEndConditions>
+    <trigger>User activates rendering process</trigger>
+    <mainSequence>
+        <step id="S1">User calls Liba to create instance for App</step>
+        <step id="S2">Liba creates cInstance for App</step>
+        <step id="S3">Liba sends cInstance to renderC</step>
+        <step id="S4">renderC receives cInstance and processes it</step>
+        <step id="S5">App receives props and renderLiba from renderC</step>
+        <step id="S6">App creates 'button' element using renderLiba</step>
+        <step id="S7">renderLiba returns bElement</step>
+        <step id="S8">App creates UserCard using renderLiba</step>
+        <step id="S9">UserCard sent to createChildren method with necessary parameters</step>
+        <step id="S10">createChildren method retrieves instances from cache if already rendered</step>
+        <step id="S11">Liba creates UserCard instance with AppCInstance, props, and key</step>
+        <step id="S12">Liba sends UserCInstance to renderC</step>
+        <step id="S13">renderC receives UserCInstance and processes it</step>
+        <step id="S14">UserCard receives props and renderLiba</step>
+        <step id="S15">UserCard creates 'div' element twice using renderLiba</step>
+        <step id="S16">UserCard returns element to renderLiba</step>
+        <step id="S17">UserCard element is sent back to renderC</step>
+        <step id="S18">renderC assigns the created element to instance.element</step>
+    </mainSequence>
+</useCase>

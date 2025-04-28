@@ -1,0 +1,32 @@
+<useCase id="UC001">
+  <name>Delete Order</name>
+  <description>Allows Employee to delete an order</description>
+  <actors>
+    <actor>Employee</actor>
+  </actors>
+  <preconditions>
+    <precondition>Employee is logged in</precondition>
+    <precondition>Order exists in the system</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Order is successfully deleted</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Order cannot be deleted</condition>
+  </failureEndConditions>
+  <trigger>Employee selects an order to delete</trigger>
+  <mainSequence>
+    <step id="S1">Employee selects the order to delete</step>
+    <step id="S2">Frontend Interface sends a delete request with orderId to Backend Server</step>
+    <step id="S3">Backend Server queries Database to delete order from the database by orderId</step>
+    <step id="S4">Backend Server returns success message to Frontend Interface</step>
+    <step id="S5">Frontend Interface displays success message to Employee</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S2">
+      <step id="A1S1">Order is not found or cannot be deleted</step>
+      <step id="A1S2">Backend Server returns error message to Frontend Interface</step>
+      <step id="A1S3">Frontend Interface displays error message to Employee</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

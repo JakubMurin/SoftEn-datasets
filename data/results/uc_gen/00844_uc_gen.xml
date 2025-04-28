@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Execute Query</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SamuraiDB</actor>
+        <actor>SegmentManager</actor>
+        <actor>IndexManager</actor>
+        <actor>FileAdapter</actor>
+    </actors>
+    <preconditions>
+        <precondition>SamuraiDB must have access to the query</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Query result is successfully retrieved</condition>
+    </successEndConditions>
+    <trigger>User executes a query</trigger>
+    <mainSequence>
+        <step id="S1">User executes the query</step>
+        <step id="S2">SamuraiDB receives the query</step>
+        <step id="S3">SamuraiDB fetches relevant indexes for the query</step>
+        <step id="S4">IndexManager reads index data</step>
+        <step id="S5">IndexManager provides indexes to SamuraiDB</step>
+        <step id="S6">SamuraiDB fetches segments based on indexes</step>
+        <step id="S7">SegmentManager reads segment data</step>
+        <step id="S8">SegmentManager provides segments to SamuraiDB</step>
+        <step id="S9">SamuraiDB returns query result to User</step>
+    </mainSequence>
+</useCase>

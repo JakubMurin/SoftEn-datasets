@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Register Fault</name>
+    <actors>
+        <actor>navegador</actor>
+        <actor>fault.routes</actor>
+        <actor>fault.controller</actor>
+        <actor>faultModelInstance</actor>
+        <actor>mysql</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User accesses fault registration form</step>
+        <step id="S2">Fault registration form is displayed</step>
+        <step id="S3">User validates form fields</step>
+        <step id="S4">User submits fault data</step>
+        <step id="S5">Form data is processed</step>
+        <step id="S6">Fields are validated</step>
+        <step id="S7">New FaultModel instance is created</step>
+        <step id="S8">Check if user exists</step>
+        <step id="S9">User exists in database</step>
+        <step id="S10">Insert fault data into database</step>
+        <step id="S11">Fault is successfully registered</step>
+        <step id="S12">Redirect user to success page</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Incomplete fields detected</step>
+            <step id="A1S2">Redirect user to error page</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Collaborator does not exist</description>
+            <step id="E1S1">Error: Collaborator not found</step>
+            <step id="E1S2">Redirect user to faults page with warning</step>
+        </esteps>
+    </errorSteps>
+</useCase>

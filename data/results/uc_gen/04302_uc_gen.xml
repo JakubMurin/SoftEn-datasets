@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Submit Session</name>
+    <actors>
+        <actor>AuthenticatedUser</actor>
+        <actor>Web Interface</actor>
+        <actor>Session Database</actor>
+        <actor>Session Review System</actor>
+        <actor>Notification Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>AuthenticatedUser is logged in</precondition>
+    </preconditions>
+    <trigger>User navigates to 'Submit Session'</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to 'Submit Session'</step>
+        <step id="S2">Web Interface displays 'Session Submission Form'</step>
+        <step id="S3">User fills in and submits the form</step>
+        <step id="S4">Session details are saved in the database</step>
+        <step id="S5">Session Review Process is triggered</step>
+        <step id="S6">Session status changes to 'Under Review'</step>
+        <step id="S7">Notification is triggered to the user</step>
+        <step id="S8">User receives an email notification about 'Session Submitted'</step>
+        <step id="S9">User refreshes/checks email</step>
+        <step id="S10">Session status is updated to 'Approved' or 'Rejected'</step>
+        <step id="S11">Notification is triggered to the user about evaluation</step>
+        <step id="S12">User receives an email notification about 'Session Approved' or 'Session Rejected'</step>
+    </mainSequence>
+</useCase>

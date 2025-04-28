@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Listing Components</name>
+    <description>Allows the Repository Manager to view components of a selected object.</description>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>DIMS UI</actor>
+        <actor>DIMS Backend</actor>
+        <actor>DAMS Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Repository Manager is logged in.</precondition>
+        <precondition>The object to list components for is selected.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The components are displayed in the appropriate order.</condition>
+    </successEndConditions>
+    <trigger>The Repository Manager selects an object to list components.</trigger>
+    <mainSequence>
+        <step id="S1">Repository Manager selects an object to list components.</step>
+        <step id="S2">DIMS UI requests to list components for the selected object.</step>
+        <step id="S3">DIMS Backend queries the Database for components of the object.</step>
+        <step id="S4">Database returns components data to DIMS Backend.</step>
+        <step id="S5">DIMS Backend sorts components in their appropriate order.</step>
+        <step id="S6">DIMS Backend shows sorted components to DIMS UI.</step>
+        <step id="S7">DIMS UI displays components in order to the Repository Manager.</step>
+    </mainSequence>
+</useCase>

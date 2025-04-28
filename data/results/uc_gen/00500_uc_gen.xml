@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Post a Slack Command</name>
+    <actors>
+        <actor>USER</actor>
+        <actor>APP</actor>
+        <actor>SLACK</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to Slack application</precondition>
+    </preconditions>
+    <trigger>User posts a Slack command</trigger>
+    <mainSequence>
+        <step id="S1">User posts a Slack command</step>
+        <step id="S2">APP receives and processes the `/rocker` event triggered</step>
+        <step id="S3">APP posts an ephemeral message in the channel</step>
+        <step id="S4">User clicks on button `launch rocket`</step>
+        <step id="S5">APP receives and processes the `interaction` event triggered</step>
+        <step id="S6">APP posts a message to the channel displaying Rocket Countdown Message 3</step>
+        <step id="S7">APP posts a message to the channel displaying Rocket Countdown Message 2</step>
+        <step id="S8">APP posts a message to the channel displaying Rocket Countdown Message 1</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Register Guild</name>
+    <actors>
+        <actor>Guest</actor>
+        <actor>Mail</actor>
+        <actor>Page1</actor>
+        <actor>Page2</actor>
+        <actor>Api1</actor>
+        <actor>GuestToken</actor>
+        <actor>Guild</actor>
+    </actors>
+    <preconditions>
+        <precondition>The guest clicks on a link in an email.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The guest successfully registers the guild.</condition>
+    </successEndConditions>
+    <trigger>Token received in email link click.</trigger>
+    <mainSequence>
+        <step id="S1">Guest clicks the link in the email.</step>
+        <step id="S2">The token is received by the mail.</step>
+        <step id="S3">Token sent to Api1 for checking the guild registration request token.</step>
+        <step id="S4">Api1 retrieves the existing token from the GuestToken database.</step>
+        <step id="S5">The GuestToken is valid within the expiration time frame.</step>
+        <step id="S6">Api1 receives the token from GuestToken.</step>
+        <step id="S7">Api1 retrieves the temporarily registered guild from the Guild database by ID.</step>
+        <step id="S8">Guild provides the guild name to Api1.</step>
+        <step id="S9">Api1 provides guild ID, guild name, and email address to Page1.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">If the token is not valid, Api1 redirects to Page1 displaying an error.</step>
+            <step id="A1S2">Page1 redirects to Page2 to handle the error.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

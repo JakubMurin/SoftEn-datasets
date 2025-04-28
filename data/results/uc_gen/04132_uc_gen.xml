@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Inventory Management and Restocking</name>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef recognizes the need for item renewal in the restaurant's inventory.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Chef completes the restocking process successfully.</condition>
+    </successEndConditions>
+    <trigger>Accessing the inventory management system.</trigger>
+    <mainSequence>
+        <step id="S1">The Chef accesses inventory management and checks the current backup food stock.</step>
+        <step id="S2">The system returns the current stock levels to the Chef.</step>
+        <step id="S3">The Chef is shown the current backup food list with stock levels.</step>
+        <step id="S4">The Chef identifies items that require renewal.</step>
+        <step id="S5">The system updates the backup food list with the Chef's identified items.</step>
+        <step id="S6">The updated list is confirmed by the system.</step>
+        <step id="S7">The confirmation of the renewed list is displayed to the Chef.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">The Chef initiates a restock request for the identified items.</step>
+            <step id="A1S2">The system places an order with the Supplier for the restock.</step>
+            <step id="A1S3">The Supplier confirms the restock order.</step>
+            <step id="A1S4">The system updates pending deliveries in the InventoryDB.</step>
+            <step id="A1S5">The InventoryDB confirms the update.</step>
+            <step id="A1S6">The Chef is shown the confirmation of the restock order.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="P210_issue_vc">
+    <name>P210: Issue VC</name>
+    <actors>
+        <actor>USER</actor>
+        <actor>WALLET</actor>
+        <actor>CA</actor>
+        <actor>TAS</actor>
+        <actor>ISSUER</actor>
+        <actor>BC</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">USER requests VC offer from TAS</step>
+        <step id="S2">TAS sends VC offer response to USER</step>
+        <step id="S3">CA confirms offer</step>
+        <step id="S4">CA requests VC Plan ID list from TAS</step>
+        <step id="S5">TAS returns VC Plan ID list response to CA</step>
+        <step id="S6">CA issues VC start request to TAS</step>
+        <step id="S7">TAS processes VC start request and responds</step>
+        <step id="S8">CA makes ECDH request</step>
+        <step id="S9">CA receives ECDH response from TAS</step>
+        <step id="S10">CA requests issue profile from TAS</step>
+        <step id="S11">TAS returns issue profile response to CA</step>
+        <step id="S12">CA requests VC issuance from WALLET</step>
+        <step id="S13">WALLET processes VC issuance request and responds</step>
+        <step id="S14">CA requests VC completion from TAS</step>
+        <step id="S15">TAS completes VC issuance process and responds to CA</step>
+    </mainSequence>
+</useCase>

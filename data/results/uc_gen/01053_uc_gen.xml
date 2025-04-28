@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Passer une commande en ligne</name>
+    <description>Le client parcourt, sélectionne des produits, les ajoute au panier, passe une commande et effectue un paiement.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>InterfaceUtilisateur</actor>
+        <actor>CatalogueProduits</actor>
+        <actor>Panier</actor>
+        <actor>SystèmePaiement</actor>
+        <actor>SystèmeNotification</actor>
+    </actors>
+    <preconditions>
+        <precondition>Le client est connecté au système de commande en ligne.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Le paiement est effectué avec succès et la commande est confirmée.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Le paiement échoue et l'utilisateur est informé des alternatives de paiement.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client parcourt et sélectionne les produits avec l'InterfaceUtilisateur.</step>
+        <step id="S2">InterfaceUtilisateur récupère les détails des produits du CatalogueProduits.</step>
+        <step id="S3">Client ajoute un produit au Panier via l'InterfaceUtilisateur.</step>
+        <step id="S4">Panier met à jour son contenu.</step>
+        <step id="S5">Client passe la commande.</step>
+        <step id="S6">InterfaceUtilisateur récupère le contenu du Panier.</step>
+        <step id="S7">InterfaceUtilisateur traite le paiement via le SystèmePaiement.</step>
+        <step id="S8">SystèmePaiement confirme le paiement à l'InterfaceUtilisateur.</step>
+        <step id="S9">InterfaceUtilisateur envoie une confirmation de commande au SystèmeNotification.</step>
+        <step id="S10">SystèmeNotification envoie un email de confirmation au Client.</step>
+    </mainSequence>
+</useCase>

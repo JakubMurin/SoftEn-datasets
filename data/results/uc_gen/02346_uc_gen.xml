@@ -1,0 +1,52 @@
+<useCase id="UC1">
+    <name>Citizen Completes Application Process</name>
+    <actors>
+        <actor>Citizen</actor>
+        <actor>CitizenApplication</actor>
+        <actor>SolidServer</actor>
+        <actor>CitizenStorage</actor>
+        <actor>Office1Application</actor>
+        <actor>Office1Storage</actor>
+        <actor>Office1CitizenStorage</actor>
+        <actor>Office2Application</actor>
+        <actor>Office2Storage</actor>
+        <actor>Office2CitizenStorage</actor>
+    </actors>
+    <preconditions>
+        <precondition>Citizen has access to the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Citizen successfully completes the application process</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Citizen fails to complete the application process</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Citizen navigates to the application</step>
+        <step id="S2">Citizen logs in with session</step>
+        <step id="S3">Citizen bootstraps the application</step>
+        <step id="S4">Citizen edits data</step>
+        <step id="S5">Citizen processes finished</step>
+        <step id="S6">Citizen navigates to Office1 application</step>
+        <step id="S7">Citizen logs in without session</step>
+        <step id="S8">Citizen accesses via Access Request and Access Grant</step>
+        <step id="S9">Citizen reads data and fills forms</step>
+        <step id="S10">Citizen fills form data manually</step>
+        <step id="S11">Data is saved to Office1 citizen storage</step>
+        <step id="S12">Save-to-data message is sent to citizen's inbox</step>
+        <step id="S13">Citizen processes finished</step>
+        <step id="S14">Citizen navigates back to Citizen application</step>
+        <step id="S15">Citizen logs in with session</step>
+        <step id="S16">Data is merged from inbox to main data</step>
+        <step id="S17">Citizen processes finished</step>
+        <step id="S18">Citizen navigates to Office2 application</step>
+        <step id="S19">Citizen logs in without session</step>
+        <step id="S20">Citizen accesses via Access Request and Access Grant</step>
+        <step id="S21">Citizen reads data and fills forms</step>
+        <step id="S22">Citizen reads data from reference</step>
+        <step id="S23">Citizen fills form data manually</step>
+        <step id="S24">Data is saved to Office2 citizen storage</step>
+        <step id="S25">Save-to-data message is sent to citizen's inbox</step>
+        <step id="S26">Citizen processes finished</step>
+    </mainSequence>
+</useCase>

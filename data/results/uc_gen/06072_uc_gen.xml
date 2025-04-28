@@ -1,0 +1,52 @@
+<useCase id="UC_001">
+    <name>Persisted Queue Transaction with State Machine Replication</name>
+    
+    <actors>
+        <actor>ApplicationA</actor>
+        <actor>CorfuGuidGeneratorA</actor>
+        <actor>CorfuRuntimeA</actor>
+        <actor>ApplicationB</actor>
+        <actor>CorfuGuidGeneratorB</actor>
+        <actor>CorfuRuntimeB</actor>
+        <actor>CorfuCluster</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>CorfuCluster is operational</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>All objects are successfully enqueued, reflected in both Node A and Node B.</condition>
+    </successEndConditions>
+    
+    <trigger>Two transactions trigger enqueue() operation, starting with object A and then object B.</trigger>
+    
+    <mainSequence>
+        <step id="S1">ApplicationA enqueues object A via CorfuRuntimeA.</step>
+        <step id="S2">CorfuRuntimeA generates a unique Id '0001' for object A.</step>
+        <step id="S3">CorfuRuntimeA saves object A (0001, A) in CorfuCluster.</step>
+        <step id="S4">ApplicationB enqueues object B via CorfuRuntimeB.</step>
+        <step id="S5">CorfuRuntimeB generates a unique Id '0002' for object B.</step>
+        <step id="S6">CorfuRuntimeB saves object B (0002, B) in CorfuCluster.</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Transaction B commits first</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Followed by TransactionA</step>
+        </asteps>
+    </alternativeSteps>
+    
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error during writing object in cluster</description>
+            <step id="E1S1">Rollback</step>
+        </esteps>
+        <esteps id="E2" start="S6">
+            <description>Error during writing object in cluster</description>
+            <step id="E2S1">Rollback</step>
+        </esteps>
+    </errorSteps>
+</useCase>

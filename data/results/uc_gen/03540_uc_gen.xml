@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Enterprise Admission (Recycler)</name>
+    
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Agency</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Enterprise submits data to Vue</step>
+        <step id="S2">Controller processes /ent/apply request</step>
+        <step id="S3">EntService submits admission data</step>
+        <step id="S4">EntService uploads files to Mongodb</step>
+        <step id="S5">EntService saves file association information to MySQL</step>
+        <step id="S6">Controller returns result to Vue</step>
+        <step id="S7">Vue returns result to Enterprise</step>
+        
+        <step id="S8">Regulatory Agency queries unapproved enterprise list</step>
+        <step id="S9">Controller processes /ent/list request</step>
+        <step id="S10">EntService queries enterprise list from MySQL</step>
+        <step id="S11">Controller returns result to Vue</step>
+        <step id="S12">Vue returns result to Regulatory Agency</step>
+        
+        <step id="S13">Regulatory Agency approves enterprise admission</step>
+        <step id="S14">Controller processes /ent/pass request</step>
+        <step id="S15">EntService deploys admission contract using JAVA_SDK</step>
+        <step id="S16">EntService updates information in MySQL</step>
+        <step id="S17">Controller returns result to Vue</step>
+        <step id="S18">Vue returns result to Regulatory Agency</step>
+        
+        <step id="S19">Enterprise queries admission result</step>
+        <step id="S20">Controller processes /ent/accessResult request</step>
+        <step id="S21">EntService queries admission information from MySQL</step>
+        <step id="S22">EntService queries admission contract content using JAVA_SDK</step>
+        <step id="S23">Controller returns result to Vue</step>
+        <step id="S24">Vue returns result to Enterprise</step>
+        
+        <step id="S25">Enterprise can resubmit admission data</step>
+    </mainSequence>
+</useCase>

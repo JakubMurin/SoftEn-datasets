@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>HasKeychainEntryEndpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User A initiates a transaction to set a key-value pair in the keychain through API Client.</step>
+        <step id="S2">API Client sends a request to API Server.</step>
+        <step id="S3">API Server forwards the request to AWS SM Connector to set the key-value pair.</step>
+        <step id="S4">AWS SM Connector retrieves the AWS client.</step>
+        <step id="S5">AWS SM Connector attempts to describe the secret using the AWS client.</step>
+        <step id="S6">If successful, AWS SM Connector responds to API Server with "True".</step>
+        <step id="S7">If an error occurs, AWS SM Connector notifies API Server with the error message "Secrets Manager can't find the specified secret".</step>
+        <step id="S8">AWS SM Connector sends the response to API Server.</step>
+        <step id="S9">API Server formats the response.</step>
+        <step id="S10">API Client receives the formatted response.</step>
+        <step id="S11">API Client sets the keychain entry and sends the response to User A.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>User sign up</name>
+    <description>Allow a user to sign up for the system</description>
+    <actors>
+        <actor>User</actor>
+        <actor>SignUpController</actor>
+        <actor>SignUpService</actor>
+        <actor>UserRepository</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User sends a POST request to /sign-up</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully signed up</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error response sent if the user already exists</condition>
+    </failureEndConditions>
+    <trigger>User wants to sign up</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to /sign-up</step>
+        <step id="S2">Controller executes business logic</step>
+        <step id="S3">Service validates if the user exists</step>
+        <step id="S4">Repository gets the user from the Database</step>
+        <step id="S5">Service validates the response</step>
+        <step id="S6">Service creates the user</step>
+        <step id="S7">Repository saves the user to the Database</step>
+        <step id="S8">Repository creates a response</step>
+        <step id="S9">Service responds with success</step>
+        <step id="S10">Controller responds with the user data</step>
+    </mainSequence>
+</useCase>

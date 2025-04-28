@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Creación de identidad</name>
+    <actors>
+        <actor>User (Móvil)</actor>
+        <actor>User_Web (Browser/App)</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario tiene instalada la aplicación Alastria en el móvil.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">El usuario solicita el token de sesión.</step>
+        <step id="S2">El usuario recibe el token de sesión.</step>
+        <step id="S3">El usuario expresa su deseo de darse de alta en Alastria ID.</step>
+        <step id="S4">La web/app de socio recibe la solicitud del usuario y le entrega el token de sesión.</step>
+        <step id="S5">Se prepara un objeto JSON con el alta en Alastria.</step>
+        <step id="S6">Se envía la URL de recuperación del JSON con el token de sesión al móvil.</step>
+        <step id="S7">Se realiza la recuperación de la clave pública para verificar la información recuperada.</step>
+        <step id="S8">La firma del objeto JSON es verificada.</step>
+        <step id="S9">Se crea el Alastria_ID del usuario.</step>
+        <step id="S10">Se recupera el Alastria_ID del usuario y se procede con la creación de claves.</step>
+        <step id="S11">Se publica en el Registry la clave pública.</step>
+        <step id="S12">El usuario tiene su Alastria_ID creado y se procede con la inclusión de testimonios.</step>
+        <step id="S13">El usuario solicita los atestados aportados por el socio.</step>
+        <step id="S14">Se construyen los atestados del usuario y se prepara un JSON firmado.</step>
+        <step id="S15">Se envía la URL de recuperación de los atestados al móvil.</step>
+        <step id="S16">El usuario verifica la firma del objeto JSON y procede a aceptar y firmar los atestados.</step>
+        <step id="S17">Se almacena el atestado en el Repository y se recupera la URI de recuperación.</step>
+        <step id="S18">Se registra en el Registry los atributos y se procede al almacenamiento en el Repository.</step>
+        <step id="S19">Se completa el registro de los atributos en el Registry.</step>
+    </mainSequence>
+</useCase>

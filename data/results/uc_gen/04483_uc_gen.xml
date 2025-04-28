@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Solicitar recuperación de contraseña</name>
+    <actors>
+        <actor>Usuario</actor>
+        <actor>AngularApp</actor>
+        <actor>ExpressServer</actor>
+        <actor>MySQL</actor>
+        <actor>EmailServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Usuario necesita recuperar la contraseña</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Usuario solicita recuperación de contraseña</step>
+        <step id="S2">AngularApp activado para gestionar solicitud</step>
+        <step id="S3">AngularApp envía solicitud de recuperación a ExpressServer</step>
+        <step id="S4">ExpressServer verifica correo electrónico en MySQL</step>
+        <step id="S5">MySQL confirma que el correo electrónico es válido</step>
+        <step id="S6">ExpressServer envía correo de recuperación a EmailServer</step>
+        <step id="S7">EmailServer envía correo de recuperación</step>
+        <step id="S8">ExpressServer confirma envío a AngularApp</step>
+        <step id="S9">AngularApp envía correo de recuperación a Usuario</step>
+    </mainSequence>
+</useCase>

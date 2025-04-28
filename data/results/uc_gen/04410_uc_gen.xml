@@ -1,0 +1,45 @@
+<useCase id="123">
+    <name>Delete Employee</name>
+    <description>
+        The use case describes the process of deleting an employee from the system.
+    </description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must have permission to delete an employee.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The employee is successfully deleted.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The employee being deleted was not found.</condition>
+    </failureEndConditions>
+    
+    <mainSequence>
+        <step id="S1">Manager selects "Delete Employee" option.</step>
+        <step id="S2">Manager confirms deletion of employee.</step>
+    </mainSequence>
+
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">WebUI requests deletion of employee from Server.</step>
+            <step id="A1S2">DB checks if employee exists.</step>
+            <step id="A1S3">DB asks for confirmation from WebUI.</step>
+            <step id="A1S4">Manager confirms the deletion on WebUI.</step>
+            <step id="A1S5">WebUI sends a delete command confirmed by Manager to Server.</step>
+            <step id="A1S6">Server removes the employee record from DB.</step>
+            <step id="A1S7">DB sends confirmation of deletion to Server.</step>
+            <step id="A1S8">Server reports deletion success to WebUI.</step>
+            <step id="A1S9">WebUI notifies Manager of successful deletion.</step>
+        </asteps>
+    </alternativeSteps>
+    
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>The deletion started with Manager selection confirmation failed due to errors.</description>
+            <step id="E1S1">Server notifies WebUI that employee does not exist.</step>
+            <step id="E1S2">WebUI tells Manager that the deletion cannot be performed.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

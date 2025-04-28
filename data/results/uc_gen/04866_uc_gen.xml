@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Login Process</name>
+    <description>This use case describes the process of a user logging in.</description>
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Login API</actor>
+        <actor>User Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must have valid login credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully logs in and receives the session cookie.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user fails to log in.</condition>
+    </failureEndConditions>
+    <trigger>HTTP POST login request containing username, password, and CSRF token.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a login request to Login API with login data.</step>
+        <step id="S2">Login API validates the login request.</step>
+        <step id="S3">If validation fails, Login API returns an appropriate HTTP status code.</step>
+        <step id="S4">If validation is successful, Login API queries the User Database for user information.</step>
+        <step id="S5">User Database returns the user information to Login API.</step>
+        <step id="S6">If user information exists and password authentication is successful, Login API returns HTTP 200 OK and sets session cookie.</step>
+        <step id="S7">If authentication fails, Login API returns HTTP 401 Unauthorized.</step>
+    </mainSequence>
+</useCase>

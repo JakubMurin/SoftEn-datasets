@@ -1,0 +1,21 @@
+<useCase id="UC1">
+  <name>Display Job Openings in Results Phase</name>
+  <actors>
+    <actor>CustomerManager</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">CustomerManager asks PublishJobOpeningUI to display job openings in the results phase</step>
+    <step id="S2">PublishJobOpeningUI gets job openings</step>
+    <step id="S3">PublishJobOpeningUI displays job openings</step>
+    <step id="S4">CustomerManager selects job opening to publish results</step>
+    <step id="S5">PublishJobOpeningUI calls PublishJobOpeningController to publish job opening results</step>
+    <step id="S6">PublishJobOpeningController sends result email request</step>
+    <step id="S7">FollowUpServerProxy creates and connects a ClientSocket</step>
+    <step id="S8">ClientSocket sends request to server via FollowUpServerProxy</step>
+    <step id="S9">FollowUpServer writes and parses the request</step>
+    <step id="S10">ResultEmailRequest executes to select candidates</step>
+    <step id="S11">CandidateSelectionService selects candidates and sends emails</step>
+    <step id="S12">EmailService sends email notifications to selected candidates</step>
+    <step id="S13">NotificationRepository saves notifications</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Registo de um percurso</name>
+    <description>O gestor de logística inicia o processo de registo de um percurso.</description>
+    <actors>
+        <actor>Gestor de Logística</actor>
+    </actors>
+    <preconditions>
+        <precondition>N/A</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Informação de registo bem-sucedida</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Erro ao registrar percurso</condition>
+    </failureEndConditions>
+    <trigger>Inicia o processo de registo de um percurso</trigger>
+    <mainSequence>
+        <step id="S1">Solicita os dados necessários para o registo</step>
+        <step id="S2">Introduz os dados solicitados</step>
+        <step id="S3">Solicita a confirmação dos dados de registo</step>
+        <step id="S4">Confirma os dados do registo</step>
+        <step id="S5">Informa o sucesso da operação</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Caso os dados não estejam corretos, informa o gestor de logística</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Ocorreu um erro ao confirmar os dados do registo</description>
+            <step id="E1S1">Informar o gestor de logística sobre o erro</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Take an Exam</name>
+    <actors>
+        <actor>Student</actor>
+    </actors>
+    <trigger>User wants to take an exam</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with UI to take an exam</step>
+        <step id="S2">UI calls Controller to get unsolved exams</step>
+        <step id="S3">Controller requests unsolved exams from Service1</step>
+        <step id="S4">Service1 fetches unsolved exams from Repository1</step>
+        <step id="S5">Service1 returns the list of unsolved exams to Controller</step>
+        <step id="S6">Controller sends the list of exams to UI</step>
+        <step id="S7">UI displays the list of exams to the User</step>
+        <step id="S8">User selects an exam</step>
+        <step id="S9">User confirms selected exam</step>
+        <step id="S10">UI asks the Controller to validate exam submission</step>
+        <step id="S11">Controller invokes Service3 to validate exam status</step>
+        <step id="S12">Service3 checks and returns validation result to the Controller</step>
+        <step id="S13">If exam is open to submit, Controller builds the exam for the user</step>
+        <step id="S14">User answers exam questions with assistance from the UI</step>
+        <step id="S15">User receives feedback on exam performance</step>
+    </mainSequence>
+</useCase>

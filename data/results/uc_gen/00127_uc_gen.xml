@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Update Request Status</name>
+    <description>As a User, I want to be able to update the status of a request, so that the system can process the request accordingly.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ConsoleUI</actor>
+        <actor>RequestController</actor>
+        <actor>DBManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to update request status.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The request status is successfully updated in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>There was an error updating the request status in the database.</condition>
+    </failureEndConditions>
+    <trigger>User selects a request ID and provides a status (Accept/Reject) through the ConsoleUI.</trigger>
+    <mainSequence>
+        <step id="S1">User selects a request ID and provides a status (Accept/Reject).</step>
+        <step id="S2">ConsoleUI calls update_request_status(request_id, status) on RequestController.</step>
+        <step id="S3">RequestController executes a SELECT query to fetch request details from DBManager.</step>
+        <step id="S4">DBManager returns the request data to RequestController.</step>
+        <step id="S5">RequestController executes UPDATE queries for requests and books (if accepted) in DBManager.</step>
+        <step id="S6">DBManager returns success/failure status to RequestController.</step>
+        <step id="S7">RequestController returns the result to ConsoleUI.</step>
+        <step id="S8">ConsoleUI shows a success or failure message to the User.</step>
+    </mainSequence>
+</useCase>

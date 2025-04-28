@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Query Order</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>QueryOrderHandler</actor>
+        <actor>OrderRepo</actor>
+        <actor>OrderDataStore (DashMap)</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client queries order.</step>
+        <step id="S2">QueryOrderHandler retrieves order by table id from OrderRepo.</step>
+        <step id="S3">OrderRepo retrieves order from OrderDataStore (DashMap).</step>
+        <step id="S4">If order is found:</step>
+        <step id="S5">QueryOrderHandler sends order to Client.</step>
+        <step id="S6">If order is not found:</step>
+        <step id="S7">QueryOrderHandler informs Client that order was not found.</step>
+    </mainSequence>
+</useCase>

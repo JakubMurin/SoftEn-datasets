@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Authorized User Authentication and Data Upload</name>
+    <description>This use case involves an authorized user authenticating to upload encoding data to an object store.</description>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>Authorized user credentials are available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Encoded data successfully uploaded to the object store.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to authenticate or upload data.</condition>
+    </failureEndConditions>
+    <trigger>User requests authentication and data upload process.</trigger>
+    <mainSequence>
+        <step id="S1">Alice requests temporary object store credentials from Anonlink.</step>
+        <step id="S2">Anonlink creates restricted credentials and responds to Alice with the credentials.</step>
+        <step id="S3">Alice uploads binary encoding data to the Object Store.</step>
+        <step id="S4">Alice uploads encoding data via "/clks" and optionally provides blocks to Anonlink.</step>
+        <step id="S5">Anonlink responds with an upload receipt to Alice.</step>
+    </mainSequence>
+</useCase>

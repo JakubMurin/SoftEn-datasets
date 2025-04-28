@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Estimate IT Resources and Costs</name>
+    <description>Researcher uses the DMPTool Interface to estimate IT resource needs and costs.</description>
+    <actors>
+        <actor>Researcher</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Researcher has project details ready.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher receives accurate cost estimate and resource requirements.</condition>
+    </successEndConditions>
+    <trigger>Researcher accesses the DMPTool Interface to estimate IT resources and costs.</trigger>
+    <mainSequence>
+        <step id="S1">Researcher accesses the DMPTool Interface.</step>
+        <step id="S2">Researcher inputs project details like data volume and processing power.</step>
+        <step id="S3">DMPTool requests resource requirements input from ITRE.</step>
+        <step id="S4">ITRE inputs project details and returns resource estimates to DMPTool.</step>
+        <step id="S5">DMPTool initiates cost calculation with CCM.</step>
+        <step id="S6">CCM requests pricing data from IS.</step>
+        <step id="S7">IS returns pricing data to CCM.</step>
+        <step id="S8">CCM calculates the cost estimate and returns it to DMPTool.</step>
+        <step id="S9">DMPTool displays the cost estimate and resource needs to the Researcher.</step>
+    </mainSequence>
+</useCase>

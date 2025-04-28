@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Order Processing</name>
+    <description>Process of creating and managing orders</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Order Service</actor>
+        <actor>Billing Service</actor>
+        <actor>Notification Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates order creation</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Order status successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Payment failure or notification error</condition>
+    </failureEndConditions>
+    <trigger>Client initiates order creation</trigger>
+    <mainSequence>
+        <step id="S1">Client creates an order</step>
+        <step id="S2">Order Service receives order creation request</step>
+        <step id="S3">Billing Service generates payment details</step>
+        <step id="S4">Notification Service creates notification</step>
+        <step id="S5">Notification Service sends notification via Email, SMS, Push</step>
+        <step id="S6">Billing Service updates information on notification</step>
+        <step id="S7">Order Service updates information on payment</step>
+        <step id="S8">Order Service updates client on order status</step>
+    </mainSequence>
+</useCase>

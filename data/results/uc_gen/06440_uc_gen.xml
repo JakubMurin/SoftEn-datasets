@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Search for Data Packages</name>
+    <actors>
+        <actor>Consumer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Consumer has access to the search interface</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The search results are displayed to the Consumer</condition>
+    </successEndConditions>
+    <trigger>The Consumer enters a search query</trigger>
+    <mainSequence>
+        <step id="S1">The Consumer enters a search query</step>
+        <step id="S2">The Search Interface sends the search request to the Platform Backend</step>
+        <step id="S3">The Platform Backend queries the Data Registry for data packages</step>
+        <step id="S4">The Data Registry returns search results to the Platform Backend</step>
+        <step id="S5">The Platform Backend displays search results to the Search Interface</step>
+        <step id="S6">The Search Interface shows the search results to the Consumer</step>
+    </mainSequence>
+</useCase>

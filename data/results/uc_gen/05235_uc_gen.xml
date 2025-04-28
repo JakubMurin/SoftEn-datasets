@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Mint TopHat</name>
+    <actors>
+        <actor>address1</actor>
+        <actor>address2</actor>
+        <actor>address3</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Mint TopHat in Hats</step>
+        <step id="S2">Create TimeFrameHatModule in HatsModuleFactory</step>
+        <step id="S3">Deploy TimeFrameHatModule</step>
+        <step id="S4">Create Hatter Hat in Hats</step>
+        <step id="S5">Mint Hatter Hat in TimeFrameHatModule</step>
+        <step id="S6">Create Role Hat 1 under Hatter Hat in Hats</step>
+        <step id="S7">Create Role Hat 2 under Hatter Hat in Hats</step>
+        <step id="S8">Mint Role Hat 1 in address1 through TimeFrameHatModule</step>
+        <step id="S9">Mint Role Hat 2 in address2 through TimeFrameHatModule</step>
+        <step id="S10">Mint FractionToken in address1 with initial amount (based on Role Hat 1 ID)</step>
+        <step id="S11">Mint FractionToken in address2 with initial amount (based on Role Hat 2 ID)</step>
+        <step id="S12">Transfer part of FractionToken from address2 to address3 (based on Role Hat 2 ID)</step>
+        <step id="S13">Create Split in SplitCreator with ratios between hats and participants</step>
+        <step id="S14">Request information from FractionToken in SplitCreator</step>
+        <step id="S15">Create PullSplits contract in PullSplitsFactory</step>
+        <step id="S16">Verify distribution info hash in PullSplit</step>
+        <step id="S17">Update SplitsWarehouse balances based on distribution info in PullSplit</step>
+        <step id="S18">Withdraw ERC6909X tokens from SplitsWarehouse to address1</step>
+        <step id="S19">Withdraw ERC6909X tokens from SplitsWarehouse to address2</step>
+        <step id="S20">Withdraw ERC6909X tokens from SplitsWarehouse to address3</step>
+    </mainSequence>
+</useCase>

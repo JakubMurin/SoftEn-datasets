@@ -1,0 +1,46 @@
+<useCase id="UC001">
+    <name>Select and Manage Bookings</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>BookingsPage</actor>
+        <actor>BookingValidator</actor>
+        <actor>DatabaseManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client opens the Manage Bookings Page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client successfully manages and interacts with bookings</condition>
+    </successEndConditions>
+    <trigger>User wants to manage bookings</trigger>
+    <mainSequence>
+        <step id="S1">Client opens the Manage Bookings Page</step>
+        <step id="S2">Client selects to Cancel or Edit Booking</step>
+        <step id="S3">Booking details displayed</step>
+        <step id="S4">Validation of cancellation or editing performed</step>
+        <step id="S5">Action processed based on validation result</step>
+        <step id="S6">Booking information gets updated/deleted</step>
+        <step id="S7">Updated booking info displayed to the Client</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">User Cancels a Booking</step>
+            <step id="A1S2">Validation unsuccessful</step>
+            <step id="A1S3">User unable to cancel, error displayed</step>
+            <step id="A1S4">Validation successful</step>
+            <step id="A1S5">Booking deleted, success message presented to user</step>
+        </asteps>
+        <asteps id="A2" start="S2">
+            <step id="A2S1">User Edits a Booking</step>
+            <step id="A2S2">Validation fails</step>
+            <step id="A2S3">User unable to edit, error message shown</step>
+            <step id="A2S4">Validation is successful</step>
+            <step id="A2S5">Booking updated, success message displayed</step>
+        </asteps>
+        <asteps id="A3" start="S2">
+            <step id="A3S1">User Views Bookings</step>
+            <step id="A3S2">Booking details obtained from the database</step>
+            <step id="A3S3">Booking details displayed to user</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>购买iPhone2017</name>
+    <actors>
+        <actor>老王</actor>
+        <actor>奸商</actor>
+        <actor>支付宝</actor>
+        <actor>无良借款公司</actor>
+        <actor>土</actor>
+    </actors>
+    <preconditions>
+        <precondition>老板需要一部iPhone2017</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>老板成功购买iPhone2017</condition>
+    </successEndConditions>
+    <trigger>老板需要购买iPhone2017</trigger>
+    <mainSequence>
+        <step id="S1">老板请求购买iPhone2017</step>
+        <step id="S2">奸商提供iPhone2017价格</step>
+        <step id="S3">老板选择支付方式</step>
+        <step id="S4">奸商确认支付</step>
+        <step id="S5">支付宝处理支付</step>
+        <step id="S6">奸商交付iPhone2017</step>
+        <step id="S7">老板完成购买</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">老板选择借款方式</step>
+            <step id="A1S2">无良借款公司提供借款</step>
+            <step id="A1S3">老板支付借款</step>
+            <step id="A1S4">奸商交付iPhone2017</step>
+            <step id="A1S5">老板完成购买</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>老板无法支付</description>
+            <step id="E1S1">老板选择借款方式</step>
+            <step id="E1S2">无良借款公司提供借款</step>
+            <step id="E1S3">老板支付借款</step>
+            <step id="E1S4">奸商交付iPhone2017</step>
+            <step id="E1S5">老板完成购买</step>
+        </esteps>
+    </errorSteps>
+</useCase>

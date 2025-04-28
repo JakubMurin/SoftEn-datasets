@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Manage Pomodoro Task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TimeTrigger</actor>
+        <actor>Renderer</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>TaskStateChangeHandler</actor>
+        <actor>TaskFinishHandler</actor>
+        <actor>NotificationPlayer</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has initiated a Pomodoro task via the CLI command "pomogo --task 'programuj pomodoro'"</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User executes the command "pomogo --task 'programuj pomodoro'" through the CLI interface.</step>
+        <step id="S2">TaskStartHandler registers the new task.</step>
+        <step id="S3">TaskStartHandler saves the new task "programuj pomodoro" with start date and other details in sqlite.</step>
+        <step id="S4">TimeTrigger triggers a refresh, prompting Renderer to get tasks from sqlite.</step>
+        <step id="S5">Renderer renders a progress bar with animations and unicorns for the user.</step>
+        <step id="S6">TaskStateChangeHandler saves the new state as "resting" and increments the rest marker if work mode finishes and resting mode starts.</step>
+        <step id="S7">NotificationPlayer triggers a sound notification when the state switches.</step>
+        <step id="S8">TaskStateChangeHandler saves the new state as "deep resting" and resets the rest marker if work mode finishes and long resting mode starts.</step>
+        <step id="S9">NotificationPlayer triggers a sound notification when the state changes.</step>
+        <step id="S10">TaskStateChangeHandler saves the new state as "resting" and increments the rest marker if rest mode finishes and work mode starts.</step>
+        <step id="S11">NotificationPlayer triggers a sound notification when the state changes.</step>
+        <step id="S12">TaskStateChangeHandler marks the task as paused if deep rest mode finishes.</step>
+        <step id="S13">NotificationPlayer triggers a sound notification when the state changes.</step>
+        <step id="S14">TimeTrigger eventually triggers and Renderer renders a finish message with unicorns for the user.</step>
+    </mainSequence>
+</useCase>

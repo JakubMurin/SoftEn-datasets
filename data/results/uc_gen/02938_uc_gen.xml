@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Access Platform and Customize Interface</name>
+    <description>User accesses the platform and customizes the interface based on user settings and integration capabilities.</description>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>UI</actor>
+        <actor>Auth</actor>
+        <actor>SI</actor>
+        <actor>UnivSys</actor>
+        <actor>DMP</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials for authentication.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Platform interface is successfully customized based on user settings and integration capabilities.</condition>
+    </successEndConditions>
+    <trigger>User accesses the platform.</trigger>
+    <mainSequence>
+        <step id="S1">Depositor accesses the platform.</step>
+        <step id="S2">UI requests authentication from Auth service.</step>
+        <step id="S3">Auth service authenticates Depositor.</step>
+        <step id="S4">Depositor provides credentials to Auth service.</step>
+        <step id="S5">Auth service confirms authentication to UI.</step>
+        <step id="S6">UI requests familiar interface customization from SI.</step>
+        <step id="S7">SI fetches user preferences from UnivSys.</step>
+        <step id="S8">UnivSys provides user settings to SI.</step>
+        <step id="S9">SI applies settings and customization to UI.</step>
+        <step id="S10">UI requests integration features from SI.</step>
+        <step id="S11">SI fetches integration capabilities from UnivSys.</step>
+        <step id="S12">UnivSys provides integration capabilities to SI.</step>
+        <step id="S13">SI integrates with University Systems.</step>
+        <step id="S14">UI renders unified management interface via DMP.</step>
+        <step id="S15">DMP signals readiness of the interface to UI.</step>
+        <step id="S16">UI displays familiar and integrated interface to Depositor.</step>
+    </mainSequence>
+</useCase>

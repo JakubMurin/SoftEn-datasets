@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Create Report Definitions</name>
+    <actors>
+        <actor>UI</actor>
+        <actor>Reporting Dashboards</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>UI is able to access Reporting Dashboards</precondition>
+    </preconditions>
+    <trigger>UI triggers the creation or update of Report Definitions</trigger>
+    <mainSequence>
+        <step id="S1">UI creates or updates Report Definitions by providing UX information</step>
+        <step id="S2">Reporting Dashboards retrieves available Notification Feature Channel list</step>
+        <step id="S3">Notifications OpenSearch Plugin responds with the Notification Feature Channel list</step>
+        <step id="S4">Reporting Dashboards provides UX information with the available Channel list for reporting feature</step>
+        <step id="S5">UI saves the Report Definition</step>
+        <step id="S6">Reporting Dashboards saves the Report Definition</step>
+        <step id="S7">Reporting OpenSearch saves the Report Definition</step>
+        <step id="S8">Reporting Dashboards confirms the successful saving of the Report Definition</step>
+    </mainSequence>
+</useCase>

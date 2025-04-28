@@ -1,0 +1,36 @@
+<useCase id="UC_001">
+  <name>Fault Management Provisioning</name>
+  <description>Manage fault management operations including creating jobs and generating reports</description>
+  <actors>
+    <actor>Business User</actor>
+    <actor>System Operations Facility (SOF)</actor>
+    <actor>Hub</actor>
+  </actors>
+  <preconditions>
+    <precondition>Business User and SOF have access permissions</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Job and report creation and management successful</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Job or report creation and management failure</condition>
+  </failureEndConditions>
+  <trigger>FaultManagementJobNotification or FaultManagementReportNotification</trigger>
+  <mainSequence>
+    <step id="S1">Register listeners for FaultManagementJobNotification and FaultManagementReportNotification</step>
+    <step id="S2">Create fault management job</step>
+    <step id="S3">Generate data for the job</step>
+    <step id="S4">Generate report</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S4">
+      <step id="A1S1">Notify listeners for fault management report creation event</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S3">
+      <description>Data generation error</description>
+      <step id="E1S1">Handle data generation error</step>
+    </esteps>
+  </errorSteps>
+</useCase>

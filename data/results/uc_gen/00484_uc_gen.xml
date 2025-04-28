@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Connect flow</name>
+    <actors>
+        <actor>Invitee</actor>
+        <actor>Inviter</actor>
+    </actors>
+    <preconditions>
+        <precondition>Invitee and Inviter have installed the required app.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Inviter creates a new connection by sending a POST request to the Inviter Cloud Agent.</step>
+        <step id="S2">Inviter generates a new pairwise Peer DID.</step>
+        <step id="S3">Inviter creates a connection state record.</step>
+        <step id="S4">Inviter receives the connection record with attributes {id, invitation, state}.</step>
+        <step id="S5">Inviter packs the connection invitation into a QR code.</step>
+        <step id="S6">Inviter sends the invitation to the Invitee using an Out-of-band mechanism, e.g., email.</step>
+        <step id="S7">Invitee parses the invitation message by scanning the QR code.</step>
+        <step id="S8">Invitee reviews the invitation.</step>
+        <step id="S9">Invitee receives and accepts the invitation by sending a POST request to the Invitee Cloud Agent.</step>
+        <step id="S10">Invitee creates a pairwise DID.</step>
+        <step id="S11">Invitee creates a connection state record.</step>
+        <step id="S12">Invitee receives the connection record with attributes {id, invitation, state}.</step>
+        <step id="S13">Invitee's Cloud Agent sends a "ConnectionRequest" message to the Inviter's Cloud Agent.</step>
+        <step id="S14">Inviter's Cloud Agent responds with "OK".</step>
+        <step id="S15">Inviter's Cloud Agent sends a "ConnectionResponse" message to the Invitee's Cloud Agent.</step>
+        <step id="S16">Invitee's Cloud Agent responds with "OK".</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Accessing Resources with Token</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>UAA</actor>
+        <actor>Laravel</actor>
+        <actor>Spring</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client logs in and obtains token</step>
+        <step id="S2">Client requests Example resource with JWT</step>
+        <step id="S3">Laravel requests RS256 Public Key</step>
+        <step id="S4">Laravel returns RS256 Public Key</step>
+        <step id="S5">Laravel validates token</step>
+        <step id="S6">Laravel returns Example resource</step>
+        <step id="S7">Client requests Hello resource with JWT</step>
+        <step id="S8">Spring validates token</step>
+        <step id="S9">Spring returns Hello resource</step>
+    </mainSequence>
+</useCase>

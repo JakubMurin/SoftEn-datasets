@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Order Processing</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Shop</actor>
+        <actor>CEIS</actor>
+        <actor>MaterialFlowMonitor</actor>
+        <actor>ProcessControl</actor>
+        <actor>ProductCookbook</actor>
+        <actor>CostAnalyzer</actor>
+        <actor>WISER</actor>
+        <actor>ERP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customer selects product and asks for a quote from Shop.</step>
+        <step id="S2">Shop provides information on the selected "Crop Top" product to Customer.</step>
+        <step id="S3">CEIS fetches and provides recipes for creating the "Crop Top" product from ProductCookbook.</step>
+        <step id="S4">CEIS requests availability of input materials from MaterialFlowMonitor.</step>
+        <step id="S5">MaterialFlowMonitor lists options for each input material procurable within the deadline and with quality metrics.</step>
+        <step id="S6">CEIS fetches economical, ecological, and social costs for each alternative from CostAnalyzer.</step>
+        <step id="S7">CEIS requests GHG impact and costs for each possibility from WISER and ERP respectively.</step>
+        <step id="S8">CEIS adds alternatives to the list of possibilities and provides costs to Shop.</step>
+        <step id="S9">Shop matches alternatives with company policies and presents them to the Customer for order placement.</step>
+        <step id="S10">Customer places the order with Shop.</step>
+        <step id="S11">CEIS informs ProcessControl about the order and provides alternatives and deadlines.</step>
+        <step id="S12">ProcessControl schedules and monitors processes for contract fulfillment.</step>
+        <step id="S13">ProcessControl informs MaterialFlowMonitor about the results of the processes.</step>
+        <step id="S14">ProcessControl informs CEIS about the actual costs incurred.</step>
+        <step id="S15">CEIS updates data in DigitalProductPassport.</step>
+    </mainSequence>
+</useCase>

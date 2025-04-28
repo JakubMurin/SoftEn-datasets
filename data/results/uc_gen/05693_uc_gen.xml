@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Complete Academic Sync Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Browser</actor>
+        <actor>Web Server</actor>
+        <actor>Django Application</actor>
+        <actor>View</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has opened the Acadsync Application.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Academic Sync Process is successfully completed.</condition>
+    </successEndConditions>
+    <trigger>HTTP Request is sent.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the Acadsync Application.</step>
+        <step id="S2">Browser sends an HTTP Request to the Web Server.</step>
+        <step id="S3">Web Server forwards the request to Django Application.</step>
+        <step id="S4">Django Application calls the appropriate View.</step>
+        <step id="S5">View queries/updates data from Database.</step>
+        <step id="S6">Database returns the data to View.</step>
+        <step id="S7">View renders the template with the data.</step>
+        <step id="S8">Django Application returns the response to Web Server.</step>
+        <step id="S9">Web Server sends the HTTP Response to Browser.</step>
+        <step id="S10">Browser displays the response to the User.</step>
+    </mainSequence>
+</useCase>

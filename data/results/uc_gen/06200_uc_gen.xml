@@ -1,0 +1,44 @@
+<useCase id="UC001">
+    <name>Specify Remote Replication Policy for a Collection</name>
+  
+    <description>Description of the use case</description>
+
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>EDRMS Interface</actor>
+        <actor>Replication Policy Module</actor>
+        <actor>Collection Management</actor>
+        <actor>Remote Storage Service</actor>
+    </actors>
+  
+    <preconditions>
+        <precondition>Repository Manager has access to Replication Policy Settings</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+         <condition>Policy updated successfully in the collection</condition>
+    </successEndConditions>
+    
+    <failureEndConditions>
+         <condition>Policy update failed due to unforeseen errors</condition>
+    </failureEndConditions>
+    
+    <trigger>Repository Manager triggers the policy update for a collection</trigger>
+  
+    <mainSequence>
+        <step id="S1">Repository Manager: Access Replication Policy Settings</step>
+        <step id="S2">EDRMS Interface: Retrieve Current Policy Settings</step>
+        <step id="S3">Replication Policy Module: Query Existing Policies</step>
+        <step id="S4">EDRMS Database: Return Policies</step>
+        <step id="S5">Replication Policy Module: Show Current Policies</step>
+        <step id="S6">EDRMS Interface: Display Policies</step>
+        <step id="S7">Repository Manager: Define/Update Policy for Collection</step>
+        <step id="S8">EDRMS Interface: Process Policy Specifications</step>
+        <step id="S9">EDRMS Database: Update Policy in DB</step>
+        <step id="S10">EDRMS Database: Confirm Update</step>
+        <step id="S11">Remote Storage Service: Initiate Policy Replication Update</step>
+        <step id="S12">Remote Storage Service: Acknowledge Replication Policy Update</step>
+        <step id="S13">EDRMS Interface: Confirm Policy Update</step>
+        <step id="S14">Repository Manager: Show Update Confirmation</step>
+    </mainSequence>
+</useCase>

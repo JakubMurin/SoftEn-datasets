@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Update Project Information</name>
+    <description>Allows the client to update project information.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Website</actor>
+        <actor>UpdateProjectActivity</actor>
+        <actor>Projects</actor>
+    </actors>
+    <preconditions>
+        <precondition>The client has logged in and has permission to update projects.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The project information is successfully updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>There was an error updating the project information.</condition>
+    </failureEndConditions>
+    <trigger>The client submits an update form.</trigger>
+    <mainSequence>
+        <step id="S1">Client submits update form to the website.</step>
+        <step id="S2">Website sends update project request to UpdateProjectActivity.</step>
+        <step id="S3">UpdateProjectActivity saves the updates in Projects database.</step>
+        <step id="S4">UpdateProjectActivity returns all projects to the website.</step>
+        <step id="S5">Website presents a list of all projects to the client.</step>
+    </mainSequence>
+</useCase>

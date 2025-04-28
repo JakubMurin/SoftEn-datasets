@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Delete Account</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>Service_Layer</actor>
+        <actor>Repository</actor>
+        <actor>Logging_Service</actor>
+        <actor>Unit_of_Work</actor>
+    </actors>
+    <preconditions>
+        <precondition>User sends a request to delete their account with a valid email and token.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Validate Email and Token.</step>
+        <step id="S2">ValidateDeleteTokenAsync.</step>
+        <step id="S3">GetUserByEmailAsync.</step>
+        <step id="S4">Validate Token.</step>
+        <step id="S5">DeleteAsync.</step>
+        <step id="S6">GetUserByEmailAsync.</step>
+        <step id="S7">Remove User.</step>
+        <step id="S8">Log Account Deletion.</step>
+        <step id="S9">Commit.</step>
+        <step id="S10">SystemUserDto.</step>
+        <step id="S11">Send 200 OK with success message to User.</step>
+    </mainSequence>
+</useCase>

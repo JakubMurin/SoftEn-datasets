@@ -1,0 +1,28 @@
+<useCase id="123">
+    <name>User guesses a number.</name>
+    <description>User inputs a number and clicks "Adivinar" to guess the target number.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>GuessNumber</actor>
+        <actor>useState</actor>
+    </actors>
+    <preconditions>
+        <precondition>Game has generated a target number.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User correctly guesses the target number.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User cannot correctly guess the target number.</condition>
+    </failureEndConditions>
+    <trigger>User inputs a number.</trigger>
+    <mainSequence>
+        <step id="S1">User inputs number</step>
+        <step id="S2">User clicks "Adivinar"</step>
+        <step id="S3">Game receives input number.</step>
+        <step id="S4">Game parses input.</step>
+        <step id="S5">Game displays hint for next step.</step>
+        <step id="S6">User sees message result.</step>
+        
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Acquire Labgrid Place</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Labgrid Client</actor>
+        <actor>Labgrid Coordinator</actor>
+        <actor>Place</actor>
+        <actor>Boss Publisher</actor>
+    </actors>
+    <trigger>Labgrid-client -p &lt;place&gt; acquire</trigger>
+    <mainSequence>
+        <step id="S1">User requests Labgrid client to acquire a place</step>
+        <step id="S2">Labgrid client sends acquire place request to Labgrid Coordinator</step>
+        <step id="S3">Labgrid Coordinator checks if place can be acquired</step>
+        <step id="S4">Place confirms availability</step>
+        <step id="S5">Labgrid Coordinator confirms place acquisition</step>
+        <step id="S6">Labgrid client notifies user about place acquisition</step>
+        <step id="S7">User requests Labgrid client to open console for the place</step>
+        <step id="S8">Labgrid client opens console for the place with boss publisher</step>
+        <step id="S9">Boss publisher establishes a session with the user</step>
+        <step id="S10">User makes changes to settings</step>
+        <step id="S11">User subscribes to led_1 and led_2 changes</step>
+        <step id="S12">Boss publisher notifies user about led_1 changes</step>
+        <step id="S13">Boss publisher polls settings for led_1 and led_2</step>
+        <step id="S14">Boss publisher sends current states of led_1 and led_2</step>
+    </mainSequence>
+</useCase>

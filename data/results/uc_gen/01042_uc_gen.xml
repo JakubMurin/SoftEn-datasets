@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Access OneToOne Check</name>
+    <actors>
+        <actor>Navegador</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Navegador accesses the route GET /oneToOne/:sessionID</step>
+        <step id="S2">Routes forwards the request to Controller to get check</step>
+        <step id="S3">Controller fetches session data from OneToOne model</step>
+        <step id="S4">Controller checks if rows are retrieved from MySQL</step>
+        <step id="S5">Controller redirects to error route if no rows are found</step>
+        <step id="S6">Controller checks user's role and session ID</step>
+        <step id="S7">Controller fetches answers data from Question model</step>
+        <step id="S8">Controller renders oneToOneCheck if no answers are found</step>
+        <step id="S9">Controller fetches measures from Measurable model</step>
+        <step id="S10">Controller renders oneToOneCheck</step>
+    </mainSequence>
+</useCase>

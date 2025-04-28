@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Generate Report</name>
+    <actors>
+        <actor>UI</actor>
+        <actor>Reporting Dashboards</actor>
+        <actor>Reporting OpenSearch</actor>
+        <actor>Reporting JobScheduler</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+    </actors>
+    <trigger>User requests to generate a report</trigger>
+    <mainSequence>
+        <step id="S1">UI creates or updates Report Definitions UX info</step>
+        <step id="S2">Reporting Dashboards retrieves Notification Feature Channel List from Notifications OpenSearch Plugin</step>
+        <step id="S3">UI receives UX info with Available Channel list for reporting feature</step>
+        <step id="S4">UI saves Report Definition</step>
+        <step id="S5">Reporting OpenSearch saves Report Definition</step>
+        <step id="S6">Reporting OpenSearch reports that Report Definition is saved</step>
+        <step id="S7">Reporting JobScheduler executes job to create Report Instance</step>
+        <step id="S8">Reporting JobScheduler creates notification message</step>
+        <step id="S9">Notifications OpenSearch Plugin sends notification</step>
+        <step id="S10">Notifications OpenSearch Plugin reports that notification is sent</step>
+        <step id="S11">Reporting JobScheduler updates report instance with status</step>
+        <step id="S12">UI creates on-demand Report</step>
+        <step id="S13">Reporting Dashboards creates on-demand Report</step>
+        <step id="S14">Reporting OpenSearch creates on-demand Report Instance</step>
+        <step id="S15">Reporting OpenSearch creates notification message for on-demand Report</step>
+        <step id="S16">Notifications OpenSearch Plugin sends notification for on-demand Report</step>
+        <step id="S17">Notifications OpenSearch Plugin reports that notification for on-demand Report is sent</step>
+        <step id="S18">Reporting OpenSearch updates on-demand report instance with status</step>
+        <step id="S19">Reporting Dashboards responds with creation of on-demand Report</step>
+        <step id="S20">UI receives response for creation of on-demand Report</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>Register Fault</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Fault Routes</actor>
+        <actor>Fault Controller</actor>
+        <actor>Fault Model Instance</actor>
+        <actor>MySQL</actor>
+    </actors>
+    <preconditions>
+        <precondition>Navegador must be able to access the fault registration page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fault is successfully registered in the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurs during fault registration.</condition>
+    </failureEndConditions>
+    <trigger>User accesses the fault registration page.</trigger>
+    <mainSequence>
+        <step id="S1">Navegador accesses the fault registration page.</step>
+        <step id="S2">Fault Routes receives GET /fault/add request.</step>
+        <step id="S3">Fault Controller gets the fault registration form.</step>
+        <step id="S4">Fault Add.ejs displays the fault registration form to the user.</step>
+        <step id="S5">Navegador validates the form fields.</step>
+        <step id="S6">Navegador submits the fault registration form.</step>
+        <step id="S7">Fault Routes receives POST /fault/add request.</step>
+        <step id="S8">Fault Controller validates the form fields.</step>
+        <step id="S9">Fault Controller creates a new instance of Fault Model.</step>
+        <step id="S10">Fault Model Instance saves the fault data.</step>
+        <step id="S11">Fault Model Instance checks if the user exists in the database.</step>
+        <step id="S12">MySQL executes SELECT userID FROM user WHERE mail = ? [this.email].</step>
+        <step id="S13">MySQL returns the result to Fault Model Instance.</step>
+        <step id="S14">Fault Model Instance handles the case where the user does not exist.</step>
+        <step id="S15">Fault Model Instance handles the case where the user exists.</step>
+        <step id="S16">MySQL executes INSERT INTO fault (faultID, summary, doneDate, faultUserIDFK) VALUES (?, ?, ?, ?), [faultID, this.reason, this.doneDate, rows[0].userID].</step>
+        <step id="S17">MySQL confirms the successful insertion.</step>
+        <step id="S18">Fault Model Instance confirms the fault registration.</step>
+        <step id="S19">Fault Controller redirects to /fault, info for successful registration.</step>
+    </mainSequence>
+</useCase>

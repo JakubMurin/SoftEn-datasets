@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Establish Connection</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ConnectionView</actor>
+        <actor>SonicController</actor>
+        <actor>ConnectionModel</actor>
+        <actor>CommunicationBuilder</actor>
+        <actor>Communicator</actor>
+        <actor>SonicDeviceBuilder</actor>
+        <actor>MainView</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ports are properly selected and configured</precondition>
+        <precondition>Connection attempt event is triggered</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects a port</step>
+        <step id="S2">Property binding is performed on ConnectionView</step>
+        <step id="S3">ConnectionModel sets the selected port</step>
+        <step id="S4">ConnectionView updates with the selected port</step>
+        <step id="S5">User presses "Connect" on ConnectionView</step>
+        <step id="S6">Connection event (CONNECTION_ATTEMPT) is triggered</step>
+        <step id="S7">SonicController gets the selected port</step>
+        <step id="S8">CommunicationBuilder generates a communicator based on the port</step>
+        <step id="S9">SonicDeviceBuilder builds the communicator</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Advanced Staking: early exit</name>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Staker has staked an amount in the Staking contract.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Staker initiates the unstake process with unstakeInfo.</step>
+        <step id="S2">Staking contract transfers the staked amount to the Staker.</step>
+        <step id="S3">RewardMaster triggers onAction.</step>
+        <step id="S4">AdvancedStakeController retrieves reward advice.</step>
+        <step id="S5">MASP v.1 calls earlyUnstake with unstakeInfo.</step>
+        <step id="S6">PublicLeaf generates leafHash based on preimage.</step>
+        <step id="S7">PublicLeaf generates nullifierHash based on preimage.</step>
+        <step id="S8">MASP v.1 transfers the reward amount to the Staker.</step>
+    </mainSequence>
+</useCase>

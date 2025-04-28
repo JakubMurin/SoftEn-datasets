@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Retrieve and Display Boards</name>
+    <actors>
+        <actor>SBPServerApp</actor>
+        <actor>ArchiveBoardHandler</actor>
+        <actor>SBProtocol</actor>
+        <actor>BoardService</actor>
+        <actor>Client</actor>
+        <actor>Board</actor>
+        <actor>BoardRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>SBPServerApp has received a socket and SBProtocol codeRequest.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Successfully displayed boards owned and archived by the user.</condition>
+    </successEndConditions>
+    <trigger>SBPServerApp initiates the process to retrieve and display boards.</trigger>
+    <mainSequence>
+        <step id="S1">Create board with the given socket and codeRequest.</step>
+        <step id="A1">Create and run the service for board creation.</step>
+        <step id="A2">List boards owned by the logged-in user.</step>
+        <step id="A3">Send the list of owned boards to the client.</step>
+        <step id="A4">Create and send the board information to SBProtocol for display.</step>
+        <step id="A5">Archive the requested board.</step>
+        <step id="A6">Save the archived board to the repository.</step>
+        <step id="A7">List archived boards owned by the user.</step>
+        <step id="A8">Send the list of archived boards to the client.</step>
+        <step id="A9">Create and send the archived board information to SBProtocol for display.</step>
+    </mainSequence>
+</useCase>

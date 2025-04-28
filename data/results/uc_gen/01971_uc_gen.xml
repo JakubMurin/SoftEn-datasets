@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Delete Holiday</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>ConfirmDeleteHol</actor>
+        <actor>Holiday.routes.js</actor>
+        <actor>Holiday.controller.js</actor>
+        <actor>Holiday.model</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Activate Navegador</step>
+        <step id="S2">Navegador calls Delete operation</step>
+        <step id="S3">Activate Delete entity</step>
+        <step id="S4">Delete entity requests confirmation from ConfirmDeleteHol boundary</step>
+        <step id="S5">Activate ConfirmDeleteHol boundary</step>
+        <step id="S6">ConfirmDeleteHol confirms deletion request by calling DELETE on Holiday.routes.js</step>
+        <step id="S7">Activate Holiday.routes.js</step>
+        <step id="S8">Holiday.routes.js forwards delete request to Holiday.controller.js</step>
+        <step id="S9">Activate Holiday.controller.js</step>
+        <step id="S10">Holiday.controller.js initiates deletion of Holiday.model data</step>
+        <step id="S11">Activate Holiday.model</step>
+        <step id="S12">Holiday.model executes SQL command to delete from database</step>
+        <step id="S13">SQL command completes successfully</step>
+        <step id="S14">Holiday.model sends query success response to Holiday.controller.js</step>
+        <step id="S15">Holiday.controller.js returns response to ConfirmDeleteHol boundary</step>
+        <step id="S16">ConfirmDeleteHol processes response and sends HTML back to Navegador</step>
+        <step id="S17">Deactivate ConfirmDeleteHol</step>
+        <step id="S18">Activate Navegador</step>
+        <step id="S19">Deactivate Navegador</step>
+    </mainSequence>
+</useCase>

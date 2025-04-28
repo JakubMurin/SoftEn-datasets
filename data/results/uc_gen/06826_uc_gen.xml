@@ -1,0 +1,20 @@
+<useCase id="UC-001">
+    <name>Manage Campers</name>
+    <description>As a Camp Worker, I want to manage campers' schedules and locations.</description>
+    <actors>
+        <actor>Camp Worker</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Camp Worker must be logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The campers' schedules and locations are successfully displayed.</condition>
+    </successEndConditions>
+    <trigger>Camp Worker logs in.</trigger>
+    <mainSequence>
+        <step id="S1">Camp Worker logs in to the Camp Management System.</step>
+        <step id="S2">System fetches the list of assigned campers for the Camp Worker.</step>
+        <step id="S3">System retrieves schedule and location information for each camper using the Camper Profiles and Scheduling Service databases.</step>
+        <step id="S4">System displays the list of campers along with their schedules and locations to the Camp Worker.</step>
+    </mainSequence>
+</useCase>

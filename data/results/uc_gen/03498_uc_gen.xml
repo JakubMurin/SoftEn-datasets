@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Upload and License Data File</name>
+    <description>This use case involves the Cornell Faculty Member uploading a data file and selecting a license for it.</description>
+    <actors>
+        <actor>Cornell Faculty Member</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Cornell Faculty Member has access to the Upload and License service.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The data file has been successfully uploaded and licensed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The data file upload or licensing process has failed.</condition>
+    </failureEndConditions>
+    <trigger>The Cornell Faculty Member initiates the process by selecting a data file for upload.</trigger>
+    <mainSequence>
+        <step id="S1">Cornell Faculty Member selects the data file for upload.</step>
+        <step id="S2">BrowserGUI initiates the file upload process.</step>
+        <step id="S3">UploadService stores the data file in the Repository.</step>
+        <step id="S4">Repository saves the file metadata, including uploader information, in the Database.</step>
+        <step id="S5">Database confirms the metadata storage.</step>
+        <step id="S6">Repository confirms the file storage.</step>
+        <step id="S7">UploadService displays the file upload success message.</step>
+        <step id="S8">UploadService provides the file ID and upload confirmation to the Cornell Faculty Member.</step>
+        <step id="S9">Cornell Faculty Member chooses a licensing option (CC-By or CC0) via the BrowserGUI.</step>
+        <step id="S10">BrowserGUI sends the license choice and file ID to LicenseService.</step>
+        <step id="S11">LicenseService applies the chosen license to the file.</step>
+        <step id="S12">DRMService updates the file metadata with the license information.</step>
+        <step id="S13">Database updates the file record with the license metadata.</step>
+        <step id="S14">Database confirms the license update.</step>
+        <step id="S15">Repository confirms the license application to the file.</step>
+        <step id="S16">LicenseService displays the license application success message.</step>
+        <step id="S17">Cornell Faculty Member confirms that the license has been set.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Block User</name>
+    <description>User Admin blocks a user in the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is successfully blocked.</condition>
+    </successEndConditions>
+    <trigger>User Admin clicks on "Block User" button.</trigger>
+    <mainSequence>
+        <step id="S1">Admin clicks on "Block User" button in the UI.</step>
+        <step id="S2">UI sends blockUser(userId) request to UserController.</step>
+        <step id="S3">UserController forwards blockUser(userId) request to UserService.</step>
+        <step id="S4">UserService retrieves user information by calling findById(userId) on UserRepository.</step>
+        <step id="S5">UserRepository returns the User object.</step>
+        <step id="S6">UserService sets the status of the User to BLOCKED.</step>
+        <step id="S7">UserService saves the updated User in the UserRepository.</step>
+        <step id="S8">UserRepository returns the updated User.</step>
+        <step id="S9">UserService sends the updated UserDTO to UserController.</step>
+        <step id="S10">UserController sends the updated UserDTO (BLOCKED) back to the UI.</step>
+    </mainSequence>
+</useCase>

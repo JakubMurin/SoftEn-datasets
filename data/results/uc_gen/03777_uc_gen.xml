@@ -1,0 +1,31 @@
+<useCase id="UC_01">
+    <name>Create Booking</name>
+    
+    <actors>
+        <actor>Receptionist</actor>
+        <actor>UI/Interface</actor>
+        <actor>BookingRouter</actor>
+        <actor>BookingController</actor>
+        <actor>BookingRepository</actor>
+        <actor>BookingModel</actor>
+        <actor>RoomModel</actor>
+        <actor>Database</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>Receptionist requests to create a booking.</precondition>
+        <precondition>UI displays the booking form.</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Receptionist requests to create booking.</step>
+        <step id="S2">UI displays the booking form.</step>
+        <step id="S3">Receptionist fills booking details including customer, room, and dates.</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Room Model checks room availability.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

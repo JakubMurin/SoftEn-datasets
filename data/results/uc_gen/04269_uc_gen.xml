@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Handle HTTP Request</name>
+    <actors>
+        <actor>HTTPRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Apache input filter enriches the context.</step>
+        <step id="S2">Filter matches the request.</step>
+        <step id="S3">Delegates request to next handler (WS, mod_rewrite..).</step>
+        <step id="S4">Collects the answer.</step>
+        <step id="S5">Prepares the request for duplication.</step>
+        <step id="S6">Sends the request back to the client.</step>
+        <step id="S7">Sends duplicated request to mod_compare.</step>
+    </mainSequence>
+</useCase>

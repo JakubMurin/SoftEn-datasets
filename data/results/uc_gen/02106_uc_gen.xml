@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Realizar Empréstimo</name>
+    <description>Atendente inicia um novo processo de empréstimo para um leitor cadastrado.</description>
+    <actors>
+        <actor>Atendente</actor>
+        <actor>Sistema</actor>
+        <actor>Banco: Leitor</actor>
+        <actor>Banco: Emprestimo/Devolucao</actor>
+    </actors>
+    <preconditions>
+        <precondition>O atendente tem autorização para realizar empréstimos.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O sistema conclui o processo de empréstimo com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>O sistema enfrenta problemas inesperados durante o empréstimo.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">O atendente inicia o processo de empréstimo para um leitor identificado.</step>
+        <step id="S2">O sistema identifica o leitor através de seu ID.</step>
+        <step id="S3">O leitor é identificado com sucesso no sistema.</step>
+        <step id="S4">O sistema cria um objeto de empréstimo para o leitor.</step>
+        <step id="S5">O objeto de empréstimo é criado no sistema.</step>
+        <step id="S6">O sistema associa o empréstimo ao leitor.</step>
+        <step id="S7">A associação do empréstimo ao leitor é concluída com sucesso.</step>
+        <step id="S8">O sistema informa ao atendente o início do processo de empréstimo.</step>
+    </mainSequence>
+</useCase>

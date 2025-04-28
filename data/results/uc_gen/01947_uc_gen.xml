@@ -1,0 +1,29 @@
+<useCase id="UC1">
+  <name>Data Type Selection</name>
+  <description>Allows a user to select a data type</description>
+  <actors>
+    <actor>DataManager</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user has accessed the system</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The user successfully confirms requirements</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>The user does not confirm or understand requirements</condition>
+  </failureEndConditions>
+  
+  <mainSequence>
+    <step id="S1">DataManager requests data type information</step>
+    <step id="S2">DMPTool Interface queries stored projects metadata</step>
+    <step id="S3">Metadata Repository returns metadata, including data types</step>
+    <step id="S4">DMPTool Interface displays data types</step>
+    <step id="S5">DataManager selects a data type</step>
+    <step id="S6">DMPTool Interface queries required support services for the selected data type</step>
+    <step id="S7">Support Services Module returns a list of basic support services and functionalities</step>
+    <step id="S8">DMPTool Interface displays supported services and functionalities</step>
+    <step id="S9">DataManager confirms understanding and requirements</step>
+    <step id="S10">DMPTool Interface logs interaction and confirmation of requirements</step>
+  </mainSequence>
+</useCase>

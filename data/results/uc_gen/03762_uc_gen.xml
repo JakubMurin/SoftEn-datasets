@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Login and Access Files</name>
+    <description>User can login and access files.</description>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>Authentication System</actor>
+        <actor>User Management System</actor>
+        <actor>File Management System</actor>
+        <actor>Access Restriction Controls</actor>
+        <actor>XDrive</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials and permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and accesses files.</condition>
+    </successEndConditions>
+    <trigger>Archivist initiates the login process and file access.</trigger>
+    <mainSequence>
+        <step id="S1">Archivist submits credentials to Authentication System.</step>
+        <step id="A1">Authentication System validates the credentials.</step>
+        <step id="A1S1">User Management System retrieves Archivist permissions.</step>
+        <step id="A1S2">Access Restriction Controls verify permissions.</step>
+        <step id="A1S3">File Management System fetches files from XDrive.</step>
+        <step id="A1S4">File Management System displays requested files.</step>
+    </mainSequence>
+</useCase>

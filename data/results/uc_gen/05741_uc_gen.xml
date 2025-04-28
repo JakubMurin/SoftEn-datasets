@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Like Attendee</name>
+    <description>As a recruiter, I want to like an attendee, so that I can show my interest in them.</description>
+    <actors>
+        <actor>Recruiter</actor>
+    </actors>
+    <preconditions>
+        <precondition>The recruiter and attendee IDs are valid.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The recruiter successfully likes the attendee.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The recruiter has already liked the attendee.</condition>
+    </failureEndConditions>
+    <trigger>POST /attendees/{attendeeId}/like</trigger>
+    <mainSequence>
+        <step id="S1">Recruiter initiates the request to like an attendee.</step>
+        <step id="S2">Controller forwards the request to like the attendee.</step>
+        <step id="S3">Service checks if the recruiter exists in the database.</step>
+        <step id="S4">Service retrieves the recruiter details.</step>
+        <step id="S5">Service checks if the attendee exists in the database.</step>
+        <step id="S6">Service retrieves the attendee details.</step>
+        <step id="S7">Service checks if the recruiter has already liked the attendee.</step>
+        <step id="S8">Service saves the recruiter's like for the attendee.</step>
+        <step id="S9">Controller responds with a success message.</step>
+        <step id="S10">Recruiter receives a 200 OK response.</step>
+    </mainSequence>
+</useCase>

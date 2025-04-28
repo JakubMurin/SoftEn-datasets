@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Manage Cloud</name>
+    <description>As an Ops Manager, I want to manage the cloud by updating fleet events incrementally, so that event information can be maintained accurately.</description>
+    <actors>
+        <actor>Ops Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ops Manager is logged into the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The fleet events are successfully updated with the new information</condition>
+    </successEndConditions>
+    <trigger>fleet-events-inc</trigger>
+    <mainSequence>
+        <step id="S1">Ops Manager triggers the increment of fleet events</step>
+        <step id="S2">fleet receives the incremental fleet events</step>
+        <step id="S3">fleet updates the event information</step>
+        <step id="S4">Cloud Stack updates the event name and amount</step>
+        <step id="S5">Cloud Stack processes the events using the helper function</step>
+    </mainSequence>
+</useCase>

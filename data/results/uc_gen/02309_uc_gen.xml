@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Alice recovers agent policy registry, revokes and reissues claims</name>
+    <description>Alice performs agent recovery, revokes old claims, and reissues claims with new policy address</description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to use for control over her agent policy registry on the ledger</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Alice successfully recovers the agent policy registry</condition>
+        <condition>Alice successfully revokes old claims</condition>
+        <condition>Alice successfully reissues claims with new policy address</condition>
+    </successEndConditions>
+    <trigger>Alice needs to recover agent policy registry, revoke old claims, and reissue claims</trigger>
+    <mainSequence>
+        <step id="S1">Alice generates policy registry address and stores it</step>
+        <step id="S2">Alice revokes old claims and petitions Issuers to reissue them</step>
+        <step id="S3">Issuer authenticates Alice and revokes claim</step>
+        <step id="S4">Ledger updates accumulator and forwards the result</step>
+        <step id="S5">Alice reissues claims with new policy address</step>
+    </mainSequence>
+</useCase>

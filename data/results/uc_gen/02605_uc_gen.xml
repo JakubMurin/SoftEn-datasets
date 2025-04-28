@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Get Developer Issues</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>System</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Developer requests to get their respective issues.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Developer receives a list of IssueResponseDto.</condition>
+    </successEndConditions>
+    <trigger>Developer calls getDevIssues method with signId and projectId parameters on System.</trigger>
+    <mainSequence>
+        <step id="S1">Developer calls getDevIssues(signId, projectId) on System.</step>
+        <step id="S2">System validates the Member by calling validateMember(signId) on Database.</step>
+        <step id="S3">System validates the Project by calling validateProject(projectId) on Database.</step>
+        <step id="S4">System checks if the Developer is a member of the Project by calling isMemberOfProject(signId, projectId) on Database.</step>
+        <step id="S5">System retrieves Developer's issues by calling getDevIssues(signId, projectId) on Database.</step>
+        <step id="S6">System returns a List of IssueResponseDto to the Developer.</step>
+    </mainSequence>
+</useCase>

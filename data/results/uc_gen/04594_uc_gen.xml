@@ -1,0 +1,24 @@
+<useCase id="UC1">
+  <name>Visitor Searches Book</name>
+  <description>Visitor enters a book title to search for its details.</description>
+  <actors>
+    <actor>Visitor</actor>
+  </actors>
+  <preconditions>
+    <precondition>Visitor is logged into the Library System Interface.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Visitor views the condition of the searched book.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Visitor receives a message that the book was not found.</condition>
+  </failureEndConditions>
+  <mainSequence>
+    <step id="S1">Visitor enters the book title into the Library System Interface.</step>
+    <step id="S2">Interface requests book details by providing BookID to Book Management Module.</step>
+    <step id="S3">Book Management Module queries the Library Database for the book's condition based on BookID.</step>
+    <step id="S4">Library Database returns the Book Condition to the Book Management Module.</step>
+    <step id="S5">Book Management Module displays the Book Condition to the Interface.</step>
+    <step id="S6">Interface shows the Book Condition to the Visitor.</step>
+  </mainSequence>
+</useCase>

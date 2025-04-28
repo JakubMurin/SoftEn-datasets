@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Programación de Tutorías</name>
+    <actors>
+        <actor>Usuario</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El usuario accede a la sección de programación de tutorías.</step>
+        <step id="S2">La vista solicita el formulario de programación al controlador.</step>
+        <step id="S3">El controlador muestra el formulario de programación en la vista.</step>
+        <step id="S4">La vista envía los datos de programación al controlador.</step>
+        <step id="S5">El controlador valida los datos de programación en la tutoría.</step>
+        <step id="S6">La tutoría confirma que los datos son válidos al controlador.</step>
+        <step id="S7">El controlador registra la sesión de tutoría en el repositorio.</step>
+        <step id="S8">El repositorio confirma el registro al controlador.</step>
+        <step id="S9">El controlador muestra la confirmación de la tutoría programada en la vista.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">El usuario decide cancelar la programación.</step>
+            <step id="A1S2">La vista solicita la cancelación al controlador.</step>
+            <step id="A1S3">El controlador confirma la cancelación en la vista.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

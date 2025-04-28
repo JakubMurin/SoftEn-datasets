@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User logs in using Dapp</description>
+    <actors>
+        <actor>User</actor>
+        <actor>OtherWeb</actor>
+        <actor>AuthApp</actor>
+        <actor>AuthServer</actor>
+        <actor>Nami</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to Dapp</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and receives access token</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User login fails</condition>
+    </failureEndConditions>
+    <trigger>User initiates login process</trigger>
+    <mainSequence>
+        <step id="S1">OtherWeb requests login to AuthApp with app-key=dapp</step>
+        <step id="S2">AuthApp fetches app info from AuthServer</step>
+        <step id="S3">AuthApp connects to Nami</step>
+        <step id="S4">AuthApp fetches random number from AuthServer</step>
+        <step id="S5">AuthApp requests Nami signature</step>
+        <step id="S6">Nami provides signature to AuthApp</step>
+        <step id="S7">AuthApp logs in to AuthServer with signature</step>
+        <step id="S8">AuthApp redirects to OtherWeb with access token</step>
+    </mainSequence>
+</useCase>

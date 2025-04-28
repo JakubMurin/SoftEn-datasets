@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Reserve Course</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>Base de Données</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur a sélectionné un cours</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Réservation enregistrée avec succès</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Crédits insuffisants pour la réservation</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Vérifier abonnement et crédits</step>
+        <step id="S2">Détails de l'abonnement et des crédits retournés</step>
+        <step id="S3">Enregistrer la réservation</step>
+        <step id="S4">Confirmation de la réservation envoyée</step>
+        <step id="S5">Confirmation de la réservation reçue par l'Utilisateur</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Message d'erreur (Crédits insuffisants) envoyé</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Add New Material</name>
+    <description>Describe the process of adding new material information in the system.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Manager accesses the page to add new material information.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The new material information is successfully added to the system.</condition>
+    </successEndConditions>
+    <trigger>Manager requests to add new material information.</trigger>
+    <mainSequence>
+        <step id="S1">Manager adds new material information on the page.</step>
+        <step id="S2">ManagerMaterialController receives request to add new material information.</step>
+        <step id="S3">MaterialService processes the request to add new material information.</step>
+        <step id="S4">MaterialRepository saves the new material information.</step>
+        <step id="S5">Database executes the insert query to save the information.</step>
+        <step id="S6">Database confirms successful insertion.</step>
+        <step id="S7">MaterialRepository confirms the insertion to MaterialService.</step>
+        <step id="S8">MaterialService confirms successful addition to ManagerMaterialController.</step>
+        <step id="S9">ManagerMaterialController confirms the addition process to ManagerPage.</step>
+        <step id="S10">ManagerPage displays a confirmation of the successful addition.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Generate Report</name>
+    <description>User triggers generation of scheduled or on-demand report</description>
+    <actors>
+        <actor>UI</actor>
+        <actor>Reporting Dashboards</actor>
+        <actor>Reporting OpenSearch</actor>
+        <actor>Reporting JobScheduler</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+    </actors>
+    <trigger>User triggers report generation</trigger>
+    <mainSequence>
+        <step id="S1">UI creates or updates report definitions from UX information</step>
+        <step id="S2">Reporting Dashboards obtains available channel list for reporting feature from Notifications OpenSearch Plugin</step>
+        <step id="S3">UI saves report definition</step>
+        <step id="S4">Reporting OpenSearch saves report definition</step>
+        <step id="S5">Reporting Dashboards receives confirmation of report definition save completion</step>
+        <step id="S6">Reporting JobScheduler executes scheduled report generation tasks or UI creates on-demand report</step>
+        <step id="S7">Reporting OpenSearch creates report instance</step>
+        <step id="S8">Reporting OpenSearch generates notification message for report</step>
+        <step id="S9">Notifications OpenSearch Plugin sends notification for the report</step>
+        <step id="S10">Reporting OpenSearch updates report instance status</step>
+    </mainSequence>
+</useCase>

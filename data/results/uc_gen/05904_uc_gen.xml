@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Researcher manages participant recruitment and analysis</name>
+    <actors>
+        <actor>Researcher</actor>
+        <actor>RecruitmentPlatform</actor>
+        <actor>UserDb</actor>
+        <actor>Participant</actor>
+        <actor>AnalysisSystem</actor>
+    </actors>
+    <preconditions>
+        <precondition>Researcher defines criteria for participant selection</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Researcher archives project data and findings successfully</condition>
+    </successEndConditions>
+    
+    <trigger>Researcher initiates participant recruitment and analysis process</trigger>
+    
+    <mainSequence>
+        <step id="S1">Researcher defines criteria for participant selection</step>
+        <step id="S2">RecruitmentPlatform queries potential participants based on criteria</step>
+        <step id="S3">UserDb returns list of potential participants</step>
+        <step id="S4">RecruitmentPlatform sends recruitment invitations</step>
+        <step id="S5">Participant responds to invitation</step>
+        <step id="S6">RecruitmentPlatform provides list of participating users</step>
+        <step id="S7">Researcher conducts user research sessions with Participant</step>
+        <step id="S8">Participant provides feedback and data to Researcher</step>
+        <step id="S9">Researcher inputs user research data to AnalysisSystem</step>
+        <step id="S10">AnalysisSystem analyzes and summarizes findings</step>
+        <step id="S11">AnalysisSystem provides synthesized results to Researcher</step>
+        <step id="S12">Researcher updates project status to "Complete" on RecruitmentPlatform</step>
+        <step id="S13">Researcher archives project data and findings on AnalysisSystem</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">Researcher adjusts criteria/republishes invitation</step>
+            <step id="A1S2">RecruitmentPlatform re-queries potential participants</step>
+            <step id="A1S3">UserDb returns updated list of potential participants</step>
+            <step id="A1S4">RecruitmentPlatform resends invitations</step>
+            <step id="A1S5">Participant responds to invitations</step>
+            <step id="A1S6">RecruitmentPlatform updates on participant status to Researcher</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

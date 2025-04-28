@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Reboot Node</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Host</actor>
+        <actor>DPU</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User initiates a top-level reboot request.</step>
+        <step id="S2">User commands Host to cordon the node.</step>
+        <step id="S3">User instructs Host to perform the reboot.</step>
+        <step id="S4">User directs Host to uncordon the node.</step>
+        <step id="S5">Host checks liveness and triggers a go routine for cordon.</step>
+        <step id="S6">Host prepares for reboot by cordon-ing the node.</step>
+        <step id="S7">Host signals DPU about the reboot readiness.</step>
+        <step id="S8">DPU updates PDB and executes the reboot process.</step>
+        <step id="S9">Host reconnects to DPU post reboot.</step>
+        <step id="S10">DPU updates PDB post-reboot completion.</step>
+        <step id="S11">Host uncordons the node after reboot completion.</step>
+    </mainSequence>
+</useCase>

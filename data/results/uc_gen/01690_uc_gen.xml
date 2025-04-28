@@ -1,0 +1,24 @@
+<useCase id="UC001">
+  <name>Account Linking with the PISP App</name>
+  <actors>
+    <actor>Ayeesha</actor>
+    <actor>PISP App</actor>
+    <actor>PISP Server</actor>
+    <actor>Mojaloop Switch</actor>
+    <actor>ALS</actor>
+    <actor>DFSP A</actor>
+  </actors>
+  <preconditions>
+    <precondition>Ayeesha desires to register her chequing account from DFSP A using the PISP App.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Ayeesha requests through the PISP App to link her account at DFSP A.</step>
+    
+    <!-- Account Linking sub-steps -->
+    <step id="S2">DFSP A generates and saves a random UUID internally.</step>
+    <step id="S3">DFSP A notifies PISP about the random UUID.</step>
+    <step id="S4">PISP associates Ayeesha's account with the random UUID.</step>
+    <step id="S5">DFSP A POSTs the UUID endpoint to the switch.</step>
+    <step id="S6">The switch creates and maps the player.</step>
+  </mainSequence>
+</useCase>

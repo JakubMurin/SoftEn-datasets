@@ -1,0 +1,22 @@
+<useCase id="1">
+    <name>Läkare visar sjukfallshistorik för patient på Vårdenhet</name>
+    <actors>
+        <actor>Läkare</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet</step>
+        <step id="S2">Rehabstöd listar patientens samtliga intyg över alla VG</step>
+        <step id="S3">Hämta vårdgivarnamn för varje intyg mha GetUnit v1</step>
+        <step id="S4">PU - GetPerson för patienten</step>
+        <step id="S5">Om patient sekretssmarkerad - Filtrera bort intyg utanför aktiva enheten</step>
+        <step id="S6">Om patient inte sekretssmarkerad - Kontrollera spärr, uppdatera intyg, skicka intyg för bearbetning</step>
+        <step id="S7">Kontrollera samtyckesstatus, filtrera intyg baserat på samtycke</step>
+        <step id="S8">Sammanställ klientsvar med intyg och metadata</step>
+        <step id="S9">Skicka in nettolistan av intyg för att få verkliga sjukfall</step>
+        <step id="S10">Uppdatera lista med namn och sekretessstatus</step>
+        <step id="S11">GetCertificateAdditions, uppdatera sjukfallens intyg med kompletteringsstatus</step>
+        <step id="S12">Om SRS-stöd aktiverat - Beräkna riskprediktion för varje intyg</step>
+        <step id="S13">PDL loggning av faktisk visad information</step>
+        <step id="S14">Läkare visar patientens sjukfallshistorik inkl. SJF</step>
+    </mainSequence>
+</useCase>

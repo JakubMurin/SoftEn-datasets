@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Authenticate User</name>
+    <description>Use case for authenticating a user</description>
+    <actors>
+        <actor>Anwender:in</actor>
+    </actors>
+    <preconditions>
+        <precondition>Fachlogik is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User authentication failed</condition>
+    </failureEndConditions>
+    <trigger>User requests authentication</trigger>
+    <mainSequence>
+        <step id="S1">Get certificates from Fachdienst</step>
+        <step id="S2">Get discovery document</step>
+        <step id="S3">Choose code verifier</step>
+        <step id="S4">Get keys from IDP</step>
+        <step id="S5">Request authentication challenge</step>
+        <step id="S6">Confirm user consent</step>
+        <step id="S7">Sign challenge</step>
+        <step id="S8">Request authorization code with signed challenge</step>
+        <step id="S9">Request authorization code with SSO token</step>
+        <step id="S10">Request authorization code with alternative authentication</step>
+        <step id="S11">Create key verifier</step>
+        <step id="S12">Get tokens</step>
+        <step id="S13">Use access token at Fachdienst</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Text Rendering</name>
+    <description>Render text using Flyweight pattern</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Document</actor>
+        <actor>TextFactory</actor>
+        <actor>Cache</actor>
+    </actors>
+    <preconditions>
+        <precondition>User enters character(s)</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Text Flyweight successfully rendered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error rendering text Flyweight</condition>
+    </failureEndConditions>
+    <trigger>Type character(s)</trigger>
+    <mainSequence>
+        <step id="S1">GetText(value) from Document</step>
+        <step id="S2">GetFlyweight(value) from TextFactory</step>
+        <step id="S3">Return Flyweight if exists from Cache</step>
+        <step id="S4">Create new Flyweight if not exist</step>
+        <step id="S5">Add new Flyweight to cache</step>
+        <step id="S6">Return new Flyweight to Document</step>
+        <step id="S7">Render text Flyweight to User</step>
+    </mainSequence>
+</useCase>

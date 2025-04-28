@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Reconfigure Dataset</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user initiates a request to reconfigure the dataset.</precondition>
+    </preconditions>
+    <trigger>User initiates the dataset reconfiguration request.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a Reconfigure Dataset Request to the Dataset Management System.</step>
+        <step id="S2">The Dataset Management System validates the Explore Table Update with the ExploreDB.</step>
+        <step id="S3">If the Explore Table Update is successful:</step>
+        <step id="S4">The Dataset Management System proceeds with the Dataset Reconfiguration.</step>
+        <step id="S5">The Dataset Management System informs the user about the Reconfiguration Success.</step>
+        <step id="S6">If the Explore Table Update fails:</step>
+        <step id="S7">The Dataset Management System informs the user about the Reconfiguration Failure.</step>
+        <step id="S8">The Dataset Management System rolls back any changes made during the process.</step>
+    </mainSequence>
+</useCase>

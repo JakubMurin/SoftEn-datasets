@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+        <actor>JobOpeningRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>CustomerManager is logged in</precondition>
+        <precondition>Job openings are available</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">CustomerManager asks PublishJobOpeningUI to display job openings in the results phase</step>
+        <step id="S2">PublishJobOpeningUI gets job openings</step>
+        <step id="S3">PublishJobOpeningUI displays job openings</step>
+        <step id="S4">CustomerManager selects job opening to publish results</step>
+        <step id="S5">PublishJobOpeningUI publishes job opening results</step>
+    </mainSequence>
+</useCase>

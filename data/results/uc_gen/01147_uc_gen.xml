@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Delete istiocs CR</name>
+    <description>As a User, I want to delete istiocs CR via the OpenShift API Server</description>
+    <actors>
+        <actor>User</actor>
+        <actor>API Server</actor>
+        <actor>Operator</actor>
+    </actors>
+    <trigger>User initiates the deletion of istiocs CR via the API Server</trigger>
+    <mainSequence>
+        <step id="S1">User requests the Delete operation for istiocs CR to the OpenShift API Server.</step>
+        <step id="S2">API Server sends the request to the cert-manager-operator.</step>
+        <step id="S3">Operator reconciles the delete event of istiocs CR and stops managing resources related to istio-csr agent installation.</step>
+    </mainSequence>
+</useCase>

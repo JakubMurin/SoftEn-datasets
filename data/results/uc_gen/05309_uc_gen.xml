@@ -1,0 +1,23 @@
+<useCase id="1">
+  <name>Rendering Component</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Liba</actor>
+    <actor>renderC</actor>
+    <actor>App</actor>
+    <actor>renderLiba</actor>
+    <actor>createChildren</actor>
+    <actor>UserCard</actor>
+  </actors>
+  <trigger>User sends .create(App) to Liba</trigger>
+  <mainSequence>
+    <step id="S1">Liba creates cInstance</step>
+    <step id="S2">Liba sends (cInstance) to renderC</step>
+    <step id="S3">App receives (props, renderLiba) from renderC</step>
+    <step id="S4">App creates 'button' element</step>
+    <step id="S5">App sends created bElement to renderLiba</step>
+    <step id="S6">App creates UserCard</step>
+    <step id="S7">UserCard creates 'div' element</step>
+    <step id="S8">UserCard creates 'div' element</step>
+  </mainSequence>
+</useCase>

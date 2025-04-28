@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Fetch Stock Data</name>
+    <actors>
+        <actor>User</actor>
+        <actor>StockService</actor>
+        <actor>RestTemplate</actor>
+        <actor>ObjectMapper</actor>
+        <actor>StockFactory</actor>
+        <actor>StockPublisher</actor>
+        <actor>StockRepository</actor>
+        <actor>StockObserver</actor>
+    </actors>
+    <preconditions>
+        <precondition>Stock data needs to be fetched.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User fetches stock data by providing symbol to StockService.</step>
+        <step id="S2">StockService requests stock data from RestTemplate.</step>
+        <step id="S3">RestTemplate retrieves stock data from the specified URL.</step>
+        <step id="S4">If the response is valid JSON:</step>
+        <step id="S5">StockService parses the JSON response using ObjectMapper.</step>
+        <step id="S6">StockService creates a Stock object using StockFactory.</step>
+        <step id="S7">StockPublisher notifies StockObserver about the new stock.</step>
+        <step id="S8">StockObserver updates the stock.</step>
+        <step id="S9">StockObserver saves the stock in StockRepository.</step>
+        <step id="S10">If an exception occurs:</step>
+        <step id="S11">StockService prints the stack trace.</step>
+    </mainSequence>
+</useCase>

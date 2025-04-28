@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Complete Game Setup</name>
+    <actors>
+        <actor>User</actor>
+        <actor>GameApp</actor>
+        <actor>StartScreen</actor>
+        <actor>StartButtonEventHandler</actor>
+        <actor>ConfirmButtonHandler</actor>
+        <actor>NamesInputButtonHandler</actor>
+        <actor>PlayersInputScreen</actor>
+        <actor>Game</actor>
+        <actor>PlayersNamesInputScreen</actor>
+        <actor>QuestionScreen</actor>
+        <actor>Player</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has launched the game application.</precondition>
+    </preconditions>
+    <trigger>User clicks on the 'Comenzar' button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks 'Comenzar' button triggering the start of the game.</step>
+        <step id="S2">App handles the event and directs it to StartScreen.</step>
+        <step id="S3">StartButtonEventHandler processes the event and hides StartScreen while showing PlayersInputScreen.</step>
+        <step id="S4">PlayersInputScreen is displayed to select and confirm inputs.</step>
+        <step id="S5">User selects and confirms inputs on the screen.</step>
+        <step id="S6">PlayersInputScreen handles the event and directs it to ConfirmButton.</step>
+        <step id="S7">ConfirmButton requests to select data and receives the selection from PlayersInputScreen.</step>
+        <step id="S8">ConfirmButton sends the selected data to Game for processing.</step>
+        <step id="S9">Game loads the received data and creates PlayersNamesInputScreen to input player names.</step>
+        <step id="S10">PlayersNamesInputScreen is displayed to enter and confirm player names.</step>
+        <step id="S11">User enters and confirms player names on the screen.</step>
+        <step id="S12">PlayersNamesInputScreen handles the event and directs it to NamesButton.</step>
+        <step id="S13">NamesButton executes the event, registers users, and creates Player objects in Game.</step>
+        <step id="S14">Game adds the created players to the player list.</step>
+        <step id="S15">NamesButton creates QuestionScreen to display questions and options.</step>
+        <step id="S16">QuestionScreen shows questions for each player.</step>
+    </mainSequence>
+</useCase>

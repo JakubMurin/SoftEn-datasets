@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Construir Edificio</name>
+    <actors>
+        <actor>Sistema o Usuario</actor>
+    </actors>
+    <preconditions>
+        <precondition>El sistema o usuario tiene la capacidad de construir edificios.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>El edificio se construye con éxito.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>El edificio no puede ser construido.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Iniciar construcción de edificio.</step>
+        <step id="S2">Verificar si es posible costear la construcción del edificio.</step>
+        <step id="S3">Crear construcción tentativa del edificio.</step>
+        <step id="S4">Mostrar al usuario la construcción tentativa.</step>
+        <step id="S5">Verificar si es posible construir el edificio.</step>
+        <step id="S6">Construir el edificio.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">No se puede costear la construcción, detener el proceso.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>No se puede construir el edificio.</description>
+            <step id="E1S1">Mostrar error al usuario.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

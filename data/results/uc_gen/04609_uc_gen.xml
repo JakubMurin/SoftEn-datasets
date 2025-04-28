@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Resolve Voter List Changes</name>
+    <description>EHS operator resolves any issues encountered while providing and importing voter list changes.</description>
+    <actors>
+        <actor>EHS operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>EHS operator is logged into the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>EHS operator successfully resolves all issues related to voter list changes.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>EHS operator unable to resolve issues related to voter list changes.</condition>
+    </failureEndConditions>
+    <trigger>Notification of voter list changes received.</trigger>
+    <mainSequence>
+        <step id="S1">EHS operator requests voter list changes from VIS.</step>
+        <step id="S2">VIS provides the requested voter list changes.</step>
+        <step id="S3">EHS operator imports the provided voter list changes.</step>
+        <step id="S4">EHS operator encounters an issue with loading the changes.</step>
+        <step id="S5">EHS operator resolves the EHS-side loading issue.</step>
+        <step id="S6">EHS operator requests voter list changes again from VIS.</step>
+        <step id="S7">VIS provides the updated voter list changes.</step>
+        <step id="S8">EHS operator imports the updated changes.</step>
+        <step id="S9">EHS operator encounters an issue with loading the changes.</step>
+        <step id="S10">EHS operator receives directive to skip loading the problematic changes.</step>
+        <step id="S11">EHS operator requests new voter list changes from VIS.</step>
+        <step id="S12">VIS provides the revised voter list changes.</step>
+        <step id="S13">EHS operator imports the revised changes successfully.</step>
+        <step id="S14">EHS operator requests further voter list changes from VIS.</step>
+        <step id="S15">VIS detects a conflict while providing changes.</step>
+        <step id="S16">EHS operator identifies a sequence number error.</step>
+        <step id="S17">EHS operator resolves the EHS-side loading issue.</step>
+        <step id="S18">EHS operator requests alternative voter list changes from VIS.</step>
+        <step id="S19">VIS provides the alternative voter list changes.</step>
+        <step id="S20">EHS operator imports the alternative changes.</step>
+    </mainSequence>
+</useCase>

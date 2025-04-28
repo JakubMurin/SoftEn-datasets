@@ -1,0 +1,22 @@
+<useCase id="UC001">
+  <name>Retrieve Issue Details</name>
+  <actors>
+    <actor>User</actor>
+    <actor>System</actor>
+    <actor>Database</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user is authenticated.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The issue details are successfully retrieved.</condition>
+  </successEndConditions>
+  <trigger>User requests to retrieve issue details.</trigger>
+  <mainSequence>
+    <step id="S1">User requests issue details from the system</step>
+    <step id="S2">System validates the user's credentials using signId</step>
+    <step id="S3">System validates the issue details using issueId</step>
+    <step id="S4">System validates the project associated with the issue</step>
+    <step id="S5">System sends IssueResponseDto to the user</step>
+  </mainSequence>
+</useCase>

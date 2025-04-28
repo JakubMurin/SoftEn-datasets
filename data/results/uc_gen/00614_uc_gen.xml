@@ -1,0 +1,18 @@
+<useCase id="ID123">
+    <name>Guaranteed Idempotency Using CorrelationIds</name>
+    <actors>
+        <actor>Client-Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actor must create and store a correlation ID</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Service has accepted the request</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Client-Service creates and stores a correlationId</step>
+        <step id="S2">Client-Service calls the Service with the correlationId</step>
+        <step id="S3">Service finds the correlation ID</step>
+        <step id="S4">Service handles and replies to request asynchronously</step>
+    </mainSequence>
+</useCase>

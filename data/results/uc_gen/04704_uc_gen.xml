@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>User Authentication</name>
+    <description>User should be able to authenticate using their credentials.</description>
+    <actors>
+        <actor>Usuario</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is not authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and receives an access token.</condition>
+    </successEndConditions>
+    <trigger>User attempts to log in.</trigger>
+    <mainSequence>
+        <step id="S1">User enters credentials.</step>
+        <step id="S2">AngularApp requests authentication.</step>
+        <step id="S3">AngularService requests authentication.</step>
+        <step id="S4">ExpressServer verifies credentials.</step>
+        <step id="S5">ExpressServer generates access token.</step>
+        <step id="S6">AngularService generates access token.</step>
+        <step id="S7">User successfully logs in.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>LikeController</actor>
+        <actor>LikeService</actor>
+        <actor>LikeRepository</actor>
+        <actor>LikesDatabase</actor>
+        <actor>PostsDatabase</actor>
+        <actor>CommentsDatabase</actor>
+        <actor>EventsDatabase</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and viewing an entity (post, comment, event)</precondition>
+    </preconditions>
+    <trigger>User clicks on the "Like/Dislike" button</trigger>
+    <mainSequence>
+        <step id="S1">User goes to entity page (post, comment, event)</step>
+        <step id="S2">UserInterface displays entity details and like button</step>
+        <step id="S3">User clicks "Like/Dislike" button</step>
+        <step id="S4">LikeController toggles like for the entity</step>
+        <step id="S5">LikeService processes like/dislike operation</step>
+        <step id="S6">LikeRepository saves or removes like data</step>
+        <step id="S7">Database updates like count for the entity</step>
+        <step id="S8">Return success response to UserInterface</step>
+        <step id="S9">UserInterface displays success/error message</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Remove like data if entity is already liked</step>
+            <step id="A1S2">Return success/failure response to UserInterface</step>
+            <step id="A1S3">Update like count on entity</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">Save like data if entity is not yet liked</step>
+            <step id="A2S2">Return success/failure response to UserInterface</step>
+            <step id="A2S3">Update like count on entity</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Operation to save/remove like data fails</description>
+            <step id="E1S1">Return failure response to UserInterface</step>
+            <step id="E1S2">Display error message on UserInterface</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Create Dataset with Exploration</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests dataset creation with exploration enabled</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Dataset creation successful</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Dataset creation failed due to exploration issues</condition>
+        <condition>Dataset creation failed, Type doesn't support exploration</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User requests dataset creation with exploration enabled</step>
+        <step id="S2">Verify dataset type supports exploration</step>
+        <step id="S3">Dataset type supports exploration</step>
+        <step id="S4">Dataset type verified</step>
+        <step id="S5">Create dataset instance</step>
+        <step id="S6">Dataset instance created</step>
+        <step id="S7">Enable exploration on dataset</step>
+        <step id="S8">Exploration enabled</step>
+        <step id="S9">Save dataset details (with explore enabled flag)</step>
+        <step id="S10">Dataset details saved</step>
+        <step id="S11">Fail to enable exploration</step>
+        <step id="S12">Rollback dataset creation</step>
+        <step id="S13">Dataset creation rolled back</step>
+    </mainSequence>
+</useCase>

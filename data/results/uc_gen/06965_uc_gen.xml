@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Reboot Sequence</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Host</actor>
+        <actor>DPU</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User coredons the node</step>
+        <step id="S2">User initiates reboot</step>
+        <step id="S3">User uncordons the node</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1" continue="S2">
+            <step id="A1S1">User needs to top coredon the node</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>User needs to top coredon the node</description>
+            <step id="E1S1">User somehow needs to tell top to coredon the node</step>
+            <step id="E1S2">Liveliness check required</step>
+            <step id="E1S3">Go routine from top performing this over gRPC</step>
+        </esteps>
+    </errorSteps>
+</useCase>

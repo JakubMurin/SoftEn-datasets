@@ -1,0 +1,40 @@
+<useCase id="UC1">
+  <name>User interacts with Liba and App to render UserCard</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Liba</actor>
+    <actor>renderC</actor>
+    <actor>App</actor>
+    <actor>renderLiba</actor>
+    <actor>createChildren</actor>
+    <actor>UserCard</actor>
+  </actors>
+  <preconditions>
+    <precondition>Liba component is initialized.</precondition>
+    <precondition>renderC is ready to render elements.</precondition>
+    <precondition>App contains necessary data for rendering.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>UserCard is successfully rendered with all required elements.</condition>
+  </successEndConditions>
+  <trigger>User initiates the rendering process.</trigger>
+  <mainSequence>
+    <step id="S1">User calls .create on Liba passing App.</step>
+    <step id="S2">cInstance is created by Liba.</step>
+    <step id="S3">Liba passes cInstance to renderC.</step>
+    <step id="S4">renderC receives cInstance.</step>
+    <step id="S5">App is called by renderC with props and renderLiba.</step>
+    <step id="S6">App creates 'button' element through renderLiba.</step>
+    <step id="S7">bElement is created and passed back to App.</step>
+    <step id="S8">App creates UserCard through renderLiba.</step>
+    <step id="S9">UserCard calls createChildren with necessary parameters.</step>
+    <step id="S10">createChildren gets instances, if cached, and proceeds.</step>
+    <step id="S11">Liba creates UserCard with required data and passes to renderC.</step>
+    <step id="S12">UserCard receives props and renderLiba from renderC.</step>
+    <step id="S13">UserCard creates 'div' elements through renderLiba.</step>
+    <step id="S14">UserCard creates another 'div' element through renderLiba.</step>
+    <step id="S15">UserCard returns elements to renderLiba.</step>
+    <step id="S16">renderLiba passes elements back to renderC.</step>
+    <step id="S17">renderC updates instance.element with received elements.</step>
+  </mainSequence>
+</useCase>

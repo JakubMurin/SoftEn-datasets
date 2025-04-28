@@ -1,0 +1,43 @@
+<useCase id="UC001">
+    <name>Submit project for approval</name>
+    <description>User submits a project for approval</description>
+    <actors>
+        <actor>Requestor</actor>
+        <actor>Approvers</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated</precondition>
+        <precondition>User has valid project information</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Project is successfully added</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Project addition failed</condition>
+    </failureEndConditions>
+    <trigger>User submits project</trigger>
+    <mainSequence>
+        <step id="S1">Requestor submits project for approval</step>
+        <step id="S2">Add project</step>
+        <step id="S3">Check add permission</step>
+        <step id="S4">Return add permission</step>
+        <step id="S5">Validate content</step>
+        <step id="S6">Return validation result</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Display failure page with error info</step>
+        </asteps>
+        <asteps id="A2" start="S1">
+            <step id="A2S1">Add project with status "approved"</step>
+            <step id="A2S2">Return project_id</step>
+            <step id="A2S3">Display success page</step>
+        </asteps>
+        <asteps id="A3" start="S1">
+            <step id="A3S1">Add project with status "awaiting_approval"</step>
+            <step id="A3S2">Return project_id</step>
+            <step id="A3S3">Send email to Approvers</step>
+            <step id="A3S4">Display success page with message that project is pending approval</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

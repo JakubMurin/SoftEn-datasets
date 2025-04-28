@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Criar Edifício</name>
+    <actors>
+        <actor>GestorCampus</actor>
+        <actor>SistemaRobDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>GestorCampus está autenticado no sistema.</precondition>
+        <precondition>SistemaRobDroneGo está disponível para receber dados.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O edifício foi criado com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>O edifício não pôde ser criado devido a algum erro.</condition>
+    </failureEndConditions>
+    <trigger>O GestorCampus deseja criar um novo edifício no sistema.</trigger>
+    <mainSequence>
+        <step id="S1">O GestorCampus solicita a criação de um edifício ao SistemaRobDroneGo.</step>
+        <step id="S2">SistemaRobDroneGo solicita os dados necessários ao GestorCampus.</step>
+        <step id="S3">O GestorCampus envia os dados do edifício para o SistemaRobDroneGo.</step>
+        <step id="S4">SistemaRobDroneGo confirma a criação do edifício e envia uma mensagem de sucesso ao GestorCampus.</step>
+    </mainSequence>
+</useCase>

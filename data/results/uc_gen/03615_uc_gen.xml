@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>View Book Reviews</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Review Service</actor>
+        <actor>Mongo Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to view reviews for a specific book.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully retrieves the review list for the specified book.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error status returned when the JWT is absent or not valid.</condition>
+    </failureEndConditions>
+    <trigger>User initiates a request to view book reviews.</trigger>
+    <mainSequence>
+        <step id="S1">User requests review list for a specific book from the Gateway.</step>
+        <step id="S2">Gateway verifies the JWT token with Keycloak.</step>
+        <step id="S3">If the JWT is valid:</step>
+        <step id="S4">Gateway sends a request to the Review Service for the review list.</step>
+        <step id="S5">Review Service queries the Mongo Database for reviews based on the book ID.</step>
+        <step id="S6">Mongo Database returns the review list to the Review Service.</step>
+        <step id="S7">Review Service provides the review list to the Gateway.</step>
+        <step id="S8">Gateway forwards the review list to the User.</step>
+    </mainSequence>
+</useCase>

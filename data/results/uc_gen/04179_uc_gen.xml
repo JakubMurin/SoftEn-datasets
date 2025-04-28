@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Generate and Deploy Certificate for Istio Proxy</name>
+    <actors>
+        <actor>User</actor>
+        <actor>OpenShift API Server</actor>
+        <actor>cert-manager-operator</actor>
+        <actor>cert-manager</actor>
+        <actor>istio-csr-agent</actor>
+        <actor>Istiod</actor>
+        <actor>Istio Proxy</actor>
+        <actor>Certificate Authority</actor>
+    </actors>
+    <preconditions>
+        <precondition>istio-csr Custom Resource exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Istio Proxy successfully updated with signed certificate</condition>
+    </successEndConditions>
+    <trigger>User creates istiocsr Custom Resource</trigger>
+    <mainSequence>
+        <step id="S1">User creates istiocsr Custom Resource</step>
+        <step id="S2">cert-manager-operator reconciles istiocsr event</step>
+        <step id="S3">cert-manager-operator prepares istio-csr manifests based on istiocsr config</step>
+        <step id="S4">cert-manager-operator deploys istio-csr operand resources</step>
+        <step id="S5">Istiod requests certificate from IstioCSROperand</step>
+        <step id="S6">IstioCSROperand creates CSR resource</step>
+        <step id="S7">cert-manager notifies CSR created</step>
+        <step id="S8">CertManagerOperand sends CSR to Certificate Authority for signing</step>
+        <step id="S9">Certificate Authority returns signed certificate to CertManagerOperand</step>
+        <step id="S10">CertManagerOperand updates CSR with signed certificate</step>
+        <step id="S11">OpenShift API Server notifies IstioCSROperand of signed certificate availability</step>
+        <step id="S12">IstioCSROperand responds to Istiod with signed certificate</step>
+        <step id="S13">Istiod updates Istio Proxy with certificate</step>
+        <step id="S14">Istio Proxy uses certificate for TLS communication</step>
+    </mainSequence>
+</useCase>

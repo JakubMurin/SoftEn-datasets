@@ -1,0 +1,36 @@
+<useCase id="1">
+    <name>Execute Pomodoro Task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TimeTrigger</actor>
+        <actor>Renderer</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>TaskStateChangeHandler</actor>
+        <actor>TaskFinishHandler</actor>
+        <actor>NotificationPlayer</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>CLI command "pomogo --task 'programuj pomodoro' is executed</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User executes CLI command "pomogo --task 'programuj pomodoro'"</step>
+        <step id="S2">CLI registers a new task</step>
+        <step id="S3">TaskStartHandler saves new task "programuj pomodoro" with start date and other details in sqlite</step>
+        <step id="S4">TimeTrigger triggers refresh</step>
+        <step id="S5">Renderer gets tasks from sqlite</step>
+        <step id="S6">Renderer renders a progress bar with animations and unicorns for the User</step>
+        <step id="S7">TimeTrigger triggers refresh</step>
+        <step id="S8">TaskStateChangeHandler saves new state as resting and increments rest marker if work mode finishes</step>
+        <step id="S9">TaskStateChangeHandler triggers a sound notification using NotificationPlayer</step>
+        <step id="S10">TaskStateChangeHandler saves new state as deep resting and zeroes rest marker if work mode finishes</step>
+        <step id="S11">TaskStateChangeHandler triggers a sound notification using NotificationPlayer</step>
+        <step id="S12">TaskStateChangeHandler saves new state as resting and increments rest marker if rest mode finishes</step>
+        <step id="S13">TaskStateChangeHandler triggers a sound notification using NotificationPlayer</step>
+        <step id="S14">TaskStateChangeHandler marks task as paused if deep rest mode finishes</step>
+        <step id="S15">TaskStateChangeHandler triggers a sound notification using NotificationPlayer</step>
+        <step id="S16">TimeTrigger eventually triggers Renderer</step>
+        <step id="S17">Renderer renders a finish message with unicorns for the User</step>
+    </mainSequence>
+</useCase>

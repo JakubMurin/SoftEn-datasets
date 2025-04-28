@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Register User</name>
+    <description>This use case describes the registration process for a new user on the platform.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>FE. Registration Form</actor>
+        <actor>BE. Registration Script</actor>
+        <actor>DB. Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has navigated to the registration page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is successfully registered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User registration fails due to existing user.</condition>
+    </failureEndConditions>
+    <trigger>User initiates the registration process by filling out the registration form.</trigger>
+    <mainSequence>
+        <step id="S1">User fills out the registration form.</step>
+        <step id="S2">Client sends the registration data.</step>
+        <step id="S3">FE. Registration Form sends a POST request with the data (username, password) to BE. Registration Script.</step>
+        <step id="S4">BE. Registration Script checks if the user exists in the database.</step>
+        <step id="S5">BE. Registration Script inserts the user into the database and confirms successful insertion.</step>
+        <step id="S6">FE. Registration Form receives the registration confirmation and notifies the user.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">BE. Registration Script inserts the new user into the database.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>User registration fails due to an existing user.</description>
+            <step id="E1S1">FE. Registration Form notifies the user that registration failed as the user already exists.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

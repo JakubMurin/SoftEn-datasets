@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Define Explore Schema</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Web UI/API</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Schema Storage</actor>
+        <actor>Dataset Storage</actor>
+    </actors>
+    <preconditions>
+        <precondition>Web UI/API is accessible</precondition>
+        <precondition>Dataset Management System is operational</precondition>
+        <precondition>Schema Storage is available</precondition>
+        <precondition>Dataset Storage is connected</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Explore schema stored successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Validation failure during schema definition</condition>
+    </failureEndConditions>
+    <trigger>User sends request to define explore schema</trigger>
+    <mainSequence>
+        <step id="S1">User requests to define explore schema</step>
+        <step id="S2">Web UI/API validates the user request</step>
+        <step id="S3">Validation succeeds</step>
+        <step id="S4">Dataset Management System stores explore schema</step>
+        <step id="S5">Schema Storage confirms schema stored</step>
+        <step id="S6">Dataset Management System links explore schema with dataset</step>
+        <step id="S7">Dataset Storage confirms link</step>
+        <step id="S8">Dataset Management System sends success response to Web UI/API</step>
+        <step id="S9">Web UI/API acknowledges schema specification to User</step>
+    </mainSequence>
+</useCase>

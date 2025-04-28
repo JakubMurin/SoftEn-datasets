@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Update Repository Information</name>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>DIMS Interface</actor>
+        <actor>Central Repository Info Management</actor>
+        <actor>DAMS Sync Service</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Repository Manager initiates update.</step>
+        <step id="S2">DIMS Interface submits update request to Central Repository Info Management.</step>
+        <step id="S3">Central Repository Info Management checks current repository information with DAMS.</step>
+        <step id="S4">Central Repository Info Management updates repository information with DAMS.</step>
+        <step id="S5">Central Repository Info Management confirms the update.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">If DAMS current repository info is not available, handle error with relevant steps.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

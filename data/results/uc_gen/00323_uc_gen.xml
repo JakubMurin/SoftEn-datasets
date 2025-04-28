@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>User searches for content</name>
+    <description>User selects a keyword to search for content</description>
+    <actors>
+      <actor>user_agent</actor>
+      <actor>api_search</actor>
+      <actor>db_content</actor>
+    </actors>
+    <trigger>Search event triggered by User Agent sending HTTP GET request.</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a search request to Search Content API containing the search query.</step>
+        <step id="S2">Search Content API receives the request from User Agent and activates to run search query in Content database.</step>
+        <step id="S3">Attempt to execute search query against Content database to fetch search results.</step>
+        <step id="S4">Search Content API gets result from Content database and returns to User Agent.</step>
+        <step id="S5">Upon receiving the results, API returns HTTP 200 OK containing structured search results to User Agent.</step>
+    </mainSequence>
+</useCase>

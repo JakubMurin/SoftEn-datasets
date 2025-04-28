@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Flow Reroute</name>
+    <actors>
+        <actor>User</actor>
+        <actor>FlowManager</actor>
+        <actor>DAO</actor>
+        <actor>PathComputer</actor>
+        <actor>ResourcePool</actor>
+        <actor>CommandBuilder</actor>
+        <actor>History</actor>
+        <actor>SpeakerWorker</actor>
+        <actor>RulesValidator</actor>
+        <actor>RuleManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests to reroute</step>
+        <step id="S2">FlowManager reroutes the flow</step>
+        <step id="S3">FlowManager starts flow rerouting</step>
+        <step id="S4">FlowManager validates flow</step>
+        <step id="S5">FlowManager finds a path for the flow</step>
+        <step id="S6">FlowManager allocates resources for the path</step>
+        <step id="S7">FlowManager persists path changes</step>
+        <step id="S8">FlowManager creates switch rules</step>
+        <step id="S9">FlowManager updates flow status</step>
+        <step id="S10">FlowManager removes old flow rules</step>
+        <step id="S11">FlowManager validates removed rules</step>
+    </mainSequence>
+</useCase>

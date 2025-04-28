@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Create User</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>UserController</actor>
+        <actor>UserHandler</actor>
+        <actor>BDD</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin initiates user creation by sending a POST request to UserController with the endpoint /users/create.</step>
+        <step id="S2">UserController forwards the user creation form to UserHandler.</step>
+        <step id="S3">UserHandler saves the user details in the database through BDD.</step>
+        <step id="S4">UserHandler notifies UserController about the successful user creation.</step>
+        <step id="S5">UserController redirects the Admin to the /users page.</step>
+    </mainSequence>
+</useCase>

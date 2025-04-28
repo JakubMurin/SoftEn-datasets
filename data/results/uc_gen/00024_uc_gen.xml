@@ -1,0 +1,13 @@
+<useCase id="UC001">
+  <name>Manage-Clouds</name>
+  <description>Allows Ops Manager to manage cloud resources.</description>
+  <actors>
+    <actor>Ops Manager</actor>
+  </actors>
+  <trigger>Ops Manager triggers the fleet to add new cloud resources with specified attributes.</trigger>
+  <mainSequence>
+    <step id="S1">Ops Manager triggers the fleet to add cloud resources with name, event, condition, and action parameters.</step>
+    <step id="S2">The fleet triggers the Cloud Stack to add cloud resources with specified attributes.</step>
+    <step id="S3">The Cloud Stack processes the trigger request, creates a new Trigger with the specified name, event, condition, and action.</step>
+  </mainSequence>
+</useCase>

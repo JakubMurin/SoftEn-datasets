@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>客户端升级流程</name>
+    <description>描述: 客户端升级流程</description>
+    <actors>
+        <actor>client</actor>
+        <actor>appcenter</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">读取本地的config、update文件的配置,处理本地已有插件</step>
+        <step id="S2">获取bucket信息（api/bucket/list）</step>
+        <step id="S3">检测是否需要升级（api/client/version）</step>
+        <step id="S4">把json中的版本version和插件version与本地的update文件进行，不同就需要升级，把最新的json覆盖本地update文件</step>
+        <step id="S5">读取config、update文件，再对比本地已有插件，本地不存在的插件进行下载</step>
+        <step id="S6">获取插件下载地址（api/filekey/plugin）</step>
+        <step id="S7">通过准备流程中的bucket信息拼出下载地址进行下载</step>
+    </mainSequence>
+</useCase>

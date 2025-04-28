@@ -1,0 +1,44 @@
+<useCase id="UC001">
+    <name>Creación de identidad</name>
+    <actors>
+        <actor>User</actor>
+        <actor>User_Web</actor>
+        <actor>Associate_Web</actor>
+        <actor>PushMovileManager</actor>
+        <actor>Gateway</actor>
+        <actor>MetaIdentityManager</actor>
+        <actor>Proxy</actor>
+        <actor>Registry</actor>
+        <actor>Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must have the Alastria application installed on the mobile</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User installs the Alastria application on the mobile</step>
+        <step id="S2">User requests a session token from Associate_Web</step>
+        <step id="S3">Associate_Web prepares a JSON object with the registration in Alastria</step>
+        <step id="S4">Associate_Web sends the JSON retrieval URL to PushMovileManager</step>
+        <step id="S5">PushMovileManager pushes the JSON retrieval URL to User</step>
+        <step id="S6">User requests the public key recovery from the application</step>
+        <step id="S7">Gateway forwards the public key recovery request to MetaIdentityManager</step>
+        <step id="S8">MetaIdentityManager forwards the request to Proxy</step>
+        <step id="S9">Proxy retrieves the user's public key from Registry</step>
+        <step id="S10">Registry returns the public key associated with the user's alastria_id to Gateway</step>
+        <step id="S11">Gateway provides the user with the public key associated with the alastria_id</step>
+        <step id="S12">User verifies the JSON object signature</step>
+        <step id="S13">Gateway creates the user's alastria_id</step>
+        <step id="S14">Gateway registers the user's public key in the Registry</step>
+        <step id="S15">User creates keys</step>
+        <step id="S16">User publishes the public key in the Registry</step>
+        <step id="S17">User includes testimonies</step>
+        <step id="S18">User requests the testimonies provided by the partner</step>
+        <step id="S19">Associate_Web constructs the user's testimonies (Signed JSON)</step>
+        <step id="S20">Associate_Web sends the URL of the testimonies recovery to PushMovileManager</step>
+        <step id="S21">PushMovileManager notifies the user with the testimonies recovery URL</step>
+        <step id="S22">User verifies the JSON object signature of the testimonies</step>
+        <step id="S23">User accepts and signs the testimonies</step>
+        <step id="S24">User stores the testimonies in the Repository</step>
+        <step id="S25">User registers the attributes in the Registry</step>
+    </mainSequence>
+</useCase>

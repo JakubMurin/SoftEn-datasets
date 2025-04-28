@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Generate Sales Report</name>
+    <description>Generate a sales report for the owner</description>
+    <actors>
+        <actor>Owner</actor>
+        <actor>Frontend Interface</actor>
+        <actor>Backend System</actor>
+        <actor>Reporting Module</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Owner requests a sales report</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Sales report is successfully displayed to the owner</condition>
+    </successEndConditions>
+    <trigger>User requests a sales report</trigger>
+    <mainSequence>
+        <step id="S1">Owner requests a sales report from the Frontend Interface</step>
+        <step id="S2">Frontend Interface sends an API call to the Backend System for sales data</step>
+        <step id="S3">Backend System queries the Reporting Module to generate the sales report</step>
+        <step id="S4">Reporting Module fetches the sales data from the Database</step>
+        <step id="S5">Sales data is sent back to the Reporting Module</step>
+        <step id="S6">Reporting Module generates the sales report</step>
+        <step id="S7">Backend System displays the sales report data to the Frontend Interface</step>
+        <step id="S8">Frontend Interface shows the sales report to the Owner</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>View Job Openings</name>
+    <description>User wants to view the list of available job openings</description>
+    <actors>
+        <actor>Operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Operator is logged into the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operator can view the list of job openings</condition>
+    </successEndConditions>
+    <trigger>User requests to see the job openings</trigger>
+    <mainSequence>
+        <step id="S1">User asks to see Job Openings</step>
+        <step id="S2">ListApplicationsUI creates</step>
+        <step id="S3">ListApplicationController lists Job Openings</step>
+        <step id="S4">ListApplicationController requests JobOpeningRepository to find all Job Openings</step>
+        <step id="S5">JobOpeningRepository provides the list of Job Openings to ListApplicationController</step>
+        <step id="S6">ListApplicationController sends the list of Job Openings to ListApplicationsUI</step>
+        <step id="S7">ListApplicationsUI displays the Job Openings</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC-001">
+    <name>List Components of an Object</name>
+    <description>RepoManager selects an object to view and lists its components.</description>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>DIMS UI</actor>
+        <actor>DIMS Backend</actor>
+        <actor>DAMS Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>RepoManager is logged in and has access to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>UI displays components of the object in the required order.</condition>
+        <condition>Components are successfully listed and sorted.</condition>
+    </successEndConditions>
+    <trigger>RepoManager selects an object to view.</trigger>
+    <mainSequence> 
+        <step id="S1">RepoManager selects an object to list components.</step>
+        <step id="S2">UI requests to list components of the object.</step>
+        <step id="S3">Backend queries for components of the selected object.</step>
+        <step id="S4">Database returns components data.</step>
+        <step id="S5">Backend sorts components in the appropriate order.</step>
+        <step id="S6">UI displays sorted components.</step>
+        <step id="S7">UI displays the ordered components to RepoManager.</step>
+    </mainSequence>
+</useCase>

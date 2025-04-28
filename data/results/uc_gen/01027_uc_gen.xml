@@ -1,0 +1,19 @@
+<useCase id="UC-001">
+	<name>Scan Proxy Repo</name>
+	<actors>
+		<actor>ProxyRepoFileScanner</actor>
+		<actor>ProxyRepoSources</actor>
+		<actor>db</actor>
+		<actor>ChangeListener</actor>
+	</actors>
+	<preconditions>
+		<precondition>The ProxyRepoFileScanner is triggered to scan the repository.</precondition>
+	</preconditions>
+	<trigger>scan</trigger>
+	<mainSequence>
+		<step id="S1">ProxyRepoFileScanner scans the repository.</step>
+		<step id="S2">ProxyRepoFileScanner adds a new source.</step>
+		<step id="S3">ProxyRepoSources adds a `source` record to the database.</step>
+		<step id="S4">ProxyRepoSources notifies ChangeListener of changes.</step>
+	</mainSequence>
+</useCase>

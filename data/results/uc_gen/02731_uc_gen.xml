@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Generate Data Package Preview</name>
+    <actors>
+        <actor>Publisher</actor>
+        <actor>CLI Tool</actor>
+        <actor>Validation Service</actor>
+        <actor>Preview Service</actor>
+        <actor>Data Package Registry</actor>
+    </actors>
+    <trigger>Run preview command with data package path</trigger>
+    <mainSequence>
+        <step id="S1">Publisher runs the preview command with the data package path</step>
+        <step id="S2">CLI Tool validates the JSON schema of the data package</step>
+        <step id="S3">If validation fails, Validation Service returns validation errors to CLI Tool</step>
+        <step id="S4">CLI Tool displays the validation errors to Publisher</step>
+        <step id="S5">If validation succeeds, Validation Service sends validation success message to CLI Tool</step>
+        <step id="S6">CLI Tool generates a preview of the data package views</step>
+        <step id="S7">Preview Service displays the generated preview to CLI Tool</step>
+        <step id="S8">CLI Tool shows the preview output to Publisher</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,51 @@
+<useCase id="EpicTransaction">
+    <name>Current Epic Transaction Workflow</name>
+    <actors>
+        <actor>Sender</actor>
+        <actor>Recipient</actor>
+        <actor>Epic Node</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Sender creates Transaction UUID.</step>
+        <step id="S2">Sender sets lock_height for transaction kernel.</step>
+        <step id="S3">Sender selects inputs using desired selection strategy.</step>
+        <step id="S4">Sender calculates sum inputs blinding factors xI.</step>
+        <step id="S5">Sender creates change_output.</step>
+        <step id="S6">Sender selects blinding factor xC for change_output.</step>
+        <step id="S7">Sender creates lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS.</step>
+        <step id="S8">Sender calculates tx_weight.</step>
+        <step id="S9">Sender calculates fee.</step>
+        <step id="S10">Sender calculates total blinding excess sum for all inputs and outputs xS1.</step>
+        <step id="S11">Sender selects a random nonce kS.</step>
+        <step id="S12">Sender subtracts random kernel offset from xS1.</step>
+        <step id="S13">Sender multiplies xS and kS by generator G to create public curve points xSG and kSG.</step>
+        <step id="S14">Sender adds values to Slate for passing to other participants.</step>
+        <step id="S15">Recipient checks fee against number of inputs.</step>
+        <step id="S16">Recipient creates receiver_output.</step>
+        <step id="S17">Recipient chooses random blinding factor for receiver_output xR.</step>
+        <step id="S18">Recipient calculates message M.</step>
+        <step id="S19">Recipient chooses random nonce kR.</step>
+        <step id="S20">Recipient multiplies xR and kR by generator G to create public curve points xRG and kRG.</step>
+        <step id="S21">Recipient computes Schnorr challenge e.</step>
+        <step id="S22">Recipient computes Recipient Schnorr signature sR.</step>
+        <step id="S23">Recipient adds sR, xRG, kRG to Slate.</step>
+        <step id="S24">Recipient creates wallet output function rF.</step>
+        <step id="S25">Sender calculates message M.</step>
+        <step id="S26">Sender computes Schnorr challenge e.</step>
+        <step id="S27">Sender verifies sR.</step>
+        <step id="S28">Sender computes Sender Schnorr signature sS.</step>
+        <step id="S29">Sender calculates final signature s.</step>
+        <step id="S30">Sender calculates public key for s.</step>
+        <step id="S31">Sender verifies s against excess values in final transaction using xG.</step>
+        <step id="S32">Sender creates Transaction Kernel Containing.</step>
+        <step id="S33">Sender creates final transaction tx from Slate.</step>
+        <step id="S34">Sender posts tx to mempool.</step>
+        <step id="S35">Recipient confirms receiver_output.</step>
+        <step id="S36">Recipient changes status of receiver_output to Confirmed.</step>
+        <step id="S37">Sender confirms change_output.</step>
+        <step id="S38">Sender changes status of inputs to Spent.</step>
+        <step id="S39">Sender changes status of change_output to Confirmed.</step>
+        <step id="S40">Recipient manually removes receiver_output from wallet.</step>
+        <step id="S41">Sender unlocks inputs and deletes change_output identified in transaction log entry TS.</step>
+    </mainSequence>
+</useCase>

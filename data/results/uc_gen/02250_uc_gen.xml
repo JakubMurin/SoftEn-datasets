@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Authenticate End User with BankID</name>
+    <actors>
+        <actor>End-User</actor>
+        <actor>Customer Support (CS)</actor>
+        <actor>Application</actor>
+        <actor>Signicat</actor>
+        <actor>IDP (e.g BankID via Signicat)</actor>
+    </actors>
+    <preconditions>
+        <precondition>End-User requests authentication assistance.</precondition>
+        <precondition>End-User provides NIN (National Identification Number).</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>End user successfully authenticated with BankID.</condition>
+    </successEndConditions>
+    <trigger>End-User requests assistance for BankID authentication.</trigger>
+    <mainSequence>
+        <step id="S1">CS receives request for help from End-User.</step>
+        <step id="S2">CS collects and forwards NIN from End-User to Application.</step>
+        <step id="S3">Application processes NIN and instructs End-User to start Swedish BankID process.</step>
+        <step id="S4">End-User starts BankID process.</step>
+        <step id="S5">End-User authenticates with BankID via IDP.</step>
+        <step id="S6">IDP sends authentication information to Signicat.</step>
+        <step id="S7">Signicat processes the authentication information.</step>
+        <step id="S8">Application instructs Customer to get authentication result from Signicat.</step>
+        <step id="S9">Application polls Signicat for authentication result.</step>
+        <step id="S10">Signicat sends authentication success response to Application.</step>
+        <step id="S11">CS provides the authentication result to End-User.</step>
+        <step id="S12">CS assists the authenticated End-User as needed.</step>
+    </mainSequence>
+</useCase>

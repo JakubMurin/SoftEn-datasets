@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Update Bullet Position</name>
+    <actors>
+        <actor>Bullet Actor</actor>
+        <actor>Model</actor>
+        <actor>Balloon Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bullet position needs to be updated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Bullet successfully hits a balloon.</condition>
+        <condition>Bullet successfully updates entities.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Bullet is out of the screen.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Model updates entities.</step>
+        <step id="S2">Bullet Actor updates bullet position.</step>
+        <step id="S3">Bullet Actor checks for collision between bullet and balloon.</step>
+        <step id="S4">Bullet Actor explodes if collision is detected.</step>
+        <step id="S5">If collision is detected, Bullet Actor starts explosion and hits balloons.</step>
+        <step id="S6">If bullet instance of explosion, Model starts explosion and hits balloons.</step>
+        <step id="S7">If bullet instance of explosion, Model registers balloon hit.</step>
+        <step id="S8">If no collision, Bullet Actor updates entities with bullet.</step>
+        <step id="S9">If bullet is out of screen, Bullet Actor registers bullet killed.</step>
+        <step id="S10">Model registers bullet killed.</step>
+        <step id="S11">Bullet Actor hits balloon.</step>
+    </mainSequence>
+</useCase>

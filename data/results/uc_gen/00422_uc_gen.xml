@@ -1,0 +1,46 @@
+<useCase id="UC1">
+    <name>Like or Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully likes or dislikes the entity</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to like or dislike the entity</condition>
+    </failureEndConditions>
+    <trigger>User wants to like or dislike an entity</trigger>
+    <mainSequence>
+        <step id="S1">User goes to entity page (post, comment, event)</step>
+        <step id="S2">User views entity details and like button</step>
+        <step id="S3">User clicks "Like/Dislike" button</step>
+        <step id="S4">UI displays success or error message</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Entity is already liked</step>
+            <step id="A1S2">Process dislike operation</step>
+            <step id="A1S3">Remove like from the entity</step>
+            <step id="A1S4">Display success or error message</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Entity is not yet liked</step>
+            <step id="A2S2">Process like operation</step>
+            <step id="A2S3">Add like to the entity</step>
+            <step id="A2S4">Display success or error message</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S4">
+            <description>Failure in removing like from the entity</description>
+            <step id="E1S1">Display error message</step>
+        </esteps>
+        <esteps id="E2" start="A2S4">
+            <description>Failure in adding like to the entity</description>
+            <step id="E2S1">Display error message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

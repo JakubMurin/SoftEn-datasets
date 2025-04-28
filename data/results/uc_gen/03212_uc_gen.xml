@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Perform File Operation</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has clicked the button to perform a file operation.</precondition>
+    </preconditions>
+    <trigger>User clicks the button to perform a file operation.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks the button to initiate the file operation.</step>
+        <step id="S2">DirectoriesFiles triggers the operation.</step>
+        <step id="S3">DirFileView handles the operation by passing it to DirFileService.</step>
+        <step id="S4">DirFileService forwards the operation to DirFileHandler.</step>
+        <step id="S5">DirFileHandler creates or deletes the directory/file based on the operation.</step>
+        <step id="S6">DirFileHandler returns the result to DirFileService.</step>
+        <step id="S7">DirFileService returns the result to DirFileView.</step>
+        <step id="S8">DirFileView updates DirectoriesFiles with the result.</step>
+        <step id="S9">DirectoriesFiles shows a notification to the User.</step>
+    </mainSequence>
+</useCase>

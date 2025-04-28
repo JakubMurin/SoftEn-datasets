@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Register Patient</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin sends a POST request to PatientController to register a new patient using CreatePatientDto.</step>
+        <step id="S2">PatientController activates and calls PatientService to add the patient asynchronously.</step>
+        <step id="S3">PatientService activates and checks if the email and phone number are unique in IPatientRepository.</step>
+        <step id="S4">PatientService generates a unique medical number and creates a new Patient object.</step>
+        <step id="S5">PatientService adds the new Patient to IPatientRepository and commits the changes using IUnitOfWork.</step>
+        <step id="S6">PatientService sends an email using IEmailService.</step>
+        <step id="S7">PatientService deactivates and returns the PatientDto to PatientController.</step>
+        <step id="S8">PatientController deactivates and responds to Admin with 200 OK along with the PatientDto.</step>
+    </mainSequence>
+</useCase>

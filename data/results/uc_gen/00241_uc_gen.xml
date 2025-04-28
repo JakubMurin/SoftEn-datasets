@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Lease Bike</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Bike</actor>
+        <actor>Lease</actor>
+        <actor>InvoiceGenerator</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Customer has a valid account.</precondition>
+        <precondition>The Bike is available for lease.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Customer successfully starts the lease.</condition>
+        <condition>The Customer successfully ends the lease.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Bike is not available for lease.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Customer starts the lease with the Bike.</step>
+        <step id="S2">Customer unlocks the Bike.</step>
+        <step id="S3">Customer ends the lease with the Bike.</step>
+        <step id="S4">Lease adds an invoice for the Customer.</step>
+        <step id="S5">Customer locks the Bike.</step>
+    </mainSequence>
+</useCase>

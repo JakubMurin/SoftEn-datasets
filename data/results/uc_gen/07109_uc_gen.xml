@@ -1,0 +1,18 @@
+<useCase id="UC1">
+  <name>Main Information Retrieval</name>
+  <description>Retrieve accepted item types and formats from EDRMS for Depositor to view.</description>
+  <actors>
+    <actor>Depositor</actor>
+    <actor>Web Interface</actor>
+    <actor>EDRMS</actor>
+    <actor>Format and Type Management</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Depositor triggers access to repository information through Web Interface.</step>
+    <step id="A1">Web Interface receives the request and sends it to EDRMS for accepted items and formats retrieval.</step>
+    <step id="S2">EDRMS receives the request from the Web Interface and starts interacting with Format and Type Management.</step>
+    <step id="S3">Format and Type Management fetches the list of item types and recommended formats from EDRMS.</step>
+    <step id="S4">EDRMS relays the acquired data to the Web Interface for display purposes.</step>
+    <step id="S5">Web Interface presents the fetched information to Depositor showcasing the accepted item types and formats.</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Manage Cointag Creation and Rewards</name>
+    <description>Manage the creation of Cointags and distribution of rewards to creators and participants.</description>
+    <actors>
+        <actor>Creator</actor>
+        <actor>Caller</actor>
+        <actor>1155</actor>
+        <actor>Minter</actor>
+        <actor>Factory</actor>
+        <actor>Cointag</actor>
+        <actor>ProtocolRewards</actor>
+        <actor>UniswapV3Pool</actor>
+        <actor>ERC20</actor>
+    </actors>
+    <preconditions>
+        <precondition>Creator has created a Cointag</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Cointag rewards distributed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Cointag creation or reward distribution failed</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Creator creates Cointag</step>
+        <step id="S2">Creator sets reward recipient</step>
+        <step id="S3">Caller mints a post</step>
+        <step id="S4">Minter deposits rewards into Cointag</step>
+        <step id="S5">Anyone triggers rewards distribution</step>
+        <step id="S6">Cointag calculates split</step>
+        <step id="S7">Cointag wraps ETH as WETH and swaps for ERC20</step>
+        <step id="S8">ERC20 transfers tokens to Cointag and Cointag burns tokens</step>
+        <step id="S9">Cointag deposits remaining ETH rewards</step>
+        <step id="S10">Creator withdraws rewards from ProtocolRewards</step>
+    </mainSequence>
+</useCase>

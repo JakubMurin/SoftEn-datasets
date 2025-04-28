@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Fetch Stock Data</name>
+    <actors>
+        <actor>User</actor>
+        <actor>StockService</actor>
+        <actor>RestTemplate</actor>
+        <actor>ObjectMapper</actor>
+        <actor>StockFactory</actor>
+        <actor>StockPublisher</actor>
+        <actor>StockRepository</actor>
+        <actor>StockObserver</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User fetches stock data by providing stock symbol</step>
+        <step id="S2">StockService requests data from RestTemplate</step>
+        <step id="S3">RestTemplate retrieves data and provides the response</step>
+        <step id="S4">StockService reads JSON response using ObjectMapper</step>
+        <step id="S5">StockFactory creates stock object with retrieved data</step>
+        <step id="S6">StockPublisher notifies StockObserver about the new stock</step>
+        <step id="S7">StockObserver updates itself with the new stock details</step>
+        <step id="S8">StockObserver saves the new stock in StockRepository</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Manage Referrals</name>
+    <description>Allow tester to manage user referrals and verify balances.</description>
+    <actors>
+        <actor>Tester</actor>
+        <actor>Usuario</actor>
+        <actor>Referido</actor>
+    </actors>
+    <preconditions>
+        <precondition>Tester is able to access the user interface.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Tester successfully verifies the balance after adding a referral.</condition>
+    </successEndConditions>
+    <trigger>Tester initiates the verification process.</trigger>
+    <mainSequence>
+        <step id="S1">Tester instantiates a new user named "Juan".</step>
+        <step id="S2">Tester instantiates a new user named "Pedro".</step>
+        <step id="S3">Tester adds "Pedro" as a referral to "Juan".</step>
+        <step id="S4">"Juan" appends "Pedro" to the list of referrals.</step>
+        <step id="S5">"Juan" increases balance by 100 units.</step>
+        <step id="S6">Tester verifies the balance of "Juan".</step>
+    </mainSequence>
+</useCase>

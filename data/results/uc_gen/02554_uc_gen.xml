@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Establish Connection</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is on the connection setup screen.</precondition>
+    </preconditions>
+    <trigger>User selects a port and initiates the connection process.</trigger>
+    <mainSequence>
+        <step id="S1">User selects a port on the ConnectionView.</step>
+        <step id="S2">ConnectionView binds the selected port property.</step>
+        <step id="S3">SonicController sets the selected port.</step>
+        <step id="S4">ConnectionModel updates the ConnectionView with the selected port.</step>
+        <step id="S5">User presses the "Connect" button on ConnectionView.</step>
+        <step id="S6">ConnectionView generates a CONNECTION_ATTEMPT event to SonicController.</step>
+        <step id="S7">SonicController retrieves the port information.</step>
+        <step id="S8">CommunicationBuilder generates a Communicator for the endpoint.</step>
+        <step id="S9">SonicController builds an amplifier using the Communicator.</step>
+        <step id="S10">SonicDeviceBuilder retrieves SonicDevice data from the Communicator.</step>
+        <step id="S11">SonicDeviceBuilder returns the SonicDevice to SonicController.</step>
+        <step id="S12">SonicController updates the ConnectionModel.</step>
+        <step id="S13">ConnectionModel updates the MainView.</step>
+    </mainSequence>
+</useCase>

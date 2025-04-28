@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Listar pisos de edifícios com passagens para outros edifícios</name>
+    <description>Pretende listar pisos de edifícios com passagens para outros edifícios</description>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>GestaoInfoAPI is available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Container received pisos com passagens</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Container received mensagem de erro</condition>
+    </failureEndConditions>
+    <trigger>Pedido do ator para listar pisos de edifícios com passagens para outros edifícios</trigger>
+    <mainSequence>
+        <step id="S1">Actor pretende listar pisos de edifícios com passagens para outros edifícios</step>
+        <step id="S2">Container chama API com get(/api/floors/withpass)</step>
+        <step id="S3">API responde com status code</step>
+    </mainSequence>
+</useCase>

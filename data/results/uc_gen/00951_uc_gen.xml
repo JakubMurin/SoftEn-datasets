@@ -1,0 +1,29 @@
+<useCase id="1">
+    <name>Business Process Optimization</name>
+    <description>Optimize the business process to increase efficiency</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Karaf Console</actor>
+        <actor>Karaf Configuration</actor>
+        <actor>core.caos</actor>
+        <actor>BackendManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>All required modules are present in the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Successful reconfiguration</condition>
+    </successEndConditions>
+    <trigger>netide:loadcomposition new.xml</trigger>
+    <mainSequence>
+        <step id="S1">Read content of xml file</step>
+        <step id="S2">Set configuration value (composition, xml content)</step>
+        <step id="S3">Reload OSGI Module</step>
+        <step id="S4">Get configuration (composition)</step>
+        <step id="S5">Load Composition</step>
+        <step id="S6">List of required Modules</step>
+        <step id="S7">Get backends</step>
+        <step id="S8">Currently connected backends</step>
+        <step id="S9">Log successful reconfiguration</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Execute Query</name>
+    <description>As a developer, I want to execute a query using a JavaScript engine and retrieve documents from a database.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>JavaScript Engine</actor>
+        <actor>Query Engine</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The developer has a query to execute.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The query is successfully executed, and all documents are retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during the query execution process.</condition>
+    </failureEndConditions>
+    <trigger>Developer initiates the query execution process.</trigger>
+    <mainSequence>
+        <step id="S1">Developer sends a JavaScript query to the JavaScript Engine.</step>
+        <step id="S2">JavaScript Engine activates to process the query.</step>
+        <step id="S3">JavaScript Engine forwards the query to the Query Engine.</step>
+        <step id="S4">Query Engine processes the query and returns the results to the JavaScript Engine.</step>
+        <step id="S5">JavaScript Engine returns the results to the Developer.</step>
+        <step id="S6">For each document in the query results:</step>
+        <step id="S7">Developer operates on the document.</step>
+        <step id="S8">JavaScript Engine requests the document from the Query Engine.</step>
+        <step id="S9">Query Engine retrieves the document from the Database.</step>
+        <step id="S10">Database sends the document to the Query Engine.</step>
+        <step id="S11">Query Engine sends the document back to the JavaScript Engine.</step>
+    </mainSequence>
+</useCase>

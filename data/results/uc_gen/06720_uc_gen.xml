@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Display Job Openings</name>
+    <description>As a Customer Manager, I want to view job openings in the results phase.</description>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+        <actor>JobOpeningRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer Manager is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Job openings are displayed successfully.</condition>
+    </successEndConditions>
+    <trigger>Customer Manager asks to display job openings in the results phase.</trigger>
+    <mainSequence>
+        <step id="S1">Customer Manager asks to display job openings in the results phase.</step>
+        <step id="S2">PublishJobOpeningUI executes getJobOpenings().</step>
+        <step id="S3">PublishJobOpeningController gets job openings from JobOpeningRepository.</step>
+        <step id="S4">PublishJobOpeningController sends job openings to PublishJobOpeningUI.</step>
+        <step id="S5">PublishJobOpeningUI displays job openings.</step>
+    </mainSequence>
+</useCase>

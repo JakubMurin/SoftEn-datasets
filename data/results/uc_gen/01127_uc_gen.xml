@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Claiming Mail</name>
+    <actors>
+        <actor>Recipient</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Recipient sends a request to claim a mail.</step>
+        <step id="S2">MailController checks if the Recipient is authorized as a Receptionist.</step>
+        <step id="S3">MailController instructs MailService to claim the mail.</step>
+        <step id="S4">MailService begins a transaction with UnitOfWork.</step>
+        <step id="S5">MailService retrieves the mail from MailRepository.</step>
+        <step id="S6">MailService retrieves the Recipient user from UserRepository.</step>
+        <step id="S7">MailService updates the mail in MailRepository.</step>
+        <step id="S8">MailService creates an email notification in EmailNotificationRepository.</step>
+        <step id="S9">MailService commits the transaction with UnitOfWork.</step>
+        <step id="S10">MailService responds to MailController with success.</step>
+        <step id="S11">MailController responds to Recipient with 200 OK.</step>
+    </mainSequence>
+</useCase>

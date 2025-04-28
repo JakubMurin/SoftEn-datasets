@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Account Linking Process</name>
+    <actors>
+        <actor>Ayeesha</actor>
+        <actor>PISP App</actor>
+        <actor>PISP Server</actor>
+        <actor>Mojaloop Switch</actor>
+        <actor>ALS</actor>
+        <actor>DFSP A</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ayeesha wants to register her chequing account from DFSP A with the PISP App</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Ayeesha requests to register her chequing account with DFSP A through the PISP App</step>
+        <step id="S2">DFSP A generates a random UUID and saves it internally</step>
+        <step id="S3">DFSP A provides the random UUID to PISP for account linking</step>
+        <step id="S4">PISP internally associates Ayeesha's chequing account with the provided UUID</step>
+        <step id="S5">DFSP A sends a POST request to the Switch to create an association</step>
+        <step id="S6">Switch acknowledges the request and informs ALS to create a key/value pair</step>
+        <step id="S7">ALS confirms the creation of the key/value pair</step>
+        <step id="S8">Switch informs DFSP A that the association has been successfully created</step>
+        <step id="S9">DFSP A notifies PISP about the successful creation of the association</step>
+    </mainSequence>
+</useCase>

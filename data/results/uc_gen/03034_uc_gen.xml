@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Submit Project</name>
+    <actors>
+        <actor>Requestor</actor>
+        <actor>Approvers</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Requestor submits a project</step>
+        <step id="S2">addproject.py adds the project</step>
+        <step id="S3">performaddproject.py checks add permission with authutils.py</step>
+        <step id="S4">performaddproject.py receives add permission</step>
+        <step id="S5">performaddproject.py validates content with valutils.py</step>
+        <step id="S6">performaddproject.py receives validation result</step>
+        <step id="S7">performaddproject.py displays failure page with error info if Requestor is not authorized or content is invalid</step>
+        <step id="S8">performaddproject.py adds project with status "approved" and gets project_id from Database when Requestor is an approver</step>
+        <step id="S9">performaddproject.py displays success page when Requestor is an approver</step>
+        <step id="S10">performaddproject.py adds project with status "awaiting_approval" and gets project_id from Database when Requestor is not an approver</step>
+        <step id="S11">performaddproject.py sends email to Approvers when Requestor is not an approver</step>
+        <step id="S12">performaddproject.py displays success page with message that project is pending approval when Requestor is not an approver</step>
+    </mainSequence>
+</useCase>

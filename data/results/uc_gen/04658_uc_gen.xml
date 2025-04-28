@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Signup Process</name>
+    <description>Allows a user to sign up with valid or invalid credentials</description>
+    <actors>
+        <actor>User</actor>
+        <actor>SignupController</actor>
+        <actor>RemoteModelAccess</actor>
+        <actor>ServerController</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has accessed the signup feature</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully signed up with valid credentials</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User failed to sign up with invalid credentials</condition>
+    </failureEndConditions>
+    <trigger>User presses the Signup button</trigger>
+    <mainSequence>
+        <step id="S1">User presses Signup with invalid credentials</step>
+        <step id="S2">SignupController handles the sign-in request</step>
+        <step id="S3">RemoteModelAccess posts user data (HTTP Post)</step>
+        <step id="S4">ServerController returns null</step>
+        <step id="S5">RemoteModelAccess returns null to SignupController</step>
+        <step id="S6">SignupController shows an error message to User</step>
+        <step id="S7">User presses Signup with valid credentials</step>
+        <step id="S8">SignupController handles the sign-in request</step>
+        <step id="S9">RemoteModelAccess posts user data (HTTP Post)</step>
+        <step id="S10">ServerController returns user data</step>
+        <step id="S11">RemoteModelAccess returns user data to SignupController</step>
+        <step id="S12">SignupController changes screen to MainMenu for User</step>
+    </mainSequence>
+</useCase>

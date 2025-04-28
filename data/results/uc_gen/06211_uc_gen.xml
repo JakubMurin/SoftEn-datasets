@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Process Payment</name>
+    <description>Allows the user to make a payment for a reservation</description>
+    <actors>
+        <actor>User</actor>
+        <actor>PaymentController</actor>
+        <actor>PaymentFacade</actor>
+        <actor>UserReader</actor>
+        <actor>ReservationFacade</actor>
+        <actor>PaymentService</actor>
+        <actor>UserRepository</actor>
+        <actor>ReservationRepository</actor>
+        <actor>SeatRepository</actor>
+        <actor>PaymentRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has requested to make a payment for a reservation</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The payment is successfully processed and the reservation is completed</condition>
+    </successEndConditions>
+    <trigger>Payment request is made by the user</trigger>
+    <mainSequence>
+        <step id="S1">User requests payment</step>
+        <step id="S2">PaymentFacade processes the payment request</step>
+        <step id="S3">UserReader confirms user existence</step>
+        <step id="S4">UserRepository retrieves user information from the database</step>
+        <step id="S5">PaymentFacade confirms temporary seat reservation</step>
+        <step id="S6">ReservationRepository checks reservation status</step>
+        <step id="S7">PaymentService processes the payment request</step>
+        <step id="S8">UserRepository deducts user balance</step>
+        <step id="S9">PaymentRepository stores payment details</step>
+        <step id="S10">ReservationFacade allocates final seat assignment</step>
+        <step id="S11">SeatRepository updates seat status</step>
+        <step id="S12">PaymentFacade responds with payment success</step>
+        <step id="S13">PaymentController notifies user of successful payment completion</step>
+    </mainSequence>
+</useCase>

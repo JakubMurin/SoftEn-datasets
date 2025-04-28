@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Place Order</name>
+    <actors>
+        <actor>App</actor>
+        <actor>OrderServiceFacade</actor>
+        <actor>InventoryService</actor>
+        <actor>PaymentService</actor>
+        <actor>ShippingService</actor>
+    </actors>
+    <preconditions>
+        <precondition>App creates a new order</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Product successfully placed and shipped</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Product cannot be placed or shipped</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">App creates a new order</step>
+        <step id="S2">App places an order for a product</step>
+        <step id="S3">OrderServiceFacade finds the product</step>
+        <step id="S4">InventoryService checks product availability</step>
+        <step id="S5">PaymentService processes payment</step>
+        <step id="S6">ShippingService ships the product</step>
+    </mainSequence>
+</useCase>

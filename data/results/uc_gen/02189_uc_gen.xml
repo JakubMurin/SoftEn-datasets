@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Restrict File Access</name>
+    <description>This use case involves an Archivist requesting to restrict access to a file in the system.</description>
+    <actors>
+        <actor>Archivist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Archivist has logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The file access is successfully restricted for the Archivist.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The file access restriction process fails.</condition>
+    </failureEndConditions>
+    <trigger>An Archivist requests to restrict file access.</trigger>
+    <mainSequence>
+        <step id="S1">Archivist requests to restrict file</step>
+        <step id="S2">Archivist credentials are validated by the Web Interface.</step>
+        <step id="S3">The relevant form for further restriction details is presented by the Web Interface.</step>
+        <step id="S4">The Archivist submits restriction details.</step>
+        <step id="S5">The file metadata is updated with the restriction details by the Database.</step>
+        <step id="S6">The access restrictions applied successfully by the File Management System.</step>
+        <step id="S7">A success message with the outcome is displayed to the Archivist.</step>
+    </mainSequence>
+</useCase>

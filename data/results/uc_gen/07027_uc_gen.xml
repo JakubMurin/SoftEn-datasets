@@ -1,0 +1,22 @@
+<useCase id="playGo">
+    <name>Play Go</name>
+    <actors>
+        <actor>Player</actor>
+    </actors>
+    <preconditions>
+        <precondition>Player makes a move by clicking on the board</precondition>
+    </preconditions>
+    <trigger>Player clicks on the board to make a move</trigger>
+    <mainSequence>
+        <step id="S1">Player clicks on the board at coordinates (x, y)</step>
+        <step id="S2">Board processes the move made by the player with the current color</step>
+        <step id="S3">Board sends (x, y) coordinates to the logic to check validity</step>
+        <step id="S4">Logic confirms the validity of the position (x, y)</step>
+        <step id="S5">Logic retrieves the color at the provided (x, y) coordinates</step>
+        <step id="S6">Logic processes the move at (x, y) with the current color</step>
+        <step id="S7">Logic adds an intersection at coordinates (x, y) with the current color</step>
+        <step id="S8">Board sends the move coordinates to the server for validation</step>
+        <step id="S9">Server validates the move at coordinates (x, y)</step>
+        <step id="S10">Board changes state based on successful move validation</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Login to Dashboard</name>
+    <actors>
+        <actor>Receptionist</actor>
+        <actor>UI/Interface</actor>
+        <actor>AuthRouter</actor>
+        <actor>AuthController</actor>
+        <actor>AuthRepository</actor>
+        <actor>UserModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and accesses the dashboard</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in due to invalid credentials</condition>
+    </failureEndConditions>
+    <trigger>User attempts to log in</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password)</step>
+        <step id="S2">UI sends POST request to /login</step>
+        <step id="S3">Router directs request to Controller</step>
+        <step id="S4">Controller validates credentials with Repository</step>
+        <step id="S5">Repository fetches user data from UserModel</step>
+        <step id="S6">Controller checks if password matches</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Login successful: Display dashboard</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Login failed: Display error message</description>
+            <step id="E1S1">User receives 401 Unauthorized error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

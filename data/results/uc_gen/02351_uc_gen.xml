@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Create Dataset with Exploration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Dataset Type Registry</actor>
+        <actor>Dataset Storage</actor>
+        <actor>Exploration Service</actor>
+        <actor>Dataset Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests dataset creation with exploration enabled</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Dataset creation successful</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Dataset creation failed due to exploration issues</condition>
+        <condition>Type doesn't support exploration</condition>
+    </failureEndConditions>
+    <trigger>User initiates dataset creation with exploration</trigger>
+    <mainSequence>
+        <step id="S1">User requests dataset creation with exploration enabled</step>
+        <step id="S2">Dataset Management System verifies dataset type supports exploration</step>
+        <step id="S3">Dataset Type Registry verifies dataset type</step>
+        <step id="S4">Dataset Management System creates dataset instance</step>
+        <step id="S5">Dataset Storage creates dataset instance</step>
+        <step id="S6">Dataset Management System enables exploration on dataset</step>
+        <step id="S7">Exploration Service enables exploration on dataset</step>
+        <step id="S8">Exploration Service exploration enabled</step>
+        <step id="S9">Dataset Management System saves dataset details with explore enabled flag</step>
+        <step id="S10">Dataset Repository saves dataset details</step>
+        <step id="S11">Dataset Management System notifies user of successful dataset creation</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S8">
+            <step id="A1S1">Exploration enabled successfully</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Exploration enable failed</description>
+            <step id="E1S1">Fail to enable exploration</step>
+            <step id="E1S2">Dataset Management System rolls back dataset creation</step>
+            <step id="E1S3">Dataset Management System notifies user of failed dataset creation due to exploration issues</step>
+        </esteps>
+    </errorSteps>
+</useCase>

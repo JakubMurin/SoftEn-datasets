@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Update Dish Allergen Information</name>
+    <actors>
+        <actor>Chef</actor>
+        <actor>Restaurant Management System</actor>
+        <actor>Menu Management Subsystem</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef selects a dish to update allergen information.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Chef successfully updates the allergen information for the dish.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The update process fails.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Chef selects a dish to update allergen information.</step>
+        <step id="S2">Restaurant Management System requests dish details.</step>
+        <step id="S3">Menu Management Subsystem queries dish ingredients.</step>
+        <step id="S4">Database returns dish ingredients.</step>
+        <step id="S5">Menu Management Subsystem displays ingredients with allergy information.</step>
+        <step id="S6">Restaurant Management System shows ingredients and current allergy list to Chef.</step>
+        <step id="S7">Chef adds/removes allergens to/from the list.</step>
+        <step id="S8">Restaurant Management System updates allergy information.</step>
+        <step id="S9">Menu Management Subsystem updates dish ingredient allergy information.</step>
+        <step id="S10">Database confirms the update.</step>
+        <step id="S11">Menu Management Subsystem confirms the update to Chef.</step>
+        <step id="S12">Restaurant Management System displays update confirmation to Chef.</step>
+    </mainSequence>
+</useCase>

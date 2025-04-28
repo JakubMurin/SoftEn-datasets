@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Review Order for Allergy Warnings</name>
+    
+    <actors>
+        <actor>Waiter</actor>
+        <actor>Waiter Interface</actor>
+        <actor>Order Management System</actor>
+        <actor>Menu Database</actor>
+        <actor>Allergy Information System</actor>
+    </actors>
+
+    <mainSequence>
+        <step id="S1">Waiter selects the order to review.</step>
+        <step id="S2">Interface requests order details from the Order Management System.</step>
+        <step id="S3">Order Management System fetches order items from the Menu Database.</step>
+        <step id="S4">Menu Database returns order items to the Order Management System.</step>
+        <step id="S5">Order Management System requests allergy warnings for items from the Allergy Information System.</step>
+        <step id="S6">Allergy Information System looks up allergy info in the Menu Database.</step>
+        <step id="S7">Menu Database returns allergy data to Allergy Information System.</step>
+        <step id="S8">Allergy Information System compiles allergy warnings for items.</step>
+        <step id="S9">Order Management System sends compiled allergy warnings to the Waiter Interface.</step>
+        <step id="S10">Waiter Interface displays allergy warnings to the Waiter.</step>
+    </mainSequence>
+</useCase>

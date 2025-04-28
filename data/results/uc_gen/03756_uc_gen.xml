@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Accessing Files</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>Authentication System</actor>
+        <actor>User Management System</actor>
+        <actor>File Management System</actor>
+        <actor>Access Restriction Controls</actor>
+        <actor>XDrive</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist submits credentials for authentication.</precondition>
+        <precondition>Archivist has requested access to X-drive.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Archivist successfully accesses the requested files.</condition>
+    </successEndConditions>
+    <trigger>Archivist requests access to X-drive.</trigger>
+    <mainSequence>
+        <step id="S1">Archivist submits credentials to the Authentication System.</step>
+        <step id="S2">Authentication System validates the credentials.</step>
+        <step id="S3">User Management System retrieves Archivist permissions.</step>
+        <step id="S4">Access Restriction Controls verify permissions.</step>
+        <step id="S5">Access Restriction Controls permit access to FileManager.</step>
+        <step id="S6">FileManager fetches the requested files from XDrive.</step>
+        <step id="S7">XDrive returns the requested files to FileManager.</step>
+        <step id="S8">FileManager displays the files to the Archivist.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Perform Operation</name>
+    <actors>
+        <actor>AppDeveloper</actor>
+        <actor>CLI Tool</actor>
+        <actor>Dataset Instance</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer initiates operation through CLI Tool.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation executed successfully on Dataset Instance.</condition>
+    </successEndConditions>
+    <trigger>Developer performs operation (e.g., compaction) through CLI Tool.</trigger>
+    <mainSequence>
+        <step id="S1">Developer initiates operation through CLI Tool.</step>
+        <step id="S2">CLI Tool requests operation on Dataset Instance from Dataset Management System.</step>
+        <step id="S3">Dataset Management System executes the operation on Dataset Instance.</step>
+        <step id="S4">Dataset Instance successfully completes the operation.</step>
+        <step id="S5">Dataset Management System confirms the success to CLI Tool.</step>
+        <step id="S6">CLI Tool displays success message to Developer.</step>
+    </mainSequence>
+</useCase>

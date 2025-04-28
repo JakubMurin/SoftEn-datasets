@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Access Private File List</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User gets private file list with login/password.</step>
+        <step id="S2">User requests private file list from REST API.</step>
+        <step id="S3">Metadata Service gets User 1 metadata from Lookup DFS.</step>
+        <step id="S4">Lookup DFS Service reads private store for User 1 using password.</step>
+        <step id="S5">DFS maps keys to access information.</step>
+        <step id="S6">User data paths and credentials return to Lookup Server.</step>
+        <step id="S7">List of all files across all known user DFS's shared with User.</step>
+        <step id="S8">Access private storage using access credentials.</step>
+        <step id="S9">Storage adapter reads keystore for user..</step>
+        <step id="S10">Decryption of keystore using password.</step>
+        <step id="S11">Listing all private files.</step>
+        <step id="S12">Decryption of file paths using keystore.</step>
+        <step id="S13">List of all files across all known user DFS's shared with User.</step>
+    </mainSequence>
+</useCase>

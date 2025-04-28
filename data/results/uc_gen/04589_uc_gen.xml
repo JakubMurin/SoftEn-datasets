@@ -1,0 +1,20 @@
+<useCase id="UC1">
+  <name>Search for Book</name>
+  <description>User searches for a book in the library system</description>
+  <actors>
+    <actor>Visitor</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Visitor enters/searches for a book title</step>
+    <step id="S2">Interface requests book details for the specified BookID from the Book Management Module</step>
+    <step id="S3">Book Management Module queries the Library Database for the book condition based on BookID</step>
+    <step id="S4">Library Database provides the book condition to the Book Management Module</step>
+    <step id="S5">Book Management Module displays the book condition to the Interface</step>
+    <step id="S6">Interface shows the book condition to the Visitor</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S1">
+      <step id="A1S1">Display "Book Not Found" if the book is not found in the system</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

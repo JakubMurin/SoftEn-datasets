@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Integration of Buildkite with CI tool</name>
+    <actors>
+        <actor>Bob</actor>
+        <actor>Repository</actor>
+        <actor>Awesome pipeline</actor>
+        <actor>Sync pipeline</actor>
+        <actor>CI Integration tool</actor>
+        <actor>Firestore</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob pushes a commit to the master branch of the Repository</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Build data export finishes successfully</condition>
+    </successEndConditions>
+    <trigger>Webhook triggers pipeline in the Awesome pipeline</trigger>
+    <mainSequence>
+        <step id="S1">Repository receives commit from Bob</step>
+        <step id="S2">Awesome pipeline performs build</step>
+        <step id="S3">Sync pipeline triggers integration_config.yml creation</step>
+        <step id="S4">CI Integration tool runs sync command</step>
+        <step id="S5">CI Integration tool adds new build data to Firestore</step>
+    </mainSequence>
+</useCase>

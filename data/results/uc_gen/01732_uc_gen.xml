@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Retrieve Min and Max Winners</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User sends a request to retrieve the minimum and maximum winners.</step>
+        <step id="S2">ProducerController receives the request.</step>
+        <step id="S3">ProducerController calls ProducerService to find the minimum and maximum winners.</step>
+        <step id="S4">ProducerService requests MovieService to find the winners.</step>
+        <step id="S5">MovieService queries MovieRepository to find movies by winner.</step>
+        <step id="S6">MovieRepository returns a list of movies to MovieService.</step>
+        <step id="S7">MovieService sets the ProducerWinnerDto.</step>
+        <step id="S8">ProducerService maps the ProducerWinnerDto to Producer years using ProducerMapper.</step>
+        <step id="S9">ProducerService builds the response using ProducerResponseBuilder.</step>
+        <step id="S10">ProducerResponseBuilder returns the ProducerResponseDto to ProducerService.</step>
+        <step id="S11">ProducerService builds the winner response using ProducerResponseBuilder.</step>
+        <step id="S12">ProducerResponseBuilder returns the ProducerWinnerResponse to ProducerService.</step>
+        <step id="S13">ProducerService sends the ProducerWinnerResponse to ProducerController.</step>
+        <step id="S14">ProducerController responds to the User with a 200 OK status and the ProducerWinnerResponse.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User logs in to the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is registered in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid credentials provided.</condition>
+    </failureEndConditions>
+    <trigger>User requests to log in.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to log in.</step>
+        <step id="S2">UI receives the login request.</step>
+        <step id="S3">Router processes the POST /login request.</step>
+        <step id="S4">Controller handles the login request.</step>
+        <step id="S5">Repository validates the credentials.</step>
+        <step id="S6">AdminModel fetches admin data by username.</step>
+        <step id="S7">Database queries admin data by username.</step>
+        <step id="S8">AdminModel receives admin data.</step>
+        <step id="S9">Repository receives validation result.</step>
+        <step id="S10">Controller sends success or unauthorized response.</step>
+        <step id="S11">UI displays dashboard or error message.</step>
+    </mainSequence>
+</useCase>

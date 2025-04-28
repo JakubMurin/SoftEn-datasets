@@ -1,0 +1,15 @@
+<useCase id="UC001">
+    <name>Delete istiocsr CR</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Operator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User initiates deletion of istiocsr CR</step>
+        <step id="S2">API receives delete request</step>
+        <step id="S3">API forwards delete event to Operator</step>
+        <step id="S4">Operator reconciles istiocsr delete event</step>
+        <step id="S5">Operator stops managing resources created for istio-csr agent installation</step>
+    </mainSequence>
+</useCase>

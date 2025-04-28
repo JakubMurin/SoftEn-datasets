@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Recycling Facility Locator and Route Optimizer</name>
+    
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend Application</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>User is connected to the application</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Optimal route and schedule provided to user</condition>
+    </successEndConditions>
+    
+    <trigger>User wants to find recycling facilities and optimize route and schedule</trigger>
+    
+    <mainSequence>
+        <step id="S1">User selects recyclable waste types</step>
+        <step id="S2">Frontend application requests facilities for selected waste types</step>
+        <step id="S3">Backend server queries facilities by waste type from the database</step>
+        <step id="S4">Database returns list of facilities</step>
+        <step id="S5">Backend server sends facilities and opening hours to frontend</step>
+        <step id="S6">Frontend displays facilities and opening hours to the user</step>
+        <step id="S7">User requests optimal route and schedule</step>
+        <step id="S8">Frontend application calculates optimal route based on user location and facility hours</step>
+        <step id="S9">Backend server returns optimal route and schedule to frontend</step>
+        <step id="S10">Frontend displays optimal route and schedule to the user</step>
+    </mainSequence>
+    
+</useCase>

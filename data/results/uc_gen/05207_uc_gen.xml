@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Manage User Subscription</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User interacts with SubscriptionController</step>
+        <step id="S2">SubscriptionController sends request to SubscriptionFacadeImpl</step>
+        <step id="S3">SubscriptionFacadeImpl processes the request and interacts with SubscriptionRepository</step>
+        <step id="S4">SubscriptionRepository accesses data through SubscriptionJpaPersistenceAdapter</step>
+        <step id="S5">SubscriptionJpaPersistenceAdapter uses SubscriptionJpaRepository for database operations</step>
+        <step id="S6">Datastore gets updated with subscription data</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">If subscription data not found, return error</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error in data access process</description>
+            <step id="E1S1">Handle the data access error step"</step>
+        </esteps>
+    </errorSteps>
+</useCase>

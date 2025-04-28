@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Connect to Bootstrap</name>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actor is ready to connect</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Actor connects to Bootstrap</step>
+        <step id="S2">Bootstrap validates connection</step>
+        <step id="S3">Bootstrap resolves and establishes connection</step>
+        <step id="S4">Bootstrap initializes and registers components</step>
+        <step id="S5">Bootstrap initializes channels and sets up handlers</step>
+        <step id="S6">Bootstrap sets channel options and attributes</step>
+        <step id="S7">Bootstrap registers with event loop</step>
+        <step id="S8">Bootstrap registers with channel and completes registration</step>
+        <step id="S9">Async return process with Future</step>
+        <step id="S10">Bootstrap continues resolve and connect process</step>
+        <step id="S11">Bootstrap connects to channel</step>
+        <step id="S12">Channel performs connection and triggering connect events</step>
+        <step id="S13">Channel completes connection and activates channel</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">Channel registers asynchronously</step>
+            <step id="A1S2">Channel completes registration and invokes handlers</step>
+            <step id="A1S3">Channel fires channel registered event</step>
+            <step id="A1S4">If channel is active and first registration, channel fires channel active event</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Connection error handling steps</description>
+            <step id="E1S1">Handle registration and connection errors</step>
+            <step id="E1S2">Handle connect timeout and exceptions</step>
+        </esteps>
+    </errorSteps>
+</useCase>

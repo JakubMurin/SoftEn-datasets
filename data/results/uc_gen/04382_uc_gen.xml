@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Book Room Use Case</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking successfully created</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Room not available for booking</condition>
+    </failureEndConditions>
+    <trigger>Receptionist requests to create a booking</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create booking</step>
+        <step id="S2">UI displays booking form</step>
+        <step id="S3">Receptionist fills booking details</step>
+        <step id="S4">Router creates booking request</step>
+        <step id="S5">Controller creates booking in repository</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Room availability check</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Room not available error</description>
+            <step id="E1S1">Display error message to Receptionist</step>
+        </esteps>
+    </errorSteps>
+</useCase>

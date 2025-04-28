@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Register User</name>
+    <description>Register a new user with unique email</description>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>Handler</actor>
+        <actor>Service</actor>
+        <actor>Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the registration form</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered with a unique email</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User registration failed due to invalid details or non-unique email</condition>
+    </failureEndConditions>
+    <trigger>User enters details (username, email, password) on the registration form</trigger>
+    <mainSequence>
+        <step id="S1">User enters details (username, email, password) on the registration form</step>
+        <step id="S2">App requests registration</step>
+        <step id="S3">Handler calls Create() method</step>
+        <step id="S4">Service calls Create() method</step>
+        <step id="S5">Repository checks email uniqueness</step>
+        <step id="S6">Repository sends OK if email is unique</step>
+        <step id="S7">Service sends OK to Handler</step>
+        <step id="S8">Handler displays success message to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">Repository sends error if email is not unique</step>
+            <step id="A1S2">Service sends error to Handler</step>
+            <step id="A1S3">Handler displays error message to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

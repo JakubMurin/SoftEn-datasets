@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Trigger Analyzer Asynchronous</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Scheduler</actor>
+        <actor>ProductExecution</actor>
+        <actor>ProductExecutor</actor>
+        <actor>AnalyzerProductExecutor</actor>
+        <actor>AnalyzerProductAdapter</actor>
+        <actor>Analyzer</actor>
+        <actor>FileSystem</actor>
+    </actors>
+    <trigger>User marks job ready to start</trigger>
+    <mainSequence>
+        <step id="S1">User marks job ready to start</step>
+        <step id="S2">Trigger batch job from ProductExecution to AnalyzerProductExecutor</step>
+        <step id="S3">Trigger REST call from AnalyzerProductAdapter to Analyzer to fetch analyzer queue ID</step>
+        <step id="S4">Fetch zip data from Storage to Analyzer</step>
+        <step id="S5">Store file in FileSystem</step>
+        <step id="S6">Store result in AnalyzerDB</step>
+    </mainSequence>
+</useCase>

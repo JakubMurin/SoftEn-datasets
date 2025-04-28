@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Collect Customer Feedback</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Kitchen</actor>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>All customer data is available</precondition>
+        <precondition>Customer has made at least one past order</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Customer feedback successfully collected</condition>
+    </successEndConditions>
+    <trigger>Admin initiates survey creation</trigger>
+    <mainSequence>
+        <step id="S1">Create surveys for eligible customers</step>
+        <step id="S2">Retrieve customer data from the User Profile service</step>
+        <step id="S3">Retrieve past orders per customer from the Order Service</step>
+        <step id="S4">Send out surveys to eligible customers</step>
+    </mainSequence>
+</useCase>

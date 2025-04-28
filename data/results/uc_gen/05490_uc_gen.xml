@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Choose Book Genres</name>
+    <description>Allow members to select preferred genres for book recommendations</description>
+    <actors>
+        <actor>Member</actor>
+    </actors>
+    <preconditions>
+        <precondition>Member is logged into the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Member's preferred genres updated successfully</condition>
+    </successEndConditions>
+    <trigger>Member selects preferred genres for book recommendations</trigger>
+    <mainSequence>
+        <step id="S1">Member selects preferred genres</step>
+        <step id="S2">Selection interface sends selected genres to User Profile Service</step>
+        <step id="S3">User Profile Service queries Database to update member preferences</step>
+        <step id="S4">Database confirms preferences are updated</step>
+        <step id="S5">User Profile Service notifies Selection interface of the update</step>
+        <step id="S6">Selection interface displays confirmation to Member</step>
+    </mainSequence>
+</useCase>

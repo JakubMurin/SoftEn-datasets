@@ -1,0 +1,19 @@
+<useCase id="UC01">
+    <name>View Product Prices</name>
+    <description>As a Manager, I want to view the prices of products on the dashboard.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Manager sends a request to view product prices.</step>
+        <step id="S2">Dashboard receives the request from the Manager.</step>
+        <step id="S3">Dashboard initiates a GET request '/products/prices' to Backend.</step>
+        <step id="S4">Backend receives the GET request from the Dashboard.</step>
+        <step id="S5">Backend activates and fetches prices of products from the Database.</step>
+        <step id="S6">Database receives the fetch request from the Backend.</step>
+        <step id="S7">Database returns the prices of products to the Backend.</step>
+        <step id="S8">Backend sends product prices data to the Dashboard.</step>
+        <step id="S9">Dashboard receives the product prices data from the Backend.</step>
+        <step id="S10">Dashboard displays the product prices to the Manager.</step>
+    </mainSequence>
+</useCase>

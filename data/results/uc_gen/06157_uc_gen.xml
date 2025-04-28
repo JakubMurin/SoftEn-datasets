@@ -1,0 +1,18 @@
+<useCase id="1">
+    <name>Advanced staking</name>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Staker stakes with zZKPspendPubKey, zZKPcipherText, PRPspendPubKey, and PRPcipherText</step>
+        <step id="S2">Staking contract's \_createStake() is triggered</step>
+        <step id="S3">Transfers stakedAmount from Staker to Staking</step>
+        <step id="S4">If isRewarded flag is true</step>
+        <step id="S5">Staking triggers _sendStakedMsg()</step>
+        <step id="S6">RewardMaster's onAction() function is called</step>
+        <step id="S7">AdvancedStakeController retrieves reward advice by calling getRewardAdvice()</step>
+        <step id="S8">Checks the reward amount</step>
+        <step id="S9">Transfers rewardAmount from treasury to MASP via ZKP token</step>
+        <step id="S10">Deposits for zZKPspendPubKey, zZKPcipherText, PRPspendPubKey, and PRIEncoderPresenceSplitMSPlaintext cipherText in the pool</step>
+    </mainSequence>
+</useCase>

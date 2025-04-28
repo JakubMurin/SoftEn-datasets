@@ -1,0 +1,18 @@
+<useCase id="UC01">
+    <name>User Restricts Access to Repository</name>
+    <description>The curator initiates restriction settings to restrict access to a repository.</description>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Curator initiates the restriction settings.</step>
+        <step id="S2">UI Dashboard authenticates the curator.</step>
+        <step id="S3">UI Dashboard requests to restrict access to repository.</step>
+        <step id="S4">Access Control Module fetches the collection details from the database.</step>
+        <step id="S5">Access Control Module defines an IP restriction rule for Duke IP addresses only.</step>
+        <step id="S6">Access Control Module updates the collection with the access rule.</step>
+        <step id="S7">UI Dashboard displays a success message after the restriction is applied.</step>
+        <step id="S8">Networking Service checks access for the user IP.</step>
+        <step id="S9">Networking Service serves or denies collection access based on Access Control Module's decision.</step>
+    </mainSequence>
+</useCase>

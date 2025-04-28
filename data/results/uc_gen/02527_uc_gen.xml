@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Login Process</name>
+    <description>User logs in to the application</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in</condition>
+    </failureEndConditions>
+    <trigger>User wants to access the application</trigger>
+    <mainSequence>
+        <step id="S1">User enters their username</step>
+        <step id="S2">Application verifies the username</step>
+        <step id="S3">User enters their password</step>
+        <step id="S4">Application verifies the password</step>
+        <step id="S5">User successfully logs in</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Redirect user to the homepage</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">Prompt user to re-enter the password</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">User requests a new password</step>
+            <step id="A3S2">Application sends a new password</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

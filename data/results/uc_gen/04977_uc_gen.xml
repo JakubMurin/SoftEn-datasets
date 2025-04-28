@@ -1,0 +1,46 @@
+<useCase id="10104">
+    <name>Einladung von Akteuren innerhalb einer Organisation</name>
+    <actors>
+        <actor>Akteur - A in der Rolle User</actor>
+        <actor>Akteur - B in der Rolle User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Akteur A sucht Akteur B</step>
+        <step id="S2">Send POST /_matrix/client/user_directory/search to Messenger-Proxy</step>
+        <step id="S3">Messenger-Proxy forwards request to Matrix-Homeserver</step>
+        <step id="S4">Matrix-Homeserver searches user directory and provides MXID</step>
+        <step id="S5">Messenger-Proxy receives MXID and forwards response to Client A</step>
+        
+        <step id="S6">Akteur A lädt Akteur B ein</step>
+        <step id="S7">Send POST /_matrix/client/v3/rooms/{roomId}/invite to Messenger-Proxy</step>
+        
+        <step id="S8">Berechtigungsprüfung durchführen</step>
+        
+        <step id="S9">Matrix-Homeserver verarbeitet Invite</step>
+        <step id="S10">Matrix-Homeserver bestätigt HTTP 200 an Messenger-Proxy</step>
+        <step id="S11">Messenger-Proxy forwards response to Client A</step>
+        
+        <step id="S12">Push-Benachrichtigung senden</step>
+        <step id="S13">Notify Push-Gateway with POST /_matrix/push/notify</step>
+        <step id="S14">Push-Gateway delivers Notification to Client B</step>
+        <step id="S15">Push-Gateway receives status and acknowledges to Matrix-Homeserver</step>
+        
+        <step id="S16">Client B sends Sync Request to Messenger-Proxy</step>
+        <step id="S17">Messenger-Proxy forwards request to Matrix-Homeserver</step>
+        <step id="S18">Matrix-Homeserver sends Sync Response back to Messenger-Proxy</step>
+        <step id="S19">Messenger-Proxy forwards Sync Response to Client B</step>
+        
+        <step id="S20">Client B views invitation and confirms</step>
+        <step id="S21">Send join command to Messenger-Proxy</step>
+        <step id="S22">Messenger-Proxy forwards join request to Matrix-Homeserver</step>
+        <step id="S23">Matrix-Homeserver processes join and provides Room ID</step>
+        <step id="S24">Messenger-Proxy receives Room ID and forwards to Client B</step>
+        <step id="S25">Client B receives Room ID and confirms user has joined room</step>
+        
+        <step id="S26">Client A sends Sync Request to Messenger-Proxy</step>
+        <step id="S27">Messenger-Proxy forwards request to Matrix-Homeserver</step>
+        <step id="S28">Matrix-Homeserver sends Sync Response to Messenger-Proxy</step>
+        <step id="S29">Messenger-Proxy forwards Sync Response to Client A</step>
+        <step id="S30">Client A receives confirmation that Akteur B has joined the room</step>        
+    </mainSequence>
+</useCase>

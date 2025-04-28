@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>View Blog List</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is logged in and wants to view the list of blog posts.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of blog posts is successfully displayed to the Admin.</condition>
+    </successEndConditions>
+    <trigger>Admin requests to view the list of blog posts.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to view the list of blog posts.</step>
+        <step id="S2">list_blogs_view sends the request to BlogController.</step>
+        <step id="S3">BlogController checks the data.</step>
+        <step id="S4">BlogController retrieves the list of blog posts from BlogModel.</step>
+        <step id="S5">BlogModel returns the list of blog posts to BlogController.</step>
+        <step id="S6">BlogController sends the list of blog posts results to list_blogs_view.</step>
+        <step id="S7">list_blogs_view displays the list of blog posts to Admin.</step>
+    </mainSequence>
+</useCase>

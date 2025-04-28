@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Reconnect Client</name>
+    <actors>
+        <actor>Actor</actor>
+        <actor>ClientRMI</actor>
+        <actor>MainServerRMI</actor>
+        <actor>ClientHandlerRMI</actor>
+        <actor>MainController</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Actor reconnects to ClientRMI</step>
+        <step id="S2">ClientRMI performs RMI lookup on Registry</step>
+        <step id="S3">Registry provides remote reference to MainServer to ClientRMI</step>
+        <step id="S4">ClientRMI reconnects to MainServerRMI</step>
+        <step id="S5">MainServerRMI interrupts ClientHandlerRMI</step>
+        <step id="S6">ClientHandlerRMI is created</step>
+        <step id="S7">MainServerRMI creates ClientHandlerRMI</step>
+        <step id="S8">MainServerRMI starts ClientHandlerRMI</step>
+        <step id="S9">MainServerRMI reconnects to MainController</step>
+        <step id="S10">MainController creates AvailableGamesMessage</step>
+        <step id="S11">MainController updates ClientHandlerRMI with AvailableGamesMessage</step>
+        <step id="S12">ClientHandlerRMI pushes update to ClientRMI</step>
+    </mainSequence>
+</useCase>

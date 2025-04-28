@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Get Medical Condition Information</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>AllergyService</actor>
+        <actor>Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User requests information about a medical condition by name.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The API_Controller sends a response with the medical condition data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The API_Controller sends an error response in case of invalid input or missing data.</condition>
+        <condition>The AllergyService raises an exception if the medical condition is not found in the Repository.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Validate Path Parameter</step>
+        <step id="S2">GetAllMedicalConditions(name) Request from API_Controller to AllergyService</step>
+        <step id="S3">Fetch medical conditions from Repository</step>
+        <step id="S4">Exception: "Medical Condition not found" if Allergy Not Found</step>
+        <step id="S5">List of medical conditions from Repository to AllergyService</step>
+        <step id="S6">List of medical conditions from AllergyService to API_Controller</step>
+        <step id="S7">Send 200 OK response with medicalCondition data to User</step>
+        <step id="S8">Send 400 Bad Request response to User</step>
+        <step id="S9">Send 404 Not Found response to User</step>
+    </mainSequence>
+</useCase>

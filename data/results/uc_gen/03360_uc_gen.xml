@@ -1,0 +1,24 @@
+<useCase id="UC12345">
+    <name>DisplayProducts</name>
+    <description>User displays categories and products on the Product Page.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has navigated to the Product Page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Product categories with associated products are successfully displayed.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the Product Page.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the Product Page.</step>
+        <step id="S2">Product Page sends a GET request to retrieve categories with sub-categories.</step>
+        <step id="S3">Category Controller calls the Category Service to get all categories.</step>
+        <step id="S4">Category Service retrieves all categories via the Category Repository.</step>
+        <step id="S5">Category Mapper converts categories to a response with products.</step>
+        <step id="S6">Category Service sends the response to the Controller.</step>
+        <step id="S7">Controller returns the response to the Product Page.</step>
+        <step id="S8">Product Page displays the categories and their associated products.</step>
+    </mainSequence>
+</useCase>

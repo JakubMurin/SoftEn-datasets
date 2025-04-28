@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Compose Message</name>
+    <actors>
+        <actor>Authenticated User</actor>
+        <actor>New Message UI</actor>
+        <actor>ReST Interface</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to the message composition feature.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message is successfully composed and sent.</condition>
+    </successEndConditions>
+    <trigger>User initiates the process of composing a new message.</trigger>
+    <mainSequence>
+        <step id="S1">User writes a new draft with or without participants.</step>
+        <step id="S2">User throttles save.</step>
+        <step id="S3">API receives a POST request to create a new message.</step>
+        <step id="S4">API acknowledges the creation with status 204.</step>
+        <step id="S5">API responds with the created message details.</step>
+        <step id="S6">User edits the draft.</step>
+        <step id="S7">User throttles save.</step>
+        <step id="S8">API receives a PATCH request to update the message.</step>
+        <step id="S9">API acknowledges the patch with status 204.</step>
+        <step id="S10">API responds with the updated message details.</step>
+        <step id="S11">User hits "Send".</step>
+        <step id="S12">API receives a POST request to send the message.</step>
+        <step id="S13">API validates participants and calculates discussion ID.</step>
+        <step id="S14">API acknowledges the patch with status 204.</step>
+        <step id="S15">API responds with the sent message details.</step>
+        <step id="S16">User renders the discussion.</step>
+        <step id="S17">Discussion UI displays the discussion to the user.</step>
+    </mainSequence>
+</useCase>

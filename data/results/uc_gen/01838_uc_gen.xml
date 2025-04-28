@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Handle Collision</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>Boundary</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">GameEngine calls GameBoundaryDelegate to getBoundary()</step>
+        <step id="S2">GameBoundaryDelegate activates</step>
+        <step id="S3">GameBoundaryDelegate calls Boundary to get boundary</step>
+        <step id="S4">Boundary returns boundary</step>
+        <step id="S5">GameEngine calls Ball onCollision(with: boundary, deltaTime: Double)</step>
+        <step id="S6">Ball activates</step>
+        <step id="S7">Ball will collide with boundary</step>
+        <step id="S8">Ball calls onCollision(with: boundary)</step>
+        <step id="S9">Ball activates</step>
+        <step id="S10">Ball gets safe position from boundary</step>
+        <step id="S11">Ball calls FreeBody onCollision with collisionPoint, deltaTime, and boundary restitutionCoefficient</step>
+        <step id="S12">Ball deactivates</step>
+        <step id="S13">Ball returns new ball</step>
+    </mainSequence>
+</useCase>

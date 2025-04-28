@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Create Workflow Sequence</name>
+    <actors>
+        <actor>Workflow Administrator</actor>
+        <actor>Api Gateway</actor>
+        <actor>Workflow Service</actor>
+        <actor>Workflow Db</actor>
+        <actor>NATS Event Relay</actor>
+        <actor>ZKP Manager Service</actor>
+        <actor>Circuit Db</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Workflow Administrator initiates a new workflow creation by sending a POST request to Api Gateway.</step>
+        <step id="S2">Api Gateway forwards the request to Workflow Service to create the workflow.</step>
+        <step id="S3">Workflow Service updates the Workflow Db with the new workflow details and publishes a new-workflow-allocated event to NATS Event Relay.</step>
+        <step id="S4">Workflow Service responds to Api Gateway with the created workflow ID.</step>
+        <step id="S5">Workflow Administrator polls the status of the workflow by sending a GET request to Api Gateway.</step>
+        <step id="S6">Api Gateway retrieves the workflow details from Workflow Service.</step>
+        <step id="S7">Workflow Administrator receives the workflow details in the response.</step>
+        <step id="S8">ZKP Manager Service subscribes to the new-workflow-allocated event in NATS.</step>
+        <step id="S9">ZKP Manager Service generates a signature circuit, saves it in the Circuit Db, compiles the circuit, and publishes a circuit-compiled event to NATS.</step>
+        <step id="S10">Workflow Service subscribes to the circuit-compiled event in NATS.</step>
+        <step id="S11">Workflow Service updates the Workflow Db, publishes a workflow-status-updated event to NATS.</step>
+        <step id="S12">ZKP Manager Service subscribes to the workflow-status-updated event with the filter circuit-compiled in NATS.</step>
+        <step id="S13">ZKP Manager Service sets up the circuit and publishes a circuit-setup event to NATS.</step>
+        <step id="S14">Workflow Service subscribes to the circuit-setup event in NATS.</step>
+        <step id="S15">Workflow Service updates the Workflow Db, publishes a workflow-status-updated event to NATS.</step>
+        <step id="S16">ZKP Manager Service subscribes to the workflow-status-updated event with the filter circuit-setup in NATS.</step>
+    </mainSequence>
+</useCase>

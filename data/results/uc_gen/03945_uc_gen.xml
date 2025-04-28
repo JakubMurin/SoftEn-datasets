@@ -1,0 +1,25 @@
+<useCase id="001">
+    <name>Login to the System</name>
+    <description>The user logs into the system using a valid username and password.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Login Page</actor>
+        <actor>Home Page</actor>
+        <actor>Auth Controller</actor>
+        <actor>Auth Service</actor>
+        <actor>User Repository</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User enters username and password and submits login form.</trigger>
+    <mainSequence>
+        <step id="S1">User enters username and password in the login form.</step>
+        <step id="S2">Submit the login form.</step>
+        <step id="S3">Make an HTTP POST request to /login with the entered credentials.</step>
+        <step id="S4">Authenticate user credentials.</step>
+        <step id="S5">Check the user’s credentials in the database.</step>
+        <step id="S6">Query the user credentials from the database.</step>
+        <step id="S7">Provides necessary details back to the service for authentication.</step>
+        <step id="S8">If credentials are invalid: Return an error message to the user and display it on the login page.</step>
+        <step id="S9">If credentials are valid: Redirect the user to the home page and load it to display.</step>
+    </mainSequence>
+</useCase>

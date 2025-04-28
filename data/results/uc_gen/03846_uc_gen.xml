@@ -1,0 +1,41 @@
+<useCase id="1001">
+    <name>Fault Management Provisioning</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SOF</actor>
+        <actor>Fault Management Job (FMJ)</actor>
+        <actor>Fault Management Report (PR)</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system is operational and accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Report is successfully generated and completed.</condition>
+    </successEndConditions>
+    <trigger>An event triggers the start of Fault Management Provisioning.</trigger>
+    <mainSequence>
+        <step id="S1">User registers listeners for Fault Management notifications at the Hub.</step>
+        <step id="S2">User asks the SOF to create a Fault Management Job.</step>
+        <step id="S3">Fault Management Job is created successfully by the SOF.</step>
+        <step id="S4">A Fault Management Job Creation event is notified by the Hub to the User.</step>
+        <step id="S5">The Fault Management Job goes into the 'inProgress' state.</step>
+        <step id="S6">A Fault Management Job State Change event is notified.</step>
+        <step id="S7">Data is generated for the Fault Management Job.</step>
+        <step id="S8">The reporting period elapses.</step>
+        <step id="S9">Fault Management Report is created by the system.</step>
+        <step id="S10">A Fault Management Report Creation event is notified.</step>
+        <step id="S11">Fault Management Report enters the 'inProgress' state.</step>
+        <step id="S12">A Fault Management Report State Change event is triggered.</step>
+        <step id="S13">Data is collected for the Fault Management Report.</step>
+        <step id="S14">Fault Management Report enters the 'completed' state.</step>
+        <step id="S15">A Fault Management Report State Change event is provided.</step>
+        <step id="S16">The system notifies that the Fault Management Report is completed.</step>
+        <step id="S17">A Report Ready Event is sent by the Hub when the scheduled period elapses.</step>
+        <step id="S18">The Fault Management Job transitions to 'completed' or 'scheduled' state.</step>
+        <step id="S19">Fault Management Job State Change event is notified.</step>
+        <step id="S20">User requests the system to retrieve the Fault Management Report.</step>
+        <step id="S21">Fault Management Report is retrieved successfully by the User.</step>
+        <step id="S22">The system responds with the retrieved Fault Management Report.</step>
+    </mainSequence>
+</useCase>

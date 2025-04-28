@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Perform Application Start</name>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>Application is ready to start</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Application successfully starts</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Application fails to start</condition>
+    </failureEndConditions>
+    <trigger>User initiates the application start process</trigger>
+    <mainSequence>
+        <step id="S1">Application sends start signal to CowboyPlug</step>
+        <step id="S2">CowboyPlug forwards start signal to Cowboy</step>
+        <step id="S3">CowboyPlug forwards start signal to Plug</step>
+        <step id="S4">Application sends start signal to Supervisor</step>
+        <step id="S5">Supervisor initializes Timer</step>
+        <step id="S6">Supervisor monitors Timer</step>
+        <step id="S7">Timer wakes up</step>
+        <step id="S8">Timer sends GET request to Monitored Server</step>
+        <step id="S9">Timer updates its state</step>
+        <step id="S10">Supervisor restarts Timer</step>
+        <step id="S11">Alice checks Cowboy status</step>
+        <step id="S12">Cowboy calls Plug</step>
+        <step id="S13">Plug requests status from Timer</step>
+        <step id="S14">Plug responds to Cowboy</step>
+        <step id="S15">Cowboy responds to Alice</step>
+    </mainSequence>
+</useCase>

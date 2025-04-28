@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Retrieve Certificates and Tokens for Authentication</name>
+    <description>Retrieve necessary certificates and tokens for the authentication process.</description>
+    <actors>
+        <actor>FL</actor>
+        <actor>authM</actor>
+        <actor>FD</actor>
+    </actors>
+    <preconditions>
+        <precondition>Fachlogik is active and ready to initiate the authentication process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All required certificates and tokens are successfully retrieved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Any of the required certificates or tokens could not be retrieved.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">FL requests certificate list from FD.</step>
+        <step id="S2">FD returns the certificate list.</step>
+        <step id="S3">FL retrieves certificates from IDP.</step>
+        <step id="S4">FL verifies and processes the retrieved certificates.</step>
+        <step id="S5">FL generates a code verifier and challenge.</step>
+        <step id="S6">authM gets public keys from IDP.</step>
+        <step id="S7">authM requests an authentication challenge from IDP.</step>
+        <step id="S8">V confirms the user consent.</step>
+        <step id="S9">authM signs the challenge.</step>
+        <step id="S10">authM requests an authorization code with the signed challenge.</step>
+        <step id="S11">authM requests an authorization code with the SSO token.</step>
+        <step id="S12">authM creates and signs alternative authorization data.</step>
+        <step id="S13">FL creates a key verifier.</step>
+        <step id="S14">FL gets tokens from IDP.</step>
+        <step id="S15">FL uses the access token at FD.</step>
+    </mainSequence>
+</useCase>

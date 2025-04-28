@@ -1,0 +1,47 @@
+<useCase id="UC1">
+    <name>Comprar sobre</name>
+    <actors>
+        <actor>Usuario Autenticado</actor>
+        <actor>Interfaz de Usuario</actor>
+        <actor>Sistema de Compras</actor>
+        <actor>Base de Datos</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El Usuario Autenticado selecciona comprar sobre</step>
+        <step id="S2">La Interfaz de Usuario solicita compra del paquete de cartas al Sistema de Compras</step>
+        <step id="S3">El Sistema de Compras inicia sesión de transacción con la Base de Datos</step>
+        <step id="S4">La Base de Datos confirma inicio de sesión</step>
+        <step id="S5">El Sistema de Compras busca el paquete de cartas en la Base de Datos</step>
+        <step id="S6">La Base de Datos retorna los datos del paquete</step>
+        <step id="S7">El Sistema de Compras verifica la disponibilidad del paquete</step>
+        <step id="S8">El Sistema de Compras verifica el saldo del Usuario Autenticado</step>
+        <step id="S9">El Sistema de Compras genera las cartas y actualiza el inventario en la Base de Datos</step>
+        <step id="S10">La Base de Datos confirma la generación de cartas</step>
+        <step id="S11">El Sistema de Compras actualiza el saldo del Usuario Autenticado en la Base de Datos</step>
+        <step id="S12">La Base de Datos confirma la actualización del saldo</step>
+        <step id="S13">El Sistema de Compras registra las transacciones por cada carta generada en la Base de Datos</step>
+        <step id="S14">La Base de Datos confirma las transacciones registradas</step>
+        <step id="S15">El Sistema de Compras añade las cartas generadas a la colección del Usuario Autenticado en la Base de Datos</step>
+        <step id="S16">La Base de Datos confirma la actualización de la colección</step>
+        <step id="S17">El Sistema de Compras notifica éxito de la compra a la Interfaz de Usuario</step>
+        <step id="S18">La Interfaz de Usuario muestra el éxito y las cartas generadas al Usuario Autenticado</step>
+        <step id="S19">El Sistema de Compras cierra la sesión de transacción con la Base de Datos</step>
+        <step id="S20">La Base de Datos confirma el cierre de la sesión</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Saldo insuficiente</description>
+            <step id="E1S1">El Sistema de Compras aborta la transacción en la Base de Datos</step>
+            <step id="E1S2">La Base de Datos confirma el aborto de la transacción</step>
+            <step id="E1S3">El Sistema de Compras notifica el fallo de la transacción a la Interfaz de Usuario</step>
+            <step id="E1S4">La Interfaz de Usuario muestra un mensaje de error al Usuario Autenticado</step>
+        </esteps>
+        <esteps id="E2" start="S14">
+            <description>Error durante el proceso</description>
+            <step id="E2S1">El Sistema de Compras aborta la transacción en la Base de Datos</step>
+            <step id="E2S2">La Base de Datos confirma el aborto de la transacción</step>
+            <step id="E2S3">El Sistema de Compras notifica el fallo de la transacción a la Interfaz de Usuario</step>
+            <step id="E2S4">La Interfaz de Usuario muestra un mensaje de error al Usuario Autenticado</step>
+        </esteps>
+    </errorSteps>
+</useCase>

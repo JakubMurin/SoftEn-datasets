@@ -1,0 +1,40 @@
+<useCase id="1">
+    <name>Online Payment Process</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>WeChat Client</actor>
+        <actor>Merchant Backend System</actor>
+        <actor>WeChat Payment System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer has initiated an online payment process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Customer successfully completes the payment process.</condition>
+    </successEndConditions>
+    <trigger>Customer initiates an online payment.</trigger>
+    <mainSequence>
+        <step id="S1">Customer places an order on the platform and initiates payment.</step>
+        <step id="S2">Merchant backend system generates the platform order.</step>
+        <step id="S3">Merchant backend system requests the WeChat Payment System API to create an order.</step>
+        <step id="S4">WeChat Payment System generates a prepayment order.</step>
+        <step id="S5">WeChat Payment System returns the prepayment order identifier to the Merchant backend system.</step>
+        <step id="S6">Merchant backend system generates signed payment information.</step>
+        <step id="S7">Customer initiates the payment.</step>
+        <step id="S8">Customer triggers the WeChat payment through the WeChat Client.</step>
+        <step id="S9">WeChat Client sends a payment request to the WeChat Payment System.</step>
+        <step id="S10">WeChat Payment System verifies payment authorization.</step>
+        <step id="S11">WeChat Payment System returns the payment authorization to the WeChat Client.</step>
+        <step id="S12">Customer confirms payment and enters the password.</step>
+        <step id="S13">WeChat Payment System submits the authorization.</step>
+        <step id="S14">WeChat Payment System verifies the authorization.</step>
+        <step id="S15">WeChat Payment System notifies the Merchant backend system of the payment result.</step>
+        <step id="S16">Merchant saves the payment notification.</step>
+        <step id="S17">Merchant backend system informs a successful processing to the WeChat Payment System.</step>
+        <step id="S18">WeChat Payment System returns the payment result to the WeChat Client and sends a notification message.</step>
+        <step id="S19">WeChat Client queries the payment status to the Merchant backend system.</step>
+        <step id="S20">Merchant backend system calls the payment query interface to check the payment result.</step>
+        <step id="S21">WeChat Payment System returns the payment result to the Merchant backend system.</step>
+        <step id="S22">WeChat Payment System displays the payment message to the WeChat Client.</step>
+    </mainSequence>
+</useCase>

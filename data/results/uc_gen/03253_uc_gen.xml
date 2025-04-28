@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Process User's Query</name>
+    <description>The use case involves handling the user's query to show their orders</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Chat Client</actor>
+        <actor>LLM Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to orders</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User's query is processed successfully and orders are displayed</condition>
+    </successEndConditions>
+    <trigger>User submits a query to show their orders</trigger>
+    <mainSequence>
+        <step id="S1">User submits query to Chat Client requesting to see their orders</step>
+        <step id="S2">Chat Client receives the query from User</step>
+        <step id="S3">Chat Client forwards the query to the Application</step>
+        <step id="S4">Application processes the query and prompts the LLM Service with the function schema GetOrderRequest</step>
+        <step id="S5">LLM Service identifies the appropriate function based on the schema</step>
+        <step id="S6">LLM Service requests the Application to execute the function</step>
+        <step id="S7">Application executes the specified function</step>
+        <step id="S8">Application receives and forwards the function execution result to the LLM Service</step>
+        <step id="S9">LLM Service processes the result, generates the final response</step>
+        <step id="S10">LLM Service sends the final response back to the Application</step>
+        <step id="S11">Application puts together the final response for the Chat Client</step>
+        <step id="S12">Application delivers the final response to the Chat Client</step>
+        <step id="S13">Chat Client displays the final response to the User as requested</step>
+    </mainSequence>
+</useCase>

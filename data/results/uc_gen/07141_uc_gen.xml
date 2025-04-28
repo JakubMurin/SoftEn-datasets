@@ -1,0 +1,42 @@
+<useCase id="1">
+    <name>Deliver dataset operation results</name>
+    <description>As a developer, successfully display messages for dataset operations</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>CLI Tool</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Dataset Instance</actor>
+        <actor>UI Application</actor>
+        <actor>REST API</actor>
+    </actors>
+    <preconditions>
+        <precondition>The CLI tool must be readily available</precondition>
+        <precondition>The UI Application must be operational</precondition>
+        <precondition>The REST API must be connected to the DMS</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The dataset operation is executed successfully</condition>
+    </successEndConditions>
+    <trigger>Developer initiates dataset operation viewing</trigger>
+    <mainSequence>
+        <step id="S1">Developer performs the desired operation through the CLI tool</step>
+        <step id="S2">CLI tool requests the operation on the Dataset Instance via the Dataset Management System</step>
+        <step id="S3">Dataset Management System executes the requested operation on the Dataset Instance</step>
+        <step id="S4">Dataset Instance completes the operation</step>
+        <step id="S5">Dataset Management System confirms the success of the operation</step>
+        <step id="S6">CLI tool displays the success message to the Developer</step>
+        <step id="S7">Developer accesses the UI to interact with the Dataset Instances</step>
+        <step id="S8">UI sends a request to the REST API to fetch Dataset Instances</step>
+        <step id="S9">REST API gathers requested Dataset Instances from the DMS</step>
+        <step id="S10">DMS returns the Dataset Instances to REST API</step>
+        <step id="S11">REST API shows the retrieved Dataset Instances on the UI</step>
+        <step id="S12">Developer selects a Dataset Instance and the desired operation (e.g., rebalance) on the UI</step>
+        <step id="S13">UI sends a POST request to the REST API to execute the operation on the selected Dataset Instance</step>
+        <step id="S14">REST API forwards the operation request to the Dataset Management System</step>
+        <step id="S15">Dataset Management System performs the operation on the Dataset Instance</step>
+        <step id="S16">Dataset Instance finishes executing the requested operation</step>
+        <step id="S17">Dataset Management System confirms the success of the operation back to the REST API</step>
+        <step id="S18">REST API displays the successful operation message to the Developer on the UI</step>
+        <step id="S19">UI confirms the success of the operation to the Developer</step>
+    </mainSequence>
+</useCase>

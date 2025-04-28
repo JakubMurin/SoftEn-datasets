@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Request to create a new type of test</name>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Administrator asks UI to create a new type of test</step>
+        <step id="S2">UI gets list of parameter categories from TestTypeController</step>
+        <step id="S3">TestTypeController retrieves ParameterCategoryStore to get parameter categories</step>
+        <step id="S4">TestTypeController processes parameter categories using listPCMapper</step>
+        <step id="S5">UI shows parameter category list and requests Administrator to select one</step>
+        <step id="S6">Administrator selects a parameter category, and UI requests additional data</step>
+        <step id="S7">Administrator types in the requested data</step>
+        <step id="S8">UI creates a new test type by providing description, collecting method, code, and categories</step>
+        <step id="S9">TestTypeController validates and saves the created test type</step>
+        <step id="S10">UI shows all data and requests Administrator confirmation</step>
+        <step id="S11">Administrator confirms all data, and TestTypeController saves the test type</step>
+        <step id="S12">Administrator receives confirmation of successful operation</step>
+    </mainSequence>
+</useCase>

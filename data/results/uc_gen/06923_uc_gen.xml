@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Receive Conflict Notification</name>
+    <actors>
+        <actor>User Device</actor>
+        <actor>NotificationService</actor>
+        <actor>MQTTServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Conflict Event is received from MQTTServer with user_id and file_id</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">NotificationService receives Conflict Event from MQTTServer containing user_id and file_id.</step>
+        <step id="S2">NotificationService sends Conflict Notification to User Device with user_id and file_id included.</step>
+    </mainSequence>
+</useCase>

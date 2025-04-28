@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CustomerManager asks to display job openings in the results phase.</step>
+        <step id="S2">PublishJobOpeningUI gets job openings.</step>
+        <step id="S3">PublishJobOpeningController retrieves job openings from JobOpeningRepository.</step>
+        <step id="S4">JobOpeningRepository returns jobOpenings to PublishJobOpeningController.</step>
+        <step id="S5">PublishJobOpeningController sends jobOpenings to PublishJobOpeningUI.</step>
+        <step id="S6">PublishJobOpeningUI displays job Openings to CustomerManager.</step>
+        <step id="S7">CustomerManager selects a job opening to publish results.</step>
+        <step id="S8">PublishJobOpeningUI requests to publish job opening results to PublishJobOpeningController.</step>
+        <step id="S9">PublishJobOpeningController sends a result email request to FollowUpServerProxy.</step>
+        <step id="S10">FollowUpServerProxy creates a client socket and connects to the FollowUpServer.</step>
+        <step id="S11">FollowUpServerProxy sends the request to the server through the socket.</step>
+        <step id="S12">FollowUpServer receives and processes the request.</step>
+        <step id="S13">ResultEmailRequest is executed by FollowUpServer.</step>
+        <step id="S14">CandidateSelectionService selects candidates for the job opening.</step>
+        <step id="S15">EmailService sends emails to selected candidates.</step>
+        <step id="S16">Notification is created and saved in NotificationRepository.</step>
+        <step id="S17">EmailService notifies the ResultEmailRequest about the sent emails.</step>
+        <step id="S18">ResultEmailRequest informs the FollowUpServer about the successful email sending.</step>
+        <step id="S19">FollowUpServer sends a response to the FollowUpServerProxy.</step>
+        <step id="S20">FollowUpServerProxy forwards the response to PublishJobOpeningController.</step>
+        <step id="S21">PublishJobOpeningController sends the response to PublishJobOpeningUI.</step>
+        <step id="S22">PublishJobOpeningUI confirms the success of the operation to CustomerManager.</step>
+    </mainSequence>
+</useCase>

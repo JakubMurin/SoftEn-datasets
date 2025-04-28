@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Display Job Openings</name>
+    <actors>
+        <actor>CustomerManager</actor>
+        <actor>PublishJobOpeningUI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CustomerManager asks to display job openings in the results phase.</step>
+        <step id="S2">PublishJobOpeningUI getsJobOpenings().</step>
+        <step id="S3">JobOpeningRepository getJobOpenings().</step>
+        <step id="S4">PublishJobOpeningController sends jobOpenings to PublishJobOpeningUI.</step>
+        <step id="S5">PublishJobOpeningUI displays job Openings.</step>
+        <step id="S6">CustomerManager selects job opening to publish results.</step>
+        <step id="S7">PublishJobOpeningUI publishJobOpeningResults(jobOpening).</step>
+        <step id="S8">FollowUpServerProxy sends result email request for jobOpening.</step>
+        <step id="S9">FollowUpServerProxy creates and connects ClientSocket.</step>
+        <step id="S10">ClientSocket sends request to FollowUpServer.</step>
+        <step id="S11">FollowUpServer writes and parses request using FollowUpMessageParser.</step>
+        <step id="S12">ResultEmailRequest is executed.</step>
+        <step id="S13">CandidateSelectionService selects candidates for jobOpening.</step>
+        <step id="S14">ResultEmailRequest sends email to selected candidates using EmailService.</step>
+        <step id="S15">EmailService creates and saves notification in NotificationRepository.</step>
+        <step id="S16">NotificationRepository saves notification and sends it to EmailService.</step>
+        <step id="S17">EmailService notifies ResultEmailRequest of emails sent.</step>
+        <step id="S18">FollowUpServer sends response to ClientSocket and closes connection.</step>
+        <step id="S19">FollowUpServerProxy forwards response to PublishJobOpeningController and then to PublishJobOpeningUI.</step>
+        <step id="S20">PublishJobOpeningUI confirms successful operation to CustomerManager.</step>
+    </mainSequence>
+</useCase>

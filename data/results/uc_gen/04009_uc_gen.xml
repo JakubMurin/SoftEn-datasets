@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Associate an Instance with a Container</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>UI: Archival Management</actor>
+        <actor>Controller: Instance Management</actor>
+        <actor>Service: Instance Association</actor>
+        <actor>Model: Instance</actor>
+        <actor>Model: Container</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Archivist selects "Associate Instance" in UI.</step>
+        <step id="S2">UI sends requestAssociateInstance(instanceId, containerId) to Controller.</step>
+        <step id="S3">Controller forwards the request to Service to associateInstanceWithContainer.</step>
+        <step id="S4">Service retrieves instance details by calling getInstance(instanceId) from ModelInstance.</step>
+        <step id="S5">ModelInstance queries instance details from Database using queryInstanceDetails(instanceId).</step>
+        <step id="S6">Service retrieves container details by calling getContainer(containerId) from ModelContainer.</step>
+        <step id="S7">ModelContainer queries container details from Database using queryContainerDetails(containerStore).</step>
+        <step id="S8">Service verifies instance and container compatibility.</step>
+        <step id="S9">Service sets the container for the instance by calling setContainer(containerId) on ModelInstance.</step>
+        <step id="S10">ModelInstance updates the instance container in Database using updateInstanceContainer(instanceId, containerId).</step>
+        <step id="S11">ModelInstance confirms the update to Service.</step>
+        <step id="S12">Service informs association success to Controller.</step>
+        <step id="S13">Controller receives the association result and sends it to UI for display.</step>
+        <step id="S14">UI displays "Association Successful" message to Archivist.</step>
+    </mainSequence>
+</useCase>

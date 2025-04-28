@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Guess Number Game</name>
+    <description>A user guesses a number and receives feedback</description>
+    <actors>
+        <actor>User</actor>
+        <actor>GuessNumber</actor>
+        <actor>useState</actor>
+    </actors>
+    <preconditions>
+        <precondition>Target number is set</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user correctly guesses the number</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user fails to guess the number after multiple tries</condition>
+    </failureEndConditions>
+    <trigger>User inputs a number and interacts with the game</trigger>
+    <mainSequence>
+        <step id="S1">User inputs a number</step>
+        <step id="S2">GuessNumber sets the guess to the input number</step>
+        <step id="S3">User clicks "Adivinar"</step>
+        <step id="S4">GuessNumber parses the guess number</step>
+        <step id="S5">GuessNumber sets message based on guess vs targetNumber</step>
+        <step id="S6">GuessNumber displays the message to the User</step>
+        <step id="S7">User clicks "Reiniciar"</step>
+        <step id="S8">GuessNumber generates a new random target number</step>
+        <step id="S9">GuessNumber resets the guess to an empty string</step>
+        <step id="S10">GuessNumber resets the message to an empty string</step>
+        <step id="S11">User clicks "Back to Home"</step>
+        <step id="S12">User invokes onBackToHome</step>
+    </mainSequence>
+</useCase>

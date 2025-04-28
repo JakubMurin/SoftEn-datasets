@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>Consulta Veterinária</name>
+    <actors>
+        <actor>cliente</actor>
+        <actor>secretaria</actor>
+        <actor>veterinario</actor>
+    </actors>
+    <preconditions>
+        <precondition>O cliente deseja marcar uma consulta veterinária.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">O cliente marca uma consulta com a secretaria.</step>
+        <step id="S2">A secretaria confirma a consulta com o cliente.</step>
+        <step id="S3">O cliente informa os sintomas ao veterinário.</step>
+        <step id="S4">O veterinário registra os sintomas do animal.</step>
+        <step id="S5">O veterinário fornece o diagnóstico e o plano de tratamento ao cliente.</step>
+        <step id="S6">O cliente retorna para uma nova consulta com o veterinário.</step>
+        <step id="S7">O veterinário registra o pedido de exames necessários.</step>
+        <step id="S8">O veterinário fornece os resultados ao cliente e os registra no histórico.</step>
+        <step id="S9">O veterinário fornece receitas para o tratamento.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">O cliente informa seus dados pessoais à secretaria.</step>
+            <step id="A1S2">A secretaria atualiza o cadastro do cliente.</step>
+            <step id="A1S3">A secretaria confirma a atualização com o cliente.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>O tratamento foi encerrado.</description>
+            <step id="E1S1">O veterinário finaliza o tratamento.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Perform Fault Management</name>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>FaultManagementJob and FaultManagementReport entities exist</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>FaultManagementJob and FaultManagementReport are successfully completed</condition>
+    </successEndConditions>
+    <trigger>Buyer/Client requests Fault Management</trigger>
+    <mainSequence>
+        <step id="S1">Buyer/Client sends POST request to create FaultManagementJob</step>
+        <step id="S2">FaultManagementJob entity is created</step>
+        <step id="S3">FaultManagementJob enters inProgress state</step>
+        <step id="S4">Data for FaultManagementJob is generated</step>
+        <step id="S5">FaultManagementReport is created</step>
+        <step id="S6">FaultManagementReport enters inProgress state</step>
+        <step id="S7">Data for FaultManagementReport is collected</step>
+        <step id="S8">FaultManagementReport is completed</step>
+        <step id="S9">FaultManagementJob is marked as completed</step>
+        <step id="S10">Buyer/Client requests FaultManagementReport</step>
+        <step id="S11">FaultManagement Report content is returned to Buyer/Client</step>
+    </mainSequence>
+</useCase>

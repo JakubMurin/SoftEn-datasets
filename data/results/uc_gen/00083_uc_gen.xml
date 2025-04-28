@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Advanced Staking: Early Exit</name>
+    <actors>
+        <actor>Staker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Staker has staked funds in the Staking contract.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Staker initiates the unstaking process by calling the "unstake" function in the Staking contract with unstakeInfo.</step>
+        <step id="S2">Staking contract transfers the staked amount to the Staker.</step>
+        <step id="S3">RewardMaster triggers the "onAction" function.</step>
+        <step id="S4">AdvancedStakeController retrieves reward advice by calling the "getRewardAdvice" function.</step>
+        <step id="S5">MASP v.1 (w/ proxy) executes early unstaking by calling the "earlyUnstake" function in the AdvancedStakeController.</step>
+        <step id="S6">PublicLeaf generates a leaf hash based on preimage data.</step>
+        <step id="S7">PublicLeaf generates a nullifier hash based on preimage data.</step>
+        <step id="S8">MASP v.1 (w/ proxy) transfers the reward amount to the Staker.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">MASP v.1 (w/ proxy) verifies the Merkle proof, checks the nullifier unspent, and marks the nullifier as spent.</step>
+            <step id="A1S2">MASP v.1 (w/ proxy) transfers the reward amount to the Staker.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

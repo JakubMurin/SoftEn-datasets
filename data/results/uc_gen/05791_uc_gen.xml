@@ -1,0 +1,23 @@
+<useCase id="UC1">
+  <name>Deletar Tarefa</name>
+  <description>Permite ao usuário deletar uma tarefa da lista</description>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <preconditions>
+    <precondition>O usuário já tem a lista de tarefas aberta</precondition>
+    <precondition>A tarefa que ele deseja excluir está visível na lista</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>A tarefa é removida com sucesso da lista</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>A tarefa não é removida da lista</condition>
+  </failureEndConditions>
+  <trigger>O usuário clica no ícone de lixeira</trigger>
+  <mainSequence>
+    <step id="S1">O usuário clica no ícone de lixeira</step>
+    <step id="S2">A tarefa é removida da lista</step>
+    <step id="S3">A lista de tarefas é atualizada</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,48 @@
+<useCase id="UC001">
+    <name>Log in to PacMan game</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Foo</actor>
+        <actor>PacManController</actor>
+        <actor>PacManUser</actor>
+        <actor>PacManPersistence</actor>
+        <actor>FileReader</actor>
+        <actor>FileWriter</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has accessed the PacMan game</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and starts the game</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in or start the game</condition>
+    </failureEndConditions>
+    <trigger>User wants to log in and start the game</trigger>
+    
+    <mainSequence>
+        <step id="S1">User writes username in the input field</step>
+        <step id="S2">Gui is updated by PacManController</step>
+        <step id="S3">PacManController retrieves the text from the input field</step>
+        <step id="S4">Retrieved username is passed to PacManController</step>
+        <step id="S5">Username is validated by PacManUser on PacManController's request</step>
+        <step id="S6">Validation result (true) is sent back to PacManController</step>
+        <step id="S7">PacManController enables the start button</step>
+        <step id="S8">User clicks on the start button</step>
+        <step id="S9">Start button click is handled by PacManController</step>
+        
+        <step id="S10">PacManController sets the username obtained</step>
+        <step id="S11">PacManController sets the initial score</step>
+        
+        <step id="S12">Game starts</step>
+        <step id="S13">Game is over</step>
+        
+        <step id="S14">PacManController saves the highscore for the username and score</step>
+        <step id="S15">PacManPersistence creates a FileReader instance</step>
+        <step id="S16">FileReader reads the file to get existing high scores</step>
+        <step id="S17">Existing scores are acquired by PacManPersistence from FileReader</step>
+        <step id="S18">A PacManUser instance is created with the username and score</step>
+        <step id="S19">PacManUser instance is passed back to PacManPersistence</step>
+        <step id="S20">Scores and new user data are written using a Filewriter</step>
+    </mainSequence>
+</useCase>

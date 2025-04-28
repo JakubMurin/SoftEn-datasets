@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Complete Ticket Transition</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TicketTransitions</actor>
+        <actor>ClientRestService</actor>
+        <actor>ProfessionalTicket</actor>
+        <actor>TechReport</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User completes ticket transition using client service and ticket</step>
+        <step id="S2">TicketTransitions processes TechERP review completion for the ticket</step>
+        <step id="S3">TicketTransitions checks the category of the ticket</step>
+        <step id="S4">TicketTransitions prompts User to select a valid category if invalid</step>
+        <step id="S5">TicketTransitions calculates report quality for the ticket</step>
+        <step id="S6">TicketTransitions prompts User to enter Technical Image Quality Comments if quality is not 100 and no comments</step>
+        <step id="S7">TicketTransitions retrieves technical report for the ticket</step>
+        <step id="S8">TicketTransitions sets report quality, completion time, and ERP for the ticket</step>
+        <step id="S9">ClientRestService saves the ticket with status TECH_COMPLETED</step>
+        <step id="S10">ClientRestService creates or updates DICOM study for the ticket</step>
+        <step id="S11">ClientRestService creates or updates professional ticket for the ticket and user</step>
+        <step id="S12">TicketTransitions generates TRERP response letter for the ticket</step>
+    </mainSequence>
+</useCase>

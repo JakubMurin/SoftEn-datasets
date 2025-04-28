@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Access and Control Locker via BLE Mailbox</name>
+    <actors>
+        <actor>User</actor>
+        <actor>BLE Mailbox Central</actor>
+        <actor>BLE Mailbox Peripheral</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has BLE Mailbox application installed</precondition>
+        <precondition>BLE Mailbox Peripheral is available and connected</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Locker state successfully changed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to authenticate user</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User opens BLE Mailbox Central</step>
+        <step id="S2">User requests scan</step>
+        <step id="S3">BLE Mailbox Central requests permissions</step>
+        <step id="S4">Permissions granted by the user</step>
+        <step id="S5">BLE Mailbox Central scans for devices</step>
+        <step id="S6">User selects BLE Mailbox Peripheral</step>
+        <step id="S7">BLE Mailbox Central requests connection</step>
+        <step id="S8">Connection handshaking between Central and Peripheral</step>
+        <step id="S9">BLE Mailbox Central requests state of locker</step>
+        <step id="S10">Response received with locker state from Peripheral</step>
+        <step id="S11">User signs in</step>
+        <step id="S12">BLE Mailbox Central signs in with Peripheral</step>
+        <step id="S13">Peripheral authenticates user</step>
+        <step id="S14">BLE Mailbox Central requests state of authentication</step>
+        <step id="S15">Response received with authentication state from Peripheral</step>
+        <step id="S16">User requests to change state of locker</step>
+        <step id="S17">BLE Mailbox Central requests to change state of locker</step>
+        <step id="S18">State of locker successfully changed by Peripheral</step>
+        <step id="S19">BLE Mailbox Central requests state of locker</step>
+        <step id="S20">Response received with updated locker state from Peripheral</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Deploy App Update with New Dataset</name>
+    <actors>
+        <actor>App Developer</actor>
+        <actor>Deployment System</actor>
+        <actor>Dataset Management</actor>
+    </actors>
+    <preconditions>
+        <precondition>The app developer wants to deploy a new app version with an updated dataset type.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The app and dataset were successfully deployed and updated.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">App Developer deploys a new app version with an updated dataset type.</step>
+        <step id="S2">Deployment System checks for the updated dataset type.</step>
+        <step id="S3">Dataset Management deploys the new dataset type version. (Actor: Dataset Management)</step>
+        <step id="S4">Dataset Type confirms the new version deployment was successful. (Actor: Dataset Type)</step>
+        <step id="S5">Dataset Management updates the instances to the new dataset type version. (Actor: Dataset Management)</step>
+        <step id="S6">Dataset Instances confirm the instances were updated successfully. (Actor: Dataset Instances)</step>
+        <step id="S7">Dataset Management confirms the success of app and dataset deployment to Deployment System.</step>
+        <step id="S8">Deployment System sends deployment success confirmation back to the App Developer.</step>
+    </mainSequence>
+</useCase>

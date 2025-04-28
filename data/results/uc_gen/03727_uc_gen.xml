@@ -1,0 +1,47 @@
+<useCase id="UC1">
+    <name>Typing Game</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Keyboard</actor>
+        <actor>JavaScript</actor>
+        <actor>HTML DOM</actor>
+        <actor>Fishtext API</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates a typing game session.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Game session successfully completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Game session terminated due to incorrect input.</condition>
+    </failureEndConditions>
+    <trigger>User requests text generation from Fishtext API.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to Fishtext API for text generation specifying type and quantity.</step>
+        <step id="S2">Fishtext API returns the status and generated text upon success.</step>
+        <step id="S3">JavaScript displays the text on the HTML DOM.</step>
+        <step id="S4">User presses a key on the keyboard.</step>
+        <step id="S5">The keyboard outputs the pressed character on the DOM.</step>
+        <step id="S6">JavaScript receives the entered character.</step>
+        <step id="S7">JavaScript checks the length of all entered characters.</step>
+        <step id="S8">JavaScript starts a timer if the length is less than 2.</step>
+        <step id="S9">JavaScript records the current date if the length is 2 or more.</step>
+        <step id="S10">JavaScript checks the time elapsed and updates speed if a second has passed.</step>
+        <step id="S11">JavaScript calls the checkLetter function to validate the input.</step>
+        <step id="S12">JavaScript updates the DOM with appropriate classes based on input correctness.</step>
+        <step id="S13">JavaScript stops the timer for the attempt.</step>
+        <step id="S14">JavaScript calculates the points earned during the game.</step>
+        <step id="S15">JavaScript creates an object with game data.</step>
+        <step id="S16">JavaScript sends a POST request to the Server with game data.</step>
+        <step id="S17">Server retrieves the last user ID from the Database.</step>
+        <step id="S18">Server updates user data in the Database.</step>
+        <step id="S19">Server adds the attempt data to the Attempts table in the Database.</step>
+        <step id="S20">JavaScript updates the UI with end game information.</step>
+        <step id="S21">JavaScript generates speed data arrays for the graph.</step>
+        <step id="S22">JavaScript draws the speed diagram on the DOM.</step>
+        <step id="S23">JavaScript stores the data in localStorage.</step>
+    </mainSequence>
+</useCase>

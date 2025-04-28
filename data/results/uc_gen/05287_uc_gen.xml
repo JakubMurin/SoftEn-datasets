@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Manage-Environments</name>
+    <description>A use case where the Operations Manager manages environments.</description>
+    <actors>
+        <actor>Operations Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Operations Manager has access to the CLI and Web interfaces.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The environment is successfully destroyed.</condition>
+    </successEndConditions>
+    <trigger>c3-env-destroy(name)</trigger>
+    <mainSequence>
+        <step id="S1">The Operations Manager initiates the environment destroy command via the CLI.</step>
+        <step id="S2">The CLI sends the destroy environment request to the system.</step>
+        <step id="S3">The Operations Manager triggers the destroy command through the Web interface.</step>
+        <step id="S4">The Web interface forwards the destroy request to the system.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Negotiation Pattern Sequence</name>
+    <description>A use case describing the negotiation pattern sequence between Acquirer and Provider</description>
+    <actors>
+        <actor>Acquirer</actor>
+        <actor>Provider</actor>
+    </actors>
+    <preconditions>
+        <precondition>An initial offer is strictly required, though in practice, it is expected OFFERs will precede a REQUEST.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>An acknowledgement the MATTER was received.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Acquirer sends an OFFER to Provider</step>
+        <step id="S2">Provider receives the OFFER from Acquirer</step>
+        <step id="S3">Acquirer sends a REQUEST to Provider</step>
+        <step id="S4">Provider receives the REQUEST from Acquirer</step>
+        <step id="S5">Provider sends an OFFER to Acquirer</step>
+        <step id="S6">Acquirer receives the OFFER from Provider</step>
+        <step id="S7">Acquirer sends a REQUEST to Provider</step>
+        <step id="S8">Provider receives the REQUEST from Acquirer</step>
+        <step id="S9">Provider sends the MATTER to Acquirer</step>
+        <step id="S10">Acquirer acknowledges the receipt of the MATTER</step>
+    </mainSequence>
+</useCase>

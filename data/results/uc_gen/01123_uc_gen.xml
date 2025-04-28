@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Claiming Mail</name>
+    <actors>
+        <actor>Recipient</actor>
+        <actor>MailController</actor>
+        <actor>IMailService</actor>
+        <actor>IMailRepository</actor>
+        <actor>IUserRepository</actor>
+        <actor>IEmailNotificationRepository</actor>
+        <actor>UnitOfWork</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Recipient initiates the claim process by sending a POST request to MailController for a specific mail ID.</step>
+        <step id="S2">MailController checks if the Recipient is authorized as a Receptionist.</step>
+        <step id="S3">MailService claims the mail by calling ClaimMail method with the provided mail ID.</step>
+        <step id="S4">MailService begins a transaction with UnitOfWork.</step>
+        <step id="S5">MailService retrieves the mail by ID from MailRepository.</step>
+        <step id="S6">MailService retrieves the recipient user from UserRepository.</step>
+        <step id="S7">MailService updates the mail in MailRepository with the recipient information.</step>
+        <step id="S8">MailService creates an email notification in EmailNotificationRepository.</step>
+        <step id="S9">MailService commits the transaction with UnitOfWork.</step>
+        <step id="S10">MailService responds to MailController with success.</step>
+        <step id="S11">MailController sends a 200 OK response to the Recipient.</step>
+    </mainSequence>
+</useCase>

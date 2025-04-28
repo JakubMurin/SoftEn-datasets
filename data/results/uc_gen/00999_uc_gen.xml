@@ -1,0 +1,32 @@
+<useCase id="UC1">
+  <name>Update Smart Contracts and Package Versions</name>
+  <actors>
+    <actor>Developer</actor>
+    <actor>AnotherDeveloper</actor>
+    <actor>Reviewer</actor>
+  </actors>
+  <preconditions>
+    <precondition>Developers have access to the smart contracts repository.</precondition>
+    <precondition>Developers have the necessary permissions to push changes and create pull requests.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Smart contracts are successfully updated and deployed.</condition>
+    <condition>New package versions are created and published.</condition>
+  </successEndConditions>
+  <trigger>Developers need to update smart contracts and package versions.</trigger>
+  <mainSequence>
+    <step id="S1">Developer changes smart contracts and commits the changes.</step>
+    <step id="S2">Developer creates a changeset and commits it.</step>
+    <step id="S3">Developer pushes the changes and opens a pull request.</step>
+    <step id="S4">Reviewer approves the pull request.</step>
+    <step id="S5">Developer deploys the updated smart contracts.</step>
+    <step id="S6">Developer updates address json files and pushes them.</step>
+    <step id="S7">Developer merges changes to the main branch.</step>
+    <step id="S8">ReleaseGithubAction includes changes to the main branch.</step>
+    <step id="S9">ReleaseGithubAction creates a pull request with new versions applied to package.jsons.</step>
+    <step id="S10">AnotherDeveloper pushes a new changeset.</step>
+    <step id="S11">ReleaseGithubAction updates the pull request with new versions applied to package.jsons.</step>
+    <step id="S12">Developer merges changes to the main branch for package versions.</step>
+    <step id="S13">ReleaseGithubAction builds and publishes the packages using npm.</step>
+  </mainSequence>
+</useCase>

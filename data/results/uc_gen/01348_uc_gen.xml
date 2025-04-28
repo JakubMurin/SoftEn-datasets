@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Install RF ISO on BMC_x86</name>
+    <actors>
+        <actor>Cluster Admin</actor>
+        <actor>Operator</actor>
+        <actor>Daemon</actor>
+        <actor>Openshift API</actor>
+        <actor>Vendor Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Cluster Admin has access to BMC_x86</precondition>
+        <precondition>Operator has necessary permissions to interact with Openshift API</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Cluster Admin initiates RF install iso on BMC_x86</step>
+        <step id="S2">Operator starts Daemonset on Openshift API</step>
+        <step id="S3">Daemon detects DPU type</step>
+        <step id="S4">Daemon labels node on Openshift API</step>
+        <step id="S5">Openshift API reconciles changes to node spec and sends label to Operator</step>
+        <step id="S6">Operator starts Vendor Plugin pod on Openshift API</step>
+        <step id="S7">Vendor Plugin starts grpc</step>
+        <step id="S8">Daemon initializes Vendor Plugin and receives ip:port</step>
+    </mainSequence>
+</useCase>

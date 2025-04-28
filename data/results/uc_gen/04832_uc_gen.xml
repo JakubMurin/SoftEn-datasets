@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Register Patient</name>
+    <description>As an Admin, I want to register a new patient in the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Admin is authenticated and authorized to register patients.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The patient is successfully registered in the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to register the patient due to invalid data or system error.</condition>
+    </failureEndConditions>
+    <trigger>Admin initiates the registration process by sending a POST request to /api/Patient/Register endpoint with patient details.</trigger>
+    <mainSequence>
+        <step id="S1">Admin sends a POST request to /api/Patient/Register endpoint with CreatePatientDto.</step>
+        <step id="S2">PatientController receives the request and activates.</step>
+        <step id="S3">PatientController calls PatientService's AddAsync method with CreatePatientDto.</step>
+        <step id="S4">PatientService activates and calls IPatientRepository's IsEmailUniqueAsync and IsPhoneNumberUniqueAsync methods.</step>
+        <step id="S5">PatientService generates a unique medical number and creates a new Patient object.</step>
+        <step id="S6">PatientService adds the new Patient to IPatientRepository and commits the changes using IUnitOfWork.</step>
+        <step id="S7">PatientService sends an email notification using IEmailService.</step>
+        <step id="S8">PatientService deactivates and returns the PatientDto to PatientController.</step>
+        <step id="S9">PatientController deactivates and responds with 200 OK (PatientDto) to Admin.</step>
+    </mainSequence>
+</useCase>

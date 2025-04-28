@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Retrieve Resource</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a GET request to retrieve a resource</step>
+        <step id="S2">PAS handles the GET request by calling HandleGet(IwebRequest)</step>
+        <step id="S3">PAS parses the request using WebRequestParser's Parse: IRequestData</step>
+        <step id="S4">PAS resolves the request using ResourceResolver's Resolve: IRoute</step>
+    </mainSequence>
+</useCase>

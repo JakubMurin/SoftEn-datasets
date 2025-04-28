@@ -1,0 +1,34 @@
+<useCase id="UC1">
+     <name>Verify Booking by OTP</name>
+     <actors>
+          <actor>Customer</actor>
+     </actors>
+     <preconditions>
+          <precondition>Customer has requested to verify booking by OTP</precondition>
+     </preconditions>
+     <trigger>Request to verify booking by OTP is initiated</trigger>
+     <mainSequence>
+          <step id="S1">Customer requests to verify booking by OTP</step>
+          <step id="S2">UI sends request to verify OTP to Router</step>
+          <step id="S3">Router directs request to Controller to verify OTP</step>
+          <step id="S4">Controller gets booking details from Repository</step>
+          <step id="S5">Repository fetches booking details from Database</step>
+          <step id="S6">Controller validates OTP using OTPService</step>
+          <step id="S7">OTP is validated</step>
+          <step id="S8">Update booking status to "verified"</step>
+          <step id="S9">Booking verification success</step>
+          <step id="S10">Display success message to Customer</step>
+     </mainSequence>
+     <alternativeSteps>
+          <asteps id="A1" start="S6">
+               <step id="A1S1">OTP is invalid</step>
+               <step id="A1S2">Display error message for invalid OTP</step>
+          </asteps>
+     </alternativeSteps>
+     <errorSteps>
+          <esteps id="E1" start="S6">
+               <description>Booking verification process encountered an error</description>
+               <step id="E1S1">Error occurred while updating booking status</step>
+          </esteps>
+     </errorSteps>
+</useCase>

@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Get Translation Case</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>GetTranslationCaseActivity</actor>
+        <actor>TranslationCaseDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP Request to API Gateway/Lambda</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>TranslationCase object successfully retrieved and returned to Client</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>TranslationCaseNotFoundException or SecurityException thrown and returned to Client</condition>
+    </failureEndConditions>
+    <trigger>Client requests to get a translation case</trigger>
+    <mainSequence>
+        <step id="S1">API Gateway/Lambda receives HTTP Request from Client</step>
+        <step id="S2">API Gateway/Lambda forwards GetTranslationCaseRequest to GetTranslationCaseActivity</step>
+        <step id="S3">GetTranslationCaseActivity calls TranslationCaseDao to getTranslationCase(translationCaseId)</step>
+        <step id="S4">TranslationCaseDao loads translationCaseId from DynamoDB</step>
+        <step id="S5">DynamoDB returns translationCase data to TranslationCaseDao</step>
+        <step id="S6">TranslationCaseDao checks for matching customer ID</step>
+        <step id="S7">TranslationCaseDao returns TranslationCase object to GetTranslationCaseActivity</step>
+        <step id="S8">GetTranslationCaseActivity returns GetTranslationCaseResult to API Gateway/Lambda</step>
+        <step id="S9">API Gateway/Lambda returns 200 response with GetTranslationCaseResult data to Client</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">DynamoDB returns no item data</step>
+            <step id="A1S2">TranslationCaseNotFoundException thrown and propagated to Client</step>
+            <step id="A1S3">API Gateway/Lambda returns 400 response to Client</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">Customer ID does not match</step>
+            <step id="A2S2">SecurityException thrown and propagated to Client</step>
+            <step id="A2S3">API Gateway/Lambda returns 400 response to Client</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

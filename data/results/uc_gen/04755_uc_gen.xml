@@ -1,0 +1,64 @@
+<useCase id="UC1">
+    <name>Edit Question</name>
+    <description>Edit a question in a quiz</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Controller</actor>
+        <actor>Course</actor>
+        <actor>UserClass</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authorized</precondition>
+        <precondition>Course, Teacher, Quiz, and Question exist</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Question successfully edited</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Edit question failed</condition>
+        <condition>Question/Quiz not found</condition>
+        <condition>Teacher not found</condition>
+        <condition>User not authorized</condition>
+    </failureEndConditions>
+    <trigger>edit_question(course_id, quiz_id, question_id, coures_material_data, response, current_user)</trigger>
+    <mainSequence>
+        <step id="S1">Search for course by ID</step>
+        <step id="S2">Search for teacher by course</step>
+        <step id="S3">Search for quiz by ID</step>
+        <step id="S4">Search for question by ID</step>
+        <step id="S5">Edit question</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Teacher found</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Quiz found</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">Question found</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Edit failed</description>
+            <step id="E1S1">Message</step>
+        </esteps>
+        <esteps id="E2" start="S4">
+            <description>Question not found</description>
+            <step id="E2S1">Message</step>
+        </esteps>
+        <esteps id="E3" start="S3">
+            <description>Quiz not found</description>
+            <step id="E3S1">Message</step>
+        </esteps>
+        <esteps id="E4" start="S2">
+            <description>Teacher not found</description>
+            <step id="E4S1">Message</step>
+        </esteps>
+        <esteps id="E5" start="S1">
+            <description>Course not found</description>
+            <step id="E5S1">Message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

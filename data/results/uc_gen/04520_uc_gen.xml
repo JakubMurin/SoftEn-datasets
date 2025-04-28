@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Delete Book</name>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Web Client</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator wants to delete a book from the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book successfully deleted from the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while deleting the book.</condition>
+    </failureEndConditions>
+    <trigger>User requests to delete a book.</trigger>
+    <mainSequence>
+        <step id="S1">Administrator enters the book ID for deletion.</step>
+        <step id="S2">Web Client sends a DELETE request to the Server for the specified book ID.</step>
+        <step id="S3">Server searches for the book in the Database based on the ID.</step>
+        <step id="S4">Database finds the book based on the ID.</step>
+        <step id="S5">Server deletes the book from the Database.</step>
+        <step id="S6">Database confirms successful deletion of the book.</step>
+        <step id="S7">Server notifies the Web Client that the book was successfully deleted.</step>
+        <step id="S8">Web Client informs the Administrator about the successful deletion.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Book is found in the Database.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Book is not found in the Database.</description>
+            <step id="E1S1">Database reports that the book was not found.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

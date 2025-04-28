@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>Recover Document Type</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User possesses recover permission.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document type is successfully recovered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Document type doesn't exist or is already active.</condition>
+    </failureEndConditions>
+    <trigger>POST /api/doctype/{id}/recover</trigger>
+    <mainSequence>
+        <step id="S1">User POSTs the request to recover a document type by its ID.</step>
+        <step id="S2">Backend checks the user role.</step>
+        <step id="S3">Backend validates the request.</step>
+        <step id="S4">Backend reads the document type by ID from the database.</step>
+        <step id="S5">Document type state is checked by the service.</step>
+        <step id="S6">Document type is restored to an ACTIVE state in the database.</step>
+        <step id="S7">Document type saved confirming update.</step>
+        <step id="S8">Successful response (200) is sent - Document type recovered.</step>
+    </mainSequence>
+</useCase>

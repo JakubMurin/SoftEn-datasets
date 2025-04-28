@@ -1,0 +1,39 @@
+<useCase id="UC001">
+    <name>Create Account</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Portal UI</actor>
+        <actor>Authentication System</actor>
+        <actor>Accounts Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer requests to create an account.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account creation is successful.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Account creation fails due to invalid details.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Customer requests to create an account.</step>
+        <step id="S2">Portal UI displays the account creation form to the Customer.</step>
+        <step id="S3">Customer submits account details (username, email, password) to Portal UI.</step>
+        <step id="S4">Authentication System validates the account details.</step>
+        <step id="S5">If details are valid, Authentication System confirms and Portal UI creates a new user account in the Accounts Database.</step>
+        <step id="S6">Accounts Database confirms the account creation.</step>
+        <step id="S7">Portal UI displays account creation success to the Customer.</step>
+        <step id="S8">Portal UI initiates the first-time login sequence with Authentication System.</step>
+        <step id="S9">Authentication System requests authentication (login) from the Customer.</step>
+        <step id="S10">Customer provides credentials to Authentication System.</step>
+        <step id="S11">Authentication System validates the credentials with the Accounts Database.</step>
+        <step id="S12">Accounts Database confirms the credentials are valid.</step>
+        <step id="S13">Authentication System notifies the Customer of successful authentication.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">If details are invalid, Authentication System notifies Portal UI of the error.</step>
+            <step id="A1S2">Portal UI displays an error message to the Customer indicating invalid details.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

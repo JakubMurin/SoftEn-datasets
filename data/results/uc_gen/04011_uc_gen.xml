@@ -1,0 +1,29 @@
+<useCase id="UC01">
+    <name>Associate an Instance with a Container</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>UI</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>ModelInstance</actor>
+        <actor>ModelContainer</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archivist selects "Associate Instance" in the UI</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Archivist selects "Associate Instance"</step>
+        <step id="S2">UI requests to associate instance with container</step>
+        <step id="S3">Controller processes the request</step>
+        <step id="S4">Service associates instance with container</step>
+        <step id="S5">ModelInstance retrieves instance details from the database</step>
+        <step id="S6">ModelContainer retrieves container details from the database</step>
+        <step id="S7">Service verifies instance and container compatibility</step>
+        <step id="S8">ModelInstance sets the container for the instance</step>
+        <step id="S9">ModelInstance updates the database with the new association</step>
+        <step id="S10">Service confirms the association success</step>
+        <step id="S11">Controller receives and processes the association result</step>
+        <step id="S12">UI displays the association result to the Archivist</step>
+    </mainSequence>
+</useCase>

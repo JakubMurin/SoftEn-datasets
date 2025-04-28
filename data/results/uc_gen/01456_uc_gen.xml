@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Create Faber DID and SCHEMA</name>
+    <actors>
+        <actor>Faber</actor>
+        <actor>FaberIndyWallet</actor>
+        <actor>FaberAnonCreds</actor>
+        <actor>FaberPythonDiem</actor>
+        <actor>FaberMiniWallet</actor>
+        <actor>DiemLedger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Faber is registered in the system</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Faber requests to create Faber DID</step>
+        <step id="S2">FaberIndyWallet creates Faber DID using ED25519</step>
+        <step id="S3">FaberAnonCreds stores Faber DID</step>
+        <step id="S4">Faber creates SCHEMA using Faber DID</step>
+        <step id="S5">FaberAnonCreds stores SCHEMA</step>
+        <step id="S6">Faber requests creation of Diem Identifier and ED25519 keys</step>
+        <step id="S7">FaberPythonDiem stores Diem Identifier</step>
+        <step id="S8">Faber publishes identifier to Ledger</step>
+    </mainSequence>
+</useCase>

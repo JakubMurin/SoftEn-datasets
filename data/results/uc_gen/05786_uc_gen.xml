@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Delete Task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>TodoList</actor>
+        <actor>TodoWrapper</actor>
+        <actor>Backend</actor>
+    </actors>
+    <trigger>Clica no ícone de lixeira</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the trash can icon.</step>
+        <step id="S2">TodoList calls deleteTodo() on TodoWrapper.</step>
+        <step id="S3">TodoWrapper calls deleteTodo() on Backend.</step>
+        <step id="S4">Backend returns confirmation to TodoWrapper.</step>
+        <step id="S5">TodoWrapper removes the task from the list.</step>
+        <step id="S6">TodoWrapper updates the task list for the User.</step>
+    </mainSequence>
+</useCase>

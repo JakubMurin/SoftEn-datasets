@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Create Task</name>
+    <description>Allow admin to create a new task</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>UserController</actor>
+        <actor>UserHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New task created successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Task creation failed</condition>
+    </failureEndConditions>
+    <trigger>Admin requests to create a new task</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to create a new task</step>
+        <step id="S2">UserController receives GET request for /tasks/create</step>
+        <step id="S3">UserHandler creates the task creation form</step>
+        <step id="S4">UserHandler sends the form to UserController</step>
+        <step id="S5">UserController forwards the form to Admin</step>
+    </mainSequence>
+</useCase>

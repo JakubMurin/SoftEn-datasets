@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Modifier Tâche</name>
+    <description>Permet à l'utilisateur de modifier une tâche existante</description>
+    
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepositoryTaches</actor>
+        <actor>ServiceAutorisation</actor>
+        <actor>MoteurTemplates</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>L'utilisateur a accès à la tâche à modifier</precondition>
+    </preconditions>
+    
+    <successEndConditions>
+        <condition>Le formulaire d'édition est correctement affiché à l'utilisateur</condition>
+    </successEndConditions>
+    
+    <trigger>Utilisateur envoie une requête GET pour modifier une tâche</trigger>
+    
+    <mainSequence>
+        <step id="S1">Utilisateur envoie la requête GET /tasks/{id}/edit au Controleur</step>
+        <step id="S2">Controleur demande à RepositoryTaches de trouver la tâche correspondante</step>
+        <step id="S3">RepositoryTaches renvoie la tâche au Controleur</step>
+        <step id="S4">Controleur vérifie si la tâche appartient à l'utilisateur avec ServiceAutorisation</step>
+        <step id="S5">ServiceAutorisation confirme que la tâche est la propriété de l'utilisateur</step>
+        <step id="S6">Controleur demande à MoteurTemplates d'afficher le formulaire d'édition pour la tâche</step>
+        <step id="S7">MoteurTemplates génère le formulaire d'édition</step>
+        <step id="S8">Controleur affiche le formulaire d'édition à l'utilisateur</step>
+    </mainSequence>
+    
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S8">
+            <step id="A1S1">Tâche ne correspondant pas à l'utilisateur</step>
+            <step id="A1S2">Controleur indique que la tâche n'appartient pas à l'utilisateur</step>
+            <step id="A1S3">Utilisateur est redirigé vers une page d'erreur (non autorisé)</step>
+        </asteps>
+    </alternativeSteps>
+    
+</useCase>

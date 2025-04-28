@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>CreateOrUpdateDraftA</name>
+    <description>Allows user to create or open a draft of type A</description>
+    <actors>
+        <actor>Invånare</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Invånare chooses to create/open a draft of type A</step>
+        <step id="S2">GUI requests draftJson via UtkastModuleAPiController from Webcert</step>
+        <step id="S3">Webcert retrieves draft A from DB</step>
+        <step id="S4">Webcert retrieves CandidateCriteriaForCopy</step>
+        <step id="S5">Webcert searches for candidate certificate B to copy based on criteria</step>
+        <step id="S6">DB provides a gross list of candidate certificates</step>
+        <step id="S7">Webcert filters the gross list based on criteria</step>
+        <step id="S8">Webcert sends draftJson (with possibly matching candidate metadata) to GUI</step>
+        <step id="S9">GUI receives and displays draftJson to Invånare</step>
+        <step id="S10">If candidate is detected, GUI shows confirmation dialog</step>
+        <step id="S11">Invånare chooses to copy</step>
+        <step id="S12">GUI requests copy info from certificate B to Webcert</step>
+        <step id="S13">Webcert retrieves drafts A and B from DB</step>
+        <step id="S14">Webcert updates Draft A from Draft B</step>
+        <step id="S15">Webcert saves the updated draft</step>
+        <step id="S16">Webcert sends updated draftJson to GUI</step>
+        <step id="S17">GUI displays updated draft to Invånare</step>
+    </mainSequence>
+</useCase>

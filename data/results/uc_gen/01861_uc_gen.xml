@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Fighting with Hostile Ship</name>
+    <actors>
+        <actor>Main</actor>
+        <actor>Juego</actor>
+        <actor>Jugador</actor>
+        <actor>Planeta</actor>
+        <actor>Hostil</actor>
+        <actor>NaveAliada</actor>
+        <actor>NavePirata</actor>
+    </actors>
+    <preconditions>
+        <precondition>Player is in a combat situation with a hostile ship.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Player initiates combat action to fight the hostile ship.</step>
+        <step id="S2">Player visits the planet by providing the planet code.</step>
+        <step id="S3">Player retrieves their allied ship.</step>
+        <!-- Additional steps omitted for brevity -->
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">If the planet code is not valid or the planet was destroyed, a RuntimeException is thrown.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S1">
+            <description>If an error occurs during combat, the relevant steps are re-executed.</description>
+            <step id="E1S1">Error handling and actions to be taken.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>List Passage Between 2 Buildings</name>
+    <actors>
+        <actor>User</actor>
+        <actor>:listPassageBetween2BuildingsComponentHTML</actor>
+        <actor>listPassageBetween2BuildingsComponent</actor>
+        <actor>:BuildingServiceFE</actor>
+        <actor>:FloorServiceFE</actor>
+        <actor>:BuildingController</actor>
+        <actor>:FloorController</actor>
+        <actor>:BuildingServiceBE</actor>
+        <actor>:FloorServiceBE</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User lists Passage Between 2 Buildings</step>
+        <step id="S2">listPassageBetween2BuildingsComponentHTML receives user request</step>
+        <step id="S3">listPassageBetween2BuildingsComponent calls BuildingServiceFE to get Buildings</step>
+        <step id="S4">BuildingServiceFE calls BuildingController to get list of buildings</step>
+        <step id="S5">BuildingController calls BuildingServiceBE to find all buildings</step>
+        <step id="S6">BuildingServiceBE queries database to get list of buildings</step>
+        <step id="S7">BuildingServiceBE retrieves list of buildings</step>
+        <step id="S8">BuildingServiceBE sends list of buildings to BuildingController</step>
+        <step id="S9">BuildingController responds with HTTP 200 OK and list of buildings to BuildingServiceFE</step>
+        <step id="S10">BuildingServiceFE logs buildings in console</step>
+        <step id="S11">listPassageBetween2BuildingsComponent returns buildings to user interface</step>
+        <step id="S12">User asks for 2 buildings</step>
+        <step id="S13">User selects 2 buildings</step>
+        <step id="S14">User interface calls ListPassageBetween2Buildings in component</step>
+        <step id="S15">ListPassageBetween2Buildings calls FloorServiceFE to list floors from building</step>
+        <step id="S16">FloorServiceFE checks passage in building</step>
+        <step id="S17">ListPassageBetween2Buildings calls FloorController to find passage</step>
+        <step id="S18">FloorController calls FloorServiceBE to query database for passage</step>
+        <step id="S19">FloorServiceBE queries database to find passage in buildings</step>
+        <step id="S20">FloorServiceBE retrieves passage and sends to FloorController</step>
+        <step id="S21">FloorController sends passage to FloorServiceFE</step>
+        <step id="S22">FloorServiceFE returns passage to ListPassageBetween2Buildings component</step>
+        <step id="S23">ListPassageBetween2Buildings returns passage to user interface</step>
+        <step id="S24">User sees the Passage Between Buildings</step>
+    </mainSequence>
+</useCase>

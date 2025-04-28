@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Gain Access to Domain Controller</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>AttackerClient</actor>
+        <actor>DC</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker has gained initial access to the network.</precondition>
+        <precondition>Attacker needs to escalate privileges to access sensitive information.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>AttackerClient successfully requests data from DC.</condition>
+        <condition>DC validates the request and sends the data to AttackerClient.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Attacker is unable to gain necessary rights on AttackerClient.</condition>
+        <condition>DC detects the suspicious request and denies access.</condition>
+    </failureEndConditions>
+    <trigger>Attacker initiates the process to access sensitive information.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker gains access to an account with necessary rights.</step>
+        <step id="S2">AttackerClient issues a DCSync request to DC.</step>
+        <step id="S3">DC validates the request and sends the requested data to AttackerClient.</step>
+        <step id="S4">Attacker uses obtained credentials to access resources within the domain.</step>
+    </mainSequence>
+</useCase>

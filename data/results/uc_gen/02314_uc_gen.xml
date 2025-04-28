@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Login Use Case</name>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the login functionality.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in.</condition>
+    </successEndConditions>
+    <trigger>User initiates the login process.</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with the login UI.</step>
+        <step id="S2">UI creates a user session with specified role and maximum login attempts.</step>
+        <step id="S3">UI displays the login interface.</step>
+        <step id="S4">User provides email and password.</step>
+        <step id="S5">UI sends authentication request to the AuthenticationService.</step>
+        <step id="S6">AuthenticationService authenticates the user with provided credentials.</step>
+        <step id="S7">AuthenticationService returns UserSession to UI.</step>
+        <step id="S8">UI notifies the Actor of successful operation.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Manage-Application</name>
+    <description>Allows the actor "actorName" to manage the Edgeville application.</description>
+    <actors>
+        <actor>A</actor>
+    </actors>
+    <preconditions>
+        <precondition>Edgeville-ai-deploy function is invoked by the actor.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The CLI and Web applications both trigger the ai/deploy process.</condition>
+    </successEndConditions>
+    <trigger>Edgeville server starts processing the ai/deploy operation.</trigger>
+    <mainSequence>
+        <step id="S1">The actor "actorName" interacts with the CLI to deploy Edgeville.</step>
+        <step id="S2">The CLI triggers the ai/deploy function from the Edgeville server.</step>
+        <step id="S3">The actor "actorName" interacts with the Web interface to deploy Edgeville.</step>
+        <step id="S4">The Web interface triggers the ai/deploy function from the Edgeville server.</step>
+    </mainSequence>
+</useCase>

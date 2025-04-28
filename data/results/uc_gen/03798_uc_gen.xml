@@ -1,0 +1,23 @@
+<useCase id="P132_user_register">
+    <name>User Registration</name>
+    
+    <actors>
+        <actor>User</actor>
+        <actor>Wallet</actor>
+        <actor>Certified App</actor>
+        <actor>TAS</actor>
+        <actor>Blockchain</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Certified App sends User Registration Start Request to TAS</step>
+        <step id="S2">Certified App prepares ECDH data and signs, sends ECDH Request to TAS</step>
+        <step id="S3">Certified App generates server token seed and sends Server Token Creation Request to TAS</step>
+        <step id="S4">Wallet receives User DID Key Creation Request, generates keys for key exchange, and validates wallet token</step>
+        <step id="S5">Wallet processes User Registration Request, creates DID Document, signs it, and sends it to TAS</step>
+        <step id="S6">TAS validates server token, verifies signatures, registers DID, and stores user mapping information in DB</step>
+        <step id="S7">Certified App sends User Registration Completion Request to TAS</step>
+        <step id="S8">TAS validates server token, deletes session information, and closes the transaction</step>
+    </mainSequence>
+    
+</useCase>

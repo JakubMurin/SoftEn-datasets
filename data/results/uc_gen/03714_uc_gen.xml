@@ -1,0 +1,19 @@
+<useCase id="1">
+    <name>Creating Booking</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create a booking.</step>
+        <step id="S2">UI receives the request and displays the create booking form.</step>
+        <step id="S3">Receptionist fills in the booking details.</step>
+        <step id="S4">UI sends the booking data to create a new booking.</step>
+        <step id="S5">Router forwards the booking data to the Controller.</step>
+        <step id="S6">Controller verifies room availability for the selected dates.</step>
+        <step id="S7">If room is available:</step>
+        <step id="S8">Repository creates a new booking in the BookingModel.</step>
+        <step id="S9">Output successful booking creation message to the Receptionist.</step>
+        <step id="S10">If room is not available:</step>
+        <step id="S11">Output error message about room unavailability to the Receptionist.</step>
+    </mainSequence>
+</useCase>

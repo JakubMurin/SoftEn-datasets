@@ -1,0 +1,47 @@
+<useCase id="UC1">
+  <name>User Logs in and Reserves a Book</name>
+  
+  <actors>
+    <actor>Member</actor>
+    <actor>Web Interface</actor>
+    <actor>Authentication System</actor>
+    <actor>Reservation System</actor>
+    <actor>Database</actor>
+  </actors>
+  
+  <preconditions>
+    <precondition>Member should have valid account credentials.</precondition>
+  </preconditions>
+
+  <successEndConditions>
+    <condition>User successfully logs in and reserves a book.</condition>
+  </successEndConditions>
+
+  <failureEndConditions>
+    <condition>Invalid credentials or reservation failure.</condition>
+  </failureEndConditions>
+
+  <trigger>Member initiates the login and booking process.</trigger>
+
+  <mainSequence>
+    <step id="S1">Member navigates to the login page.</step>
+    <step id="S2">Web Interface prompts for credentials to authenticate.</step>
+    <step id="S3">Member enters the login credentials.</step>
+    <step id="S4">Authentication System validates the credentials in Database.</step>
+    <step id="S5">Authentication System notifies Web Interface about access grant.</step>
+    <step id="S6">Web Interface displays the dashboard to the Member.</step>
+    <step id="S7">Member navigates to reserve a book through Web Interface.</step>
+    <step id="S8">Web Interface presents the search interface of Reservation System.</step>
+    <step id="S9">Member inputs search parameters.</step>
+    <step id="S10">Reservation System queries the Database.</step>
+    <step id="S11">Database returns the query results to Reservation System.</step>
+    <step id="S12">Reservation System displays the available books using Web Interface.</step>
+    <step id="S13">Member selects a book to reserve through the Web Interface.</step>
+    <step id="S14">Web Interface starts processing the reservation request with Reservation System.</step>
+    <step id="S15">Database updates the reservation status based on the request.</step>
+    <step id="S16">Reservation System confirms the successful reservation.</step>
+    <step id="S17">Web Interface displays the reservation confirmation to the Member.</step>
+    <step id="S18">Member receives a success message for the reservation.</step>
+  </mainSequence>
+
+</useCase>

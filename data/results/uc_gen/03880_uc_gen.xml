@@ -1,0 +1,19 @@
+<useCase id="UC001">
+  <name>Restrict Access to Files by IP Address</name>
+  <actors>
+    <actor>Archivist</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Archivist selects files to restrict</step>
+    <step id="S2">UI sends a request to the Backend Server for restriction options</step>
+    <step id="S3">Backend Server retrieves current access settings from the Database</step>
+    <step id="S4">Database returns the current access settings to Backend Server</step>
+    <step id="S5">Backend Server displays current settings and IP restriction options to UI</step>
+    <step id="S6">Archivist applies IP restrictions by entering an IP range in the UI</step>
+    <step id="S7">UI sends an update access settings request with IP details to the Backend Server</step>
+    <step id="S8">Backend Server updates file access settings with the IP restrictions in the Database</step>
+    <step id="S9">Database confirms that the settings have been updated to the Backend Server</step>
+    <step id="S10">Backend Server displays a success message to the UI</step>
+    <step id="S11">UI confirms to the Archivist that the IP restriction has been implemented</step>
+  </mainSequence>
+</useCase>

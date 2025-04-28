@@ -1,0 +1,35 @@
+<useCase id="FMProvisioning">
+    <name>Fault Management Provisioning</name>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF:FaultManagement</actor>
+        <actor>Hub</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">BUS registers as a listener for FaultManagementJobNotification and FaultManagementReportNotification on Hub</step>
+        <step id="S2">BUS requests SOF to create a FaultManagementJob</step>
+        <step id="S3">SOF creates a FaultManagementJob</step>
+        <step id="S4">SOF responds to BUS with the created FaultManagementJob</step>
+        <step id="S5">FaultManagementJob is activated</step>
+        <step id="S6">FaultManagementJob creates an event on Hub</step>
+        <step id="S7">Hub notifies listeners about the faultManagementJobCreateEvent</step>
+        <step id="S8">FaultManagementJob is in progress</step>
+        <step id="S9">FaultManagementJob generates data</step>
+        <step id="S10">FaultManagementJob reports data after the reporting period elapses</step>
+        <step id="S11">FaultManagementJob creates a FaultManagementReport</step>
+        <step id="S12">FaultManagementReport is activated</step>
+        <step id="S13">FaultManagementReport creates an event on Hub</step>
+        <step id="S14">Hub notifies listeners about the faultManagementReportCreateEvent</step>
+        <step id="S15">FaultManagementReport is in progress</step>
+        <step id="S16">FaultManagementReport collects data</step>
+        <step id="S17">FaultManagementReport is completed</step>
+        <step id="S18">Hub notifies listeners about the faultManagementReportStateChangeEvent</step>
+        <step id="S19">FaultManagementReport is reported as completed</step>
+        <step id="S20">FaultManagementJob is ready to report</step>
+        <step id="S21">FaultManagementJob is completed or scheduled</step>
+        <step id="S22">Hub notifies listeners about the faultManagementJobStateChangeEvent</step>
+        <step id="S23">BUS requests SOF to get the FaultManagementReport</step>
+        <step id="S24">SOF retrieves the FaultManagementReport</step>
+        <step id="S25">SOF responds to BUS with the retrieved FaultManagementReport</step>
+    </mainSequence>
+</useCase>

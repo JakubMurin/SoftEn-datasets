@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Create Payments in Adapter</name>
+    <actors>
+        <actor>User</actor>
+        <actor>MUKTA_ADAPTER</actor>
+        <actor>MDMS</actor>
+        <actor>Expense_Service</actor>
+        <actor>KAFKA</actor>
+        <actor>SCHEDULER</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User schedules payment creation.</step>
+        <step id="S2">MUKTA_ADAPTER requests tenants from MDMS.</step>
+        <step id="S3">MDMS provides the list of tenants to MUKTA_ADAPTER.</step>
+        <step id="S4">MUKTA_ADAPTER searches for bills where payments are not created.</step>
+        <step id="S5">Expense_Service returns the list of bills to MUKTA_ADAPTER.</step>
+        <step id="S6">MUKTA_ADAPTER processes bills and generates payments.</step>
+        <step id="S7">MUKTA_ADAPTER requests Expense_Service to create payments.</step>
+        <step id="S8">Expense_Service creates payments and returns the payment response to MUKTA_ADAPTER.</step>
+        <step id="S9">MUKTA_ADAPTER pushes payment details to create topic in KAFKA.</step>
+        <step id="S10">MUKTA_ADAPTER listens to the payment create topic in KAFKA.</step>
+        <step id="S11">MUKTA_ADAPTER processes payments.</step>
+        <step id="S12">MUKTA_ADAPTER fetches bill details from Expense_Service.</step>
+        <step id="S13">Expense_Service returns bill details to MUKTA_ADAPTER.</step>
+        <step id="S14">MUKTA_ADAPTER processes each bill line item.</step>
+        <step id="S15">MUKTA_ADAPTER fetches organization details from ORG_SERVICE.</step>
+        <step id="S16">MUKTA_ADAPTER returns organization details from ORG_SERVICE.</step>
+        <step id="S17">MUKTA_ADAPTER fetches individual details from IND_SERVICE.</step>
+        <step id="S18">MUKTA_ADAPTER returns individual details from IND_SERVICE.</step>
+        <step id="S19">MUKTA_ADAPTER fetches bank account details from BANK_ACC_SERVICE.</step>
+        <step id="S20">MUKTA_ADAPTER returns bank account details from BANK_ACC_SERVICE.</step>
+        <step id="S21">MUKTA_ADAPTER creates disburse request for each bill.</step>
+        <step id="S22">MUKTA_ADAPTER sends disburse request to PROGRAM_SERVICE.</step>
+        <step id="S23">PROGRAM_SERVICE acknowledges the disburse request.</step>
+    </mainSequence>
+</useCase>

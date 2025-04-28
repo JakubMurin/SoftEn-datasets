@@ -1,0 +1,14 @@
+<useCase id="UC1">
+    <name>Manage Builds</name>
+    <actors>
+        <actor>DevSecOpsManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">DevSecOpsManager lists builds.</step>
+        <step id="S2">DevSecOpsManager sends list request to DevSecOps Service Orchestrator Manager.</step>
+        <step id="S3">DevSecOps Service Orchestrator Manager receives the list request.</step>
+        <step id="S4">DevSecOps Service Orchestrator Manager forwards the request to the provisioner.</step>
+        <step id="S5">The provisioner processes the list request.</step>
+        <step id="S6">The provisioner sends the list of builds to the EventBus.</step>
+    </mainSequence>
+</useCase>

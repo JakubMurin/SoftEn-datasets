@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Collision Handling Use Case</name>
+    <description>Handle collision between Ball and Peg in Game Engine</description>
+    <actors>
+        <actor>Game Engine</actor>
+        <actor>Peg Modelable</actor>
+        <actor>Ball</actor>
+        <actor>Free Body</actor>
+    </actors>
+    <trigger>Game Engine signals collision between Ball and Peg to handle</trigger>
+    <mainSequence>
+        <step id="S1">Game Engine triggers collision event</step>
+        <step id="S2">Peg Modelable receives collision event</step>
+        <step id="S3">Ball receives collision event</step>
+        <step id="S4">Ball collides with peg</step>
+        <step id="S5">Ball detects safe position from peg</step>
+        <step id="S6">Ball informs Free Body of collision</step>
+    </mainSequence>
+</useCase>

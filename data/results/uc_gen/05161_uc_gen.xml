@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Construir Construcción</name>
+    <description>El sistema permite a los usuarios construir una nueva estructura.</description>
+    <actors>
+        <actor>Sistema o Usuario</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario ha seleccionado una construcción para comenzar a edificar.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La construcción ha sido completada con éxito.</condition>
+    </successEndConditions>
+    <trigger>FaseConstruccion</trigger>
+    <mainSequence>
+        <step id="S1">Iniciar construcción de una estructura en la fase de construcción.</step>
+        <step id="S2">Verificar si es posible costear la construcción seleccionada.</step>
+        <step id="S3">Mostrar la construcción tentativa basada en la elección realizada.</step>
+        <step id="S4">Confirmar y finalizar la construcción.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>La construcción seleccionada no puede costearse.</description>
+            <step id="E1S1">Mostrar un mensaje de error al usuario.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

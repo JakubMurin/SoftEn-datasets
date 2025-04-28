@@ -1,0 +1,31 @@
+<useCase id="UC001">
+	<name>Listing floors with passageways between buildings</name>
+	<description>As an actor, I want to list floors in buildings with passageways to other buildings</description>
+	<actors>
+		<actor>Actor</actor>
+	</actors>
+	<preconditions>
+		<precondition>The system has data about floors in buildings with passageways to other buildings.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The system successfully returns floors with passageways.</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>The system returns an error message.</condition>
+	</failureEndConditions>
+	<trigger>Actor attempts to list floors with passageways in buildings.</trigger>
+	<mainSequence>
+		<step id="S1">Actor intends to list floors with passageways in buildings</step>
+		<step id="S2">Container requests to get floors with passageways from GestaoInfoAPI</step>
+		<step id="S3">GestaoInfoAPI responds with the status code</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S2">
+			<step id="A1S1">Container receives the data with floors and passageways</step>
+		</asteps>
+		<asteps id="A2" start="S3">
+			<step id="A2S1">Container analyzes error code and error message</step>
+			<step id="A2S2">Container conveys error message to Actor</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

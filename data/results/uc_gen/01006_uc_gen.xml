@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Software Deployment Workflow</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>AnotherDeveloper</actor>
+        <actor>Reviewer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developers have necessary access rights to repositories</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Software changes successfully deployed to production</condition>
+    </successEndConditions>
+    <trigger>Developer initiates software deployment process</trigger>
+    <mainSequence>
+        <step id="S1">Developer changes smart contracts and commits to LocalBranch</step>
+        <step id="S2">Developer creates a changeset using 'npx changeset' command and commits it</step>
+        <step id="S3">Developer pushes changes and opens a PR on LocalBranch</step>
+        <step id="S4">Reviewer approves the PR on RemotePR</step>
+        <step id="S5">Developer deploys changes to all chains from LocalBranch</step>
+        <step id="S6">Blockchain receives updated or new smart contracts</step>
+        <step id="S7">Addresses json files are updated in LocalBranch</step>
+        <step id="S8">Developer pushes updated addresses json files to LocalBranch</step>
+        <step id="S9">Updated addresses json files are sent to RemotePR</step>
+        <step id="S10">Developer merges changes to main from RemotePR</step>
+        <step id="S11">ReleaseGithubAction incorporates changes into main branch</step>
+        <step id="S12">VersionPackagesPR creates a PR with new versions applied to package.jsons</step>
+        <step id="S13">AnotherDeveloper pushes a new changeset to main</step>
+        <step id="S14">ReleaseGithubAction processes new changeset</step>
+        <step id="S15">VersionPackagesPR updates PR with new versions applied to package.jsons</step>
+        <step id="S16">Developer merges changes to main in VersionPackagesPR</step>
+        <step id="S17">Updated versions in packages are reflected in main branch</step>
+        <step id="S18">ReleaseGithubAction initiates building and publishing of packages through npm</step>
+    </mainSequence>
+</useCase>

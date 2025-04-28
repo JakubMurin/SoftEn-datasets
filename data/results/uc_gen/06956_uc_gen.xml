@@ -1,0 +1,23 @@
+<useCase id="UC001">
+  <name>Check Upgrade Compatibility for Dataset Instance</name>
+  <actors>
+    <actor>DatasetDeveloper</actor>
+    <actor>Dataset Version Control</actor>
+    <actor>Dataset Instance</actor>
+    <actor>Dataset Registry</actor>
+  </actors>
+  <preconditions>
+    <precondition>Request for upgrade check is initiated</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Request upgrade check for dataset instance with new version</step>
+    <step id="S2">Get dataset type info for the new version</step>
+    <step id="S3">Get existing version details for the dataset instance</step>
+    <step id="S4">Compare versions based on type and existing details</step>
+    <step id="S5">Get upgrade compatibility rules for the dataset type</step>
+    <step id="S6">Apply compatibility rules to determine upgrade compatibility</step>
+    <step id="S7">Check if upgrade is compatible</step>
+    <step id="S8">If upgrade is compatible, confirm upgrade and upgrade instance</step>
+    <step id="S9">If upgrade is not compatible, inform developer about the incompatibility reason</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Manage Fault Management Job and Report</name>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Buyer/Client sends POST /faultManagementJob request to create a new job</step>
+        <step id="S2">FaultManagementJob is created</step>
+        <step id="S3">FaultManagementJob enters inProgress state</step>
+        <step id="S4">FaultManagementJob generates data</step>
+        <step id="S5">FaultManagementReport is created due to job</step>
+        <step id="S6">FaultManagementReport enters inProgress state</step>
+        <step id="S7">FaultManagementReport collects data</step>
+        <step id="S8">FaultManagementReport completes data collection</step>
+        <step id="S9">FaultManagementJob completes its task</step>
+        <step id="S10">Buyer/Client requests GET /faultManagementReport to retrieve the report</step>
+        <step id="S11">FaultManagement Report content is sent to Buyer/Client</step>
+    </mainSequence>
+</useCase>

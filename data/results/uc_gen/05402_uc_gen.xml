@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Crear consulta médica</name>
+    <preconditions>
+        <precondition>El médico debe acceder al sistema.</precondition>
+        <precondition>La vista del médico debe estar renderizada correctamente en la interfaz.</precondition>
+        <precondition>El historial del paciente debe ser consultado previamente.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">El médico inicia el proceso para crear una consulta médica.</step>
+        <step id="S2">El médico solicita la creación de una consulta médica en la interfaz del sistema.</step>
+        <step id="S3">El frontend se encarga de enviar la solicitud al backend a través de tRPC.</step>
+        <step id="S4">El tRPC procesa la solicitud de creación de la consulta médica.</step>
+        <step id="S5">El Prisma Adapter recibe la solicitud y procede a realizar la creación de la consulta médica en la base de datos.</step>
+        <step id="S6">La base de datos inserta correctamente la consulta médica en el sistema y retorna una confirmación al Prisma Adapter.</step>
+        <step id="S7">El Prisma Adapter mapea la confirmación recibida y la devuelve a tRPC.</step>
+        <step id="S8">tRPC envía la confirmación de la creación de la consulta médica al frontend.</step>
+    </mainSequence>
+</useCase>

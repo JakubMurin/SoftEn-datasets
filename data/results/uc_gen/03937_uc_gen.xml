@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Create Operation Request</name>
+    <description>
+        The use case involves a Doctor navigating to the Create Operation Request page, filling out the operation request information, and submitting the form.
+    </description>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Doctor is authorized to create operation requests.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation request is successfully created.</condition>
+    </successEndConditions>
+    <trigger>Doctor navigates to Create Operation Request page.</trigger>
+    <mainSequence>
+        <step id="S1">Doctor navigates to Create Operation Request page.</step>
+        <step id="S2">Doctor fills in operation request information.</step>
+        <step id="S3">Doctor submits the form.</step>
+        <step id="S4">UI handles form submission.</step>
+        <step id="S5">ORS creates the operation request based on the provided data.</step>
+        <step id="S6">ORS gets authorization token.</step>
+        <step id="S7">ORS checks Doctor's role.</step>
+        <step id="S8">API is called to create the operation request via a POST request.</step>
+        <step id="S9">API returns OperationRequestDto to ORS.</step>
+        <step id="S10">ORS returns success to UI.</step>
+        <step id="S11">UI displays success message and clears the form.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">Error occurs.</step>
+            <step id="A1S2">ORS throws an error.</step>
+            <step id="A1S3">UI sets error message and displays it to the Doctor.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

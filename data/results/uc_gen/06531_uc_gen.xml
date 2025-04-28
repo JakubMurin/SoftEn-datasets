@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Client Deposits ETH and OAX</name>
+    <actors>
+        <actor>WebClient</actor>
+        <actor>L2Client</actor>
+        <actor>Mediator</actor>
+        <actor>Events</actor>
+        <actor>Operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client has access to private key / signing abilities</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">WebClient requests to deposit 5 ETH</step>
+        <step id="S2">L2Client deposits 5 ETH via Mediator</step>
+        <step id="S3">Operator lists the deposit of 5 ETH</step>
+        <step id="S4">Operator updates balances for ETH / BTC / OAX</step>
+        <step id="S5">WebClient requests to deposit 1000 OAX</step>
+        <step id="S6">L2Client deposits 1000 OAX via Mediator</step>
+        <step id="S7">Operator lists the deposit of 1000 OAX</step>
+        <step id="S8">Operator updates balances for ETH / BTC / OAX</step>
+    </mainSequence>
+</useCase>

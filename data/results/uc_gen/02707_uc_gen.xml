@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Dataset Deposit</name>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>Web Interface</actor>
+        <actor>Pure Integration Module</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Bath Data Archive</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Depositor accesses deposit interface</step>
+        <step id="S2">Web Interface requests authentication</step>
+        <step id="S3">Web Interface authenticates depositor</step>
+        <step id="S4">Web Interface shows dataset deposit form</step>
+        <step id="S5">Depositor fills in form (Includes metadata, files)</step>
+        <step id="S6">Dataset Management System processes deposit form</step>
+        <step id="S7">Dataset Management System checks if dataset metadata aligns with Pure requirements</step>
+        <step id="S8">Dataset Management System deposits dataset and metadata</step>
+        <step id="S9">Archive confirms deposit, generates DOI</step>
+        <step id="S10">Pure links dataset DOI with Pure records</step>
+        <step id="S11">Pure updates Pure records</step>
+        <step id="S12">Dataset Management System confirms dataset deposit, provides DOI to depositor</step>
+        <step id="S13">Web Interface displays confirmation (Includes DOI link)</step>
+    </mainSequence>
+</useCase>

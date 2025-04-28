@@ -1,0 +1,29 @@
+<useCase id="111">
+  <name>Order Placement</name>
+  
+  <actors>
+    <actor>Customer</actor>
+    <actor>Shop</actor>
+  </actors>
+  
+  <preconditions>
+    <precondition>A customer has selected a product and requested a quote in the Shop</precondition>
+  </preconditions>
+  
+  <mainSequence>
+    <step id="S1">Customer selects product and asks for a quote from the Shop</step>
+    <step id="S2">Customer selects "Crop Top" as the product of interest</step>
+    <step id="S3">Shop sends the product ID to CEIS and expects customer-facing information</step>
+    <step id="S4">Shop fetches information on "Crop Top" from CEIS</step>
+    <step id="S5">CEIS requests and receives recipes for "Crop Top" from ProductCookbook</step>
+    <step id="S6">CEIS requests and receives availability of input materials from MaterialFlowMonitor</step>
+    <step id="S7">Shop analyzes the manufacturing options with CEIS</step>
+    <step id="S8">CEIS requests cost and GHG impact details from CostAnalyzer, WISER, and ERP</step>
+    <step id="S9">Shop matches alternatives with company policies and presents them to the customer</step>
+    <step id="S10">Customer places an order after considering alternatives</step>
+    <step id="S11">CEIS informs ProcessControl about the order</step>
+    <step id="S12">ProcessControl schedules, monitors, and updates information about processes</step>
+    <step id="S13">ProcessControl informs MaterialFlowMonitor and CEIS about the results and costs</step>
+    <step id="S14">CEIS updates data in the DigitalProductPassport</step>
+  </mainSequence>
+</useCase>

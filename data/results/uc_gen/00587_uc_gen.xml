@@ -1,0 +1,40 @@
+<useCase id="1">
+   <name>Modify Password</name>
+   <actors>
+      <actor>User</actor>
+      <actor>HomepageScreen</actor>
+      <actor>ModifyPasswordScreen</actor>
+      <actor>AuthService</actor>
+      <actor>UsersRouter</actor>
+      <actor>UsersService</actor>
+      <actor>Database</actor>
+   </actors>
+   <preconditions>
+      <precondition>User is logged into the application.</precondition>
+   </preconditions>
+   <trigger>User navigates to the Modify Password section in Account Settings.</trigger>
+   <mainSequence>
+      <step id="S1">User opens the application.</step>
+      <step id="S2">HomepageScreen displays "Account Settings".</step>
+      <step id="S3">User navigates to the Account Settings.</step>
+      <step id="S4">HomepageScreen navigates to the Modify Password Screen.</step>
+      <step id="S5">ModifyPasswordScreen prompts for the updated password.</step>
+      <step id="S6">User enters the updated password and presses the "Modify" button.</step>
+      <step id="S7">ModifyPasswordScreen submits the updated password to AuthService.</step>
+      <step id="S8">AuthService makes an API call to UsersRouter to modify the password.</step>
+      <step id="S9">UsersRouter forwards the updated password to UsersService.</step>
+      <step id="S10">UsersService validates the updated password.</step>
+      <step id="S11">UsersService sends a confirmation of password update success to UsersRouter.</step>
+   </mainSequence>
+   <alternativeSteps>
+      <asteps id="A1" start="S10">
+         <step id="A1S1">UsersService and UsersRouter send validation error and update failure messages to ModifyPasswordScreen if validation of the updated password fails.</step>
+      </asteps>
+   </alternativeSteps>
+   <errorSteps>
+      <esteps id="E1" start="S11">
+         <description>UsersService updates the password to the Database and confirms the update success.</description>
+         <step id="E1S1">UsersRouter sends a confirmation message to AuthService, which then sends an update success message to ModifyPasswordScreen.</step>
+      </esteps>
+   </errorSteps>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="1">
+    <name>Getting Weather Alerts</name>
+    <description>As a user, I want to receive weather alerts in case of anomalies or critical conditions.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Users' coordinates are regularly checked and stored.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Users receive notifications about weather alerts.</condition>
+    </successEndConditions>
+    <trigger>Alert is detected based on weather data analysis.</trigger>
+    <mainSequence>
+        <step id="S1">Controleur regularly checks users' coordinates with BaseDeDonnees.</step>
+        <step id="S2">BaseDeDonnees returns users' geographical coordinates to Controleur.</step>
+        <step id="S3">Controleur queries SystemMeteo for weather data.</step>
+        <step id="S4">SystemMeteo provides current and forecast weather conditions to Controleur.</step>
+        <step id="S5">Controleur analyzes weather data for anomalies or critical conditions.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">If alert is detected, Controleur records the alert and prepares notification for users.</step>
+            <step id="A1S2">Ecran sends the alert notification to Utilisateur.</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">If no coordinates stored, Ecran informs the exclusion of user from monitoring.</step>
+        </asteps>
+        <asteps id="A3" start="S5">
+            <step id="A3S1">If SystemMeteo is unresponsive, Ecran displays an error message.</step>
+            <step id="A3S2">Ecran notifies Admin about the offline status of SystemMeteo.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

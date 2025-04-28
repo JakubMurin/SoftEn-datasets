@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Complete Payment Transaction</name>
+    <actors>
+        <actor>Faber</actor>
+        <actor>Acme</actor>
+        <actor>DiemLedger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Faber and Acme have established their identities on the Diem network.</precondition>
+        <precondition>Faber has created a payment transaction for Acme.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Acme accepts the payment transaction from Faber.</condition>
+    </successEndConditions>
+    <trigger>Faber initiates the payment transaction process.</trigger>
+    <mainSequence>
+        <step id="S1">Faber requests to create a DID from FaberIndyWallet.</step>
+        <step id="S2">FaberIndyWallet creates Faber DID using ED25519.</step>
+        <step id="S3">FaberAnonCreds stores Faber DID.</step>
+        <step id="S4">Faber creates a SCHEMA using Faber DID.</step>
+        <step id="S5">FaberAnonCreds stores the SCHEMA.</step>
+        <step id="S6">FaberPythonDiem creates Diem Identifier and ED25519 keys.</step>
+        <step id="S7">FaberMiniWallet stores the Diem Identifier.</step>
+        <step id="S8">Faber publishes the identifier to the DiemLedger.</step>
+        <step id="S9">Acme requests to create a Diem Identifier and ED25519 keys from AcmePythonDiem.</step>
+        <step id="S10">AcmePythonDiem creates the Diem Identifier and ED25519 keys.</step>
+        <step id="S11">AcmeMiniWallet stores the Diem Identifier.</step>
+        <step id="S12">Acme publishes the identifier to the DiemLedger.</step>
+        <step id="S13">FaberPythonDiem creates a payment transaction for TrustedInstitution.</step>
+        <step id="S14">Faber sends the payment transaction to the DiemLedger with the SCHEMA.</step>
+        <step id="S15">The DiemLedger accepts or denies the payment.</step>
+        <step id="S16">Faber pulls the SCHEMA from Acme payments on the ledger.</step>
+        <step id="S17">Faber creates a CRED_DEF using Faber DID and the pulled SCHEMA.</step>
+        <step id="S18">FaberAnonCreds stores the CRED_DEF.</step>
+        <step id="S19">FaberPythonDiem sends the payment transaction to the DiemLedger with the CRED_DEF.</step>
+        <step id="S20">The DiemLedger accepts or denies the payment.</step>
+    </mainSequence>
+</useCase>

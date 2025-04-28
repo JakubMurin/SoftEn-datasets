@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>View User Profile</name>
+    <description>Allow the user to view their profile information</description>
+    <actors>
+        <actor>Colaborador</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User profile data is successfully retrieved</condition>
+    </successEndConditions>
+    <trigger>User requests to view their profile</trigger>
+    <mainSequence>
+        <step id="S1">Colaborador accesses the "/myprofile" route</step>
+        <step id="S2">The system fetches the user profile data</step>
+        <step id="S3">The system renders the user profile data in the "myprofile.ejs" template</step>
+        <step id="S4">The system presents the profile information to the user in HTML format</step>
+    </mainSequence>
+</useCase>

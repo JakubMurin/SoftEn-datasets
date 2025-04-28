@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Change Marketing Activity</name>
+    <description>Change the type of marketing activity</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the change</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Marketing activity type successfully changed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in changing marketing activity type</condition>
+    </failureEndConditions>
+    <trigger>User requests to change marketing activity</trigger>
+    <mainSequence>
+        <step id="S1">User requests to change marketing activity</step>
+        <step id="S2">UMP activates</step>
+        <step id="S3">UMP sends message to Retail-UMP</step>
+        <step id="S4">Retail-UMP processes the change in marketing activity type</step>
+        <step id="S5">Retail-UMP synchronously/asynchronously sends message to C</step>
+        <step id="S6">C processes the message</step>
+        <step id="S7">Retail-UMP returns</step>
+        <step id="S8">UMP returns</step>
+        <step id="S9">User receives the response</step>
+    </mainSequence>
+</useCase>

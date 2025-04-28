@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>View Permissions on Objects</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Interface</actor>
+        <actor>Authentication Service</actor>
+        <actor>Permission Service</actor>
+        <actor>Database</actor>
+        <actor>Permissions Display</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator requests to view permissions on objects.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Permissions overview displayed to curator.</condition>
+    </successEndConditions>
+    <trigger>Curator requests to view permissions.</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests to view permissions</step>
+        <step id="S2">UI Interface validates curator session</step>
+        <step id="S3">Authentication Service validates curator session</step>
+        <step id="S4">UI Interface receives session validation</step>
+        <step id="S5">UI Interface requests object permissions for curator</step>
+        <step id="S6">Permission Service queries permissions by curator ID</step>
+        <step id="S7">Database returns permissions data</step>
+        <step id="S8">Permission Service processes permissions data</step>
+        <step id="S9">UI Interface displays formatted permissions data</step>
+        <step id="S10">Permissions Display shows permissions overview to curator</step>
+    </mainSequence>
+</useCase>

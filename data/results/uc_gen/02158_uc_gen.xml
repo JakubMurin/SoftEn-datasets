@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Delete Book Process</name>
+    <actors>
+        <actor>Staff</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Staff selects "Remove Book" on UI</step>
+        <step id="S2">UI requests deletion of book with bookId to Controller</step>
+        <step id="S3">Controller calls deleteBook(bookId) on Service</step>
+        <step id="S4">Service queries database to delete book with bookId</step>
+        <step id="S5">Database confirms deletion to Service</step>
+        <step id="S6">Service reports deletion success to Controller</step>
+        <step id="S7">Controller displays success message on UI</step>
+        <step id="S8">UI shows "Book Deleted Successfully" to Staff</step>
+    </mainSequence>
+</useCase>

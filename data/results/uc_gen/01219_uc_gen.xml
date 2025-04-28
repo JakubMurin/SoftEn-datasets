@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Refresh Game</name>
+    <description>Refresh the game by updating game elements based on the elapsed time.</description>
+    <actors>
+        <actor>Controller</actor>
+        <actor>GameEngine</actor>
+        <actor>GameState</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>The game is running.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The game elements are successfully updated.</condition>
+    </successEndConditions>
+    <trigger>Controller triggers the refresh method on the GameEngine with the elapsed time.</trigger>
+    <mainSequence>
+        <step id="S1">Controller triggers the refresh method on the GameEngine with the elapsed time.</step>
+        <step id="S2">GameEngine activates and starts handling moves based on the elapsed time.</step>
+        <step id="S3">GameEngine activates and moves the Ball based on the external forces and elapsed time.</step>
+        <step id="S4">Ball applies forces, including weight, to the FreeBody.</step>
+        <step id="S5">GameEngine returns the updated game state snapshot.</step>
+    </mainSequence>
+</useCase>

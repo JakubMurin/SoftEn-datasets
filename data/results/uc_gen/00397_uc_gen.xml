@@ -1,0 +1,15 @@
+<useCase id="UC001">
+<name>Remove Project</name>
+<actors>
+    <actor>Admin</actor>
+</actors>
+<trigger>Admin requests to remove a project by providing signId and projectId</trigger>
+<mainSequence>
+    <step id="S1">Admin requests to remove a project by invoking removeProject(signId, projectId) method;</step>
+    <step id="S2">System validates the member by calling validateMember(signId);</step>
+    <step id="S3">System validates if the member is an admin by calling validateAdmin(signId);</step>
+    <step id="S4">System validates the project existence by calling validateProject(projectId);</step>
+    <step id="S5">System removes the project by calling removeProject(projectId);</step>
+    <step id="ES1">System sends the notification to Admin: "Project removed successfully";</step>
+</mainSequence>
+</useCase>

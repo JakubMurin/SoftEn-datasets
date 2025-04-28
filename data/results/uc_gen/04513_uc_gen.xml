@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Mint Cointag and Distribute Rewards</name>
+    
+    <actors>
+        <actor>Creator</actor>
+        <actor>Caller</actor>
+        <actor>1155</actor>
+        <actor>Minter</actor>
+        <actor>ProtocolRewards</actor>
+        <actor>UniswapV3Pool</actor>
+        <actor>ERC20</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>A Creator and a Caller exist.</precondition>
+    </preconditions>
+    
+    <mainSequence>
+        <step id="S1">Creator creates a Cointag through CointagFactory.</step>
+        <step id="S2">1155 sets the creator reward recipient to the Cointag address.</step>
+        <step id="S3">Caller requests Minter to mint a Post.</step>
+        <step id="S4">Minter gets the creator reward recipient from 1155.</step>
+        <step id="S5">Minter deposits rewards into ProtocolRewards with Cointag as the recipient.</step>
+        <step id="S6">Caller triggers rewards distribution by pulling from Cointag.</step>
+        <step id="S7">Cointag withdraws rewards from ProtocolRewards and initiates the split calculation.</step>
+        <step id="S8">Cointag wraps ETH as WETH.</step>
+        <step id="S9">Cointag swaps WETH for ERC20 with Uniswap.</step>
+        <step id="S10">Uniswap transfers ERC20 to Cointag.</step>
+        <step id="S11">Cointag burns ERC20 tokens.</step>
+        <step id="S12">Cointag deposits remaining ETH rewards into ProtocolRewards.</step>
+        <step id="S13">Creator withdraws rewards from ProtocolRewards.</step>
+    </mainSequence>
+</useCase>

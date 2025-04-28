@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Use Case 1: Ticket Management</name>
+    <actors>
+        <actor>Vendor</actor>
+        <actor>Customer</actor>
+    </actors>
+    <preconditions>
+        <precondition>There are tickets available in the pool.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All tickets are successfully managed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Not all tickets are consumed or managed properly.</condition>
+    </failureEndConditions>
+    <trigger>Vendor adds a ticket to the pool and notifies all.</trigger>
+    <mainSequence>
+        <step id="S1">Vendor adds a ticket to the pool.</step>
+        <step id="S2">TicketPool adds the ticket to the queue.</step>
+        <step id="S3">TicketPool notifies all actors.</step>
+        <step id="S4">Customer consumes a ticket.</step>
+        <step id="S5">TicketPool removes the ticket from the queue.</step>
+        <step id="S6">TicketPool returns the ticket to the Customer.</step>
+    </mainSequence>
+</useCase>

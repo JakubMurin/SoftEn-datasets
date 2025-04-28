@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Manage Users</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>UsersRepo</actor>
+        <actor>ProductsRepo</actor>
+        <actor>BidsRepo</actor>
+        <actor>OrdersRepo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client sends POST request to create a new user</step>
+        <step id="S2">Controller activates and forwards request to Service</step>
+        <step id="S3">Service creates and saves the user in UsersRepo</step>
+        <step id="S4">Service returns the created user to Controller</step>
+        <step id="S5">Controller sends the user back to the Client</step>
+        <step id="S6">Client receives the created user</step>
+        <step id="S7">Client sends GET request to retrieve all users</step>
+        <step id="S8">Controller activates and requests Service to find all users</step>
+        <step id="S9">Service retrieves users from UsersRepo</step>
+        <step id="S10">Service returns the list of users to Controller</step>
+        <step id="S11">Controller sends the list of users back to the Client</step>
+        <step id="S12">Client receives the list of users</step>
+        <step id="S13">Client sends GET request to retrieve a specific user</step>
+        <step id="S14">Controller activates and requests Service to find the user by ID</step>
+        <step id="S15">Service retrieves the user from UsersRepo</step>
+        <step id="S16">Service returns the specific user to Controller</step>
+        <step id="S17">Controller sends the specific user back to the Client</step>
+        <step id="S18">Client receives the specific user</step>
+        <step id="S19">Client sends PUT request to update a user</step>
+        <step id="S20">Controller activates and requests Service to update the user</step>
+        <step id="S21">Service checks if the user exists</step>
+        <step id="S22">Service updates the user if it exists, else throws an exception</step>
+        <step id="S23">Controller sends the updated user or exception back to the Client</step>
+        <step id="S24">Client receives the updated user or exception</step>
+        <step id="S25">Client sends DELETE request to remove a user</step>
+        <step id="S26">Controller activates and requests Service to remove the user</step>
+        <step id="S27">Service checks if the user exists</step>
+        <step id="S28">Service checks for associated products, bids, and orders</step>
+        <step id="S29">Service removes the user if no associated data found, else throws exceptions</step>
+        <step id="S30">Controller sends success or exception response back to the Client</step>
+        <step id="S31">Client receives success or exception response</step>
+    </mainSequence>
+</useCase>

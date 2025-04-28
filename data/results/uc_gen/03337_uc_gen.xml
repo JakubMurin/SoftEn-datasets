@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Game Lifecycle</name>
+    <actors>
+        <actor>Game</actor>
+        <actor>ExtendedVM</actor>
+        <actor>BaseVM</actor>
+        <actor>ViewModelComponent</actor>
+        <actor>Mixin</actor>
+    </actors>
+    <preconditions>
+        <precondition>ExtendedVM instantiated with Game</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Game lifecycle completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during Game lifecycle</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Game instantiates ExtendedVM</step>
+        <step id="S2">ExtendedVM calls base constructor of BaseVM</step>
+        <step id="S3">ViewModelComponent initializes mixins for ExtendedVM</step>
+        <step id="S4">Game calls ExtendedVM destructor</step>
+        <step id="S5">ExtendedVM calls original destructor of BaseVM</step>
+        <step id="S6">ViewModelComponent destructs mixins for ExtendedVM</step>
+        <step id="S7">Game triggers OnFinalize method in ExtendedVM</step>
+        <step id="S8">ExtendedVM executes original OnFinalize method in BaseVM</step>
+        <step id="S9">ViewModelComponent finalizes mixins for ExtendedVM</step>
+        <step id="S10">Game accesses methods and getters/setters in ExtendedVM</step>
+    </mainSequence>
+</useCase>

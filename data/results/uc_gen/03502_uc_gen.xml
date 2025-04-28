@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>Upload and License Data File</name>
+    <actors>
+        <actor>Cornell Faculty Member</actor>
+        <actor>Web Browser Interface</actor>
+        <actor>File Upload Service</actor>
+        <actor>Digital Rights Management Service</actor>
+        <actor>Digital Repository</actor>
+        <actor>Licensing Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The faculty member has access to the data file to be uploaded.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The data file is successfully uploaded and licensed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The upload or licensing process fails.</condition>
+    </failureEndConditions>
+    <trigger>Faculty member initiates the upload and licensing process.</trigger>
+    <mainSequence>
+        <step id="S1">Faculty member selects the data file for upload via the Web Browser Interface.</step>
+        <step id="S2">Data file is initiated for upload by the File Upload Service.</step>
+        <step id="S3">The data file is stored in the Digital Repository.</step>
+        <step id="S4">File metadata, including uploader information, is saved in the Database.</step>
+        <step id="S5">File metadata storage is confirmed between the Database and the Digital Repository.</step>
+        <step id="S6">The Digital Repository confirms file storage to the File Upload Service.</step>
+        <step id="S7">File upload success is displayed to the faculty member via the Web Browser Interface.</step>
+        <step id="S8">The File Upload Service provides the file ID and upload confirmation to the faculty member.</step>
+        <step id="S9">Faculty member chooses the licensing option (CC-By or CC0) via the Web Browser Interface.</step>
+        <step id="S10">Chosen license and file ID are sent to the Licensing Service.</step>
+        <step id="S11">The chosen license is applied to the file by the DRM Service.</step>
+        <step id="S12">File metadata is updated with license information in the Digital Repository.</step>
+        <step id="S13">File record is updated with license metadata in the Database.</step>
+        <step id="S14">Database confirms the license update to the Digital Repository.</step>
+        <step id="S15">The Digital Repository confirms the license application to the file to the Licensing Service.</step>
+        <step id="S16">License application success is displayed to the faculty member via the Web Browser Interface.</step>
+        <step id="S17">Confirmation that the license has been set is received by the faculty member.</step>
+    </mainSequence>
+</useCase>

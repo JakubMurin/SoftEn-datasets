@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Submit Document</name>
+    <description>Content Provider submits document(s) and metadata to the Document Repository.</description>
+    <actors>
+        <actor>Content Provider</actor>
+        <actor>Document Source</actor>
+        <actor>Document Repository</actor>
+        <actor>Document Registry</actor>
+    </actors>
+    <preconditions>
+        <precondition>Content Provider initiates submission process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document(s) and metadata are successfully submitted and stored.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error response is received during submission process.</condition>
+    </failureEndConditions>
+    <trigger>Content Provider initiates submission process.</trigger>
+    <mainSequence>
+        <step id="S1">Content Provider initiates submission</step>
+        <step id="S2">Document Source collects document(s) and metadata</step>
+        <step id="S3">Document Repository processes request</step>
+        <step id="S4">Document Repository stores document(s)</step>
+        <step id="S5">Document Registry validates metadata</step>
+        <step id="S6">Document Repository sends error response to Document Source</step>
+        <step id="S7">Document Registry sends error response to Document Repository</step>
+    </mainSequence>
+</useCase>

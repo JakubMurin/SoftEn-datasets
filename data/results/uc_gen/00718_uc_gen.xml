@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Editer une tâche</name>
+    <description>Permet à l'utilisateur de modifier une tâche existante.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>RepositoryTaches</actor>
+        <actor>ServiceAutorisation</actor>
+        <actor>MoteurTemplates</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur est connecté au système.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Le formulaire d'édition de la tâche est affiché.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>L'utilisateur n'est pas autorisé à éditer la tâche.</condition>
+    </failureEndConditions>
+    <trigger>Utilisateur accède à l'édition d'une tâche spécifique.</trigger>
+    <mainSequence>
+        <step id="S1">Utilisateur envoie une requête GET pour éditer une tâche.</step>
+        <step id="S2">Controleur reçoit la requête.</step>
+        <step id="S3">Controleur demande au RepositoryTaches de trouver la tâche correspondante.</step>
+        <step id="S4">RepositoryTaches renvoie la tâche.</step>
+        <step id="S5">Controleur vérifie si la tâche appartient à l'utilisateur.</step>
+        <step id="S6">ServiceAutorisation confirme que l'utilisateur est propriétaire de la tâche.</step>
+        <step id="S7">MoteurTemplates affiche le formulaire d'édition de la tâche.</step>
+        <step id="S8">Controleur envoie le formulaire d'édition à l'utilisateur.</step>
+    </mainSequence>
+</useCase>

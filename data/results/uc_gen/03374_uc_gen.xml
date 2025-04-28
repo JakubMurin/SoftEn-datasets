@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Gateway Enrolment</name>
+    <description>Enrolling a gateway to the system.</description>
+    <actors>
+        <actor>admin</actor>
+        <actor>ga</actor>
+        <actor>apiserver</actor>
+        <actor>db</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin has necessary permissions.</precondition>
+        <precondition>Gateway Agent is running and accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Gateway is successfully enrolled into the system.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Enrollment fails due to incorrect data or connection issues.</condition>
+    </failureEndConditions>
+    <trigger>Admin initiates the enrolment process.</trigger>
+    <mainSequence>
+        <step id="S1">Admin provisions server through terraform or ansible via Gateway Agent.</step>
+        <step id="A1">If not enrolled,</step>
+        <step id="A1S1">Admin generates password and wireguard private key.</step>
+        <step id="A1S2">Admin enrolls the Gateway on the API Server, passing hash, wg public key, and public IP.</step>
+        <step id="A1S3">API Server allocates private IP, updates DB with Gateway information.</step>
+        <step id="A1S4">Admin receives enrollment confirmation and generates Gateway configuration.</step>
+        <step id="A1S5">Admin establishes an SSH connection to the Gateway Agent.</step>
+        <step id="A1S6">Gateway Agent configures itself using the provided information.</step>
+        <step id="A1S7">Gateway Agent communicates securely with the API Server.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Post a Slack Command</name>
+    <actors>
+        <actor>USER</actor>
+        <actor>APP</actor>
+        <actor>SLACK</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">USER posts a Slack Command</step>
+        <step id="S2">SLACK receives the `/rocker` event triggered</step>
+        <step id="S3">APP performs `chat.postEphemeral`</step>
+        <step id="S4">SLACK displays an ephemeral message to a user in a channel</step>
+        <step id="S5">USER clicks on the button `launch rocket`</step>
+        <step id="S6">SLACK receives the `interaction` event triggered</step>
+        <step id="S7">APP performs `chat.postMessage`</step>
+        <step id="S8">SLACK displays Rocket Countdown Message 3</step>
+        <step id="S9">APP performs `chat.postMessage`</step>
+        <step id="S10">SLACK displays Rocket Countdown Message 2</step>
+        <step id="S11">APP performs `chat.postMessage`</step>
+        <step id="S12">SLACK displays Rocket Countdown Message 1</step>
+    </mainSequence>
+</useCase>

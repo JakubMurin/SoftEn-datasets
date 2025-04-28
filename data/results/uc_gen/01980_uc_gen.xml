@@ -1,0 +1,13 @@
+<useCase id="UC-001">
+    <name>Activate Trial or Paid Plan</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks `Activate Trial` or `Activate Paid Plan` button on screen.</step>
+        <step id="S2">Application publishes SendConnectivityEvent message specifying **ACTIVATE_TRIAL** or **ACTIVATE_PAID_PLAN** event to Auto SDK Engine.</step>
+        <step id="S3">Auto SDK Engine initiates Data Plan Subscription event to Alexa.</step>
+        <step id="S4">If successful in sending event to Alexa, Auto SDK Engine receives SendConnectivityEventReply message with **SUCCESS** status from Application.</step>
+        <step id="S5">If failure occurs in sending event to Alexa, Auto SDK Engine receives SendConnectivityEventReply message with **FAIL** status from Application.</step>
+    </mainSequence>
+</useCase>

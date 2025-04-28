@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Install RF ISO</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Cluster Admin</actor>
+        <actor>Operator</actor>
+        <actor>Daemon</actor>
+        <actor>OpenShift API</actor>
+        <actor>Vendor Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Cluster Admin has access to BMC_x86</precondition>
+        <precondition>Operator has started Daemonset</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Cluster Admin requests RF installation by installing ISO on BMC_x86</step>
+        <step id="S2">Daemon detects DPU type</step>
+        <step id="S3">Daemon labels the node</step>
+        <step id="S4">OpenShift API reconciles changes to node spec and retrieves label</step>
+        <step id="S5">Operator starts Vendor Plugin pod</step>
+        <step id="S6">Vendor Plugin initializes and returns IP:Port</step>
+    </mainSequence>
+</useCase>

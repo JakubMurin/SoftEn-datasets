@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Reboot System</name>
+    <description>User needs to reboot the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Host</actor>
+        <actor>DPU</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system is in a stable state.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The system successfully reboots.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The system fails to reboot.</condition>
+    </failureEndConditions>
+    <trigger>Top level command to reboot the system is received.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a top level reboot command to Host.</step>
+        <step id="S2">Host coredons the node.</step>
+        <step id="S3">Host reboots the system.</step>
+        <step id="S4">Host uncordons the node.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,54 @@
+<useCase id="UC1">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>LikeController</actor>
+        <actor>LikeService</actor>
+        <actor>LikeRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the entity page (post, comment, event)</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User goes to entity page (post, comment, event)</step>
+        <step id="S2">UI displays entity details and like button to the User</step>
+        <step id="S3">User clicks "Like/Dislike" button on the UI</step>
+        <step id="S4">UI sends request to LikeController to toggleLike(EntityID entityID, EntityType entityType)</step>
+        <step id="S5">LikeController processes the toggleLike request</step>
+        <step id="S6">LikeService handles the like operation</step>
+        <step id="S7">LikeRepo stores the like data</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">Entity is Already Liked</step>
+            <step id="A1S2">LikeService processes dislike operation</step>
+            <step id="A1S3">LikeRepo removes like data</step>
+            <step id="A1S4">Handling failed remove operation</step>
+            <step id="A1S5">Handling successful remove operation</step>
+        </asteps>
+        <asteps id="A2" start="S5" continue="S6">
+            <step id="A2S1">Entity is Not Yet Liked</step>
+            <step id="A2S2">LikeService processes like operation</step>
+            <step id="A2S3">LikeRepo saves like data</step>
+            <step id="A2S4">Handling failed save operation</step>
+            <step id="A2S5">Handling successful save operation</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S4">
+            <description>Remove Operation Fails</description>
+            <step id="E1S1">LikeRepo returns failure</step>
+            <step id="E1S2">LikeService returns failure response</step>
+            <step id="E1S3">LikeController returns error message to UI</step>
+            <step id="E1S4">UI displays "Failed to remove like from the entity" message to User</step>
+        </esteps>
+        <esteps id="E2" start="A2S4">
+            <description>Save Operation Fails</description>
+            <step id="E2S1">LikeRepo returns failure</step>
+            <step id="E2S2">LikeService returns failure response</step>
+            <step id="E2S3">LikeController returns error message to UI</step>
+            <step id="E2S4">UI displays "Failed to like the entity" message to User</step>
+        </esteps>
+    </errorSteps>
+</useCase>

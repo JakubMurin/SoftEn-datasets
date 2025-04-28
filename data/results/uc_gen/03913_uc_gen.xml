@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Retrieve File for Book</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Books Service</actor>
+        <actor>Postgres Database</actor>
+        <actor>Minio</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests to retrieve a file for a book.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully receives the requested file.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>JWT is absent or not valid, or file data does not exist.</condition>
+    </failureEndConditions>
+    <trigger>User sends a GET request to retrieve a file for a book.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to Gateway to retrieve a file for a book.</step>
+        <step id="S2">Gateway verifies the JWT with Keycloak.</step>
+        <step id="S3">Gateway forwards the request to Books Service.</step>
+        <step id="S4">Books Service retrieves the file link from Postgres Database.</step>
+        <step id="S5">Books Service requests the file from Minio using the retrieved link.</step>
+        <step id="S6">Minio provides the file to Books Service.</step>
+        <step id="S7">Books Service sends the file to Gateway.</step>
+        <step id="S8">Gateway sends the file to User.</step>
+    </mainSequence>
+</useCase>

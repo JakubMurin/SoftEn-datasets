@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Autenticación de Usuario</name>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>Auth</actor>
+        <actor>MailSender</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario debe introducir sus credenciales</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>El usuario ha sido autenticado exitosamente</condition>
+    </successEndConditions>
+    <trigger>El usuario inicia el proceso de autenticación</trigger>
+    <mainSequence>
+        <step id="S1">El usuario introduce sus credenciales</step>
+        <step id="S2">La aplicación verifica las credenciales</step>
+        <step id="S3">La aplicación solicita un código de verificación</step>
+        <step id="S4">El sistema de autenticación genera un código de verificación</step>
+        <step id="S5">La aplicación solicita al usuario el código de verificación</step>
+        <step id="S6">El servicio de correo electrónico envía el código de verificación al usuario</step>
+        <step id="S7">El usuario ingresa el código de verificación</step>
+        <step id="S8">El sistema de autenticación verifica el código de verificación</step>
+        <step id="S9">La aplicación informa al usuario que la autenticación ha sido exitosa</step>
+    </mainSequence>
+</useCase>

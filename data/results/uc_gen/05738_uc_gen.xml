@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Like Attendee</name>
+    <actors>
+        <actor>Recruiter</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>RecruiterRepo</actor>
+        <actor>AttendeeRepo</actor>
+        <actor>LikeRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>Recruiter, Attendee, and LikeRepo are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Attendee liked successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>DuplicateLikeException occurs</condition>
+    </failureEndConditions>
+    <trigger>POST /attendees/{attendeeId}/like</trigger>
+    <mainSequence>
+        <step id="S1">Recruiter sends a request to like an attendee</step>
+        <step id="S2">Controller forwards the request to Service</step>
+        <step id="S3">Service retrieves Recruiter by ID from RecruiterRepo</step>
+        <step id="S4">Service retrieves Attendee by ID from AttendeeRepo</step>
+        <step id="S5">Service checks if a like already exists between Recruiter and Attendee</step>
+        <step id="S6">Service saves the like if it doesn't already exist</step>
+        <step id="S7">Service responds with completion</step>
+        <step id="S8">Controller sends a 200 OK response to the Recruiter</step>
+    </mainSequence>
+</useCase>

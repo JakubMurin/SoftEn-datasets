@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Deleting a photo</name>
+    <description>Admin deletes a photo from the system.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in and has permissions to delete a photo.</precondition>
+        <precondition>Photo to be deleted exists in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Photo successfully deleted from the system.</condition>
+    </successEndConditions>
+    <trigger>User wants to delete a photo from the system.</trigger>
+    <mainSequence>
+        <step id="S1">Admin initiates the deletion process.</step>
+        <step id="S2">Frontend receives the request to delete a photo.</step>
+        <step id="S3">Backend processes the request to delete the photo.</step>
+        <step id="S4">Database confirms successful deletion of the photo.</step>
+        <step id="S5">Backend informs Frontend of successful deletion.</step>
+        <step id="S6">Frontend informs Admin that the photo was deleted successfully.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Generate Fault Management Report</name>
+    <description>As a Buyer/Client, I want to generate a Fault Management Report.</description>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Fault Management Job is created.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Report is successfully generated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Fault Management Report generation fails.</condition>
+    </failureEndConditions>
+    <trigger>POST request for /faultManagementJob is sent by the Buyer/Client.</trigger>
+    <mainSequence>
+        <step id="S1">The Buyer/Client sends a POST request for /faultManagementJob.</step>
+        <step id="S2">The Fault Management Job is created.</step>
+        <step id="S3">The Fault Management Job transitions to inProgress state.</step>
+        <step id="S4">Data is generated for the Fault Management Job.</step>
+        <step id="S5">The Fault Management Report is created.</step>
+        <step id="S6">The Fault Management Report transitions to inProgress state.</step>
+        <step id="S7">Data is collected for the Fault Management Report.</step>
+        <step id="S8">The Fault Management Report transitions to completed state.</step>
+        <step id="S9">The Fault Management Report content is returned to the Buyer/Client.</step>
+    </mainSequence>
+</useCase>

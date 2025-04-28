@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Perform Operation Queue Subscription and Handling</name>
+    <actors>
+        <actor>sidetree-core-go</actor>
+        <actor>Operation Queue</actor>
+        <actor>op-queue DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Operation Queue is available</precondition>
+        <precondition>Operation Queue DB is accessible</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operation Queue subscription and handling completed successfully</condition>
+    </successEndConditions>
+    <trigger>sidetree-core-go sends Add operation requests to Operation Queue handlers</trigger>
+    <mainSequence>
+        <step id="S1">sidetree-core-go subscribes to Operation Queue</step>
+        <step id="S2">Operation Queue confirms subscription</step>
+        <step id="S3">sidetree-core-go adds operation op1 to handler1</step>
+        <step id="S4">handler1 publishes op1 to opQueue</step>
+        <step id="S5">opQueue acknowledges successful publishing of op1</step>
+        <step id="S6">handler1 confirms successful handling of op1 to sidetree-core-go</step>
+        <step id="S7">opQueue forwards op2 to handler1</step>
+        <step id="S8">handler1 acknowledges receipt of op2</step>
+        <step id="S9">handler1 stores op2 in op-queue DB</step>
+        <step id="S10">op-queue DB confirms successful storage of op2</step>
+        <step id="S11">handler1 acknowledges processing of op2 to opQueue</step>
+        <step id="S12">opQueue acknowledges successful handling of op2 by handler1</step>
+        <step id="S13">opQueue forwards op1 to handler2</step>
+        <step id="S14">handler2 acknowledges receipt of op1</step>
+        <step id="S15">handler2 stores op1 in op-queue DB</step>
+        <step id="S16">op-queue DB confirms successful storage of op1</step>
+        <step id="S17">handler2 acknowledges processing of op1 to opQueue</step>
+        <step id="S18">opQueue acknowledges successful handling of op1 by handler2</step>
+    </mainSequence>
+</useCase>

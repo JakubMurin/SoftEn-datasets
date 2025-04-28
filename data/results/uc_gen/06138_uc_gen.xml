@@ -1,0 +1,50 @@
+<useCase id="001">
+	<name>积分流转</name>
+	<description>Managing the circulation of points in the system.</description>
+	<actors>
+		<actor>用户</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">用户调用积分合约部署</step>
+		<step id="S2">平台管理员用户信息查询</step>
+		<step id="S3">积分总量初始化</step>
+		<step id="S4">年末回收商积分派发</step>
+		<step id="S5">注册账户</step>
+		<step id="SP1">电池生产商缴纳积分</step>
+		<step id="SP2">车企缴纳积分</step>
+		<step id="SP3">消费者获取积分</step>
+		<step id="SP4">电池拆解回收环节</step>
+		<step id="SP5">积分交易</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S5">
+			<step id="A1S1">Registration of account completed.</step>
+			<step id="A1S2">Point transfer for registration completed.</step>
+		</asteps>
+		<asteps id="A2" start="SP1">
+			<step id="A2S1">Battery producer pays points for batteries added.</step>
+			<step id="A2S2">Point transfers completed for battery addition.</step>
+		</asteps>
+		<asteps id="A3" start="SP2">
+			<step id="A3S1">Car company pays points for registering vehicles.</step>
+			<step id="A3S2">Point transfers completed for vehicle registrations.</step>
+		</asteps>
+		<asteps id="A4" start="SP3">
+			<step id="A4S1">Consumer receives points via offline network messaging service.</step>
+			<step id="A4S2">Point transfer to consumer completed.</step>
+		</asteps>
+		<asteps id="A5" start="SP4">
+			<step id="A5S1">Recycling of batteries triggers point calculation.</step>
+			<step id="A5S2">Redistributed points to relevant entities.</step>
+		</asteps>
+		<asteps id="A6" start="SP5">
+			<step id="A6S1">Initiation of point sale transaction processed.</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="SP5">
+			<description>Error encountered in point trade process.</description>
+			<step id="E1S1">Unsuccessful point sale transaction.</step>
+		</esteps>
+	</errorSteps>
+</useCase>

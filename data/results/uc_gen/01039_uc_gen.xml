@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Data Processing and Job Execution</name>
+    <description>This describes the process of starting a job, executing it, and reporting the results back.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Facilitator</actor>
+        <actor>Validator</actor>
+        <actor>Miner</actor>
+        <actor>Executor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client has generated a client keypair.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Job successfully completed and reported back to the Client.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Job execution failed or terminated prematurely.</condition>
+    </failureEndConditions>
+    <trigger>Client sends a request to start a job.</trigger>
+    <mainSequence>
+        <step id="S1">Client generates a client keypair using the Facilitator SDK.</step>
+        <step id="S2">Client sends job details and public key to the Facilitator.</step>
+        <step id="S3">Facilitator selects Validator and Miner.</step>
+        <step id="S4">Facilitator sends job details to the Validator.</step>
+        <step id="S5">Validator sends initial job details to the Miner.</step>
+        <step id="S6">Miner checks for a free executor, possibly spins up a new one.</step>
+        <!-- Continue with additional steps as required -->
+    </mainSequence>
+    <!-- Add alternativeSteps and errorSteps sections if needed based on the diagram -->
+</useCase>

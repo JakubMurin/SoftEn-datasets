@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Order Details Management</name>
+	<description>This use case describes the management of order details and related actions</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must be logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All order actions are successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in processing order actions</condition>
+    </failureEndConditions>
+    <trigger>User accesses the order information page</trigger>
+    <mainSequence>
+        <step id="S1">User accesses the Order Details Page</step>
+		<step id="S2">User selects and views order details</step>
+		<step id="S3">User performs actions like re-buy, give feedback, update order, or cancel order as required</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">User selects Re-Buy Product</step>
+            <step id="A1S2">User submits feedback</step>
+            <step id="A1S3">User updates order</step>
+            <step id="A1S4">User cancels order</step>
+		</asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error occurs during order actions processing</description>
+            <step id="E1S1">Error in processing order actions</step>
+		</esteps>
+    </errorSteps>
+</useCase>

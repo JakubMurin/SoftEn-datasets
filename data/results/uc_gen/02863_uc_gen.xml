@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Make a Phone Call</name>
+    <description>As a Caller, I want to make a phone call using a phone booth.</description>
+    <actors>
+        <actor>Caller</actor>
+        <actor>Phone booth</actor>
+        <actor>Reciever</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Caller has added money to the phone booth.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Reciever answers the call.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Reciever does not answer or the call duration exceeds the time limit.</condition>
+    </failureEndConditions>
+    <trigger>The Caller initiates the call by using the phone booth.</trigger>
+    <mainSequence>
+        <step id="S1">Caller adds money to the phone booth.</step>
+        <step id="S2">Caller uses the phone booth.</step>
+        <step id="S3">Phone booth initiates call to Reciever.</step>
+        <step id="S4">Reciever answers the call.</step>
+        <step id="S5">Reciever hangs up after the conversation.</step>
+        <step id="S6">Phone booth removes money from the Caller.</step>
+        <step id="S7">Phone booth returns any remaining money to the Caller.</step>
+    </mainSequence>
+</useCase>

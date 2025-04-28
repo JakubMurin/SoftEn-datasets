@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Communication between Client B and Client A through MQTT Broker</name>
+    <actors>
+        <actor>Client B (智慧大屏)</actor>
+        <actor>Client A (智慧小车)</actor>
+        <actor>MQTT Broker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client B subscribes to topic: screen/report</precondition>
+        <precondition>Client A publishes data to topic: agv/report</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client B subscribes to topic: screen/report</step>
+        <step id="S2">Client A publishes data to topic: agv/report</step>
+        <step id="S3">MQTT Broker forwards data to topic: screen/report</step>
+    </mainSequence>
+</useCase>

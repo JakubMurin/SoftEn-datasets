@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Querying Orders</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Chat Client</actor>
+        <actor>Application</actor>
+        <actor>LLM Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Orders queried successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to query orders</condition>
+    </failureEndConditions>
+    <trigger>User queries for orders</trigger>
+    <mainSequence>
+        <step id="S1">User queries for orders</step>
+        <step id="S2">Chat Client forwards the query to Application</step>
+        <step id="S3">Application prompts with function schema</step>
+        <step id="S4">LLM identifies appropriate function</step>
+        <step id="S5">Application executes the function</step>
+        <step id="S6">LLM sends the final response to Application</step>
+        <step id="S7">Application sends the final response to Chat Client</step>
+        <step id="S8">Chat Client presents the final response to User</step>
+    </mainSequence>
+</useCase>

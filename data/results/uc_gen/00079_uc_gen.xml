@@ -1,0 +1,29 @@
+<useCase id="UC-001">
+  <name>Create Volume</name>
+  <description>
+    The use case involves the creation of a new volume in the Kubernetes environment, either through dynamic provisioning or static provisioning.
+  </description>
+  <actors>
+    <actor>admin</actor>
+    <actor>user</actor>
+  </actors>
+  <preconditions>
+    <precondition>Admin and user have appropriate permissions to interact with Kubernetes and the storage system.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The volume is successfully created in the Kubernetes environment.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Failure occurs during the volume creation process.</condition>
+  </failureEndConditions>
+  <trigger>User initiates the creation of a new volume.</trigger>
+  <mainSequence>
+    <step id="S1">Admin creates storage class in Kubernetes environment.</step>
+    <step id="S2">User creates a persistent volume claim.</step>
+    <step id="S3">Kubernetes communicates with the CSI driver to initiate the volume creation process.</step>
+    <step id="S4">The CSI driver interacts with the storage system to create the volume.</step>
+    <step id="S5">Kubernetes receives the response from the storage system and updates the volume status.</step>
+    <step id="S6">If static provisioning, admin creates a volume in the storage system directly and then creates a persistent volume in Kubernetes.</step>
+    <step id="S7">In case of static provisioning, user creates a persistent volume claim to bind with the created volume.</step>
+  </mainSequence>
+</useCase>

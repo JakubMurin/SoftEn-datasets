@@ -1,0 +1,29 @@
+<useCase id="123456">
+    <name>FM Provisioning Use Case</name>
+    <actors>
+        <actor>Business Users (B), Fault Management Component (SOF)</actor>
+    </actors>
+    <preconditions>
+        <precondition>B and SOF have established communication.</precondition>
+    </preconditions>
+    <trigger>An event signals the start of fault management provisioning.</trigger>
+    <mainSequence>
+        <step id="S1">Business users register for fault management notifications on Fault Management Job and Report.</step>
+        <step id="S2">SOF creates a Fault Management Job upon requested activity.</step>
+        <step id="S3">SOF responds back to Business with a Fault Management Job.</step>
+        <step id="S4">The Fault Management Job creates an event.</step>
+        <step id="S5">The Hub notifies registered Business users about Fault Management Job creation event.</step>
+        <step id="S6">Upon a scheduled date, Fault Management Job changes to 'in progress' state.</step>
+        <step id="S7">The Fault Management Job generates data as needed.</step>
+        <step id="S8">A specified reporting period elapses triggering Fault Management Report creation.</step>
+        <step id="S9">A Fault Management Report receieves a command and is created.</step>
+        <step id="S10">Registered Business users are notified about the creation of the Fault Management Report.</step>
+        <step id="S11">During data collection process, the status of the report becomes 'in progress'.</step>
+        <step id="S12">Data collection completes, and report status transitions to 'completed'.</step>
+        <step id="S13">Once the report is completed, communication informs the respective Fault Management Job.</step>
+        <step id="S14">A readiness signal triggers publication readiness of a fault management job's report.</step>
+        <step id="S15">When the scheduled date comes, the status changes as planned, triggering the report completion/closing of fault management job events.</step>
+        <step id="S16">Notified changes in state events is dispatched to relevant parties based on reporting schedules.</step>
+        <step id="S17">The Business request gets a fault management report yielded by interaction with Fault Management Component.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Edit Metadata of Deposited Item</name>
+    <description>Allows a researcher to edit the metadata of a deposited item</description>
+    <actors>
+        <actor>Researcher</actor>
+    </actors>
+    <preconditions>
+        <precondition>The researcher is logged into the EDRMS system</precondition>
+        <precondition>The researcher has appropriate permission to edit the item</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The metadata of the item is successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Permission is denied or an error occurs during the metadata update process</condition>
+    </failureEndConditions>
+    <trigger>Researcher selects an item to edit metadata</trigger>
+    <mainSequence>
+        <step id="S1">Researcher logs into the EDRMS system.</step>
+        <step id="S2">System authenticates the researcher.</step>
+        <step id="S3">Researcher navigates to My Deposited Items.</step>
+        <step id="S4">System fetches the researcher's deposited items.</step>
+        <step id="S5">System displays the deposited items to the researcher.</step>
+        <step id="S6">Researcher selects an item to edit.</step>
+        <step id="S7">System checks if the researcher has permission to edit the item.</step>
+        <step id="S8">Permission is granted to the researcher.</step>
+        <step id="S9">Researcher edits the metadata of the selected item.</step>
+        <step id="S10">System updates the metadata of the item in the Repository Database.</step>
+        <step id="S11">Repository Database saves the changes.</step>
+        <step id="S12">System confirms the successful update of metadata to the researcher.</step>
+    </mainSequence>
+</useCase>

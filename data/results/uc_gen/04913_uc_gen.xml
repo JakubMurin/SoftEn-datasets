@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>ManageUserResearch</name>
+    <actors>
+        <actor>UserResearchers</actor>
+        <actor>UserResearchManagementSystem</actor>
+        <actor>NSFStaffDatabase</actor>
+        <actor>EmailSystem</actor>
+        <actor>NSFPerson</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User Research Team needs to search for potential NFS participants.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>NSF participants confirmed their attendance.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">User Researcher searches for potential participants based on interview topic.</step>
+        <step id="S2">User Research Management System queries NSF Staff Database for experts.</step>
+        <step id="S3">NSF Staff Database returns list of potential NSF participants.</step>
+        <step id="S4">User Research Management System presents potential participants.</step>
+        <step id="S5">User Researcher selects NSF participants for interviews.</step>
+        <step id="S6">User Research Management System sends invitation emails with interview details.</step>
+        <step id="S7">NSF Person receives interview invitation.</step>
+        <step id="S8">NSF Person RSVPs to the interview invitation.</step>
+        <step id="S9">Email System logs RSVP status.</step>
+        <step id="S10">User Research Management System confirms NSF participant RSVPs.</step>
+    </mainSequence>
+</useCase>

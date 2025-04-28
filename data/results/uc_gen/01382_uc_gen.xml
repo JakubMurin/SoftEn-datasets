@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Update Initial Balance</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>EditBalanceController</actor>
+        <actor>UserService</actor>
+        <actor>AppUserRepository</actor>
+        <actor>User Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends a POST request to /updateInitialBalance with initialBalance</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client sends a POST request to EditBalanceController</step>
+        <step id="S2">EditBalanceController calls getAuthenticatedUser() on UserService</step>
+        <step id="S3">UserService fetches the user from User Database</step>
+        <step id="S4">User Database returns the user to UserService</step>
+        <step id="S5">UserService returns Optional.of(user) to EditBalanceController</step>
+        <step id="S6">EditBalanceController sets the initial balance</step>
+        <step id="S7">EditBalanceController saves the user in AppUserRepository</step>
+        <step id="S8">AppUserRepository updates the user in User Database</step>
+        <step id="S9">User Database confirms the save</step>
+        <step id="S10">EditBalanceController redirects the Client to /premium</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">User not authenticated</step>
+            <step id="A1S2">UserService returns Optional.empty() to EditBalanceController</step>
+            <step id="A1S3">EditBalanceController redirects the Client to /premium (403)</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

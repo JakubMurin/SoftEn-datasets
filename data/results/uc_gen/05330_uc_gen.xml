@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>User interacts with App to create UserCard component</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Liba has been initialized</precondition>
+        <precondition>App is running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>UserCard component is successfully created and rendered</condition>
+    </successEndConditions>
+    <trigger>User requests creation of UserCard component</trigger>
+    <mainSequence>
+        <step id="S1">User requests creation of App component</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">Liba sends cInstance to renderC</step>
+        <step id="S4">renderC receives cInstance</step>
+        <step id="S5">App receives props and renderLiba request</step>
+        <step id="S6">App creates button element</step>
+        <step id="S7">App creates UserCard component</step>
+        <step id="S8">renderLiba receives UserCard creation request</step>
+        <step id="S9">createChildren retrieves instances from cache if available</step>
+        <step id="S10">createChildren creates UserCard component</step>
+        <step id="S11">Liba creates UserCInstance</step>
+        <step id="S12">renderC receives UserCInstance</step>
+        <step id="S13">UserCard receives props and renderLiba request</step>
+        <step id="S14">UserCard creates div element</step>
+        <step id="S15">UserCard creates another div element</step>
+        <step id="S16">UserCard sends created element to renderLiba</step>
+        <step id="S17">renderLiba assigns element to instance</step>
+    </mainSequence>
+</useCase>

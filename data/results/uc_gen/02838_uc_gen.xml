@@ -1,0 +1,36 @@
+<useCase id="1">
+    <name>Send Email Notifications to Attendees</name>
+    <description>Notify attendees about the upcoming summit</description>
+    <actors>
+        <actor>SummitCoordinator</actor>
+        <actor>Authentication System</actor>
+        <actor>Summit Management Module</actor>
+        <actor>Database</actor>
+        <actor>Email System</actor>
+    </actors>
+    <preconditions>
+        <precondition>SummitCoordinator must be authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Emails sent successfully to all selected attendees</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while sending emails</condition>
+    </failureEndConditions>
+    <trigger>SummitCoordinator requests to send email notifications to attendees</trigger>
+    <mainSequence>
+        <step id="S1">SummitCoordinator authenticates in the system</step>
+        <step id="S2">SummitCoordinator requests list of attendees for summit from Summit Management Module</step>
+        <step id="S3">Summit Management Module queries database for attendee details for summit</step>
+        <step id="S4">Database returns attendee list for the summit</step>
+        <step id="S5">Summit Management Module displays attendee list to SummitCoordinator</step>
+        <step id="S6">SummitCoordinator selects attendees to email</step>
+        <step id="S7">SummitCoordinator composes the email</step>
+        <step id="S8">SummitCoordinator requests Summit Management Module to send email to selected attendees</step>
+        <step id="S9">Summit Management Module sends the email request with attendee emails to Email System</step>
+        <step id="S10">Email System logs the email activity in the Database</step>
+        <step id="S11">Database confirms logging of email activity</step>
+        <step id="S12">Email System confirms successful email sent to Summit Management Module</step>
+        <step id="S13">Summit Management Module confirms email sent to attendees to SummitCoordinator</step>
+    </mainSequence>
+</useCase>

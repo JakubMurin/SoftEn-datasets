@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Order Processing</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Shop</actor>
+        <actor>CEIS</actor>
+        <actor>MaterialFlowMonitor</actor>
+        <actor>ProcessControl</actor>
+        <actor>ProductCookbook</actor>
+        <actor>CostAnalyzer</actor>
+        <actor>WISER</actor>
+        <actor>ERP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customer selects product and asks for a quote.</step>
+        <step id="S2">Shop receives request and selects "Crop Top".</step>
+        <step id="S3">CEIS fetches information on "Crop Top".</step>
+        <step id="S4">CEIS requests recipes for "Crop Top" from ProductCookbook.</step>
+        <step id="S5">ProductCookbook provides recipes for "Crop Top".</step>
+        <step id="S6">CEIS requests availability of input materials from MaterialFlowMonitor.</step>
+        <step id="S7">MaterialFlowMonitor provides options for each input material.</step>
+        <step id="S8">CEIS fetches costs and GHG impacts for each alternative from CostAnalyzer, WISER, and ERP.</step>
+        <step id="S9">CEIS adds alternatives to the list of possibilities and informs Shop.</step>
+        <step id="S10">Shop matches alternatives with company policies and presents them to the Customer.</step>
+        <step id="S11">Customer places the order.</step>
+        <step id="S12">CEIS informs ProcessControl about the order and deadlines.</step>
+        <step id="S13">ProcessControl schedules and monitors processes for order fulfillment.</step>
+        <step id="S14">ProcessControl informs MaterialFlowMonitor about results.</step>
+        <step id="S15">CEIS updates data in DigitalProductPassport.</step>
+    </mainSequence>
+</useCase>

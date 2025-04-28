@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Process Refund Request</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>UI/Interface</actor>
+        <actor>RefundRouter</actor>
+        <actor>RefundController</actor>
+        <actor>RefundRepository</actor>
+        <actor>Refund Model</actor>
+        <actor>CustomerRepository</actor>
+        <actor>Database</actor>
+        <actor>AdminNotificationService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Open refund request page</step>
+        <step id="S2">Display refund request form to Customer</step>
+        <step id="S3">Submit refund request with details (customerId, orderId, reason, amount)</step>
+        <step id="S4">Transfer request data to Controller</step>
+        <step id="S5">Fetch customer details</step>
+        <step id="S6">Create and save new refund request</step>
+        <step id="S7">Notify Admin of refund request</step>
+        <step id="S8">Display success message to Customer</step>
+    </mainSequence>
+</useCase>

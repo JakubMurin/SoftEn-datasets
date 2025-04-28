@@ -1,0 +1,38 @@
+<useCase id="1">
+    <name>Perform oneToOne Check</name>
+    <description>As an authorized user, I want to perform a oneToOne check to assess the session details.</description>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Routes</actor>  
+        <actor>Controller</actor>
+        <actor>OneToOne</actor>
+        <actor>MySQL</actor>
+        <actor>Error</actor>
+        <actor>Question</actor>
+        <actor>Measurable</actor>
+        <actor>Ejs</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ensure request is made for oneToOne check with valid session ID.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Session details displayed successfully.</condition>
+    </successEndConditions>
+    <trigger>GET /oneToOne/:sessionID</trigger>
+    <mainSequence>
+        <step id="S1">Navegador requests GET /oneToOne/:sessionID</step>
+        <step id="S2">Routes calls Controller to getCheck(request, response)</step>
+        <step id="S3">Controller fetches session data from OneToOne model</step>
+        <step id="S4">Controller uses MySQL to execute query for session data</step>
+        <step id="S5">Rows retrieved from MySQL</step>
+        <step id="S6">Controller redirects to error page if rows length is 0</step>
+        <step id="S7">Controller redirects to error page if role is not 'Human Resources' or oneOnOneUserIDFK does not match userID</step>
+        <step id="S8">Controller fetches data from Question model</step>
+        <step id="S9">Controller fetches answers from MySQL</step>
+        <step id="S10">Controller displays oneToOneCheck page if answers are missing</step>
+        <step id="S11">Controller fetches data from Measurable model</step>
+        <step id="S12">Controller fetches measures from MySQL</step>
+        <step id="S13">Controller renders oneToOneCheck page</step>
+        <step id="S14">Ejs renders HTML to Navegador</step>
+    </mainSequence>
+</useCase>

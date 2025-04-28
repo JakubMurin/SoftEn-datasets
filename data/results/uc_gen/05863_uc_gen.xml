@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Resolve File Conflict</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>FileService</actor>
+        <actor>FileStorage</actor>
+        <actor>Database</actor>
+        <actor>NotificationService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Conflict Notification received</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Conflict Resolution Complete</condition>
+    </successEndConditions>
+    <trigger>Conflict Notification</trigger>
+    <mainSequence>
+        <step id="S1">Notify Frontend of Conflict</step>
+        <step id="S2">Retrieve Conflicting Files from FileStorage</step>
+        <step id="S3">Analyze Conflicts</step>
+        <step id="S4">Update Files Based on Resolution</step>
+        <step id="S5">Update File Metadata in Database</step>
+        <step id="S6">Send Conflict Resolution Event to NotificationService</step>
+        <step id="S7">Notify Frontend of Conflict Resolution Completion</step>
+    </mainSequence>
+</useCase>

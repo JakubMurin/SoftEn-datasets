@@ -1,0 +1,32 @@
+<useCase id="1">
+    <name>Interacting with ReflexionAgent</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReflexionAgent</actor>
+        <actor>LLM</actor>
+        <actor>ToolRegistry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <preconditions>
+        <precondition>ReflexionAgent, LLM, ToolRegistry, Tool, and Memory components are operational.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Final result is delivered to the User.</condition>
+    </successEndConditions>
+    <trigger>User initiates the interaction by running input_text.</trigger>
+    <mainSequence>
+        <step id="S1">User runs input_text.</step>
+        <step id="S2">ReflexionAgent retrieves relevant memories for input_text.</step>
+        <step id="S3">ReflexionAgent invokes agent_prompt.</step>
+        <step id="S4">LLM responds to the agent_prompt.</step>
+        <step id="S5">Agent executes tool_tool_name with tool_input in Registry.</step>
+        <step id="S6">Tool executes the requested task.</step>
+        <step id="S7">Registry observes the tool execution and sends the results to Agent.</step>
+        <step id="S8">LLM prompts reflection to the Agent.</step>
+        <step id="S9">LLM's reflection is provided to the Agent.</step>
+        <step id="S10">Episodic record of tool use is saved by Memory.</step>
+        <step id="S11">Reflection related information is saved in Memory.</step>
+        <step id="S12">Episodic record of the interaction is saved in Memory if agent decides to finish.</step>
+    </mainSequence>
+</useCase>

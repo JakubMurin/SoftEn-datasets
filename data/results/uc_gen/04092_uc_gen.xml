@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Software Development Process</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Reviewer</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer has edited the code</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Changes have been deployed successfully on calibration.old.filecoin.tools and old.filecoin.tools servers</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Deployment on calibration or mainnet servers failed</condition>
+    </failureEndConditions>
+    
+    <mainSequence>
+        <step id="S1">Developer edits the code</step>
+        <step id="S2">Push the edited code to dev</step>
+        <step id="S3">Create a PR from dev to calibration</step>
+        <step id="S4">Ask for review from the reviewer</step>
+        <step id="S5">Reviewer reviews the PR</step>
+        <step id="S6">Merge the PR and deploy to calibration servers</step>
+        <step id="S7">Check the results on calibration servers</step>
+        <step id="S8">Create a PR from dev to main</step>
+        <step id="S9">Ask for approve from the reviewer</step>
+        <step id="S10">Reviewer approves the PR</step>
+        <step id="S11">Merge the PR and deploy to mainnet servers</step>
+        <step id="S12">Check the results on mainnet servers</step>
+        <step id="S13">User can use the new feature</step>
+    </mainSequence>
+</useCase>

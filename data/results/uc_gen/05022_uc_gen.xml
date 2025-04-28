@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Initialize cloud connection info</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Tumblebug</actor>
+        <actor>Spider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has necessary permissions.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a POST request to Spider to create a driver with specified details.</step>
+        <step id="S2">Spider creates the driver and updates the Spider database with the driver information.</step>
+        <step id="S3">Spider sends the driver information back to the User.</step>
+        <step id="S4">User sends a POST request to Spider to create a region with specified details.</step>
+        <step id="S5">Spider creates the region and updates the Spider database with the region information.</step>
+        <step id="S6">Spider sends the region information back to the User.</step>
+        <step id="S7">User sends a POST request to Spider to create a credential with specified details.</step>
+        <step id="S8">Spider creates the credential and updates the Spider database with the credential information.</step>
+        <step id="S9">Spider sends the credential information back to the User.</step>
+        <step id="S10">User sends a POST request to Spider to create a connection configuration with specified details.</step>
+        <step id="S11">Spider creates the connection configuration and updates the Spider database with the configuration information.</step>
+        <step id="S12">Spider sends the configuration information back to the User.</step>
+        <step id="S13">User sends a POST request to Tumblebug to create a namespace with specified name.</step>
+        <step id="S14">Tumblebug creates the namespace and updates the Tumblebug database with the namespace information.</step>
+        <step id="S15">Tumblebug sends the namespace information back to the User.</step>
+    </mainSequence>
+</useCase>

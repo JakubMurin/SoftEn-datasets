@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Manage Privacy Settings</name>
+    <actors>
+        <actor>User</actor>
+        <actor>GUI/Voice Interface</actor>
+        <actor>PrivacySettingsService</actor>
+        <actor>SettingsStorage</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be able to access privacy settings</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Privacy settings successfully updated</condition>
+    </successEndConditions>
+    <trigger>User requests to access or adjust privacy settings</trigger>
+    <mainSequence>
+        <step id="S1">User requests to access privacy settings</step>
+        <step id="S2">GUI fetches current privacy preferences</step>
+        <step id="S3">Settings retrieve current settings from Storage</step>
+        <step id="S4">Storage returns current settings to Settings</step>
+        <step id="S5">Settings displays current privacy settings on GUI</step>
+        <step id="S6">GUI shows privacy settings options to User</step>
+        <step id="S7">User adjusts privacy and data settings on GUI</step>
+        <step id="S8">GUI updates settings as per User's request</step>
+        <step id="S9">Settings saves new settings to Storage</step>
+        <step id="S10">Storage confirms new settings saved</step>
+        <step id="S11">Settings confirms update to User on GUI</step>
+        <step id="S12">GUI displays success message to User</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC001">
+	<name>Device Reservation</name>
+	<actors>
+		<actor>Alice</actor>
+		<actor>Sarad App</actor>
+		<actor>Registration Server 2</actor>
+		<actor>rest api</actor>
+		<actor>device Actor</actor>
+		<actor>device with Instrument Server</actor>
+	</actors>
+	<preconditions>
+		<precondition>Device configuration changes are needed</precondition>
+		<precondition>Data needs to be requested</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">Alice changes the configuration and requests data.</step>
+		<step id="S2">Sarad App attempts to reserve the device.</step>
+		<step id="S3">rest api relays the request to device Actor.</step>
+		<step id="S4">device Actor relays the request to the device.</step>
+		<step id="S5">device accepts the request and relays port information.</step>
+		<step id="S6">device connects and device Actor opens the port.</step>
+		<step id="S7">device Actor relays the port information to the rest api.</step>
+		<step id="S8">rest api relays the port information to Sarad App.</step>
+		<step id="S9">Alice gets the port information.</step>
+		<step id="S10">Sarad App frees the device.</step>
+		<step id="S11">rest api relays the free command to device Actor.</step>
+		<step id="S12">device Actor relays the free command to the device.</step>
+	</mainSequence>
+</useCase>

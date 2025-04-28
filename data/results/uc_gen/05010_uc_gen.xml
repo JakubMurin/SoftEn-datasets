@@ -1,0 +1,20 @@
+<useCase id="1">
+  <name>Search for Similar Images</name>
+  
+  <actors>
+    <actor>Archivist</actor>
+  </actors>
+  
+  <trigger>Archivist uploads a search image</trigger>
+  
+  <mainSequence>
+    <step id="S1">Archivist uploads a search image to the UI</step>
+    <step id="S2">UI sends the image data to the Web Server</step>
+    <step id="S3">Web Server initiates image search with Image Search Service</step>
+    <step id="S4">Image Search Service queries the Database for similar images</step>
+    <step id="S5">Database responds to Image Search Service with matching images</step>
+    <step id="S6">Image Search Service prepares search results</step>
+    <step id="S7">Results Handler sends the search results back to UI</step>
+    <step id="S8">UI displays the search results to Archivist</step>
+  </mainSequence>
+</useCase>

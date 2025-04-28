@@ -1,0 +1,35 @@
+<useCase id="XYZCase">
+    <name>Run Security Product XYZ Job with Analyzer Integration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Scheduler</actor>
+        <actor>Product Execution</actor>
+        <actor>Product Executor (XYZ)</actor>
+        <actor>Analyzer Product Executor</actor>
+        <actor>Sereco Product Executor</actor>
+        <actor>Product Adapter (XYZ)</actor>
+        <actor>Analyzer Product Adapter</actor>
+        <actor>SecHub Analyzer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Security product XYZ and Analyzer are properly configured.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Security Job executed successfully with Analyzer integration.</condition>
+    </successEndConditions>
+    <trigger>User creates a job with UUID and uploads necessary files.</trigger>
+    <mainSequence>
+        <step id="S1">User creates job with UUID and uploads zip file.</step>
+        <step id="S2">User requests status of the SecHub job.</step>
+        <step id="S3">User marks the job ready to start.</step>
+        <step id="S4">Trigger batch job from Product Execution to Analyzer Product Executor and Analyzer Product Adapter.</step>
+        <step id="S5">Fetch data from Storage for analysis.</step>
+        <step id="S6">Store analyzed results from Analyzer in the Analyzer DB.</step>
+        <step id="S7">Execute Security Product XYZ job.</step>
+        <step id="S8">Filter false positives in the report.</step>
+        <step id="S9">Collect one report from Sereco Product Executor.</step>
+        <step id="S10">Filter report results based on metadata.</step>
+        <step id="S11">Store SecHub job report in SchedulerDB.</step>
+        <step id="S12">User fetches the SecHub report.</step>
+    </mainSequence>
+</useCase>

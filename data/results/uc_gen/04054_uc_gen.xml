@@ -1,0 +1,25 @@
+<useCase id="001">
+    <name>Manage Portfolio Photos</name>
+    <description>Allows the Photographer to add and update photos in their portfolio.</description>
+    <actors>
+        <actor>System</actor>
+        <actor>Photographer</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Photographer should have logged in to the system.</precondition>
+        <precondition>The Photographer has an existing portfolio with photos.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The portfolio photos were successfully updated.</condition>
+    </successEndConditions>
+    <trigger>A Photographer wants to manage their portfolio photos.</trigger>
+    <mainSequence>
+        <!-- Step descriptions include associated Actors in the described tasks -->
+        <step id="S1">Photographer Opens their Portfolio.</step>
+        <step id="S2">System Retrieves Photos of the Portfolio for the Photographer.</step>
+        <step id="S3">Photographer Clicks on "Add Photo" in the Portfolio.</step>
+        <step id="S4">System Asks for Details of the Photo.</step>
+        <step id="S5">Photographer Sends Photo Details over to System.</step>
+        <step id="S6">System Retrieves updated Photos for the Portfolio and notifies the Photographer.</step>
+    </mainSequence>
+</useCase>

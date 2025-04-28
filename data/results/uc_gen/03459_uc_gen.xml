@@ -1,0 +1,23 @@
+<useCase id="UC001">
+	<name>Survey Distribution</name>
+	<description>Distribute surveys to eligible customers for feedback collection.</description>
+	<actors>
+		<actor>Admin</actor>
+		<actor>Surveys Srv</actor>
+		<actor>User Profile</actor>
+		<actor>Order Service</actor>
+	</actors>
+	<preconditions>
+		<precondition>Surveys to be distributed are available in the system.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>All eligible customers have completed the distributed surveys successfully.</condition>
+	</successEndConditions>
+	<trigger>Admin triggers the distribution of surveys.</trigger>
+	<mainSequence>
+		<step id="S1">Admin initiates the creation of surveys.</step>
+		<step id="S2">Surveys Service retrieves necessary customer data from the User Profile.</step>
+		<step id="S3">Surveys Service accesses past orders per customer via the Order Service.</step>
+		<step id="S4">Customer details are fetched and surveys are sent out to eligible customers.</step>
+	</mainSequence>
+</useCase>

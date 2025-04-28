@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Initiate Building Phase</name>
+    <description>As a user, I want to initiate the building phase in order to start constructing various buildings</description>
+    <actors>
+        <actor>sistemaOUsuario</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">sistemaOUsuario initiates the building phase by starting the turn</step>
+        <step id="S2">Builder makes a turn with parameters including screen and other details</step>
+        <step id="S3">The possible constructions are determined</step>
+        <step id="S4">For each possible construction, the system creates a 'Construible' object</step>
+        <step id="S5">The 'Construible' object creates an 'Opcion' object which contains information like cost, title, etc.</step>
+        <step id="S6">The 'Opcion' object is returned to the builder</step>
+        <step id="S7">The list of possible constructions is sent back to the user interface</step>
+        <step id="S8">The user interface starts the building phase with the list of constructions and the option to skip the turn</step>
+        <step id="S9">The user interface returns control to the builder</step>
+        <step id="S10">The builder returns control to the system</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Establish Connection</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ConnectionView</actor>
+        <actor>SonicController</actor>
+        <actor>ConnectionModel</actor>
+        <actor>CommunicationBuilder</actor>
+        <actor>Communicator</actor>
+        <actor>SonicDeviceBuilder</actor>
+        <actor>MainView</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User selects port in ConnectionView</step>
+        <step id="S2">ConnectionView performs property binding with SonicController</step>
+        <step id="S3">SonicController sets the port in ConnectionModel</step>
+        <step id="S4">ConnectionModel updates the view in ConnectionView</step>
+        <step id="S5">User presses "Connect" in ConnectionView</step>
+        <step id="S6">ConnectionView generates CONNECTION_ATTEMPT event to SonicController</step>
+        <step id="S7">SonicController gets the port from ConnectionModel</step>
+        <step id="S8">CommunicationBuilder generates connection with endpoint in SonicController</step>
+        <step id="S9">CommunicationBuilder builds Communicator</step>
+        <step id="S10">SonicController receives communicator from CommunicationBuilder</step>
+        <step id="S11">SonicController builds amplifier with Communicator in SonicDeviceBuilder</step>
+        <step id="S12">SonicDeviceBuilder gets SonicDevice data from Communicator</step>
+        <step id="S13">SonicDeviceBuilder returns SonicDevice to SonicController</step>
+        <step id="S14">SonicController updates ConnectionModel</step>
+        <step id="S15">ConnectionModel updates MainView</step>
+    </mainSequence>
+</useCase>

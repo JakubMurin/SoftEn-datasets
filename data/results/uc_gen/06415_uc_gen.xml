@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Run ReflexionAgent</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Agent</actor>
+        <actor>LLM</actor>
+        <actor>Registry</actor>
+        <actor>Tool</actor>
+        <actor>Memory</actor>
+    </actors>
+    <preconditions>
+        <precondition>Agent, LLM, Registry, Tool, and Memory components are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Final result is returned to the User</condition>
+    </successEndConditions>
+    <trigger>User runs the input_text through the ReflexionAgent</trigger>
+    <mainSequence>
+        <step id="S1">User runs input_text through the ReflexionAgent</step>
+        <step id="S2">ReflexionAgent retrieves relevant memories from Memory</step>
+        <step id="S3">ReflexionAgent invokes agent_prompt through LLM</step>
+        <step id="S4">Agent decides to use a tool and executes it through Registry</step>
+        <step id="S5">Agent reflects on the tool use</step>
+        <step id="S6">Agent saves episodic memory of the tool use and reflection</step>
+        <step id="S7">ReflexionAgent saves the final interaction record in Memory</step>
+    </mainSequence>
+</useCase>

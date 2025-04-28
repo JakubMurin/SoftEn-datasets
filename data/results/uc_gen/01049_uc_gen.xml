@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Perform One-to-One Check</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>Routes</actor>
+        <actor>Controller</actor>
+        <actor>OneToOne</actor>
+        <actor>MySQL</actor>
+        <actor>Error</actor>
+        <actor>Question</actor>
+        <actor>Measurable</actor>
+        <actor>Ejs</actor>
+    </actors>
+    <preconditions>
+        <precondition>Navegador initiates a request to check one-to-one session data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>One-to-one session data successfully retrieved and displayed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Errors encountered during the process.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Navegador requests one-to-one session data from Routes.</step>
+        <step id="S2">Routes forwards the request to Controller to get the check.</step>
+        <step id="S3">Controller fetches session data from OneToOne using the session ID.</step>
+        <step id="S4">OneToOne executes the query on MySQL to fetch data.</step>
+        <step id="S5">Controller checks if rows are returned.</step>
+        <step id="S6">Controller redirects to Error if no rows are returned.</step>
+        <step id="S7">Controller verifies the role and user ID.</step>
+        <step id="S8">Controller fetches answers for the session from Question.</step>
+        <step id="S9">Controller renders the oneToOneCheck Ejs template if no answers are found.</step>
+        <step id="S10">Controller fetches measures for the session from Measurable.</step>
+        <step id="S11">Controller renders the oneToOneCheck Ejs template with data.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Manage Users</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Controller</actor>
+        <actor>Service</actor>
+        <actor>UsersRepo</actor>
+        <actor>ProductsRepo</actor>
+        <actor>BidsRepo</actor>
+        <actor>OrdersRepo</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Client sends POST request to create a new user</step>
+        <step id="S2">Controller activates and forwards request to Service</step>
+        <step id="S3">Service creates and saves the user in UsersRepo</step>
+        <step id="S4">Service returns the created user to Controller</step>
+        <step id="S5">Controller sends the user back to Client</step>
+        <step id="S6">Client sends GET request to retrieve all users</step>
+        <step id="S7">Controller activates and requests Service to find all users</step>
+        <step id="S8">Service retrieves users from UsersRepo and sends them back to Controller</step>
+        <step id="S9">Controller returns the list of users to Client</step>
+        <step id="S10">Client sends GET request to retrieve a specific user</step>
+        <step id="S11">Controller activates and requests Service to find the user by ID</step>
+        <step id="S12">Service retrieves the user from UsersRepo and sends it back to Controller</step>
+        <step id="S13">Controller returns the specific user to Client</step>
+        <step id="S14">Client sends PUT request to update a user</step>
+        <step id="S15">Controller activates and requests Service to update the user</step>
+        <step id="S16">Service checks if the user exists and updates it if found, or throws an exception if not</step>
+        <step id="S17">Controller returns the updated user or exception to Client</step>
+        <step id="S18">Client sends DELETE request to remove a user</step>
+        <step id="S19">Controller activates and requests Service to remove the user</step>
+        <step id="S20">Service checks if the user exists and proceeds with removal process</step>
+        <step id="S21">Service handles various checks related to user's products, bids, and orders before removing the user</step>
+        <step id="S22">Service removes the user if all conditions are met, otherwise throws specific exceptions</step>
+        <step id="S23">Controller returns success message or exception to Client</step>
+    </mainSequence>
+</useCase>

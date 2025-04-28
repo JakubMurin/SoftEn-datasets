@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Place Order</name>
+    <actors>
+        <actor>Customer</actor>
+        <actor>ConfirmOrderPanel</actor>
+        <actor>SubscriptionService</actor>
+        <actor>IntegrationService</actor>
+        <actor>Connector</actor>
+        <actor>ISV</actor>
+        <actor>JBillingApi</actor>
+    </actors>
+    <preconditions>
+        <precondition>Customer wants to place an order.</precondition>
+    </preconditions>
+    <trigger>Customer initiates the order placement process.</trigger>
+    <mainSequence>
+        <step id="S1">Customer places an order on the ConfirmOrderPanel.</step>
+        <step id="S2">ConfirmOrderPanel creates the order by calling SubscriptionService's create() method.</step>
+        <step id="S3">SubscriptionService publishes the order to IntegrationService using the publish() method.</step>
+        <step id="S4">IntegrationService triggers the event to Connector for non-interactive event publication.</step>
+        <step id="S5">Connector sends a GET request to ISV for async subscription.</step>
+        <step id="S6">ISV responds with event information to Connector.</step>
+        <step id="S7">Connector acknowledges the event with status 202 to ISV.</step>
+        <step id="S8">IntegrationService is notified by Connector that ISV has been informed.</step>
+        <step id="S9">SubscriptionService is pending provisioning after notifying IntegrationService.</step>
+        <step id="S10">SubscriptionService attempts to generate and pay invoices using JBillingApi.</step>
+        <step id="S11">JBillingApi responds that the invoices were not generated due to OrderStatus not being ACTIVE.</step>
+        <step id="S12">SubscriptionService indicates pending subscription status to ConfirmOrderPanel.</step>
+        <step id="S13">ConfirmOrderPanel notifies Customer of the pending subscription.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Scribble, Join scribble rooms sequence diagram</name>
+    <actors>
+        <actor>user</actor>
+        <actor>client</actor>
+        <actor>server</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has started the app.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User has successfully joined the chat room.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during the process.</condition>
+    </failureEndConditions>
+    <trigger>User starts the app and wants to join a chat room.</trigger>
+    <mainSequence>
+        <step id="S1">User asks for a nickname.</step>
+        <step id="S2">User writes the nickname.</step>
+        <step id="S3">Client sends the join request with nickname, IP, and port to the server.</step>
+        <step id="S4">Server adds the nickname and IP to the chat room.</step>
+        <step id="S5">Server notifies the client that the user has joined.</step>
+        <step id="S6">Server updates the chat with the joined message.</step>
+        <step id="S7">Client enables the "Ready to Play" button.</step>
+        <step id="S8">Client enables the chat interface.</step>
+        <step id="S9">User acknowledges the successful join.</step>
+    </mainSequence>
+</useCase>

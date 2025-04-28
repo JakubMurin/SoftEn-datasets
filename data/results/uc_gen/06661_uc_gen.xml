@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Initial setup of communication service</name>
+    <actors>
+        <actor>SOR</actor>
+        <actor>Directory Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Service has not been registered</precondition>
+        <precondition>Network discovery data is not stored</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">SOR initiates service registration</step>
+        <step id="S2">Directory Server acknowledges and stores network and node configuration data</step>
+        <step id="S3">Directory Server identifies and stores uploaded device information</step>
+        <step id="S4">Directory Server returns pending forwarding tasks to SOR</step>
+        <step id="S5">SOR reports point-to-point communication information</step>
+        <step id="S6">Directory Server recognizes uploaded equipment information and stores it</step>
+        <step id="S7">Directory Server refreshes view with visualization program</step>
+        <step id="S8">SOR executes pending forwarding tasks consecutively</step>
+    </mainSequence>
+</useCase>

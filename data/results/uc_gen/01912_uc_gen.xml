@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Complete Sign In Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HelloController</actor>
+        <actor>Bankomat</actor>
+        <actor>SignIn_UpController</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates the sign in process by clicking on the accept button.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User triggers the 'onAcceptButton' event in the HelloController.</step>
+        <step id="S2">HelloController creates a new instance of Bankomat.</step>
+        <step id="S3">HelloController initializes the Bankomat with selected bank, location, and initial balance.</step>
+        <step id="S4">HelloController adds a new UserAdmin with username 'admin' and PIN 5555 to the Bankomat.</step>
+        <step id="S5">HelloController sets the Bankomat instance in the SignIn_UpController.</step>
+        <step id="S6">SignIn_UpController displays the sign-in interface.</step>
+        <step id="S7">HelloController closes the sign-in process.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Like Attendee</name>
+    <actors>
+        <actor>Recruiter</actor>
+    </actors>
+    <mainSequence>
+        <step id="UC1S1">Recruiter selects to like an attendee with a specific ID.</step>
+        <step id="UC1S2">Controller receives a POST request to like the attendee.</step>
+        <step id="UC1S3">Controller delegates the request to the service layer.</step>
+        <step id="UC1S4">Service layer retrieves the recruiter's details by ID from the repository.</step>
+        <step id="UC1S5">Service layer receives the Recruiter entity from the repository.</step>
+        <step id="UC1S6">Service layer retrieves the attendee's details by ID from the repository.</step>
+        <step id="UC1S7">Service layer receives the Attendee entity from the repository.</step>
+        <step id="UC1S8">Service layer checks if the recruiter has already liked this attendee.</step>
+        <step id="UC1S9">Service layer detects a DuplicateLikeException when the like already exists.</step>
+        <step id="UC1S10">Controller receives a successful response from the service layer upon creating a new like.</step>
+        <step id="UC1S11">Controller sends a 200 OK response to the Recruiter confirming the action.</step>
+    </mainSequence>
+</useCase>

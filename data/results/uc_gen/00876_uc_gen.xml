@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Query Order</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>QueryOrderHandler</actor>
+        <actor>OrderRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>The client requests to query an order by table ID.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The query returns an order successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The queried order is not found.</condition>
+    </failureEndConditions>
+    <trigger>query order</trigger>
+    <mainSequence>
+        <step id="S1">Client requests to query an order</step>
+        <step id="S2">QueryOrderHandler forwards the request to OrderRepo</step>
+        <step id="S3">OrderRepo retrieves the order from the OrderDataStore</step>
+        <step id="S4">If order found: QueryOrderHandler sends the order back to Client</step>
+        <step id="S5">If order not found: QueryOrderHandler notifies Client about the order not found</step>
+    </mainSequence>
+</useCase>

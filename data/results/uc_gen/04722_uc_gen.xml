@@ -1,0 +1,38 @@
+<useCase id="1">
+    <name>Manage Charging Transactions</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Core</actor>
+        <actor>Libocpp</actor>
+        <actor>Database</actor>
+        <actor>CSMS</actor>
+    </actors>
+    <preconditions>
+        <precondition>System must be operational</precondition>
+        <precondition>User must have valid ID tag</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User swipes ID tag</step>
+        <step id="S2">Core authorizes the transaction</step>
+        <step id="S3">User plugs in the cable</step>
+        <step id="S4">Core starts the transaction and informs CSMS</step>
+        <step id="S5">Core inserts transaction details into the database</step>
+        <step id="S6">User pauses charging of car</step>
+        <step id="S7">Core updates charging state with Libocpp</step>
+        <step id="S8">Libocpp updates CSMS with charging state change</step>
+        <step id="S9">Libocpp updates database with charging state change and sequence number</step>
+        <step id="S10">Core constructs ChargePoint in case of power outage or crash</step>
+        <step id="S11">Libocpp gets transaction details from the database for each evse_id</step>
+        <step id="S12">Libocpp re-initializes transaction for evse_id</step>
+        <step id="S13">Libocpp continues normal operations</step>
+        <step id="S14">User continues charging of car</step>
+        <step id="S15">Core updates charging state with Libocpp</step>
+        <step id="S16">Libocpp prints a warning if no known transaction is found</step>
+        <step id="S17">Libocpp updates CSMS and database with charging state change and sequence number</step>
+        <step id="S18">User swipes ID tag to finish transaction</step>
+        <step id="S19">Core informs Libocpp that the transaction has finished</step>
+        <step id="S20">Libocpp prints a warning if no known transaction is found</step>
+        <step id="S21">Libocpp informs CSMS that the transaction has ended</step>
+        <step id="S22">Libocpp deletes the transaction from the database</step>
+    </mainSequence>
+</useCase>

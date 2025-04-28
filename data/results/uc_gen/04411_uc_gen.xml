@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Delete Employee</name>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager selects "Delete Employee" option.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Manager selects "Delete Employee"</step>
+        <step id="S2">Web Interface receives the request to delete an employee.</step>
+        <step id="S3">Server checks if the employee exists in the database.</step>
+        <step id="S4">If employee exists:</step>
+        <step id="S5">Server confirms the employee has been found.</step>
+        <step id="S6">Web Interface requests confirmation from the Manager.</step>
+        <step id="S7">Manager confirms the deletion.</step>
+        <step id="S8">Web Interface sends the delete command with the confirmation to Server.</step>
+        <step id="S9">Server deletes the employee record from the database.</step>
+        <step id="S10">Server confirms the deletion to Web Interface.</step>
+        <step id="S11">Web Interface notifies Manager of successful deletion.</step>
+        <step id="S12">If employee does not exist:</step>
+        <step id="S13">Server notifies Web Interface that the employee does not exist.</step>
+        <step id="S14">Web Interface shows an error message to the Manager.</step>
+    </mainSequence>
+</useCase>

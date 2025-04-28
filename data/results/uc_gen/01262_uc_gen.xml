@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Transaction Endpoint</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>PluginLedgerConnectorPolkadot</actor>
+    </actors>
+    <trigger>transact(RunTransactionRequest)</trigger>
+    <mainSequence>
+        <step id="S1">Caller triggers transaction using transact(RunTransactionRequest) method</step>
+        <step id="S2">PluginLedgerConnectorPolkadot responds based on web3SigningCredential</step>
+        <step id="S3">If web3SigningCredential is CACTUSKEYCHAINREF, transactCactusKeychainRef(RunTransactionRequest) is performed</step>
+        <step id="S4">If web3SigningCredential is CACTUSKEYCHAINREF, return RunTransactionResponse</step>
+        <step id="S5">If web3SigningCredential is MNEMONICSTRING, transactMnemonicString(RunTransactionRequest) is performed</step>
+        <step id="S6">If web3SigningCredential is MNEMONICSTRING, return RunTransactionResponse</step>
+        <step id="S7">If web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is defined, transactSigned(RunTransactionRequest) is performed</step>
+        <step id="S8">If web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is defined, return RunTransactionResponse</step>
+        <step id="S9">If web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is not defined, throw error: Expected pre-signed raw transaction</step>
+        <step id="S10">If web3SigningCredential is unrecognized, throw error: Unrecognized Web3SigningCredentialType</step>
+    </mainSequence>
+</useCase>

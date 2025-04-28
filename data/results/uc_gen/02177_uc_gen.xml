@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Realizar una transacción</name>
+    <actors>
+        <actor>Tester</actor>
+        <actor>Usuario</actor>
+        <actor>Referido</actor>
+    </actors>
+    <preconditions>
+        <precondition>El Tester debe instanciar un Usuario y un Referido</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>El balance del Usuario se incrementa en 100</condition>
+    </successEndConditions>
+    <trigger>El Tester verifica el balance del Usuario</trigger>
+    <mainSequence>
+        <step id="S1">El Tester instancia un Usuario con el nombre "Juan"</step>
+        <step id="S2">El Tester instancia un Referido con el nombre "Pedro"</step>
+        <step id="S3">El Tester agrega el Referido al Usuario</step>
+        <step id="S4">El Usuario añade el Referido a su lista de referidos</step>
+        <step id="S5">El Usuario incrementa su balance en 100</step>
+    </mainSequence>
+</useCase>

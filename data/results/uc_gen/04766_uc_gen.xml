@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>View Story Details</name>
+    <description>As a User, I want to view the details of a story.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryDetailView</actor>
+        <actor>StoriesController</actor>
+        <actor>AuthorsController</actor>
+        <actor>ChaptersController</actor>
+        <actor>CommentsController</actor>
+        <actor>MsgService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and navigates to the story detail view.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The details of the story are successfully displayed on the page.</condition>
+    </successEndConditions>
+    <trigger>User clicks on a story cover.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks story cover.</step>
+        <step id="S2">Request API to display story details.</step>
+        <step id="S3">Process GetStoryDetail().</step>
+        <step id="S4">Query data from the database.</step>
+        <step id="S5">Return data from the database.</step>
+        <step id="S6">MsgReturn()</step>
+        <step id="S7">Response Payload Format.</step>
+        <step id="S8">Display Story Detail Page.</step>
+    </mainSequence>
+</useCase>

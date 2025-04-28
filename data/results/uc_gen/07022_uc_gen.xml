@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Process Player Move</name>
+    <actors>
+        <actor>Player</actor>
+    </actors>
+    <preconditions>
+        <precondition>Player clicks on the board</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Player successfully makes a move</condition>
+    </successEndConditions>
+    <trigger>Player mouseClicked(x, y)</trigger>
+    <mainSequence>
+        <step id="S1">Board processes the move</step>
+        <step id="S2">Board validates the position</step>
+        <step id="S3">Board retrieves the color at the position</step>
+        <step id="S4">Board processes the move with the current color</step>
+        <step id="S5">Server sends the move to validate</step>
+        <step id="S6">Server validates the move</step>
+        <step id="S7">Board changes state</step>
+    </mainSequence>
+</useCase>

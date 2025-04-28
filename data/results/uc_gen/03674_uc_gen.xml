@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Velg "Foreslå oppskrift" </name>
+    <actors>
+        <actor>Bruker</actor>
+        <actor>Kitchenmanager</actor>
+        <actor>Fridge</actor>
+        <actor>Cookbook</actor>
+        <actor>RecipeManager</actor>
+        <actor>FilterCriteria</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Bruker velger "Foreslå oppskrift"</step>
+        <step id="S2">Kitchenmanager henter innhold fra Fridge</step>
+        <step id="S3">Fridge returnerer innhold</step>
+        <step id="S4">Kitchenmanager oppretter filter basert på innhold hos FilterCriteria</step>
+        <step id="S5">Kitchenmanager henter oppskrifter fra Cookbook</step>
+        <step id="S6">Cookbook filtrerer oppskrifter mot innhold og kriterier hos RecipeManager</step>
+        <step id="S7">RecipeManager returnerer treff til Cookbook</step>
+        <step id="S8">Cookbook returnerer treff (foreslåtte oppskrifter) til Kitchenmanager</step>
+        <step id="S9">Kitchenmanager viser resultater til Bruker</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,13 @@
+<useCase id="UC1">
+    <name>Create Build</name>
+    <actors>
+        <actor>DevSecOpsManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">DevSecOpsManager creates a build.</step>
+        <step id="S2">DevSecOpsManager instructs the DevSecOps Service Orchestrator Manager to create a build with the name "hello" and file "./templates/build.yml".</step>
+        <step id="S3">The DevSecOps Service Orchestrator Manager creates the build.</step>
+        <step id="S4">The provisioner creates the build with the specified name and file.</step>
+        <step id="S5">The provisioner notifies the EventBus that the build has been created.</step>
+    </mainSequence>
+</useCase>

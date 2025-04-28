@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Communication between Consumer and Publisher</name>
+    <actors>
+        <actor>One Consumer</actor>
+        <actor>Consumer Server</actor>
+        <actor>Consumer Supervisor</actor>
+        <actor>Publisher Supervisor</actor>
+        <actor>Topic Supervisor</actor>
+        <actor>Exchanger</actor>
+        <actor>Publisher Server</actor>
+        <actor>One Publisher</actor>
+    </actors>
+    <preconditions>
+        <precondition>Consumers and Publishers are registered in the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Message successfully sent from Publisher to Consumer.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Message delivery failed.</condition>
+    </failureEndConditions>
+    <trigger>Start connection between Consumer and Publisher.</trigger>
+    <mainSequence>
+        <step id="S1">Consumer starts connection with Consumer Server.</step>
+        <step id="S2">Consumer Server creates a new Consumer.</step>
+        <step id="S3">Consumer creates a new Consumer.</step>
+        <step id="S4">Consumer logs in with username.</step>
+        <step id="S5">Consumer successfully logs in.</step>
+        <step id="S6">Consumer subscribes to topics.</step>
+        <step id="S7">Consumer subscribes to Exchanger.</step>
+        <step id="S8">Exchanger creates a new topic if not present.</step>
+        <step id="S9">Topic Supervisor creates a new topic.</step>
+        <step id="S10">Exchanger adds or checks subscriber pointer.</step>
+        <step id="S11">Publisher starts connection with Publisher Server.</step>
+        <step id="S12">Publisher Server creates a new Publisher.</step>
+        <step id="S13">Publisher creates a new Publisher.</step>
+        <step id="S14">Publisher sends topic and message.</step>
+        <step id="S15">Publisher sends topic and message to Exchanger.</step>
+        <step id="S16">Exchanger sends message to the topic.</step>
+        <step id="S17">Topic sends message to each subscriber.</step>
+        <step id="S18">Consumer unsubscribes from topics.</step>
+        <step id="S19">Consumer unsubscribes from Exchanger.</step>
+        <step id="S20">Exchanger moves subscriber pointer to Unsubscribe list.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Material Addition Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>HomepageScreen</actor>
+        <actor>CameraScreen</actor>
+        <actor>DisplayPictureScreen</actor>
+        <actor>ApiService</actor>
+        <actor>MaterialsRouter</actor>
+        <actor>PredictionRouter</actor>
+        <actor>MaterialsService</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has opened the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Material successfully added to the database</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Material addition process was canceled</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Display list of materials on HomepageScreen</step>
+        <step id="S2">User selects camera button on HomepageScreen</step>
+        <step id="S3">User selects "Take photo" on CameraScreen</step>
+        <step id="S4">User captures photo on CameraScreen</step>
+        <step id="S5">Display captured photo on DisplayPictureScreen</step>
+        <step id="S6">Review photo quality on DisplayPictureScreen</step>
+        <step id="S7">User confirms selection on DisplayPictureScreen</step>
+        <step id="S8">Upload photo to ApiService</step>
+        <step id="S9">API Call to add material on MaterialsRouter</step>
+        <step id="S10">Process photo on PredictionRouter</step>
+        <step id="S11">Analyze photo on MaterialsService</step>
+        <step id="S12">Save material data in Database</step>
+        <step id="S13">Confirm material added on MaterialsRouter</step>
+        <step id="S14">Display success message on DisplayPictureScreen</step>
+        <step id="S15">Update materials list on HomepageScreen</step>
+        <step id="S16">Display updated materials list on HomepageScreen</step>
+    </mainSequence>
+</useCase>

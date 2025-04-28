@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Run Automated Tests on GitHub Pull Request</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Repo</actor>
+        <actor>GA</actor>
+        <actor>Behave</actor>
+        <actor>Codecov</actor>
+        <actor>MyPy</actor>
+        <actor>Pytest</actor>
+        <actor>Ruff</actor>
+        <actor>Readme</actor>
+        <actor>CodecovService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer has created a Pull Request on GitHub Repo</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All automated tests run successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Some automated tests have failed</condition>
+    </failureEndConditions>
+    <trigger>Developer initiates the Pull Request</trigger>
+    <mainSequence>
+        <step id="S1">Developer initiates Pull Request on GitHub Repo</step>
+        <step id="S2">Repo triggers workflows on GitHub Actions</step>
+        <step id="S3">GA runs behave tests</step>
+        <step id="S4">GA uploads behave results</step>
+        <step id="S5">Readme is updated with badges</step>
+        <step id="S6">GA runs pytests with coverage report</step>
+        <step id="S7">Codecov uploads coverage report to Codecov Service</step>
+        <step id="S8">Codecov Service updates badge on Readme</step>
+        <step id="S9">GA runs mypy checks</step>
+        <step id="S10">MyPy uploads type-check results</step>
+        <step id="S11">Readme is updated with badge for MyPy</step>
+        <step id="S12">GA runs pytests</step>
+        <step id="S13">Pytest uploads test results</step>
+        <step id="S14">Readme is updated with badge for Pytest</step>
+        <step id="S15">GA runs ruff checks</step>
+        <step id="S16">Ruff uploads linting results</step>
+        <step id="S17">Readme is updated with badge for Ruff</step>
+    </mainSequence>
+</useCase>

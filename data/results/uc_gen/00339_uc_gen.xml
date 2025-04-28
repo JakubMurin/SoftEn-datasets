@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Hide Story</name>
+    <description>Hide a story from the user's view.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>StoryPublishView</actor>
+        <actor>StoriesController</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user is logged in and viewing the Stories Management Page.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The story is successfully hidden from the user's view.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the 'Hide Story' option in the Stories Management Page.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on 'Hide Story' option.</step>
+        <step id="S2">StoryPublishView sends request to StoriesController.</step>
+        <step id="S3">StoriesController processes the request by invoking DeleteStory() function.</step>
+        <step id="S4">StoriesController queries data from Database.</step>
+        <step id="S5">Database returns data to StoriesController.</step>
+        <step id="S6">StoriesController formats the response payload.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">If the story deletion process fails, an error message is sent to the user.</step>        
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1">
+            <description>If there is an error during the deletion process, the following steps occur:</description>
+            <step id="E1S1">Error message is displayed to the user.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

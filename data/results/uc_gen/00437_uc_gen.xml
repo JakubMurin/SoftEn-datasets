@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>View and Add Note to Account</name>
+    <description>User views the account details and adds a note to it.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the account.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Note successfully added to the account.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while adding the note to the account.</condition>
+    </failureEndConditions>
+    <trigger>User clicks on the 'Add account note' button.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the Header 'Add account note' button.</step>
+        <step id="S2">User navigates to the 'Add note' page.</step>
+        <step id="S3">User inputs data in the 'Add note' form.</step>
+        <step id="S4">User clicks on the 'Save Note' button.</step>
+        <step id="S5">Note creation process is triggered.</step>
+        <step id="S6">Note is created and stored in the database.</step>
+        <step id="S7">The created note is returned to the user in JSON format.</step>
+    </mainSequence>
+</useCase>

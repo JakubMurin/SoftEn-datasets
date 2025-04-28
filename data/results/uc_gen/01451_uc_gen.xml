@@ -1,0 +1,46 @@
+<useCase id="UC-1">
+    <name>User Access Validation</name>
+    <description>Validate user access to services</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>UserSecurityService</actor>
+        <actor>ServiceA</actor>
+        <actor>ServiceB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests access to services</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is granted access to services</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User is denied access to services</condition>
+    </failureEndConditions>
+    <trigger>User initiates access request</trigger>
+    <mainSequence>
+        <step id="S1">User requests access through Gateway</step>
+        <step id="S2">Gateway validates token with UserSecurityService</step>
+        <step id="S3">Gateway forwards request to ServiceA</step>
+        <step id="S4">ServiceA responds to Gateway</step>
+        <step id="S5">Gateway sends response to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Token is invalid</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">x-server-name header is not present</step>
+        </asteps>
+        <asteps id="A3" start="A2S1">
+            <step id="A3S1">Access denied</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>Request from Service</description>
+            <step id="E1S1">Check x-server-name header</step>
+            <step id="E1S2">x-server-name header is not present</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Compute Delivery Graph</name>
+    <actors>
+        <actor>CPS</actor>
+        <actor>CM</actor>
+        <actor>DG</actor>
+        <actor>SWP</actor>
+        <actor>S</actor>
+        <actor>MGI</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">CPS computes the delivery graph by sending a request to CM.</step>
+        <step id="S2">CM initializes a TreeMap to store mapped routes.</step>
+        <step id="S3">For each waypoint in the request, CM retrieves the start waypoint intersection from SWP.</step>
+        <step id="S4">CM initializes arrays to store predecessors and durations.</step>
+        <step id="S5">CM adds the start waypoint intersection to the greys set.</step>
+        <step id="S6">CM finds the minimal grey intersection and updates predecessors and durations arrays.</step>
+        <step id="S7">For each neighbor intersection of the minimal grey intersection, CM retrieves the ID.</step>
+        <step id="S8">If the neighbor intersection is not in blacks set, CM gets the street section and updates arrays.</step>
+        <step id="S9">If the neighbor intersection is in whites set, CM removes it from whites and adds it to greys.</step>
+        <step id="S10">CM removes the minimal grey intersection from greys set.</step>
+        <step id="S11">CM retrieves the minimal grey intersection ID from MGI.</step>
+        <step id="S12">CM adds the minimal grey intersection to blacks set.</step>
+        <step id="S13">CM creates the delivery graph DG with the mapped routes.</step>
+        <step id="S14">CM sends the delivery graph back to CPS.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Creating a Post-It</name>
+    <description>As a user, I want to be able to create a new Post-It note on a specific board.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user has the ability to create a Post-It note on a board.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Post-It note is successfully created on the specified board.</condition>
+    </successEndConditions>
+    <trigger>Client makes a request to create a Post-It note.</trigger>
+    <mainSequence>
+        <step id="S1">Client invokes the canCreatePostIt()-method.</step>
+        <step id="S2">Server returns the boardsUserCanWrite confirmation.</step>
+        <step id="S3">Client requests to create a Post-It note with the necessary information to Server.</step>
+        <step id="S4">Server receives a string with board title, board position to create Post-It, and content of Post-It from the Client.</step>
+        <step id="S5">Server creates the Post-It and sends an ACK code to the Client.</step>
+    </mainSequence>
+</useCase>

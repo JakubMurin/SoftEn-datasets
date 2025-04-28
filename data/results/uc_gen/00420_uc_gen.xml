@@ -1,0 +1,46 @@
+<useCase id="UC1">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>LikeController</actor>
+        <actor>LikeService</actor>
+        <actor>LikeRepository</actor>
+        <actor>LikesDatabase</actor>
+        <actor>PostsDatabase</actor>
+        <actor>CommentsDatabase</actor>
+        <actor>EventsDatabase</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the entity page (post, comment, event)</precondition>
+    </preconditions>
+    <trigger>User clicks the "Like/Dislike" button</trigger>
+    <mainSequence>
+        <step id="S1">Display entity details and like button</step>
+        <step id="S2">Toggle like for the entity</step>
+        <step id="S3">Process like/dislike operation</step>
+        <step id="S4">Update like count on the entity</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Remove like from the entity</step>
+            <step id="A1S2">Return error message if removal fails</step>
+            <step id="A1S3">Update like count and return success message if removal succeeds</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Like the entity</step>
+            <step id="A2S2">Return error message if liking fails</step>
+            <step id="A2S3">Update like count and return success message if liking succeeds</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S2">
+            <description>Failed to remove like from the entity</description>
+            <step id="E1S1">Display "Failed to remove like from the entity" message</step>
+        </esteps>
+        <esteps id="E2" start="A2S2">
+            <description>Failed to like the entity</description>
+            <step id="E2S1">Display "Failed to like the entity" message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

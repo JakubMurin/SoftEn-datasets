@@ -1,0 +1,20 @@
+<useCase id="UC1">
+   <name>Delete istiocsr CR</name>
+   <description>
+      User wants to delete Istio CSR CR.
+   </description>
+   <actors>
+      <actor>User</actor>
+      <actor>API server</actor>
+      <actor>cert-manager-operator</actor>
+   </actors>
+   <preconditions>
+      <precondition>ISTIO CSR CR exists and needs to be deleted by the User.</precondition>
+   </preconditions>
+   <mainSequence>
+      <step id="S1">User initiates deletion of Istio CSR CR.</step>
+      <step id="S2">API Server receives the delete request.</step>
+      <step id="S3">API Server hands over the event to cert-manager-operator.</step>
+      <step id="S4">cert-manager-operator stops managing Istio-csr Agent resources.</step>
+   </mainSequence>
+</useCase>

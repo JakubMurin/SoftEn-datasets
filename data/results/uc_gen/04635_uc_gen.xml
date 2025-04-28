@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>User initializes components and starts simulation</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Plant</actor>
+        <actor>Sensor</actor>
+        <actor>Operators</actor>
+        <actor>NuclearReactor</actor>
+        <actor>StatusReporter</actor>
+        <actor>Owner</actor>
+    </actors>
+    <preconditions>
+        <precondition>Components are properly set up</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User initializes the components</step>
+        <step id="S2">User starts the simulation</step>
+        <step id="S3">Plant requests temperature measurement from Sensor</step>
+        <step id="S4">Sensor requests the most recent state from NuclearReactor</step>
+        <step id="S5">Sensor checks the state</step>
+        <step id="S6">Sensor notifies Operators of the state</step>
+        <step id="S7">Operators manage the situation</step>
+        <step id="S8">StatusReporter sends a report of the situation</step>
+        <step id="S9">Owner receives the report with the temperature</step>
+    </mainSequence>
+</useCase>

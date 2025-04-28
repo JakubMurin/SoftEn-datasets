@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Agent Recovery and Policy Registry Update</name>
+    <description>Alice performs agent recovery and updates the agent policy registry.</description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Alice's Edge Agent</actor>
+        <actor>Alice's Cloud Agent</actor>
+        <actor>Issuers Agent</actor>
+        <actor>Issuer</actor>
+        <actor>Ledger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys.</precondition>
+        <precondition>The agent policy registry has been compromised.</precondition>
+        <precondition>Alice is locked out of the agent policy registry on the ledger.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Alice successfully completes agent recovery.</condition>
+        <condition>The agent policy registry is updated.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Alice fails to complete agent recovery.</condition>
+        <condition>The agent policy registry is not updated.</condition>
+    </failureEndConditions>
+    <trigger>Alice initiates the recovery process.</trigger>
+    <mainSequence>
+        <step id="S1">Alice generates a new policy registry address and stores it.</step>
+        <step id="S2">Alice starts the process to update the agent policy registry.</step>
+        <step id="S3">Alice revokes all claims with the old agent policy address.</step>
+        <step id="S4">Alice notifies the Issuers to reissue her claims.</step>
+        <step id="S5">Issuer authenticates Alice.</step>
+        <step id="S6">Issuer revokes the claim and updates the non-revocation accumulator.</step>
+        <step id="S7">Ledger updates the accumulator and results are forwarded.</step>
+        <step id="S8">Alice acknowledges the process completion.</step>
+        <step id="S9">Alice completes the reissuing of claims with the new policy address.</step>
+    </mainSequence>
+</useCase>

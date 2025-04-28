@@ -1,0 +1,38 @@
+<useCase id="UC1">
+    <name>Perform Operations in Operation Queue</name>
+    <description>As a client (sidetree-core-go), I want to add operations to the operation queue, so that the handlers can process them.</description>
+    <actors>
+        <actor>client (sidetree-core-go)</actor>
+        <actor>handler1</actor>
+        <actor>handler2</actor>
+    </actors>
+    <preconditions>
+        <precondition>Operation Queue instances (handler1 and handler2) are initialized and ready to receive operations.</precondition>
+        <precondition>The operation queue (opQueue) is subscribed to by handler1 and handler2.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All operations are successfully added to the operation queue and processed by the handlers.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Any operation fails to be added to the operation queue or processed by the handlers.</condition>
+    </failureEndConditions>
+    <trigger>Client initiates the addition of operations to the operation queue.</trigger>
+    <mainSequence>
+        <step id="S1">Client (sidetree-core-go) adds operation op1 to handler1.</step>
+        <step id="S2">Handler1 publishes operation op1 to the operation queue (opQueue).</step>
+        <step id="S3">Handler1 receives acknowledgment for publishing operation op1.</step>
+        <step id="S4">Client (sidetree-core-go) receives acknowledgment for adding operation op1 to handler1.</step>
+        <step id="S5">Client (sidetree-core-go) adds operation op2 to handler2.</step>
+        <step id="S6">Handler2 publishes operation op2 to the operation queue (opQueue).</step>
+        <step id="S7">Handler2 receives acknowledgment for publishing operation op2.</step>
+        <step id="S8">Client (sidetree-core-go) receives acknowledgment for adding operation op2 to handler2.</step>
+        <step id="S9">Handler1 processes operation op2.</step>
+        <step id="S10">Handler1 stores operation op2 in the operation queue database (opQueueDB).</step>
+        <step id="S11">Handler1 receives acknowledgment for storing operation op2.</step>
+        <step id="S12">Handler1 acknowledges the processing of operation op2 to the operation queue.</step>
+        <step id="S13">Handler2 processes operation op1.</step>
+        <step id="S14">Handler2 stores operation op1 in the operation queue database (opQueueDB).</step>
+        <step id="S15">Handler2 receives acknowledgment for storing operation op1.</step>
+        <step id="S16">Handler2 acknowledges the processing of operation op1 to the operation queue.</step>
+    </mainSequence>
+</useCase>

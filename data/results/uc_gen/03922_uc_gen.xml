@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Booking an Appointment</name>
+    <description>Provide a user interface for selecting treatment, date, and entering contact information. Create and save a booking through the UI and REST service.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UI: PrimaryController</actor>
+        <actor>Core: BookingService</actor>
+        <actor>Persistence: BookingRepository</actor>
+        <actor>REST: BookingRestService</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has access to the booking system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Booking is successfully saved and confirmed.</condition>
+    </successEndConditions>
+    <trigger>User wants to book an appointment for a specific treatment.</trigger>
+    <mainSequence>
+        <step id="S1">User selects treatment, date, and enters contact information through the UI: PrimaryController</step>
+        <step id="S2">UI: PrimaryController calls Core: BookingService to create a booking</step>
+        <step id="S3">Core: BookingService persists the booking using Persistence: BookingRepository by saving it to a file</step>
+        <step id="S4">Core: BookingService informs UI: PrimaryController that the booking is created</step>
+        <step id="S5">User submits the booking through UI: PrimaryController</step>
+        <step id="S6">UI: PrimaryController sends a POST request to REST: BookingRestService for /bookings</step>
+        <step id="S7">REST: BookingRestService sends a request to Core: BookingService to add the booking</step>
+        <step id="S8">Core: BookingService persists the booking using Persistence: BookingRepository by saving it to a file</step>
+        <step id="S9">Core: BookingService informs REST: BookingRestService that the booking has been added</step>
+        <step id="S10">REST: BookingRestService confirms the booking to UI: PrimaryController</step>
+        <step id="S11">UI: PrimaryController displays a confirmation message to the User</step>
+    </mainSequence>
+</useCase>

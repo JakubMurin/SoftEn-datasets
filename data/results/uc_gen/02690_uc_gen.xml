@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Resolve Domain Name to IP</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Root DNS Server</actor>
+        <actor>TLD DNS Server</actor>
+        <actor>Authoritative DNS Server</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User queries "www.example.com" to Root DNS Server</step>
+        <step id="S2">Root DNS Server refers user to TLD DNS Server for ".com"</step>
+        <step id="S3">User queries "www.example.com" to TLD DNS Server</step>
+        <step id="S4">TLD DNS Server refers user to Authoritative DNS Srver</step>
+        <step id="S5">User queries "www.example.com" to Authoritative DNS Server</step>
+        <step id="S6">Authoritative DNS Server responds with IP address "93.184.215.14"</step>
+        <step id="S7">User successfully receives the IP</step>
+    </mainSequence>
+</useCase>

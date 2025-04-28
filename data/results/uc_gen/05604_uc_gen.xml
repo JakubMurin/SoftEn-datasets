@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>User removes property from dataset instance</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI Interface</actor>
+        <actor>API Gateway</actor>
+        <actor>DatasetManagementService</actor>
+        <actor>DatasetInstanceService</actor>
+        <actor>PropertyManagementService</actor>
+        <actor>DatasetStore</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged into the system</precondition>
+        <precondition>Dataset instance and property to remove are selected</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User selects dataset instance and specifies property to remove</step>
+        <step id="S2">UI Interface forwards remove property request to API Gateway</step>
+        <step id="S3">API Gateway validates the dataset instance ID</step>
+        <step id="S4">DatasetManagementService retrieves dataset instance details from DatasetInstanceService</step>
+        <step id="S5">DatasetInstanceService fetches current properties of the instance from DatasetStore</step>
+        <step id="S6">DatasetStore returns instance details to DatasetInstanceService</step>
+        <step id="S7">DatasetInstanceService provides dataset instance metadata to DatasetManagementService</step>
+        <step id="S8">DatasetManagementService requests PropertyManagementService to remove specified property</step>
+        <step id="S9">PropertyManagementService removes property from the dataset store</step>
+        <step id="S10">DatasetStore confirms the successful removal to PropertyManagementService</step>
+        <step id="S11">PropertyManagementService returns success message to DatasetManagementService</step>
+        <step id="S12">DatasetManagementService acknowledges successful property removal to API Gateway</step>
+        <step id="S13">API Gateway displays success message to UI Interface</step>
+        <step id="S14">UI Interface shows confirmation of property removal to User</step>
+    </mainSequence>
+</useCase>

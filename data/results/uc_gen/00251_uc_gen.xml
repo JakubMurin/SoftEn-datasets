@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Exchange Asset</name>
+    <actors>
+        <actor>org1_client</actor>
+        <actor>frontend</actor>
+        <actor>org1_backend</actor>
+        <actor>hlf_org1_sdk</actor>
+        <actor>hlf_org1_peer</actor>
+        <actor>org2_backend</actor>
+        <actor>hlf_org2_sdk</actor>
+        <actor>hlf_org2_peer</actor>
+        <actor>hlf_orderer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">org1_client exchanges assets by sending a request to frontend</step>
+        <step id="S2">frontend receives the asset exchange request from org1_client</step>
+        <step id="S3">org1_backend parses and forwards the asset exchange request</step>
+        <step id="S4">hlf_org1_sdk forwards the request to Org1 peer for endorsement</step>
+        <step id="S5">hlf_org1_sdk forwards the request to Org2 peer for endorsement</step>
+        <step id="S6">Org1 peer endorses and generates Read Write set</step>
+        <step id="S7">Org2 peer endorses and generates Read Write set</step>
+        <step id="S8">Org1 peer endorses the transaction</step>
+        <step id="S9">Org2 peer endorses the transaction</step>
+        <step id="S10">hlf_org1_sdk orders the transaction into a block</step>
+        <step id="S11">hlf_orderer processes the transaction and commits to the ledger for Org1 peer</step>
+        <step id="S12">hlf_orderer processes the transaction and commits to the ledger for Org2 peer</step>
+        <step id="S13">hlf_org1_sdk captures the commit event for Org1 peer</step>
+        <step id="S14">hlf_org1_sdk captures the commit event for Org2 peer</step>
+        <step id="S15">hlf_org1_sdk relays the commit event to org1_backend</step>
+        <step id="S16">org1_backend informs the client about the appropriate status</step>
+    </mainSequence>
+</useCase>

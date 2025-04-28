@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Remove Book From Catalog</name>
+    <description>Use case for removing a book from the catalog</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user wants to remove a book from the catalog</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The book is successfully removed from the catalog</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The book is not found in the catalog</condition>
+    </failureEndConditions>
+    <trigger>GET Request</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to CatalogDao</step>
+        <step id="S2">CatalogDao forwards the request to RemoveBookFromCatalogActivity with RemoveBookFromCatalogRequest</step>
+        <step id="S3">RemoveBookFromCatalogActivity executes the removal process</step>
+        <step id="S4">RemoveBookFromCatalogActivity sends a response to CatalogDao</step>
+        <step id="S5">CatalogDao completes the removal process</step>
+        <step id="S6">CatalogDao sends a response to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Book not found in RemoveBookFromCatalogActivity</step>
+            <step id="A1S2">RemoveBookFromCatalogActivity throws BookNotFoundException</step>
+            <step id="A1S3">RemoveBookFromCatalogResponse contains BookNotFoundException</step>
+            <step id="A1S4">CatalogDao handles BookNotFoundException</step>
+            <step id="A1S5">User is informed about the BookNotFoundException by RemoveBookService</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

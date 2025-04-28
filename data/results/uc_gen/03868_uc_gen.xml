@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Get Keychain Entry Endpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User A initiates transaction to get Keychain Entry through API Client.</step>
+        <step id="S2">API Client forwards the request to API Server.</step>
+        <step id="S3">API Server requests AWS Secrets Manager to get the key-value pair.</step>
+        <step id="S4">AWS Secrets Manager retrieves the AWS client.</step>
+        <step id="S5">AWS Secrets Manager tries to get the secret value.</step>
+        <step id="S6">If successful,</step>
+        <step id="S7">AWS Secrets Manager sends the response to API Server.</step>
+        <step id="S8">API Server formats the response.</step>
+        <step id="S9">API Client receives the formatted response.</step>
+        <step id="S10">User A gets the Keychain Entry response.</step>
+    </mainSequence>
+</useCase>

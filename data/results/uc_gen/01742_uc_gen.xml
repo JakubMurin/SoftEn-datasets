@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Manage Pomodoro Task</name>
+    <description>Allows the user to manage a Pomodoro task</description>
+    <actors>
+        <actor>User</actor>
+        <actor>CLI</actor>
+        <actor>TimeTrigger</actor>
+        <actor>Renderer</actor>
+        <actor>TaskStartHandler</actor>
+        <actor>TaskStateChangeHandler</actor>
+        <actor>TaskFinishHandler</actor>
+        <actor>NotificationPlayer</actor>
+        <actor>sqlite</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has initiated a Pomodoro task</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Pomodoro task completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Pomodoro task failed to complete</condition>
+    </failureEndConditions>
+    <trigger>User executes "pomogo --task 'programuj pomodoro'"</trigger>
+    <mainSequence>
+        <step id="S1">User executes "pomogo --task 'programuj pomodoro'"</step>
+        <step id="S2">CLI registers a new task</step>
+        <step id="S3">TaskStartHandler saves new task "programuj pomodoro" with start date and other details</step>
+        <step id="S4">TimeTrigger triggers refresh</step>
+        <step id="S5">Renderer gets tasks from sqlite</step>
+        <step id="S6">Renderer renders a progress bar with animations and unicorns for the User</step>
+        <step id="S7">TimeTrigger triggers refresh</step>
+        <step id="S8">TaskStateChangeHandler saves new state - resting and increments rest marker</step>
+        <step id="S9">TaskStateChangeHandler triggers sound notification</step>
+        <step id="S10">TaskStateChangeHandler saves new state - deep resting and zeroes rest marker</step>
+        <step id="S11">TaskStateChangeHandler triggers sound notification</step>
+        <step id="S12">TaskStateChangeHandler saves new state - resting and increments rest marker</step>
+        <step id="S13">TaskStateChangeHandler triggers sound notification</step>
+        <step id="S14">TaskStateChangeHandler marks task as paused</step>
+        <step id="S15">TaskStateChangeHandler triggers sound notification</step>
+        <step id="S16">TimeTrigger eventually triggers Renderer</step>
+        <step id="S17">Renderer renders finish message with unicorns for the User</step>
+    </mainSequence>
+</useCase>

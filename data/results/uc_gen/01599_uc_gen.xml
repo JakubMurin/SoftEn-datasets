@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Adjust Volume</name>
+    <actors>
+        <actor>User</actor>
+        <actor>A2DP Sink</actor>
+        <actor>Source's AVRCP event handler</actor>
+        <actor>Service Bluetooth</actor>
+        <actor>Service Audio</actor>
+        <actor>Settings</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>User presses the volume button</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Current volume level displayed</condition>
+    </successEndConditions>
+    <trigger>Volume button pressed</trigger>
+    <mainSequence>
+        <step id="S1">User presses the volume button</step>
+        <step id="S2">AVRCP volume changed by A2DP Sink</step>
+        <step id="S3">Volume changed message sent from Source's AVRCP event handler to Service Bluetooth</step>
+        <step id="S4">Volume changed message received by Service Bluetooth and sent to Service Audio</step>
+        <step id="S5">Service Audio sets appropriate volume value</step>
+        <step id="S6">Service Audio notifies the Application about the current volume change</step>
+        <step id="S7">Application displays the current volume level to the User</step>
+    </mainSequence>
+</useCase>

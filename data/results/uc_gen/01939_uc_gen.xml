@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Compile Primary Resource to Intermediate Resource</name>
+    <actors>
+        <actor>Resource_provider</actor>
+        <actor>Compilation_Manager</actor>
+        <actor>KieCompilerService</actor>
+    </actors>
+    <trigger>Resource_provider initiates the compilation of Primary Resource.</trigger>
+    <mainSequence>
+        <step id="S1">Resource_provider triggers compilation process for Primary Resource.</step>
+        <step id="S2">Compilation_Manager identifies the specific KieCompilerService for Primary Resource.</step>
+        <step id="S3">KieCompilerService processes the Primary Resource.</step>
+        <step id="S4">Compilation_Manager receives the compiled Class.</step>
+        <step id="S5">Resource_provider receives IndexFile from Compilation_Manager.</step>
+        <step id="S6">Resource_provider consumes the IndexFile.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Compilation_Manager cannot find specific KieCompilerService for Primary Resource.</step>
+            <step id="A1S2">Compilation_Manager handles the error situation.</step>
+            <step id="A1S3">Compilation_Manager informs Resource_provider about the error.</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">Compilation_Manager fails to provide IndexFile to Resource_provider.</step>
+            <step id="A2S2">Resource_provider triggers error handling steps.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

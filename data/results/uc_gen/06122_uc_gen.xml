@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Approve newUser registration</name>
+    <description>Allow the admin to approve or reject new user registrations.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>The admin must be logged in and have access rights to approve registrations.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user registration is successfully approved.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user registration approval process encounters an error.</condition>
+    </failureEndConditions>
+    <trigger>Admin requests list of users for approval.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests list of users for approval.</step>
+        <step id="S2">Container returns list of users.</step>
+        <step id="S3">Admin approves or rejects user registration.</step>
+        <step id="S4">Container returns success message.</step>
+    </mainSequence>
+</useCase>

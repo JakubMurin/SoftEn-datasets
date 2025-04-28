@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Length Extension Attack at SHA1</name>
+    <actors>
+        <actor>Attacker</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Attacker initiates a length extension attack at SHA1.</step>
+        <step id="S2">Attacker extracts the message.</step>
+        <step id="S3">MessageExtractionFacility parses the message.</step>
+        <step id="S4">Attacker computes SHA1 padding for the parsed message.</step>
+        <step id="S5">Attacker tampers with the message and tries to extract the SHA1 internal state.</step>
+        <step id="S6">Attacker hashes the message with SHA1 for key lengths from 1 to maxKeySize.</step>
+        <step id="S7">Server validates the MAC of the new message.</step>
+    </mainSequence>
+</useCase>

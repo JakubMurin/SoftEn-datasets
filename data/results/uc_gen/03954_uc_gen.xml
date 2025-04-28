@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Wybranie listy kont oczekujących</name>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <preconditions>
+        <precondition>Zarządca jest zalogowany</precondition>
+    </preconditions>
+    <trigger>Zarządca wybiera listę kont oczekujących</trigger>
+    <mainSequence>
+        <step id="S1">Zarządca wybiera listę kont oczekujących</step>
+        <step id="S2">Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta</step>
+        <step id="S3">AccountController odbiera żądanie</step>
+        <step id="S4">AccountEndpoint wykonuje getAccountSearchPreferences</step>
+        <step id="S5">AccountService wykonuje getAccountSearchPreferences</step>
+        <step id="S6">AccountService wykonuje findByLogin w AccountFacade</step>
+        <step id="S7">AccountService otrzymuje informację o niepowodzeniu</step>
+        <step id="S8">AccountService wykonuje findByLogin w AccountFacade</step>
+        <step id="S9">AccountFacade przekazuje informacje o koncie</step>
+        <step id="S10">AccountService wykonuje findByAccount w ListSearchPreferencesFacade</step>
+        <step id="S11">ListSearchPreferencesFacade otrzymuje informację o niepowodzeniu</step>
+        <step id="S12">AccountService wykonuje findByAccount w ListSearchPreferencesFacade</step>
+        <step id="S13">AccountService otrzymuje preferencje konta</step>
+    </mainSequence>
+</useCase>

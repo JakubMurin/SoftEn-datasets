@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Collision Handling</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>GameBoundaryDelegate</actor>
+        <actor>Boundary</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <trigger>GameEngine requests collision handling with boundary</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine requests boundary from GameBoundaryDelegate</step>
+        <step id="S2">GameBoundaryDelegate retrieves boundary object</step>
+        <step id="S3">GameEngine triggers onCollision event with boundary and delta time on Ball</step>
+        <step id="S4">Ball processes collision and retrieves safe position from boundary</step>
+        <step id="S5">Ball triggers onCollision event with collision point, delta time, and restitution coefficient on FreeBody</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Ball triggers recursive onCollision event with boundary</step>
+            <step id="A1S2">Ball retrieves safe position from boundary</step>
+            <step id="A1S3">Ball triggers onCollision event with collision point, delta time, and restitution coefficient on FreeBody</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>If collision processing fails: </description>
+            <step id="E1S1">GameEngine handles the error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

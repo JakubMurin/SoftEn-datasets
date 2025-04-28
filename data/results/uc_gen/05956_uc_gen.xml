@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Use Case: Implement Middleware Registration</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>App</actor>
+    </actors>
+    <preconditions>
+        <precondition>App instance is up and running</precondition>
+        <precondition>Client wants to register middleware</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Middleware registration completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Middleware registration failed</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client specifies middleware type as JSONParser</step>
+        <step id="S2">App uses JSONParser middleware</step>
+        <step id="S3">App registers JSONParser middleware</step>
+        <step id="S4">Client specifies middleware type as URLEncodedParser</step>
+        <step id="S5">App uses URLEncodedParser middleware</step>
+        <step id="S6">App registers URLEncodedParser middleware</step>
+        <step id="S7">Client specifies middleware type as Router</step>
+        <step id="S8">App uses Router middleware</step>
+        <step id="S9">App registers Router middleware</step>
+    </mainSequence>
+</useCase>

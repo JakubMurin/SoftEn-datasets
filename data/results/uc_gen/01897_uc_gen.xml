@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>View Product Prices</name>
+    <description>Allows the Manager to view prices of products on the UI Dashboard.</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Product prices displayed on the UI Dashboard</condition>
+    </successEndConditions>
+    <trigger>User requests to view product prices</trigger>
+    <mainSequence>
+        <step id="S1">Manager requests to view product prices</step>
+        <step id="S2">Dashboard receives the request and sends a GET /products/prices to Backend</step>
+        <step id="S3">Backend activates and fetches prices of products from the Database</step>
+        <step id="S4">Database returns prices to Backend</step>
+        <step id="S5">Backend sends product prices data to Dashboard</step>
+        <step id="S6">Dashboard displays product prices to Manager</step>
+    </mainSequence>
+</useCase>

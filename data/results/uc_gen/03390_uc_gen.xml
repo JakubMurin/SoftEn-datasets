@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Guild Registration Process</name>
+    <description>Guest clicks on the link in the email to register for a guild.</description>
+    <actors>
+        <actor>Guest</actor>
+        <actor>Mail</actor>
+        <actor>Page1</actor>
+        <actor>Page2</actor>
+        <actor>API1</actor>
+        <actor>Guest_Token</actor>
+        <actor>Guild</actor>
+    </actors>
+    <preconditions>
+        <precondition>Guest has received an email with a registration link.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Guild registration process completed successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Guest does not have a valid token.</condition>
+    </failureEndConditions>
+    <trigger>Guest clicks on the registration link in the email.</trigger>
+    <mainSequence>
+        <step id="S1">Guest clicks on the link in the email.</step>
+        <step id="S2">Page1 displays the token.</step>
+        <step id="S3">API1 checks the token for guild registration.</step>
+        <step id="S4">Guest_Token retrieves the existing token.</step>
+        <step id="S5">API1 receives the token.</step>
+        <step id="S6">API1 retrieves details of the guild with the token.</step>
+        <step id="S7">Guild provides the guild name.</step>
+        <step id="S8">API1 provides the guild ID, guild name, and email address to Page1.</step>
+    </mainSequence>
+</useCase>

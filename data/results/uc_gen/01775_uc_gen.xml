@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Create and Delete Server Handler</name>
+    <description>Use case to create and delete a Server Handler</description>
+    <actors>
+        <actor>User</actor>
+        <actor>ServerHandler</actor>
+        <actor>RequestManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to manage server handlers</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Server Handler is created and destroyed successfully</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">User creates a new ServerHandler</step>
+        <step id="S2">ServerHandler creates a new RequestManager</step>
+        <step id="S3">RequestManager returns</step>
+        <step id="S4">ServerHandler notifies User that ServerHandler is created</step>
+        <step id="S5">User deletes the ServerHandler</step>
+        <step id="S6">ServerHandler deletes the RequestManager</step>
+        <step id="S7">ServerHandler notifies User that ServerHandler is destroyed</step>
+    </mainSequence>
+</useCase>

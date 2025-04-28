@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Create Translation Client</name>
+    <description>Allow a client to create a new translation client in the system.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>CreateTranslationClientActivity</actor>
+        <actor>TranslationClientDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP request to the API Gateway/Lambda.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Client receives a 200 response with CreateTranslationClientResult data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Client receives a 400 response in case of a DuplicateTranslationClientException.</condition>
+    </failureEndConditions>
+    <trigger>API Gateway/Lambda receives CreateTranslationClientRequest from the Client.</trigger>
+    <mainSequence>
+        <step id="S1">API Gateway/Lambda receives HTTP Request from the Client.</step>
+        <step id="S2">API Gateway/Lambda sends CreateTranslationClientRequest to CreateTranslationClientActivity.</step>
+        <step id="S3">CreateTranslationClientActivity calls TranslationClientDao to createTranslationClient.</step>
+        <step id="S4">TranslationClientDao loads all cases for the customer ID from DynamoDB.</step>
+        <step id="S5">TranslationClientDao checks for existing client.</step>
+        <step id="S6">If translationClientName/ClientType pair is identical to existing translationClientName, throw DuplicateTranslationClientException.</step>
+        <step id="S7">TranslationClientDao saves the newTranslationClient to DynamoDB.</step>
+        <step id="S8">DynamoDB returns a 200 response.</step>
+        <step id="S9">TranslationClientDao returns the newTranslationClient object to CreateTranslationClientActivity.</step>
+        <step id="S10">CreateTranslationClientActivity returns CreateTranslationClientResult to API Gateway/Lambda.</step>
+        <step id="S11">API Gateway/Lambda returns a 200 response with CreateTranslationClientResult data to the Client.</step>
+    </mainSequence>
+</useCase>

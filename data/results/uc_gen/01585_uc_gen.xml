@@ -1,0 +1,43 @@
+<useCase id="UC123">
+    <name>Enterprise Admission Process</name>
+    <description>Use case for an enterprise admission process involving a recycling company.</description>
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>Regulatory Authority</actor>
+    </actors>
+    <preconditions>
+        <precondition>Enterprise in application process</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Enterprise admission approved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Enterprise admission rejected</condition>
+    </failureEndConditions>
+    <trigger>Enterprise submits admission application</trigger>
+    <mainSequence>
+        <step id="S1">Submit documents to Vue</step>
+        <step id="S2">Submit admission data to Controller</step>
+        <step id="S3">Upload files in MongoDB</step>
+        <step id="S4">Save file information in MySQL</step>
+        <step id="S5">Return admission result to Enterprise</step>
+        <step id="S6">Query unregistered enterprises for approval</step>
+        <step id="S7">Approve enterprise admission</step>
+        <step id="S8">Reject enterprise admission</step>
+        <step id="S9">Query admission result for Enterprise</step>
+        <step id="S10">Query admission contract details</step>
+        <step id="S11">Return contract details to Enterprise</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">Deploy admission contract using JAVA SDK</step>
+            <step id="A1S2">Update admission status, role type, and contract address in MySQL</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Rejected enterprise admission, update information in MySQL</description>
+            <step id="E1S1">Return rejection result to Enterprise</step>
+        </esteps>
+    </errorSteps>
+</useCase>

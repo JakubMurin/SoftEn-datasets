@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Manage Battle Request</name>
+    <actors>
+        <actor>Client1</actor>
+        <actor>Client2</actor>
+        <actor>Server</actor>
+        <actor>BattleController</actor>
+        <actor>BattleService</actor>
+        <actor>Battle</actor>
+    </actors>
+    <preconditions>
+        <precondition>Clients send Battle Requests</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Battle request successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Battle request failed</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client1 sends Battle Request</step>
+        <step id="S2">Server processes the Battle Request</step>
+        <step id="S3">Client2 sends Battle Request</step>
+        <step id="S4">BattleController finds or creates Battle</step>
+        <step id="S5">BattleService creates new Battle</step>
+        <step id="S6">BattleService finds open Battle and joins</step>
+        <step id="S7">Battle starts</step>
+        <step id="S8">Battle ends</step>
+        <step id="S9">Server sends Response to Client1 and Client2</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,21 @@
+<useCase id="1">
+    <name>Upload Object With Quota Validation</name>
+    <description>Allow the client to upload objects while validating the quota.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>RPC Server</actor>
+        <actor>Object Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client submits a request to create object upload.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Object upload request is successfully processed.</condition>
+    </successEndConditions>
+    <trigger>Client triggers the upload task via RPC Server to Object Server.</trigger>
+    <mainSequence>
+        <step id="S1">Client initiates object upload request.</step>
+        <step id="S2">RPC Server forwards upload request to Object Server.</step> 
+        <step id="S3">Object Server checks the quota for the object upload.</step>                
+    </mainSequence>
+</useCase>

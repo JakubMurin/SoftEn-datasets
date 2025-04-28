@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Data Translations</name>
+    <description>Translation of text data from one source to another</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Translators</actor>
+    </actors>
+    <preconditions>
+        <precondition>Text data is available to translate</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All text data successfully translated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Translation process failed</condition>
+    </failureEndConditions>
+    <trigger>Request by the user to translate text</trigger>
+    <mainSequence>
+        <step id="S1">User makes a text translation request</step>
+        <step id="S2">User interacts with the bot/channel to provide the text to translate</step>
+        <step id="S3">Bot/channel forwards the text data to Henrietta</step>
+        <step id="S4">Henrietta queries the Elasticsearch database for translation</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Henrietta checks the Elasticsearch for data availability, if not available waits for 3 hours</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Translation process failed</description>
+            <step id="E1S1">Henrietta encounters an error while querying the Elasticsearch</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,18 @@
+<useCase id="UC1">
+  <name>View Chat List</name>
+  <actors>
+    <actor>User A</actor>
+  </actors>
+  <preconditions>
+    <precondition>User A is authenticated and has a valid JWT token.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Chat list is successfully retrieved from the server.</condition>
+  </successEndConditions>
+  <mainSequence>
+    <step id="S1">User A sends a GET request with a JWT token to the App Server to retrieve the chat list.</step>
+    <step id="S2">App Server performs a check on the JWT token in the BlackList using Redis Server.</step>
+    <step id="S3">App Server validates the JWT token and fetches the chat list from Redis Server.</step>
+    <step id="S4">App Server sends the chat list to User A.</step>
+  </mainSequence>
+</useCase>

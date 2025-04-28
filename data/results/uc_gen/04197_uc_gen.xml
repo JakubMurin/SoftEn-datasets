@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Login Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Login Page</actor>
+        <actor>Backend Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to log in with "Remember Me"</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <trigger>User enters credentials and selects "Remember Me"</trigger>
+    <mainSequence>
+        <step id="S1">User enters credentials and selects "Remember Me"</step>
+        <step id="S2">LoginPage authenticates the user</step>
+        <step id="S3">BackendServer verifies credentials with Database</step>
+        <step id="S4">Database returns authentication result to BackendServer</step>
+        <step id="S5">BackendServer returns authentication result to LoginPage</step>
+        <step id="S6">LoginPage stores "Remember Me" token</step>
+        <step id="S7">BackendServer saves token in Database</step>
+        <step id="S8">Database confirms token saved</step>
+        <step id="S9">BackendServer confirms "Remember Me" enabled to LoginPage</step>
+        <step id="S10">LoginPage displays login confirmation to User</step>
+    </mainSequence>
+</useCase>

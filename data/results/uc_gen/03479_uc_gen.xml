@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Perform Operation Queue Subscription and Handling</name>
+    <actors>
+        <actor>sidetree-core-go</actor>
+    </actors>
+    <preconditions>
+        <precondition>Operation Queue and Database are set up and operational.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Operations are successfully added, published, stored, and acknowledged in the queue.</condition>
+    </successEndConditions>
+    <trigger>Client initiates the addition of operations to the queue.</trigger>
+    <mainSequence>
+        <step id="S1">sidetree-core-go subscribes to Operation Queue.</step>
+        <step id="S2">sidetree-core-go adds operation op1 to the queue.</step>
+        <step id="S3">Operation op1 is successfully published and acknowledged in the queue.</step>
+        <step id="S4">Operation op2 is successfully published and acknowledged in the queue.</step>
+    </mainSequence>
+</useCase>

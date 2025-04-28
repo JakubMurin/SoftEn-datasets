@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>User application workflow</name>
+    <description>Manage StationKeeping tasks</description>
+    <actors>
+        <actor>Main</actor>
+        <actor>StationKeepingMonitorHandler</actor>
+        <actor>Propagator</actor>
+        <actor>EphemerisGenerator</actor>
+        <actor>BoundedPropagator</actor>
+        <actor>AdapterPropagator</actor>
+        <actor>Small maneuver</actor>
+        <actor>J₂ due to maneuver</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Main actor retrieves EphemerisGenerator</step>
+        <step id="S2">Main actor requests Propagator to propagate</step>
+        <step id="S3">Propagator grabs data from EphemerisGenerator</step>
+        <step id="S4">Main actor retrieves generated Ephemeris</step>
+        <step id="S5">Propagator attempts P optimization</step>
+        <step id="S6">AdapterPropagator created for optimization attempts</step>
+        <step id="S7">AdapterPropagator grabs data</step>
+        <step id="S8">AdapterPropagator adds direct maneuver effect</step>
+        <step id="S9">AdapterPropagator adds indirect J₂ effect</step>
+        <step id="S10">AdapterPropagator registers SK monitor</step>
+        <step id="S11">AdapterPropagator propagates maneuver reference</step>
+        <step id="S12">AdapterPropagator applies maneuver</step>
+        <step id="S13">AdapterPropagator applies J₂ effect</step>
+        <step id="S14">StationKeepingMonitorHandler handles step</step>
+        <step id="S15">Main actor checks Station Keeping goals</step>
+    </mainSequence>
+</useCase>

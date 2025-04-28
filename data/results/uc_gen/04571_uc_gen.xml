@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Place Order</name>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customer places an order on the Confirm Order Panel.</step>
+        <step id="S2">Confirm Order Panel activates and initiates the creation process.</step>
+        <step id="S3">Subscription Service is activated to create the order.</step>
+        <step id="S4">Subscription Service triggers Integration Service to publish the order.</step>
+        <step id="S5">Integration Service communicates with Connector to publish a non-interactive event.</step>
+        <step id="S6">Connector sends a GET request to ISV for async subscription.</step>
+        <step id="S7">ISV responds with event information to Connector.</step>
+        <step id="S8">Connector acknowledges the event info to ISV.</step>
+        <step id="S9">Integration Service is notified by Connector that ISV has been informed.</step>
+        <step id="S10">Subscription Service receives notification of pending provisioning from Integration Service.</step>
+        <step id="S11">Subscription Service attempts to generate and pay invoices through JBillingApi.</step>
+        <step id="S12">JBillingApi reports that the invoice was not generated due to OrderStatus not being ACTIVE.</step>
+        <step id="S13">Subscription Service informs Confirm Order Panel of the pending subscription.</step>
+        <step id="S14">Confirm Order Panel notifies the Customer of the pending subscription.</step>
+    </mainSequence>
+</useCase>

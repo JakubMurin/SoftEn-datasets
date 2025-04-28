@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Student reserves a book</name>
+    <description>As a student, I want to reserve a book in the library.</description>
+    <actors>
+        <actor>Student</actor>
+        <actor>Monitor</actor>
+        <actor>Authentication</actor>
+        <actor>Reservation</actor>
+        <actor>BookManagement</actor>
+        <actor>Book</actor>
+    </actors>
+    <preconditions>
+        <precondition>Student is logged in to the library system.</precondition>
+        <precondition>Student has searched for a specific book.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Student successfully reserves the book.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Reservation process fails due to system error.</condition>
+    </failureEndConditions>
+    <trigger>Student clicks on the reserve book button.</trigger>
+    <mainSequence>
+        <step id="S1">Student opens the Login page.</step>
+        <step id="S2">Monitor displays the library page after successful login.</step>
+        <step id="S3">Student submits the book details.</step>
+        <step id="S4">Monitor lists the available books.</step>
+        <step id="S5">Student clicks on the reserve book button.</step>
+        <step id="S6">Monitor displays the reservation confirmation.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Monitoreo y Reporte de Temperatura del Reactor Nuclear</name>
+    <actors>
+        <actor>Usuario</actor>
+    </actors>
+    <preconditions>
+        <precondition>La planta nuclear y sus componentes están inicializados correctamente</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Se recibe un reporte detallado de la temperatura del reactor</condition>
+    </successEndConditions>
+    <trigger>El usuario inicia la simulación y solicita medir la temperatura del reactor.</trigger>
+    <mainSequence>
+        <step id="S1">El usuario inicializa los componentes de la planta nuclear.</step>
+        <step id="S2">El usuario inicia la simulación.</step>
+        <step id="S3">El sensor peticiona medir la temperatura al reactor nuclear.</step>
+        <step id="S4">El sensor solicita el estado más reciente del reactor al reactor nuclear.</step>
+        <step id="S5">El sensor chequea el estado recibido.</step>
+        <step id="S6">El sensor notifica el estado a los operadores.</step>
+        <step id="S7">Los operadores manejan la situación basada en el estado.</step>
+        <step id="S8">El estado del reactor envía un reporte sobre la situación al reportador.</step>
+        <step id="S9">El reportador envía el reporte con la temperatura al dueño.</step>
+    </mainSequence>
+</useCase>

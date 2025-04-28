@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Access Endpoint</name>
+    <actors>
+        <actor>ClientRequest</actor>
+        <actor>Servlet</actor>
+        <actor>Filter</actor>
+        <actor>AuthCheck</actor>
+        <actor>JWT</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends a request to access an endpoint</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">ClientRequest sends a request to Servlet for a specific endpoint</step>
+        <step id="S2">Servlet pre-processes the request</step>
+        <step id="S3">Filter allows access if the endpoint is for guest role only</step>
+        <step id="S4">Servlet proceeds with the request</step>
+        <step id="S5">Endpoint performs operations for the guest role</step>
+        <step id="S6">Endpoint responds to the request</step>
+        <step id="S7">Servlet sends the response back to the ClientRequest</step>
+        <step id="S8">Filter checks if the session Principal is valid for the authorized role and the authorization is not expired</step>
+        <step id="S9">Filter allows access if session Principal is valid and authorization is not expired</step>
+        <step id="S10">Servlet proceeds with the request</step>
+        <step id="S11">Endpoint performs operations for the authorized role</step>
+        <step id="S12">Endpoint responds to the request</step>
+        <step id="S13">Servlet sends the response back to the ClientRequest</step>
+        <step id="S14">Filter checks SecurityContext against endpoint roles</step>
+        <step id="S15">Filter allows access if roles are valid</step>
+        <step id="S16">Servlet proceeds with the request</step>
+        <step id="S17">Endpoint performs operations for the authorized roles</step>
+        <step id="S18">Endpoint responds to the request</step>
+        <step id="S19">Servlet sends the response back to the ClientRequest</step>
+    </mainSequence>
+</useCase>

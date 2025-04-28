@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Booking Event Ticket</name>
+    <description>Allow a guest to book tickets for an event.</description>
+    <actors>
+        <actor>Guest</actor>
+        <actor>POS System</actor>
+        <actor>Event Booking System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Guest is logged in and has a room.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Ticket is booked for the user.</condition>
+    </successEndConditions>
+    <trigger>Guest visits "Hotel Events" Page.</trigger>
+    <mainSequence>
+        <step id="S1">Guest visits "Hotel Events" Page and system displays a list of events.</step>
+        <step id="S2">Guest chooses an event.</step>
+        <step id="S3">Guest buys tickets after being prompted for quantity and payment details.</step>
+        <step id="S4">Guest provides ticket details and payment information.</step>
+        <step id="S5">POS system processes payment.</step>
+        <step id="S6">If payment issues, POS notifies the system; otherwise, POS confirms payment and system confirms booking.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Attend Event</name>
+    <actors>
+        <actor>Entrant</actor>
+        <actor>Ticket</actor>
+        <actor>Member</actor>
+    </actors>
+    <preconditions>
+        <precondition>Entrant requests to attend an event.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Entrant successfully attends the event.</condition>
+    </successEndConditions>
+    <trigger>Attend Event Request</trigger>
+    <mainSequence>
+        <step id="S1">Entrant sends Attend Event Request to Ticket.</step>
+        <step id="S2">Ticket forwards Create Member Request to Member.</step>
+        <step id="S3">Member creates a new member.</step>
+        <step id="S4">Member responds with Create Member Response to Ticket.</step>
+        <step id="S5">Ticket creates a ticket.</step>
+        <step id="S6">Ticket responds with Attend Event Response to Entrant.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Assign Task to Robot for Room Cleaning</name>
+    <actors>
+        <actor>Building Manager</actor>
+        <actor>Phone App</actor>
+        <actor>Robot Management System</actor>
+        <actor>Robot</actor>
+    </actors>
+    <trigger>Request task</trigger>
+    <mainSequence>
+        <step id="S1">Building Manager requests a task through Phone App.</step>
+        <step id="S2">Phone App sends the task request to Robot Management System.</step>
+        <step id="S3">Robot Management System adds the task to the queue and checks robot availability.</step>
+        <step id="S4">Robot is available for task assignment.</step>
+        <step id="S5">Robot Management System assigns task to the Robot.</step>
+        <step id="S6">Robot starts cleaning the room.</step>
+        <step id="S7">Robot completes the task, sending a task assigned message to Phone App.</step>
+    </mainSequence>
+</useCase>

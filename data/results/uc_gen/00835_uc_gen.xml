@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Assign Vehicles to Agenda Entry</name>
+    <actors>
+        <actor>Green Spaces Manager</actor>
+        <actor>AssignVehiclesToAgendaEntryGUIController</actor>
+        <actor>AssignVehiclesToAgendaEntryController</actor>
+        <actor>VehicleRepository</actor>
+        <actor>Repositories</actor>
+    </actors>
+    <preconditions>
+        <precondition>There are vehicles to be assigned to an agenda entry.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Green Spaces Manager shows available vehicles.</step>
+        <step id="S2">Green Spaces Manager selects a vehicle.</step>
+        <step id="S3">AssignVehiclesToAgendaEntryGUIController assigns the vehicle to the entry.</step>
+        <step id="S4">AssignVehiclesToAgendaEntryController assigns the vehicle to the entry.</step>
+        <step id="S5">VehicleRepository updates the vehicle assignment.</step>
+        <step id="S6">Repositories return success.</step>
+        <step id="S7">AssignVehiclesToAgendaEntryController shows success message.</step>
+    </mainSequence>
+</useCase>

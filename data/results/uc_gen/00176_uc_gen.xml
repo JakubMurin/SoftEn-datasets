@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Trainee logs in and views signed up trainings</name>
+    <actors>
+        <actor>Trainee</actor>
+        <actor>Authentication Service</actor>
+        <actor>User Database</actor>
+        <actor>Training Service</actor>
+        <actor>Training Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Trainee has valid login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Trainee successfully logs in and views signed up trainings</condition>
+    </successEndConditions>
+    <trigger>Trainee requests to login and view signed up trainings</trigger>
+    <mainSequence>
+        <step id="S1">Trainee requests to login</step>
+        <step id="S2">Authentication Service validates user credentials</step>
+        <step id="S3">User Database returns user validation</step>
+        <step id="S4">Authentication Service informs Trainee of successful authentication</step>
+        <step id="S5">Trainee requests signed up trainings</step>
+        <step id="S6">Training Service fetches trainings for user</step>
+        <step id="S7">Training Database returns list of trainings</step>
+        <step id="S8">Training Service displays signed up trainings to Trainee</step>
+    </mainSequence>
+</useCase>

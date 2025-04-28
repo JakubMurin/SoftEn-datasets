@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>View Categories and Products</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ProductPage</actor>
+        <actor>Controller</actor>
+        <actor>CategoryService</actor>
+        <actor>CategoryRepository</actor>
+        <actor>CategoryMapper</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is on the ProductPage</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Categories and products are displayed successfully</condition>
+    </successEndConditions>
+    <trigger>User clicks on ProductPage</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on ProductPage</step>
+        <step id="S2">ProductPage sends request to Controller: GET /api/category/with-sub-categories</step>
+        <step id="S3">Controller calls CategoryService: getAllCategory()</step>
+        <step id="S4">CategoryService fetches all categories from CategoryRepository</step>
+        <step id="S5">CategoryRepository queries Database for categories</step>
+        <step id="S6">CategoryRepository returns List of categories to CategoryService</step>
+        <step id="S7">CategoryService maps categories to CategoryWithProductResponse using CategoryMapper</step>
+        <step id="S8">CategoryService sends List of CategoryWithProductResponse to Controller</step>
+        <step id="S9">Controller responds with ApiResponse containing List of CategoryWithProductResponse to ProductPage</step>
+        <step id="S10">ProductPage displays categories and products</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC001">
+    <name>Payment Cancellation with Redirect approach, implicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>Online_banking</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates Payment Cancellation</step>
+        <step id="S2">TPP initiates REST Call to Cancel payment</step>
+        <step id="S3">XS2A makes Java Call to get Payment by ID</step>
+        <step id="S4">XS2A makes Java Call to SPI to initiate Payment Cancellation</step>
+        <step id="S5">XS2A updates payment status</step>
+        <step id="S6">TPP returns HTTP code 400 if payment status is finalized</step>
+        <step id="S7">XS2A proceeds with no SCA cancellation if payment status not finalized and cancellation authorisation not mandated</step>
+        <step id="S8">XS2A starts authorisation request if payment status not finalized and cancellation authorisation mandated</step>
+        <step id="S9">PSU redirects to Online_banking for authorisation</step>
+        <step id="S10">Online_banking makes REST Call to CMS to get Payment by Redirect ID for Cancellation</step>
+        <step id="S11">Online_banking updates PSU data for authorisation</step>
+        <step id="S12">Online_banking confirms authorisation process</step>
+        <step id="S13">Online_banking executes Payment Cancellation</step>
+        <step id="S14">Online_banking updates Payment Status</step>
+        <step id="S15">PSU redirects back to TPP</step>
+        <step id="S16">TPP makes REST Call to get payment status</step>
+        <step id="S17">XS2A makes REST Call to CMS to get Payment by ID</step>
+        <step id="S18">XS2A makes Java Call to SPI to get Payment Status by ID</step>
+        <step id="S19">XS2A updates Transaction Status</step>
+        <step id="S20">TPP makes REST Call to get Payment Request</step>
+        <step id="S21">XS2A makes REST Call to CMS to get Payment by ID</step>
+        <step id="S22">XS2A makes Java Call to SPI to get Payment by ID</step>
+        <step id="S23">XS2A updates Payment</step>
+        <step id="S24">TPP makes REST Call to get Cancellation Authorisation Sub-Resources Request</step>
+        <step id="S25">XS2A makes REST Call to CMS to get Cancellation Authorisations by Payment ID</step>
+        <step id="S26">TPP makes REST Call to Get Cancellation Authorisation</step>
+        <step id="S27">XS2A makes REST Call to CMS to Get Cancellation Authorisation SCA Status</step>
+    </mainSequence>
+</useCase>

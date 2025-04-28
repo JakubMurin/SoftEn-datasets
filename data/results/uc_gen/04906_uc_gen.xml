@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Manage User Research Interviews</name>
+    <description>As a User Researcher, I want to manage the process of selecting and inviting NSF participants for interviews.</description>
+    <actors>
+        <actor>User Researcher</actor>
+        <actor>User Research Management System</actor>
+        <actor>NSF Staff Database</actor>
+        <actor>Email System</actor>
+        <actor>NSF Person</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User Researcher has access to the User Research Management System.</precondition>
+        <precondition>The NSF Staff Database is up-to-date with relevant expertise.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User Researcher successfully confirms the RSVPs of selected NSF participants.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The User Researcher fails to send invitation emails to selected NSF participants.</condition>
+    </failureEndConditions>
+    <trigger>User Researcher initiates the process of managing user research interviews.</trigger>
+    <mainSequence>
+        <step id="S1">User Researcher searches for potential participants based on interview topic.</step>
+        <step id="S2">User Research Management System queries the NSF Staff Database for staff with relevant expertise.</step>
+        <step id="S3">NSF Staff Database returns a list of potential NSF participants to the User Research Management System.</step>
+        <step id="S4">User Research Management System presents potential participants to the User Researcher.</step>
+        <step id="S5">User Researcher selects NSF participants for interviews.</step>
+        <step id="S6">User Research Management System sends invitation emails with interview details to selected participants.</step>
+        <step id="S7">Email System receives the interview invitation.</step>
+        <step id="S8">NSF Person RSVPs to the invitation.</step>
+        <step id="S9">Email System logs the RSVP status.</step>
+        <step id="S10">User Research Management System confirms the RSVPs of selected NSF participants.</step>
+    </mainSequence>
+</useCase>

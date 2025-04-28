@@ -1,0 +1,38 @@
+<useCase id="UC1">
+  <name>Reservation and Data Transfer</name>
+  <actors>
+    <actor>Alice</actor>
+    <actor>Sarad App</actor>
+    <actor>Registration Server 2</actor>
+  </actors>
+  <preconditions>
+    <precondition>Device and instrument server are available.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Data transferred successfully.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Device reservation failed.</condition>
+  </failureEndConditions>
+  <trigger>Changes Config /\n Requests Data</trigger>
+  <mainSequence>
+    <step id="S1">User changes config and requests data.</step>
+    <step id="S2">Sarad App attempts to reserve device.</step>
+    <step id="S3">Registration Server 2 relays request to device actor.</step>
+    <step id="S4">Device accepts request and relays port information.</step>
+    <step id="S5">Device connects and opens port.</step>
+    <step id="S6">Device actor accepts request and relays port information.</step>
+    <step id="S7">Registration Server 2 relays port back to Sarad App.</step>
+    <step id="S8">Sarad App displays port.</step>
+    <step id="S9">Device actor starts timeout.</step>
+    <step id="S10">Sarad App connects to device actor.</step>
+    <step id="S11">Sarad App sends data to device actor.</step>
+    <step id="S12">Device actor relays data to device.</step>
+    <step id="S13">Device relays response back to device actor.</step>
+    <step id="S14">Device actor relays response back to Sarad App.</step>
+    <step id="S15">Sarad App displays the answer.</step>
+    <step id="S16">Sarad App frees the device.</step>
+    <step id="S17">Device actor relays free signal to device.</step>
+    <step id="S18">Device sends free signal.</step>
+  </mainSequence>
+</useCase>

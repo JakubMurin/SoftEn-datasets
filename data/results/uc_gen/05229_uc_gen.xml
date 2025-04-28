@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Minting Hats and Distributing Rewards</name>
+    <description>Process of minting hats and distributing rewards to multiple addresses</description>
+    <actors>
+        <actor>address1</actor>
+        <actor>address2</actor>
+        <actor>address3</actor>
+    </actors>
+    <preconditions>
+        <precondition>TopHat must be minted by address1</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All hats minted and rewards distributed successfully</condition>
+    </successEndConditions>
+    <trigger>"TopHat" is to be minted</trigger>
+    <mainSequence>
+        <step id="S1">Create TimeFrameHatModule</step>
+        <step id="S2">Mint Hatter Hat</step>
+        <step id="S3">Mint Role Hat 1 under Hatter Hat</step>
+        <step id="S4">Mint Role Hat 2 under Hatter Hat</step>
+        <step id="S5">Mint Role Hat 1 to address1</step>
+        <step id="S6">Mint Role Hat 2 to address2</step>
+        <step id="S7">Transfer fraction of Role Hat 2 from address2 to address3</step>
+        <step id="S8">Create Split</step>
+        <step id="S9">Send ETH or ERC20 to PullSplit</step>
+        <step id="S10">Distribute rewards using PullSplit</step>
+        <step id="S11">Withdraw from SplitsWarehouse for address1</step>
+        <step id="S12">Withdraw from SplitsWarehouse for address2</step>
+        <step id="S13">Withdraw from SplitsWarehouse for address3</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="1">
+    <name>Sortieren der Produktliste</name>
+    <description>Als Benutzer möchte ich die Produktliste nach bestimmten Spalten sortieren können, um die Präsentation der Produkte zu optimieren.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Die Produktliste ist bereits dargestellt.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Die Produktliste wurde erfolgreich nach der ausgewählten Spalte sortiert.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Die Produktliste behält den vorherigen Sortierstatus bei.</condition>
+    </failureEndConditions>
+    <trigger>Der Benutzer klickt auf eine Spaltenüberschrift, um die Produktliste zu sortieren.</trigger>
+    <mainSequence>
+        <step id="S1">User klickt auf Spaltenüberschrift.</step>
+        <step id="S2">Das Modul "ProductList.svelte" empfängt das onSort-Event und leitet es an "mitarbeitersupermarkt.svelte" weiter.</step>
+        <step id="S3">"mitarbeitersupermarkt.svelte" ruft bei "sortStore.js" die updateSort-Funktion mit der zu sortierenden Spalte auf.</step>
+        <step id="S4">"sortStore.js" aktualisiert die sortierte Spalte und -richtung.</step>
+        <step id="S5">Anschließend wird die sortierte Produktliste über "sortedProductsStore" an das Modul "ProductList.svelte" übermittelt.</step>
+        <step id="S6">Das Modul "ProductList.svelte" aktualisiert die dargestellte Produktliste entsprechend.</step>
+    </mainSequence>
+</useCase>

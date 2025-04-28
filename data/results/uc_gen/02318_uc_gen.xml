@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Login System</name>
+    <description>Allow users to log in with their credentials.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Authentication service is available.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in after maximum attempts.</condition>
+    </failureEndConditions>
+    <trigger>User attempts to log in.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates the login process.</step>
+        <step id="S2">UI creates login interface with specified role and maximum attempts.</step>
+        <step id="S3">UI displays the login interface.</step>
+        <step id="S4">User provides email and password.</step>
+        <step id="S5">UI asks for user information and receives email and password.</step>
+        <step id="S6">UI sends email and password to AuthenticationService for authentication.</step>
+        <step id="S7">AuthenticationService authenticates user with provided email and password.</step>
+        <step id="S8">AuthenticationService generates UserSession and sends it to UI.</step>
+        <step id="S9">UI receives UserSession and shows successful operation message.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Payment Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Frontend</actor>
+        <actor>Learning Center Service</actor>
+        <actor>Order Service</actor>
+        <actor>Third-party Payment (Alipay)</actor>
+        <actor>Message Queue</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks on payment</step>
+        <step id="S2">Frontend adds course selection record</step>
+        <step id="S3">Frontend carries order information, adds order</step>
+        <step id="S4">Order Service creates product order</step>
+        <step id="S5">Order Service creates order detail table</step>
+        <step id="S6">Order Service creates payment transaction record</step>
+        <step id="S7">Order Service generates QR code based on payment record ID</step>
+        <step id="S8">User scans QR code with Alipay</step>
+        <step id="S9">Frontend requests payment with payment record ID</step>
+        <step id="S10">Order Service checks payment record status</step>
+        <step id="S11">Order Service updates order and payment record status based on callback result</step>
+        <step id="S12">Order Service sends course payment success message with course ID to Message Queue</step>
+        <step id="S13">Order Service notifies frontend of successful payment</step>
+    </mainSequence>
+</useCase>

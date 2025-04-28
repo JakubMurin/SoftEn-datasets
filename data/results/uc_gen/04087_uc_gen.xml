@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Development Flow</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Reviewer</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer edits code in the repository branch "dev".</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User can use the new feature on the mainnet server.</condition>
+    </successEndConditions>
+    <trigger>Developer makes changes to the code.</trigger>
+    <mainSequence>
+        <step id="S1">Developer edits code.</step>
+        <step id="S2">Developer pushes changes to the /dev repository branch.</step>
+        <step id="S3">Developer creates a pull request from /dev to /calibration repository branch.</step>
+        <step id="S4">Reviewer reviews the pull request.</step>
+        <step id="S5">Reviewer approves the review.</step>
+        <step id="S6">Developer merges the pull request.</step>
+        <step id="S7">Changes are deployed to the calibration server.</step>
+        <step id="S8">Developer checks the results.</step>
+        <step id="S9">Developer creates a pull request from /dev to /main repository branch.</step>
+        <step id="S10">Reviewer approves the pull request.</step>
+        <step id="S11">Developer merges the pull request.</step>
+        <step id="S12">Changes are deployed to the mainnet server.</step>
+        <step id="S13">Developer checks the results on the mainnet server.</step>
+    </mainSequence>
+</useCase>

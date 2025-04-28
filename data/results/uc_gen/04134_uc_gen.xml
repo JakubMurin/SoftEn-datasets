@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Chef Manages Inventory</name>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef needs to manage inventory</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Chef successfully identified and renewed the food items</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">The Chef accesses the inventory management section of the system</step>
+        <step id="S2">The System checks the current backup food stock in the InventoryDB</step>
+        <step id="S3">The InventoryDB provides the current stock levels</step>
+        <step id="S4">The System displays the current backup food list with stock levels</step>
+        <step id="S5">The Chef identifies the items that need to be replenished</step>
+        <step id="S6">The System updates the backup food list in the InventoryDB</step>
+        <step id="S7">The InventoryDB confirms the updated list</step>
+        <step id="S8">The System displays confirmation of the renewed food list</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">The Chef initiates a restock request for items needing replenishment</step>
+            <step id="A1S2">The System places an order for restocking items with the Supplier</step>
+            <step id="A1S3">The Supplier confirms the restocking order</step>
+            <step id="A1S4">The System updates the pending deliveries in InventoryDB</step>
+            <step id="A1S5">The InventoryDB confirms the update for pending deliveries</step>
+            <step id="A1S6">The System displays the restock order confirmation to the Chef</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

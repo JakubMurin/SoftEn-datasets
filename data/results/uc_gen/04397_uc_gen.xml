@@ -1,0 +1,47 @@
+<useCase id="UC1">
+    <name>Login Process</name>
+    <description>Allows the Receptionist to log in to the system</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Receptionist has access to the login page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Receptionist successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The login attempt fails due to invalid credentials</condition>
+    </failureEndConditions>
+    <trigger>Receptionist enters login credentials</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password) on the UI</step>
+        <step id="S2">UI sends a POST request to /login to the AuthRouter</step>
+        <step id="S3">AuthRouter forwards the request to AuthController</step>
+        <step id="S4">AuthController calls validateCredentials() on AuthRepository</step>
+        <step id="S5">AuthRepository fetches user data by username from UserModel</step>
+        <step id="S6">UserModel queries the database for user data</step>
+        <step id="S7">UserModel returns user data to AuthRepository</step>
+        <step id="S8">AuthRepository returns user data to AuthController</step>
+        <step id="S9">AuthController checks if the password matches</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">If login successful, display success message and fetch dashboard data</step>
+            <step id="A1S2">UI sends a GET request to /dashboard to AuthRouter</step>
+            <step id="A1S3">AuthRouter forwards the request to AuthController</step>
+            <step id="A1S4">AuthController calls getDashboard() on AuthRepository</step>
+            <step id="A1S5">AuthRepository queries the database for dashboard data</step>
+            <step id="A1S6">AuthRepository returns dashboard data to AuthController</step>
+            <step id="A1S7">AuthController returns dashboard data to AuthRouter</step>
+            <step id="A1S8">AuthRouter sends 200 OK response with dashboard data to UI</step>
+            <step id="A1S9">UI displays the dashboard</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Login attempt fails due to invalid credentials</description>
+            <step id="E1S1">If login failed, display error message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

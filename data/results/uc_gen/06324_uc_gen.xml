@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Update Staff Information</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Interface</actor>
+        <actor>StaffRouter</actor>
+        <actor>StaffController</actor>
+        <actor>StaffRepository</actor>
+        <actor>Staff Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User interacts with the interface to update staff information</trigger>
+    <mainSequence>
+        <step id="S1">User interacts with the interface</step>
+        <step id="S2">Interface sends PUT /staff/{id} request with data to the StaffRouter</step>
+        <step id="S3">StaffRouter forwards the request to the StaffController</step>
+        <step id="S4">StaffController calls updateStaff(id, data) on the StaffRepository</step>
+        <step id="S5">StaffRepository updates staff information using findByIdAndUpdate(id, data) from the Staff Model</step>
+        <step id="S6">Staff Model updates the staff data in the Database by calling update()</step>
+        <step id="S7">Database confirms successful staff update to the Staff Model</step>
+        <step id="S8">Staff Model updates the Repository with the latest staff details</step>
+        <step id="S9">Repository updates the Controller with the latest staff information</step>
+        <step id="S10">Controller responds with 200 OK status along with updated Staff</step>
+        <step id="S11">StaffRouter sends back 200 OK response with updated Staff to the Interface</step>
+    </mainSequence>
+</useCase>

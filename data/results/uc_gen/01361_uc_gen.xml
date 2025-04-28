@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>Retrieve Questions for Survey</name>
+    <actors>
+        <actor>Browser</actor>
+        <actor>HttpServer</actor>
+        <actor>controllers</actor>
+        <actor>ListQuestionsController</actor>
+        <actor>QuestionDao</actor>
+        <actor>OptionDao</actor>
+        <actor>QUESTION_DB</actor>
+    </actors>
+    <trigger>Browser initiates the request to list questions for a survey</trigger>
+    <mainSequence>
+        <step id="S1">Browser posts a request to HttpServer at /api/listQuestions</step>
+        <step id="S2">HttpServer receives the POST request</step>
+        <step id="S3">HttpServer forwards the request to controllers</step>
+        <step id="S4">controllers retrieve the list of questions</step>
+        <step id="S5">ListQuestionsController handles the request</step>
+        <step id="S6">ListQuestionsController parses the survey ID from the request</step>
+        <step id="S7">QuestionDao retrieves questions for the specified survey ID</step>
+        <step id="S8">OptionDao retrieves options for the retrieved questions</step>
+        <step id="S9">QUESTION_DB is queried for retrieving questions based on survey_id</step>
+        <step id="S10">QUESTION_DB is queried for retrieving options based on question_id</step>
+        <step id="S11">ListQuestionsController responds with a success code 200 to HttpServer</step>
+        <step id="S12">HttpServer sends the HTTP response back to the Browser</step>
+    </mainSequence>
+</useCase>

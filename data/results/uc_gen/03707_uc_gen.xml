@@ -1,0 +1,20 @@
+<useCase id="1">
+    <name>Join a Room and Verify Code</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Client</actor>
+        <actor>API</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in with a valid JWT.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User enters the join code for a diary room.</step>
+        <step id="S2">Client sends a POST request to API endpoint /v1/rooms/&lt;room_id&gt;/join with the code provided by the user.</step>
+        <step id="S3">API performs JSON validation on the code and retrieves the room code from the database.</step>
+        <step id="S4">API verifies the user-entered code with the retrieved code.</step>
+        <step id="S5">If verification is successful, API inserts the user's account into RoomMember and appends the AccountID to Room.Orders, then responds with a 201 Created status to the client.</step>
+        <step id="S6">If verification fails, API responds with a 401 Unauthorized status.</step>
+    </mainSequence>
+</useCase>

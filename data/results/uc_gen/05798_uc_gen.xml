@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Change Marketing Campaign</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests a change in marketing campaign</step>
+        <step id="S2">UM(Centralized Marketing) receives the request</step>
+        <step id="S3">Retail-UM(Centralized Marketing at Retail) processes the request with options to add, invalidate, delete, or edit activities</step>
+        <step id="S4">Retail-UM determines the number of store(s) to sync messages with</step>
+        <step id="S5">Retail-UM syncs or asyncs message sending operation to C(Communication Service) with sync for stores ≤ 50</step>
+        <step id="S6">Retail-UM sends a status update</step>
+        <step id="S7">UM receives the status update</step>
+        <step id="S8">User receives the response</step>
+    </mainSequence>
+</useCase>

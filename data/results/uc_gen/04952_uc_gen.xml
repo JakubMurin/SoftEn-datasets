@@ -1,0 +1,16 @@
+<useCase id="UC1">
+    <name>Create Report Template</name>
+    <actors>
+        <actor>Template Admin</actor>
+    </actors>
+    <trigger>TemplateAdmin initiates the creation of a report template</trigger>
+    <mainSequence>
+        <step id="S1">Template Admin creates a report template</step>
+        <step id="S2">ReportTemplateFactory creates an instance of ReportTemplate</step>
+        <step id="S3">ReportTemplate creates an instance of RowTemplate</step>
+        <step id="S4">RowTemplateFactory returns the created RowTemplate instance</step>
+        <step id="S5">RowTemplateFactory returns the RowTemplate instance to ReportTemplate</step>
+        <step id="S6">ReportTemplate returns the instance to ReportTemplateFactory</step>
+        <step id="S7">ReportTemplateFactory returns the report template instance to Template Admin</step>
+    </mainSequence>
+</useCase>

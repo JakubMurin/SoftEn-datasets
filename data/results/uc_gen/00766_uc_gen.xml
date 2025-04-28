@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Data Submission</name>
+    <description>Agency User submits data for processing through the web interface.</description>
+    <actors>
+        <actor>Agency User</actor>
+    </actors>
+    <preconditions>
+        <precondition>Agency User is authenticated and has data to submit.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data submission is successfully processed and derived data is saved in the database.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Data submission fails validation and errors are displayed to the user.</condition>
+    </failureEndConditions>
+    <trigger>User initiates data submission through the web interface.</trigger>
+    <mainSequence>
+        <step id="S1">Agency User submits data for processing through the web interface.</step>
+        <step id="S2">Web Interface initiates data submission to the backend.</step>
+        <step id="S3">Backend validates the submission data.</step>
+        <step id="S4">If validation passes, Backend derives data elements, processes derivation rules, saves derived elements, and displays success messages to the user.</step>
+        <step id="S5">If validation fails, Backend displays error messages and shows validation errors to the user.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,47 @@
+<useCase id="1">
+    <name>积分流转</name>
+    <actors>
+        <actor>用户</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">测试接口调用积分合约部署</step>
+        <step id="S2">应用层部署PointController</step>
+        <step id="S3">JAVA_SDK返回合约地址</step>
+        <step id="S4">应用层记录合约地址</step>
+        <step id="S5">应用层获取平台管理员用户信息</step>
+        <step id="S6">JAVA_SDK调用PointController.addDAO</step>
+        <step id="S7">应用层初始化积分总量</step>
+        <step id="S8">定时器触发年度积分结余</step>
+        <step id="S9">应用层调用PointController.daoTransfer</step>
+        <step id="S10">应用层记录交易明细</step>
+        <step id="S11">用户注册账户</step>
+        <step id="S12">应用层调用PointController.register</step>
+        <step id="S13">应用层记录交易明细</step>
+        <step id="S14">用户添加电池</step>
+        <step id="S15">应用层计算需要缴纳的积分</step>
+        <step id="S16">应用层调用PointController.pay</step>
+        <step id="S17">应用层记录交易明细</step>
+        <step id="S18">用户登记车辆电池信息</step>
+        <step id="S19">应用层计算需要缴纳的积分</step>
+        <step id="S20">应用层调用PointController.pay</step>
+        <step id="S21">应用层记录交易明细</step>
+        <step id="S22">用户由线下网点进行消息推送</step>
+        <step id="S23">应用层计算应发积分</step>
+        <step id="S24">应用层调用PointController.daoTransfer</step>
+        <step id="S25">应用层记录交易明细</step>
+        <step id="S26">用户电池拆解检测信息推送</step>
+        <step id="S27">应用层计算应发积分</step>
+        <step id="S28">应用层调用PointController.daoTransfer</step>
+        <step id="S29">应用层记录交易明细</step>
+        <step id="S30">用户卖方积分交易申请</step>
+        <step id="S31">应用层部署交易合约</step>
+        <step id="S32">JAVA_SDK返回合约地址</step>
+        <step id="S33">应用层调用PointController.freeze</step>
+        <step id="S34">用户买方积分交易达成</step>
+        <step id="S35">应用层调用交易合约.bid 或者 deal</step>
+        <step id="S36">应用层调用PointController.unFreezeAndTransfer</step>
+        <step id="S37">应用层发现到期但没买方的交易</step>
+        <step id="S38">应用层调用交易合约.tradeEnd</step>
+        <step id="S39">应用层调用PointController.unFreeze</step>
+    </mainSequence>
+</useCase>

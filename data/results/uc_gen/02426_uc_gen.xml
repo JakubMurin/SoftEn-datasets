@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Adding Comment to Article</name>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>Controller</actor>
+        <actor>ArticleService</actor>
+        <actor>CommentService</actor>
+        <actor>ArticleRepo</actor>
+        <actor>CommentRepo</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+        <precondition>User navigated to the article page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Comment successfully added to the article</condition>
+    </successEndConditions>
+    <trigger>User requests to add a comment to the article</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to the article page</step>
+        <step id="S2">Controller receives request to add comment</step>
+        <step id="S3">Controller retrieves article details</step>
+        <step id="S4">ArticleService retrieves article details</step>
+        <step id="S5">Controller adds comment to the article</step>
+        <step id="S6">CommentService saves comment</step>
+        <step id="S7">Controller updates article page with new comment</step>
+        <step id="S8">System displays updated article page with comment</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1" continue="S2">
+            <step id="A1S1">Error: Validation error of user session</step>
+            <step id="A1S2">Controller renders error page</step>
+            <step id="A1S3">System displays error message "Error saving comment"</step>
+        </asteps>
+        <asteps id="A2" start="S1" continue="S2">
+            <step id="A2S1">Error: Error adding comment</step>
+            <step id="A2S2">Controller renders error page</step>
+            <step id="A2S3">System displays error message "Error saving comment"</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Login System</name>
+    <description>Allows users to log in to the system.</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist enters valid login credentials (username, password).</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in and accesses the dashboard.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in due to invalid credentials.</condition>
+    </failureEndConditions>
+    <trigger>User attempts to log in.</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password).</step>
+        <step id="S2">System receives login request (POST /login).</step>
+        <step id="S3">System validates credentials.</step>
+        <step id="S4">System retrieves user data by username.</step>
+        <step id="S5">System checks if password matches.</step>
+        <step id="S6">System displays login result.</step>
+        <step id="S7">System fetches dashboard data.</step>
+        <step id="S8">System displays dashboard.</step>
+    </mainSequence>
+</useCase>

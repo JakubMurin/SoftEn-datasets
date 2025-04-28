@@ -1,0 +1,20 @@
+<useCase id="1">
+    <name>User Authentication and Help Links Retrieval</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Authentication Service</actor>
+        <actor>Help Link Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User authenticates and requests help links.</trigger>
+    <mainSequence>
+        <step id="S1">User authenticates through the Authentication Service.</step>
+        <step id="S2">Authentication Service validates credentials with the Database to verify the permissions and grants access.</step>
+        <step id="S3">Database confirms the validity of the User's credentials.</step>
+        <step id="S4">Authentication Service notifies the User about the successful authentication process.</step>
+        <step id="S5">User requests the display of help links via the Help Link Service.</step>
+        <step id="S6">Help Link Service retrieves relevant contextual links from the Database.</step>
+        <step id="S7">Database sends back the requested contextual links to the Help Link Service.</step>
+        <step id="S8">Help Link Service displays the retrieved help links to the User.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Infrastructure Provisioning through Kubernetes Control Plane</name>
+    <description>Manage infrastructure provisioning using Kubernetes as a control plane</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Platform Engineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer has access to IDP Portal</precondition>
+        <precondition>GitOps repository is set up</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Infrastructure and application successfully provisioned</condition>
+    </successEndConditions>
+    <trigger>Developer requests infrastructure and app provisioning</trigger>
+    <mainSequence>
+        <step id="S1">Developer accesses the IDP Portal for self-service app and infrastructure provisioning</step>
+        <step id="S2">Developer pushes changes to the remote GitOps repository</step>
+        <step id="S3">Platform Engineer reviews and approves changes in the GitOps repository</step>
+        <step id="S4">GitOps repository syncs changes with ArgoCD</step>
+        <step id="S5">ArgoCD deploys changes using the Kubernetes API</step>
+        <step id="S6">ArgoCD reconciles infrastructure and application configurations</step>
+        <step id="S7">ArgoCD provisions a vcluster for ephemeral testing environment</step>
+        <step id="S8">ArgoCD provisions the application</step>
+        <step id="S9">ArgoCD provisions cloud resources including Resource Group, Storage Account, and Storage Container</step>
+    </mainSequence>
+</useCase>

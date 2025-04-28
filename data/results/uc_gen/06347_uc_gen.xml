@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Customer receives ticket</name>
+    <description>As a customer, I want to receive a ticket from the ticket pool after consuming it.</description>
+    <actors>
+        <actor>Customer</actor>
+        <actor>Vendor</actor>
+        <actor>TicketPool</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Vendor adds ticket to ticket pool by calling addTicket method</step>
+        <step id="S2">TicketPool adds the ticket to the queue</step>
+        <step id="S3">TicketPool notifies the Vendor about ticket addition</step>
+        <step id="S4">Customer consumes ticket from the TicketPool by calling consumeTicket method</step>
+        <step id="S5">TicketPool removes the ticket from the queue</step>
+        <step id="S6">TicketPool returns the ticket to the Customer</step>
+    </mainSequence>
+</useCase>

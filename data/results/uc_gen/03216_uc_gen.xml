@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Manage Directories and Files</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has access to the directory/file management system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Directory or file creation/deletion operation is successfully completed.</condition>
+    </successEndConditions>
+    <trigger>User clicks on the button to perform directory/file management operation.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks the button to trigger the operation.</step>
+        <step id="S2">DirectoriesFiles triggers the operation.</step>
+        <step id="S3">DirFileView handles the operation by passing operation, path, and file name to DirFileService.</step>
+        <step id="S4">DirFileService delegates the operation handling to DirFileHandler.</step>
+        <step id="S5">DirFileHandler creates or deletes the directory/file using CreateDirFileUtil or DestroyDirFileUtil based on the operation.</step>
+        <step id="S6">DirFileHandler returns the result to DirFileService.</step>
+        <step id="S7">DirFileService returns the result to DirFileView.</step>
+        <step id="S8">DirFileView notifies DirectoriesFiles about the completion of the operation.</step>
+        <step id="S9">DirectoriesFiles shows a notification to the User.</step>
+    </mainSequence>
+</useCase>

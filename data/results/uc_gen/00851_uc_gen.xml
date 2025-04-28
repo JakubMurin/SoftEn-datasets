@@ -1,0 +1,32 @@
+<useCase id="001">
+    <name>Integral Flow</name>
+    <description>Use case for integral flow in the system</description>
+    <actors>
+        <actor>用户</actor>
+    </actors>
+    <preconditions>
+        <precondition>Point contract deployment</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Integral transaction completed successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Integral transaction failed</condition>
+    </failureEndConditions>
+    <trigger>Triggered by user actions</trigger>
+    <mainSequence>
+        <step id="S1">User initiates point contract deployment</step>
+        <step id="S2">Application layer deploys PointController using JAVA_SDK</step>
+        <step id="S3">Application layer records contract address in configuration file</step>
+        <step id="S4">Application layer retrieves platform admin user information from MySQL</step>
+        <step id="S5">Java_SDK executes PointController.addDAO</step>
+        <step id="S6">System initializes integral total amount</step>
+        <step id="S7">System performs annual integral distribution for recyclers</step>
+        <step id="S8">User registers an account</step>
+        <step id="S9">User adds batteries for integral payment</step>
+        <step id="S10">User registers vehicle battery information</step>
+        <step id="S11">User receives integral as a consumer</step>
+        <step id="S12">User provides battery disassembly information for recycling</step>
+        <step id="S13">User applies for integral trade</step>
+    </mainSequence>
+</useCase>

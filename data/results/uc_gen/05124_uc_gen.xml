@@ -1,0 +1,43 @@
+<useCase id="1">
+    <name>PacMan Game</name>
+    <description>A user plays the PacMan game.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Foo</actor>
+        <actor>PacManController</actor>
+        <actor>PacManUser</actor>
+        <actor>PacManPersistence</actor>
+        <actor>FileReader</actor>
+        <actor>FileWriter</actor>
+    </actors>
+    <preconditions>
+        <precondition>The PacMan game is initialized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The highscore is saved successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to save highscore.</condition>
+    </failureEndConditions>
+    <trigger>User starts the PacMan game.</trigger>
+    <mainSequence>
+        <step id="S1">User writes username in the TextField.</step>
+        <step id="S2">PacManController updates the GUI.</step>
+        <step id="S3">PacManController gets the username from TextField.</step>
+        <step id="S4">TextField sends username to PacManController.</step>
+        <step id="S5">PacManController validates the username.</step>
+        <step id="S6">PacManUser confirms the username is valid.</step>
+        <step id="S7">PacManController enables the start button.</step>
+        <step id="S8">User clicks on the start button.</step>
+        <step id="S9">Start button sends click event to PacManController.</step>
+        <step id="S10">PacManController handles the start button click.</step>
+        <step id="S11">PacManController sets the username.</step>
+        <step id="S12">PacManController sets the score.</step>
+        <step id="S13">PacManController saves the highscore.</step>
+        <step id="S14">PacManPersistence reads the scores from a file.</step>
+        <step id="S15">FileReader sends the scores to PacManPersistence.</step>
+        <step id="S16">PacManPersistence creates a new PacManUser object.</step>
+        <step id="S17">PacManUser sends the PacManUser object to PacManPersistence.</step>
+        <step id="S18">PacManPersistence writes the new scores to the file.</step>
+    </mainSequence>
+</useCase>

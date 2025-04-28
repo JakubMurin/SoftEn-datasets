@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Query Recipe Data</name>
+    <description>As a User, I want to query recipe data from the database.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>code</actor>
+        <actor>Bookshelf</actor>
+        <actor>Knex</actor>
+        <actor>Tarn</actor>
+        <actor>node_postgres</actor>
+        <actor>postgresDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User executes npm start command.</step>
+        <step id="S2">code requires Knex library.</step>
+        <step id="S3">Knex establishes connection with node_postgres.</step>
+        <step id="S4">node_postgres authenticates connection with postgresDB.</step>
+        <step id="S5">PostgresDB confirms successful connection with node_postgres.</step>
+        <step id="S6">Knex adds connections to the pool.</step>
+        <step id="S7">code creates a new Knex instance.</step>
+        <step id="S8">code requires Bookshelf while passing the Knex instance.</step>
+        <step id="S9">code calls Recipe().fetchAll() from Bookshelf.</step>
+        <step id="S10">Bookshelf uses Knex to select data from the recipe table.</step>
+        <step id="S11">Tarn acquires a connection from the pool for Knex.</step>
+        <step id="S12">Knex uses the acquired connection to execute the query on node_postgres.</step>
+        <step id="S13">postgresDB executes the query and returns the resulting data.</step>
+        <step id="S14">Knex maps the fetched data to the Bookshelf model and releases the connection to the pool.</step>
+        <step id="S15">Bookshelf returns the fetched data to the code.</step>
+        <step id="S16">code displays the fetched data to the User.</step>
+    </mainSequence>
+</useCase>

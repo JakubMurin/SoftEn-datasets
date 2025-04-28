@@ -1,0 +1,30 @@
+<useCase id="POAWorkflow">
+    <name>Process Power of Attorney Requests</name>
+    <description>Accredited Representative interacts with the VA.gov system to view, select, and make decisions on Power of Attorney requests.</description>
+    <actors>
+        <actor>Accredited Representative</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">View POA Requests List</step>
+        <step id="S2">Query POA Requests from the Database</step>
+        <step id="S3">Display POA Requests</step>
+        <step id="S4">Select POA Request</step>
+        <step id="S5">Query Single POA Request Details</step>
+        <step id="S6">Display POA Details</step>
+        <step id="S7">Submit Decision</step>
+        <step id="S8">Verify ability to make decision</step>
+        <step id="S9">Submit POA Decision to Lighthouse API</step>
+        <step id="S10">Create Decision and Resolution in VA.gov Database</step>
+        <step id="S11">Update Form Submission Status</step>
+        <step id="S12">Display Success Response</step>
+        <step id="S13">Display Error Response</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9" continue="S10">
+            <step id="A1S1">Process Successful Decision</step>
+        </asteps>
+        <asteps id="A2" start="S9" continue="S13">
+            <step id="A2S1">Process Failed Decision</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

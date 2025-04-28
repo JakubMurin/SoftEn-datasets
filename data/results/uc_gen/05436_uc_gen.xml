@@ -1,0 +1,33 @@
+<useCase id="P210_issue_vc">
+    <name>P210: Issue VC</name>
+    <actors>
+        <actor>USER</actor>
+        <actor>WALLET</actor>
+        <actor>CA</actor>
+        <actor>TAS</actor>
+        <actor>ISSUER</actor>
+        <actor>BC</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">USER requests VC offer from TAS</step>
+        <step id="S2">TAS requests VC offer from ISSUER</step>
+        <step id="S3">ISSUER provides VC offer response to USER</step>
+        <step id="S4">CA confirms VC offer</step>
+        <step id="S5">CA requests VC Plan ID List from TAS</step>
+        <step id="S6">TAS provides VC Plan ID List response to CA</step>
+        <step id="S7">CA initiates Issue VC start request to TAS</step>
+        <step id="S8">TAS processes Issue VC start request and responds to CA</step>
+        <step id="S9">CA sends ECDH Request to TAS</step>
+        <step id="S10">TAS responds to CA with ECDH Response</step>
+        <step id="S11">CA requests Issue Profile from TAS</step>
+        <step id="S12">TAS provides Issue Profile Response to CA</step>
+        <step id="S13">CA requests Issue VC from WALLET</step>
+        <step id="S14">WALLET requests Issue VC from TAS</step>
+        <step id="S15">TAS processes Issue VC request and interacts with ISSUER and BC</step>
+        <step id="S16">ISSUER responds with VC_enc response to TAS</step>
+        <step id="S17">TAS forwards VC_enc response to WALLET</step>
+        <step id="S18">WALLET decrypts VC_enc and stores VC</step>
+        <step id="S19">CA requests Issue VC completion from TAS</step>
+        <step id="S20">TAS processes Issue VC completion request and responds to CA</step>
+    </mainSequence>
+</useCase>

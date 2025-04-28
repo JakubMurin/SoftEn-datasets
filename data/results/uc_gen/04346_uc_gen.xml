@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Restrict Access to Collection</name>
+    <actors>
+        <actor>Curator</actor>
+        <actor>UI Dashboard</actor>
+        <actor>Authentication Service</actor>
+        <actor>Access Control Module</actor>
+        <actor>Repository Database</actor>
+        <actor>Networking Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator has initiated restriction settings</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Access to collection restricted successfully</condition>
+    </successEndConditions>
+    <trigger>User tries to access collection</trigger>
+    <mainSequence>
+        <step id="S1">Curator initiates restriction settings</step>
+        <step id="S2">UI Dashboard authenticates curator</step>
+        <step id="S3">UI Dashboard requests to restrict access</step>
+        <step id="S4">Access Control Module fetches collection details</step>
+        <step id="S5">Access Control Module defines IP restriction rule (Duke IP addresses only)</step>
+        <step id="S6">Access Control Module updates collection with access rule</step>
+        <step id="S7">UI Dashboard displays success message</step>
+        <step id="S8">Networking Service checks access for user IP</step>
+        <step id="S9">Networking Service serves/denies collection based on ACM decision</step>
+    </mainSequence>
+</useCase>

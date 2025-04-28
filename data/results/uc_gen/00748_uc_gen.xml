@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Render Components</name>
+    <description>Render components on the screen</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>Components and instances are initialized</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Components successfully rendered on the screen</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Rendering process failed</condition>
+    </failureEndConditions>
+    <trigger>User requests to render components</trigger>
+    <mainSequence>
+        <step id="S1">User creates App</step>
+        <step id="S2">Liba creates cInstance</step>
+        <step id="S3">Liba renders cInstance</step>
+        <step id="S4">App creates button</step>
+        <step id="S5">App creates UserCard</step>
+        <step id="S6">UserCard creates div elements</step>
+    </mainSequence>
+</useCase>

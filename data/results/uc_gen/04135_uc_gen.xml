@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Manage Backup Food Stock</name>
+    <description>As a Chef, I want to manage the backup food stock for efficient kitchen operations.</description>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Chef must have access to the inventory management system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Chef successfully updates the backup food list.</condition>
+    </successEndConditions>
+    <trigger>The Chef wants to access and update the backup food stock.</trigger>
+    <mainSequence>
+        <step id="S1">Access the inventory management system to check the current backup food stock.</step>
+        <step id="S2">Identify items in the backup food list that need renewal.</step>
+        <step id="S3">Update the backup food list with the identified renewed items.</step>
+        <step id="S4">Confirm the updated backup food list.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">Initiate a restock request for items that need renewal.</step>
+            <step id="A1S2">Place an order with the supplier for restocking the items.</step>
+            <step id="A1S3">Confirm the restock order with the supplier.</step>
+            <step id="A1S4">Update pending deliveries in the inventory system.</step>
+            <step id="A1S5">Confirm the update of pending deliveries.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>A failure occurred while attempting to update the backup food list.</description>
+            <step id="E1S1">Display an error message regarding the update failure.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

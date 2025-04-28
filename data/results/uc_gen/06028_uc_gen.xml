@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Get Issue Details</name>
+    <actors>
+        <actor>Project Lead</actor>
+        <actor>System</actor>
+        <actor>Database Management System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Project Lead has valid sign-in credentials.</precondition>
+        <precondition>The Project Lead has the issue ID to retrieve details.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Issue details are successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>Project Lead requests to get issue details by providing sign-in ID and issue ID.</trigger>
+    <mainSequence>
+        <step id="S1">Project Lead requests the System to get issue details by providing sign-in ID and issue ID.</step>
+        <step id="S2">System validates the Project Lead's sign-in credentials.</step>
+        <step id="S3">System validates the provided issue ID.</step>
+        <step id="S4">System validates the project associated with the issue.</step>
+        <step id="S5">System provides the Issue Response DTO to the Project Lead.</step>
+    </mainSequence>
+</useCase>

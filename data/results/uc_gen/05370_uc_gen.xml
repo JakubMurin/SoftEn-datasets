@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Manage User Registration</name>
+    <description>Allows the Admin to add new users to the system</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>UserController</actor>
+        <actor>UserService</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+        <precondition>User limit has not been reached</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User is successfully added to user_data.txt</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Maximum user limit has been reached</condition>
+    </failureEndConditions>
+    <trigger>Admin initiates addUser(Benutzer) procedure</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to add a user</step>
+        <step id="S2">UserController initiates checkUserLimit() procedure</step>
+        <step id="S3">UserService checks User Limit</step>
+        <step id="S4">UserService saves the user in user_data.txt</step>
+        <step id="S5">UserController informs Admin about successful addition of the user</step>
+        <step id="S6">UserController notifies Admin of the error: Maximum user limit reached</step>
+    </mainSequence>
+</useCase>

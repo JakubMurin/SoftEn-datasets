@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Battle Request</name>
+    <actors>
+        <actor>Client1</actor>
+        <actor>Client2</actor>
+    </actors>
+    <preconditions>
+        <precondition>Both clients are connected to the server.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Battle request successfully processed.</condition>
+    </successEndConditions>
+    <trigger>Client sends a Battle Request to the Server.</trigger>
+    <mainSequence>
+        <step id="S1">Client1 sends a Battle Request to the Server.</step>
+        <step id="S2">Server processes the Battle Request from Client1.</step>
+        <step id="S3">Client2 sends a Battle Request to the Server.</step>
+        <step id="S4">Server processes the Battle Request from Client2.</step>
+        <step id="S5">BattleController finds or creates a Battle.</step>
+        <step id="S6">BattleService creates a new Battle.</step>
+        <step id="S7">BattleService finds an open Battle and Client2 joins.</step>
+        <step id="S8">Battle starts.</step>
+        <step id="S9">Battle ends.</step>
+        <step id="S10">Server sends responses to both Client1 and Client2.</step>
+    </mainSequence>
+</useCase>

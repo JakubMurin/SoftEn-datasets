@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Accessing and Viewing Patient Certificate</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Rehab Support System</actor>
+        <actor>Web Certificate System</actor>
+        <actor>Certificate Service</actor>
+        <actor>Identity Provider</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in successfully</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Patient certificate is displayed to the user</condition>
+    </successEndConditions>
+    <trigger>User chooses to view patient certificate</trigger>
+    <mainSequence>
+        <step id="S1">User logs in</step>
+        <step id="S2">Identity Provider validates SAML token and exchanges for Access Token/Refresh Token</step>
+        <step id="S3">User is successfully logged in</step>
+        <step id="S4">User selects to view patient view</step>
+        <step id="S5">User is redirected to the patient view</step>
+        <step id="S6">User clicks "View Certificate" and a POST request is made to Web Certificate System</step>
+        <step id="S7">Web Certificate System validates Access Token and creates a session</step>
+        <step id="S8">Certificate Service is called to fetch certificate type</step>
+        <step id="S9">Certificate type is received from the Certificate Service</step>
+        <step id="S10">Web Certificate System redirects user to certificate view</step>
+        <step id="S11">User opens the certificate view</step>
+        <step id="S12">Certificate is fetched from the Certificate Service</step>
+        <step id="S13">Certificate data is rendered in the browser</step>
+        <step id="S14">User closes the patient view</step>
+        <step id="S15">User is logged out locally</step>
+    </mainSequence>
+</useCase>

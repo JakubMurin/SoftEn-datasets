@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Se connecter à la TodoList</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>TodoList</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur a des identifiants valides</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>L'utilisateur est authentifié</condition>
+    </successEndConditions>
+    <trigger>Utilisateur se connecte avec son email et mot de passe</trigger>
+    <mainSequence>
+        <step id="S1">Utilisateur se connecte</step>
+        <step id="S2">Système vérifie les informations d'authentification</step>
+        <step id="S3">DB renvoie le résultat de la vérification</step>
+        <step id="S4">Système récupère les tâches depuis TodoList</step>
+        <step id="S5">TodoList demande les tâches depuis la DB</step>
+        <step id="S6">DB envoie la liste des tâches à TodoList</step>
+        <step id="S7">TodoList renvoie la liste des tâches à Système</step>
+        <step id="S8">Système affiche la liste des tâches à l'Utilisateur</step>
+    </mainSequence>
+</useCase>

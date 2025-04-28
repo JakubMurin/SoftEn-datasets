@@ -1,0 +1,21 @@
+<useCase id="UC1">
+	<name>Remove Book from Catalog</name>
+	<description>As a User, I want to remove a book from the catalog so that it is no longer available.</description>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>The User must have access rights to remove books from the catalog.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The book is successfully removed from the catalog.</condition>
+	</successEndConditions>
+	<trigger>User sends a request to remove a book from the catalog.</trigger>
+	<mainSequence>
+		<step id="S1">User sends a GET Request to CatalogDao.</step>
+		<step id="S2">CatalogDao processes the request and sends a RemoveBookFromCatalogRequest to RemoveBookFromCatalogActivity.</step>
+		<step id="S3">RemoveBookFromCatalogActivity executes removeBookFromCatalog() method.</step>
+		<step id="S4">CatalogDao receives the response from RemoveBookFromCatalogActivity and processes it.</step>
+		<step id="S5">User receives confirmation that the book was successfully removed from the catalog.</step>
+	</mainSequence>
+</useCase>

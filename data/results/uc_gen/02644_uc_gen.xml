@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Load Map Data</name>
+    <actors>
+        <actor>Application</actor>
+        <actor>MapEngine</actor>
+        <actor>MapImport</actor>
+        <actor>MemSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>Application is connected to the map service.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The map data is successfully loaded and processed.</condition>
+    </successEndConditions>
+    <trigger>User selects map file and map type to load.</trigger>
+    <mainSequence>
+        <step id="S1">User selects map file and map type to load.</step>
+        <step id="S2">MapEngine parses data and performs map file analysis.</step>
+        <step id="S3">Transform data to data model and build map geometric data model.</step>
+        <step id="S4">Insert data into R-tree for map storage.</step>
+        <step id="S5">Return status code to MapImport.</step>
+        <step id="S6">Return status code to Application.</step>
+        <step id="S7">User requests to retrieve road information.</step>
+        <step id="S8">MapEngine searches for roads in R-tree.</step>
+        <step id="S9">MapEngine searches for lanes in R-tree.</step>
+        <step id="S10">Return road pointers collection to MapEngine.</step>
+        <step id="S11">Return road pointers collection to Application.</step>
+        <step id="S12">User requests to retrieve lane links information.</step>
+        <step id="S13">MapEngine searches for lane links in R-tree.</step>
+        <step id="S14">Return lane links information to MapEngine.</step>
+        <step id="S15">Return lane links information to Application.</step>
+        <step id="S16">User requests to retrieve objects on roads information.</step>
+        <step id="S17">MapEngine searches for objects on roads in R-tree.</step>
+        <step id="S18">Return objects information to MapEngine.</step>
+        <step id="S19">Return objects information to Application.</step>
+    </mainSequence>
+</useCase>

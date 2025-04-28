@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Count User Errors</name>
+    <actors>
+        <actor>User</actor>
+        <actor>User Interface</actor>
+        <actor>Error Handler</actor>
+        <actor>Error Counter</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is interacting with the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User error count updated successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error in updating user error count.</condition>
+    </failureEndConditions>
+    <trigger>User performs an action.</trigger>
+    <mainSequence>
+        <step id="S1">User performs an action.</step>
+        <step id="S2">User error detection request sent to Error Handler.</step>
+        <step id="S3">User error count updated by Error Counter.</step>
+        <step id="S4">User error count updated successfully.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Check if error count reaches a threshold.</step>
+            <step id="A1S2">Display error message.</step>
+            <step id="A1S3">Request error logging.</step>
+            <step id="A1S4">Record error in Error Log.</step>
+            <step id="A1S5">Recovery process requested.</step>
+            <step id="A1S6">Recovery process completed.</step>
+            <step id="A1S7">Display recovery completion message to User.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

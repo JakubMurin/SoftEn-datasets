@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Establish Connection</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Connection View</actor>
+        <actor>Sonic Controller</actor>
+        <actor>Connection Model</actor>
+        <actor>Communication Builder</actor>
+        <actor>Communicator</actor>
+        <actor>Sonic Device Builder</actor>
+        <actor>Main View</actor>
+    </actors>
+    <preconditions>
+        <precondition>User navigates to connection functionality</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Successful initiation of communication process</condition>
+    </successEndConditions>
+    <trigger>User desires to establish a new connection</trigger>
+    <mainSequence>
+        <step id="S1">The User selects the desired port to initate connection</step>
+        <step id="S2">The Connection View binds properties on the Sonic Controller</step>
+        <step id="S3">The Sonic Controller sets the chosen port</step>
+        <step id="S4">The Connection Model updates the Connection View</step>
+        <step id="S5">User presses the "Connect" button on the Connection View</step>
+        <step id="S6">The Connection View generates the CONNECTION_ATTEMPT event to Sonic Controller</step>
+        <step id="S7">The Sonic Controller utilizes get_port to retrieve the port string</step>
+        <step id="S8">The Communication Builder creates a communicator using the indicated network endpoint</step>
+        <step id="S9">The Communicator is successfuly built</step>
+        <step id="S10">The Sonic Controller initializes an AMP object via create_amp utilizing the communicator</step>
+        <step id="S11">The Communicator supplies the data of the SonicDevice</step>
+        <step id="S12">The reported SonicDevice information is passed back to Sonic Device Builder</step>
+        <step id="S13">Sonic Controller updates the connection state callbacks</step>
+        <step id="S14">Connection Model udpate</step>
+    </mainSequence>
+</useCase>

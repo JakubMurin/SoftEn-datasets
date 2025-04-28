@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>Maintain IP Security</name>
+	<description>Ensure the security of IP addresses by managing request counts and blocking IPs if necessary.</description>
+	<actors>
+		<actor>Client</actor>
+		<actor>HealthMonitorAPI</actor>
+		<actor>IpHandler</actor>
+		<actor>ServiceRemovalHandler</actor>
+	</actors>
+	<preconditions>
+		<precondition>The system is operational and able to receive requests.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>The IP security is maintained successfully.</condition>
+	</successEndConditions>
+	<trigger>Client triggers IP security check request.</trigger>
+	<mainSequence>
+		<step id="S1">Client triggers a check on the health of the IP.</step>
+		<step id="S2">HealthMonitorAPI denies or accepts the service check based on request counts.</step>
+		<step id="S3">IpHandler increments the request count for the sender IP.</step>
+		<step id="S4">If request count is above 5:</step>
+		<step id="S5">IpHandler requests ServiceRemovalHandler to block the sender IP.</step>
+		<step id="S6">ServiceRemovalHandler blocks the request from the sender IP and denies the message.</step>
+		<step id="S7">If request count is below or equal to 5:</step>
+		<step id="S8">IpHandler allows the request to pass to HealthMonitorAPI.</step>
+		<step id="S9">HealthMonitorAPI sends API health status to the Client.</step>
+	</mainSequence>
+</useCase>

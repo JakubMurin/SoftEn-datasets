@@ -1,0 +1,26 @@
+<useCase id="UC001">
+    <name>Process Payment Transactions</name>
+    <actors>
+        <actor>Faber</actor>
+        <actor>Acme</actor>
+        <actor>Alice</actor>
+        <actor>DiemLedger</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actors have created their DIDs and identifiers.</precondition>
+    </preconditions>
+    <trigger>Request for payment transaction initiation.</trigger>
+    <mainSequence>
+        <step id="S1">Faber requests to create a DID through FaberIndyWallet.</step>
+        <step id="S2">Faber creates SCHEMA using the created DID.</step>
+        <step id="S3">Faber requests to create Diem Identifier and keys through FaberPythonDiem.</step>
+        <step id="S4">Faber creates a payment transaction for TrustedInstitution.</step>
+        <step id="S5">Faber pulls SCHEMA from Acme payments on the ledger.</step>
+        <step id="S6">Faber creates CRED_DEF using Faber DID and SCHEMA.</step>
+        <step id="S7">Alice creates a master secret.</step>
+        <step id="S8">Alice creates a credential request.</step>
+        <step id="S9">Faber creates a credential offer.</step>
+        <step id="S10">Faber creates a credential with attributes.</step>
+        <step id="S11">Alice stores the received credential in AliceIndyWallet.</step>
+    </mainSequence>
+</useCase>

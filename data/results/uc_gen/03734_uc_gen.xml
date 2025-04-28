@@ -1,0 +1,41 @@
+<useCase id="1">
+  <name>Typing Game</name>
+  
+  <description>A user plays a typing game to improve typing skills</description>
+  
+  <actors>
+    <actor>User</actor>
+    <actor>Keyboard</actor>
+    <actor>JavaScript</actor>
+    <actor>HTML DOM</actor>
+    <actor>Fishtext API</actor>
+    <actor>Server</actor>
+    <actor>Database</actor>
+  </actors>
+  
+  <preconditions>
+    <precondition>User wants to practice typing</precondition>
+    <precondition>Keyboard connected to device</precondition>
+    <precondition>Internet connection available</precondition>
+  </preconditions>
+  
+  <successEndConditions>
+    <condition>User completed typing game successfully</condition>
+  </successEndConditions>
+  
+  <failureEndConditions>
+    <condition>User did not complete typing game</condition>
+  </failureEndConditions>
+  
+  <mainSequence>
+    <step id="S1">User initiates text generation request from Fishtext API</step>
+    <step id="S2">Upon success, JavaScript displays generated text on HTML DOM</step>
+    <step id="S3">User interacts with keyboard by pressing keys</step>
+    <step id="S4">Javascript receives input and starts input validation</step>
+    <step id="S5">Javascript calculates typing speed, errors, and creates end game object</step>
+    <step id="S6">Call for end game data submission to server in backend</step>
+    <step id="S7">Server updates user data in database with result</step>
+    <step id="S8">JS renders end game window on HTML DOM</step>
+    <step id="S9">JavaScript records speed data for drawing graph</step>
+  </mainSequence>
+</useCase>

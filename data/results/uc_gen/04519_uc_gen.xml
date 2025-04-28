@@ -1,0 +1,46 @@
+<useCase id="UC1">
+    <name>Delete Book</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+        <precondition>Book to delete exists in the database</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error deleting book</condition>
+    </failureEndConditions>
+    <trigger>User requests to delete a book</trigger>
+    <mainSequence>
+        <step id="S1">Admin enters the book ID for deletion</step>
+        <step id="S2">UI sends DELETE request to Server with the book ID</step>
+        <step id="S3">Server finds the book in the database by ID</step>
+        <step id="S4">Server deletes the book</step>
+        <step id="S5">DB confirms book deletion</step>
+        <step id="S6">Server notifies UI about successful book deletion</step>
+        <step id="S7">UI informs Admin about the successful deletion</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S5">
+            <step id="A1S1">Book found in the database</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S6">
+            <step id="A2S1">Book successfully deleted</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Book not found in the database</description>
+            <step id="E1S1">Server notifies UI about book not found</step>
+            <step id="E1S2">UI informs Admin about the error</step>
+        </esteps>
+        <esteps id="E2" start="S4">
+            <description>Error occurred while deleting the book</description>
+            <step id="E2S1">Server notifies UI about deletion error</step>
+            <step id="E2S2">UI informs Admin about the error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

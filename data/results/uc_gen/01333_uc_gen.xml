@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Staking</name>
+    <actors>
+        <actor>Anybody (DAO)</actor>
+        <actor>Staker</actor>
+        <actor>Bridge Stakers (PoS)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Smart Contracts on Mainet and Polygon are deployed</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">anybody vestRewards()</step>
+        <step id="S2">rPool release()</step>
+        <step id="S3">vest mint(to: RewardPool)</step>
+        <step id="S4">zkp getBalance(RewardPool)</step>
+        <step id="S5">rPool response: zkpAmount</step>
+        <step id="S6">rPool depositFor(to: RewardBroker, data: zkpAmount)</step>
+        <step id="S7">mBridge trasferFrom(from: RewardPool, to: Bridge, amount: zkpAmount)</step>
+        <step id="S8">mBridge depositFor(to: RewardBroker, data: zkpAmount)</step>
+        <step id="S9">pBridge deposit(to: RewardBroker, data: zkpAmount)</step>
+        <step id="S10">pZkp onTokenTransfer(from: RewardPool, value: zkpAmount, ...)</step>
+    </mainSequence>
+</useCase>

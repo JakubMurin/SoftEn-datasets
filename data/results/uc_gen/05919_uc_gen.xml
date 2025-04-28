@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>View Rooms List</name>
+    <actors>
+        <actor>Customers</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customers open the rooms list page.</step>
+        <step id="S2">UI sends a GET request to Router for /rooms.</step>
+        <step id="S3">Router calls getAllRooms() on Controller.</step>
+        <step id="S4">Controller requests all rooms from Repository.</step>
+        <step id="S5">Repository finds all rooms in Model.</step>
+        <step id="S6">Model fetches all rooms from Database.</step>
+        <step id="S7">Model returns all rooms to Repository.</step>
+        <step id="S8">Repository provides all rooms to Controller.</step>
+        <step id="S9">Controller responds with all rooms to Router.</step>
+        <step id="S10">Router sends 200 OK response with all rooms to UI.</step>
+        <step id="S11">UI displays all rooms to Customers.</step>
+    </mainSequence>
+</useCase>

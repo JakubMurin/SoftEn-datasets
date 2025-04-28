@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Delete istiocsr CR</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Operator</actor>
+    </actors>
+    <preconditions>
+        <precondition>istio-csr agent installation resources managed by Operator</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>istiocsr CR successfully deleted</condition>
+    </successEndConditions>
+    <trigger>User initiates deletion of istiocsr CR</trigger>
+    <mainSequence>
+        <step id="S1">User requests API to delete istiocsr CR</step>
+        <step id="S2">API forwards request to Operator for reconciliation</step>
+        <step id="S3">Operator stops managing resources created for istio-csr agent installation</step>
+    </mainSequence>
+</useCase>

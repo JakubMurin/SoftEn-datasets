@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Manage Conflict Event Notification</name>
+    <description>System should be able to manage conflict notifications over MQTT server</description>
+    <actors>
+        <actor>Device</actor>
+        <actor>NotificationService</actor>
+        <actor>MQTTServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Conflict event with relevant data must exist</precondition>
+        <precondition>MQTT server connection established</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Device receives conflict notification</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Device does not receive conflict notification</condition>
+    </failureEndConditions>
+    <trigger>Conflict event detected</trigger>
+    <mainSequence>
+        <step id="S1">MQTT server sends Conflict Event to NotificationService</step>
+        <step id="S2">NotificationService sends Conflict Notification to Device</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1">
+            <step id="A1S1">Conflict Event cannot be sent</step>
+            <step id="A1S2">NotificationService logs error</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Device does not receive Conflict Notification</description>
+            <step id="E1S1">Check connection between NotificationService and Device</step>
+        </esteps>
+    </errorSteps>
+</useCase>

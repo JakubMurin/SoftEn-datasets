@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Run ReWOOAgent</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ReWOOAgent</actor>
+        <actor>ReasonLLM</actor>
+        <actor>WorldLLM</actor>
+        <actor>ObserveLLM</actor>
+        <actor>OutcomeLLM</actor>
+    </actors>
+    <preconditions>
+        <precondition>ReWOOAgent is initialized</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Final result is delivered to User</condition>
+    </successEndConditions>
+    <trigger>User runs ReWOOAgent with input</trigger>
+    <mainSequence>
+        <step id="S1">User runs ReWOOAgent with input</step>
+        <step id="S2">ReWOOAgent reasons about action</step>
+        <step id="S3">ReWOOAgent simulates world</step>
+        <step id="S4">ReWOOAgent observes effects</step>
+        <step id="S5">ReWOOAgent determines outcome</step>
+        <step id="S6">Final result is delivered to User</step>
+    </mainSequence>
+</useCase>

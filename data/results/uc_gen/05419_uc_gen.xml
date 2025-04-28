@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Perform Fault Management Provisioning</name>
+    <description>As a BUS actor, I want to perform fault management provisioning tasks.</description>
+    <actors>
+        <actor>BUS</actor>
+        <actor>SOF:FaultManagement</actor>
+        <actor>Hub</actor>
+    </actors>
+    <preconditions>
+        <precondition>The BUS actor is registered as a listener for FaultManagementJobNotification and FaultManagementReportNotification.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The fault management provisioning tasks are successfully completed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>An error occurs during fault management provisioning tasks.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">BUS actor registers as a listener for FaultManagementJobNotification and FaultManagementReportNotification with Hub.</step>
+        <step id="S2">BUS actor creates a FaultManagementJob with SOF:FaultManagement.</step>
+        <step id="S3">FaultManagementJob is successfully created.</step>
+        <step id="S4">FaultManagementJob is in progress.</step>
+        <step id="S5">FaultManagementJob generates data.</step>
+        <step id="S6">FaultManagementReport is created based on the FaultManagementJob.</step>
+        <step id="S7">FaultManagementReport is in progress.</step>
+        <step id="S8">Data collection for FaultManagementReport is completed.</step>
+        <step id="S9">FaultManagementReport is completed.</step>
+        <step id="S10">Report ready event is triggered for the FaultManagementJob.</step>
+        <step id="S11">FaultManagementJob is completed or scheduled based on the schedule elapsed.</step>
+        <step id="S12">BUS actor requests the FaultManagementReport from SOF:FaultManagement.</step>
+        <step id="S13">FaultManagementReport is retrieved successfully.</step>
+    </mainSequence>
+</useCase>

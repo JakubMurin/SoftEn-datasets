@@ -1,0 +1,45 @@
+<useCase id="1">
+    <name>User Management</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>UsersController</actor>
+        <actor>UsersService</actor>
+        <actor>UsersRepository</actor>
+        <actor>ProductsRepository</actor>
+        <actor>BidsRepository</actor>
+        <actor>OrdersRepository</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client interacts with the UsersController to manage users.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client sends POST request to create a user.</step>
+        <step id="S2">UsersController forwards the request to UsersService to create the user.</step>
+        <step id="S3">UsersService interacts with UsersRepository to create and save the user.</step>
+        <step id="S4">UsersService sends back the created user to UsersController.</step>
+        <step id="S5">UsersController responds to the Client with the created user.</step>
+        <step id="S6">Client sends GET request to retrieve all users.</step>
+        <step id="S7">UsersController forwards the request to UsersService to find all users.</step>
+        <step id="S8">UsersService interacts with UsersRepository to find all users.</step>
+        <step id="S9">UsersService sends back the list of users to UsersController.</step>
+        <step id="S10">UsersController responds to the Client with the list of users.</step>
+        <step id="S11">Client sends GET request to retrieve a specific user by id.</step>
+        <step id="S12">UsersController forwards the request to UsersService to find the user.</step>
+        <step id="S13">UsersService interacts with UsersRepository to find the specific user.</step>
+        <step id="S14">UsersService sends back the found user to UsersController.</step>
+        <step id="S15">UsersController responds to the Client with the specific user.</step>
+        <step id="S16">Client sends PUT request to update a user.</step>
+        <step id="S17">UsersController forwards the request to UsersService to update the user.</step>
+        <step id="S18">UsersService interacts with UsersRepository to check and update the user.</step>
+        <step id="S19">UsersService updates the user if found, otherwise raises UserNotFoundException.</step>
+        <step id="S20">UsersService responds with the updated user or exception to UsersController.</step>
+        <step id="S21">UsersController responds to the Client with the updated user or exception.</step>
+        <step id="S22">Client sends DELETE request to remove a user.</step>
+        <step id="S23">UsersController forwards the request to UsersService to remove the user.</step>
+        <step id="S24">UsersService interacts with UsersRepository to check and remove the user.</step>
+        <step id="S25">UsersService performs multiple checks based on the user's associations with products, bids, and orders.</step>
+        <step id="S26">UsersService removes the user if all checks pass, otherwise raises respective exceptions.</step>
+        <step id="S27">UsersService responds with 'success' message or exception to UsersController.</step>
+        <step id="S28">UsersController responds to the Client with the success message or exception.</step>
+    </mainSequence>
+</useCase>

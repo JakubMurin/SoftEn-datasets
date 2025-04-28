@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>User triggers creation of components</name>
+    <description>As a User, I want to trigger the creation of components for rendering in order to render different elements on the app.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Liba</actor>
+        <actor>renderC</actor>
+        <actor>App</actor>
+        <actor>renderLiba</actor>
+        <actor>createChildren</actor>
+        <actor>UserCard</actor>
+    </actors>
+    <preconditions>
+        <precondition>All necessary components and instances are initialized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>All components are successfully rendered with correct element assignments.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Components fail to render due to issues in component creation.</condition>
+    </failureEndConditions>
+    <trigger>User wants to create and render components on the app.</trigger>
+    <mainSequence>
+        <step id="S1">User creates App instance.</step>
+        <step id="S2">Liba creates cInstance.</step>
+        <step id="S3">RenderC receives cInstance from Liba.</step>
+        <step id="S4">App passes props and renderLiba to renderC.</step>
+        <step id="S5">RenderLiba creates a 'button' element.</step>
+        <step id="S6">RenderLiba creates UserCard component.</step>
+        <step id="S7">UserCard triggers creation of 'div' elements.</step>
+    </mainSequence>
+</useCase>

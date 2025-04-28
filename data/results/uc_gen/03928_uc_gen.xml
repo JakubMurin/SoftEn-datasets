@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Placing an Order</name>
+    <actors>
+        <actor>App</actor>
+        <actor>OrderServiceFacade</actor>
+        <actor>InventoryService</actor>
+        <actor>PaymentService</actor>
+        <actor>ShippingService</actor>
+    </actors>
+    <preconditions>
+        <precondition>The product to be ordered is available in the inventory</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The order is successfully placed, paid for, and the product is shipped</condition>
+    </successEndConditions>
+    <trigger>User requests to place an order for a product</trigger>
+    <mainSequence>
+        <step id="S1">App creates the order</step>
+        <step id="S2">App places an order for a specific product</step>
+        <step id="S3">OrderServiceFacade finds the product by product ID</step>
+        <step id="S4">InventoryService checks product availability</step>
+        <step id="S5">PaymentService processes the payment</step>
+        <step id="S6">ShippingService ships the product</step>
+    </mainSequence>
+</useCase>

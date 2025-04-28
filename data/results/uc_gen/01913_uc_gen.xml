@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Manage Bankomat Sign Up</name>
+    <description>This use case involves the steps required for a User to manage bankomat sign up.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>HelloController</actor>
+        <actor>Bankomat</actor>
+        <actor>SignIn_UpController</actor>
+    </actors>
+    <preconditions>
+        <precondition>None</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Bankomat signed up successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Bankomat sign up failed</condition>
+    </failureEndConditions>
+    <trigger>User presses the accept button</trigger>
+    <mainSequence>
+        <step id="S1">User presses the accept button</step>
+        <step id="S2">Create bankomat instance</step>
+        <step id="S3">Create a new Bankomat with selected bank and location</step>
+        <step id="S4">Add a new UserAdmin with username "admin" and PIN 5555 to Bankomat</step>
+        <step id="S5">Set the Bankomat in SignIn_UpController</step>
+        <step id="S6">Show SignIn_UpController</step>
+        <step id="S7">Close the process</step>
+    </mainSequence>
+</useCase>

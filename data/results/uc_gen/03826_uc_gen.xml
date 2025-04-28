@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Retrieve Analytics Data for URL</name>
+    <description>As a User, I want to retrieve analytics data for a specific URL</description>
+    <actors>
+        <actor>User</actor>
+        <actor>AnalyticsPage</actor>
+        <actor>AnalyticsControl</actor>
+        <actor>URLAnalytics</actor>
+        <actor>AnalyticsDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>There is a valid URL to retrieve analytics data for</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Analytics data is successfully displayed to the User</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Analytics data retrieval process fails</condition>
+    </failureEndConditions>
+    <trigger>User inputs a URL or selects a URL from the list on the AnalyticsPage</trigger>
+    <mainSequence>
+        <step id="S1">User inputs URL or selects from list</step>
+        <step id="S2">Send analytic data request on Analytics Page</step>
+        <step id="S3">Request analytical data for the selected URL</step>
+        <step id="S4">Query analytics data from the database</step>
+        <step id="S5">Return analytics data from the database</step>
+        <step id="S6">Provide analytical data results to Analytics Control</step>
+        <step id="S7">Send analytical data to the page</step>
+        <step id="S8">Display the analytical data for the User</step>
+    </mainSequence>
+</useCase>

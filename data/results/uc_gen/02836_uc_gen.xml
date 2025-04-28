@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Manage Summit Attendees</name>
+    <description>As a Summit Coordinator, I want to manage the list of attendees for a summit</description>
+    <actors>
+        <actor>Summit Coordinator</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Summit Coordinator is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The emails are successfully sent to selected attendees</condition>
+    </successEndConditions>
+    <trigger>Summit Coordinator needs to manage the list of attendees</trigger>
+    <mainSequence>
+        <step id="S1">Authenticate the Summit Coordinator</step>
+        <step id="S2">Request the list of attendees for the summit</step>
+        <step id="S3">Display the attendee list</step>
+        <step id="S4">Select attendees to email</step>
+        <step id="S5">Compose email</step>
+        <step id="S6">Request to send email to selected attendees</step>
+        <step id="S7">Send email request with attendee emails</step>
+        <step id="S8">Log email activity</step>
+        <step id="S9">Confirm email sent to attendees</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Create New Type of Test</name>
+    <description>User wants to create a new type of test.</description>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator is logged in and has permission to create a new type of test.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New type of test is successfully created.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Creation of new type of test fails.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Administrator asks to create a new type of test. [Actor: Administrator]</step>
+        <step id="S2">List of parameter categories is fetched. [Actor: User Interface]</step>
+        <step id="S3">User Interface shows parameter category list and asks to select one. [Actor: Administrator]</step>
+        <step id="S4">Administrator selects a parameter category. [Actor: Administrator]</step>
+        <step id="S5">Requests data (description, collecting method, code). [Actor: Administrator]</step>
+        <step id="S6">User types requested data. [Actor: User Interface]</step>
+        <step id="S7">Data is shown and confirmation is requested. [Actor: Administrator]</step>
+        <step id="S8">Administrator confirms all data. [Actor: Administrator]</step>
+        <step id="S9">All data is saved and operation success is informed. [Actor: User Interface]</step>
+    </mainSequence>
+</useCase>

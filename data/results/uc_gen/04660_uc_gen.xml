@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Signup Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SignupController</actor>
+        <actor>RemoteModelAccess</actor>
+        <actor>ServerController</actor>
+    </actors>
+    <preconditions>
+        <precondition>User presses Signup button</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User presses Signup with invalid credentials</step>
+        <step id="S2">SignupController calls handleSignin()</step>
+        <step id="S3">RemoteModelAccess sends a post request to ServerController to postUser() (HTTP Post)</step>
+        <step id="S4">ServerController receives null</step>
+        <step id="S5">RemoteModelAccess receives null</step>
+        <step id="S6">SignupController shows an error message to User</step>
+        <step id="S7">User presses Signup with valid credentials</step>
+        <step id="S8">SignupController calls handleSignin()</step>
+        <step id="S9">RemoteModelAccess sends a post request to ServerController to postUser() (HTTP Post)</step>
+        <step id="S10">ServerController sends User data</step>
+        <step id="S11">RemoteModelAccess receives User data</step>
+        <step id="S12">SignupController changes screen to MainMenu for User</step>
+    </mainSequence>
+</useCase>

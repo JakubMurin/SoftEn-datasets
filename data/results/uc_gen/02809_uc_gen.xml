@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>Trigger Analyzer Asynchronous</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Scheduler</actor>
+        <actor>Product Execution</actor>
+        <actor>Product Executor</actor>
+        <actor>Analyzer Product Executor</actor>
+        <actor>Sereco Product Executor</actor>
+        <actor>Product Adapter</actor>
+        <actor>Analyzer Product Adapter</actor>
+        <actor>SecHub Analyzer</actor>
+        <actor>Filesystem</actor>
+    </actors>
+    <trigger>Mark job as ready to launch</trigger>
+    <mainSequence>
+        <step id="S1">User marks job as ready to start</step>
+        <step id="S2">Scheduler triggers a batch job</step>
+        <step id="S3">Product Execution triggers XYZ/PExYZ Product Executor</step>
+        <step id="S4">XYZ/PE executes AnalyzerProductExecutor triggers</step>
+        <step id="S5">AnalyzerProductExecutor triggers AnalyzerProductAdapter</step>
+        <step id="S6">AnalyzerProductAdapter triggers Analyzer to fetch analyzer queue ID</step>
+        <step id="S7">Analyzer fetches zip data from Storage</step>
+        <step id="S8">Analyzer stores the file in FileSystem</step>
+        <step id="S9">Analyzer stores the result in Analyzer DB</step>
+    </mainSequence>
+</useCase>
