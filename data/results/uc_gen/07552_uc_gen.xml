@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Inquire about Data Usage</name>
+    <actors>
+        <actor>OlderPerson</actor>
+        <actor>ALFRED Interface</actor>
+        <actor>PrivacySettings</actor>
+        <actor>DataManagement</actor>
+        <actor>ExternalServices</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the ALFRED Interface</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data usage information displayed successfully</condition>
+    </successEndConditions>
+    <trigger>User asks: "How is my personal data used?"</trigger>
+    <mainSequence>
+        <step id="S1">User queries ALFRED Interface about personal data usage</step>
+        <step id="S2">ALFRED Interface retrieves and displays data usage information</step>
+        <step id="S3">ALFRED Interface shows data usage information to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S3">
+            <step id="A1S1">User updates data sharing permissions</step>
+            <step id="A1S2">ALFRED Interface navigates to Privacy Settings</step>
+            <step id="A1S3">PrivacySettings display privacy options to User</step>
+            <step id="A1S4">User selects specific privacy options for permissions</step>
+            <step id="A1S5">DataManagement updates permissions accordingly</step>
+            <step id="A1S6">PrivacySettings confirms the update to User</step>
+            <step id="A1S7">ALFRED Interface shows confirmation message to User</step>
+            <step id="A1S8">User initiates data sharing with specific service</step>
+            <step id="A1S9">Interface verifies permission and grants access</step>
+            <step id="A1S10">Interface requests data from DataManager</step>
+            <step id="A1S11">DataManager shares data with ExternalServices</step>
+            <step id="A1S12">ExternalServices confirm data reception</step>
+            <step id="A1S13">DataManager displays sharing success to User</step>
+            <step id="A1S14">Interface shows sharing confirmation to User</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

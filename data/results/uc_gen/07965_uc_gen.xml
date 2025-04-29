@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Turn Off Buzzer and LED</name>
+    <actors>
+        <actor>Korisnik</actor>
+        <actor>Mikrokontroler</actor>
+        <actor>Buzzer</actor>
+        <actor>LED</actor>
+    </actors>
+    <preconditions>
+        <precondition>The buzzer and LED are currently on.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The buzzer and LED have been successfully turned off.</condition>
+    </successEndConditions>
+    <trigger>Pritiskom na tipkalo</trigger>
+    <mainSequence>
+        <step id="S1">Korisnik presses the button on the remote control.</step>
+        <step id="S2">Mikrokontroler receives the signal from the button press.</step>
+        <step id="S3">Mikrokontroler sends a command to the Buzzer to turn it off.</step>
+        <step id="S4">Buzzer turns off in response to the command.</step>
+        <step id="S5">Mikrokontroler sends a command to the LED to turn it off.</step>
+        <step id="S6">LED turns off in response to the command.</step>
+    </mainSequence>
+</useCase>

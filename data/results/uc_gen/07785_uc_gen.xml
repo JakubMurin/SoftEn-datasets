@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Game Initialization</name>
+    <actors>
+        <actor>User</actor>
+        <actor>App</actor>
+        <actor>StartScreen</actor>
+        <actor>StartButtonEventHandler</actor>
+        <actor>PlayersInputScreen</actor>
+        <actor>ConfirmButton</actor>
+        <actor>Game</actor>
+        <actor>PlayersNamesInputScreen</actor>
+        <actor>QuestionScreen</actor>
+        <actor>Player</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is able to interact with the game interface</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The players' names are successfully input and confirmed</condition>
+    </successEndConditions>
+    <trigger>User clicks on the 'Comenzar' button to start the game</trigger>
+    <mainSequence>
+        <step id="S1">User clicks 'Comenzar' button</step>
+        <step id="S2">App handles the event to start the game</step>
+        <step id="S3">StartScreen handles the event to show start button</step>
+        <step id="S4">StartButtonEventHandler handles the event to hide start screen and display input screen</step>
+        <step id="S5">PlayersInputScreen is displayed for selecting and confirming inputs</step>
+        <step id="S6">App handles input selection and confirmation</step>
+        <step id="S7">ConfirmButton selects and sends input data to the Game</step>
+        <step id="S8">Game loads received data and creates PlayersNamesInputScreen</step>
+        <step id="S9">PlayersNamesInputScreen displays screen for entering players' names</step>
+        <step id="S10">App handles names input and verifies</step>
+        <step id="S11">NamesButton handles the event, registers users, and creates Player instances</step>
+        <step id="S12">Game creates players based on entered names</step>
+        <step id="S13">QuestionScreen is created and displayed to show questions and options</step>
+        <step id="S14">App displays questions to players</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Signup Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>SignupController</actor>
+        <actor>RemoteModelAccess</actor>
+        <actor>ServerController</actor>
+    </actors>
+    <preconditions>
+        <precondition>User initiates signup process</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully completes signup and is directed to MainMenu screen</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid credentials provided by User</condition>
+    </failureEndConditions>
+    <trigger>User presses Signup button</trigger>
+    <mainSequence>
+        <step id="S1">User presses Signup with invalid credentials. SignupController receives the request.</step>
+        <step id="S2">SignupController calls handleSignin to process the invalid credentials.</step>
+        <step id="S3">RemoteModelAccess receives the request and attempts to post user, resulting in a Null response returned.</step>
+        <step id="S4">SignupController handles the Null response and notifies User about the error.</step>
+        <step id="S5">User sees an error message.</step>
+        <step id="S6">User presses Signup with valid credentials. SignupController receives the request.</step>
+        <step id="S7">SignupController calls handleSignin to process the valid credentials.</step>
+        <step id="S8">RemoteModelAccess receives the request and successfully posts the user, returning User.</step>
+        <step id="S9">SignupController handles the User response and directs User to the MainMenu screen.</step>
+    </mainSequence>
+</useCase>

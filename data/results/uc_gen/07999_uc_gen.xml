@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Set Embargo on an Item</name>
+    <description>Curator requests to set embargo on an item in the system to restrict access.</description>
+    <actors>
+        <actor>Collection Curator</actor>
+        <actor>Embargo Management</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator identifies the item to be embargoed.</precondition>
+        <precondition>Embargo Management module is available and functional.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Item status updated to "Under Embargo."</condition>
+        <condition>Metadata of item becomes discoverable.</condition>
+    </successEndConditions>
+    <trigger>Curator requests embargo to be set on an item.</trigger>
+    <mainSequence>
+        <step id="S1">Curator requests to set embargo on an item in EDRMS system.</step>
+        <step id="S2">EDRMS verifies the existence of the item in the Repository.</step>
+        <step id="S3">EDRMS sets embargo on the item through the Embargo Management.</step>
+        <step id="S4">Embargo Management updates item status to "Under Embargo" in the Repository.</step>
+        <step id="S5">Confirmation of embargo set by EDRMS to Curator.</step>
+    </mainSequence>
+</useCase>

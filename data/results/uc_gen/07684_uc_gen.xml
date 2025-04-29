@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Updating User Profile Information</name>
+    <description>Allow the user to view their profile data and make updates if desired.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UserProfilePopup</actor>
+        <actor>Controller</actor>
+        <actor>Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User opens User Profile Popup</step>
+        <step id="S2">UserProfilePopup requests User Profile</step>
+        <step id="S3">Controller dispatches Prisma action (findUnique)</step>
+        <step id="S4">Model queries user profile data</step>
+        <step id="S5">User Profile data retrieved and displayed to User</step>
+        <step id="S6">User submits updated profile or avatar image</step>
+        <step id="S7">UserProfilePopup sends updated profile or avatar image data</step>
+        <step id="S8">Controller dispatches Prisma action (update or upload)</step>
+        <step id="S9">Model updates user profile data or stores avatar image</step>
+        <step id="S10">Notification sent to UserProfilePopup with the updated profile info or new avatar image URL</step>
+        <step id="S11">Success message displayed to the User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S11">
+            <step id="A1S1">Display error message to User if invalid input</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Data update or storage fails unexpectedly.</description>
+            <step id="E1S1">Attempt updation or storage again after troubleshooting</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+  <name>Image Information Retrieval</name>
+  <description>Retrieve and display descriptive information about images from the database</description>
+  <actors>
+    <actor>DonorRepresentative</actor>
+    <actor>User Interface</actor>
+    <actor>Authorization System</actor>
+    <actor>File Management</actor>
+    <actor>Database</actor>
+  </actors>
+  <preconditions>
+    <precondition>DonorRepresentative has access to the website</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Image descriptive information successfully displayed to the DonorRepresentative</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Authorization failed or database query error</condition>
+  </failureEndConditions>
+  <trigger>User Interface receives a request for image descriptive information</trigger>
+  <mainSequence>
+    <step id="S1">DonorRepresentative accesses the website</step>
+    <step id="S2">User Interface requests access from the Authorization System</step>
+    <step id="S3">Authorization System authenticates the DonorRepresentative</step>
+    <step id="S4">DonorRepresentative requests image descriptive information</step>
+    <step id="S5">User Interface queries File Management for images</step>
+    <step id="S6">File Management fetches image metadata from the Database</step>
+    <step id="S7">Database returns the metadata to File Management</step>
+    <step id="S8">File Management displays the descriptive information to User Interface</step>
+    <step id="S9">User Interface shows the descriptive information about images to DonorRepresentative</step>
+  </mainSequence>
+</useCase>

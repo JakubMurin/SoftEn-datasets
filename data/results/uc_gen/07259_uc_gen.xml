@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Provision Infrastructure for Development Environment</name>
+    <description>As a Developer, I want to provision infrastructure for the development environment using Kubernetes as the control plane.</description>
+    <actors>
+        <actor>Developer</actor>
+        <actor>Platform Engineer</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer has access to the IDP Portal.</precondition>
+        <precondition>GitOps Repository contains the necessary configuration.</precondition>
+        <precondition>Platform Engineer has the authority to approve and merge changes.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Development environment infrastructure provisioned successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in provisioning infrastructure for the development environment.</condition>
+    </failureEndConditions>
+    <trigger>Developer initiates the self-service app and infrastructure provisioning process.</trigger>
+    <mainSequence>
+        <step id="S1">Developer accesses the IDP Portal for a unified UI experience.</step>
+        <step id="S2">Developer pushes changes to the GitOps Repository.</step>
+        <step id="S3">Platform Engineer reviews and approves the changes.</step>
+        <step id="S4">GitOps Repository syncs the changes.</step>
+        <step id="S5">ArgoCD deploys the changes using the Kubernetes API.</step>
+        <step id="S6">ArgoCD reconciles the infrastructure and application.</step>
+        <step id="S7">ArgoCD provisions a virtual cluster for testing.</step>
+        <step id="S8">ArgoCD provisions the application.</step>
+        <step id="S9">ArgoCD provisions cloud resources including Resource Group, Storage Account, and Storage Container.</step>
+    </mainSequence>
+</useCase>

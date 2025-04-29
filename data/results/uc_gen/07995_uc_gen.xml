@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Inter-Organization Task Assignment</name>
+    <actors>
+        <actor>Organization A</actor>
+        <actor>Organization B</actor>
+        <actor>Organization C</actor>
+        <actor>Orca Registry</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Organization A self-issues URA VC and Service VC</step>
+        <step id="S2">Organization A publishes URA VP and Service VP to the registry</step>
+        <step id="S3">Organization B self-issues URA VC and Service VC</step>
+        <step id="S4">Organization B publishes URA VP and Service VP to the registry</step>
+        <step id="S5">Organization C self-issues URA VC and Service VC</step>
+        <step id="S6">Organization C publishes URA VP and Service VP to the registry</step>
+        <step id="S7">All services are now registered in the registry</step>
+        <step id="S8">Organization A looks up B service</step>
+        <step id="S9">Organization A creates a task for a Patient with requester A and performer B</step>
+        <step id="S10">Organization A issues VC (A->B) with Task, Patient to B</step>
+        <step id="S11">Organization B signs VP (A->B)</step>
+        <step id="S12">Organization B accepts/update task with VP (A->B)</step>
+        <step id="S13">Organization B publishes VP (A->B)</step>
+        <step id="S14">The registry now has relevant task information</step>
+        <step id="S15">Organization B looks up C service</step>
+        <step id="S16">Organization B creates a task for a Patient with requester B and performer C</step>
+        <step id="S17">Organization B issues VC (B->C) with Task, Patient to C</step>
+        <step id="S18">Organization C signs VP (B->C)</step>
+        <step id="S19">Organization C accepts/update task with VP (B->C)</step>
+        <step id="S20">Organization C publishes VP (B->C)</step>
+        <step id="S21">The registry now has updated task information</step>
+        <step id="S22">Organization C queries the registry for patient X and use case Y</step>
+        <step id="S23">The registry responds with relevant VPs for connections to Organization A and B</step>
+        <step id="S24">Organization C locates "Organization A" within the network</step>
+        <step id="S25">Organization C looks up A service</step>
+        <step id="S26">Organization C requests data (VP (B->C)) from Organization A</step>
+        <step id="S27">Organization A queries for "Organization B"</step>
+        <step id="S28">The registry returns VP (A->B) to Organization A</step>
+        <step id="S29">Organization A provides the necessary data</step>
+    </mainSequence>
+</useCase>

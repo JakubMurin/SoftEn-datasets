@@ -1,0 +1,43 @@
+<useCase id="UC001">
+    <name>Retrieve File of a Book</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Books Service</actor>
+        <actor>Postgres Database for Books</actor>
+        <actor>Minio</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to access the file.</precondition>
+        <precondition>The book ID and file ID are valid.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The file is successfully retrieved and displayed to the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The file or its data does not exist, returning a 404 status.</condition>
+        <condition>The user is unauthorized, returning a 401 status.</condition>
+        <condition>The provided JWT is not valid, returning a 403 status.</condition>
+    </failureEndConditions>
+    <trigger>User requests to retrieve a file of a book.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to Gateway to retrieve a specific file of a book.</step>
+        <step id="S2">Gateway verifies the JWT with Keycloak.</step>
+        <step id="S3">If the JWT is valid:</step>
+        <step id="S4">Gateway forwards the request to Books Service.</step>
+        <step id="S5">Books Service queries the Postgres Database for the file link.</step>
+        <step id="S6">If the file data exists:</step>
+        <step id="S7">Books Service requests the file from Minio using the link.</step>
+        <step id="S8">Minio retrieves the file and sends it back to Books Service.</step>
+        <step id="S9">Books Service forwards the file to Gateway.</step>
+        <step id="S10">Gateway sends the file to the User.</step>
+        <step id="S11">If the file data does not exist:</step>
+        <step id="S12">Books Service notifies Gateway that the file does not exist (HTTP 404).</step>
+        <step id="S13">Gateway sends HTTP 404 status to the User.</step>
+        <step id="S14">If the JWT is absent:</step>
+        <step id="S15">Gateway sends HTTP 401 status to the User.</step>
+        <step id="S16">If the JWT is not valid:</step>
+        <step id="S17">Gateway sends HTTP 403 status to the User.</step>
+    </mainSequence>
+</useCase>

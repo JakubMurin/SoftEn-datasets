@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Rate Book</name>
+    <actors>
+        <actor>User</actor>
+        <actor>gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>catalog</actor>
+        <actor>Postgres</actor>
+    </actors>
+    <preconditions>
+        <precondition>Valid JWT is provided</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book rating successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Book not found</condition>
+    </failureEndConditions>
+    <trigger>PUT /api/v1/books/{id}/rate</trigger>
+    <mainSequence>
+        <step id="S1">User requests to rate a book</step>
+        <step id="S2">Gateway receives the request to rate a book</step>
+        <step id="S3">Keycloak verifies the JWT</step>
+        <step id="S4">Catalog updates the book rating</step>
+        <step id="S5">Postgres finds the book by ID</step>
+        <step id="S6">Postgres saves/update user rate for the book</step>
+        <step id="S7">Catalog sends HTTP status 200 to Gateway</step>
+        <step id="S8">Gateway sends HTTP status 200 to User</step>
+    </mainSequence>
+</useCase>

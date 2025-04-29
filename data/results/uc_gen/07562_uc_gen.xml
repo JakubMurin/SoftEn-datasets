@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Scanner Job</name>
+    <description>Run a scanner job to collect, process and export scan results</description>
+    <actors>
+        <actor>admin_user</actor>
+        <actor>admin</actor>
+        <actor>explorer</actor>
+        <actor>worker</actor>
+        <actor>exporter</actor>
+        <actor>report_user</actor>
+    </actors>
+    <preconditions>
+        <precondition>Scan specifications are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Scanner job successfully completed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Scanner job failed to complete</condition>
+    </failureEndConditions>
+    <trigger>Start Scanner job by admin user</trigger>
+    <mainSequence>
+        <step id="S1">Admin user request to start the Scanner job</step>
+        <step id="S2">Admin triggers the Scanner job</step>
+        <step id="S3">Explorer starts exploration of scan specifications</step>
+        <step id="S4">Worker processes messages based on certain conditions</step>
+        <step id="S5">Exporter handles export message and produces results</step>
+        <step id="S6">Checkup, Status, Event, and Result Collectors update databases with relevant information</step>
+        <step id="S7">Report user checks for matches in Document Report</step>
+    </mainSequence>
+</useCase>

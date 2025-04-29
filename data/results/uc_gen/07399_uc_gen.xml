@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>Handle Collision</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>GameBoundaryDelegate</actor>
+        <actor>Boundary</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <preconditions>
+        <precondition>GameBoundaryDelegate must have a valid boundary.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>A new ball is created after collision handling.</condition>
+    </successEndConditions>
+    <trigger>GameEngine calls onCollision method on Ball.</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine calls getBoundary method on GameBoundaryDelegate.</step>
+        <step id="S2">GameBoundaryDelegate retrieves the boundary.</step>
+        <step id="S3">GameEngine calls onCollision method on Ball.</step>
+        <step id="S4">Ball processes collision with the boundary.</step>
+        <step id="S5">Ball gets a safe position from the boundary.</step>
+        <step id="S6">Ball calls onCollision method on FreeBody with collision details.</step>
+        <step id="S7">New ball is returned.</step>
+    </mainSequence>
+</useCase>

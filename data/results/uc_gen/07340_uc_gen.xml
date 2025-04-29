@@ -1,0 +1,36 @@
+<useCase id="UC1">
+  <name>Handle POA Requests</name>
+  <description>Allow Accredited Representatives to view and manage Power of Attorney requests.</description>
+  <actors>
+    <actor>Accredited Representative</actor>
+  </actors>
+  <preconditions>
+    <precondition>The Accredited Representative is logged in and has the necessary permissions.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The Accredited Representatives can view and manage POA requests successfully.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>The system encounters errors in displaying or handling POA requests.</condition>
+  </failureEndConditions>
+  <trigger>User selects to view or manage a POA request.</trigger>
+  <mainSequence>
+    <step id="S1">Accredited Representative views the list of POA requests.</step>
+    <step id="S2">Frontend sends a request to Backend to fetch POA requests list.</step>
+    <step id="S3">Backend verifies the representative and retrieves the POA requests data from VAGovDB.</step>
+    <step id="S4">Backend sends the JSON response with the POA list back to Frontend.</step>
+    <step id="S5">Frontend displays the POA requests list to the Accredited Representative.</step>
+    <step id="S6">Accredited Representative selects a specific POA request to view details.</step>
+    <step id="S7">Frontend sends a request to Backend to get details of the selected POA request.</step>
+    <step id="S8">Backend validates authorization and retrieves detailed data from VAGovDB.</step>
+    <step id="S9">Backend sends the JSON response with POA details to Frontend.</step>
+    <step id="S10">Frontend displays the detailed POA information to the Accredited Representative.</step>
+    <step id="S11">Accredited Representative submits a decision (Accept/Decline) for the POA request.</step>
+    <step id="S12">Frontend sends the decision to Backend for processing.</step>
+    <step id="S13">Backend verifies the decision authorization and submits the decision to LighthouseAPI.</step>
+    <step id="S14">LighthouseAPI processes the decision and responds back to Backend.</step>
+    <step id="S15">Backend handles successful or failed decision scenarios accordingly.</step>
+    <step id="S16">Backend sends success or error responses to Frontend based on the decision outcome.</step>
+    <step id="S17">Frontend displays the success message or error message to the Accredited Representative.</step>
+  </mainSequence>
+</useCase>

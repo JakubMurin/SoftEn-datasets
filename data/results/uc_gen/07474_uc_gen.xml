@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Generate Fault Management Report</name>
+    <description>As a Buyer/Client, I want to generate a fault management report to review</description>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Buyer/Client has scheduled a fault management job</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The fault management report is successfully generated</condition>
+    </successEndConditions>
+    <trigger>POST /faultManagementJob request</trigger>
+    <mainSequence>
+        <step id="S1">Buyer/Client sends POST /faultManagementJob request to create a job</step>
+        <step id="S2">FaultManagementJob is created</step>
+        <step id="S3">FaultManagementJob is in progress</step>
+        <step id="S4">Data is generated for the job</step>
+        <step id="S5">FaultManagementReport creation is triggered</step>
+        <step id="S6">FaultManagementReport is in progress</step>
+        <step id="S7">Data is collected for the report</step>
+        <step id="S8">FaultManagementReport is completed</step>
+        <step id="S9">FaultManagementJob state changes to completed</step>
+        <step id="S10">Buyer/Client sends GET /faultManagementReport request</step>
+        <step id="S11">FaultManagement Report content is received</step>
+    </mainSequence>
+</useCase>

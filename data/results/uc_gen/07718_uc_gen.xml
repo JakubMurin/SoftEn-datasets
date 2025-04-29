@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>DisplayAllAttributes</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ViewAllClasses</actor>
+        <actor>ModelClass</actor>
+        <actor>Attribute</actor>
+    </actors>
+    <trigger>User requests display of attributes</trigger>
+    
+    <mainSequence>
+        <step id="S1">User requests the display of attributes</step>
+        <step id="S2">ViewAllClasses receives the request and calls getAttributes() on ModelClass</step>
+        <step id="S3">ModelClass returns an ArrayList of Attributes to ViewAllClasses</step>
+        <step id="S4">ViewAllClasses loops through each attribute to retrieve details</step>
+        <step id="S5">ViewAllClasses retrieves attribute properties and communicates with Attribute</step>
+        <step id="S6">Attribute returns attribute properties to ViewAllClasses</step>
+        <step id="S7">ViewAllClasses processes the attributes for display</step>
+        <step id="S8">ViewAllClasses renders the attributes in the UI</step>
+        <step id="S9">ViewAllClasses completes the display</step>
+    </mainSequence>
+</useCase>

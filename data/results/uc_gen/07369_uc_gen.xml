@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Instructor Manages Offerings</name>
+    <description>Instructor manages offerings by accepting or dropping them, and viewing details.</description>
+    <actors>
+        <actor>Instructor</actor>
+        <actor>OfferingsPage</actor>
+        <actor>OfferingValidator</actor>
+        <actor>DatabaseManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Instructor opens Manage Offerings Page.</step>
+        <step id="S2">Query available offerings for the instructorId.</step>
+        <step id="S3">Display the available offerings to the Instructor.</step>
+        <step id="S4">Instructor selects "Accept Offering" (lessonId).</step>
+        <step id="S5">Validate the acceptance of the offering by the Instructor.</step>
+        <step id="S6">Check specialization and availability of the offering.</step>
+        <step id="S7">Update lesson status to "assigned" for the Instructor if validation passed.</step>
+        <step id="S8">Display success message when offering is accepted.</step>
+        <step id="S9">Instructor selects "Drop Offering" (lessonId).</step>
+        <step id="S10">Validate the drop of the offering by the Instructor.</step>
+        <step id="S11">Check lesson ownership status for the Instructor.</step>
+        <step id="S12">Update lesson status to "pending" if validation passed.</step>
+        <step id="S13">Display success message when offering is dropped.</step>
+        <step id="S14">Instructor views details of the offering by lessonId.</step>
+        <step id="S15">Fetch lesson details based on the lessonId.</step>
+        <step id="S16">Display the fetched lesson details to the Instructor.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="1">
+    <name>Health Monitoring</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>HealthMonitorAPI</actor>
+        <actor>IpHandler</actor>
+        <actor>ServiceRemovalHandler</actor>
+    </actors>
+    <trigger>Client initiates a checkHealth request</trigger>
+    <mainSequence>
+        <step id="S1">Client initiates a checkHealth request</step>
+        <step id="S2">Health Monitor API receives the checkHealth request</step>
+        <step id="S3">IP Handler denies service check using senderIp</step>
+        <step id="S4">IP Handler adds request count using senderIp and requestCount</step>
+        <step id="S5">If requestCount &gt; 5</step>
+        <step id="S6">IP Handler blocks request using senderIp</step>
+        <step id="S7">Service Removal Handler sends deny message</step>
+        <step id="S8">IP sends deny message to Health Monitor API</step>
+        <step id="S9">Health Monitor API sends deny message to Client</step>
+        <step id="S10">If requestCount &lt;= 5</step>
+        <step id="S11">IP Handler accepts request using senderIp</step>
+        <step id="S12">Health Monitor API sends API health status to Client</step>
+    </mainSequence>
+</useCase>

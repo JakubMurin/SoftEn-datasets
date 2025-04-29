@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Edit and Save Task</name>
+    <actors>
+        <actor>User</actor>
+        <actor>tasks_table_interactions.js</actor>
+        <actor>Flask Backend</actor>
+        <actor>Task Model</actor>
+        <actor>Task Validation</actor>
+        <actor>Task Service</actor>
+        <actor>Logger</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to edit and save a task.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks "Edit Task".</step>
+        <step id="S2">tasks_table_interactions.js initiates the edit task modal and fetches task data.</step>
+        <step id="S3">Flask Backend fetches task data for the given ID.</step>
+        <step id="S4">Task Model retrieves the task by ID.</step>
+        <step id="S5">Task Data is returned to the user.</step>
+        <step id="S6">User populates modal fields.</step>
+        <step id="S7">User submits "Save Task" form.</step>
+        <step id="S8">Flask Backend handles the POST request to create or update a task.</step>
+        <step id="S9">Task Model creates or updates the task.</step>
+        <step id="S10">Task Validation ensures task hierarchy constraints are respected.</step>
+        <step id="S11">Task Service checks for circular dependencies in the task hierarchy.</step>
+        <step id="S12">Task Model commits database changes.</step>
+        <step id="S13">Logger logs the save event for auditing.</step>
+        <step id="S14">User is shown the response (Success/Failure).</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Error handling: Flask Backend rolls back DB changes and returns an appropriate error message.</description>
+            <step id="E1S1">Flask Backend shows an error message.</step>
+            <step id="E1S2">User is alerted with an error.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

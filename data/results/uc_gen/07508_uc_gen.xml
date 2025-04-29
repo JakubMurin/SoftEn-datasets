@@ -1,0 +1,52 @@
+<useCase id="UC1">
+    <name>Access GitHub Repositories</name>
+    <description>Allows the user to access GitHub repositories by providing a valid API token.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Token Entry Component</actor>
+        <actor>Token Service</actor>
+        <actor>GitHub Service</actor>
+        <actor>Route Guard</actor>
+        <actor>Repository List Component</actor>
+        <actor>Repository Detail Component</actor>
+        <actor>Pagination Component</actor>
+        <actor>Header</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to access GitHub repositories.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully navigates to the repository detail view.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Token validation fails, and an error message is displayed.</condition>
+    </failureEndConditions>
+    <trigger>User enters the API token in the Token Entry Component.</trigger>
+    <mainSequence>
+        <step id="S1">User enters API token in the Token Entry Component.</step>
+        <step id="S2">Token Entry Component validates the token.</step>
+        <step id="S3">Token Service sends a test query to GitHub Service.</step>
+        <step id="S4">GitHub Service returns the validation result to the Token Service.</step>
+        <step id="S5">Token Service returns the token validation result to the Token Entry Component.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Token is valid: Token Entry Component navigates to Route Guard to allow navigation to repositories.</step>
+            <step id="A1S2">Route Guard allows navigation to the Repository List Component.</step>
+            <step id="A1S3">Repository List Component fetches public repositories sorted by stars from GitHub Service.</step>
+            <step id="A1S4">GitHub Service returns the repository list to the Repository List Component.</step>
+            <step id="A1S5">Repository List Component renders pagination for repositories.</step>
+            <step id="A1S6">User selects a repository in the Repository List Component.</step>
+            <step id="A1S7">Repository List Component navigates to the Repository Detail Component.</step>
+            <step id="A1S8">Repository Detail Component fetches repository details and issues sorted by creation date from GitHub Service.</step>
+            <step id="A1S9">GitHub Service returns repository details and issues to the Repository Detail Component.</step>
+            <step id="A1S10">Repository Detail Component renders pagination for issues.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Token is invalid: Error message displayed to the user.</description>
+            <step id="E1S1">Token Entry Component displays an error message to the user.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

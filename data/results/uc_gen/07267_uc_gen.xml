@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Create Translation Client</name>
+    <description>As a Client, I want to create a new translation client in the system.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>API Gateway/Lambda</actor>
+        <actor>CreateTranslationClientActivity</actor>
+        <actor>TranslationClientDao</actor>
+        <actor>DynamoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client sends an HTTP Request to the API Gateway/Lambda.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New translation client is successfully created and returned to the Client.</condition>
+    </successEndConditions>
+    <trigger>Client triggers the creation of a new translation client.</trigger>
+    <mainSequence>
+        <step id="S1">Client sends an HTTP Request to the API Gateway/Lambda.</step>
+        <step id="S2">API Gateway/Lambda receives the HTTP Request and forwards it to CreateTranslationClientActivity.</step>
+        <step id="S3">CreateTranslationClientActivity calls TranslationClientDao to create a new translation client.</step>
+        <step id="S4">TranslationClientDao loads all existing cases for the customer ID from DynamoDB.</step>
+        <step id="S5">TranslationClientDao checks for the existence of an identical translationClientName/ClientType pair.</step>
+        <step id="S6">If an identical pair exists, a DuplicateTranslationClientException is thrown.</step>
+        <step id="S7">Otherwise, TranslationClientDao saves the new translation client to DynamoDB.</step>
+        <step id="S8">DynamoDB returns a 200 response to TranslationClientDao.</step>
+        <step id="S9">TranslationClientDao returns the new translation client object to CreateTranslationClientActivity.</step>
+        <step id="S10">CreateTranslationClientActivity returns CreateTranslationClientResult to API Gateway/Lambda.</step>
+        <step id="S11">API Gateway/Lambda returns a 200 response with CreateTranslationClientResult data to the Client.</step>
+    </mainSequence>
+</useCase>

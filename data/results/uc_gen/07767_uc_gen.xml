@@ -1,0 +1,29 @@
+<useCase id="UC1">
+   <name>Register Patient</name>
+   <description>Allow an Admin to register a new patient in the system.</description>
+   <actors>
+      <actor>Admin</actor>
+   </actors>
+   <preconditions>
+      <precondition>Admin is authenticated and authorized to register patients.</precondition>
+   </preconditions>
+   <successEndConditions>
+      <condition>The new patient is successfully registered in the system.</condition>
+   </successEndConditions>
+   <trigger>Admin submits a request to register a new patient.</trigger>
+   <mainSequence>
+      <step id="S1">Admin sends a POST request to the PatientController to register a new patient by providing CreatePatientDto.</step>
+      <step id="S2">PatientController activates to process the registration request.</step>
+      <step id="S3">PatientController sends AddAsync(CreatePatientDto) request to PatientService.</step>
+      <step id="S4">PatientService activates to handle the AddAsync operation.</step>
+      <step id="S5">PatientService checks if the provided email in CreatePatientDto is unique by calling IsEmailUniqueAsync method in IPatientRepository.</step>
+      <step id="S6">PatientService checks if the provided phone number in CreatePatientDto is unique by calling IsPhoneNumberUniqueAsync method in IPatientRepository.</step>
+      <step id="S7">PatientService generates a unique medical number for the new patient record.</step>
+      <step id="S8">PatientService creates a new instance of the Patient class with the provided details.</step>
+      <step id="S9">PatientService calls AddAsync method in IPatientRepository to add the new patient.</step>
+      <step id="S10">PatientService calls CommitAsync method in IUnitOfWork to commit the changes in the database.</step>
+      <step id="S11">PatientService sends an asynchronous email using SendEmailAsync method in IEmailService.</step>
+      <step id="S12">PatientService deactivates after successfully processing the registration and responding with PatientDto.</step>
+      <step id="S13">PatientController responds with status code 200 OK along with the PatientDto to Admin.</step>
+   </mainSequence>
+</useCase>

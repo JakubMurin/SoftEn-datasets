@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>LikeController</actor>
+        <actor>LikeService</actor>
+        <actor>LikeRepository</actor>
+        <actor>LikesDatabase</actor>
+        <actor>PostsDatabase</actor>
+        <actor>CommentsDatabase</actor>
+        <actor>EventsDatabase</actor>
+    </actors>
+    <successEndConditions>
+        <condition>User successfully likes or dislikes the entity</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred during the like/dislike process</condition>
+    </failureEndConditions>
+    <trigger>User wants to like or dislike an entity on the platform</trigger>
+    <mainSequence>
+        <step id="S1">User goes to entity page (post, comment, event).</step>
+        <step id="S2">Display entity details and like button.</step>
+        <step id="S3">User clicks "Like/Dislike" button.</step>
+        <step id="S4">Call LikeController to toggle the like status.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Entity is already liked.</step>
+            <step id="A1S2">Process dislike operation if entity is already liked.</step>
+            <step id="A1S3">If operation fails, return error message.</step>
+            <step id="A1S4">If operation succeeds, remove like data and update count.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S1">
+            <description>Error occurred during the dislike operation</description>
+            <step id="E1S1">Operation to remove like failed(error condition).</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Registration Process</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>FE. Registration Form</actor>
+        <actor>BE. Registration Script</actor>
+        <actor>DB. Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client fills out registration form</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User registration failed</condition>
+    </failureEndConditions>
+    <trigger>User initiates registration process</trigger>
+    <mainSequence>
+        <step id="S1">Client fills out registration form</step>
+        <step id="S2">Client submits registration data</step>
+        <step id="S3">FE. Registration Form sends POST request with data (username, password) to BE. Registration Script</step>
+        <step id="S4">BE. Registration Script checks for user existence in DB</step>
+        <step id="S5">DB responds with existence status</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">User is added</step>
+            <step id="A1S2">BE. Registration Script inserts user (username, password) into DB</step>
+            <step id="A1S3">DB confirms successful insertion</step>
+            <step id="A1S4">FE. Registration Form acknowledges successful registration to Client</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>User not added due to existing user</description>
+            <step id="E1S1">BE. Registration Script informs FE. Registration Form of existing user</step>
+            <step id="E1S2">FE. Registration Form notifies Client of registration error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

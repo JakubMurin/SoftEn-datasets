@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Creating Dataset Instance</name>
+    <actors>
+        <actor>DataScientist</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataScientist needs to be logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New dataset instance is successfully created</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Dataset type not found or insufficient permissions</condition>
+    </failureEndConditions>
+    <trigger>DataScientist requests to create a dataset instance</trigger>
+    <mainSequence>
+        <step id="S1">DataScientist requests to create dataset instance</step>
+        <step id="S2">UI parses request parameters (select existing dataset type, define instance properties)</step>
+        <step id="S3">Dataset Management System verifies permissions and dataset type existence</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Dataset type exists and user has permissions</step>
+            <step id="A1S2">Repository creates new dataset instance with specified properties</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error message displayed</description>
+            <step id="E1S1">Dataset type not found or no permissions</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,65 @@
+<useCase id="UC001">
+    <name>Remove room from Energy Grid</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>MainUI</actor>
+        <actor>HouseConfigurationUI</actor>
+        <actor>HouseConfigurationController</actor>
+        <actor>HouseMonitoringController</actor>
+        <actor>GeographicAreaList</actor>
+        <actor>GeographicArea</actor>
+        <actor>HouseList</actor>
+        <actor>House</actor>
+        <actor>EnergyGridList</actor>
+        <actor>EnergyGrid</actor>
+        <actor>RoomList</actor>
+        <actor>Room</actor>
+    </actors>
+    <trigger>Remove room from Energy Grid</trigger>
+    <mainSequence>
+        <step id="S1">Admin removes room from Energy Grid.</step>
+        <step id="S2">Request Geographic Area Name or Index from List by HouseConfigurationUI.</step>
+        <step id="S3">Insert data (Geographic Area name) or Select GA by MainUI.</step>
+        <step id="S4">Select Geographic Area by name or from list by HouseConfigurationUI.</step>
+        <step id="S5">Check if name/index is contained in list by HouseConfigurationController.</step>
+        <step id="S6">Check if name/index is contained in list by HouseMonitoringController.</step>
+        <step id="S7">Match Geographic Area by name or index by GeographicArea.</step>
+        <step id="S8">Validate geographic area data by GeographicArea.</step>
+        <step id="S9">Return Geographic Area to HouseConfigurationUI.</step>
+        <step id="S10">Set mGeoArea in HouseConfigurationUI.</step>
+        <step id="S11">Request House Name or Index from List by HouseConfigurationUI.</step>
+        <step id="S12">Insert data (House name) or select House by Admin.</step>
+        <step id="S13">Select House by name or from list by MainUI.</step>
+        <step id="S14">Check if name/index is contained in list by HouseConfigurationController.</step>
+        <step id="S15">Check if name/index is contained in list by HouseList.</step>
+        <step id="S16">Match House by name or index by House.</step>
+        <step id="S17">Validate house data by House.</step>
+        <step id="S18">Return House to HouseConfigurationUI.</step>
+        <step id="S19">Set mHouse in HouseConfigurationUI.</step>
+        <step id="S20">Request Energy Grid Name or Index from List by HouseConfigurationUI.</step>
+        <step id="S21">Insert data (Energy Grid name) or select Grid from list by Admin.</step>
+        <step id="S22">Select Energy Grid by name or from list by MainUI.</step>
+        <step id="S23">Check if name/index is contained in list by HouseConfigurationController.</step>
+        <step id="S24">Check if name/index is contained in list by EnergyGridList.</step>
+        <step id="S25">Match Energy Grid by name or index by EnergyGrid.</step>
+        <step id="S26">Validate energy grid data by EnergyGrid.</step>
+        <step id="S27">Return EnergyGrid to HouseConfigurationUI.</step>
+        <step id="S28">Set MEnergyGrid in HouseConfigurationUI.</step>
+        <step id="S29">Request Room name or Index from list by HouseConfigurationUI.</step>
+        <step id="S30">Insert data (Room name) or select Room by Admin.</step>
+        <step id="S31">Select Room by name or by index by MainUI.</step>
+        <step id="S32">Check if name/index is contained in list by HouseConfigurationController.</step>
+        <step id="S33">Check if name/index is contained in list by RoomList.</step>
+        <step id="S34">Match Room by name or by index by Room.</step>
+        <step id="S35">Validate room data by Room.</step>
+        <step id="S36">Return Room to HouseConfigurationUI.</step>
+        <step id="S37">Set mRoom in HouseConfigurationUI.</step>
+        <step id="S38">Remove the Room from Energy Grid by HouseConfigurationController.</step>
+        <step id="S39">Remove Room from Energy Grid by EnergyGrid.</step>
+        <step id="S40">Remove Room from list by RoomList.</step>
+        <step id="S41">Validate data and Remove Room by RoomList.</step>
+        <step id="S42">Return true if removal successful, or false if not by RoomList.</step>
+        <step id="S43">Build result string by HouseConfigurationUI.</step>
+        <step id="S44">Display result string by Admin.</step>
+    </mainSequence>
+</useCase>

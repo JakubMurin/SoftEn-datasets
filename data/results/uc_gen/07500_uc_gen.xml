@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Submit Operation Request</name>
+    <actors>
+        <actor>Doctor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Doctor is authenticated</precondition>
+        <precondition>The Create Operation Request page is accessible</precondition>
+    </preconditions>
+    <trigger>Doctor navigates to the Create Operation Request page</trigger>
+    <mainSequence>
+        <step id="S1">Doctor navigates to Create Operation Request page</step>
+        <step id="S2">Doctor fills operation request information</step>
+        <step id="S3">Doctor submits the form</step>
+        <step id="S4">UI handles the form submission and calls handleSubmit()</step>
+        <step id="S5">UI sends the operation data to the Operation Request Service to create the operation request</step>
+        <step id="S6">Operation Request Service gets authentication token</step>
+        <step id="S7">Operation Request Service checks Doctor's role using the token</step>
+        <step id="S8">Operation Request Service sends a POST request to the Backend API to create the operation request</step>
+        <step id="S9">Backend API returns OperationRequestDto</step>
+        <step id="S10">Operation Request Service returns success to UI</step>
+        <step id="S11">UI sets success message and clears the form</step>
+        <step id="S12">UI shows success message to the Doctor</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Error occurs during creating operation request</description>
+            <step id="E1S1">Operation Request Service throws an error</step>
+            <step id="E1S2">UI sets an error message</step>
+            <step id="E1S3">UI shows an error message to the Doctor</step>
+        </esteps>
+    </errorSteps>
+</useCase>

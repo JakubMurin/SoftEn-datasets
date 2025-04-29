@@ -1,0 +1,18 @@
+<useCase id="1">
+    <name>Verify Consensus Proof and Execute Block</name>
+    <description>Client checks and executes block for updating state</description>
+    <actors>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>Height of last verified block is known</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Client requests height of last verified block from Rollup</step>
+        <step id="S2">Rollup queries Espresso Node for block</step>
+        <step id="S3">Rollup queries Espresso Node for leaf and proof of consensus</step>
+        <step id="S4">Rollup verifies proof of consensus</step>
+        <step id="S5">Rollup executes block</step>
+        <step id="S6">Rollup sends updated state to Client</step>
+    </mainSequence>
+</useCase>

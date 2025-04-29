@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Change Password</name>
+    <description>User can change their password</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Request profile page</step>
+        <step id="S2">Render profile page</step>
+        <step id="S3">Submit password change form</step>
+        <step id="S4">Check inputs length and whether password and retyped password match</step>
+        <step id="S5">Fetch the user document</step>
+        <step id="S6">Verify current password hash</step>
+        <step id="S7">Calculate new password hash</step>
+        <step id="S8">Update the "hash" field in the user document</step>
+        <step id="S9">Redirect to profile page with a success message</step>
+    </mainSequence>
+</useCase>

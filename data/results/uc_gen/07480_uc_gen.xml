@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>User Authentication</name>
+    <description>Verify user identity and credentials</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Application</actor>
+    </actors>
+    <preconditions>
+        <precondition>Application is running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully authenticated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Incorrect credentials entered</condition>
+    </failureEndConditions>
+    <trigger>User enters their credentials</trigger>
+    <mainSequence>
+        <step id="S1">User enters their ID</step>
+        <step id="S2">Application verifies ID</step>
+        <step id="S3">User is redirected to the homepage</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">User is prompted to re-enter ID</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

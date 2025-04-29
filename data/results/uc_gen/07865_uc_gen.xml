@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>View Monthly Reader Lents</name>
+    <actors>
+        <actor>Librarian</actor>
+        <actor>LendingController</actor>
+        <actor>ReaderService</actor>
+        <actor>ReaderRepository</actor>
+        <actor>Reader</actor>
+        <actor>ReaderLentsViewMapper</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian is logged in.</precondition>
+    </preconditions>
+    <trigger>Librarian requests to view monthly reader lents.</trigger>
+    <mainSequence>
+        <step id="S1">Librarian makes a GET request to /api/lendings/monthly-lending.</step>
+        <step id="S2">LendingController activates to handle the request.</step>
+        <step id="S3">LendingController calls ReaderService's getAllReaders method.</step>
+        <step id="S4">ReaderService activates to retrieve all readers.</step>
+        <step id="S5">ReaderRepository activates to fetch all readers.</step>
+        <step id="S6">ReaderRepository provides a list of readers to ReaderService.</step>
+        <step id="S7">ReaderService loops for each reader in the list.</step>
+        <step id="S8">ReaderService calls ReaderRepository to retrieve monthly lents for the current reader.</step>
+        <step id="S9">ReaderRepository fetches the monthly lents for the reader.</step>
+        <step id="S10">ReaderService sets the lents for the current reader.</step>
+        <step id="S11">ReaderService continues looping until all readers are processed.</step>
+        <step id="S12">LendingController calls ReaderLentsViewMapper to create a view of reader lents.</step>
+        <step id="S13">ReaderLentsViewMapper deactivates after creating the ReaderLentsView.</step>
+        <step id="S14">LendingController provides the ReaderLentsView to the Librarian with HTTP response 200 OK.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Change Password</name>
+    <description>User changes the password for their account</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Server</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User requests profile page</step>
+        <step id="S2">Server renders profile page</step>
+        <step id="S3">User submits password change form</step>
+        <step id="S4">Server checks inputs length and password match</step>
+        <step id="S5">Server fetches the user document</step>
+        <step id="S6">Server verifies current password hash</step>
+        <step id="S7">Server calculates new password hash</step>
+        <step id="S8">Server updates the "hash" field in the user document</step>
+        <step id="S9">Server redirects to profile page with success message</step>
+    </mainSequence>
+</useCase>

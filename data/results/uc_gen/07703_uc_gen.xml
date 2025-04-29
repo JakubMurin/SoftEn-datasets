@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Delete Employee</name>
+    <description>Allows the Manager to delete an employee from the system</description>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Employee successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Employee does not exist</condition>
+    </failureEndConditions>
+    <trigger>User selects "Delete Employee"</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Delete Employee"</step>
+        <step id="S2">WebUI receives request to delete employee</step>
+        <step id="S3">Server checks if employee exists</step>
+        <step id="S4">DB confirms employee exists</step>
+        <step id="S5">Server asks for confirmation</step>
+        <step id="S6">Manager confirms deletion</step>
+        <step id="S7">WebUI sends delete command with confirmation</step>
+        <step id="S8">Server deletes employee record</step>
+        <step id="S9">DB confirms deletion</step>
+        <step id="S10">Server confirms deletion success to WebUI</step>
+        <step id="S11">WebUI shows deletion confirmation to Manager</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">Employee not found in DB</step>
+            <step id="A1S2">Server sends error message to WebUI</step>
+            <step id="A1S3">WebUI shows error message to Manager</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

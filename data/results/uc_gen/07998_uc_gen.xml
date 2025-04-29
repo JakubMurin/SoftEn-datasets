@@ -1,0 +1,24 @@
+<useCase id="UC1">
+	<name>Add New Room Category</name>
+	<description>User can add a new room category to the system.</description>
+	<actors>
+		<actor>Admin</actor>
+	</actors>
+	<preconditions>
+		<precondition>Admin is logged into the system.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>New room category is successfully added to the system.</condition>
+	</successEndConditions>
+	<trigger>User requests to add a new room category.</trigger>
+	<mainSequence>
+		<step id="S1">Admin Creates a new room category.</step>
+		<step id="S2">Admin Submits the new room category data.</step>
+	</mainSequence>
+	<errorSteps>
+		<esteps id="E1" start="S2">
+			<description>Error occurred while saving room category data.</description>
+			<step id="E1S1">Display error message to the admin.</step>
+		</esteps>
+	</errorSteps>
+</useCase>

@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Search Users</name>
+    <description>Search for users based on a query.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User inputs a search query.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Search results are displayed to the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error message is displayed if an API error occurs, or "Nenhum usuário encontrado." is displayed if no users are found.</condition>
+    </failureEndConditions>
+    <trigger>User inputs the search query.</trigger>
+    <mainSequence>
+        <step id="S1">User inputs search query.</step>
+        <step id="S2">Debounce delay (e.g., 300ms).</step>
+        <step id="S3">Request search query to InternalAPI (/api/searchUsers).</step>
+        <step id="S4">Forward request to GitHub API (/search/users?q=:query).</step>
+        <step id="S5">GitHub API returns user list to InternalAPI.</step>
+        <step id="S6">Return user data to Home from InternalAPI.</step>
+        <step id="S7">Display search results to User.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">For each user, get details from GitHub API (/users/:user.login).</step>
+            <step id="A1S2">Return user details to InternalAPI.</step>
+            <step id="A1S3">Display search results to User.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Error response returned from GitHub API to InternalAPI.</description>
+            <step id="E1S1">Return error message from InternalAPI to Home.</step>
+            <step id="E1S2">Display "Falha ao pesquisar usuários." to User.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

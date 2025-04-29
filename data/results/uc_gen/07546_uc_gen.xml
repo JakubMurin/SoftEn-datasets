@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Manage Farms</name>
+    <description>Manage farms by performing CRUD operations</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin and Client must be authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Farms successfully managed</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Admin connects to the application</step>
+        <step id="S2">System successfully authenticates Admin</step>
+        <step id="S3">Client connects to the application</step>
+        <step id="S4">System successfully authenticates Client and verifies account type</step>
+        <step id="S5">Admin selects "Manage Farms"</step>
+        <step id="S6">System displays the list of farms to Admin</step>
+        <step id="S7">Admin performs CRUD operations (Add, Update, Delete)</step>
+        <step id="S8">System confirms the operation to Admin</step>
+        <step id="S9">Client selects "Manage Farms"</step>
+        <step id="S10">System displays the list of farms to Client</step>
+        <step id="S11">Client performs CRUD operations</step>
+        <step id="S12">System checks permissions for Client</step>
+        <step id="S13">System authorizes or denies the action for Client</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S8">
+            <step id="A1S1">Admin adds a farm</step>
+            <step id="A1S2">System displays an error (e.g., name already used)</step>
+        </asteps>
+        <asteps id="A2" start="S11">
+            <step id="A2S1">Client tries to modify a farm</step>
+            <step id="A2S2">System denies permission (inadequate account type)</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

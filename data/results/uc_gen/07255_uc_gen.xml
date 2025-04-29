@@ -1,0 +1,51 @@
+<useCase id="UC001">
+    <name>Comprar sobre</name>
+    <actors>
+        <actor>Usuario Autenticado</actor>
+        <actor>Interfaz de Usuario</actor>
+        <actor>Sistema de Compras</actor>
+        <actor>Base de Datos</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario ha iniciado sesión</precondition>
+        <precondition>El sistema de compras está disponible</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Registro de transacción completado con éxito</condition>
+        <condition>Saldo del usuario actualizado correctamente</condition>
+    </successEndConditions>
+    <trigger>Usuario selecciona comprar sobre</trigger>
+    <mainSequence>
+        <step id="S1">Usuario selecciona comprar sobre</step>
+        <step id="S2">Sistema de Compras solicita compra del paquete de cartas</step>
+        <step id="S3">Base de Datos inicia sesión de transacción</step>
+        <step id="S4">Base de Datos confirma inicio de sesión</step>
+        <step id="S5">Sistema de Compras busca paquete de cartas</step>
+        <step id="S6">Base de Datos retorna datos del paquete</step>
+        <step id="S7">Sistema de Compras verifica disponibilidad del paquete</step>
+        <!-- Step continues based on outcome of paquete available -->
+        <step id="S8">Sistema de Compras busca usuario por nombre de usuario</step>
+        <step id="S9">Base de Datos retorna datos del usuario</step>
+        <step id="S10">Sistema de Compras verifica saldo del usuario</step>
+        <!-- Step continues based on outcome of saldo available -->
+        <step id="S11">Sistema de Compras genera cartas y actualiza inventario</step>
+        <step id="S12">Base de Datos confirma generación de cartas</step>
+        <step id="S13">Sistema de Compras actualiza saldo del usuario</step>
+        <step id="S14">Base de Datos confirma actualización de saldo</step>
+        <step id="S15">Sistema de Compras registra transacciones</step>
+        <step id="S16">Base de Datos confirma transacciones registradas</step>
+        <step id="S17">Base de Datos añade las cartas generadas a la colección del usuario</step>
+        <step id="S18">Base de Datos confirma actualización de la colección</step>
+        <step id="S19">Sistema de Compras notifica éxito de compra</step>
+        <step id="S20">Interfaz de Usuario muestra éxito y las cartas generadas</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S11">
+            <description>Error durante el proceso</description>
+            <step id="ES1">Sistema de Compras aborta transacción</step>
+            <step id="ES2">Base de Datos confirma aborto</step>
+            <step id="ES3">Sistema de Compras notifica fallo de transacción</step>
+            <step id="ES4">Interfaz de Usuario muestra mensaje de error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

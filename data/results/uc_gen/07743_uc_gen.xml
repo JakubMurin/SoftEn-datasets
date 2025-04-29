@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Submit message</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User submits a message</trigger>
+    <mainSequence>
+        <step id="S1">User submits a message</step>
+        <step id="S2">MainMessageInput receives the message</step>
+        <step id="S3">ChatClient requests messages</step>
+        <step id="S4">MessagesService processes the message request</step>
+        <step id="S5">UserRequest sends the user request to UnixSocketServer</step>
+        <step id="S6">UnixSocketServer handles the user request</step>
+        <step id="S7">UnixSocketServer sends the message to AiResponse</step>
+        <step id="S8">AiResponse receives the AI response from UnixSocketServer</step>
+        <step id="S9">MessagesService receives AI response from AiResponse</step>
+        <step id="S10">MessagesService returns the AI response to ChatClient</step>
+        <step id="S11">ResponseArea gets the response message</step>
+        <step id="S12">ResponseArea displays the AI response</step>
+    </mainSequence>
+</useCase>

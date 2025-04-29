@@ -1,0 +1,18 @@
+<useCase id="UC001">
+    <name>Ajouter un groupe</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">L'utilisateur appuie sur le bouton "+" pour ajouter un groupe.</step>
+        <step id="S2">Le système vérifie si le groupe est déjà créé.</step>
+        <step id="S3">Le système crée un nouveau groupe avec le nom fourni.</step>
+        <step id="S4">Le système enregistre le nouveau groupe dans la base de données.</step>
+        <step id="S5">Le groupe est ajouté avec succès à la liste des groupes.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">Le système identifie que le groupe existe déjà.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

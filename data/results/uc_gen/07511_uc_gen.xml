@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Access Platform and Retrieve Settings</name>
+    <actors>
+        <actor>Depositor</actor>
+        <actor>User Interface</actor>
+        <actor>Authentication Service</actor>
+        <actor>System Integration</actor>
+        <actor>University Systems</actor>
+        <actor>Data Management Platform</actor>
+    </actors>
+    <preconditions>
+        <precondition>Depositor has access credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Depositor successfully accesses platform and retrieves settings</condition>
+    </successEndConditions>
+    <trigger>User requests access to the platform and retrieval of settings</trigger>
+    <mainSequence>
+        <step id="S1">Depositor accesses the platform</step>
+        <step id="S2">User Interface receives access request and forwards it to Authentication Service</step>
+        <step id="S3">Authentication Service authenticates Depositor</step>
+        <step id="S4">Depositor provides authentication credentials</step>
+        <step id="S5">Authentication Service confirms successful authentication to User Interface</step>
+        <step id="S6">User Interface requests familiar interface from System Integration</step>
+        <step id="S7">System Integration fetches user preferences from University Systems</step>
+        <step id="S8">University Systems provide user-specific settings to System Integration</step>
+        <step id="S9">System Integration applies settings and customization to the User Interface</step>
+        <step id="S10">User Interface requests integration features from System Integration</step>
+        <step id="S11">System Integration fetches integration capabilities from University Systems</step>
+        <step id="S12">University Systems provide integration capabilities to System Integration</step>
+        <step id="S13">System Integration integrates with University Systems and forwards interface to Data Management Platform</step>
+        <step id="S14">Data Management Platform renders unified management interface</step>
+        <step id="S15">Data Management Platform confirms the readiness of the interface to User Interface</step>
+        <step id="S16">User Interface displays familiar, integrated interface to Depositor</step>
+    </mainSequence>
+</useCase>

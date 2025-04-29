@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Payment Cancellation with Embedded approach, implicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates payment cancellation with TPP</step>
+        <step id="S2">TPP sends REST call to XS2A to cancel payment</step>
+        <step id="S3">XS2A retrieves payment details from CMS</step>
+        <step id="S4">XS2A calls SPI to initialize payment cancellation</step>
+        <step id="S5">SPI sends initialization request to ASPSP</step>
+        <step id="S6">SPI receives initialization response from ASPSP</step>
+        <step id="S7">XS2A updates payment status in CMS</step>
+        <step id="S8">XS2A informs TPP of unsuccessful cancellation with HTTP code 400</step>
+        <step id="S9">XS2A starts cancellation authorization request to SPI</step>
+        <step id="S10">SPI executes payment cancellation with ASPSP</step>
+        <step id="S11">SPI receives cancellation authorization response from ASPSP</step>
+        <step id="S12">XS2A saves authorization details</step>
+        <step id="S13">XS2A informs TPP to update PSU with authentication</step>
+        <step id="S14">PSU provides user-id and password to TPP</step>
+        <step id="S15">TPP sends update PSU data request to XS2A</step>
+        <step id="S16">XS2A forwards PSU data update request to SPI</step>
+        <step id="S17">SPI updates PSU data with ASPSP</step>
+        <step id="S18">SPI sends PSU data update response to XS2A</step>
+        <step id="S19">XS2A updates SCA status and payment status in CMS</step>
+        <step id="S20">XS2A informs TPP of PSU data update completion</step>
+        <step id="S21">TPP provides feedback to PSU on payment cancellation status</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Change Password</name>
+    <description>User changes their account password</description>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Password successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Current password incorrect</condition>
+        <condition>New password format invalid</condition>
+    </failureEndConditions>
+    <trigger>User accesses account settings page</trigger>
+    <mainSequence>
+        <step id="S1">User accesses account settings page</step>
+        <step id="S2">System displays change password form</step>
+        <step id="S3">User enters information (current password, new password)</step>
+        <step id="S4">System verifies current and new password</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">System updates new password</step>
+            <step id="A1S2">DB confirms update</step>
+            <step id="A1S3">System displays success message "Password changed successfully"</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Current password incorrect</description>
+            <step id="E1S1">System displays error "Current password is incorrect"</step>
+            <step id="E1S2">User re-enters information</step>
+        </esteps>
+        <esteps id="E2" start="S4">
+            <description>New password format invalid</description>
+            <step id="E2S1">System displays format error</step>
+            <step id="E2S2">User re-enters information</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,31 @@
+<useCase id="1">
+	<name>Handle Bullet Collision</name>
+	<description>Ensure correct handling of bullet collision and update of entities.</description>
+	<actors>
+		<actor>Bullet Actor</actor>
+		<actor>Model</actor>
+	</actors>
+	<preconditions>
+		<precondition>Bullet actor and model entities are initialized.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>BulletKilled and BalloonHit signals are sent.</condition>
+	</successEndConditions>
+	<trigger>update(entities)</trigger>
+	<mainSequence>
+		<step id="S1">Update bullet position</step>
+		<step id="S2">Check for collision between bullet and balloon</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S2">
+			<step id="A1S1">Exploding(hittedBalloons)</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="A1">
+			<description>Collision detected</description>
+			<step id="E1S1">StartExplosion(bullet)</step>
+			<step id="E1S2">BalloonHit(hittedBalloons)</step>
+		</esteps>
+	</errorSteps>
+</useCase>

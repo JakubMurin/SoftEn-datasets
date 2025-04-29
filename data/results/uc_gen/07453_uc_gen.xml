@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Email Template Creation</name>
+    <description>Team member requests and receives email templates for recruitment purposes.</description>
+    <actors>
+        <actor>Team Member (TM)</actor>
+        <actor>Recruitment Coordinator (RC)</actor>
+        <actor>Database (DB)</actor>
+        <actor>Approval Authority (AA)</actor>
+    </actors>
+    <preconditions>
+        <precondition>Team member must need email templates for recruitment.</precondition>
+        <precondition>Approval authority and Recruitment Coordinator roles are designated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Email template is successfully created, approved, stored, and shared.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email template creation process fails or template approval is not received.</condition>
+    </failureEndConditions>
+    <trigger>Team member initiates the request for email templates.</trigger>
+    <mainSequence>
+        <step id="S1">Team member requests email templates from Recruitment Coordinator (RC).</step>
+        <step id="S2">Recruitment Coordinator checks existing templates in the Template Database (DB).</step>
+        <step id="S3">Template Database informs RC if templates are not available.</step>
+        <step id="S4">RC requests specific details from TM for template creation.</step>
+        <step id="S5">TM provides specific details to RC.</step>
+        <step id="S6">RC creates template draft.</step>
+        <step id="S7">RC submits template draft to Approval Authority (AA) for approval.</step>
+        <step id="S8">AA reviews template draft.</step>
+        <step id="S9">If revisions are needed, AA requests revisions from RC.</step>
+        <step id="S10">RC revises the template based on AA's feedback.</step>
+        <step id="S11">RC resubmits the revised template to AA for approval.</step>
+        <step id="S12">Upon approval, AA approves the template.</step>
+        <step id="S13">RC stores the new template in the database.</step>
+        <step id="S14">RC informs TM about the availability of the newly created template.</step>
+        <step id="S15">If templates are available, DB provides existing templates to RC.</step>
+        <step id="S16">RC shares existing templates with TM.</step>
+        <step id="S17">TM selects an appropriate template for customization.</step>
+        <step id="S18">TM customizes the selected template as per the current recruitment need.</step>
+        <step id="S19">TM initiates recruitment using the customized template.</step>
+    </mainSequence>
+</useCase>

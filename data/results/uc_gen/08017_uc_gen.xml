@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Get Top Readers per Genre</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian wants to view top readers per genre.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Librarian sends a GET request to '/api/lendings/top-readers/{genreId}'.</step>
+        <step id="S2">LendingController receives the request.</step>
+        <step id="S3">LendingController calls GenreService's getGenreById method with genreId.</step>
+        <step id="S4">GenreService retrieves the genre from GenreRepository.</step>
+        <step id="S5">GenreRepository sends back the retrieved genre to GenreService.</step>
+        <step id="S6">GenreService sends the genre to LendingController.</step>
+        <step id="S7">LendingController proceeds to get top readers per genre.</step>
+        <step id="S8">LendingController calls ReaderService's getTopReadersperGenre method with specified parameters.</step>
+        <step id="S9">ReaderService fetches top readers per genre from ReaderRepository.</step>
+        <step id="S10">ReaderRepository returns a list of readers to ReaderService.</step>
+        <step id="S11">ReaderService sends an iterable of readers to LendingController.</step>
+        <step id="S12">LendingController maps the returned readers to ReaderViews using ReaderViewMapper.</step>
+        <step id="S13">ReaderViewMapper transforms the list of readers to ReaderViews.</step>
+        <step id="S14">LendingController responds with HTTP 200 OK containing the Iterable of ReaderViews.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Fulfill Defendant Account Payment Terms Change</name>
+    <actors>
+        <actor>FAE User</actor>
+        <actor>View Account (Payment Terms tab)</actor>
+        <actor>Change Payment Terms</actor>
+        <actor>Add Defendant Account Payment Terms</actor>
+        <actor>Payment Terms</actor>
+        <actor>Add Defendant Account Payment Terms</actor>
+        <actor>GMAS DAC</actor>
+        <actor>Add Defendant Account Payment Terms</actor>
+        <actor>GOB SP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">FAE User selects 'Change' button on the View Account (Payment Terms tab) UI Page</step>
+        <step id="S2">View Account (Payment Terms tab) navigates to Change Payment Terms UI Page</step>
+        <step id="S3">FAE User inputs data and clicks 'Save changes' button on the Change Payment Terms UI Page</step>
+        <step id="S4">Change Payment Terms UI Page calls API with Defendant Account ID and Payload (JSON)</step>
+        <step id="S5">API creates Defendant Account Payment Terms in Payment Terms DB</step>
+        <step id="S6">View Account (Payment Terms tab) displays Payment Terms tab</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">In Opal Mode: API creates Defendant Account Payment Terms in Payment Terms DB</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">In Legacy Mode: GMAS DAC converts JSON to XML</step>
+            <step id="A2S2">GMAS DAC creates Defendant Account Payment Terms (XML)</step>
+            <step id="A2S3">GMAS DAC converts XML to JSON</step>
+            <step id="A2S4">API creates Defendant Account Payment Terms (JSON)</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

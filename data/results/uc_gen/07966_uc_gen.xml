@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Publish Job Opening Results</name>
+    <description>As a Customer Manager, I want to publish job opening results to selected candidates.</description>
+    <actors>
+        <actor>CustomerManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customer Manager asks Publish Job Opening UI to display job openings in the results phase.</step>
+        <step id="S2">Publish Job Opening UI gets job openings.</step>
+        <step id="S3">Publish Job Opening Controller gets job openings from Job Opening Repository.</step>
+        <step id="S4">Job Opening Repository sends job openings back to Controller.</step>
+        <step id="S5">Controller sends job openings to UI.</step>
+        <step id="S6">UI displays job openings to Customer Manager.</step>
+        <step id="S7">Customer Manager selects a job opening to publish results.</step>
+        <step id="S8">UI requests Controller to publish job opening results.</step>
+        <step id="S9">Controller sends a request to Follow Up Server Proxy to send a result email request for the job opening.</step>
+        <step id="S10">Follow Up Server Proxy creates and connects a Client Socket.</step>
+        <step id="S11">Proxy sends a request to Socket for the connection.</step>
+        <step id="S12">Socket writes the request to Follow Up Server.</step>
+        <step id="S13">Follow Up Server parses the request.</step>
+        <step id="S14">Follow Up Server creates a Result Email Request.</step>
+        <step id="S15">Result Email Request service executes the request.</step>
+        <step id="S16">Result Email Request service selects candidates for the job opening.</step>
+        <step id="S17">Selected candidates and rejected candidates lists are returned to Result Email Request service.</step>
+        <step id="S18">Email Service sends emails to selected candidates.</step>
+        <step id="S19">Email Service creates a Notification.</step>
+        <step id="S20">Notification Repository saves the notification.</step>
+        <step id="S21">Notification Repository sends the notification to Email Service.</step>
+        <step id="S22">Email Service confirms the emails were sent.</step>
+        <step id="S23">Result Email Request service confirms the emails were sent.</step>
+        <step id="S24">Follow Up Server writes a response to Socket.</step>
+        <step id="S25">Client Socket receives the response.</step>
+        <step id="S26">Follow Up Server closes the connection with Socket.</step>
+        <step id="S27">Socket sends the response to Follow Up Server Proxy.</step>
+        <step id="S28">Proxy sends the response to Controller.</step>
+        <step id="S29">Controller sends the response to UI.</step>
+        <step id="S30">UI confirms the successful operation to Customer Manager.</step>
+    </mainSequence>
+</useCase>

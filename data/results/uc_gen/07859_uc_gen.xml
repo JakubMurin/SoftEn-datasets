@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>View List of Customers</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>Router</actor>
+        <actor>Controller</actor>
+        <actor>Repository</actor>
+        <actor>Model</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User opens the customers list page</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User requests to view all customers</step>
+        <step id="S2">UI displays loading message</step>
+        <step id="S3">UI sends request to Router to get all customers</step>
+        <step id="S4">Router receives GET request /customers</step>
+        <step id="S5">Router forwards request to Controller to get all customers</step>
+        <step id="S6">Controller calls Repository to find all customers</step>
+        <step id="S7">Repository searches for all customers in Model</step>
+        <step id="S8">Model fetches all customers from the DB</step>
+        <step id="S9">DB returns all customers to Model</step>
+        <step id="S10">Model returns all customers to Repository</step>
+        <step id="S11">Repository returns all customers to Controller</step>
+        <step id="S12">Controller sends 200 OK response with all customers to Router</step>
+        <step id="S13">Router sends 200 OK response with all customers to UI</step>
+        <step id="S14">UI displays the list of customers to the User</step>
+    </mainSequence>
+</useCase>

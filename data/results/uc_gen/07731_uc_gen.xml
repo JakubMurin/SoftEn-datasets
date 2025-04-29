@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Change Password</name>
+    <actors>
+        <actor>Người dùng</actor>
+    </actors>
+    <preconditions>
+        <precondition>Người dùng đã đăng nhập vào hệ thống</precondition>
+        <precondition>Người dùng muốn thay đổi mật khẩu</precondition>
+    </preconditions>
+    <trigger>Người dùng truy cập trang cài đặt tài khoản</trigger>
+    <mainSequence>
+        <step id="S1">Hệ thống hiển thị biểu mẫu đổi mật khẩu cho Người dùng</step>
+        <step id="S2">Người dùng nhập thông tin (mật khẩu hiện tại, mật khẩu mới)</step>
+        <step id="S3">Hệ thống kiểm tra tính hợp lệ của thông tin nhập</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Hệ thống cập nhật mật khẩu mới trong MongoDB</step>
+            <step id="A1S2">MongoDB xác nhận cập nhật thành công</step>
+            <step id="A1S3">Hệ thống thông báo "Đổi mật khẩu thành công" cho Người dùng</step>
+        </asteps>
+        <asteps id="A2" start="S3">
+            <step id="A2S1">Hệ thống hiển thị lỗi "Mật khẩu hiện tại không đúng"</step>
+            <step id="A2S2">Người dùng nhập lại thông tin mật khẩu hiện tại và mật khẩu mới</step>
+        </asteps>
+        <asteps id="A3" start="S3">
+            <step id="A3S1">Hệ thống hiển thị lỗi về định dạng mật khẩu mới</step>
+            <step id="A3S2">Người dùng nhập lại thông tin mật khẩu mới</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

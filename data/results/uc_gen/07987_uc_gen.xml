@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Task Editing and Saving</name>
+    <actors>
+        <actor>User</actor>
+        <actor>"tasks_table_interactions.js" (File: tasks_table_interactions.js)</actor>
+        <actor>Flask Backend (File: api_routes.py)</actor>
+        <actor>Task Model (File: models.py)</actor>
+        <actor>Task Validation (File: models.py)</actor>
+        <actor>TaskService (File: models.py)</actor>
+        <actor>Logger (File: utils.py)</actor>
+        <actor>Database (SQLAlchemy)</actor>
+    </actors>
+    <preconditions>
+        <precondition>User wants to edit and save a task.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks "Edit Task".</step>
+        <step id="S2">'tasks_table_interactions.js' opens the edit modal and fetches task data.</step>
+        <step id="S3">'tasks_table_interactions.js' populates modal fields.</step>
+        <step id="S4">User submits the "Save Task" form.</step>
+        <step id="S5">'api_routes.py' handles the POST request to create or update a task.</step>
+        <step id="S6">'models.py' ensures task hierarchy constraints are respected.</step>
+        <step id="S7">'models.py' checks for circular dependencies in the task hierarchy.</step>
+        <step id= "S8">'models.py' commits the database changes and logs the save event for auditing.</step>
+        <step id="S9">'tasks_table_interactions.js' updates the UI or shows an error based on the response.</step>
+        <step id="S10">Error handling: If response status is not 200, appropriate actions are taken and an error message is displayed.</step>
+        <step id="S11">'models.py' rolls back DB changes if needed and returns an error message.</step>
+        <step id="S12">'tasks_table_interactions.js' shows an error alert to the user.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC1">
+  <name>Manage Event</name>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <preconditions>
+    <precondition>User is logged in</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Open Add Event Page</step>
+    <step id="S2">Enter Event Details</step>
+    <step id="S3">Select Associated Contact</step>
+    <step id="S4">Submit Event Form</step>
+    <step id="S5">Send Event Details to Server</step>
+    <step id="S6">Validate Details</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S6">
+      <step id="A1S1">Save Event to Database</step>
+      <step id="A1S2">Event Saved Confirmation</step>
+      <step id="A1S3">Send Success Response to User</step>
+      <step id="A1S4">Show Success Message to User</step>
+    </asteps>
+  </alternativeSteps>
+  <errorSteps>
+    <esteps id="E1" start="S6">
+      <description>Details Invalid</description>
+      <step id="E1S1">Send Error Response to Add Event Page</step>
+      <step id="E1S2">Show Error Message to User</step>
+      <step id="E1S3">Prompt User to Re-enter Event Details</step>
+    </esteps>
+  </errorSteps>
+</useCase>

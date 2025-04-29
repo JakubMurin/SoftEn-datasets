@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Verify Checksum Status</name>
+    <actors>
+        <actor>RepositoryManager</actor>
+        <actor>DIMS System</actor>
+        <actor>Digital Repository</actor>
+        <actor>Checksum Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>RepositoryManager requests checksum status from DIMS System.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">RepositoryManager requests checksum status from DIMS System.</step>
+        <step id="S2">DIMS System queries latest content file details from Digital Repository.</step>
+        <step id="S3">Digital Repository returns file details to DIMS System.</step>
+        <step id="S4">DIMS System retrieves stored checksums from Checksum Database.</step>
+        <step id="S5">Checksum Database provides checksum data to DIMS System.</step>
+        <step id="S6">DIMS System compares latest and stored checksums.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Checksum changed - DIMS System notifies RepositoryManager of checksum change.</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">Checksum unchanged - DIMS System confirms no changes to RepositoryManager.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

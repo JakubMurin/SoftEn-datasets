@@ -1,0 +1,61 @@
+<useCase id="UC001">
+    <name>Payment Initiation with Embedded approach explicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates payment through TPP</step>
+        <step id="S2">TPP initiates payment by calling XS2A to start the process</step>
+        <step id="S3">XS2A sends SPI a request to initiate the payment</step>
+        <step id="S4">SPI processes the payment initiation request</step>
+        <step id="S5">SPI sends the payment initiation response back to XS2A</step>
+        <step id="S6">XS2A saves the payment information</step>
+        <step id="S7">XS2A sends the payment initiation response back to TPP</step>
+        <step id="S8">TPP starts the authorization process</step>
+        <step id="S9">XS2A sends an authorization request to ASPSP</step>
+        <step id="S10">ASPSP responds with the authorization details</step>
+        <step id="S11">XS2A saves the authorization details</step>
+        <step id="S12">XS2A sends the authorization response back to TPP</step>
+        <step id="S13">TPP requests PSU for authentication</step>
+        <step id="S14">PSU provides user-id and password</step>
+        <step id="S15">TPP updates PSU data with authentication details</step>
+        <step id="S16">XS2A processes the PSU data update</step>
+        <step id="S17">XS2A sends the updated details to SPI for payment authorization</step>
+        <step id="S18">SPI processes the payment authorization</step>
+        <step id="S19">SPI responds with the authorization status</step>
+        <step id="S20">XS2A updates the authorization status in the system</step>
+        <step id="S21">TPP requests PSU to select an SCA method</step>
+        <step id="S22">PSU selects the SCA method</step>
+        <step id="S23">TPP updates PSU data with the selected SCA method</step>
+        <step id="S24">XS2A processes the updated SCA method</step>
+        <step id="S25">XS2A sends the SCA method selection to SPI for authorization</step>
+        <step id="S26">SPI processes the SCA method selection</step>
+        <step id="S27">SPI responds with the authorization code result</step>
+        <step id="S28">XS2A updates the authorization status based on the SCA method</step>
+        <step id="S29">PSU provides authentication data</step>
+        <step id="S30">TPP sends the authentication data to XS2A for transaction authorization</step>
+        <step id="S31">XS2A processes the transaction authorization request</step>
+        <step id="S32">XS2A sends the transaction authorization request to SPI</step>
+        <step id="S33">SPI processes the transaction authorization request</step>
+        <step id="S34">SPI responds with the authorized payment</step>
+        <step id="S35">XS2A updates the payment status</step>
+        <step id="S36">TPP informs PSU that payment is authorized</step>
+        <step id="S37">TPP requests payment status from XS2A</step>
+        <step id="S38">XS2A retrieves payment status from SPI and ASPSP</step>
+        <step id="S39">XS2A updates the transaction status</step>
+        <step id="S40">TPP receives the transaction status response</step>
+        <step id="S41">TPP requests payment details from XS2A</step>
+        <step id="S42">XS2A retrieves payment details from SPI and ASPSP</step>
+        <step id="S43">XS2A updates the payment details</step>
+        <step id="S44">TPP receives the payment details response</step>
+        <step id="S45">TPP requests SCA status from XS2A</step>
+        <step id="S46">XS2A retrieves SCA status from SPI and ASPSP</step>
+        <step id="S47">XS2A updates the SCA status</step>
+        <step id="S48">TPP receives the SCA status response</step>
+    </mainSequence>
+</useCase>

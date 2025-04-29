@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Retrieve and Download Embargo Metadata</name>
+    <actors>
+        <actor>Digital Records Archivist</actor>
+        <actor>Web Interface</actor>
+        <actor>EDRMS Backend</actor>
+        <actor>Repository Database</actor>
+        <actor>File Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>The archivist needs to access embargo metadata for ETDs.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The archivist successfully retrieves and downloads the embargo metadata.</condition>
+    </successEndConditions>
+    <trigger>The archivist initiates the process by requesting embargo metadata for ETDs.</trigger>
+    <mainSequence>
+        <step id="S1">The archivist requests embargo metadata for ETDs from the Web Interface.</step>
+        <step id="S2">The Web Interface fetches the embargo metadata from the EDRMS Backend.</step>
+        <step id="S3">The EDRMS Backend queries the Repository Database for embargo metadata.</step>
+        <step id="S4">The Repository Database returns the embargo metadata to the EDRMS Backend.</step>
+        <step id="S5">The EDRMS Backend displays the embargo metadata to the Web Interface.</step>
+        <step id="S6">The Web Interface shows the embargo metadata to the archivist.</step>
+        <step id="S7">The archivist requests to download the metadata from the Web Interface.</step>
+        <step id="S8">The Web Interface fetches detailed metadata from the EDRMS Backend.</step>
+        <step id="S9">The EDRMS Backend queries the Repository Database for detailed embargo data.</step>
+        <step id="S10">The Repository Database returns the detailed data to the EDRMS Backend.</step>
+        <step id="S11">The EDRMS Backend prepares a download file on the File Server.</step>
+        <step id="S12">The File Server provides a download link to the EDRMS Backend.</step>
+        <step id="S13">The EDRMS Backend provides the download link to the Web Interface.</step>
+        <step id="S14">The Web Interface provides the download link to the archivist.</step>
+        <step id="S15">The archivist downloads the file from the File Server using the provided link.</step>
+        <step id="S16">The File Server sends the metadata file to the archivist.</step>
+    </mainSequence>
+</useCase>

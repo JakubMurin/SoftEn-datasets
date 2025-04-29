@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Rate a Book</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Catalog</actor>
+        <actor>Postgres</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has a valid JWT.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully rates the book.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The book does not exist or JWT is invalid.</condition>
+    </failureEndConditions>
+    <trigger>PUT /api/v1/books/{id}/rate</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to rate a book.</step>
+        <step id="S2">Gateway receives the request and verifies the JWT with Keycloak.</step>
+        <step id="S3">Gateway forwards the request to Catalog to rate the book.</step>
+        <step id="S4">Catalog searches for the book in Postgres.</step>
+        <step id="S5">Catalog updates the user's rating for the book in Postgres.</step>
+        <step id="S6">Catalog responds with HTTP status 200 to Gateway.</step>
+        <step id="S7">Gateway responds with HTTP status 200 to User.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Book exists in the catalog.</step>
+            <step id="A1S2">Catalog saves or updates the user's rating for the book.</step>
+            <step id="A1S3">Catalog responds with HTTP status 200 to Gateway.</step>
+            <step id="A1S4">Gateway responds with HTTP status 200 to User.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>JWT is invalid or absent.</description>
+            <step id="E1S1">Gateway responds with HTTP status 401 or 403 to User.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

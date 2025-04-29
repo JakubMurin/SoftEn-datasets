@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Perform a Denial of Service Attack</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <trigger>Attacker sends a POST request to Proxy with path /foo [GET /poison]</trigger>
+    <mainSequence>
+        <step id="S1">Attacker initiates a POST request to Proxy with path /foo</step>
+        <step id="S2">Proxy forwards POST request to Backend with path /foo</step>
+        <step id="S3">Backend responds to Proxy with status 200 for path /foo</step>
+        <step id="S4">Proxy forwards response (status 200 for path /foo) to Attacker</step>
+        <step id="S5">Backend self-invokes with GET request to /poison</step>
+        <step id="S6">Backend sends response (status 200 for /poison) to Proxy</step>
+        <step id="S7">Backend poisons the response queue upon receiving /poison response</step>
+        <step id="S8">User sends a GET request to Proxy with path /bar</step>
+        <step id="S9">Proxy forwards GET request to Backend with path /bar</step>
+        <step id="S10">Proxy responds to User with status 200 for path /poison</step>
+        <step id="S11">Backend responds to Proxy with status 200 for path /bar</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,25 @@
+<useCase id="UC1">
+  <name>Submit message and display AI response</name>
+  <actors>
+    <actor>User</actor>
+    <actor>MainMessageInput</actor>
+    <actor>ChatClient</actor>
+    <actor>MessagesService</actor>
+    <actor>UserRequest</actor>
+    <actor>UnixSocketServer</actor>
+    <actor>AiResponse</actor>
+    <actor>ResponseArea</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User submits a message</step>
+    <step id="S2">MainMessageInput gets messages by requesting</step>
+    <step id="S3">ChatClient processes messages by requesting</step>
+    <step id="S4">MessagesService sends a user request to UnixSocketServer</step>
+    <step id="S5">UnixSocketServer handles user request and sends a message to UserRequest</step>
+    <step id="S6">UnixSocketServer receives AI response from LLM and sends it to AiResponse</step>
+    <step id="S7">AiResponse receives AI response from UnixSocketServer and sends it to MessagesService</step>
+    <step id="S8">MessagesService returns the flux object to ChatClient</step>
+    <step id="S9">ChatClient gets messages by responding with the AI response</step>
+    <step id="S10">ResponseArea displays the AI response</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="001">
+    <name>Registering a new patient</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin initiates a new patient registration through the PatientController</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin performs a POST request to /api/Patient/Register with CreatePatientDto</step>
+        <step id="S2">PatientController activates to handle the request</step>
+        <step id="S3">PatientController adds the new patient asynchronously</step>
+        
+        <step id="S4">PatientService is activated to deal with the patient addition</step>
+        <step id="S5">PatientService checks if the patient's email is unique in the repository through IPatientRepository</step>
+        <step id="S6">PatientService checks if the patient's phone number is unique in the repository through IPatientRepository</step>
+        <step id="S7">PatientService generates a unique medical number</step>
+        
+        <step id="S8">Patient generates a new Patient object instance</step>
+        
+        <step id="S9">PatientService adds the new patient to the repository asynchronously through IPatientRepository</step>
+        <step id="S10">PatientService commits the changes asynchronously with UnitOfWork</step>
+        
+        <step id="S11">PatientService sends email notification via EmailService</step>
+        
+        <step id="S12">PatientService response with patient information to PatientController</step>
+        <step id="S13">PatientController responds to Admin with 200 OK and the PatientDto</step>
+    </mainSequence>
+</useCase>

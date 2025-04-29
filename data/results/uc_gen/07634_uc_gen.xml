@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>View File Details</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Books Service</actor>
+        <actor>Postgres Database (Books)</actor>
+        <actor>Minio</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully retrieves file details.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User encounters an error while retrieving file details.</condition>
+    </failureEndConditions>
+    <trigger>GET /api/v1/books/{bookId}/files/{fileId}</trigger>
+    <mainSequence>
+        <step id="S1">User requests to view file details.</step>
+        <step id="S2">Gateway receives the request.</step>
+        <step id="S3">Gateway verifies JWT with Keycloak.</step>
+        <step id="S4">Keycloak confirms JWT verification.</step>
+        <step id="S5">Gateway forwards request to Books Service.</step>
+        <step id="S6">Books Service retrieves file link from Postgres Database.</step>
+        <step id="S7">Postgres Database returns file link to Books Service.</step>
+        <step id="S8">Books Service checks if file data exists.</step>
+        <step id="S9">Books Service requests file from Minio.</step>
+        <step id="S10">Minio provides the file to Books Service.</step>
+        <step id="S11">Books Service sends the file to Gateway.</step>
+        <step id="S12">Gateway delivers the file to User.</step>
+    </mainSequence>
+</useCase>

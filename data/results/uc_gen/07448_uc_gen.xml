@@ -1,0 +1,34 @@
+<useCase id="UC1">
+	<name>Trigger Dataset Migration Process</name>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>User requests property update for dataset</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">User requests property update for dataset</step>
+		<step id="S2">Dataset Management System validates property update requirements</step>
+		<step id="S3">Dataset Management System confirms migration required</step>
+		<step id="S4">User confirms migration</step>
+		<step id="S5">Migration Tool initiates migration</step>
+		<step id="S6">Migration Tool performs migration (update properties, version)</step>
+		<step id="S7">Migration Tool confirms migration success</step>
+		<step id="S8">Dataset Management System confirms migration successful, properties updated</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S2" continue="S3">
+			<step id="A1S1">Property Update Requires Migration</step>
+			<step id="A1S2">Dataset Instance checks current version</step>
+			<step id="A1S3">Current version details retrieved</step>
+			<step id="A1S4">Migration required</step>
+			<step id="A1S5">Confirmation required to proceed with migration</step>
+			<step id="A1S6">Migration completed</step>
+		</asteps>
+		<asteps id="A2" start="S3" continue="S4">
+			<step id="A2S1">Property Update Does Not Require Migration</step>
+			<step id="A2S2">Update properties without migration needed</step>
+			<step id="A2S3">Properties updated, no migration needed</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

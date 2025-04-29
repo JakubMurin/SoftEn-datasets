@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Perform Build and Sync Build Data</name>
+    <description>This use case involves Bob pushing a commit to the master branch, triggering the build pipeline on the GitHub repository named "Awesome pipeline". After the build is completed successfully, the Sync pipeline within the Buildkite tool is triggered. This pipeline generates the integration_config.yml file and runs the sync command.</description>
+    <actors>
+        <actor>Bob</actor>
+        <actor>Repository</actor>
+        <actor>"Awesome pipeline"</actor>
+        <actor>"Sync pipeline"</actor>
+        <actor>"CI Integration tool"</actor>
+        <actor>Firestore</actor>
+    </actors>
+    <preconditions>
+        <precondition>Bob has committed changes to the master branch of the GitHub repository</precondition>
+        <precondition>The systems and tools involved in the pipeline are operational</precondition>
+    </preconditions>
+    <trigger>Webhook triggers after the commit is pushed, further automation triggers occur in sequence</trigger>
+    <mainSequence>
+        <step id="S1">Bob pushes a commit to the master branch of Repository</step>
+        <step id="S2">Repository triggers the "Awesome pipeline"</step>
+        <step id="S3">"Awesome pipeline" performs the build operation</step>
+        <step id="S4">"Awesome pipeline" triggers the "Sync pipeline"</step>
+        <step id="S5">"Sync pipeline" creates the integration_config.yml file</step>
+        <step id="S6">"Sync pipeline" runs the sync command</step>
+        <step id="S7">"CI Integration tool" adds new build data to Firestore</step>
+        <step id="S8">Sync command finishes on "CI Integration tool"</step>
+        <step id="S9">Build data export finishes on "Sync pipeline"</step>
+    </mainSequence>
+</useCase>

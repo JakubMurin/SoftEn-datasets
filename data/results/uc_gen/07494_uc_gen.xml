@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Resolve Domain Name IP</name>
+    <description>As a User, I want to resolve the IP address of a domain name.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Root DNS Server</actor>
+        <actor>TLD DNS Server</actor>
+        <actor>Authoritative DNS Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ensure the User has a network connection.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully receives the IP address.</condition>
+    </successEndConditions>
+    <trigger>User queries for the IP address of "www.example.com".</trigger>
+    <mainSequence>
+        <step id="S1">User queries the Root DNS Server for "www.example.com".</step>
+        <step id="S2">Root DNS Server provides a referral to the TLD DNS Server for ".com".</step>
+        <step id="S3">User queries the TLD DNS Server for "www.example.com".</step>
+        <step id="S4">TLD DNS Server provides a referral to the Authoritative DNS Server.</step>
+        <step id="S5">User queries the Authoritative DNS Server for "www.example.com".</step>
+        <step id="S6">Authoritative DNS Server responds with the IP address "93.184.215.14".</step>
+    </mainSequence>
+</useCase>

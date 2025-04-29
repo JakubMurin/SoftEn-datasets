@@ -1,0 +1,47 @@
+<useCase id="UC1">
+    <name>Create Data Pipeline for Dataset</name>
+    <description>
+        The use case involves the creation of a data pipeline for reading and writing data to a dataset.
+    </description>
+    <actors>
+        <actor>HydratorUser</actor>
+        <actor>DMVCS</actor>
+        <actor>Dataset</actor>
+        <actor>PCE</actor>
+        <actor>DVC</actor>
+    </actors>
+    <preconditions>
+        <precondition>A valid dataset instance exists in the system.</precondition>
+        <precondition>Version compatibility of the dataset with the system is confirmed.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>A data pipeline successfully created and ready for use.</condition>
+    </successEndConditions>
+    <trigger>User requests to create a pipeline for dataset read/write operations.</trigger>
+    <mainSequence>
+        <step id="S1">
+            HydratorUser sends a request to DMVCS for a data pipeline creation.
+        </step>
+        <step id="S2">
+            DMVCS verifies the existence of the dataset instance.
+        </step>
+        <step id="S3">
+            DMVCS checks for dataset version compatibility with the system.
+        </step>
+        <step id="S4">
+            DMVCS initiates the pipeline creation process with PCE.
+        </step>
+        <step id="S5">
+            PCE configures the source and sink options based on the dataset instance and establishes the read/write connection.
+        </step>
+        <step id="S6">
+            Dataset acknowledges the read/write connection with PCE.
+        </step>
+        <step id="S7">
+            Pipeline creation finishes, and PCE confirms ready-to-use status to DMVCS.
+        </step>
+        <step id="S8">
+            DMVCS notifies the user about successful pipeline creation.
+        </step>
+    </mainSequence>
+</useCase>

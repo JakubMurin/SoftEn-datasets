@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Integral Circulation</name>
+    <actors>
+        <actor>Users</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Call point contract deployment</step>
+        <step id="S2">Deploy PointController</step>
+        <step id="S3">Record contract address in configuration file</step>
+        <step id="S4">Retrieve platform administrator information</step>
+        <step id="S5">Add DAO to PointController</step>
+        <step id="S6">Perform point initialization</step>
+        <step id="S7">Perform annual point distribution for recyclers</step>
+        <step id="S8">Register account</step>
+        <step id="S9">Add batteries</step>
+        <step id="S10">Record battery information for vehicles</step>
+        <step id="S11">Push message to offline outlets</step>
+        <step id="S12">Push battery dismantling information</step>
+        <step id="S13">Apply for point transaction as seller</step>
+        <step id="S14">Complete point transaction as buyer</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S12">
+            <step id="A1S1">Calculate points to be distributed</step>
+            <step id="A1S2">Transfer points using DAO account</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S13">
+            <description>Discover expired transaction without buyer</description>
+            <step id="E1S1">End trade and unfreeze points</step>
+        </esteps>
+    </errorSteps>
+</useCase>

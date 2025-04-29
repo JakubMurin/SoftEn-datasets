@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Upload and License Data File</name>
+    <actors>
+        <actor>Cornell Faculty Member</actor>
+        <actor>Web Browser Interface</actor>
+        <actor>File Upload Service</actor>
+        <actor>Digital Rights Management Service</actor>
+        <actor>Digital Repository</actor>
+        <actor>Licensing Service</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Faculty Member has data file ready for upload</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The file is successfully uploaded, stored, and licensed</condition>
+    </successEndConditions>
+    <trigger>The Faculty Member initiates the upload and licensing process</trigger>
+    <mainSequence>
+        <step id="S1">The Faculty Member selects the data file for upload</step>
+        <step id="S2">The Web Browser Interface initiates the file upload process</step>
+        <step id="S3">The File Upload Service stores the data file in the Digital Repository</step>
+        <step id="S4">The Database saves the file metadata including uploader information</step>
+        <step id="S5">The Repository confirms the metadata storage</step>
+        <step id="S6">The Upload Service confirms the file storage and displays upload success</step>
+        <step id="S7">The Upload Service provides the Faculty Member with the file ID and upload confirmation</step>
+        <step id="S8">The Faculty Member chooses the licensing option (CC-By or CC0) in the Web Browser Interface</step>
+        <step id="S9">The License Service receives the license choice and file ID from the Web Browser Interface</step>
+        <step id="S10">The DRM Service applies the chosen license to the file</step>
+        <step id="S11">The Repository updates the file metadata with the license information</step>
+        <step id="S12">The Database updates the file record with license metadata</step>
+        <step id="S13">The Repository confirms the license update</step>
+        <step id="S14">The Repository confirms the license application to the file</step>
+        <step id="S15">The License Service displays the license application success to the Web Browser Interface</step>
+        <step id="S16">The Web Browser Interface confirms to the Faculty Member that the license has been set</step>
+    </mainSequence>
+</useCase>

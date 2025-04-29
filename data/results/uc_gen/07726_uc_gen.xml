@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Search Book</name>
+    <actors>
+        <actor>Visitor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Visitor is on the Library System Interface</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book details are displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Book not found message is displayed</condition>
+    </failureEndConditions>
+    <trigger>Visitor enters/searches for a book title</trigger>
+    <mainSequence>
+        <step id="S1">Visitor enters/searches for a book title</step>
+        <step id="S2">Interface requests Book Details using BookID</step>
+        <step id="S3">BookModule queries Book Condition using BookID</step>
+        <step id="S4">Database returns Book Condition</step>
+        <step id="S5">BookModule displays Book Condition</step>
+        <step id="S6">Interface shows Book Condition to Visitor</step>
+    </mainSequence>
+</useCase>

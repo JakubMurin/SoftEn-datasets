@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Authenticate End-User using BankID</name>
+    <actors>
+        <actor>End-User</actor>
+        <actor>CS</actor>
+        <actor>Application</actor>
+        <actor>Signicat</actor>
+        <actor>IDP</actor>
+    </actors>
+    <preconditions>
+        <precondition>End-User requests authentication</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>End-User successfully authenticated</condition>
+    </successEndConditions>
+    <trigger>User requests authentication</trigger>
+    <mainSequence>
+        <step id="S1">End-User requests help</step>
+        <step id="S2">End-User provides NIN</step>
+        <step id="S3">CS receives NIN from End-User</step>
+        <step id="S4">CS informs End-User to start Swedish BankID</step>
+        <step id="S5">Application sends NIN to Signicat</step>
+        <step id="S6">Signicat receives NIN</step>
+        <step id="S7">End-User starts BankID</step>
+        <step id="S8">End-User authenticates with BankID via IDP</step>
+        <step id="S9">IDP provides authentication information to Signicat</step>
+        <step id="S10">Signicat processes the authentication</step>
+        <step id="S11">Application requests authentication result from Signicat</step>
+        <step id="S12">Signicat provides authentication result to Application</step>
+        <step id="S13">CS provides the authentication result to End-User</step>
+        <step id="S14">CS helps the authenticated End-User</step>
+    </mainSequence>
+</useCase>

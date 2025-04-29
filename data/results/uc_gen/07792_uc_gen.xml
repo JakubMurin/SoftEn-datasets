@@ -1,0 +1,23 @@
+<useCase id="1">
+    <name>Update Project Information</name>
+    <description>Updating project details via website interface</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>Website</actor>
+        <actor>UpdateProjectActivity</actor>
+    </actors>
+    <preconditions>
+        <precondition>An update form needs to be submitted by the client</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Project information successfully updated and listed</condition>
+    </successEndConditions>
+    <trigger>Client submitting update form</trigger>
+    <mainSequence>
+        <step id="S1">Submit update form by Client to Website</step>
+        <step id="S2">Send update project request from Website to UpdateProjectActivity</step>
+        <step id="S3">Save updates in Database by UpdateProjectActivity</step>
+        <step id="S4">List all updated projects by UpdateProjectActivity</step>
+        <step id="S5">Present a list of all projects to the Client by Website</step>
+    </mainSequence>
+</useCase>

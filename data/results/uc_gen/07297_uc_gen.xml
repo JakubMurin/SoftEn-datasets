@@ -1,0 +1,40 @@
+<useCase id="1">
+    <name>Adding New User</name>
+    <description>Allows Admin to add a new user</description>
+    <actors>
+        <actor>Admin</actor>
+        <actor>FE</actor>
+        <actor>MD</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New user is successfully added</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while adding new user</condition>
+    </failureEndConditions>
+    <trigger>Request to add a new user made by Admin</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to add a new user</step>
+        <step id="S2">FE requests data for new user</step>
+        <step id="S3">Admin sends data for new user</step>
+        <step id="S4">FE sends data for new user and Admin token</step>
+        <step id="S5">MD checks token of Admin</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Token is valid</step>
+            <step id="A1S2">MD validates data for new user</step>
+            <step id="A1S3">MD adds new user</step>
+            <step id="A1S4">MD informs FE about success</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Token is invalid</description>
+            <step id="E1S1">MD informs FE about error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

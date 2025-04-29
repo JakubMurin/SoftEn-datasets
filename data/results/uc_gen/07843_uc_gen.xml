@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>Recover Document Type</name>
+    <description>As an admin, I want to recover a deleted document type.</description>
+    <actors>
+        <actor>Frontend</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has ADMIN role.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Document type is successfully recovered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Document type is not found or already active.</condition>
+    </failureEndConditions>
+    <trigger>POST /api/doctype/{id}/recover</trigger>
+    <mainSequence>
+        <step id="S1">Check user role</step>
+        <step id="S2">Validate request</step>
+        <step id="S3">Recover document type by ID</step>
+        <step id="S4">Find document type in Database</step>
+        <step id="S5">Check document type state</step>
+        <step id="S6">Set document type state to ACTIVE</step>
+        <step id="S7">Save updated document type</step>
+        <step id="S8">Return success response</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S3">
+            <step id="A1S1">Request is invalid - Return 400: Bad request</step>
+        </asteps>
+        <asteps id="A2" start="S3" continue="S3">
+            <step id="A2S1">Document type is not found - Return 404: Document type isn't found</step>
+        </asteps>
+        <asteps id="A3" start="S5" continue="S6">
+            <step id="A3S1">Document type state == ACTIVE - Return 409: Document type already active</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Error: Document type not found</description>
+            <step id="E1S1">Document type isn't found - Return 404: Document type isn't found</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC001">
+    <name>Create Match Request</name>
+    <description>User initiates the creation of a match request.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and selects a question difficulty.</precondition>
+    </preconditions>
+    <trigger>User clicks submit after selecting question difficulty.</trigger>
+    <mainSequence>
+        <step id="S1">User selects the question difficulty (Hard/Medium/Easy).</step>
+        <step id="S2">User clicks submit.</step>
+        <step id="S3">Frontend sends a POST request to API Gateway with user and difficulty.</step>
+        <step id="S4">API Gateway forwards the request to the Controller.</step>
+        <step id="S5">Controller stores the match request.</step>
+        <step id="S6">Service creates a MatchRequest and saves it to the collection.</step>
+        <step id="S7">Service generates a requestId.</step>
+        <step id="S8">Controller sends a 200 OK response with the requestId.</step>
+        <step id="S9">API Gateway sends a 200 OK Accepted response with the requestId to the frontend.</step>
+    </mainSequence>
+</useCase>

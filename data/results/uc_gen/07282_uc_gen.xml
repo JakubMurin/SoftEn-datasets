@@ -1,0 +1,26 @@
+<useCase id="UC1">
+  <name>Skapa eller öppna utkast av typen A</name>
+  <actors>
+    <actor>Invånare</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Invånare väljer att skapa / öppna ett utkast av typen A</step>
+    <step id="S2">GUI aktiveras</step>
+    <step id="S3">GUI hämtar utkastJson via UtkastModuleAPiController</step>
+    <step id="S4">Webcert aktiveras</step>
+    <step id="S5">Webcert hämtar utkast A från DB</step>
+    <step id="S6">Webcert hämtar CandidateCriteriaForCopy från ModuleApi</step>
+    <step id="S7">Webcert matchar kandidatintyg B att kopiera från baserat på kriterier</step>
+    <step id="S8">Webcert filtrerar bruttolistan över kandidatintyg B</step>
+    <step id="S9">Webcert skickar UtkastJson (med ev matchande kandidatmetadata) till GUI</step>
+    <step id="S10">GUI visar UtkastJson för Invånare</step>
+    <step id="S11">GUI visar bekräftelsedialog för kopiering om kandidat finns</step>
+    <step id="S12">Invånare godkänner kopiering</step>
+    <step id="S13">GUI skickar begäran om kopiering info från intyg B till Webcert</step>
+    <step id="S14">Webcert hämtar utkast A och B från DB</step>
+    <step id="S15">Webcert uppdaterar Utlatande A från Utlatande B via ModuleApi</step>
+    <step id="S16">Webcert sparar uppdaterat utkast i DB</step>
+    <step id="S17">Webcert skickar uppdaterad UtkastJson till GUI</step>
+    <step id="S18">GUI visar det uppdaterade utkastet för Invånare</step>
+  </mainSequence>
+</useCase>

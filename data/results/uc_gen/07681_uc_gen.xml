@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>User Profile Interaction</name>
+    <description>Allows the user to view and update their profile information and avatar image.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>UserProfilePopup</actor>
+        <actor>Controller</actor>
+        <actor>Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User opens the User Profile Popup.</step>
+        <step id="S2">User requests their profile data.</step>
+        <step id="S3">Controller dispatches Prisma action to find unique user profile data.</step>
+        <step id="S4">Model queries user profile data from the Database.</step>
+        <step id="S5">Database returns user profile data to the Model.</step>
+        <step id="S6">Model returns user profile data to the Controller.</step>
+        <step id="S7">Controller returns user profile data to the UserProfilePopup.</step>
+        <step id="S8">UserProfilePopup displays the user profile data to the User.</step>
+        <step id="S9">User submits updated profile or new avatar image.</step>
+        <step id="S10">UserProfilePopup sends the updated profile or avatar image data to the Controller.</step>
+        <step id="S11">Controller dispatches Prisma action to update or upload the data.</step>
+        <step id="S12">Model updates user profile data or stores the avatar image in the Database.</step>
+        <step id="S13">Database confirms the update or upload to the Model.</step>
+        <step id="S14">Model returns the updated profile data or avatar image URL to the Controller.</step>
+        <step id="S15">Controller confirms the update or returns the avatar image URL to the UserProfilePopup.</step>
+        <step id="S16">UserProfilePopup displays success message or new avatar image to the User.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>User Profile Popup displays an error message.</description>
+            <step id="E1S1">Display error message to the User.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

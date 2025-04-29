@@ -1,0 +1,24 @@
+<useCase id="UC1">
+  <name>Integrate Other Services into Booking</name>
+  <actors>
+    <actor>User</actor>
+    <actor>UI/Interface</actor>
+    <actor>BookingRouter</actor>
+    <actor>BookingController</actor>
+    <actor>BookingRepository</actor>
+    <actor>OtherServiceRepository</actor>
+    <actor>Booking Model</actor>
+    <actor>OtherService Model</actor>
+    <actor>Database</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User opens the booking details page.</step>
+    <step id="S2">UI receives request to open booking details page.</step>
+    <step id="S3">Router forwards POST to BookingController.</step>
+    <step id="S4">Controller adds other service to the booking.</step>
+    <step id="S5">Booking details are fetched by Repository using Booking Model in DB.</step>
+    <step id="S6">Other service details are fetched by Repository using OtherService Model in DB.</step>
+    <step id="S7">Booking Model adds the other service and updates booking data in DB.</step>
+    <step id="S8">Updated booking with other service is sent back.</step>
+  </mainSequence>
+</useCase>

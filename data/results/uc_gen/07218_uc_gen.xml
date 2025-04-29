@@ -1,0 +1,20 @@
+<useCase id="UC01">
+    <name>Update Expiry Info</name>
+    <description>This use case describes the process of updating the expiry information of an ingredient in the system.</description>
+    <actors>
+        <actor>Chef</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The Chef selects the ingredient to update.</step>
+        <step id="S2">The UI Layer requests the current expiry date from the Backend Server.</step>
+        <step id="S3">The Backend Server queries the Database for the ingredient's expiry date.</step>
+        <step id="S4">The Database returns the expiry date to the Backend Server.</step>
+        <step id="S5">The Backend Server shows the current expiry date to the UI.</step>
+        <step id="S6">The Chef inputs the new expiry date.</step>
+        <step id="S7">The UI Layer submits the updated expiry date to the Backend.</step>
+        <step id="S8">The Backend updates the expiry date in the Database.</step>
+        <step id="S9">The Database confirms the update to the Backend Server.</step>
+        <step id="S10">The Backend Server confirms the successful update to the UI.</step>
+        <step id="S11">The UI updates the chef with the confirmation for the successful updating of the expiry info.</step>
+    </mainSequence>
+</useCase>

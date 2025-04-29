@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>Handle Ball Collision</name>
+    <actors>
+        <actor>GameEngine</actor>
+        <actor>GameBoundaryDelegate</actor>
+        <actor>Boundary</actor>
+        <actor>Ball</actor>
+        <actor>FreeBody</actor>
+    </actors>
+    <trigger>GameEngine calls onCollision method on Ball</trigger>
+    <mainSequence>
+        <step id="S1">GameEngine gets Boundary</step>
+        <step id="S2">Ball on Collision with Boundary</step>
+        <step id="S3">Ball gets Safe Position from Boundary</step>
+        <step id="S4">FreeBody on Collision with calculated values</step>
+    </mainSequence>
+</useCase>

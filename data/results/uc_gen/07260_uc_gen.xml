@@ -1,0 +1,28 @@
+<useCase id="UC1">
+	<name>Kubernetes as Control Plane for Infrastructure Provisioning</name>
+	<actors>
+		<actor>Developer</actor>
+		<actor>Platform Engineer</actor>
+	</actors>
+	<preconditions>
+		<precondition>Self-service application and infrastructure available</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Cloud resources provisioned successfully</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Failure in cloud resource provisioning</condition>
+	</failureEndConditions>
+	<trigger>Changes submitted to GitOps repository</trigger>
+	<mainSequence>
+		<step id="S1">Developer accesses self-service app and infrastructure through IDP Portal</step>
+		<step id="S2">Developer pushes changes to remote GitOps repository</step>
+		<step id="S3">Platform Engineer reviews and approves changes</step>
+		<step id="S4">GitOps repository syncs changes with ArgoCD</step>
+		<step id="S5">ArgoCD deploys changes using Kubernetes API</step>
+		<step id="S6">ArgoCD provisions virtual cluster</step>
+		<step id="S7">ArgoCD provisions application</step>
+		<step id="S8">Virtual cluster created for ephemeral testing environment</step>
+		<step id="S9">Cloud resources provisioned: Resource Group, Storage Account, Storage Container</step>
+	</mainSequence>
+</useCase>

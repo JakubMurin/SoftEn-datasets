@@ -1,0 +1,21 @@
+<useCase id="UC001">
+  <name>Charging Transaction Management</name>
+  <actors>
+    <actor>User</actor>
+    <actor>Core</actor>
+    <actor>Libocpp</actor>
+    <actor>Database</actor>
+    <actor>CSMS</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">User swipes ID tag</step>
+    <step id="S2">Core authorizes</step>
+    <step id="S3">User plugs in cable</step>
+    <step id="S4">Libocpp triggers TransactionEventRequest::Started</step>
+    <step id="S5">Libocpp inserts transaction details into database</step>
+    <step id="S6">User pauses charging of car</step>
+    <step id="S7">Libocpp triggers on_charging_state_changed</step>
+    <step id="S8">Libocpp updates transaction charging state in database</step>
+    <step id="S9">Libocpp updates transaction sequence number in database</step>
+  </mainSequence>
+</useCase>

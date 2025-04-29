@@ -1,0 +1,25 @@
+<useCase id="UC1">
+  <name>Alterar dados de utente</name>
+  <description>Use case para alterar os dados de um utente</description>
+  <actors>
+    <actor>Utente</actor>
+    <actor>SistemaRobDroneGo</actor>
+  </actors>
+  <preconditions>
+    <precondition>O sistema deve estar disponível e o utente autenticado</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Os dados do utente foram alterados corretamente</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Ocorreu um erro ao alterar os dados do utente</condition>
+  </failureEndConditions>
+  <trigger>O utente solicita a alteração dos dados</trigger>
+  
+  <mainSequence>
+    <step id="S1">SistemaRobDroneGo reque dados do utente</step>
+    <step id="S2">Utente envia dados para alteração</step>
+    <step id="S3">SistemaRobDroneGo processa alteração dos dados</step>
+    <step id="S4">SistemaRobDroneGo envia mensagem de sucesso para Utente</step>
+  </mainSequence>
+</useCase>

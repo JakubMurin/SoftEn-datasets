@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Login into Adgangsplatformen</name>
+    <actors>
+        <actor>User</actor>
+        <actor>DPL_CMS</actor>
+        <actor>OpenidConnect</actor>
+        <actor>Adgangsplatformen</actor>
+    </actors>
+    <trigger>Click login into Adgangsplatformen</trigger>
+    <mainSequence>
+        <step id="S1">User clicks login into Adgangsplatformen</step>
+        <step id="S2">DPL_CMS retrieves authorization URL and return URL from OpenidConnect</step>
+        <step id="S3">OpenidConnect constructs the authorization URL containing returnurl, state hash, and agency id</step>
+        <step id="S4">OpenidConnect instructs the User's browser to redirect to the authorization URL</step>
+        <step id="S5">User is redirected to Adgangsplatformen and performs internal authentication</step>
+        <step id="S6">User is redirected back to the return URL</step>
+        <step id="S7">User send Adgangsplatform reponse to DPL_CMS</step>
+        <step id="S8">DPL_CMS validates values from the Adgangsplatform reponse</step>
+        <step id="S9">OpenidConnect requests access token from Adgangsplatformen</step>
+        <step id="S10">Adgangsplatformen returns the access token with expire time stamp</step>
+        <step id="S11">OpenidConnect requests user info from Adgangsplatformen</step>
+        <step id="S12">Adgangsplatformen returns user information (UUID)</step>
+        <step id="S13">OpenidConnect processes the user status in Drupal</step>
+        <step id="S14">OpenidConnect begins a Drupal user session</step>
+        <step id="S15">OpenidConnect saves the access token in the active user session on DPL_CMS</step>
+        <step id="S16">User is redirected to the frontpage on DPL_CMS</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S11" continue="S12">
+            <step id="A1S1">If First time login: OpenidConnect creates a new user in Drupal, sets unique email/username,
+                encrypts Adgangsplatformen UUID for mapping, assigns Drupal role: Patron</step>
+            <step id="A1S2">If Recurrent login: OpenidConnect updates the existing user in Drupal</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

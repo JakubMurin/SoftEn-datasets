@@ -1,0 +1,46 @@
+<useCase id="UC001">
+    <name>Phone call scenario</name>
+    <actors>
+        <actor>Apelant</actor>
+        <actor>Standard</actor>
+        <actor>Correspondant</actor>
+    </actors>
+    <preconditions>
+        <precondition>The phone call service is available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The phone call is successful and completed</condition>
+    </successEndConditions>
+    <trigger>Initiation of a phone call</trigger>
+    <mainSequence>
+        <step id="S1">Apelant inserts the money</step>
+        <step id="S2">2 minutes countdown occurs</step>
+        <step id="S3">Apelant composes the number</step>
+        <step id="S4">If the number is not composed - Apelant hangs up</step>
+        <step id="S5">If the number is composed - Connects with Correspondant</step>
+        <step id="S6">If the line is occupied - Apelant hangs up</step>
+        <step id="S7">If the line is free - Correspondant picks up</step>
+        <step id="S8">Consumption of money loop: money is counted and added</step>
+        <step id="S9">Apelant and Correspondant communicate</step>
+        <step id="S10">Correspondant hangs up</step>
+        <step id="S11">Apelant hangs up</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S6">
+            <step id="A1S1">Apelant hangs up</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">Correspondant picks up</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Correspondant hangs up unexpectedly</description>
+            <step id="E1S1">Apelant returns money to Apelant</step>
+        </esteps>
+        <esteps id="E2" start="S11">
+            <description>Apelant hangs up before end</description>
+            <step id="E2S1">Correspondant returns money to Apelant</step>
+        </esteps>
+    </errorSteps>
+</useCase>

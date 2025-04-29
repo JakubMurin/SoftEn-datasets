@@ -1,0 +1,31 @@
+<useCase id="UC01">
+    <name>Agent Recovery and Policy Registry Update</name>
+    <preconditions>
+        <precondition>Alice no longer has any agent policy keys to use for control over her agent policy registry on the ledger.</precondition>
+        <precondition>An attacker has compromised the agent policy registry and locked out Alice.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice generates a new policy registry address (P').</step>
+        <step id="S2">Alice stores the new policy registry address (P').</step>
+        <step id="S3">Alice revokes all claims associated with the old agent policy address (P).</step>
+        <step id="S4">Alice sends a revoke claim message to her Cloud Agent.</step>
+        <step id="S5">The Cloud Agent forwards the revoke claim message to the Issuers' Agent.</step>
+        <step id="S6">The Issuers' Agent either notifies the Issuer or forwards the revoke claim message.</step>
+        <step id="S7">The Issuer verifies Alice's identity.</step>
+        <step id="S8">The Issuer revokes the claim and updates the non-revocation accumulator.</step>
+        <step id="S9">The Issuers' Agent forwards the result to Alice's Cloud Agent.</step>
+        <step id="S10">The Cloud Agent acknowledges the result or forwards to Alice's Edge Agent.</step>
+        <step id="S11">Alice completes the issuance of new claims with the updated policy address (P).</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">The Issuers' Agent forwards the revoke claim message to the Issuer.</step>
+        </asteps>
+        <asteps id="A2" start="S9" continue="S10">
+            <step id="A2S1">The Cloud Agent forwards the result to Alice's Edge Agent.</step>
+        </asteps>
+        <asteps id="A3" start="S10">
+            <step id="A3S1">The Cloud Agent forwards the acknowledge to Alice.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

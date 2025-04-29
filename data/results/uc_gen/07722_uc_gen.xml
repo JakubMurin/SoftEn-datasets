@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Cointag Flow</name>
+    <description>Manage the cointag lifecycle and rewards distribution</description>
+    <actors>
+        <actor>Creator</actor>
+        <actor>Caller</actor>
+        <actor>1155</actor>
+        <actor>Minter</actor>
+        <actor>Factory</actor>
+        <actor>Cointag</actor>
+        <actor>ProtocolRewards</actor>
+        <actor>UniswapV3Pool</actor>
+        <actor>ERC20</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Creator creates new Cointag and Factory processes it</step>
+        <step id="S2">Creator sets the creator reward recipient as the Cointag address</step>
+        <step id="S3">Caller triggers the Minter to mint a post</step>
+        <step id="S4">Minter retrieves the Cointag address as the creator reward recipient from 1155</step>
+        <step id="S5">Minter deposits rewards for the Cointag to ProtocolRewards</step>
+        <step id="S6">Any caller triggers rewards distribution for the Cointag which pulls rewards</step>
+        <step id="S7">Cointag processes reward distribution by swapping ETH for ERC20 via Uniswap</step>
+        <step id="S8">Creator can withdraw rewards from ProtocolRewards</step>
+    </mainSequence>
+</useCase>

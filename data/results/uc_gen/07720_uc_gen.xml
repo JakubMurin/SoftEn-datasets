@@ -1,0 +1,23 @@
+<useCase id="UC01">
+    <name>Update Authors and Organizations</name>
+    <actors>
+        <actor>Client</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Update Authors and Organizations Triggered</step>
+        <step id="S2">Advance Search.jsp sends request to Author Search page for updating authors and organizations</step>
+        <step id="S3">Author Search page requests names from Umbra</step>
+        <step id="S4">Umbra provides names to Author Search page</step>
+        <step id="S5">Author Search page builds author query</step>
+        <step id="S6">Author Search page updates authors with the query</step>
+
+        <step id="S7">Group: Updating Authors Process</step>
+        <step id="S8">Author Search page executes query to Data Package Manager Client with author query</step>
+        <step id="S9">Data Package Manager Client retrieves authors XML</step>
+        <step id="S10">Author Search page parses author XML and extracts the author elements</step>
+        
+        <step id="S11">Author Search page composes author name options</step>
+        <step id="S12">Author Search page builds HTML author list using the data</step>
+        <step id="S13">Author Search page sends the HTML author list back to Advanced Search.jsp</step>
+    </mainSequence>
+</useCase>

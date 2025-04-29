@@ -1,0 +1,40 @@
+<useCase id="UC001">
+    <name>Login to Time Reporting System</name>
+    <description>User logs in to the Time Reporting System using their username and password.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Spring</actor>
+        <actor>Lewensportal</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in due to incorrect credentials.</condition>
+    </failureEndConditions>
+    <trigger>User opens the Time Report.</trigger>
+    <mainSequence>
+        <step id="S1">User provides Username (FnNn) and Password.</step>
+        <step id="S2">Spring sends Username and Password to Lewensportal.</step>
+        <step id="S3">Lewensportal validates the credentials.</step>
+        <step id="S4">Spring saves the user in the database with default authorities.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Lewensportal confirms the credentials are valid.</step>
+            <step id="A1S2">Spring receives confirmation from Lewensportal.</step>
+            <step id="A1S3">Spring saves the user in the database.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>User credentials are invalid.</description>
+            <step id="E1S1">Lewensportal indicates the credentials are not valid.</step>
+            <step id="E1S2">Spring informs the User of incorrect credentials.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

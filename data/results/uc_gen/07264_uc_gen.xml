@@ -1,0 +1,29 @@
+<useCase id="remove-like-flow">
+    <name>Remove Entity Like</name>
+        <actors>
+                <actor>User</actor>
+                <actor>UserInterface</actor>
+                <actor>LikeController</actor>
+                <actor>LikeService</actor>
+                <actor>LikeRepository</actor>
+        </actors>
+        <trigger>User clicks on "Like/Dislike" button</trigger>
+        <mainSequence>
+                <step id="S1">User goes to entity page (post, comment, event)</step>
+                <step id="S2">UserInterface displays entity details and like button</step>
+                <step id="S3">User clicks "Like/Dislike" button</step>
+                <step id="S4">LikeController toggles like for the entity</step>
+                <step id="S5">LikeController processes dislike operation</step>
+                <step id="S6">LikeService removes like from the entity</step>
+                <step id="S7">LikeRepository removes like data from database</step>
+        </mainSequence>
+        <alternativeSteps>
+            <asteps id="A1" start="S6" continue="S6S1">
+                <step id="S6S1">Display error message: "Failed to remove like from the entity"</step>
+            </asteps>
+            <asteps id="A2" start="S7" continue="S7S1">
+	            <step id="S7S1">UserInterface displays "Like removed successfully" message</step>
+	            <step id="S7S2">UserInterface updates like count on the entity</step>
+            </asteps>
+        </alternativeSteps>
+</useCase>

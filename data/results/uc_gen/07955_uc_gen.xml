@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Create a Post</name>
+    <description>User wants to create a new Post.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized to create a Post.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>A new Post is successfully created and returned with a 201 status code.</condition>
+    </successEndConditions>
+    <trigger>User requests to create a new Post.</trigger>
+    <mainSequence>
+        <step id="S1">User requests to create a Post.</step>
+        <step id="S2">UI receives the request to create a Post.</step>
+        <step id="S3">PostController sends PostDto to the PostController.</step>
+        <step id="S4">PostController validates the PostDto.</step>
+        <step id="S5">PostController gets the User from the security context.</step>
+        <step id="S6">PostService creates the Post with the PostDto and UserId.</step>
+        <step id="S7">PostMapper transforms the PostDto into a Post entity.</step>
+        <step id="S8">PostService creates the Post in the PostRepository.</step>
+        <step id="S9">PostRepository saves the created Post.</step>
+        <step id="S10">PostService returns an Optional&lt;Post&gt; to the PostController.</step>
+        <step id="S11">PostController returns ResponseEntity with a 201 status code to UI.</step>
+        <step id="S12">UI displays the message "Post created!" to the User.</step>
+    </mainSequence>
+</useCase>

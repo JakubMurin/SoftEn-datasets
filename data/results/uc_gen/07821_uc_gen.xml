@@ -1,0 +1,44 @@
+<useCase id="UC1">
+    <name>Login System</name>
+    <description>Allows the receptionist to log in to the system.</description>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The receptionist has valid login credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The receptionist successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The receptionist fails to log in due to invalid credentials.</condition>
+    </failureEndConditions>
+    <trigger>The receptionist enters login credentials.</trigger>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password).</step>
+        <step id="S2">UI receives login credentials.</step>
+        <step id="S3">Router processes POST /login request.</step>
+        <step id="S4">Controller invokes login() function.</step>
+        <step id="S5">Repository validates credentials.</step>
+        <step id="S6">Repository fetches user data by username.</step>
+        <step id="S7">Controller checks if password matches.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">If login successful:</step>
+            <step id="A1S2">Controller sends 200 OK (login success) to UI.</step>
+            <step id="A1S3">UI displays login result.</step>
+            <step id="A1S4">Router processes GET /dashboard request.</step>
+            <step id="A1S5">Controller gets dashboard data.</step>
+            <step id="A1S6">Repository fetches dashboard data.</step>
+            <step id="A1S7">Controller sends 200 OK (dashboard data) to Router.</step>
+            <step id="A1S8">Router sends 200 OK (dashboard data) to UI.</step>
+            <step id="A1S9">UI displays dashboard.</step>
+        </asteps>
+        <asteps id="A2" start="S7">
+            <step id="A2S1">If login failed:</step>
+            <step id="A2S2">Controller sends 401 Unauthorized (invalid credentials) to UI.</step>
+            <step id="A2S3">UI displays error message.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

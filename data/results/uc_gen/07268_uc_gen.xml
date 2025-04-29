@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Create Translation Client</name>
+    <description>As a Client, I want to create a new translation client.</description>
+    <actors>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Client sends an HTTP request to the API Gateway/Lambda.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The new translation client is successfully created and returned to the Client.</condition>
+    </successEndConditions>
+    <trigger>HTTP Request</trigger>
+    <mainSequence>
+        <step id="S1">Client sends an HTTP request to the API Gateway/Lambda.</step>
+        <step id="S2">API Gateway/Lambda receives the request and forwards it to CreateTranslationClientActivity in order to execute CreateTranslationClientRequest.</step>
+        <step id="S3">CreateTranslationClientActivity invokes TranslationClientDao's createTranslationClient method with parameters: customerId, translationClientName, translationClientType.</step>
+        <step id="S4">TranslationClientDao loads all cases matching the customer ID from DynamoDB.</step>
+        <step id="S5">TranslationClientDao checks for the existence of an identical translationClientName and clientType pair.</step>
+        <step id="S6">If an identical pair exists, TranslationClientDao throws a DuplicateTranslationClientException, informing CreateTranslationClientActivity.</step>
+        <step id="S7">CreateTranslationClientActivity propagates the DuplicateTranslationClientException to the API Gateway/Lambda.</step>
+        <step id="S8">API Gateway/Lambda notifies the Client with a 400 response indicating the duplication problem.</step>
+        <step id="S9">Else, if no duplication exists, TranslationClientDao saves the new translation client into DynamoDB.</step>
+        <step id="S10">DynamoDB confirms successful save operation returning a 200 response.</step>
+        <step id="S11">TranslationClientDao returns the newly created client object back to CreateTranslationClientActivity.</step>
+        <step id="S12">CreateTranslationClientActivity forwards the CreateTranslationClientResult back to API Gateway/Lambda.</step>
+        <step id="S13">API Gateway/Lambda finally sends a 200 response with the CreateTranslationClientResult data back to the Client.</step>
+    </mainSequence>
+</useCase>

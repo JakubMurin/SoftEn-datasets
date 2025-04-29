@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Adding Data Files to Dataset</name>
+    <actors>
+        <actor>apiclient</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">API client sends a request to add a data file to a dataset</step>
+        <step id="S2">Datasets service activates to handle the request</step>
+        <step id="S3">Datasets service calls AddFileHelper to add the file to the dataset</step>
+        <step id="S4">AddFileHelper activates to assist in adding the file</step>
+        <step id="S5">AddFileHelper utilizes FileUtil to create data files</step>
+        <step id="S6">FileUtil determines the type of the file</step>
+        <step id="S7">FileUtil creates a single data file</step>
+        <step id="S8">AddFileHelper receives a list of data files from FileUtil</step>
+        <step id="S9">AddFileHelper calls ISB to add the files to the dataset</step>
+        <step id="S10">AddFileHelper receives the dataset from ISB</step>
+        <step id="S11">AddFileHelper calls ISB to ingest the files</step>
+        <step id="S12">ISB performs scheduled ingestion of the files</step>
+        <step id="S13">AddFileHelper calls ISB to ingest the files as tabular data</step>
+        <step id="S14">Datasets service receives a JsonObjectBuilder object from AddFileHelper</step>
+        <step id="S15">API client receives a JSON object response from Datasets service</step>
+    </mainSequence>
+</useCase>

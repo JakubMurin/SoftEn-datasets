@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Perform Query Operation</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>JSEngine</actor>
+        <actor>QueryEngine</actor>
+        <actor>Bucket</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Developer sends a JavaScript query to JSEngine</step>
+        <step id="S2">JSEngine activates to process the query</step>
+        <step id="S3">JSEngine forwards the query to QueryEngine</step>
+        <step id="S4">QueryEngine processes the query and returns the result to JSEngine</step>
+        <step id="S5">JSEngine returns the query result to Developer</step>
+        <step id="S6">For each document in the query result:</step>
+        <step id="S7">Developer operates on the document</step>
+        <step id="S8">JSEngine requests the document from QueryEngine</step>
+        <step id="S9">QueryEngine retrieves the document from Bucket</step>
+        <step id="S10">Bucket provides the document to QueryEngine</step>
+        <step id="S11">QueryEngine returns the document to JSEngine</step>
+    </mainSequence>
+</useCase>

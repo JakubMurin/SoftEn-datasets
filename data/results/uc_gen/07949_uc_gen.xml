@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Authentification Utilisateur</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>TodoList</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur doit être connecté</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Utilisateur se connecte en fournissant email et mot de passe</step>
+        <step id="S2">Système vérifie les informations d'authentification avec la base de données</step>
+        <step id="S3">DB retourne le résultat de la vérification (authentifié ou non)</step>
+        <step id="S4">Système récupère les tâches depuis TodoList</step>
+        <step id="S5">TodoList demande les tâches depuis la base de données</step>
+        <step id="S6">DB envoie la liste des tâches à TodoList</step>
+        <step id="S7">TodoList renvoie la liste des tâches au Système</step>
+        <step id="S8">Système affiche la liste des tâches à l'Utilisateur</step>
+    </mainSequence>
+</useCase>

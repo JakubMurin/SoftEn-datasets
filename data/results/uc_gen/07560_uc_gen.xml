@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Account Deletion</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User clicks delete account</step>
+        <step id="S2">Frontend activates</step>
+        <step id="S3">Frontend gets User's name and email</step>
+        <step id="S4">Frontend calls onDeleteAccount(User.email)</step>
+        <step id="S5">AuthInterceptor prepares HTTP DELETE request</step>
+        <step id="S6">HttpClient forwards the request with Authorization header</step>
+        <step id="S7">Controller receives DeleteAcc request</step>
+        <step id="S8">Controller calls IUserAppService to delete the account</step>
+        <step id="S9">IUserAppService calls UserAppService to delete the account</step>
+        <step id="S10">UserAppService deletes the account from the UserManager</step>
+        <step id="S11">UserManager finds the user by Email in the database</step>
+    </mainSequence>
+</useCase>

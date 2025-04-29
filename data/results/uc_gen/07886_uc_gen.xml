@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Sell and Purchase Items Process</name>
+    <description>This use case involves the interaction between Buyer, Market, and Seller for the sale and purchase of items.</description>
+    <actors>
+        <actor>Buyer</actor>
+        <actor>Market</actor>
+        <actor>Seller</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Seller has items available for sale.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Buyer registers itself as an observer with the Market.</step>
+        <step id="S2">(Loop): Seller puts item up for sale</step>
+        <step id="S3">Market notifies the Buyer of the new items available.</step>
+        <step id="S4">(Option loop): Buyer registers itself as an observer after Market has items on sale.</step>
+        <step id="S5">Market notifies the Buyer of the new items available.</step>
+        <step id="A1">First condition passed: Buyer has money to buy the item.</step>
+        <step id="S2A1">Buyer buys the item from the Seller.</step>
+        <step id="S3A1">Seller removes the item from the market.</step>
+        <step id="S4A1">Buyer receives the item from the Seller.</step>
+        <step id="A2">Buyer has money to buy the item.</step>
+        <step id="S2A2">Buyer buys the item from the Seller.</step>
+        <step id="S3A2">Seller removes the item from the market.</step>
+        <step id="S4A2">Buyer receives the item from the Seller.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Track Game Stats</name>
+    <actors>
+        <actor>Game</actor>
+        <actor>StatsTrackingSystem</actor>
+        <actor>StorageManager</actor>
+        <actor>StatsTrackerFactory</actor>
+        <actor>NumBlocksPlacedStatTracker</actor>
+        <actor>EventManager</actor>
+    </actors>
+    <preconditions>
+        <precondition>A new game instance is created.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Stats are successfully saved to disk.</condition>
+    </successEndConditions>
+    <trigger>Game triggers the tracking of game stats.</trigger>
+    <mainSequence>
+        <step id="S1">Game creates a new game instance.</step>
+        <step id="S2">StatsTrackingSystem loads the existing stats data.</step>
+        <step id="S3">For each stat in the statsStorage, a corresponding StatTracker is created and initialized.</step>
+        <step id="S4">StatsTrackingSystem registers a closure for the BlockPlacedEvent in the EventManager.</step>
+        <step id="S5">EventManager registers a closure for the GameEndedEvent.</step>
+        <step id="S6">Game plays the game.</step>
+        <step id="S7">Game fires the GameEndedEvent.</step>
+        <step id="S8">EventManager triggers the GameEndedEvent which then leads to saving stats.</step>
+        <step id="S9">StatsTrackingSystem saves the stats to the StorageManager.</step>
+        <step id="S10">StorageManager converts StatTrackers to StatStorage and writes to disk.</step>
+    </mainSequence>
+</useCase>

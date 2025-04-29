@@ -1,0 +1,19 @@
+<useCase id="123">
+    <name>Change Marketing Campaign</name>
+    <actors>
+        <actor>User</actor>
+        <actor>ump</actor>
+        <actor>retail-ump</actor>
+        <actor>c</actor>
+    </actors>
+    <trigger>User initiates the request to change the marketing campaign.</trigger>
+    <mainSequence>
+        <step id="S1">Activate ump - Identify the request for changing the campaign.</step>
+        <step id="S2">Send message from ump to retail-ump to convey the campaign change request.</step>
+        <step id="S3">Process the change type of marketing activity by the retail-ump, which involves adding, invalidating, deleting, or editing actions.</step>
+        <step id="S4">Synchronize/asynchronously deliver the message from retail-ump to client c, with conditions considering the number of stores for the action.</step>
+        <step id="S5">Return to retail-ump from client c acknowledging the transaction completion.</step>
+        <step id="S6">Return acknowledgement success message to ump.</step>
+        <step id="S7">Complete the transaction and deliver the actual action completion message to the user.</step>
+    </mainSequence>
+</useCase>

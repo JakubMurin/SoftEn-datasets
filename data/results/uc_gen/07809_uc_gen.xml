@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Add Data to Dataset</name>
+    <actors>
+        <actor>apiclient</actor>
+    </actors>
+    <preconditions>
+        <precondition>API client is authorized and connected to the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data files successfully added to the dataset</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure to add data files to the dataset</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">API client seeks to upload data files to a specific dataset</step>
+        <step id="S2">Datasets service is activated</step>
+        <step id="S3">AddFileHelper.active(): Trigger addFileToDataset()</step>
+        <step id="S4">AddFileHelper interacts with FileUtil</step>
+        <step id="S5">FileUtil executes determineFileType() and createSingleDataFile()</step>
+        <step id="S6">FileUtil constructs Datafile List and sends to AddFileHelper</step>
+        <step id="S7">AddFileHelper calls ISB for uploading files to the dataset</step>
+        <step id="S8">Control returns to AddFileHelper from ISB after uploading datasets and ingesting them</step>
+        <step id="S9">AddFileHelper provides response object to API client as a JSON response</step>
+    </mainSequence>    
+</useCase>

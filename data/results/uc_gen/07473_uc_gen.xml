@@ -1,0 +1,21 @@
+<useCase id="UC001">
+	<name>ユーザーエラーのカウント</name>
+	<actors>
+		<actor>ユーザー</actor>
+		<actor>ユーザーインターフェース</actor>
+		<actor>エラー処理</actor>
+		<actor>エラーカウンター</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">ユーザーが操作を実行</step>
+		<step id="S2">ユーザーインターフェースがユーザーエラー検出要求を受信</step>
+		<step id="S3">エラー処理がユーザーエラーをカウント</step>
+		<step id="S4">エラーカウンターがカウント更新完了</step>
+		<step id="S5">エラー処理がユーザーエラーをカウント</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S5">
+			<step id="A1S1">エラーカウンターがカウント更新完了</step>
+		</asteps>
+	</alternativeSteps>
+</useCase>

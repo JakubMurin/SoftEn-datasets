@@ -1,0 +1,23 @@
+<useCase id="UC1">
+   <name>Get Keychain Entry Endpoint</name>
+   <actors>
+      <actor>User A</actor>
+      <actor>API Client</actor>
+      <actor>API Server</actor>
+      <actor>AWS SM Connector</actor>
+   </actors>
+   <preconditions>
+      <precondition>User A initiates the transaction to get keychain entry</precondition>
+   </preconditions>
+   <trigger>User A calls Tx GetKeychainEntryV1</trigger>
+   <mainSequence>
+      <step id="S1">User A initiates Tx GetKeychainEntryV1</step>
+      <step id="S2">API Client sends request to API Server</step>
+      <step id="S3">API Server forwards request to AWS SM Connector</step>
+      <step id="S4">AWS SM Connector requests keys from AWS SM</step>
+      <step id="S5">AWS SM returns keys</step>
+      <step id="S6">AWS SM Connector formats response</step>
+      <step id="S7">API Server sends formatted response to API Client</step>
+      <step id="S8">API Client receives GetKeychainEntryResponse</step>
+   </mainSequence>
+</useCase>

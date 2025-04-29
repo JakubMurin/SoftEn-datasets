@@ -1,0 +1,26 @@
+<useCase id="login_process">
+    <name>Login Process</name>
+    
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Login API</actor>
+        <actor>User Database</actor>
+    </actors>
+    
+    <preconditions>
+        <precondition>User Agent sends a login request containing a tuple of (username, password, CSRF token) to the Login API.</precondition>
+    </preconditions>
+    
+    <trigger>User Agent triggers the login process by sending an HTTP POST request to the Login API.</trigger>
+
+    <mainSequence>
+        <step id="S1">User Agent sends a login request (HTTP POST) to Login API containing a tuple of (username, password, CSRF token).</step>
+        <step id="S2">Login API validates the login request.</step>
+        <step id="S3">If validation fails, Login API returns an HTTP status code signaling validation failure.</step>
+        <step id="S4">If the request is valid, Login API attempts to retrieve user information from the User Database.</step>
+        <step id="S5">User Database returns the result of the request to Login API.</step>
+        <step id="S6">If user information exists in the database and authentication against the password hash succeeds, Login API returns HTTP 200 OK to User Agent and sets an encrypted session cookie containing the user id and session timeout.</step>
+        <step id="S7">If user information does not exist or authentication against the password hash fails, Login API returns HTTP 401 Unauthorized to User Agent.</step>
+    </mainSequence>
+
+</useCase>

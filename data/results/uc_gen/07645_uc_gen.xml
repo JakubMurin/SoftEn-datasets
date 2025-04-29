@@ -1,0 +1,48 @@
+<useCase id="UC001">
+    <name>AuthenticateClientRequest</name>
+    <description>Verify client authorization for accessing endpoints</description>
+    <actors>
+        <actor>ClientRequest</actor>
+        <actor>Servlet</actor>
+        <actor>Filter</actor>
+        <actor>AuthCheck</actor>
+        <actor>JWT</actor>
+        <actor>Database</actor>
+        <actor>Endpoint</actor>
+    </actors>
+    <preconditions>
+        <precondition>ClientRequest initiates a request to access an endpoint</precondition>
+        <precondition>Server is set up with ContainerRequestFilter and AuthorizationCheck components</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>ClientRequest receives a successful response</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>ClientRequest receives an error response</condition>
+    </failureEndConditions>
+    <trigger>Request sent by the ClientRequest</trigger>
+    <mainSequence>
+        <step id="S1">ClientRequest sends a request with "endpoint" information</step>
+        <step id="S2">Servlet starts processing the request</step>
+        <step id="S3">Filter preprocesses the request</step>
+        <step id="S4">Filter allows access for guest role requests</step>
+        <step id="S5">Servlet proceeds with the request</step>
+        <step id="S6">Endpoint performs operations for guest role requests</step>
+        <step id="S7">Response sent back to the ClientRequest</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Filter checks for authorized roles</step>
+            <step id="A1S2">Servlet authenticates the session Principal</step>
+            <step id="A1S3">Endpoint carries out operations for authorized requests</step>
+            <step id="A1S4">Response sent back to the ClientRequest</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S1">
+            <description>Authorization failed for the ClientRequest</description>
+            <step id="E1S1">Filter rejects unauthorized access</step>
+            <step id="E1S2">Error response sent to the ClientRequest with status code 401</step>
+        </esteps>
+    </errorSteps>
+</useCase>

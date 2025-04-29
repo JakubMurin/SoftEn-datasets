@@ -1,0 +1,17 @@
+@startuml "Structural Fire Fighting"
+
+actor "Drone Commander"
+actor "Semi-autonomous UAV"
+
+"Drone Commander" -> "Semi-autonomous UAV": Firefighters request flight authorization
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": UAVs are activated and armed
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": The UAVs perform synchronized takeoff
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": The UAVs use their onboard vision to create an initial mapping of the building
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": The UAVs plan optimized and coordinated surveillance flights around the building
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": Prior to each leg of the surveillance flight, each UAV leases the necessary airspace
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": Each UAV performs image capture and analysis using thermal imagery
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": Imagery from each UAV is continuously streamed and aggregated to create a current heatmap of the building
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": Steps 4-7 are repeated throughout the fire event
+"Semi-autonomous UAV" -> "Semi-autonomous UAV": The Incident Commander ends the mission once the fire has been controlled
+
+@enduml

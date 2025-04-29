@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Realizar Tarefa de Robô Drone</name>
+    <actors>
+        <actor>Utente</actor>
+        <actor>robDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>O robô drone está disponível para realizar tarefas.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>A tarefa foi criada com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>A criação da tarefa falhou.</condition>
+    </failureEndConditions>
+    <trigger>O Utente requisita uma tarefa ao robDroneGo.</trigger>
+    <mainSequence>
+        <step id="S1">O Utente requisita uma tarefa.</step>
+        <step id="S2">O robDroneGo solicita o ponto inicial e final da tarefa ao Utente.</step>
+        <step id="S3">O Utente insere os dados da tarefa.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">O robDroneGo devolve uma mensagem de sucesso.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>A criação da tarefa falhou.</description>
+            <step id="E1S1">O robDroneGo devolve uma mensagem de erro.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

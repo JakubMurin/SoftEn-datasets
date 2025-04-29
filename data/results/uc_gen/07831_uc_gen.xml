@@ -1,0 +1,55 @@
+<useCase id="UC1">
+    <name>Rate a Book</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Catalog</actor>
+        <actor>Postgres</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has a valid JWT</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book rating successfully updated</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Book not found</condition>
+        <condition>JWT is absent</condition>
+        <condition>JWT is not valid</condition>
+    </failureEndConditions>
+    <trigger>PUT /api/v1/books/{id}/rate</trigger>
+    <mainSequence>
+        <step id="S1">User requests to rate a book</step>
+        <step id="S2">Gateway forwards the request to Keycloak to verify JWT</step>
+        <step id="S3">Keycloak verifies the JWT</step>
+        <step id="S4">Gateway forwards the request to Catalog to rate the book</step>
+        <step id="S5">Catalog searches for the book in Postgres</step>
+        <step id="S6">Catalog updates the user's rating for the book in Postgres</step>
+        <step id="S7">Catalog responds with HTTP Status 200 to Gateway</step>
+        <step id="S8">Gateway responds with HTTP Status 200 to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Book exists</step>
+            <step id="A1S2">Catalog saves/update user rate for the book in Postgres</step>
+            <step id="A1S3">Catalog responds with HTTP Status 200 to Gateway</step>
+            <step id="A1S4">Gateway responds with HTTP Status 200 to User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>JWT is absent</description>
+            <step id="E1S1">Gateway responds with HTTP Status 401 to User</step>
+        </esteps>
+        <esteps id="E2" start="S3">
+            <description>JWT is not valid</description>
+            <step id="E2S1">Gateway responds with HTTP Status 403 to User</step>
+        </esteps>
+        <esteps id="E3" start="S5">
+            <description>Book does not exist</description>
+            <step id="E3S1">Catalog responds with HTTP Status 404 to Gateway</step>
+            <step id="E3S2">Gateway responds with HTTP Status 404 to User</step>
+        </esteps>
+    </errorSteps>
+</useCase>

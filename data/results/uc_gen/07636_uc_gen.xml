@@ -1,0 +1,30 @@
+<useCase id="UC1">
+  <name>Create Operation Request</name>
+  <description>User navigates to the Create Operation Request page, fills in the necessary operation request information, and submits the form.</description>
+  <actors>
+    <actor>Doctor</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Doctor navigates to Create Operation Request page</step>
+    <step id="S2">Doctor fills in operation request information including Patient ID, Doctor ID, Operation Type ID, Deadline, and Priority</step>
+    <step id="S3">Doctor submits the form</step>
+    <step id="S4">UI handles form submission by calling handleSubmit()</step>
+    <step id="S5">UI creates operation request with the provided data</step>
+    <step id="S6">ORS retrieves authentication token</step>
+    <step id="S7">ORS checks Doctor's role using the token</step>
+    <step id="S8">ORS sends a POST request to create the operation request</step>
+    <step id="S9">API returns OperationRequestDto</step>
+    <step id="S10">ORS returns success to UI</step>
+    <step id="S11">UI sets success message</step>
+    <step id="S12">UI clears the form</step>
+    <step id="S13">UI displays success message to Doctor</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S10">
+      <step id="A1S1">Error occurs</step>
+      <step id="A1S2">ORS throws an error</step>
+      <step id="A1S3">UI sets error message</step>
+      <step id="A1S4">UI displays error message to Doctor</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

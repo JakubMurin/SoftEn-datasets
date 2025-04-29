@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Check Health Use Case</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>HealthMonitorAPI</actor>
+        <actor>IpHandler</actor>
+        <actor>ServiceRemovalHandler</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates a health check</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>API health status is successfully checked</condition>
+    </successEndConditions>
+    <trigger>Client triggers a health check request</trigger>
+    <mainSequence>
+        <step id="S1">Client triggers a health check request</step>
+        <step id="S2">Health checks sender IP and requested IP</step>
+        <step id="S3">IP denies service check for sender IP</step>
+        <step id="S4">IP adds request count for sender IP</step>
+        <step id="S5">If request count is greater than 5</step>
+        <step id="S6">IP blocks requests for sender IP</step>
+        <step id="S7">ServiceRemovalHandler denies the request</step>
+        <step id="S8">Health denies the request</step>
+        <step id="S9">Client receives denial message</step>
+        <step id="S10">If request count is not greater than 5</step>
+        <step id="S11">IP accepts the request for sender IP</step>
+        <step id="S12">Health provides API health status</step>
+        <step id="S13">Client receives API health status</step>
+    </mainSequence>
+</useCase>

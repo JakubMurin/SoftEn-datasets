@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Update User Information</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Execute Update User Request</step>
+        <step id="S2">Extract Email, Account Number, and New Data from Request</step>
+        <step id="S3">Check Database Connection Validity</step>
+        <step id="S4">Get User Role from Database</step>
+        <step id="S5">Check if User is Admin</step>
+        <step id="S6">Get Account Data from Database</step>
+        <step id="S7">Check Account Existence in Database</step>
+        <step id="S8">Get User Data for New Email</step>
+        <step id="S9">Update User Information in Database</step>
+        <step id="S10">Construct Success Response</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">If Database Connection Invalid, Create Error Response</step>
+        </asteps>
+        <asteps id="A2" start="S5" continue="S6">
+            <step id="A2S1">If User Not Found, Create Error Response</step>
+        </asteps>
+        <asteps id="A3" start="S7" continue="S8">
+            <step id="A3S1">If Account Not Found, Create Error Response</step>
+        </asteps>
+        <asteps id="A4" start="S9" continue="S10">
+            <step id="A4S1">If Update Fails, Create Error Response</step>
+        </asteps>    
+    </alternativeSteps>
+</useCase>

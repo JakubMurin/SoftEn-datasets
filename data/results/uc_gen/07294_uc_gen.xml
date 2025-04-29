@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>User Initiates Data Submission</name>
+    <actors>
+        <actor>Agency User</actor>
+        <actor>Web Interface</actor>
+        <actor>Broker Backend</actor>
+        <actor>Data Validator</actor>
+        <actor>Data Deriver</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User submits data for processing</trigger>
+    <mainSequence>
+        <step id="S1">Agency User submits data to Web Interface for processing</step>
+        <step id="S2">Web Interface initiates data submission to Broker Backend</step>
+        <step id="S3">Broker Backend validates submission data with Data Validator</step>
+        <step id="S4">Data Validator passes validation</step>
+        <step id="S5">Data Deriver derives data elements</step>
+        <step id="S6">Data Deriver processes derivation rules</step>
+        <step id="S7">Data Deriver saves derived elements to Database</step>
+        <step id="S8">Database confirms saved elements</step>
+        <step id="S9">Broker Backend acknowledges derivation success</step>
+        <step id="S10">Web Interface displays submission success message</step>
+        <step id="S11">Agency User sees success message</step>
+    </mainSequence>
+</useCase>

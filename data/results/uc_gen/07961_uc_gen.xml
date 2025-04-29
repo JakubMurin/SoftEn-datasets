@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Service Registration and Node Status Reporting</name>
+    <description>Initiate service registration and report the network status of the current node</description>
+    <actors>
+        <actor>Z</actor>
+        <actor>ML</actor>
+    </actors>
+    <preconditions>
+        <precondition>Ensure network connectivity and server availability</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The service registration is successful</condition>
+    </successEndConditions>
+    <trigger>Actor Z initiates the registration process by reporting current node's network state and configurations</trigger>
+    <mainSequence>
+        <step id="S1">ML initializes storage files.</step>
+        <step id="S2">Actor Z registers the service and reports the network state of the current node.</step>
+        <step id="S3">ML identifies and stores the uploaded device information.</step>
+        <step id="S4">ML identifies and stores the uploaded device information and returns the forwarding tasks to Actor Z.</step>
+        <step id="S5">Actor Z performs the forwarding tasks.</step>
+        <step id="S6">Actor Z waits for the next task.</step>
+    </mainSequence>
+</useCase>

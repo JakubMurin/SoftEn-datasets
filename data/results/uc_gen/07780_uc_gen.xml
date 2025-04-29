@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Access Message Schedule Option</name>
+    <actors>
+        <actor>Repository Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">The Repository Manager accesses the Message Schedule Option.</step>
+        <step id="S2">The UI Dashboard receives the request to access the Message Input Form.</step>
+        <step id="S3">The Messaging System displays the Message Input Form.</step>
+        <step id="S4">The Repository Manager submits the Message Details including Timeframe and Content.</step>
+        <step id="S5">The Schedule Manager schedules the Message Display.</step>
+        <step id="S6">The Schedule Manager saves the Scheduled Message in the Repository Database.</step>
+        <step id="S7">The Schedule Manager confirms the successful scheduling of the Message.</step>
+        <step id="S8">The UI Dashboard shows a confirmation to the Repository Manager.</step>
+        <step id="S9">The UI Dashboard displays a success confirmation to the Repository Manager.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">If the Message is scheduled to be displayed at specific times:</step>
+            <step id="A1S2">The Schedule Manager triggers the Message Display.</step>
+            <step id="A1S3">The Messaging System displays the Message on the designated pages.</step>
+            <step id="A1S4">The UI Dashboard logs the Display Event in the Repository Database.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

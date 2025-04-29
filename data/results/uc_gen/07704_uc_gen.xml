@@ -1,0 +1,24 @@
+<useCase id="UC007">
+    <name>Delete Employee</name>
+    <actors>
+        <actor>Manager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Manager selects "Delete Employee"</step>
+        <step id="S2">WebUI receives request for deletion of employee</step>
+        <step id="S3">Server checks if employee exists in the database</step>
+        <step id="S4">If employee exists:</step>
+        <step id="S5">DB confirms employee existence</step>
+        <step id="S6">Server asks for confirmation from WebUI</step>
+        <step id="S7">Manager confirms deletion</step>
+        <step id="S8">WebUI sends delete command with confirmation to Server</step>
+        <step id="S9">Server deletes employee record in DB</step>
+        <step id="S10">DB confirms deletion</step>
+        <step id="S11">Server notifies WebUI of successful deletion</step>
+        <step id="S12">WebUI shows deletion confirmation to Manager</step>
+        <step id="S13">If employee does not exist:</step>
+        <step id="S14">DB notifies Server that employee was not found</step>
+        <step id="S15">Server sends error message to WebUI</step>
+        <step id="S16">WebUI displays error message to Manager</step>
+    </mainSequence>
+</useCase>

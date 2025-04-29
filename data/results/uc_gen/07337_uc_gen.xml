@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>File Upload Process</name>
+    <actors>
+        <actor>Archivist</actor>
+        <actor>File Selection Interface</actor>
+        <actor>Upload Service</actor>
+        <actor>Database</actor>
+        <actor>FileManager</actor>
+        <actor>MetadataService</actor>
+        <actor>UserNotificationService</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Archivist selects files</step>
+        <step id="S2">File Selection Interface initiates upload</step>
+        <step id="S3">Upload Service validates files</step>
+        <step id="S4">FileManager extracts metadata</step>
+        <step id="S5">MetadataService stores metadata</step>
+        <step id="S6">Database confirms metadata stored</step>
+        <step id="S7">MetadataService confirms metadata stored</step>
+        <step id="S8">Upload Service saves files</step>
+        <step id="S9">Digital Archive confirms files saved</step>
+        <step id="S10">Upload Service sends success notification</step>
+        <step id="S11">UserNotificationService displays success message</step>
+        <step id="S12">FileManager returns error message</step>
+        <step id="S13">Upload Service sends failure notification</step>
+        <step id="S14">UserNotificationService displays error message</step>
+    </mainSequence>
+</useCase>

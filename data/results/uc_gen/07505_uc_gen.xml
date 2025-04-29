@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Get Medical Conditions by Name</name>
+    <description>As a User, I want to retrieve a list of medical conditions by name.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>AllergyService</actor>
+        <actor>Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User sends a GET request to retrieve medical conditions by name.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The API_Controller responds with a 200 OK status and returns the medicalCondition data.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The API_Controller responds with a 400 Bad Request or a 404 Not Found status.</condition>
+    </failureEndConditions>
+    <trigger>User initiates a GET request to retrieve medical conditions by name.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to the API_Controller to GET medicalCondition by name.</step>
+        <step id="S2">API_Controller validates the Path Parameter.</step>
+        <step id="S3">API_Controller checks if the name is valid.</step>
+        <step id="S4">User receives a 400 Bad Request response.</step>
+        <step id="S5">API_Controller requests AllergyService to retrieve all medical conditions by name.</step>
+        <step id="S6">AllergyService fetches medical conditions from Repository.</step>
+        <step id="S7">AllergyService receives an exception if the medical condition is not found.</step>
+        <step id="S8">API_Controller sends a 404 Not Found response to the User.</step>
+        <step id="S9">AllergyService receives a list of medical conditions from Repository.</step>
+        <step id="S10">AllergyService sends a list of medical conditions to API_Controller.</step>
+        <step id="S11">API_Controller responds with a 200 OK status and returns the medicalCondition data to the User.</step>
+    </mainSequence>
+</useCase>

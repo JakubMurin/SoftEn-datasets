@@ -1,0 +1,93 @@
+<useCase id="UC001">
+    <name>Epic Transaction Workflow</name>
+    <description>Manage the flow of an Epic transaction between Sender and Recipient</description>
+    <actors>
+        <actor>Sender</actor>
+        <actor>Recipient</actor>
+        <actor>Epic Node</actor>
+    </actors>
+    <preconditions>
+        <precondition>Sender and Recipient are both identified</precondition>
+        <precondition>Epic Node is operational</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Transaction successfully completed and confirmed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error encountered in transaction execution</condition>
+    </failureEndConditions>
+    <trigger>Initiated by Sender</trigger>
+    <mainSequence>
+        <step id="S1">Create Transaction UUID for reference</step>
+        
+        <step id="S2">Set lock_height for transaction kernel</step>
+        
+        <step id="S3">Select inputs using desired strategy</step>
+        
+        <step id="S4">Calculate sum of inputs blinding factors</step>
+        
+        <step id="S5">Create change_output</step>
+       
+        <step id="S6">Select blinding factor for change_output</step>
+        
+        <step id="S7">Create lock function that locks inputs and stores change_output in wallet</step>
+        
+        <step id="S8">Calculate tx_weight based on num_inputs and num_change_outputs</step>
+        
+        <step id="S9">Calculate fee based on tx_weight</step>
+        
+        <step id="S10">Calculate total blinding excess sum for all inputs and outputs</step>
+       
+        <step id="S11">Select a random nonce</step>
+        
+        <step id="S12">Subtract random kernel offset from total blinding excess sum</step>
+        
+        <step id="S13">Multiply values by generator G to create public curve points</step>
+        
+        <step id="S14">Add values to Slate for passing to other participants</step>
+        
+        <step id="S15">Check fee against number of inputs and outputs</step>
+        
+        <step id="S16">Create receiver_output</step>
+        
+        <step id="S17">Choose random blinding factor for receiver_output</step>
+        
+        <step id="S18">Calculate message</step>
+        
+        <step id="S19">Choose random nonce</step>
+        
+        <step id="S20">Multiply values by generator G to create public curve points</step>
+        
+        <step id="S21">Compute Schnorr challenge</step>
+        
+        <step id="S22">Compute Recipient Schnorr signature</step>
+        
+        <step id="S23">Add values to Slate</step>
+        
+        <step id="S24">Create wallet output function that stores receiver_output in wallet</step>
+        
+        <step id="S25">Calculate message</step>
+        
+        <step id="S26">Compute Schnorr challenge</step>
+        
+        <step id="S27">Verify signature based on public excess</step>
+        
+        <step id="S28">Compute Sender Schnorr signature</step>
+        
+        <step id="S29">Calculate final signature</step>
+        
+        <step id="S30">Calculate public key for final signature</step>
+        
+        <step id="S31">Verify signature against excess values in final transaction</step>
+        
+        <step id="S32">Create Transaction Kernel Containing</step>
+        
+        <step id="S33">Create final transaction from Slate</step>
+        
+        <step id="S34">Post transaction to mempool</step>
+        
+        <step id="S35">Confirm receiver_output</step>
+        
+        <step id="S36">Change status of outputs and inputs in wallet</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>View Book Details</name>
+    <description>Allows the reader to view detailed information about a selected book.</description>
+    <actors>
+        <actor>Reader</actor>
+        <actor>Library System</actor>
+    </actors>
+    <preconditions>
+        <precondition>The reader has selected a book from the search list.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The detailed book information is displayed to the reader.</condition>
+    </successEndConditions>
+    <trigger>User selects a book from the search list.</trigger>
+    <mainSequence>
+        <step id="S1">Reader selects a book from the search list.</step>
+        <step id="S2">Library System retrieves detailed book information (book ID) from the Book Database.</step>
+        <step id="S3">Book Database returns book information (Title, Author, Cover Image, Availability) to the Library System.</step>
+        <step id="S4">Library System displays detailed book information to the reader.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">If the book is available, Library System displays "Available" status to the reader.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">If the book is not available, Library System displays "Not Available" status to the reader.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Reader may return to the main interface if they do not wish to borrow the book.</description>
+            <step id="E1S1">In case of cancellation, return to the main interface.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

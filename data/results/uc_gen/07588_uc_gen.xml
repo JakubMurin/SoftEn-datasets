@@ -1,0 +1,27 @@
+<useCase id="UC1">
+  <name>User enters text and views rendered text</name>
+  <description>User enters text and views the rendered text on the document</description>
+  <actors>
+    <actor>User</actor>
+    <actor>Document</actor>
+    <actor>TextFactory</actor>
+    <actor>Cache</actor>
+  </actors>
+  <preconditions>
+    <precondition>Document accepts text input</precondition>
+    <precondition>Cache stores text flyweights</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Text flyweight successfully retrieved or created</condition>
+    <condition>Text flyweight rendered on the document</condition>
+  </successEndConditions>
+  <trigger>User enters text</trigger>
+  <mainSequence>
+    <step id="S1">User enters text</step>
+    <step id="S2">Document receives text input</step>
+    <step id="S3">TextFactory retrieves text based on input value</step>
+    <step id="S4">TextFactory checks if flyweight exists in Cache</step>
+    <step id="S5">Cache returns flyweight if exists</step>
+    <step id="S6">User views rendered text</step>
+  </mainSequence>
+</useCase>

@@ -1,0 +1,17 @@
+<useCase id="1">
+    <name>Initialize Database</name>
+    <description>As a database manager, I want to initialize the database to maintain data integrity.</description>
+    <actors>
+        <actor>dbmng</actor>
+        <actor>bs</actor>
+    </actors>
+    <preconditions>
+        <precondition>The database table must be available.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">dbmng checks if the table is available.</step>
+        <step id="S2">dbmng creates the database if the table is not available.</step>
+        <step id="S3">dbmng clears all data in the database if the table is available.</step>
+        <step id="S4">dbmng initializes the database from vpn.cvs.</step>
+    </mainSequence>
+</useCase>

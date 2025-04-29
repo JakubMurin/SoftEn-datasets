@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Create_building</name>
+    <actors>
+        <actor>GestorCampus</actor>
+        <actor>SistemaRobDroneGo</actor>
+    </actors>
+    <preconditions>
+        <precondition>GestorCampus is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Building created successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to create building</condition>
+    </failureEndConditions>
+    <trigger>Request to create a building</trigger>
+    <mainSequence>
+        <step id="S1">GestorCampus requests to create a building</step>
+        <step id="S2">SistemaRobDroneGo requests data from GestorCampus</step>
+        <step id="S3">GestorCampus sends building data to SistemaRobDroneGo</step>
+        <step id="S4">SistemaRobDroneGo sends success message to GestorCampus</step>
+    </mainSequence>
+</useCase>

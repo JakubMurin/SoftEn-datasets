@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Perform File Operation</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>User clicks a button to perform a file operation.</trigger>
+    <mainSequence>
+        <step id="S1">User clicks a button initiates a file operation.</step>
+        <step id="S2">DirectoriesFiles trigger operation in DirFileView.</step>
+        <step id="S3">DirFileView invokes DirFileService to handle the operation.</step>
+        <step id="S4">DirFileService passes operation, path, and fileName to DirFileHandler for processing.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">DirFileHandler creates a directory through CreateDirFileUtil.</step>
+            <step id="A1S2">CreateDirFileUtil finishes creating the directory successfully.</step>
+            <step id="A1S3">DirFileHandler reports the successful creation of the directory.</step>
+        </asteps>
+        <asteps id="A2" start="S4">
+            <step id="A2S1">DirFileHandler creates a file using CreateDirFileUtil.</step>
+            <step id="A2S2">CreateDirFileUtil completes file creation successfully.</step>
+            <step id="A2S3">DirFileHandler sends out the update on file creation.</step>
+        </asteps>
+        <asteps id="A3" start="S4">
+            <step id="A3S1">DirFileHandler deletes a directory utilizing DestroyDirFileUtil.</step>
+            <step id="A3S2">DestroyDirFileUtil successfully deletes the target directory.</step>
+            <step id="A3S3">DirFileHandler reports on the successful deletion of the directory.</step>
+        </asteps>
+        <asteps id="A4" start="S4">
+            <step id="A4S1">DirFileHandler initiates the deletion of a file making use of DestroyDirFileUtil.</step>
+            <step id="A4S2">DestroyDirFileUtil executes the removal of the file.</step>
+            <step id="A4S3">DirFileHandler notifies the user of file deletion completion.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

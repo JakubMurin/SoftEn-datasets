@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Delete Book</name>
+    <description>Use case for deleting a book from the database</description>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>The administrator is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The book is successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The book is not found or deletion fails</condition>
+    </failureEndConditions>
+    <trigger>Administrator inputs the book ID for deletion</trigger>
+    <mainSequence>
+        <step id="S1">Administrator inputs the book ID for deletion</step>
+        <step id="S2">UI sends a DELETE request to Server for the book with the provided ID</step>
+        <step id="S3">Server searches for the book in the database based on the ID</step>
+        <step id="S4">If book is found</step>
+        <step id="S5">Server deletes the book from the database</step>
+        <step id="S6">If deletion is successful, UI displays "Book deleted successfully" to the Administrator</step>
+        <step id="S7">If deletion fails, UI displays "Error deleting book" to the Administrator</step>
+        <step id="S8">If book is not found, UI displays "Book not found" to the Administrator</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">DB informs Server that the book is found</step>
+            <step id="A1S2">Server initiates book deletion process</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Error deleting the book</description>
+            <step id="E1S1">DB informs Server about deletion error</step>
+            <step id="E1S2">Server notifies UI about the deletion error</step>
+        </esteps>
+    </errorSteps>
+</useCase>

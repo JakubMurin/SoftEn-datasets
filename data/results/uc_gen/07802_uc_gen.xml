@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>View Account (Payment Terms tab)</name>
+    <actors>
+        <actor>FAE User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and has the necessary permissions</precondition>
+    </preconditions>
+    <trigger>User selects 'Change' button on the View Account (Payment Terms tab)</trigger>
+    <mainSequence>
+        <step id="S1">Navigate to Change Payment Terms page</step>
+        <step id="S2">Input data and click 'Save changes' button on Change Payment Terms page</step>
+        <step id="S3">Call API with Defendant Account ID and Payload (JSON) to Add Defendant Account Payment Terms</step>
+        <step id="S4">Created Defendant Account Payment Terms are stored in the database</step>
+        <step id="S5">Display Payment Terms tab</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Convert JSON to XML by GMAS DAC</step>
+            <step id="A1S2">Created Defendant Account Payment Terms (XML) are stored in the GOB SP database</step>
+            <step id="A1S3">The XML is converted back to JSON by the Fines API</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC001">
+  <name>Managing Cloud Events</name>
+  <description>As an Operations Manager, I want to update cloud events with their corresponding values so that I can monitor fleet operations efficiently.</description>
+  <actors>
+    <actor>Ops Manager</actor>
+  </actors>
+  <preconditions>
+    <precondition>The user has authorized access to the fleet and cloud stack systems.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>The cloud events are successfully updated with the specified name and value.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>An error occurs preventing the successful update of cloud events.</condition>
+  </failureEndConditions>
+  <trigger>fleet-events-inc</trigger>
+  
+  <mainSequence>
+    <step id="S1">Trigger fleet-events-inc signal.</step>
+    <step id="S2">Update cloud events with name and amount received from the fleet.</step>
+    <step id="S3">Call Events.update method on Cloud Stack with the updated event information.</step>
+    <step id="S4">Invoke sails.helpers.handleEvents to handle the updated cloud events.</step>
+  </mainSequence>
+</useCase>

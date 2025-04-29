@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <trigger>Click "Like/Dislike" button</trigger>
+    <mainSequence>
+        <step id="S1">Go to entity page (post, comment, event), Display entity details, and like button</step>
+        <step id="S2">Toggle like on the entity</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">Process dislike if entity is already liked</step>
+            <step id="A1S2">Remove like from the entity</step>
+            <step id="A1S3">Return success message and update like count if remove operation succeeds</step>
+            <step id="A1S4">Return failure message if remove operation fails</step>
+        </asteps>
+        <asteps id="A2" start="S2">
+            <step id="A2S1">Process like if entity is not yet liked</step>
+            <step id="A2S2">Save like on the entity</step>
+            <step id="A2S3">Return success message and update like count if save operation succeeds</step>
+            <step id="A2S4">Return failure message if save operation fails</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S4">
+            <description>Return error message in case of failure</description>
+            <step id="E1S1">Display "Failed to remove like from the entity" message</step>
+        </esteps>
+        <esteps id="E2" start="A2S4">
+            <description>Return error message in case of failure</description>
+            <step id="E2S1">Display "Failed to like the entity" message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

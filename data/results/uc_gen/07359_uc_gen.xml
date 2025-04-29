@@ -1,0 +1,24 @@
+<useCase id="101">
+    <name>Staking</name>
+    <actors>
+        <actor>Anybody (DAO)</actor>
+        <actor>Staker</actor>
+    </actors>
+    <preconditions>
+        <precondition>Smart Contracts on Mainet and Polygon are set up accordingly.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">anybody initiates vestRewards()</step>
+        <step id="S2">rPool receives the command to vestRewards()</step>
+        <step id="S3">rPool asks vest to release vesting profits</step>
+        <step id="S4">vest releasing vesting profits to rPool</step>
+        <step id="S5">zkp minting the vested profits to RewardPool</step>
+        <step id="S6">zkp reporting correct zkpAmount balance to rPool</step>
+        <step id="S7">Bridge receiving the ZKP token from RewardPool</step>
+        <step id="S8">ZKP tokens being locked with the Bridge on the mainnet</step>
+        <step id="S9">New deposit confirmation issued to staker</step>
+        <step id="S10">Bridge commits to deposit on the Polygon chain</step>
+        <step id="S11">pZkp minting p$ZKP tokens to the RewardBroker</step>
+        <step id="S12">pZkp calls the RewardBroker for onTokenTransfer functionality</step>
+    </mainSequence>
+</useCase>

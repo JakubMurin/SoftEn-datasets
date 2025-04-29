@@ -1,0 +1,36 @@
+<useCase id="UC001">
+    <name>Reserve Course</name>
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Système</actor>
+        <actor>Base de Données</actor>
+    </actors>
+    <preconditions>
+        <precondition>Utilisateur selects a course</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Reservation confirmation sent to user</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Insufficient credits error message sent to user</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Utilisateur selects a course</step>
+        <step id="S2">System verifies subscription and credits</step>
+        <step id="S3">Database provides subscription and credits details</step>
+        <step id="S4">System saves the reservation</step>
+        <step id="S5">Database confirms the reservation</step>
+        <step id="S6">System confirms the reservation to the user</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S4">
+            <step id="A1S1">System saves the reservation</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>Insufficient credits error message sent to user</description>
+            <step id="E1S1">System sends error message to user</step>
+        </esteps>
+    </errorSteps>
+</useCase>

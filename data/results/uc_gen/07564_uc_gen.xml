@@ -1,0 +1,32 @@
+<useCase id="UC_001">
+    <name>Information Request and Enrollment</name>
+    <actors>
+        <actor>Aluno</actor>
+        <actor>Atendente</actor>
+    </actors>
+    <preconditions>
+        <precondition>Aluno wants information about courses</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Aluno requests information about courses</step>
+        <step id="S2">Atendente provides information about available courses</step>
+        <step id="S3">Aluno asks for details about classes</step>
+        <step id="S4">Atendente gives information about open classes, schedules, and dates</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Aluno provides personal details</step>
+            <step id="A1S2">Atendente registers the student</step>
+            <step id="A1S3">Atendente confirms the registration with Aluno</step>
+            <step id="A1S4">Aluno enrolls in the chosen class</step>
+            <step id="A1S5">Atendente registers the enrollment</step>
+            <step id="A1S6">Atendente confirms the enrollment with Aluno</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Aluno's preferred schedule is not compatible</description>
+            <step id="E1S1">Aluno informs there is no compatibility</step>
+        </esteps>
+    </errorSteps>
+</useCase>

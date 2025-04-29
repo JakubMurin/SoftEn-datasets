@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Register New Identity</name>
+    <actors>
+        <actor>Repository Manager</actor>
+        <actor>Registration Interface</actor>
+        <actor>Central Repository Database</actor>
+        <actor>Identity Management Module</actor>
+        <actor>DAMS Core System</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Repository Manager accesses the Registration Interface.</step>
+        <step id="S2">Registration Interface requests existing identities from the Central Repository Database.</step>
+        <step id="S3">Central Repository Database returns a list of identities to the Registration Interface.</step>
+        <step id="S4">Registration Interface displays the identities to the Repository Manager.</step>
+        <step id="S5">Repository Manager provides new identity details to the Registration Interface.</step>
+        <step id="S6">Registration Interface validates and prepares the new identity record with the Identity Management Module.</step>
+        <step id="S7">Identity Management Module checks for duplicate records with the Central Repository Database.</step>
+        <step id="S8">Identity Management Module confirms the duplicate check result back from the Central Repository Database.</step>
+        <step id="S9">Identity Management Module registers the new identity with the DAMS Core System if it is unique.</step>
+        <step id="S10">DAMS Core System stores the new identity record in the Central Repository Database.</step>
+        <step id="S11">Central Repository Database confirms the storage of the new identity record to the DAMS Core System.</step>
+        <step id="S12">DAMS Core System confirms the successful registration of the new identity to the Identity Management Module.</step>
+        <step id="S13">Identity Management Module sends a registration success message to the Registration Interface.</step>
+        <step id="S14">Registration Interface displays the success message along with the new identity ID to the Repository Manager.</step>
+    </mainSequence>
+</useCase>

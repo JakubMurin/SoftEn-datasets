@@ -1,0 +1,39 @@
+<useCase id="UC_001">
+    <name>Add Event</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the Add Event Page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Event details are saved successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Event details are invalid</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User opens the Add Event Page</step>
+        <step id="S2">User enters the event details</step>
+        <step id="S3">User selects the associated contact</step>
+        <step id="S4">User submits the event form</step>
+        <step id="S5">Add Event Page sends event details to Server</step>
+        <step id="S6">Server validates the details</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6">
+            <step id="A1S1">Server saves the event details in the Database</step>
+            <step id="A1S2">Database confirms successful event saving</step>
+            <step id="A1S3">Server sends success response to Add Event Page</step>
+            <step id="A1S4">Add Event Page shows success message to User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>Invalid event details detected</description>
+            <step id="E1S1">Server sends error response to Add Event Page</step>
+            <step id="E1S2">Add Event Page shows error message to User</step>
+            <step id="E1S3">Add Event Page prompts User to re-enter event details</step>
+        </esteps>
+    </errorSteps>
+</useCase>

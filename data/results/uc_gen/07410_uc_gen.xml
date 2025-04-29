@@ -1,0 +1,30 @@
+<useCase id="1">
+    <name>Creating a Tenant</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User sends a POST request to create a new Tenant</step>
+        <step id="S2">TenantsController validates the request</step>
+        <step id="S3">TenantsController checks if the Tenant already exists</step>
+        <step id="S4">TenantService validates the model</step>
+        <step id="S5">TenantService checks if the Tenant exists in the database</step>
+        <step id="S6">Tenant does not exist in the database</step>
+        <step id="S7">TenantService creates a new Tenant</step>
+        <step id="S8">TenantService inserts the new Tenant into the database</step>
+        <step id="S9">TenantService saves changes in the database</step>
+        <step id="S10">Isolated is set to true</step>
+        <step id="S11">TenantService gets the connection string</step>
+        <step id="S12">TenantService gets the ApplicationDbContext instance</step>
+        <step id="S13">ApplicationDbContext resolves the instance</step>
+        <step id="S14">ApplicationDbContext sets the connection string</step>
+        <step id="S15">ApplicationDbContext checks for pending migrations</step>
+        <step id="S16">ApplicationDbContext applies migrations</step>
+        <step id="S17">ITenantContextService updates the Tenant context</step>
+        <step id="S18">ITenantContextService sets the Tenant asynchronously</step>
+        <step id="S19">TenantService returns the created Tenant</step>
+        <step id="S20">Tenant already exists in the database</step>
+        <step id="S21">TenantService returns an error message indicating that the Tenant already exists</step>
+        <step id="S22">TenantsController sends a 201 Created response indicating that the Tenant has been created</step>
+    </mainSequence>
+</useCase>

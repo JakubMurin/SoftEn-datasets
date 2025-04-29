@@ -1,0 +1,18 @@
+<useCase id="UC1">
+	<name>Track Visited User</name>
+	<description>As a User, I want to track the visited users.</description>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>The Component needs to be rendered.</precondition>
+	</preconditions>
+	<mainSequence>
+		<step id="S1">Dispatch addVisitedUser("user123") action from User.</step>
+		<step id="S2">Call addVisitedUser("user123") reducer in Store.</step>
+		<step id="S3">Check if "user123" is in the visitedUsers list in historySlice.</step>
+		<step id="S4">Update the state in Reducer if "user123" is not present in visitedUsers.</step>
+		<step id="S5">Return the updated state to the Store.</step>
+		<step id="S6">Notify the Component of the state change.</step>
+	</mainSequence>
+</useCase>

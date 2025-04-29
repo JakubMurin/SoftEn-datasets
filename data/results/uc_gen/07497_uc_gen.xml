@@ -1,0 +1,14 @@
+<useCase id="UC1">
+    <name>Run Transaction Endpoint</name>
+    <actors>
+        <actor>User A</actor>
+    </actors>
+    <trigger>User A triggers "Tx Polkadot Ledger" in API Client.</trigger>
+    <mainSequence>
+        <step id="S1">User A requests Transaction in API Client.</step>
+        <step id="S2">API Client forwards the request to API Server.</step>
+        <step id="S3">API Server invokes transact() on Polkadot Ledger Connector.</step> 
+        <step id="S4">Polkadot Ledger responds to API Server.</step>
+        <step id="S5">API Server sends formatted response back to API Client.</step>
+    </mainSequence>
+</useCase>

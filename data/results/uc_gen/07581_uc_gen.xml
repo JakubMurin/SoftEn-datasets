@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Registering a Guild with Email Link</name>
+    <actors>
+        <actor>Guest</actor>
+        <actor>Email Link</actor>
+        <actor>Guild Registration Page</actor>
+        <actor>Guild Registration Request Page</actor>
+        <actor>Guild API</actor>
+        <actor>Guest Token Database</actor>
+        <actor>Guild Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Guest clicks on the email link.</precondition>
+    </preconditions>
+    <trigger>Email link is clicked.</trigger>
+    <mainSequence>
+        <step id="S1">Guest clicks on the email link.</step>
+        <step id="S2">Email link provides the token.</step>
+        <step id="S3">Guest submits the token to verify.</step>
+        <step id="S4">API checks if the token is valid within the expiry period.</step>
+        <step id="S5">Existing token is retrieved from the database.</step>
+        <step id="S6">API receives the token from the database.</step>
+        <step id="S7">Guest does not have a valid token.</step>
+        <step id="S8">API displays an error on the registration page.</step>
+        <step id="S9">Guest is redirected to the registration request page.</step>
+        <step id="S10">API fetches the details of the pre-registered guild using the ID.</step>
+        <step id="S11">Guild name is retrieved from the database.</step>
+        <step id="S12">API sends the guild ID, guild name, and email address back to the guest.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Complete Tech Report</name>
+    <description>Complete a technical image report with specified quality and client user information.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>TicketTransitions</actor>
+        <actor>ClientRestService</actor>
+        <actor>ProfessionalTicket</actor>
+        <actor>TechReport</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User completes client service and ticket information</step>
+        <step id="S2">TicketTransitions receives 'onTechERPReviewCompleted' action</step>
+        <step id="S3">TicketTransitions checks if the tech ticket category is valid</step>
+        <step id="S4">Incorrect category: TicketTransitions informs user to select a valid category</step>
+        <step id="S5">Valid category: ProfessionalTicket calculates report quality</step>
+        <step id="S6">Report quality improper or no comments: User prompted to enter Technical Image Quality Comments</step>
+        <step id="S7">Valid report quality: ProfessionalTicket retrieves tech report</step>
+        <step id="S8">ProfessionalTicket sets report quality and completion time, associates user with reporting</step>
+        <step id="S9">ClientRestService saves ticket with TECH_COMPLETED status, handles study creation or updates</step>
+        <step id="S10">ClientRestService handles CRUD operations for Professional Ticket including letter generation</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Report quality is above 100, skipping comments prompt</step>
+            <step id="A1S2">Proceed with retrieving technical report and completion steps</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>No Technical Image Quality Comments provided by the user</description>
+            <step id="E1S1">User required to input valid technical image quality comments</step>
+        </esteps>
+    </errorSteps>
+</useCase>

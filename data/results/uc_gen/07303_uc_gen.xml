@@ -1,0 +1,26 @@
+<useCase id="UC1">
+  <name>Register Player</name>
+  <description>Register a new player in the system with basic initialization.</description>
+  <actors>
+    <actor>user</actor>
+    <actor>game</actor>
+    <actor>player</actor>
+    <actor>credits system</actor>
+  </actors>
+  <preconditions>
+    <precondition>None</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Player successfully created in the system with basic setup.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Player registration failed due to invalid input data.</condition>
+  </failureEndConditions>
+  <trigger>User triggers player registration.</trigger>
+  <mainSequence>
+    <step id="S1">User initializes basic setup through the Game interface.</step>
+    <step id="S2">Game creates a new player using the provided username information.</step>
+    <step id="S3">Player is instantiated with the provided name and starting credits.</step>
+    <step id="S4">Credits system initializes the new player with the provided credits.</step>
+  </mainSequence>
+</useCase>

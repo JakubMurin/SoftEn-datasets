@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Application Management</name>
+    <actors>
+        <actor>Devloper</actor>
+        <actor>Application Analyzer</actor>
+        <actor>Application Orchestrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Application is deployed and running</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Application health checked successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Application health check failed</condition>
+    </failureEndConditions>
+    <trigger>Launch Application and Check Health</trigger>
+    <mainSequence>
+        <step id="S1">Devloper launches the application</step>
+        <step id="S2">Application Orchestrator launches the application with details (name, env, config)</step>
+        <step id="S3">Orchestrator selects the stack for the application</step>
+        <step id="S4">Devloper checks the health of the application</step>
+        <step id="S5">Application Analyzer checks the health of the application</step>
+        <step id="S6">Orchestrator performs application health check with details (name, env)</step>
+        <step id="S7">Orchestrator selects the application instance for rebalancing</step>
+        <step id="S8">Application Analyzer rebalances the application instance</step>
+        <step id="S9">Orchestrator selects the environment for the instance</step>
+    </mainSequence>
+</useCase>

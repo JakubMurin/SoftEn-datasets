@@ -1,0 +1,18 @@
+<useCase id="1">
+    <name>Attempt to Delete Dataset Type Version</name>
+    <actors>
+        <actor>Dataset Developer</actor>
+    </actors>
+    <trigger>Request to delete dataset type version</trigger>
+    <mainSequence>
+        <step id="S1">Dataset Developer requests to delete dataset type version</step>
+        <step id="S2">Dataset Management System checks for dataset instances of that version</step>
+        <step id="S3">Dataset Management System receives response</step>
+        <step id="S4">If dataset instances found...</step>
+        <step id="S5">Dataset Management System informs Developer that deletion failed because instances exist</step>
+        <step id="S6">If no dataset instances found...</step>
+        <step id="S7">Dataset Management System deletes dataset type version</step>
+        <step id="S8">Dataset Repository confirms deletion successful</step>
+        <step id="S9">Dataset Management System informs Developer that deletion successful and version deleted</step>
+    </mainSequence>
+</useCase>

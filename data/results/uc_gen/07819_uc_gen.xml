@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Alice uses Anonlink to Upload and Pull Encryption Data</name>
+    <actors>
+        <actor>Alice</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice is authorized to perform actions on Anonlink and Object Store</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice requests temporary object store credentials from Anonlink</step>
+        <step id="S2">Anonlink creates restricted credentials for Alice</step>
+        <step id="S3">Anonlink sends credentials response to Alice with temporary store credentials</step>
+        <step id="S4">Alice uploads binary encoding data to the Object Store</step>
+        <step id="S5">Alice triggers data pull by uploading via "/clks" on Anonlink, optionally providing blocks</step>
+        <step id="S6">Anonlink sends an upload receipt to Alice</step>
+        <step id="S7">Some time later, Anonlink pulls or copies encoding data to the Object Store</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC001">
+    <name>Create Product</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>admin-api</actor>
+        <actor>payment-processor</actor>
+        <actor>DAO</actor>
+        <actor>Stripe</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Admin creates product by sending POST /products request to admin-api</step>
+        <step id="S2">admin-api -> payment-processor : createProduct with sku</step>
+        <step id="S3">payment-processor -> Stripe : POST /v1/products with sku</step>
+        <step id="S4">Stripe returns product id {prod-id} to payment-processor</step>
+        <step id="S5">payment-processor forwards {prod-id} to admin-api</step>
+        <step id="S6">admin-api saves product {prod-id} by interacting with DAO</step>
+        <step id="S7">DAO receives {sku} from admin-api</step>
+        <step id="S8">Admin receives {sku} response</step>
+    </mainSequence>
+</useCase>

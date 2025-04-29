@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Create Dataset with Exploration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Dataset Type Registry</actor>
+        <actor>Dataset Storage</actor>
+        <actor>Exploration Service</actor>
+        <actor>Dataset Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User requests dataset creation with exploration enabled</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User requests dataset creation with exploration enabled</step>
+        <step id="S2">Verify dataset type supports exploration</step>
+        <step id="S3">Dataset type supports exploration</step>
+        <step id="S4">Dataset type verified</step>
+        <step id="S5">Create dataset instance</step>
+        <step id="S6">Dataset instance created</step>
+        <step id="S7">Enable exploration on dataset</step>
+        <step id="S8">Exploration enabled</step>
+        <step id="S9">Save dataset details (with explore enabled flag)</step>
+        <step id="S10">Dataset details saved</step>
+        <step id="S11">Dataset creation successful</step>
+        <step id="S12">Dataset type does not support exploration</step>
+        <step id="S13">Dataset type exploration unsupported</step>
+        <step id="S14">Dataset creation failed Type doesn't support exploration</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Exploration enable failed</step>
+            <step id="A1S2">Fail to enable exploration</step>
+            <step id="A1S3">Rollback dataset creation</step>
+            <step id="A1S4">Dataset creation rolled back</step>
+            <step id="A1S5">Dataset creation failed due to exploration issues</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

@@ -1,0 +1,21 @@
+@startuml "Image Capture and Analysis"
+
+actor "Semi-Autonomous UAV" as UAV
+participant "Mission Commander" as Commander
+participant "Onboard vision model" as VisionModel
+participant "DroneResponse Event Manager" as EventManager
+participant "Videostream server" as VideoServer
+
+UAV -> UAV: Activate camera if not activated
+UAV -> UAV: Stream imagery to companion computer
+VisionModel -> VisionModel: Process streamed imagery\nand annotate objects
+VisionModel -> EventManager: Raise event if object detected\nwith confidence above threshold
+UAV -> VideoServer: Transmit image streams
+
+alt Camera battery depleted
+    UAV -> Commander: Raise alert for battery depletion
+end
+
+UAV -> UAV: Repeat steps until commanded to stop
+
+@enduml

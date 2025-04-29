@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Delete Account</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API_Controller</actor>
+        <actor>Service_Layer</actor>
+        <actor>Repository</actor>
+        <actor>Logging_Service</actor>
+        <actor>Unit_of_Work</actor>
+    </actors>
+    <preconditions>
+        <precondition>API_Controller receives a request to delete a user account with a valid email and token.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User sends a request to delete an account.</step>
+        <step id="S2">API_Controller validates the email and token.</step>
+        <step id="S3">API_Controller responds with a 400 Bad Request if email or token is missing.</step>
+        <step id="S4">API_Controller sends a request to validate the delete token asynchronously.</step>
+        <step id="S5">Service_Layer retrieves user details by email asynchronously.</step>
+        <step id="S6">Service_Layer throws an exception if the user is not found.</step>
+        <step id="S7">Service_Layer validates the token.</step>
+        <step id="S8">Service_Layer throws an exception if the token is invalid.</step>
+        <step id="S9">API_Controller sends a request to delete the account asynchronously.</step>
+        <step id="S10">Service_Layer retrieves user details by email asynchronously.</step>
+        <step id="S11">Service_Layer removes the user.</step>
+        <step id="S12">Service_Layer logs the account deletion.</step>
+        <step id="S13">Service_Layer commits the transaction.</step>
+        <step id="S14">Service_Layer responds with SystemUserDto to API_Controller.</step>
+        <step id="S15">API_Controller responds with 200 OK along with a success message.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,16 @@
+<useCase id="UC1">
+  <name>Save Article</name>
+  <actors>
+    <actor>Reader</actor>
+    <actor>League Alerts System</actor>
+  </actors>
+  <preconditions>
+    <precondition>The Reader must have read an article to save.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Reader reads an article.</step>
+    <step id="S2">Reader saves the article by invoking saveArticle(readerId, articleIdentifier) method in League Alerts System.</step>
+    <step id="S3">League Alerts System saves the article.</step>
+    <step id="S4">League Alerts System sends success message with returnSuccessMessage(HttpStatusCode.OK) to the Reader.</step>
+  </mainSequence>
+</useCase>

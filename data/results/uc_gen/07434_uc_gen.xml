@@ -1,0 +1,28 @@
+<useCase id="UC102">
+    <name>Move Item between Collections</name>
+    <description>Allows a curator to move an item from one collection to another</description>
+    <actors>
+        <actor>Curator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Curator is authenticated and authorized to move items</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Curator chooses 'Move Item' option</step>
+        <step id="S2">User Interface requests form to move the item</step>
+        <step id="S3">Collection Management System displays the move item form</step>
+        <step id="S4">Curator submits the form with information:
+            - Item ID
+            - Source Collection
+            - Target Collection </step>
+        <step id="S5">User Interface validates and processes the move request</step>
+        <step id="S6">CMS fetches the item from the Source Collection</step>
+        <step id="S7">Database provides item details to CMS</step>
+        <step id="S8">CMS removes the item from the Source Collection</step>
+        <step id="S9">CMS confirms the removal of the item</step>
+        <step id="S10">CMS adds the item to the Target Collection</step>
+        <step id="S11">Database confirms addition of the item to the Target Collection</step>
+        <step id="S12">CMS displays a success message indicating the successful move</step>
+        <step id="S13">UI confirms to Curator that the item has been successfully moved</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+  <name>Verify Checksum Status</name>
+  <actors>
+    <actor>Repository Manager</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Request checksum status from DIMS</step>
+    <step id="S2">Query latest content file details from Digital Repository</step>
+    <step id="S3">Return file details to DIMS</step>
+    <step id="S4">Retrieve stored checksums from Checksum Database</step>
+    <step id="S5">Check checksum data</step>
+    <step id="S6">Compare latest and stored checksums</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S6">
+      <step id="A1S1">Notify Repository Manager of checksum change</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

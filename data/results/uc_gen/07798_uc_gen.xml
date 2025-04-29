@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Fase de Construcción</name>
+    <actors>
+        <actor>sistemaOUsuario</actor>
+    </actors>
+    <preconditions>
+        <precondition>El usuario tiene la fase de construcción abierta.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>La construcción se realiza con éxito.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>No se puede llevar a cabo la construcción.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Iniciar construcción.</step>
+        <step id="S2">Verificar capacidad de costeo.</step>
+        <step id="S3">Crear construcción tentativa.</step>
+        <step id="S4">Confirmar construcción tentativa.</step>
+        <step id="S5">Finalizar construcción.</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S1">
+            <description>El usuario no puede iniciar la construcción.</description>
+            <step id="E1S1">Mostrar mensaje de error al usuario.</step>
+        </esteps>
+        <esteps id="E2" start="S2">
+            <description>La capacidad de costeo no es suficiente.</description>
+            <step id="E2S1">Mostrar mensaje de error al usuario.</step>
+        </esteps>
+        <esteps id="E3" start="S3">
+            <description>No se puede crear la construcción tentativa.</description>
+            <step id="E3S1">Mostrar mensaje de error al usuario.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

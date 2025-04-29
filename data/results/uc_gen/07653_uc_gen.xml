@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Sélectionner un cours</name>
+    <description>Permet à l'utilisateur de choisir un cours à réserver.</description>
+    <actors>
+        <actor>Utilisateur</actor>
+    </actors>
+    <preconditions>
+        <precondition>L'utilisateur doit être connecté et avoir suffisamment de crédits.</precondition>
+    </preconditions>
+    <trigger>L'utilisateur sélectionne un cours à réserver.</trigger>
+    <mainSequence>
+        <step id="S1">L'utilisateur choisit un cours à réserver.</step>
+        <step id="S2">Le système vérifie l'abonnement et les crédits de l'utilisateur.</step>
+        <step id="S3">La base de données renvoie les détails de l'abonnement et des crédits de l'utilisateur.</step>
+        <step id="S4">Si les crédits sont suffisants :</step>
+        <step id="S5">Le système enregistre la réservation du cours.</step>
+        <step id="S6">La base de données confirme la réservation.</step>
+        <step id="S7">Le système envoie une confirmation de la réservation à l'utilisateur.</step>
+        <step id="S8">Sinon, si les crédits sont insuffisants :</step>
+        <step id="S9">Le système envoie un message d'erreur "Crédits insuffisants" à l'utilisateur.</step>
+    </mainSequence>
+</useCase>

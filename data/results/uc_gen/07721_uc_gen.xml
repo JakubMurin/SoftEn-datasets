@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Perform Advanced Author Search</name>
+    <description>This use case involves searching for authors using advanced search functionality.</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>AdvancedSearch.jsp</actor>
+        <actor>AuthorSearch</actor>
+        <actor>DataPackageManagerClient</actor>
+        <actor>Umbra</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiates an advanced author search request.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Authors matching the search criteria are successfully retrieved.</condition>
+    </successEndConditions>
+    <trigger>Client triggers the advanced author search.</trigger>
+    <mainSequence>
+        <step id="S1">Client updates authors and organizations.</step>
+        <step id="S2">AuthorSearch gets names from Umbra.</step>
+        <step id="S3">AuthorSearch builds author query.</step>
+        <step id="S4">AuthorSearch updates authors with the query results.</step>
+        <step id="S5">AuthorSearch composes author name options.</step>
+        <step id="S6">AuthorSearch builds HTML author list.</step>
+        <step id="S7">AuthorSearch sends the HTML author list back to AdvancedSearch.jsp.</step>
+    </mainSequence>
+</useCase>

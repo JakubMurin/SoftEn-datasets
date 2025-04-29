@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Đăng xuất</name>
+    <actors>
+        <actor>Người dùng</actor>
+        <actor>Quản lý</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Người dùng hoặc Quản lý nhấn nút "Đăng xuất"</step>
+        <step id="S2">Gửi yêu cầu kết thúc phiên đến Hệ thống Quản lý Phiên</step>
+        <step id="S3">Hệ thống Quản lý Phiên xác thực phiên hiện tại</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Phiên hợp lệ: Hệ thống Quản lý Phiên xác nhận kết thúc phiên</step>
+            <step id="A1S2">Hiển thị thông báo đăng xuất thành công cho Người dùng</step>
+            <step id="A1S3">Hiển thị thông báo đăng xuất thành công cho Quản lý</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Phiên không hợp lệ:</description>
+            <step id="E1S1">Hệ thống Quản lý Phiên thông báo lỗi</step>
+            <step id="E1S2">Hiển thị thông báo lỗi cho Người dùng</step>
+            <step id="E1S3">Hiển thị thông báo lỗi cho Quản lý</step>
+        </esteps>
+    </errorSteps>
+</useCase>

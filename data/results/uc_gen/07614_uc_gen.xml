@@ -1,0 +1,32 @@
+<useCase id="UC001">
+    <name>Creating Booking</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Receptionist requests to create a booking through the UI.</step>
+        <step id="S2">UI sends a GET request for /booking/create to the BookingRouter.</step>
+        <step id="S3">BookingRouter then triggers the showCreateBookingForm() method in the BookingController.</step>
+        <step id="S4">Display the booking form to the Receptionist through the UI.</step>
+        <step id="S5">Receptionist fills in booking details (customer, room, dates, etc.) through the UI.</step>
+        <step id="S6">UI sends a POST request for /booking/create with the booking details to the BookingRouter.</step>
+        <step id="S7">BookingRouter processes the request by calling createBooking(bookingData) in the BookingController.</step>
+        <step id="S8">Create a new booking in the BookingRepository with the provided details.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S8" continue="S8A1">
+            <step id="S8A1">Checking the room availability first by querying the Database.</step>
+            <step id="S8A2">If the room is available, create a new booking by inserting the data into the Database.</step>
+        </asteps>
+        <asteps id="A2" start="S8" continue="S8A5">
+            <step id="S8A5">Display an error message through the UI indicating the room is not available.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S8">
+            <description>Encountered an error during the booking creation process.</description>
+            <step id="E1S1">Warn the user about the failed booking creation.</step>
+        </esteps>
+        
+    </errorSteps>
+</useCase>

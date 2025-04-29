@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Generate Random Numbers</name>
+    <actors>
+        <actor>ProblemSolver</actor>
+        <actor>DataServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataServer is able to decrypt encrypted data.</precondition>
+        <precondition>DataServer has the necessary encryption mechanisms in place.</precondition>
+        <precondition>DataServer is able to respond with encrypted data.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>DataServer successfully generated and encrypted random numbers.</condition>
+    </successEndConditions>
+    <trigger>ProblemSolver sends a POST request to DataServer to get random numbers.</trigger>
+    <mainSequence>
+        <step id="S1">ProblemSolver sends encrypted session key and data to DataServer via POST request.</step>
+        <step id="S2">DataServer decrypts the encrypted session key.</step>
+        <step id="S3">DataServer decrypts the encrypted data.</step>
+        <step id="S4">DataServer parses the decrypted data.</step>
+        <step id="S5">DataServer randomly chooses between Uniform or Normal distribution.</step>
+        <step id="S6">DataServer generates random numbers based on the chosen distribution.</step>
+        <step id="S7">DataServer encrypts the response data with the session key.</step>
+        <step id="S8">DataServer sends the encrypted session key and data back to ProblemSolver with a 200 OK response.</step>
+    </mainSequence>
+</useCase>

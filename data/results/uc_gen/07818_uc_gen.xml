@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Registration Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Registration Form (FE)</actor>
+        <actor>Registration Script (BE)</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User fills out registration form</precondition>
+    </preconditions>
+    <trigger>User initiates registration process</trigger>
+    <mainSequence>
+        <step id="S1">User fills out registration form</step>
+        <step id="S2">User submits data</step>
+        <step id="S3">Registration form sends POST request with data (username, password) to Registration Script</step>
+        <step id="S4">Registration Script verifies existence in Database</step>
+        <step id="S5">If user is added</step>
+        <step id="S6">Database inserts user (username, password)</step>
+        <step id="S7">User successfully registered</step>
+        <step id="S8">If user is not added</step>
+        <step id="S9">User is informed that registration failed</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Database inserts user (username, password)</step>
+            <step id="A1S2">User successfully registered</step>
+        </asteps>
+        <asteps id="A2" start="S8">
+            <step id="A2S1">User is informed that registration failed</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

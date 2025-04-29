@@ -1,0 +1,49 @@
+<useCase id="UC1">
+    <name>Manage Recipes</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>View</actor>
+        <actor>Controller</actor>
+        <actor>Model</actor>
+        <actor>ServerController</actor>
+        <actor>ServerModel</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client requests to manage recipes.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Recipes successfully managed and updated.</condition>
+    </successEndConditions>
+    
+    <mainSequence>
+        <step id="S1">Client views interface.</step>
+        <step id="S2">Client requests recipe list.</step>
+        <step id="S3">Model retrieves recipe list from ServerModel.</step>
+        <step id="S4">ServerModel queries Database for recipes.</step>
+        <step id="S5">Database sends query results to ServerModel.</step>
+        <step id="S6">ServerModel sends recipe list to ServerController.</step>
+        <step id="S7">ServerController forwards recipe list to Controller.</step>
+        <step id="S8">Controller displays recipe list to View.</step>
+        
+        <step id="S9">Client sends recipe addition data.</step>
+        <step id="S10">View requests addition of a new recipe.</step>
+        <step id="S11">Model adds the new recipe.</step>
+        <step id="S12">ServerController adds the new recipe via ServerModel.</step>
+        <step id="S13">ServerModel inserts the new recipe into Database.</step>
+        <step id="S14">Database confirms the addition to ServerModel.</step>
+        <step id="S15">ServerModel confirms the addition to ServerController.</step>
+        <step id="S16">ServerController responds to Controller regarding the addition.</step>
+        <step id="S17">Controller displays the addition response to View.</step>
+        
+        <step id="S18">Client sends profile modification data.</step>
+        <step id="S19">View requests profile modification.</step>
+        <step id="S20">Model updates the profile with the new data.</step>
+        <step id="S21">ServerController updates the profile via ServerModel.</step>
+        <step id="S22">ServerModel updates the data in Database.</step>
+        <step id="S23">Database confirms the update to ServerModel.</step>
+        <step id="S24">ServerModel confirms the update to ServerController.</step>
+        <step id="S25">ServerController responds to Controller regarding the update.</step>
+        <step id="S26">Controller displays the update response to View.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,29 @@
+<useCase id="UC1">
+  <name>Requisição e Seleção de Dados do Andar</name>
+  <actors>
+    <actor>User</actor>
+    <actor>SPA</actor>
+    <actor>API</actor>
+  </actors>
+  <preconditions>
+    <precondition>O usuário precisa estar autenticado na aplicação</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Os dados do andar selecionado são inseridos corretamente</condition>
+  </successEndConditions>
+  <trigger>O usuário solicita dados dos andares e seleciona um andar específico</trigger>
+  <mainSequence>
+    <step id="S1">O usuário solicita a página dos andares</step>
+    <step id="S2">O SPA retorna a página dos andares ao usuário</step>
+    <step id="S3">O usuário seleciona um andar da tabela</step>
+    <step id="S4">O SPA mostra os dados do andar selecionado ao usuário</step>
+    <step id="S5">O SPA realiza uma requisição à API, solicitando os edifícios disponíveis</step>
+    <step id="S6">A API retorna a lista de edifícios em uma caixa de seleção para o SPA</step>
+    <step id="S7">O SPA exibe os dados do andar selecionado</step>
+    <step id="S8">O usuário insere um arquivo com o floormap do andar selecionado</step>
+    <step id="S9">O SPA envia os dados do floormap do andar escolhido para a API para atualização</step>
+    <step id="S10">A API processa a atualização do floormap com o novo arquivo enviado pelo SPA</step>
+    <step id="S11">A API confirma a conclusão da atualização</step>
+    <step id="S12">O SPA informa ao usuário o sucesso da operação</step>
+  </mainSequence>
+</useCase>

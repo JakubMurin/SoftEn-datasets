@@ -1,0 +1,21 @@
+<useCase id="CM1">
+    <name>Generate Fault Management Report</name>
+    <description>As a  Buyer/Client, I want to receive a FaultManagement Report after a Fault Management Job How does step one lead?</description>
+    <actors>
+        <actor>Buyer/Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>A scheduled Fault Management Job exists</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Fault Management Report is successfully created and delivered</condition>
+    </successEndConditions>
+    <trigger>Buyer/Client initiates retrieval of the Fault Management Report</trigger>
+    <mainSequence>
+        <step id="S1">Send POST /faultManagementJob request</step>
+        <step id="S2">Receive Created response</step>
+        <step id="S3">Generate fault management data</step>
+        <step id="S4">Create Fault Management Report (report generation triggered)</step>
+        <step id="S5">Receive Fault Management Report content when requested (GET /faultManagementReport)</step>
+    </mainSequence>
+</useCase>

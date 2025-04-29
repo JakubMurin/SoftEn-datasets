@@ -1,0 +1,15 @@
+<useCase id="UC1">
+    <name>Criar um novo edifício</name>
+    <actors>
+        <actor>Gestor de campus</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">O Gestor de campus solicita a criação de um novo edifício</step>
+        <step id="S2">O SPA requisita os dados do edifício ao Gestor de campus</step>
+        <step id="S3">O Gestor de campus insere os dados do edifício</step>
+        <step id="S4">O SPA envia os dados do edifício para a GestaoInfoAPI através de post(/api/buildings)</step>
+        <step id="S5">A GestaoInfoAPI retorna um status code ao SPA</step>
+        <step id="S6">Se o status code for 200, o SPA devolve o edifício criado ao Gestor de campus</step>
+        <step id="S7">Se o status code for 400, o SPA devolve uma mensagem de erro ao Gestor de campus</step>
+    </mainSequence>
+</useCase>

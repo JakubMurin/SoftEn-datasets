@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Administrator manages announcements</name>
+    <description>Allows Administrator to create and view announcements</description>
+    <actors>
+        <actor>Administrator</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator is authenticated</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Announcement creation and viewing completed successfully</condition>
+    </successEndConditions>   
+    <trigger>Administrator action request</trigger>
+    
+    <mainSequence>
+        <step id="S1">Sign in as an Administrator with username and password</step>
+        <step id="S2">Validate Administrator credentials</step>
+        <step id="S3">Login Successful</step>
+        
+        <step id="S4">Create an announcement by providing a title and content</step>
+        <step id="S5">Validate the announcement details</step>
+        <step id="S6">Save the announcement to the database</step>
+        <step id="S7">Confirmation: Announcement created successfully</step>
+        
+        <step id="S8">View list of announcements</step>
+        <step id="SEnd">Display the list of announcements</step>
+    </mainSequence>
+</useCase>

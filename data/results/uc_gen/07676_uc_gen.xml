@@ -1,0 +1,45 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Login Page</actor>
+        <actor>Auth Controller</actor>
+        <actor>Auth Service</actor>
+        <actor>User Repository</actor>
+    </actors>
+    <preconditions>
+        <precondition>User accesses the login page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User fails to log in</condition>
+    </failureEndConditions>
+    <trigger>User enters username and password</trigger>
+    <mainSequence>
+        <step id="S1">User enters username and password on the login page</step>
+        <step id="S2">User submits the login form</step>
+        <step id="S3">Login Page sends HTTP POST request to Auth Controller with credentials</step>
+        <step id="S4">Auth Controller authenticates the user credentials using Auth Service</step>
+        <step id="S5">Auth Service checks user credentials in User Repository</step>
+        <step id="S6">User Repository queries user credentials in the Database</step>
+        <step id="S7">Database returns user details to User Repository</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">User Repository returns an error if credentials are invalid</step>
+            <step id="A1S2">Auth Service returns an error</step>
+            <step id="A1S3">Auth Controller displays an error message on the login page</step>
+            <step id="A1S4">Login Page displays an error message to the User</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>User Repository returns an error</description>
+            <step id="E1S1">Auth Service returns an error</step>
+            <step id="E1S2">Auth Controller displays an error message on the login page</step>
+            <step id="E1S3">Login Page displays an error message to the User</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Delete Book Process</name>
+    <actors>
+        <actor>Staff</actor>
+    </actors>
+    <preconditions>
+        <precondition>Staff selects "Remove Book" option.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Staff selects "Remove Book".</step>
+        <step id="S2">UI receives the request to delete the book.</step>
+        <step id="S3">Controller forwards request to delete book to Service.</step>
+        <step id="S4">Service queries database to delete book.</step>
+        <step id="S5">Database confirms book deletion.</step>
+        <step id="S6">Service notifies controller of successful deletion.</step>
+        <step id="S7">Controller displays success message on UI.</step>
+        <step id="S8">UI shows "Book Deleted Successfully" message to Staff.</step>
+    </mainSequence>
+</useCase>

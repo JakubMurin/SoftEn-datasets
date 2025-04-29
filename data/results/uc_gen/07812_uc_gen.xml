@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Generate Surat Lapas</name>
+    <description>Generate a Surat Lapas for a specific date and number</description>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>surat_lapas</actor>
+        <actor>welcome</actor>
+        <actor>BimbinganController</actor>
+        <actor>NapiController</actor>
+        <actor>Model_Bimbingan</actor>
+        <actor>Model_Napi</actor>
+    </actors>
+    <preconditions>
+        <precondition>Administrator clicks on the Surat Lapas menu</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Surat Lapas is successfully generated and displayed</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Surat Lapas is not available for the specified date and number</condition>
+    </failureEndConditions>
+    <trigger>Administrator input the number and date of the Surat Lapas</trigger>
+    <mainSequence>
+        <step id="S1">Surat Lapas menu is clicked</step>
+        <step id="S2">Surat Lapas input form is displayed</step>
+        <step id="S3">Administrator inputs the Surat Lapas number and date</step>
+        <step id="S4">Search for the Surat Lapas based on the input</step>
+        <step id="S5">Check if the Surat is available</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Surat is available</step>
+            <step id="A1S2">Retrieve Napi information</step>
+            <step id="A1S3">Display the Surat Lapas information</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Surat is not available</description>
+            <step id="E1S1">Display message: Surat Lapas not available</step>
+        </esteps>
+    </errorSteps>
+</useCase>

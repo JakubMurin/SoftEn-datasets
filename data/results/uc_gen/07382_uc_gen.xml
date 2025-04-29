@@ -1,0 +1,27 @@
+<useCase id="1">
+    <name>UseCase1</name>
+    <description>Actors for Language Selection</description>
+    <actors>
+        <actor>Farmer</actor>
+        <actor>VoxMeteo Sahel System</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is prompted to select a language</precondition>
+        <precondition>User provides numeric input for language selection</precondition>
+        <precondition>User confirms language selection</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully selects desired language</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>System does not receive valid language selection input</condition>
+    </failureEndConditions>
+    <trigger>Start Call</trigger>
+    <mainSequence>
+        <step id="S1">Actor  User -> System : Start Call</step>
+        <step id="S2">Actor System -> User : Voice Prompt("Welcome to VoxMeteo Sahel System, select language")</step>
+        <step id="S3">Actor  User -> System : Select Language (1 for English, 2 for French)
+        </step>
+        <step id="S4">Actor System -> User : Confirmation of Language Selection</step>
+    </mainSequence>
+</useCase>

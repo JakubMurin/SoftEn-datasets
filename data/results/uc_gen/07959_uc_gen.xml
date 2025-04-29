@@ -1,0 +1,21 @@
+<useCase id="1">
+  <name>Listar pisos de edifícios com passagens</name>
+  <description>O usuário pretende visualizar a lista de pisos de edifícios que possuem passagens para outros edifícios.</description>
+  <actors>
+    <actor>Actor</actor>
+  </actors>
+  <successEndConditions>
+    <condition>Recebe a lista de pisos com passagens para outros edifícios.</condition>
+  </successEndConditions>
+  <trigger>O usuário solicita obter a lista de pisos com passagens.</trigger>
+  <mainSequence>
+    <step id="S1">Pretende listar pisos de edifícios com passagens para outros edifícios [Actor]</step>
+    <step id="S2">Chama a API para obter pisos com passagens (/api/floors/withpass) [Container]</step>
+    <step id="S3">Recebe o código de status da API [API]</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S3">
+      <step id="A1S1">Devolve pisos com passagens [Container]</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

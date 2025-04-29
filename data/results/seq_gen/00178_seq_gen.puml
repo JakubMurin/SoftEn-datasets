@@ -1,0 +1,25 @@
+@startuml
+title "End Mission"
+
+participant "Drone Commander" as DC
+participant "Semi-autonomous UAV" as UAV
+
+DC -> UAV: The mission is completed and UAVs are recalled home.
+UAV -> UAV: The system checks that all recalled UAVs have unique home coordinates.
+UAV -> UAV: UAVs each plan their own routes back to their unique home coordinates.
+UAV -> UAV: Each UAV leases airspace for the next leg of its planned route and awaits clearance.
+UAV -> UAV: Upon receiving clearance, the UAV flies to the target waypoint.
+UAV -> UAV: Steps S4-S5 are repeated until the UAV returns to its launch coordinates and lands safely.
+
+DC -> UAV: The mission commander decides to end the mission before the intended tasks are completed and recalls all UAVs back to their base.
+
+UAV -> DC: While a UAV is returning to base, the mission commander assigns it a new task.
+DC --> UAV: The END_MISSION command is cancelled for this UAV.
+UAV -> UAV: The UAV commences its new mission.
+
+UAV -> UAV: Multiple UAVs have been assigned the same home coordinates.
+UAV -> UAV: For any group of UAVs with home coordinates that violate minimum separation distance, the system removes the home coordinates for all except one of them.
+UAV -> UAV: UAVs without assigned home coordinates are assigned new in-air temporary coordinates.
+UAV -> UAV: UAVs with in-air home coordinates follow steps S3-S5 until reaching the in-air coordinates and then hover in place.
+UAV -> DC: The Remote Pilot in Command (RPIC) manually controls the landing of any UAV with in-air home coordinates.
+@enduml

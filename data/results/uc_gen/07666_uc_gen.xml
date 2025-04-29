@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Delete Book Category</name>
+    <description>Delete a book category from the system</description>
+    <actors>
+        <actor>Manager</actor>
+        <actor>UI Interface</actor>
+        <actor>Authorization</actor>
+        <actor>Book Category Management</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager is logged in</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book category successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Access denied or deletion failure</condition>
+    </failureEndConditions>
+    <trigger>Manager request to delete a book category</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Manage Book Categories" on UI</step>
+        <step id="S2">UI validates Manager role</step>
+        <step id="S3">UI grants access</step>
+        <step id="S4">UI Displays Book Categories for Manager to select</step>
+        <step id="S5">Manager selects categories to delete</step>
+        <step id="S6">UI requests Category Deletion from Book Category Management</step>
+        <step id="S7">Book Category Management deletes Category Records from Database</step>
+        <step id="S8">Database confirms Deletion</step>
+        <step id="S9">Book Category Management displays Success Message on UI</step>
+        <step id="S10">UI Shows Update to Manager</step>
+    </mainSequence>
+</useCase>

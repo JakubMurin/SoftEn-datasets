@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Submit Resource Creation Form</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has access to the system</precondition>
+    </preconditions>
+    <trigger>User fills and submits the resource creation form</trigger>
+    <mainSequence>
+        <step id="S1">User fills and submits the resource creation form</step>
+        <step id="S2">View sends resource create data to Component</step>
+        <step id="S3">Component requests the creation of the resource to Service</step>
+        <step id="S4">Service requests POST to HTTPDriver</step>
+        <step id="S5">HTTPDriver posts the resources</step>
+        <step id="S6">Service receives HTTP response from HTTPDriver</step>
+        <step id="S7">Service responds to Component</step>
+        <step id="S8">Component informs View that the resource was created</step>
+        <step id="S9">View informs User that the resource was created successfully</step>
+    </mainSequence>
+</useCase>

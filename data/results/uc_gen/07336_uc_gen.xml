@@ -1,0 +1,30 @@
+<useCase id="UC001">
+    <name>Manage Storage Planning </name>
+    <actors>
+        <actor>Archive Manager</actor>
+        <actor>DMPTool</actor>
+        <actor>Repository API</actor>
+        <actor>Data Manager</actor>
+        <actor>IT System</actor>
+    </actors>
+    <preconditions>
+        <precondition>Archive Manager requests data volume information from DMPTool.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Storage planning completion confirmed by Archive Manager.</condition>
+    </successEndConditions>
+    <trigger>Request for data volume information triggers the storage planning process.</trigger>
+    <mainSequence>
+        <step id="S1">Archive Manager requests data volume information from DMPTool.</step>
+        <step id="S2">DMPTool queries planned data submission from Repository API.</step>
+        <step id="S3">Repository API returns data submission estimates to DMPTool.</step>
+        <step id="S4">DMPTool requests current storage capacity from IT System.</step>
+        <step id="S5">IT System provides current storage capacity details to DMPTool.</step>
+        <step id="S6">DMPTool requests additional data preservation details from Data Manager.</step>
+        <step id="S7">Data Manager provides data format, size, and period details to DMPTool.</step>
+        <step id="S8">DMPTool shows comprehensive storage needs analysis to Archive Manager.</step>
+        <step id="S9">Archive Manager plans for storage expansion with IT System.</step>
+        <step id="S10">IT System confirms the storage infrastructure plan to Archive Manager.</step>
+        <step id="S11">Archive Manager confirms the storage planning completion with DMPTool.</step>
+    </mainSequence>
+</useCase>

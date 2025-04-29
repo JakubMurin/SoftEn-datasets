@@ -1,0 +1,18 @@
+<useCase id="UC1">
+  <name>Attempt to Delete Dataset Type Version</name>
+  <actors>
+    <actor>DMS</actor>
+    <actor>Repo</actor>
+    <actor>Developer</actor>
+  </actors>
+  <preconditions>
+    <precondition>Dataset type version to be deleted exists in the dataset management system.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">Developer requests deletion of dataset type version.</step>
+    <step id="S2">DMS checks for dataset instances of that version.</step>
+    <step id="S3">If dataset instances are found, deletion fails.</step>
+    <step id="S4">If no instances are found, dataset type version is deleted by Repo.</step>
+    <step id="S5">Deletion is successful, and the version is deleted.</step>
+  </mainSequence>
+</useCase>

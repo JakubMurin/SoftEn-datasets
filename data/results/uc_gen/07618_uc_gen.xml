@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Add New Edge Agent</name>
+    <description>Alice adds a new edge agent with selected authorizations.</description>
+    <actors>
+        <actor>Alice</actor>
+        <actor>Edge Agent 1</actor>
+        <actor>Edge Agent 2</actor>
+    </actors>
+    <preconditions>
+        <precondition>Alice has chosen existing or add new device from options in Edge Agent Start.</precondition>
+        <precondition>Edge Agent 2 has been provisioned as described in the Provision New Agent diagram.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Alice adds agent with selected authorizations.</step>
+        <step id="S2">Edge Agent 1 displays provisioning code for adding agent 2.</step>
+        <step id="S3">Alice shows code to Edge Agent 2.</step>
+        <step id="S4">Edge Agent 2 adds request and sends encryption keys and verification keys.</step>
+        <step id="S5">Edge Agent 1 stores verification key in wallet.</step>
+        <step id="S6">Alice confirms agent 2.</step>
+        <step id="S7">Edge Agent 1 adds keys and authorizations for agent 2 to policy registry.</step>
+        <step id="S8">Edge Agent 2 stores data in wallet.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S1" continue="S2">
+            <step id="A1S1">Multiple methods can be used for adding and authorizing a new agent.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>QR code, barcode, or passcode entered into agent 2.</description>
+            <step id="E1S1">Sync data to agent 2.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

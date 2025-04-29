@@ -1,0 +1,26 @@
+<useCase id="1">
+  <name>Manage Capabilities</name>
+  <actors>
+    <actor>DevOpsEngineer</actor>
+    <actor>ApplicationDeveloper</actor>
+  </actors>
+  <trigger>User selects to deploy a capability</trigger>
+  <mainSequence>
+    <step id="S1">DevOpsEngineer deploys a capability</step>
+    <step id="S2">Capability Manager initiates the capability deployment process</step>
+    <step id="S3">Binary is executed to deploy the capability</step>
+    <step id="S4">The REST service is called to deploy the capability</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S1">
+      <step id="A1S1">DevOpsEngineer removes a capability</step>
+      <step id="A1S2">Capability Manager requests to remove the capability</step>
+    </asteps>
+  </alternativeSteps>
+    <errorSteps>
+    <esteps id="E1" start="S1">
+      <description>Errors caused during capability removal</description>
+      <step id="E1S1">Error occurs while removing the capability</step>
+    </esteps>
+  </errorSteps>
+</useCase>

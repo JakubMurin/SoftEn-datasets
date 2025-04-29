@@ -1,0 +1,15 @@
+@startuml "Victim Confirmation"
+
+actor "Semi-Autonomous UAV" as UAV
+actor "Human Operator" as Operator
+participant "DroneResponse" as Response
+participant "Drone Commander" as Commander
+
+UAV -> Response: victim_found
+Response -> UAV: Acknowledge
+Response -> Operator: [victim_found] alert
+Operator -> Commander: Inspect video stream
+Commander --> Operator: Confirm victim
+Response -> UAV: [victim_found] confirmation
+
+@enduml

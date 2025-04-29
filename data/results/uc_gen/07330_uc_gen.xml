@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Order Processing</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>InterfaceUtilisateur</actor>
+        <actor>CatalogueProduits</actor>
+        <actor>Panier</actor>
+        <actor>SystèmePaiement</actor>
+        <actor>SystèmeNotification</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client selects products and adds them to the cart.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Payment is successfully processed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Payment processing fails.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client browses and selects products.</step>
+        <step id="S2">InterfaceUtilisateur retrieves product details.</step>
+        <step id="S3">Client adds product to the cart.</step>
+        <step id="S4">Panier updates with added product.</step>
+        <step id="S5">Client places the order.</step>
+        <step id="S6">InterfaceUtilisateur retrieves cart contents.</step>
+        <step id="S7">SystèmePaiement processes the payment.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7">
+            <step id="A1S1">SystèmePaiement confirms payment.</step>
+            <step id="A1S2">SystèmeNotification sends order confirmation.</step>
+            <step id="A1S3">Client receives confirmation email.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Payment processing fails.</description>
+            <step id="E1S1">SystèmePaiement alerts user of failure.</step>
+            <step id="E1S2">InterfaceUtilisateur displays alternative payment options.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

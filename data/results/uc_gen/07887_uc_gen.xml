@@ -1,0 +1,16 @@
+<useCase id="UC001">
+    <name>Get Issue</name>
+    <actors>
+        <actor>PL</actor>
+    </actors>
+    <preconditions>
+        <precondition>The system is up and running</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">PL gets issue details by performing getIssue(signId, issueId) action</step>
+        <step id="S2">System validates member rights by calling validateMember(signId)</step>
+        <step id="S3">System ensures the issue exists by executing validateIssue(issueId)</step>
+        <step id="S4">System confirms the project's existence by validating the project ID</step>
+        <step id="S5">PL receives the IssueResponseDto from the system</step>
+    </mainSequence>
+</useCase>

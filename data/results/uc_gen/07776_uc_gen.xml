@@ -1,0 +1,21 @@
+<useCase id="UC1">
+  <name>Create Report Template</name>
+  <description>
+    The Template Admin wants to create a new report template for generating reports.
+  </description>
+  <actors>
+    <actor>Template Admin</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Template Admin requests to create a report template.</step>
+    <step id="S2">ReportTemplateFactory handles the request by creating a new report template.</step>
+    <step id="S3">ReportTemplate creates a report template.</step>
+    <step id="S4">RowTemplateFactory is called to create a row template for the report.</step>
+    <step id="S5">RowTemplateFactory creates the row template instance.</step>
+    <step id="S6">RowTemplateFactory returns the row template instance back to the ReportTemplate.</step>
+    <step id="S7">ReportTemplate receives the row template instance from the factory and continues.</step>
+    <step id="S8">ReportTemplate composes and finalizes the report template configuration.</step>
+    <step id="S9">ReportTemplateFactory returns the fully created report template instance.</step>
+    <step id="S10">Template Admin receives the new report template instance.</step>
+  </mainSequence>
+</useCase>

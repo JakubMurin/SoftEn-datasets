@@ -1,0 +1,26 @@
+<useCase id="UC-001">
+   <name>User interaction with system</name>
+   <description>User runs input text, interacts with reflexion agent, memory and makes tool-related decisions.</description>
+   <actors>
+      <actor>User</actor>
+      <actor>ReflexionAgent</actor>
+      <actor>LLM</actor>
+      <actor>Memory</actor>
+      <actor>ToolRegistry</actor>
+      <actor>Tool</actor>
+   </actors>
+   <preconditions>
+      <precondition>System has loaded the necessary components</precondition>
+   </preconditions>
+   <successEndConditions>
+      <condition>All steps in the interaction are successfully completed</condition>
+   </successEndConditions>
+   <trigger>User runs input text</trigger>
+   <mainSequence>
+      <step id="S1">Agent retrieves relevant memories</step>
+      <step id="S2">User interacts with LLM and receives response</step>
+      <step id="S3">Agent decides whether to use the tool from Registry and executes it; Observer effects takes place</step>
+      <step id="S4">Agent makes a reflection based on the response and saves required memories</step>
+      <step id="S5">Agent saves an interaction record into its memory</step>
+   </mainSequence>
+</useCase>

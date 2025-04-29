@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Performing POST request to /foo</name>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>CDN</actor>
+        <actor>Proxy</actor>
+        <actor>Backend</actor>
+    </actors>
+    <preconditions>
+        <precondition>Attacker initiates a POST request to /foo</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Backend responds with a 200 status for /foo</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">Attacker sends a POST request to CDN for /foo</step>
+        <step id="S2">CDN forwards the request to Proxy</step>
+        <step id="S3">Proxy forwards the request to Backend</step>
+        <step id="S4">Backend responds with a 200 status for /foo</step>
+    </mainSequence>
+</useCase>

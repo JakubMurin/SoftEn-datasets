@@ -1,0 +1,19 @@
+<useCase id="BattleFlow">
+  <name>Perform Battle between Players</name>
+  <actors>
+    <actor>PlayerA</actor>
+    <actor>PlayerB</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">PlayerA sends a POST request to start battle towards BattleController</step>
+    <step id="S2">BattleController escalates the request to BattleService</step>
+    <step id="S3">BattleService clusters open battles from BattleRepository</step>
+    <step id="S4">BattleService begins battle by launching an open battle for PlayerA</step>
+    <step id="S5">BattleService sets it in 'waiting' mode</step>
+    <step id="S6">PlayerB sends an initiating POST request to progress towards BattleController</step>
+    <step id="S7">BattleController communicates with BattleService for playerB initiation</step>
+    <step id="S8">BattleService segregates tasks to execute placing battles from BattleRepository</step>
+    <step id="S9">BattleLogic sorts the requirement to perform player-to-player fighting event between PlayerA and PlayerB for quantitative thumb traffic erupts</step>
+    <step id="S10">BattleRepository splashes execution mandatory to update status</step>
+  </mainSequence>
+</useCase>

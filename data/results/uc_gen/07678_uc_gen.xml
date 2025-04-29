@@ -1,0 +1,15 @@
+<useCase id="UC001">
+    <name>User sends HTTP request through Apache input filter</name>
+    <actors>
+        <actor>HTTPRequest</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">HTTPRequest communicates with mod_dup</step>
+        <step id="S2">mod_dup enriches the context</step>
+        <step id="S3">mod_dup applies filters to match criteria</step>
+        <step id="S4">mod_dup delegates to the next handler like WS, mod_rewrite, etc.</step>
+        <step id="S5">PNS_WS collects the response</step>
+        <step id="S6">mod_dup prepares the request for duplication</step>
+        <step id="S7">duplicator sends the duplicated request to mod_compare</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>DDO Publishing Flow</name>
+    <actors>
+        <actor>End User</actor>
+        <actor>Consumer (Ocean CLI)</actor>
+        <actor>Ocean.js</actor>
+        <actor>Ocean Node</actor>
+        <actor>Smart Contracts</actor>
+        <actor>DDO.js</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">End User requests to publish a dataset with selected file.</step>
+        <step id="S2">Consumer calls asset creation function in Ocean.js.</step>
+        <step id="S3">Ocean.js deploys data NFT, datatoken, and pricing schema in Smart Contracts.</step>
+        <step id="S4">Ocean.js retrieves NFTCreated and DatatokenCreated events.</step>
+        <step id="S5">Ocean.js requests encryption for DDO services files from Ocean Node.</step>
+        <step id="S6">Ocean.js requests encryption for DDO object from Ocean Node.</step>
+        <step id="S7">Ocean.js requests validation for DDO structure from Ocean Node.</step>
+        <step id="S8">DDO.js validates DDO structure using SHACL schemas.</step>
+        <step id="S9">Ocean Node indexes new DDOs.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+<useCase id="UC1">
+	<name>Iniciar sesión</name>
+	<description>El usuario ingresa sus credenciales y solicita autenticación para poder iniciar sesión correctamente.</description>
+	<actors>
+		<actor>Usuario</actor>
+	</actors>
+	<preconditions>
+		<precondition>El sistema debe permitir a los usuarios iniciar sesión.</precondition>
+		<precondition>El usuario debe tener credenciales válidas en la base de datos.</precondition>
+	</preconditions>
+	<mainSequence>
+		  <step id="S1">El Usuario ingresa sus credenciales para autenticación.</step>
+		  <step id="S2">La Aplicación Angular solicita la autenticación al Servicio Angular.</step>
+		  <step id="S3">El Servicio Angular solicita la autenticación al Servidor ExpressJS.</step>
+          <step id="S4">El Servidor ExpressJS verifica las credenciales en MySQL.</step> 
+          <step id="S5">El Servidor ExpressJS recibe la validación de credenciales.</step>
+          <step id="S6">El Servidor ExpressJS genera el token de acceso.</step> 
+          <step id="S7">El Servicio Angular recibe el token de acceso y trasnmite el mensaje.</step>
+		<step id="S8">La Aplicación Angular confirma la autenticación y genera el token de acceso.</step>
+		<step id="S9">El Usuario inicia sesión exitosamente con el token de acceso.</step>
+	</mainSequence>
+</useCase>

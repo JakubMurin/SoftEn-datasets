@@ -1,0 +1,28 @@
+<useCase id="UC001">
+    <name>Search and View Data Package</name>
+    <description>User searches for and views data packages</description>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Search Interface</actor>
+        <actor>Data Registry</actor>
+        <actor>Data Package</actor>
+    </actors>
+    <preconditions>
+        <precondition>Consumer has access to the search interface</precondition>
+        <precondition>Data Registry contains data packages</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Consumer successfully views the details of a selected data package</condition>
+    </successEndConditions>
+    <trigger>User input search keywords</trigger>
+    <mainSequence>
+        <step id="S1">Consumer inputs search keywords in the search interface</step>
+        <step id="S2">Search Interface requests matching data packages from Data Registry</step>
+        <step id="S3">Data Registry returns a list of matching data packages to Search Interface</step>
+        <step id="S4">Search Interface displays the search results to the Consumer</step>
+        <step id="S5">Consumer selects a data package based on the description</step>
+        <step id="S6">Search Interface requests details of the selected data package from Data Registry</step>
+        <step id="S7">Data Registry returns the details of the selected package to Search Interface</step>
+        <step id="S8">Search Interface displays the details of the selected data package to the Consumer</step>
+    </mainSequence>
+</useCase>

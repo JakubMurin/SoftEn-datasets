@@ -1,0 +1,21 @@
+<useCase id="UC001">
+    <name>Deploy New Dataset Type Version</name>
+    <actors>
+        <actor>Developer</actor>
+        <actor>DMS</actor>
+        <actor>VC</actor>
+        <actor>DTR</actor>
+        <actor>DIM</actor>
+    </actors>
+    <trigger>Developer requests to deploy a new dataset type version</trigger>
+    <mainSequence>
+        <step id="S1">Developer deploys new dataset type version through DMS</step>
+        <step id="S2">DMS checks the current version in VC</step>
+        <step id="S3">DMS registers the new version in DTR</step>
+        <step id="S4">DMS updates the available versions list in DIM</step>
+        <step id="S5">DMS isolates the impact of the new version with DTR</step>
+        <step id="S6">DMS creates a version branch in VC</step>
+        <step id="S7">DMS assigns the new version to new instances in DIM</step>
+        <step id="S8">DMS successfully deploys the new version</step>
+    </mainSequence>
+</useCase>

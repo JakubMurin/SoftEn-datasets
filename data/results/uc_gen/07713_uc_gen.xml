@@ -1,0 +1,40 @@
+<useCase id="UC1">
+    <name>Delete Snippet</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and has permissions to delete snippets</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Snippet is successfully deleted</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Snippet to be deleted is not found</condition>
+    </failureEndConditions>
+    <trigger>User clicks on the delete button in the PrintscriptUI</trigger>
+    <mainSequence>
+        <step id="S1">User clicks on the delete button</step>
+        <step id="S2">PrintscriptUI receives the delete button click event</step>
+        <step id="S3">PrintscriptUI calls SnippetService to delete the snippet</step>
+        <step id="S4">SnippetService checks if the snippet exists</step>
+        <step id="S5">SnippetService deletes the snippet by id</step>
+        <step id="S6">SnippetService deletes related assets</step>
+        <step id="S7">PrintscriptUI displays success message</step>
+        <step id="S8">User sees the success message</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Snippet exists</step>
+            <step id="A1S2">PrintscriptUI displays success message</step>
+            <step id="A1S3">User sees the success message</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Snippet not found</description>
+            <step id="E1S1">PrintscriptUI displays error message</step>
+            <step id="E1S2">User sees the error message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

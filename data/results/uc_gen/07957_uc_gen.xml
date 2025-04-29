@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Manage Lexorank Workflows</name>
+    <actors>
+        <actor>User</actor>
+        <actor>API</actor>
+        <actor>Lexorank</actor>
+        <actor>Storage</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user wants to manage Lexorank workflows.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">User initiates a request to show all existing rows.</step>
+        <step id="S2">API processes the request and calls Lexorank's "getRows()" function.</step>
+        <step id="S3">Lexorank requests a snapshot of rows and ranks from Storage by calling "getSnapshot()".</step>
+        <step id="S4">Storage provides Lexorank with a snapshot of rows and ranks.</step>
+        <step id="S5">Lexorank orders the rows by rank and returns them to API.</step>
+        <step id="S6">API sends the ordered rows back to the user.</step>
+        <step id="S7">User receives the rows ordered by rank.</step>
+        <step id="S8">User decides to insert a new row.</step>
+        <step id="S9">API processes the insert request and calls Lexorank's "insertAt()" function.</step>
+        <step id="S10">Lexorank requests a snapshot of rows and ranks from Storage by calling "lockSnapshot()".</step>
+        <step id="S11">Storage provides Lexorank with a snapshot of rows and ranks.</step>
+        <step id="S12">Lexorank inserts the new row into the system.</step>
+        <step id="S13">Lexorank returns the new row to API.</step>
+        <step id="S14">API sends the new row back to the user.</step>
+        <step id="S15">User receives the newly inserted row.</step>
+        <step id="S16">User decides to update an existing row.</step>
+        <step id="S17">API processes the update request and calls Lexorank's "changePosition()" function.</step>
+        <step id="S18">Lexorank requests a snapshot of rows and ranks from Storage by calling "lockSnapshot()".</step>
+        <step id="S19">Storage provides Lexorank with a snapshot of rows and ranks.</step>
+        <step id="S20">Lexorank updates the existing row with a new position.</step>
+        <step id="S21">Lexorank returns the updated row to API.</step>
+        <step id="S22">API sends the updated row back to the user.</step>
+        <step id="S23">User receives the updated row.</step>
+    </mainSequence>
+</useCase>

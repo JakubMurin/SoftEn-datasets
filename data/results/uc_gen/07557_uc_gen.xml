@@ -1,0 +1,31 @@
+<useCase id="UC1">
+  <name>Perform Directory/File Operation</name>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <trigger>User Clicks Button to initiate Operation</trigger>
+  <mainSequence>
+    <step id="S1">User Clicks Button</step>
+    <step id="S2">Operation Triggered in Directory/File View</step>
+    <step id="S3">Directory/File View Passes Operation to Directory/File Service</step>
+    <step id="S4">Directory/File Service Utilizes Directory/File Handler for Operation Handling</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S4">
+      <step id="A1S1">Directory/File Handler executes CREATE_DIRECTORY subgoal</step>
+      <step id="A1S2">Create Directory Utility is invoqued</step>
+    </asteps>
+    <asteps id="A2" start="S4">
+      <step id="A2S1">Directory/File Handler executes CREATE_FILE subgoal</step>
+      <step id="A2S2">Create File Utility is invoqued</step>
+    </asteps>
+    <asteps id="A3" start="S4">
+      <step id="A3S1">Directory/File Handler executes DELETE_DIRECTORY subgoal</step>
+      <step id="A3S2">Destroy Directory Utility is invoqued</step>
+    </asteps>
+    <asteps id="A4" start="S4">
+      <step id="A4S1">Directory/File Handler executes DELETE_FILE subgoal</step>
+      <step id="A4S2">Destroy File Utility is invoqued</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

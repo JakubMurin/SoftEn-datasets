@@ -1,0 +1,16 @@
+<useCase id="001">
+   <name>Configure Business Monitoring</name>
+   <description>This use case involves adding business monitoring configuration.</description>
+   <actors>
+      <actor>System</actor>
+   </actors>
+   <successEndConditions>
+      <condition>Time stamp updated successfully in Redis.</condition>
+   </successEndConditions>
+   <trigger>User requests to add a new business monitoring configuration.</trigger>
+   <mainSequence>
+      <step id="S1">System checks the validity of the data from the user.</step>
+      <step id="S2">System sends the data to the database for storage (archives it to pg).</step>
+      <step id="S3">System updates the timestamp in Redis to indicate reception of client heartbeat and updates client heartbeat timeout in Redis.</step>
+   </mainSequence>
+</useCase>

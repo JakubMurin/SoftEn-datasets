@@ -1,0 +1,48 @@
+<useCase id="UC001">
+    <name>EHS operator provides and imports voter list changes</name>
+    <actors>
+        <actor>EHS operator</actor>
+        <actor>EHS</actor>
+        <actor>VIS</actor>
+    </actors>
+    <preconditions>
+        <precondition>Selecting necessary changes list number to import</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Change lists successfully imported</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error encountered during importing the change lists</condition>
+    </failureEndConditions>
+    <trigger>EHS operator triggers process of providing and importing voter list changes</trigger>
+    <mainSequence>
+        <step id="S1">EHS operator provides voter list changes 3</step>
+        <step id="S2">EHS receives change list 3 and imports the changes</step>
+        <step id="S3">EHS encounters an issue with loading change list 3</step>
+        <step id="S4">EHS provides voter list changes 4</step>
+        <step id="S5">EHS receives change list 4 and imports the changes</step>
+        <step id="S6">VIS provides EHS directive to skip change list 4</step>
+        <step id="S7">EHS provides and imports voter list changes 5</step>
+        <step id="S8">EHS confirms reception and import of change list 5</step>
+        <step id="S9">EHS provides voter list changes 6</step>
+        <step id="S10">EHS receives change list 6 and imports the changes</step>
+        <step id="S18">EHS encountered a sequence number error leading to loading issue</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">EHS resolves issue around loading, proceed with list 3 import</step>                    
+        </asteps>
+        <asteps id="A2" start="S7">
+            <step id="A2S1">EHS approves skipping change list 4 per received directive</step>                    
+        </asteps>
+        <asteps id="A3" start="S18">
+            <step id="A3S1">EHS operator resolves sequence number error detection issue</step>                    
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S18">
+            <description>Issue faced during import due to the sequence number identified error</description>
+            <step id="E1S1">EHS addressing fatal errors evident</step> 
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,17 @@
+<useCase id="UC1">
+   <name>Performing a malicious POST request on /foo</name>
+   <actors>
+      <actor>Attacker</actor>
+   </actors>
+   <mainSequence>
+      <step id="S1">Attacker sends a POST request to CDN with path /foo and method GET /poison</step>
+      <step id="S2">CDN forwards the request to the Proxy</step>
+      <step id="S3">Proxy forwards the request to the Backend</step>
+      <step id="S4">Backend sends a /foo 200 response to Proxy</step>
+      <step id="S5">Proxy responds with /foo 200 to CDN</step>
+      <step id="S6">CDN sends /foo 200 response to Attacker</step>
+      <step id="S7">Proxy fetches data from the Backend with a GET method on /poison</step>
+      <step id="S8">Backend responds to Proxy with /poison 200</step>
+      <step id="S9">Proxy drops the smuggled response as BE/FE connections are closed</step>
+   </mainSequence>
+</useCase>

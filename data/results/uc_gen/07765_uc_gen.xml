@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Access Resources</name>
+    <description>Allows the Client to log in and obtain a JWT token to access resources</description>
+    <actors>
+        <actor>Client</actor>
+        <actor>UAA</actor>
+        <actor>Laravel</actor>
+        <actor>Spring</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client initiating an authentication request</precondition>
+    </preconditions>
+    <successEndConditions>
+    	<condition>Client obtains JWT token successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+    	<condition>Client fails to obtain JWT token</condition>
+    </failureEndConditions>
+    <trigger>Client requests access to Example and Hello resources</trigger>
+    <mainSequence>
+        <step id="S1">Client initiates login and token acquisition by communicating with UAA</step>
+        <step id="S2">UAA returns JWT token to the Client</step>
+        <step id="S3">Client requests access to Example resource using the obtained JWT token</step>
+        <step id="S4">Laravel requests RS256 Public Key from UAA</step>
+        <step id="S5">UAA sends RS256 Public Key to Laravel</step>
+        <step id="S6">Laravel checks token validity and returns Example resource to Client</step>
+        <step id="S7">Client requests access to Hello resource using the same JWT token</step>
+        <step id="S8">Spring checks token validity and returns Hello resource to the Client</step>
+    </mainSequence>
+</useCase>

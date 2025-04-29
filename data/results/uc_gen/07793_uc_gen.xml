@@ -1,0 +1,21 @@
+<useCase id="UC1">
+  <name>Update project details</name>
+  <description>Handle submission of project updates</description>
+  
+  <actors>
+    <actor>Client</actor>
+    <actor>Website</actor>
+    <actor>UpdateProjectActivity</actor>
+  </actors>
+  
+  <trigger>Client submits an update form</trigger>
+  
+  <mainSequence>
+    <step id="S1">Client submits the update form triggering a request.</step>
+    <step id="S2">Website sends the update project request to UpdateProjectActivity.</step>
+    <step id="S3">UpdateProjectActivity saves the updates in the database.</step>
+    <step id="S4">UpdateProjectActivity retrieves all projects from the database.</step>
+    <step id="S5">Website receives the list of projects from UpdateProjectActivity as List&lt;ProjectModel&gt;.</step>
+    <step id="S6">Website presents the list of all projects to the Client.</step>
+  </mainSequence>
+</useCase>

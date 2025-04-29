@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>Deposit Dataset</name>
+    <description>Allow Depositor to deposit dataset</description>
+    <actors>
+        <actor>Depositor</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Depositor has access to the deposit interface</precondition>
+    </preconditions>
+    <trigger>Depositor accesses the deposit interface</trigger>
+    <mainSequence>
+        <step id="S1">Depositor accesses the deposit interface</step>
+        <step id="S2">WebUI requests authentication</step>
+        <step id="S3">Pure authenticates the Depositor</step>
+        <step id="S4">WebUI shows dataset deposit form to Depositor</step>
+        <step id="S5">Depositor fills in form (includes metadata and files)</step>
+        <step id="S6">WebUI processes deposit form</step>
+        <step id="S7">DMS checks dataset metadata alignment with Pure requirements</step>
+        <step id="S8">DMS deposits dataset and metadata to Archive</step>
+        <step id="S9">Archive confirms deposit and generates DOI</step>
+        <step id="S10">DMS links dataset DOI with Pure records and updates them</step>
+        <step id="S11">DMS confirms dataset deposit and provides DOI to depositor</step>
+        <step id="S12">WebUI displays confirmation including DOI link</step>
+    </mainSequence>
+</useCase>

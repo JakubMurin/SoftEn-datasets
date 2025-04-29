@@ -1,0 +1,43 @@
+<useCase id="UC001">
+    <name>Time Report Submission</name>
+    <description>Submit a time report to the system.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Spring</actor>
+        <actor>Lewensportal</actor>
+        <actor>DB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Time report successfully submitted.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid credentials provided.</condition>
+    </failureEndConditions>
+    <trigger>User opens Time Report submission.</trigger>
+    <mainSequence>
+        <step id="S1">User enters Username (FnNn) and Password.</step>
+        <step id="S2">Spring sends Username and Password to Lewensportal.</step>
+        <step id="S3">Lewensportal validates the user.</step>
+        <step id="S4">Lewensportal responds with Ok if user is valid.</step>
+        <step id="S5">Spring saves the user with Username in the database.</step>
+        <step id="S6">Database assigns USER authorities to the user.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S4">
+            <step id="A1S1">User is valid.</step>
+        </asteps>
+        <asteps id="A2" start="S3" continue="S4">
+            <step id="A2S1">User is not valid.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Invalid credentials provided.</description>
+            <step id="E1S1">Lewensportal responds with nicht angemeldet.</step>
+            <step id="E1S2">Spring notifies the User about bad credentials.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

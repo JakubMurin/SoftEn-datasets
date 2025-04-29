@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Display categories and products</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks on the ProductPage</step>
+        <step id="S2">ProductPage requests all categories with sub-categories from the CategoryController</step>
+        <step id="S3">CategoryController calls the CategoryService to get all categories</step>
+        <step id="S4">CategoryService retrieves all categories from the CategoryRepository</step>
+        <step id="S5">CategoryRepository fetches all categories from the Database</step>
+        <step id="S6">CategoryRepository sends the list of categories to the CategoryService</step>
+        <step id="S7">CategoryService maps categories to CategoryWithProductResponse using CategoryMapper</step>
+        <step id="S8">CategoryService returns the list of categories with products to the CategoryController</step>
+        <step id="S9">CategoryController sends the response containing categories with products to the ProductPage</step>
+        <step id="S10">ProductPage displays the categories and products to the User</step>
+    </mainSequence>
+</useCase>

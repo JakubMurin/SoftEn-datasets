@@ -1,0 +1,26 @@
+<useCase id="UC1">
+  <name>Grant Embargo Privileges</name>
+  
+  <actors>
+    <actor>DigitalRecordsArchivist</actor>
+    <actor>AuthenticationSystem</actor>
+    <actor>EDRMS Core</actor>
+    <actor>User Management DB</actor>
+    <actor>Access Control Module</actor>
+  </actors>
+
+  <mainSequence>
+    <step id="S1">The DigitalRecordsArchivist authenticates with the AuthenticationSystem.</step>
+    <step id="S2">The AuthenticationSystem confirms successful authentication with the DigitalRecordsArchivist.</step>
+    <step id="S3">The DigitalArchivist accesses User Management in EDRMS Core.</step>
+    <step id="S4">EDRMS Core retrieves the list of users from the User Management DB.</step>
+    <step id="S5">User Management DB provides user data to EDRMS Core.</step>
+    <step id="S6">EDRMS Core displays the list of users to the DigitalRecordsArchivist.</step>
+    <step id="S7">The DigitalRecordsArchivist selects Repository Administrator(s).</step>
+    <step id="S8">EDRMS Core requests Access Control Module to update privileges.</step>
+    <step id="S9">Access Control Module grants Embargo Privileges after validating with userDB.</step>
+    <step id="S10">User Management DB updates the privileges in response to Access Control Module.</step>
+    <step id="S11">Access Control Module confirms the privileges update.</step>
+    <step id="S12">EDRMS Core displays Confirmation to the DigitalRecordsArchivist.</step>
+  </mainSequence>
+</useCase>

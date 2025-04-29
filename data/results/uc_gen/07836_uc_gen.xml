@@ -1,0 +1,33 @@
+<useCase id="1">
+    <name>Excel Upload Process</name>
+    <actors>
+        <actor>User</actor>
+        <actor>GUI CMS</actor>
+        <actor>Batch API Server</actor>
+        <actor>Queue and Log Storage MySQL</actor>
+        <actor>Excel Extraction Batch</actor>
+        <actor>Job Processing Batch</actor>
+        <actor>External Infrastructure Server</actor>
+    </actors>
+    <trigger>Excel upload requested.</trigger>
+    <mainSequence>
+        <step id="S1">User initiates Excel upload through GUI CMS.</step>
+        <step id="S2">GUI CMS forwards the request to the Batch API Server for Excel upload.</step>
+        <step id="S3">Batch API Server saves the uploaded Excel in the MySQL database.</step>
+        <step id="S4">Batch API Server stores job metadata in the database.</step>
+        <step id="S5">Completion response sent for the upload.</step>
+        <step id="S6">Job Processing Batch polls for job metadata updates in the database.</step>
+        <step id="S7">Job Processing Batch updates job status to "start".</step>
+        <step id="S8">Job Processing Batch acquires Excel file(s).</step>
+        <step id="S9">Excel Extraction Batch transforms job list extracted from Excel.</step>
+        <step id="S10">Job Processing Batch saves job list obtained from Excel in the database.</step>
+        <step id="S11">Job Processing Batch removes Excel file(s).</step>
+        <step id="S12">Job Processing Batch updates job status to "end".</step>
+        <step id="S13">Job Processing Batch polls for job metadata updates in the database.</step>
+        <step id="S14">Job Processing Batch updates job status to "start".</step>
+        <step id="S15">Job Processing Batch acquires job list.</step>
+        <step id="S16">External Infrastructure Server interacts with Job Processing Batch for job preparation.</step>
+        <step id="S17">Results notification sent from External Infrastructure Server to Job Processing Batch.</step>
+        <step id="S18">Job Processing Batch updates job status to "end".</step>
+    </mainSequence>
+</useCase>

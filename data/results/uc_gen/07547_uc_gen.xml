@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Gestion des fermes</name>
+    <actors>
+        <actor>Admin</actor>
+        <actor>Client</actor>
+    </actors>
+    <preconditions>
+        <precondition>Se connecter à l'application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Fermes gérées (ajoutées, modifiées ou supprimées)</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Fermes non gérées ou action refusée</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Authentification réussie</step>
+        <step id="S2">Admin sélectionne "Gestion des fermes"</step>
+        <step id="S3">Affichage de la liste des fermes</step>
+        <step id="S4">Admin effectue une opération CRUD puis confirmation</step>
+        <step id="S5">Client sélectionne "Gestion des fermes"</step>
+        <step id="S6">Affichage de la liste des fermes</step>
+        <step id="S7">Client effectue une opération CRUD et vérification des permissions</step>
+        <step id="S8">Action autorisée ou refusée pour le Client</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Erreur (ex. nom déjà utilisé) lors d'un ajout de ferme par Admin</step>
+        </asteps>
+        <asteps id="A2" start="S7">
+            <step id="A2S1">Permission refusée (type de compte inadéquat) pour une modification par Client</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

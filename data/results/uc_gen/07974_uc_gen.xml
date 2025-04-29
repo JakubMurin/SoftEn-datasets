@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <description>User logs in with valid credentials.</description>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>User has valid credentials.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Admin successfully logs in.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Invalid credentials provided.</condition>
+    </failureEndConditions>
+    <trigger>User requests to log in.</trigger>
+    <mainSequence>
+        <step id="S1">Admin requests to log in.</step>
+        <step id="S2">UI receives the log in request.</step>
+        <step id="S3">UI forwards the request to the AuthRouter for login.</step>
+        <step id="S4">AuthRouter passes the login request to the AuthController.</step>
+        <step id="S5">AuthController invokes AuthRepository to validate credentials.</step>
+        <step id="S6">AuthRepository fetches admin data by username bonding to AdminModel, then to the Database.</step>
+        <step id="S7">AuthRepository validates the provided credentials encoding in UserController.</step>
+        <step id="S8">UserController sends 200 OK for log-in successs or 401 Unauthorized for denied credentials to the AuthRouter.</step>
+        <step id="S9">AuthRouter passes the success or failure response back to UI that displays corresponding data.</step>
+    </mainSequence>
+</useCase>

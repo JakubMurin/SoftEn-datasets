@@ -1,0 +1,31 @@
+<useCase id="UC1">
+    <name>Arming process</name>
+    <description>Process of arming the partition</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Panel</actor>
+        <actor>PAI</actor>
+        <actor>MQTT</actor>
+    </actors>
+    <trigger>User requests to arm the partition</trigger>
+    <mainSequence>
+        <step id="S1">Panel receives arm partition command from User</step>
+        <step id="S2">PAI processes Live event, arming with user code</step>
+        <step id="S3">PAI changes arm status to true</step>
+        <step id="S4">PAI sends MQTT message: "/arm=True"</step>
+        
+        <step id="S5">Panel starts exit_delay</step>
+        <step id="S6">Panel sends status request every 10s</step>
+        <step id="S7">PAI requests status from Panel</step>
+        <step id="S8">Panel responds to PAI status request</step>
+        <step id="S9">PAI changes exit_delay status to true</step>
+        <step id="S10">PAI sends MQTT message: "/exit_delay=True"</step>
+        
+        <step id="S11">Panel ends exit_delay, panel is armed</step>
+        <step id="S12">Panel sends status request every 10s</step>
+        <step id="S13">PAI requests status from Panel</step>
+        <step id="S14">Panel responds to PAI status request</step>
+        <step id="S15">PAI changes exit_delay status to false</step>
+        <step id="S16">PAI sends MQTT message: "/exit_delay=False"</step>
+    </mainSequence>
+</useCase>

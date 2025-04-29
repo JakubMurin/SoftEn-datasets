@@ -1,0 +1,48 @@
+<useCase id="UC1">
+    <name>Login Process</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>Receptionist has login credentials</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Receptionist successfully logs in</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Receptionist fails to log in</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Receptionist enters login credentials (username, password) in UI</step>
+        <step id="S2">UI sends POST /login request to Router</step>
+        <step id="S3">Router calls login() method in Controller</step>
+        <step id="S4">Controller validates login credentials in Repository</step>
+        <step id="S5">Repository fetches user data by username in UserModel</step>
+        <step id="S6">UserModel queries user data by username in DB</step>
+        <step id="S7">DB returns user data to UserModel</step>
+        <step id="S8">UserModel returns user data to Repository</step>
+        <step id="S9">Repository receives user data and continues</step>
+        <step id="S10">Controller checks if password matches</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S10">
+            <step id="A1S1">Controller sends 200 OK response to UI for successful login</step>
+            <step id="A1S2">UI displays login result to Receptionist</step>
+            <step id="A1S3">UI sends GET /dashboard request to Router</step>
+            <step id="A1S4">Router calls getDashboard() in Controller</step>
+            <step id="A1S5">Controller fetches dashboard data in Repository</step>
+            <step id="A1S6">Repository queries dashboard data in DB</step>
+            <step id="A1S7">DB returns dashboard data to Repository</step>
+            <step id="A1S8">Repository receives dashboard data and continues</step>
+            <step id="A1S9">Controller sends 200 OK response with dashboard data to Router</step>
+            <step id="A1S10">Router sends 200 OK response with dashboard data to UI</step>
+            <step id="A1S11">UI displays dashboard to Receptionist</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S10">
+            <description>Controller sends 401 Unauthorized response to UI for invalid credentials</description>
+            <step id="E1S1">UI displays error message to Receptionist</step>
+        </esteps>
+    </errorSteps>
+</useCase>

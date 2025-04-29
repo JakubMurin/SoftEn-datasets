@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>企业准入</name>
+    <actors>
+        <actor>企业</actor>
+        <actor>监管机构</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">企业提交准入申请资料</step>
+        <step id="S2">系统接收资料并存储</step>
+        <step id="S3">审批中状态更新</step>
+        <step id="S4">查询已注册未审批的企业列表</step>
+        <step id="S5">查询企业列表</step>
+        <step id="S6">返回企业列表结果</step>
+        <step id="S7">审批通过</step>
+        <step id="S8">审批拒绝</step>
+        <step id="S9">更新准入信息</step>
+        <step id="S10">查询准入结果</step>
+        <step id="S11">查询准入信息</step>
+        <step id="S12">查询准入合约内容</step>
+        <step id="S13">返回准入合约内容</step>
+        <step id="S14">再次提交准入资料</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S8">
+            <step id="A1S1">审批通过</step>
+            <step id="A1S2">部署准入合约</step>
+            <step id="A1S3">更新准入信息</step>
+        </asteps>
+        <asteps id="A2" start="S10" continue="S12">
+            <step id="A2S1">查询准入合约内容</step>
+            <step id="A2S2">返回准入合约内容</step>
+        </asteps>
+        <asteps id="A3" start="S10" continue="S14">
+            <step id="A3S1">再次提交准入资料</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

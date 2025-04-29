@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>View Book Reviews</name>
+    <description>As a User, I want to view reviews of a specific book.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Review Service</actor>
+        <actor>MongoDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User is authenticated.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User receives the list of reviews for the specified book.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The User receives an HTTP status code indicating authentication failure.</condition>
+        <condition>The User receives an HTTP status code indicating invalid authentication token.</condition>
+    </failureEndConditions>
+    <trigger>A User requests to view reviews of a book.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to Gateway for book reviews.</step>
+        <step id="S2">Gateway verifies the JWT token with Keycloak.</step>
+        <step id="S3">Gateway forwards the request to Review Service to fetch book reviews.</step>
+        <step id="S4">Review Service retrieves book reviews from MongoDB.</step>
+        <step id="S5">Review Service sends the list of reviews back to Gateway.</step>
+        <step id="S6">Gateway returns the review list to the User.</step>
+    </mainSequence>
+</useCase>

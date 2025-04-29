@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Like or Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UI</actor>
+        <actor>LikeController</actor>
+        <actor>LikeService</actor>
+        <actor>LikeRepo</actor>
+        <actor>LikesDB</actor>
+        <actor>PostsDB</actor>
+        <actor>CommentsDB</actor>
+        <actor>EventsDB</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User goes to entity page (post, comment, event)</step>
+        <step id="S2">UI displays entity details and like button</step>
+        <step id="S3">User clicks "Like/Dislike" button</step>
+        <step id="S4">LikeController toggles like (EntityID entityID, EntityType entityType)</step>
+        <step id="S5">LikeController processes like or dislike</step>
+        <step id="S6">LikeService saves or removes like</step>
+        <step id="S7">LikeRepo saves or removes like data</step>
+        <step id="S8">LikesDB updates like data</step>
+        <step id="S9">PostsDB/CommentsDB/EventsDB updates like count</step>
+        <step id="S10">Return success response to UI</step>
+        <step id="S11">Display success or error message on UI</step>
+        <step id="S12">Update like count on entity on UI</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">Process dislike and remove like</step>
+        </asteps>
+        <asteps id="A2" start="S5" continue="S6">
+            <step id="A2S1">Process like and save like</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S7">
+            <description>Failed to save or remove like data</description>
+            <step id="E1S1">Display error message on UI</step>
+        </esteps>
+    </errorSteps>
+</useCase>

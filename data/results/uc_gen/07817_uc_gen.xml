@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Registration Process</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>FE. Registration Form</actor>
+        <actor>BE. Registration Script</actor>
+        <actor>DB. Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client fills out registration form.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>New user successfully registered.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>User already exists in the database.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Client fills out registration form.</step>
+        <step id="S2">Client submits registration data.</step>
+        <step id="S3">FE. Registration Form sends POST request with data (username, password) to BE. Registration Script.</step>
+        <step id="S4">BE. Registration Script checks for user existence in DB.</step>
+        <step id="S5">DB responds with existence result.</step>
+        <step id="S6">BE. Registration Script inserts user (username, password) into DB upon successful check.</step>
+        <step id="S7">FE. Registration Form displays registration success message to the Client.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S6">
+            <step id="A1S1">DB inserts the user into the database.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>User already exists in the database.</description>
+            <step id="E1S1">FE. Registration Form displays error message to the Client.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

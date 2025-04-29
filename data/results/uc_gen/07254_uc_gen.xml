@@ -1,0 +1,37 @@
+<useCase id="UC001">
+    <name>Comprar sobre</name>
+    <actors>
+        <actor>Usuario Autenticado</actor>
+        <actor>Interfaz de Usuario</actor>
+        <actor>Sistema de Compras</actor>
+        <actor>Base de Datos</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">El Usuario Autenticado selecciona comprar sobre.</step>
+        <step id="S2">La Interfaz de Usuario solicita la compra del paquete de cartas al Sistema de Compras.</step>
+        <step id="S3">El Sistema de Compras inicia la sesión de transacción en la Base de Datos.</step>
+        <step id="S4">La Base de Datos confirma el inicio de sesión.</step>
+        <step id="S5">El Sistema de Compras busca el paquete de cartas en la Base de Datos.</step>
+        <step id="S6">La Base de Datos retorna los datos del paquete.</step>
+        <step id="S7">El Sistema de Compras verifica la disponibilidad del paquete.</step>
+        <step id="S8">Si el paquete no está disponible, se notifica al Usuario y se muestra un mensaje de paquete agotado.</step>
+        <step id="S9">Si el paquete está disponible, se procede a verificar el saldo del Usuario.</step>
+        <step id="S10">El Sistema de Compras busca al usuario por nombre en la Base de Datos.</step>
+        <step id="S11">La Base de Datos retorna los datos del usuario al Sistema de Compras.</step>
+        <step id="S12">El Sistema de Compras verifica el saldo del Usuario.</step>
+        <step id="S13">Si el saldo es insuficiente, se notifica al Usuario y se muestra un mensaje de saldo insuficiente.</step>
+        <step id="S14">Si el saldo es suficiente, se procede a generar las cartas y actualizar el inventario en la Base de Datos.</step>
+        <step id="S15">La Base de Datos confirma la generación de las cartas y la actualización del inventario.</step>
+        <step id="S16">Se procede a actualizar el saldo del Usuario en la Base de Datos.</step>
+        <step id="S17">La Base de Datos confirma la actualización del saldo.</step>
+        <step id="S18">Se registran las transacciones por cada carta generada en la Base de Datos.</step>
+        <step id="S19">La Base de Datos confirma las transacciones registradas y añade las cartas generadas a la colección del Usuario.</step>
+        <step id="S20">La Base de Datos confirma la actualización de la colección.</step>
+        <step id="S21">Se notifica al Usuario el éxito de la compra y se muestran las cartas generadas en la Interfaz de Usuario.</step>
+        <step id="S22">Si ocurre un error durante el proceso, se aborta la transacción en la Base de Datos.</step>
+        <step id="S23">La Base de Datos confirma el aborto de la transacción.</step>
+        <step id="S24">Se notifica al Usuario el fallo de la transacción y se muestra un mensaje de error en la Interfaz de Usuario.</step>
+        <step id="S25">El Sistema de Compras cierra la sesión de transacción en la Base de Datos.</step>
+        <step id="S26">La Base de Datos confirma el cierre de la sesión.</step>
+    </mainSequence>
+</useCase>

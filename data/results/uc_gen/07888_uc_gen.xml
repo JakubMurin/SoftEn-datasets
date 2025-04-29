@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>数据存储和搜索</name>
+    <description>Use case for storing and searching data</description>
+    <actors>
+        <actor>User</actor>
+        <actor>DataStorage</actor>
+        <actor>Database</actor>
+        <actor>GitLabCrawler</actor>
+        <actor>TDCrawler</actor>
+        <actor>Preprocessor</actor>
+        <actor>SearchEngine</actor>
+        <actor>VectorSearch</actor>
+    </actors>
+    <preconditions>
+        <precondition>Data storage modules and search modules are available</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Data stored and searched successfully</condition>
+    </successEndConditions>
+    <trigger>User initiates data storage and search process</trigger>
+    <mainSequence>
+        <step id="S1">User initializes database</step>
+        <step id="S2">DataStorage creates database structure</step>
+        <step id="S3">User crawls GitLab data</step>
+        <step id="S4">GitLabCrawler returns GitLab data to DataStorage</step>
+        <step id="S5">User crawls TD data</step>
+        <step id="S6">TDCrawler returns TD data to DataStorage</step>
+        <step id="S7">DataStorage preprocesses data</step>
+        <step id="S8">Preprocessor returns preprocessed data to DataStorage</step>
+        <step id="S9">DataStorage stores data to SQLite</step>
+        <step id="S10">DataStorage updates index in Database</step>
+        <step id="S11">User initiates search request</step>
+        <step id="S12">SearchEngine performs search</step>
+        <step id="S13">VectorSearch returns top N results to SearchEngine</step>
+        <step id="S14">SearchEngine fetches complete bug info from Database based on id</step>
+        <step id="S15">Database returns complete bug info to SearchEngine</step>
+        <step id="S16">SearchEngine returns bug list to User</step>
+    </mainSequence>
+</useCase>

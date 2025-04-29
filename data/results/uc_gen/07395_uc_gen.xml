@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>Assign Task to Robot</name>
+    <actors>
+        <actor>Building Manager</actor>
+        <actor>Phone App</actor>
+        <actor>Robot Management System</actor>
+        <actor>Robot</actor>
+    </actors>
+    <preconditions>
+        <precondition>Building Manager requests a task</precondition>
+    </preconditions>
+    <trigger>Phone App requests task from Robot Management System</trigger>
+    <mainSequence>
+        <step id="S1">Building Manager requests task from Phone App</step>
+        <step id="S2">Phone App requests task from Robot Management System</step>
+        <step id="S3">Robot Management System adds request to queue</step>
+        <step id="S4">Robot Management System checks robot availability</step>
+        <step id="S5">If robot is available:</step>
+        <step id="S6">Robot Management System assigns task to Robot</step>
+        <step id="S7">Robot cleans the room</step>
+        <step id="S8">Robot Management System sends task assigned message to Phone App</step>
+        <step id="S9">Phone App shows message to Building Manager</step>
+        <step id="S10">If robot is not available:</step>
+        <step id="S11">Robot Management System estimates time</step>
+        <step id="S12">Robot Management System sends estimated wait time message to Phone App</step>
+    </mainSequence>
+</useCase>

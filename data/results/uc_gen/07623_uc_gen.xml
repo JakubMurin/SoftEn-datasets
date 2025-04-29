@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Gerenciar Campus</name>
+    <description>Este caso de uso descreve a funcionalidade de gerenciar um campus.</description>
+    <actors>
+        <actor>GestorCampus</actor>
+    </actors>
+    <preconditions>
+        <precondition>O GestorCampus está autenticado no sistema.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Os dados do edifício foram enviados com sucesso.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Erro ao enviar os dados do edifício.</condition>
+    </failureEndConditions>
+    <trigger>O GestorCampus solicita a criação de um novo edifício.</trigger>
+    <mainSequence>
+        <step id="S1">O GestorCampus solicita a criação de um edifício.</step>
+        <step id="S2">O SistemaRobDroneGo recebe a requisição do GestorCampus.</step>
+        <step id="S3">O GestorCampus envia os dados do edifício para o SistemaRobDroneGo.</step>
+        <step id="S4">O SistemaRobDroneGo envia uma mensagem de sucesso para o GestorCampus.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,42 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    <description>User registers with email and password</description>
+    <actors>
+        <actor>User</actor>
+        <actor>RegistrationPage</actor>
+        <actor>AuthControl</actor>
+        <actor>UserEntity</actor>
+        <actor>UserDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is accessing the registration page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User successfully registered</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email is already registered</condition>
+    </failureEndConditions>
+    <trigger>User inputs email and password</trigger>
+    <mainSequence>
+        <step id="S1">User enters email and password</step>
+        <step id="S2">RegistrationPage receives email and password</step>
+        <step id="S3">AuthControl processes data</step>
+        <step id="S4">UserEntity checks if email is registered</step>
+        <step id="S5">AuthControl sends error message to RegistrationPage</step>
+        <step id="S6">RegistrationPage displays error message to User</step>
+        <step id="S7">UserEntity saves new user data</step>
+        <step id="S8">UserDB stores user data</step>
+        <step id="S9">UserDB confirms data storage status</step>
+        <step id="S10">UserEntity confirms successful registration</step>
+        <step id="S11">AuthControl sends registration success status to RegistrationPage</step>
+        <step id="S12">RegistrationPage grants access to User</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4" continue="S5">
+            <step id="A1S1">Email is already registered</step>
+            <step id="A1S2">AuthControl sends error message</step>
+            <step id="A1S3">RegistrationPage displays error message</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

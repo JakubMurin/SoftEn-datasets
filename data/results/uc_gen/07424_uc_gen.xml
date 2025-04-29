@@ -1,0 +1,22 @@
+<useCase id="UC1">
+    <name>Gerenciar inibição de robot </name>
+    <actors>     
+        <actor>Gestor de frota</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">O Gestor de frota inibe um robot</step>
+        <step id="S2">O robDroneGo solicita que o Gestor de frota selecione um robot</step>
+        <step id="S3">O Gestor de frota seleciona o robot</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2">
+            <step id="A1S1">O robDroneGo devolve o robot inibido ao Gestor de frota</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S2">
+            <description>O Gestor de frota falha na requisição do robot</description>
+            <step id="E1S1">O robDroneGo devolve uma mensagem de erro ao Gestor de frota</step>
+        </esteps>
+    </errorSteps>
+</useCase>

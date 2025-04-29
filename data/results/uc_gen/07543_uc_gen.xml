@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>ALFRED Device Voice Recognition Sequence</name>
+    <actors>
+        <actor>OlderPerson</actor>
+        <actor>ALFRED Device</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Activate Device: OlderPerson activates the ALFRED Device.</step>
+        <step id="S2">Check if voice recognition is set up.</step>
+        <step id="S3">Issues voice command: OlderPerson issues a voice command.</step>
+        <step id="S4">Verify voice: ALFRED verifies the voice command.</step>
+        <step id="S5">Perform requested action: ALFRED performs the requested action.</step>
+        <step id="S6">Confirm action performed: ALFRED confirms to OlderPerson that the action was performed.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S2" continue="S2">
+            <step id="A1S1">Voice recognition not set up.</step>
+        </asteps>
+        <asteps id="A2" start="S4" continue="S4">
+            <step id="A2S1">Voice not verified.</step>
+            <step id="A2S2">Inform about failed verification: ALFRED informs OlderPerson about voice verification failure.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

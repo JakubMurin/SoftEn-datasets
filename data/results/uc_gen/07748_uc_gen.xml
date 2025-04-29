@@ -1,0 +1,24 @@
+<useCase id="UC1">
+  <name>OpenID Connect Login with Envoy proxy</name>
+  <actors>
+    <actor>End user</actor>
+    <actor>Envoy (with WASM oicd filter)</actor>
+    <actor>ID-provider</actor>
+  </actors>
+  <preconditions>
+    <precondition>End user needs to request a resource.</precondition>
+  </preconditions>
+  <mainSequence>
+    <step id="S1">End user requests a resource from Envoy.</step>
+    <step id="S2">Envoy redirects the end user to ID-provider.</step>
+    <step id="S3">End user sends a GET request to ID-provider for authorization.</step>
+    <step id="S4">End user logs in, gives consent/authorization to the application.</step>
+    <step id="S5">ID-provider sends a callback with the authorization code.</step>
+    <step id="S6">End user sends the authorization code to Envoy for callback processing.</step>
+    <step id="S7">Envoy sends a POST request to ID-provider for token based on the authorization code, client ID, and client secret/secret token.</step>
+    <step id="S8">ID-provider returns an ID token, access token, and optionally a refresh token.</step>
+    <step id="S9">Envoy validates the ID token according to OpenID Connect.</step>
+    <step id="S10">Envoy saves the session in the cache.</step>
+    <step id="S11">Envoy redirects the end user with cookies (ID token, session).</step>
+  </mainSequence>
+</useCase>

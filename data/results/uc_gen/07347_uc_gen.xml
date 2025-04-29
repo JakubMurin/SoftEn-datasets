@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Modify Vacation Request</name>
+    <actors>
+        <actor>Navegador</actor>
+        <actor>vacation.routes</actor>
+        <actor>vacation.controller</actor>
+        <actor>vacation.model</actor>
+        <actor>mysql</actor>
+    </actors>
+    <trigger>User wants to modify a vacation request</trigger>
+    <mainSequence>
+        <step id="S1">Navegador requests to check and modify vacation with ID</step>
+        <step id="S2">CheckVacationModification controller handles the request</step>
+        <step id="S3">Fetch details of requested vacation from the model</step>
+        <step id="S4">Retrieve vacation data from database</step>
+        <step id="S5">Return vacation request data to the controller</step>
+        <step id="S6">Render modifyVacation form to the user</step>
+        <step id="S7">User modifies vacation details and submits the update</step>
+        <step id="S8">Route to updateVacation controller</step>
+        <step id="S9">Update the vacation data in the model</step>
+        <step id="S10">Update vacation record in the database</step>
+        <step id="S11">Inform controller about successful update</step>
+        <step id="S12">Display success message to the user</step>
+    </mainSequence>
+</useCase>

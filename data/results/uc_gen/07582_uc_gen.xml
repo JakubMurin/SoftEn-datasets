@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Generate Hash</name>
+    <description>Generate a hash value for the given input</description>
+    <actors>
+        <actor>User</actor>
+        <actor>MD4</actor>
+    </actors>
+    <preconditions>
+        <precondition>MD4 is initialized with the correct message size.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Correct hash value is returned.</condition>
+    </successEndConditions>
+    <trigger>User requests to generate a hash.</trigger>
+    <mainSequence>
+        <step id="S1">User provides input value to hash.</step>
+        <step id="S2">MD4 initializes for the given message size.</step>
+        <step id="S3">MD4 preprocesses the input value.</step>
+        <step id="S4">MD4 processes the input value.</step>
+        <step id="S5">MD4 generates hash value.</step>
+        <step id="S6">MD4 sends hash value to User.</step>
+    </mainSequence>
+</useCase>

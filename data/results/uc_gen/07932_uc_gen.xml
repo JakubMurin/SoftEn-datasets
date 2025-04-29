@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Criar um novo edifício</name>
+    <actors>
+        <actor>Gestor de campus</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Requisitar os dados do edifício</step>
+        <step id="S2">Inserir os dados do edifício</step>
+        <step id="S3">Enviar requisição POST para /api/buildings</step>
+        <step id="S4">Receber status code da API</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">Devolver o edifício criado</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S4">
+            <description>Devolver mensagem de erro</description>
+            <step id="E1S1">Devolver mensagem de erro</step>
+        </esteps>
+    </errorSteps>
+</useCase>

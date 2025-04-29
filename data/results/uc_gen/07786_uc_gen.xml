@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>User interacts with the game</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User clicks 'Comenzar' button</step>
+        <step id="S2">App handles the event to start the game</step>
+        <step id="S3">StartScreen displays and StartButtonEventHandler processes the event</step>
+        <step id="S4">The StartButtonEventHandler hides the StartScreen and displays PlayersInputScreen to select inputs</step>
+        <step id="S5">User selects and confirms inputs</step>
+        <step id="S6">The event is handled to display the screen for selecting player names</step>
+        <step id="S7">User inputs and confirms player names</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">PlayersInputScreen requests the player input data</step>
+        </asteps>
+        <asteps id="A2" start="S6">
+            <step id="A2S1">ConfirmButton requests data selection and transfers it to the game</step>
+        </asteps>
+        <asteps id="A3" start="S7">
+            <step id="A3S1">PlayersNamesInputScreen displays the input screen for player names confirmation</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A2">
+            <description>There was an error while fetching player data</description>
+            <step id="E1S1">An error occurred while selecting player data, process stopped</step>
+        </esteps>
+        <esteps id="E2" start="A3">
+            <description>Error handling player names input</description>
+            <step id="E2S1">A problem occurred while processing the player names input, the process terminated</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Data Processing</name>
+    <description>This use case describes the process of receiving encrypted data, decrypting it, selecting a distribution method (Uniform or Normal), generating random numbers based on that method, and sending back the result.</description>
+    <actors>
+        <actor>ProblemSolver</actor>
+        <actor>DataServer</actor>
+    </actors>
+    <preconditions>
+        <precondition>DataServer has established encrypted communication with ProblemSolver.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>DataServer successfully generates random numbers and responds to ProblemSolver with the encrypted data.</condition>
+    </successEndConditions>
+    <mainSequence>
+        <step id="S1">ProblemSolver sends POST request to DataServer with encrypted session key and encrypted data.</step>
+        <step id="S2">DataServer decrypts the encrypted session key.</step>
+        <step id="S3">DataServer decrypts the encrypted data.</step>
+        <step id="S4">DataServer parses the decrypted data.</step>
+        <step id="S5">DataServer randomly selects Uniform or Normal distribution method.</step>
+        <step id="S6">DataServer generates random numbers based on the selected distribution.</step>
+        <step id="S7">DataServer encrypts the response data with the session key.</step>
+        <step id="S8">DataServer sends encrypted session key and encrypted data back to ProblemSolver with 200 OK status.</step>
+    </mainSequence>
+</useCase>

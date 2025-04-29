@@ -1,0 +1,31 @@
+<useCase id="UC001">
+    <name>Retrieve User Subscription Configuration</name>
+    <description>The user requests their subscription configuration</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User is authenticated and authorized to access the subscription configuration</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The User receives the subscription configuration</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The User receives an HTTP 401 status code if JWT is absent, and HTTP 403 status code if JWT is not valid</condition>
+    </failureEndConditions>
+    <trigger>User requests their subscription configuration by sending a GET request to /api/v1/subscriptions</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to /api/v1/subscriptions</step>
+        <step id="S2">Gateway receives the request</step>
+        <step id="S3">Keycloak verifies the JWT</step>
+        <step id="S4">If JWT is valid</step>
+        <step id="S5">Gateway sends a request to Subscription service</step>
+        <step id="S6">Subscription service retrieves the user's subscription configuration from MongoDB</step>
+        <step id="S7">Subscription service sends the subscription configuration to Gateway</step>
+        <step id="S8">Gateway sends the subscription configuration to User</step>
+        <step id="S9">If JWT is absent</step>
+        <step id="S10">Gateway sends HTTP status 401 to User</step>
+        <step id="S11">If JWT is not valid</step>
+        <step id="S12">Gateway sends HTTP status 403 to User</step>
+    </mainSequence>
+</useCase>

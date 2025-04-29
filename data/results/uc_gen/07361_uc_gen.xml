@@ -1,0 +1,41 @@
+<useCase id="UC1">
+    <name>Hunting Snipe</name>
+    <actors>
+        <actor>Player</actor>
+        <actor>Guide</actor>
+        <actor>Snipe</actor>
+        <actor>FoodItems</actor>
+    </actors>
+    <preconditions>
+        <precondition>The player is equipped for hunting.</precondition>
+        <precondition>The player has received guidance on the snipe hunt.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The player successfully defeats the snipe.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The player's health drops to zero.</condition>
+    </failureEndConditions>
+    <trigger>The player decides to start hunting the snipe.</trigger>
+    <mainSequence>
+        <step id="S1">The player queries the guide about the snipe.</step>
+        <step id="S2">The guide provides information about the type of snipe.</step>
+        <step id="S3">The player starts the hunt.</step>
+        <step id="S4">The player encounters the snipe.</step>
+        <step id="S5">The snipe inflicts damage on the player.</step>
+        <step id="S6">The player assesses their remaining health points.</step>
+        <step id="S7">The player checks for any warnings.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S6" continue="S7">
+            <step id="A1S1">The player uses healing items from the foodItems.</step>
+            <step id="A1S2">The foodItems restore the player's health points.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S6">
+            <description>The player's health points have reached zero.</description>
+            <step id="E1S1">The player succumbs and dies.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

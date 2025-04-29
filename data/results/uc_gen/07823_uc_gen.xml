@@ -1,0 +1,37 @@
+<useCase id="UC1">
+    <name>Login Authentication</name>
+    <actors>
+        <actor>Receptionist</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user initiated the login process.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The user successfully authenticated and accessed the dashboard.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The user failed to authenticate due to invalid credentials.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">The Receptionist enters login credentials (username, password).</step>
+        <step id="S2">The UI forwards the login request to the AuthRouter via POST /login.</step>
+        <step id="S3">The AuthRouter calls the login() method of AuthController.</step>
+        <step id="S4">The AuthController invokes the validateCredentials() method of AuthRepository.</step>
+        <step id="S5">The AuthRepository fetches user data by username from UserModel.</step>
+        <step id="S6">The UserModel queries user data by username from the Database.</step>
+        <step id="S7">The UserModel sends the user data back to the Repository.</step>
+        <step id="S8">The Repository receives the user data and passes it back to the Controller.</step>
+        <step id="S9">The Controller checks whether the entered password matches the database.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S9">
+            <step id="A1S1">If the login is successful, proceed to display dashboard.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>Handling the case when login fails due to invalid credentials.</description>
+            <step id="E1S1">If the login fails, display an error message for unauthorized access.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,15 @@
+<useCase id="UC001">
+    <name>Retrieve Average Lending Duration Per Book</name>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Librarian initiates GET request to retrieve average lending duration per book.</step>
+        <step id="S2">Lending Controller forwards request to Lending Service.</step>
+        <step id="S3">Lending Service processes request by fetching average lending duration per book.</step>
+        <step id="S4">Lending Service calls Lending Repository to find the average lending duration.</step>
+        <step id="S5">Lending Repository retrieves the results.</step>
+        <step id="S6">Lending Service maps and converts the results into Lending Avg Per Book Views.</step>
+        <step id="S7">Lending Controller receives and sends back the list of Lending Avg Per Book Views to Librarian.</step>
+    </mainSequence>
+</useCase>

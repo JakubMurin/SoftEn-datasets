@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>List Passage Between 2 Buildings</name>
+    <actors>
+        <actor>User</actor>
+        <actor>: listPassageBetween2BuildingsComponentHTML</actor>
+        <actor>listPassageBetween2BuildingsComponent</actor>
+        <actor>: BuildingServiceFE</actor>
+        <actor>: FloorServiceFE</actor>
+        <actor>: BuildingController</actor>
+        <actor>: FloorController</actor>
+        <actor>: BuildingServiceBE</actor>
+        <actor>: FloorServiceBE</actor>
+        <actor>Database</actor>
+    </actors>
+    <trigger>User lists then selects 2 buildings</trigger>
+    <mainSequence>
+        <step id="S1">Execute List Passage Between 2 Buildings.</step>
+        <step id="S2">Get and display an HTTP GET request /buildings/list from BuildingServiceFE.</step>
+        <step id="S3">Find all Buildings from the database.</step>
+        <step id="S4">Log the Buildings.</step>
+        <step id="S5">Ask and select 2 buildings from the user.</step>
+        <step id="S6">Execute ListPassageBetween2Buildings.</step>
+        <step id="S7">Retrieve and check passage between floors.</step>
+        <step id="S8">Show Passage Between Buildings to the user.</step>
+    </mainSequence>
+</useCase>

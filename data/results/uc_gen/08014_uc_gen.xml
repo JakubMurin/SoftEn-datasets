@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Retrieve Top Readers per Genre</name>
+    <description>As a Librarian, I want to retrieve the top readers per specified genre to provide better service to library patrons.</description>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian has appropriate access rights.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The top readers per genre are successfully retrieved and displayed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The specified genre is not found or there is an error in retrieving reader information.</condition>
+    </failureEndConditions>
+    <trigger>Librarian initiates the process by accessing the endpoint for retrieving top readers per genre.</trigger>
+    <mainSequence>
+        <step id="S1">Librarian sends a GET request to the LendingController for top readers of a specific genre.</step>
+        <step id="S2">LendingController calls GenreService to retrieve the genre information.</step>
+        <step id="S3">GenreService retrieves the genre details from the GenreRepository.</step>
+        <step id="S4">GenreService provides the genre information back to the LendingController.</step>
+        <step id="S5">LendingController checks if the genre is found.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">If genre is not found, LendingController sends HTTP 404 Not Found response to the Librarian.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>An error occurs during retrieval of top readers per genre.</description>
+            <step id="E1S1">LendingController accesses ReaderService to get the top readers for the genre.</step>
+            <step id="E1S2">ReaderService calls ReaderRepository to find the top readers per genre.</step>
+            <step id="E1S3">ReaderService provides the list of readers back to the LendingController.</step>
+            <step id="E1S4">LendingController converts the readers to ReaderView using ReaderViewMapper.</step>
+            <step id="E1S5">LendingController responds with HTTP 200 OK with the top readers' views to the Librarian.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+	<name>Update Request Status</name>
+	<description>User updates the status of a request.</description>
+	<actors>
+		<actor>User</actor>
+	</actors>
+	<preconditions>
+		<precondition>User is logged into the system and has the necessary permission to update request status.</precondition>
+	</preconditions>
+	<successEndConditions>
+		<condition>Request status is successfully updated in the system.</condition>
+	</successEndConditions>
+	<failureEndConditions>
+		<condition>Error occurs while updating request status.</condition>
+	</failureEndConditions>
+	<trigger>User selects a request ID and provides the status (Accept/Reject).</trigger>
+	<mainSequence>
+		<step id="S1">User selects a request ID and provides the status (Accept/Reject).</step>
+		<step id="S2">Call to update_request_status(request_id, status) is initiated.</step>
+		<step id="S3">Execution of SELECT query to fetch request details from the database.</step>
+		<step id="S4">Return of request data from the database.</step>
+		<step id="S5">Execution of UPDATE queries for requests and books if the request is accepted.</step>
+		<step id="S6">Return of success/failure status from the database.</step>
+		<step id="S7">Display the success or failure message to the User.</step>
+	</mainSequence>
+</useCase>

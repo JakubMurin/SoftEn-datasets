@@ -1,0 +1,38 @@
+<useCase id="UC001">
+    <name>Enterprise Admission Process (Recycler)</name>
+    
+    <actors>
+        <actor>Enterprise</actor>
+        <actor>RegulatoryAgency</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Enterprise submits data to Vue for admission application.</step>
+        <step id="S2">Controller processes the application by calling /ent/apply.</step>
+        <step id="S3">EntService submits admission data to MongoDB for file upload.</step>
+        <step id="S4">EntService saves file association information in MySQL.</step>
+        <step id="S5">Controller returns the application result to Vue.</step>
+        <step id="S6">Enterprise receives the admission status from Vue.</step>
+        
+        <step id="S7">RegulatoryAgency queries the list of registered but not approved enterprises.</step>
+        <step id="S8">Vue sends a request to Controller for fetching enterprise list.</step>
+        <step id="S9">Controller retrieves the enterprise list through EntService from MySQL.</step>
+        <step id="S10">Controller returns the list to Vue.</step>
+        <step id="S11">RegulatoryAgency receives the list from Vue.</step>
+        
+        <step id="S12">RegulatoryAgency approves the enterprise admission.</step>
+        <step id="S13">Vue sends approval request to Controller via /ent/pass.</step>
+        <step id="S14">Controller approves the application in EntService.</step>
+        <step id="S15">EntService deploys the admission contract using JAVA_SDK.</step>
+        <step id="S16">EntService updates the admission details in MySQL.</step>
+        <step id="S17">Controller returns the approval result to Vue.</step>
+        <step id="S18">RegulatoryAgency receives the approval result.</step>
+        
+        <step id="S19">Enterprise queries the admission result.</step>
+        <step id="S20">Vue requests Controller to fetch the admission result.</step>
+        <step id="S21">Controller retrieves the admission details from MySQL using EntService.</step>
+        <step id="S22">EntService fetches admission contract details using JAVA_SDK.</step>
+        <step id="S23">Controller returns the result to Vue.</step>
+        <step id="S24">Enterprise receives the admission result from Vue.</step>
+    </mainSequence>
+</useCase>

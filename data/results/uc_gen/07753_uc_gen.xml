@@ -1,0 +1,18 @@
+<useCase id="UC1">
+    <name>Start a transaction</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Core</actor>
+        <actor>Libocpp</actor>
+        <actor>CSMS</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User swipes ID tag</step>
+        <step id="S2">Core authorizes the transaction</step>
+        <step id="S3">User plugs in cable</step>
+        <step id="S4">Libocpp triggers on_transaction_started()</step>
+        <step id="S5">Libocpp sends TransactionEventRequest::Started to CSMS</step>
+        <step id="S6">Libocpp inserts transaction details into Database</step>
+    </mainSequence>
+</useCase>

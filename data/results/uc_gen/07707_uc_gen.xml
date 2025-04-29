@@ -1,0 +1,65 @@
+<useCase id="UC1">
+    <name>Payment Initiation with Embedded approach explicit authorisation mode</name>
+    <actors>
+        <actor>PSU</actor>
+        <actor>TPP</actor>
+        <actor>XS2A</actor>
+        <actor>CMS</actor>
+        <actor>SPI</actor>
+        <actor>ASPSP</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">PSU initiates payment</step>
+        <step id="S2">TPP initiates payment via XS2A</step>
+        <step id="S3">XS2A saves payment</step>
+        <step id="S4">XS2A responds to TPP with payment initiation response</step>
+        <step id="S5">TPP starts authorization process</step>
+        <step id="S6">XS2A starts authorization request to ASPSP</step>
+        <step id="S7">ASPSP responds to XS2A with authorization details</step>
+        <step id="S8">XS2A saves authorization details</step>
+        <step id="S9">XS2A responds to TPP with start authorization response</step>
+        <step id="S10">TPP requests PSU for user-id and password</step>
+        <step id="S11">PSU provides user-id and password to TPP</step>
+        <step id="S12">TPP updates PSU data with authentication details via XS2A</step>
+        <step id="S13">XS2A calls SPI for payment authorization</step>
+        <step id="S14">SPI communicates with ASPSP for authorization</step>
+        <step id="S15">ASPSP responds to SPI with authorization status</step>
+        <step id="S16">SPI responds to XS2A with authorization result</step>
+        <step id="S17">XS2A updates authorization status in CMS</step>
+        <step id="S18">TPP requests PSU to select SCA method</step>
+        <step id="S19">PSU selects SCA method and informs TPP</step>
+        <step id="S20">TPP updates PSU authentication method via XS2A</step>
+        <step id="S21">XS2A calls SPI to select SCA method</step>
+        <step id="S22">SPI communicates with ASPSP for SCA method selection</step>
+        <step id="S23">ASPSP provides SCA authentication data</step>
+        <step id="S24">SPI responds to XS2A with SCA method selection result</step>
+        <step id="S25">XS2A updates SCA method selection status in CMS</step>
+        <step id="S26">PSU provides authentication data to TPP</step>
+        <step id="S27">TPP authorizes the transaction via XS2A</step>
+        <step id="S28">XS2A executes the payment via SPI</step>
+        <step id="S29">SPI communicates with ASPSP for payment authorization</step>
+        <step id="S30">ASPSP responds to SPI with payment authorization status</step>
+        <step id="S31">SPI responds to XS2A with payment execution result</step>
+        <step id="S32">XS2A updates transaction status in CMS</step>
+        <step id="S33">TPP informs PSU about payment authorization</step>
+        <step id="S34">TPP checks payment status via XS2A</step>
+        <step id="S35">XS2A retrieves payment status from SPI</step>
+        <step id="S36">SPI communicates with ASPSP to get payment status</step>
+        <step id="S37">ASPSP responds to SPI with transaction status</step>
+        <step id="S38">SPI responds to XS2A with transaction status</step>
+        <step id="S39">XS2A updates transaction status in CMS</step>
+        <step id="S40">TPP retrieves payment details via XS2A</step>
+        <step id="S41">XS2A retrieves payment details from SPI</step>
+        <step id="S42">SPI communicates with ASPSP to get payment details</step>
+        <step id="S43">ASPSP responds to SPI with payment details</step>
+        <step id="S44">SPI responds to XS2A with payment details</step>
+        <step id="S45">XS2A updates payment details in CMS</step>
+        <step id="S46">TPP retrieves authorization status via XS2A</step>
+        <step id="S47">XS2A retrieves authorization status from CMS</step>
+        <step id="S48">XS2A communicates with SPI to get SCA status</step>
+        <step id="S49">SPI communicates with ASPSP to get SCA status</step>
+        <step id="S50">ASPSP responds to SPI with SCA status</step>
+        <step id="S51">SPI responds to XS2A with SCA status</step>
+        <step id="S52">XS2A updates authorization status in CMS</step>
+    </mainSequence>
+</useCase>

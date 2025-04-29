@@ -1,0 +1,21 @@
+<useCase id="UC1">
+    <name>Reminder to Return Book</name>
+    <actors>
+        <actor>Reader</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Send reminder to return book (1 day before due date) to Reader</step>
+        <step id="S2">If overdue, send immediate reminder to return book to Reader</step>
+        <step id="S3">Reader puts book for scanning or enters book code</step>
+        <step id="S4">System checks book code in Book Database</step>
+        <step id="S5">If returned on time, display "Book returned successfully" to Reader</step>
+        <step id="S6">If returned late, display number of days overdue and penalty amount to Reader</step>
+        <step id="S7">Display Library's QR code for payment to Reader</step>
+        <step id="S8">Reader makes late-fee payment via Payment Gateway</step>
+        <step id="S9">Payment Gateway confirms payment completion to System</step>
+        <step id="S10">Display "Book return completed" message to Reader</step>
+        <step id="S11">Update borrowing history in Book Database (Book name, on-time/late status)</step>
+        <step id="S12">System confirms history update with Book Database</step>
+        <step id="S13">Switch to voting screen for Reader</step>
+    </mainSequence>
+</useCase>

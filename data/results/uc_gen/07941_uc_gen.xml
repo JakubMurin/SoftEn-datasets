@@ -1,0 +1,34 @@
+<useCase id="UC1">
+    <name>Actor Pickup Item</name>
+    <actors>
+        <actor>Controller</actor>
+        <actor>B</actor>
+        <actor>C</actor>
+        <actor>D</actor>
+        <actor>E</actor>
+        <actor>I</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Controller picks up an item from Actor B</step>
+        <step id="S2">Actor B informs the current state</step>
+        <step id="S3">Controller retrieves the location</step>
+        <step id="S4">ActionState removes the item</step>
+        <step id="S5">If the item is sticky</step>
+        <step id="S6">Actor B is notified of the sticky item removal</step>
+        <step id="S7">Controller indicates item is not sticky</step>
+        <step id="S8">If the item is not sticky</step>
+        <step id="S9">Item is returned</step>
+        <step id="S10">ActionState obtains the inventory</step>
+        <step id="S11">Inventory is updated with the new item</step>
+        <step id="S12">Inventory checks if it is full</step>
+        <step id="S13">If Inventory is full</step>
+        <step id="S14">Item is added back to the room</step>
+        <step id="S15">ActionState reports failure</step>
+        <step id="S16">Actor B reports failure</step>
+        <step id="S17">Otherwise, if Inventory is not full</step>
+        <step id="S18">ActionState triggers onPickup event on the Item</step>
+        <step id="S19">ActionState reports success</step>
+        <step id="S20">Success is confirmed</step>
+        <step id="S21">Success is confirmed</step>
+    </mainSequence>
+</useCase>

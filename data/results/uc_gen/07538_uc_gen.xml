@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>User Registration</name>
+    
+    <actors>
+        <actor>Utilisateur</actor>
+        <actor>Controleur</actor>
+        <actor>ServiceUtilisateur</actor>
+        <actor>Repo</actor>
+        <actor>ServiceEmail</actor>
+        <actor>Redirection</actor>
+    </actors>
+    
+    <mainSequence>
+        <step id="S1">Utilisateur accède à la page d'inscription</step>
+        <step id="S2">Controleur affiche le formulaire d'inscription</step>
+        <step id="S3">Utilisateur soumet les informations d'inscription</step>
+        <step id="S4">ServiceUtilisateur enregistre les informations de l'utilisateur</step>        
+        
+        <step id="S5">ServiceUtilisateur vérifie la disponibilité du nom d'utilisateur</step>    
+        <step id="S6">Repo confirme disponibilité du nom d'utilisateur</step>
+        <step id="S7">ServiceUtilisateur vérifie la disponibilité de l'email</step>
+        <step id="S8">Repo confirme disponibilité de l'e-mail</step>
+        <step id="S9">ServiceUtilisateur enregistre l'utilisateur dans la base de données</step>
+        <step id="S10">Repo confirme enregistrement de l'utilisateur</step>        
+        <step id="S11">ServiceEmail envoie email de confirmation</step>
+        <step id="S12">ServiceEmail confirme envoi de l'email</step>
+        
+        <step id="S13">Contrôleur confirme envoi de l'email</step>
+        <step id="S14">Redirection redirige vers la page de confirmation</step>
+        <step id="S15">Utilisateur affiche message de confirmation (vérifiez votre email)</step>
+        
+        <step id="S16">ServiceUtilisateur indique email invalide</step>
+        <step id="S17">Controleur affiche message d'erreur (email invalide)</step>
+        
+        <step id="S18">Repo confirme email déjà utilisé</step>
+        <step id="S19">ServiceUtilisateur indique erreur de disponibilité de l'email</step>
+        <step id="S20">Controleur affiche message d'erreur (email déjà utilisé)</step>
+        
+        <step id="S21">Repo indique nom d'utilisateur déjà utilisé</step>
+        <step id="S22">ServiceUtilisateur indique erreur de disponibilité du nom d'utilisateur</step>
+        <step id="S23">Controleur affiche message d'erreur (nom d'utilisateur déjà utilisé)</step>                
+    </mainSequence>
+</useCase>

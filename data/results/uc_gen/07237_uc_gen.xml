@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Create Nametags for Campers</name>
+    <description>Create nametags for all campers attending the camp</description>
+    <actors>
+        <actor>Administrator</actor>
+        <actor>Camp Management System</actor>
+        <actor>Camper Profile Database</actor>
+        <actor>Nametag Generator</actor>
+        <actor>Printer</actor>
+    </actors>
+    <preconditions>
+        <precondition>All camper profiles are stored in the database</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Nametags are successfully generated and printed</condition>
+    </successEndConditions>
+    <trigger>Administrator selects "Generate Nametags" in the system</trigger>
+    <mainSequence>
+        <step id="S1">Administrator selects "Generate Nametags"</step>
+        <step id="S2">Camp Management System retrieves all camper profiles from the database</step>
+        <step id="S3">Nametag Generator receives the camper details from the Camper Profile Database</step>
+        <step id="S4">Nametag Generator generates nametags for campers</step>
+        <step id="S5">Nametags are sent for printing</step>
+        <step id="S6">Printer acknowledges the printing task</step>
+        <step id="S7">Confirmation and status are communicated back to the Administrator</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,22 @@
+@startuml
+title Geofence Incursion Sequence Diagram
+
+RPIC -> "Unmanned Aerial Vehicle": DroneResponse `[APPROACHING_GEOFENCE]`
+"Unmanned Aerial Vehicle" -> "Monitoring System": Detect approaching geofence
+"Monitoring System" -> "Monitoring System": Raise alert
+"Monitoring System" -> "Monitoring System": Cancel current route
+"Monitoring System" -> UI: Display geofence warning
+"Monitoring System" -> "Unmanned Aerial Vehicle": Reroute or new command
+
+"Unmanned Aerial Vehicle" -> "Monitoring System": Detect `[GEOFENCE_BREACH]`
+"Monitoring System" -> "Unmanned Aerial Vehicle": Activate failsafe mechanism
+
+RPIC -> "Unmanned Aerial Vehicle": Visual line of sight
+"Unmanned Aerial Vehicle" -> "Unmanned Aerial Vehicle": Suspend mission or move other UAVs
+
+group RPIC decides to change task
+  "Monitoring System" -> RPIC: Current task cannot continue
+  RPIC -> "Unmanned Aerial Vehicle": Activate RTL for new UAV
+  "Unmanned Aerial Vehicle" -> "Unmanned Aerial Vehicle": Reassign task
+end
+@enduml

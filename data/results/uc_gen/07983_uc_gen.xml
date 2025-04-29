@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Manage POA Requests</name>
+    <description>As an Accredited Representative, I want to manage Power of Attorney (POA) requests.</description>
+    <actors>
+        <actor>Accredited Representative</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Accredited Representative is authenticated and authorized.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The POA requests are successfully managed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>There was an issue while managing the POA requests.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">View POA Requests List on the vets-website through GET request to the vets-api.</step>
+        <step id="S2">Retrieve and display the POA requests list from the VA.gov Database on the Frontend.</step>
+        <step id="S3">Select a specific POA request to view its details.</step>
+        <step id="S4">Retrieve and display the detailed information of the selected POA request on the Frontend.</step>
+        <step id="S5">Submit a decision (Accept/Decline) for the selected POA request.</step>
+        <step id="S6">Process the decision submission and update the status accordingly.</step>
+        <step id="S7">Display the success or error response message to the Accredited Representative.</step>
+    </mainSequence>
+</useCase>

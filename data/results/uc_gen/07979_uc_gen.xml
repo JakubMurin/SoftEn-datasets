@@ -1,0 +1,23 @@
+<useCase id="UC001">
+    <name>Access POA Request List View</name>
+    <description>Accredited representative accesses the list of VSO POA requests.</description>
+    <actors>
+        <actor>AccreditedRepresentative</actor>
+    </actors>
+    <preconditions>
+        <precondition>The accredited representative is logged in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of POA requests is successfully displayed.</condition>
+    </successEndConditions>
+    <trigger>Accessing the POA Request List View.</trigger>
+    <mainSequence>
+        <step id="S1">AccreditedRepresentative accesses the POA Request List View.</step>
+        <step id="S2">Frontend shows the list of VSO POA Requests.</step>
+        <step id="S3">Frontend sends a GET request to Backend for POA Requests.</step>
+        <step id="S4">Backend verifies AccreditedRepresentative's authentication.</step>
+        <step id="S5">Backend retrieves POA Request List data from VAGovDB.</step>
+        <step id="S6">Backend returns the POA Request List response to Frontend.</step>
+        <step id="S7">Frontend displays the POA Request List to AccreditedRepresentative.</step>
+    </mainSequence>
+</useCase>

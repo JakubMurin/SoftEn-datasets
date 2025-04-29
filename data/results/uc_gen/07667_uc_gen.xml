@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Manage Book Categories</name>
+    <actors>
+        <actor>Manager</actor>
+        <actor>UI Interface</actor>
+        <actor>Authorization</actor>
+        <actor>Book Category Management</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Manager selects "Manage Book Categories" option</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Book Categories are successfully managed</condition>
+    </successEndConditions>
+    <trigger>"Manage Book Categories" operation selected by Manager</trigger>
+    <mainSequence>
+        <step id="S1">Manager selects "Manage Book Categories"</step>
+        <step id="S2">UI Interface validates Manager Role</step>
+        <step id="S3">Authorization confirms Access Granted</step>
+        <step id="S4">UI Interface displays Book Categories</step>
+        <step id="S5">Manager selects categories to delete</step>
+        <step id="S6">UI Interface requests Category Deletion from Book Category Management</step>
+        <step id="S7">Book Category Management deletes Category Records in Database</step>
+        <step id="S8">Database confirms deletion</step>
+        <step id="S9">Book Category Management displays Success Message on UI Interface</step>
+        <step id="S10">UI Interface provides a success update to Manager</step>
+    </mainSequence>
+</useCase>

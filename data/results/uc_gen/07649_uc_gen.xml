@@ -1,0 +1,24 @@
+<useCase id="UC001">
+    <name>Criar novo edifício</name>
+    <description>O Gestor de campus deseja criar um novo edifício.</description>
+    <actors>
+        <actor>Gestor de campus</actor>
+    </actors>
+    <preconditions>
+        <precondition>O Gestor de campus está autenticado no sistema.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>O edifício é criado com sucesso e devolvido ao Gestor de campus.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>A requisição dos dados do edifício falhou e uma mensagem de erro é devolvida ao Gestor de campus.</condition>
+    </failureEndConditions>
+    <trigger>Requisição do Gestor de campus para criar um novo edifício.</trigger>
+    <mainSequence>
+        <step id="S1">O Gestor de campus solicita a criação de um novo edifício.</step>
+        <step id="S2">O robDroneGo (Container) recebe a solicitação e requisita os dados do edifício.</step>
+        <step id="S3">O Gestor de campus insere os dados do edifício.</step>
+        <step id="S4">Se a criação do edifício for bem-sucedida, o robDroneGo devolve o edifício criado.</step>
+        <step id="S5">Caso contrário, o robDroneGo devolve uma mensagem de erro.</step>
+    </mainSequence>
+</useCase>

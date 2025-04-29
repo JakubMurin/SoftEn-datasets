@@ -1,0 +1,32 @@
+@startuml
+title "Geofence Incursion Use Case"
+
+actor "RPIC" as RPIC
+participant "Unmanned Aerial Vehicle" as UAV
+participant "Air Traffic Control" as ATC
+participant "DroneResponse"
+participant "Runtime Monitoring System" as RMS
+
+RPIC -> UAV: Arming UAV
+note right: UAV armed and\n alert triggered
+
+activate RMS
+RPIC -> DroneResponse: Respond to\n [APPROACHING_GEOFENCE] alarm
+DroneResponse -> RMS: Detect approaching geofence
+RMS -> RMS: Raise alert
+RMS -> UAV: Cancel current flight route
+RMS -> RPIC: Display geofence warning in UI
+alt
+RPIC -> UAV: Reroute UAV
+else
+RPIC -> UAV: Issue new command
+end
+deactivate RMS
+
+RPIC -> UAV: Detect [GEOFENCE_BREACH]
+RPIC -> UAV: Activate failsafe mechanism (RTL/land)\n based on preconfiguration
+
+RPIC -> UAV: Maintain visual line of sight until completion
+RPIC -> UAV: Suspend or redirect other UAVs if needed
+
+@enduml

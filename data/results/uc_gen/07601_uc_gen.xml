@@ -1,0 +1,22 @@
+<useCase id="UC1">
+        <name>Initialisation d'un monstre</name>
+        <description>
+            Le système initialise un monstre dans un labyrinthe.
+        </description>
+        <actors>
+            <actor>User</actor>
+            <actor>Main</actor>
+            <actor>Labyrinthe</actor>
+            <actor>Monstre</actor>
+        </actors>
+        <mainSequence>
+            <step id="S1">User appelle la fonction main()</step>
+            
+            <step id="S2">Main construit un Labyrinthe en lisant le fichier "labySimple/laby0.txt" et appelle la méthode lireFichier()</step>
+            <step id="S3">Labyrinthe lit le fichier pour initialiser.</step>
+             <step id="S4">Labyrinthe crée un Monstre avec la position (x, y) et lui attribuer la méthode setPositionInitiale(x, y)</step>
+            
+<step id="S5">Labyrinthe retourne le Monstre créé à Main</step>
+            <step id="S6">Main reçoit le Labyrinthe et appelle la méthode afficherLabyrinthe()</step>
+        </mainSequence>
+    </useCase>

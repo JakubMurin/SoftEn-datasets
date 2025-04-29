@@ -1,0 +1,33 @@
+<useCase id="UC001">
+  <name>Delete Trick</name>
+  <description>Delete a trick from the system.</description>
+  <actors>
+    <actor>Utilisateur</actor>
+    <actor>Controleur</actor>
+    <actor>RepoTrick</actor>
+    <actor>Gestionnaire</actor>
+    <actor>Fichiers</actor>
+    <actor>Redirection</actor>
+  </actors>
+  <preconditions>
+    <precondition>Trick must exist in the system.</precondition>
+  </preconditions>
+  <successEndConditions>
+    <condition>Trick successfully deleted.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>Error occurred during trick deletion.</condition>
+  </failureEndConditions>
+  <trigger>User initiates trick deletion process.</trigger>
+  <mainSequence>
+    <step id="S1">User requests trick deletion.</step>
+    <step id="S2">Controller finds the trick.</step>
+    <step id="S3">Controller retrieves comments.</step>
+    <step id="S4">Controller verifies image.</step>
+    <step id="S5">Controller deletes comments.</step>
+    <step id="S6">Controller checks image presence.</step>
+    <step id="S7">File system deletes image.</step>
+    <step id="S8">Controller deletes trick.</step>
+    <step id="S9">Controller informs success.</step>
+  </mainSequence>
+</useCase>

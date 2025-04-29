@@ -1,0 +1,36 @@
+<useCase id="UC1">
+    <name>Retrieve User Subscription Configuration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Subscription</actor>
+        <actor>Mongo</actor>
+    </actors>
+    <preconditions>
+        <precondition>User sends a request to retrieve subscription configuration.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Subscription configuration successfully retrieved and returned to the user.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>JWT is absent or not valid, leading to appropriate HTTP status codes being returned.</condition>
+    </failureEndConditions>
+    <trigger>User requests subscription configuration.</trigger>
+    <mainSequence>
+        <step id="S1">User sends a GET request to /api/v1/subscriptions.</step>
+        <step id="S2">Gateway forwards the request to Keycloak for JWT verification.</step>
+        <step id="S3">Keycloak verifies the JWT and responds to the Gateway.</step>
+        <step id="S4">Gateway checks if the JWT is valid.</step>
+        <step id="S5">If the JWT is valid:</step>
+        <step id="S6">Gateway sends a GET request to Subscription service for subscription details.</step>
+        <step id="S7">Subscription service queries Mongo to get user subscription configuration by user ID.</step>
+        <step id="S8">Mongo responds with the subscription configuration.</step>
+        <step id="S9">Subscription service returns the subscription configuration to the Gateway.</step>
+        <step id="S10">Gateway forwards the subscription configuration to the User.</step>
+        <step id="S11">If the JWT is absent:</step>
+        <step id="S12">Gateway returns HTTP status 401 (Unauthorized) to the User.</step>
+        <step id="S13">If the JWT is not valid:</step>
+        <step id="S14">Gateway returns HTTP status 403 (Forbidden) to the User.</step>
+    </mainSequence>
+</useCase>

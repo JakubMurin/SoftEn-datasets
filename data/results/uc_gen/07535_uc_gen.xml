@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Update Active Record</name>
+    <actors>
+        <actor>Actor</actor>
+    </actors>
+    <preconditions>
+        <precondition>App sends update request to ApplicationService.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Active Record updated successfully.</condition>
+    </successEndConditions>
+    <trigger>Actor triggers update.</trigger>
+    <mainSequence>
+        <step id="S1">Actor sends update request to App.</step>
+        <step id="S2">App forwards update request to ApplicationService.</step>
+        <step id="S3">ApplicationService updates the Active Record.</step>
+        <step id="S4">Entity requests the update from DataBase.</step>
+        <step id="S5">DataBase sends primitives to Entity.</step>
+        <step id="S6">Entity updates itself from the primitives.</step>
+        <step id="E7">Entity updates and changes are persisted in Database.</step>
+        <step id="S8">Entity sends updated record to ApplicationService.</step>
+        <step id="S9">ApplicationService updates App with changes.</step>
+        <step id="S10">App confirms the update is complete to Actor.</step>
+    </mainSequence>
+</useCase>

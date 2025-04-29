@@ -1,0 +1,34 @@
+<useCase id="UC001">
+    <name>Manage User Profile</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserProfilePopup</actor>
+        <actor>Controller</actor>
+        <actor>Model</actor>
+        <actor>Database</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User opens User Profile Popup</step>
+        <step id="S2">UserProfilePopup requests User Profile</step>
+        <step id="S3">Controller dispatches Prisma action (findUnique)</step>
+        <step id="S4">Model queries user profile data</step>
+        <step id="S5">Database returns user profile data</step>
+        <step id="S6">Model returns user profile data</step>
+        <step id="S7">Controller returns user profile data</step>
+        <step id="S8">UserProfilePopup displays user profile data</step>
+        <step id="S9">User submits updated profile or new avatar image</step>
+        <step id="S10">UserProfilePopup sends updated profile or avatar image (data, file)</step>
+        <step id="S11">Controller dispatches Prisma action (update or upload)</step>
+        <step id="S12">Model updates user profile data or stores avatar image</step>
+        <step id="S13">Database confirms update or upload</step>
+        <step id="S14">Model returns updated profile data or avatar image URL</step>
+        <step id="S15">Controller confirms update or returns avatar image URL</step>
+        <step id="S16">UserProfilePopup displays success message or new avatar image</step>
+    </mainSequence>
+    <errorSteps>
+        <esteps id="E1" start="S9">
+            <description>User Profile Popup displays error message</description>
+            <step id="E1S1">Display error message</step>
+        </esteps>
+    </errorSteps>
+</useCase>

@@ -1,0 +1,33 @@
+<useCase id="UC001">
+    <name>Delete Account</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+    </preconditions>
+    <trigger>User clicks delete account</trigger>
+    <mainSequence>
+        <step id="S1">User clicks delete account</step>
+        <step id="S2">Frontend activates</step>
+        <step id="S3">Frontend calls AuthService to get user details</step>
+        <step id="S4">AuthService retrieves user details</step>
+        <step id="S5">Frontend calls AuthService to delete account</step>
+        <step id="S6">AuthInterceptor prepares HTTP DELETE request</step>
+        <step id="S7">HttpClient forwards request with Authorization header</step>
+        <step id="S8">Controller deletes account</step>
+        <step id="S9">IUserAppService deletes user account</step>
+        <step id="S10">UserAppService deletes user account</step>
+        <step id="S11">UserManager finds user by email</step>
+        <step id="S12">UserManager deletes user from database</step>
+        <step id="S13">UserAppService processes deletion result</step>
+        <step id="S14">IUserAppService receives deletion result</step>
+        <step id="S15">Controller receives deletion result</step>
+        <step id="S16">HttpClient receives deletion result</step>
+        <step id="S17">AuthService adds success message</step>
+        <step id="S18">MessageService displays success message</step>
+        <step id="S19">AuthService logs out user</step>
+        <step id="S20">AuthService clears data</step>
+        <step id="S21">AuthService redirects to login page</step>
+    </mainSequence>
+</useCase>

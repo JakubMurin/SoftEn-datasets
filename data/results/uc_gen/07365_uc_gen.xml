@@ -1,0 +1,29 @@
+<useCase id="UC001">
+    <name>Upload Video</name>
+    <description>Upload a video to the system.</description>
+    <actors>
+        <actor>REST API Client</actor>
+        <actor>API Gateway (Video Service)</actor>
+        <actor>Asynchronous Download Lambda</actor>
+        <actor>DynamoDB (Video Metadata)</actor>
+        <actor>S3 (Video Storage)</actor>
+        <actor>External Video Hosting</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client has a valid video file URL.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Video is successfully uploaded and stored.</condition>
+    </successEndConditions>
+    <trigger>Client sends a POST request to API Gateway with video URL.</trigger>
+    <mainSequence>
+        <step id="S1">Client sends a POST request to API Gateway containing the video URL.</step>
+        <step id="S2">API Gateway fetches video information from External Video Hosting.</step>
+        <step id="S3">API Gateway stores video information in DynamoDB and returns a UUID.</step>
+        <step id="S4">API Gateway invokes the Asynchronous Download Lambda with video payload and UUID.</step>
+        <step id="S5">Asynchronous Download Lambda updates video status to 'downloading' in DynamoDB.</step>
+        <step id="S6">Asynchronous Download Lambda downloads video file from External Video Hosting.</step>
+        <step id="S7">Asynchronous Download Lambda uploads video file to S3.</step>
+        <step id="S8">Asynchronous Download Lambda updates video status to 'downloaded' in DynamoDB.</step>
+    </mainSequence>
+</useCase>

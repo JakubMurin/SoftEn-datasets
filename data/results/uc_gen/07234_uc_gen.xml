@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>Enable Step Counter Feature</name>
+    <actors>
+        <actor>Caregiver</actor>
+        <actor>User</actor>
+        <actor>ALFRED Device</actor>
+        <actor>ALFRED Software</actor>
+        <actor>Health Monitoring Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>Caregiver requests to enable Step Counter feature for User.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Step Counter feature is activated successfully.</condition>
+    </successEndConditions>
+    <trigger>User enables Step Counter.</trigger>
+    <mainSequence>
+        <step id="S1">Caregiver requests ALFRED Device to enable Step Counter feature for User.</step>
+        <step id="S2">ALFRED Device activates Step Counter.</step>
+        <step id="S3">ALFRED Device informs User that Step Counter feature is available.</step>
+        <step id="S4">User enables Step Counter.</step>
+        <step id="S5">ALFRED Device initiates Step Counting.</step>
+        <step id="S6">User walks, ALFRED Device counts steps.</step>
+        <step id="S7">ALFRED Device sends daily step data to Health Monitoring Service.</step>
+        <step id="S8">Health Monitoring Service acknowledges receipt of daily step data.</step>
+        <step id="S9">Caregiver requests Step Count Data from ALFRED Device.</step>
+        <step id="S10">ALFRED Device retrieves Step Data from ALFRED Software.</step>
+        <step id="S11">ALFRED Software requests User's Step Data from Health Monitoring Service.</step>
+        <step id="S12">Health Monitoring Service sends Step Data to ALFRED Software.</step>
+        <step id="S13">ALFRED Software displays Step Data.</step>
+        <step id="S14">ALFRED Device shows Step Data to Caregiver.</step>
+    </mainSequence>
+</useCase>

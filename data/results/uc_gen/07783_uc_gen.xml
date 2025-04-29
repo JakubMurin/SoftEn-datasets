@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Initialize cloud connection info</name>
+    <trigger>User initiates the process to initialize cloud connection information</trigger>
+    <mainSequence>
+        <step id="S1">User sends a POST request to Spider to add a new driver {name, csp, driver}</step>
+        <step id="S2">Spider receives the request and interacts with the Spider database to add the driver</step>
+        <step id="S3">Spider responds to the User with the added driver information</step>
+        
+        <step id="S4">User sends a POST request to Spider to add a new region {name, csp, region, zone}</step>
+        <step id="S5">Spider receives the request and interacts with the Spider database to add the region</step>
+        <step id="S6">Spider responds to the User with the added region information</step>
+        
+        <step id="S7">User sends a POST request to Spider to add a new credential {name, csp, credentials}</step>
+        <step id="S8">Spider receives the request and interacts with the Spider database to add the credential</step>
+        <step id="S9">Spider responds to the User with the added credential information</step>
+        
+        <step id="S10">User sends a POST request to Spider to add a new connection config {name, csp, driver, credential, region}</step>
+        <step id="S11">Spider receives the request and interacts with the Spider database to add the connection config</step>
+        <step id="S12">Spider responds to the User with the added connection config information</step>
+        
+        <step id="S13">User sends a POST request to Tumblebug to add a new namespace {name}</step>
+        <step id="S14">Tumblebug receives the request and interacts with the Tumblebug database to add the namespace</step>
+        <step id="S15">Tumblebug responds to the User with the added namespace information</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>View User Subscription</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Gateway</actor>
+        <actor>Keycloak</actor>
+        <actor>Subscription Service</actor>
+        <actor>Mongo Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authenticated and authorized</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>User subscription config successfully retrieved</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>JWT is absent or not valid</condition>
+    </failureEndConditions>
+    <trigger>GET /api/v1/subscriptions</trigger>
+    <mainSequence>
+        <step id="S1">User sends a request to view subscriptions</step>
+        <step id="S2">Gateway forwards the request to Keycloak for JWT verification</step>
+        <step id="S3">Keycloak verifies the JWT</step>
+        <step id="S4">Gateway receives JWT verification result</step>
+        <step id="S5">Gateway checks if JWT is valid</step>
+        <step id="S6">Gateway requests subscription data from Subscription Service</step>
+        <step id="S7">Subscription Service retrieves user subscription config from Mongo Database</step>
+        <step id="S8">Mongo Database sends subscription config to Subscription Service</step>
+        <step id="S9">Subscription Service sends subscription config to Gateway</step>
+        <step id="S10">Gateway sends subscription config to User</step>
+    </mainSequence>
+</useCase>

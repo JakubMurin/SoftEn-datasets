@@ -1,0 +1,43 @@
+<useCase id="GaranteedIdempotencyUsingCorrelationIds">
+	<name>Garanteed Idempotency Using CorrelationIds</name>
+	<actors>
+		<actor>Client-Service</actor>
+		<actor>Client Persistence</actor>
+		<actor>Callback</actor>
+		<actor>Service</actor>
+		<actor>Service Persistence</actor>
+	</actors>
+	<preconditions>
+		<precondition>The client-service must create and store a correlationId.</precondition>
+	</preconditions>
+	<trigger>Call to the service with the correlationId.</trigger>
+	<mainSequence>
+		<step id="S1">Client-Service creates and stores the correlationId</step>
+		<step id="S2">Client-Service calls the service with the correlationId</step>
+		<step id="S3">Service finds the correlationId in the service persistence</step>
+		<step id="S4">Service checks if the correlationId exists</step>
+		<step id="S5">Service responds with either already accepted or not found</step>
+		<step id="S6">Service accepts the request</step>
+		<step id="S7">Service responds asynchronously with the answer</step>
+		<step id="S8">Callback finds the correlationId in client persistence</step>
+		<step id="S9">Callback sets the answer state to answered if needed</step>
+		<step id="S10">Callback marks the task as done</step>
+		<step id="S11">Callback responds with unknown correlationId if appropriate</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S5">
+			<step id="A1S1">Service stores the correlationId</step>
+			<step id="A1S2">Service handles the service request</step>
+		</asteps>
+		<asteps id="A2" start="S9" continue="S8">
+			<step id="A2S1">Callback checkpoints if the state was answered</step>
+			<step id="A2S2">Callback proceeds to mark as done</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="S11">
+			<description>Respond with unknown correlationId.</description>
+			<step id="E1S1">No action is necessary.</step>
+		</esteps>
+	</errorSteps>
+</useCase>

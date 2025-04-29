@@ -1,0 +1,32 @@
+<useCase id="UC1">
+    <name>Communication Flow between Consumer and Server in Messaging System</name>
+    <description>Ensure smooth communication between a Consumer and its Server in the messaging system.</description>
+    <actors>
+        <actor>Consumer</actor>
+        <actor>Consumer Server</actor>
+    </actors>
+    <preconditions>
+        <precondition>Communication channel should be established between Consumer and Consumer Server.</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Consumer establishes connection with the Consumer Server.</step>
+        <step id="S2">Consumer creates a new Consumer entity in the messaging system.</step>
+        <step id="S3">Consumer logs in using the provided username.</step>
+        <step id="S4">Acknowledgment of successful login is received by the Consumer.</step>
+        <step id="S5">Consumer subscribes to receive messages.</step>
+        <step id="S6">Producer is notified about the new subscriber.</step>
+        <step id="S7">If the topic does not yet exist, a new topic is created.</step>
+        <step id="S8">Subscriber (Consumer) is added to the subscriber list for the respective topic.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5" continue="S6">
+            <step id="A1S1">Error condition: Connection/authentication failure during subscription process.</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Unsubscribe operation.</description>
+            <step id="E1S1">Subscriber is removed from the topic's subscriber list upon unsubscribing.</step>
+        </esteps>
+    </errorSteps>
+</useCase>

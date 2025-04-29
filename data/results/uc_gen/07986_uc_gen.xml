@@ -1,0 +1,22 @@
+<useCase id="EditSaveTask">
+	<name>User Edits and Saves a Task</name>
+	<trigger>User clicks on "Edit Task" and submits "Save Task" form</trigger>
+	<mainSequence>
+		<step id="S1">User initiates editing of a task</step>
+		<step id="S2">System fetches task data based on task ID</step>
+		<step id="S3">User populates the task edit modal fields</step>
+		<step id="S4">User submits the task edit form to save</step>
+		<step id="S5">System processes the task data submission</step>
+		<step id="S6">Hierarchy constraints of the task data are validated</step>
+		<step id="S7">System checks for circular reference in task hierarchy</step>
+		<step id="S8">Task is added or updated in the database</step>
+		<step id="S9">Save event is logged for auditing purposes</step>
+	</mainSequence>
+	<errorSteps>
+		<esteps id="E1" start="S5">
+			<description>Handle error if response status is not 200</description>
+			<step id="E1S1">Rollback any changes in Database</step>
+			<step id="E1S2">Appropriate error message is returned to user</step>
+		</esteps>
+	</errorSteps>
+</useCase>

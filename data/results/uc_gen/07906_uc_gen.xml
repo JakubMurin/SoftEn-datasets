@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Add a new other service</name>
+    <actors>
+        <actor>Admin</actor>
+    </actors>
+    <preconditions>
+        <precondition>Admin is logged in</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Admin requests to add a new other service through the UI</step>
+        <step id="S2">UI displays the form to add a new service to the Admin</step>
+        <step id="S3">Admin submits the new service data through the UI</step>
+        <step id="S4">UI sends the new service data to the Router</step>
+        <step id="S5">Router forwards the request to the Controller</step>
+        <step id="S6">Controller adds the new service data to the Repository</step>
+        <step id="S7">Repository saves the new service data through the OtherServiceModel into the Database</step>
+        <step id="S8">OtherServiceModel creates a new service instance and inserts it into the database</step>
+        <step id="S9">Database successfully inserts the new service</step>
+        <step id="S10">Repository confirms the addition of the new service to the Controller</step>
+        <step id="S11">Controller sends a success response to the Router</step>
+        <step id="S12">Router delivers a successful response to the UI</step>
+        <step id="S13">UI displays a success message to the Admin</step>
+    </mainSequence>
+</useCase>

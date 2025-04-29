@@ -1,0 +1,33 @@
+<useCase id="UC1">
+    <name>View Monthly Reader Lending Information</name>
+    <description>As a Librarian, I want to view the monthly lending information of all readers.</description>
+    <actors>
+        <actor>Librarian</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Librarian is authenticated and has the necessary permissions.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Librarian successfully views the monthly lending information of all readers.</condition>
+    </successEndConditions>
+    <trigger>Librarian initiates the request to view monthly reader lending information.</trigger>
+    <mainSequence>
+        <step id="S1">Librarian sends a GET request to the LendingController for /api/lendings/monthly-lending.</step>
+        <step id="S2">LendingController activates.</step>
+        <step id="S3">LendingController calls ReaderService's getAllReaders method.</step>
+        <step id="S4">ReaderService activates.</step>
+        <step id="S5">ReaderService fetches all readers from ReaderRepository.</step>
+        <step id="S6">ReaderRepository activates and returns the list of readers to ReaderService.</step>
+        <step id="S7">ReaderService iterates through each reader.</step>
+        <step id="S8">For each reader, ReaderService retrieves the monthly lending information from ReaderRepository.</step>
+        <step id="S9">ReaderRepository activates and returns the lending count to ReaderService.</step>
+        <step id="S10">ReaderService updates the lending count for the current reader.</step>
+        <step id="S11">ReaderService continues until all readers are processed.</step>
+        <step id="S12">ReaderService deactivates.</step>
+        <step id="S13">LendingController calls ReaderLentsViewMapper to generate ReaderLentsView.</step>
+        <step id="S14">ReaderLentsViewMapper activates and returns the views to LendingController.</step>
+        <step id="S15">ReaderLentsViewMapper deactivates.</step>
+        <step id="S16">LendingController responds to Librarian with HTTP 200 OK and the ReaderLentsView data.</step>
+        <step id="S17">LendingController deactivates.</step>
+    </mainSequence>
+</useCase>

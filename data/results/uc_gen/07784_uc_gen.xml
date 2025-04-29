@@ -1,0 +1,35 @@
+<useCase id="UC001">
+    <name>Install Component</name>
+    <actors>
+        <actor>Operations</actor>
+        <actor>Component</actor>
+        <actor>ComponentOperator</actor>
+        <actor>PublishedNotification</actor>
+        <actor>EventPublishingEnablementOperator</actor>
+        <actor>Event Manager (TMFC019)</actor>
+    </actors>
+    <preconditions>
+        <precondition>An installation process is initiated for a component.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The component is successfully installed, and event publishing URL is configured.</condition>
+    </successEndConditions>
+    <trigger>Component is required to be installed.</trigger>
+    <mainSequence>
+        <step id="S1">Operations installs Component.</step>
+        <step id="S2">ComponentOperator is triggered on.create event.</step>
+        <step id="S3">For each publishedNotification:</step>
+        <step id="S4">ComponentOperator creates separate publishedNotification resource.</step>
+        <step id="S5">PublishedNotification is created for each published notification.</step>
+        <step id="S6">EventPublishingEnablementOperator is triggered on.create event.</step>
+        <step id="S7">EventPublishingEnablementOperator searches for a matching topic.</step>
+        <step id="S8">A separate topic can exist or not based on previous configuration.</step>
+        <step id="S9">In case the topic exists, Topic URL is provided by EventPublishingEnablementOperator to TMFC019.</step>
+        <step id="S10">If the topic does not exist, EventPublishingEnablementOperator continues with the approval flow.</step>
+        <step id="S11">EventPublishingEnablementOperator configures Topic Event Hub.</step>
+        <step id="S12">After configuration, Topic URL is provided to the Component.</step>
+        <step id="S13">Component configures event publishing URL based on EventPublishingEnablementOperator.</step>
+        <step id="S14">PublishedNotification is updated.</step>
+        <step id="S15">ComponentOperator continues with on.update event for the Component.</step>
+    </mainSequence>
+</useCase>

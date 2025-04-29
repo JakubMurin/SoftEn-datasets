@@ -1,0 +1,35 @@
+<useCase id="UC1">
+    <name>Run Transaction Endpoint</name>
+    <actors>
+        <actor>Caller</actor>
+        <actor>PluginLedgerConnectorPolkadot</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Caller initiates the transact(RunTransactionRequest) method.</step>
+        <step id="S2">PluginLedgerConnectorPolkadot receives the transact(RunTransactionRequest) request.</step>
+        <step id="S3">PluginLedgerConnectorPolkadot checks if web3SigningCredential == CACTUSKEYCHAINREF.</step>
+        <step id="S4">PluginLedgerConnectorPolkadot executes transactCactusKeychainRef(RunTransactionRequest).</step>
+        <step id="S5">PluginLedgerConnectorPolkadot returns RunTransactionResponse.</step>
+        <step id="S6">PluginLedgerConnectorPolkadot sends RunTransactionResponse to the Caller.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3" continue="S3">
+            <step id="A1S1">PluginLedgerConnectorPolkadot checks if web3SigningCredential == MNEMONICSTRING.</step>
+            <step id="A1S2">PluginLedgerConnectorPolkadot executes transactMnemonicString(RunTransactionRequest).</step>
+            <step id="A1S3">PluginLedgerConnectorPolkadot returns RunTransactionResponse.</step>
+            <step id="A1S4">PluginLedgerConnectorPolkadot sends RunTransactionResponse to the Caller.</step>
+        </asteps>
+        <asteps id="A2" start="S3" continue="S4">
+            <step id="A2S1">PluginLedgerConnectorPolkadot checks if web3SigningCredential == NONE.</step>
+            <step id="A2S2">PluginLedgerConnectorPolkadot executes transactSigned(RunTransactionRequest).</step>
+            <step id="A2S3">PluginLedgerConnectorPolkadot returns RunTransactionResponse.</step>
+            <step id="A2S4">PluginLedgerConnectorPolkadot sends RunTransactionResponse to the Caller.</step>
+        </asteps>
+        <asteps id="A3" start="S3" continue="S5">
+            <step id="A3S1">PluginLedgerConnectorPolkadot throws Error: Expected pre-signed raw transaction.</step>
+        </asteps>
+        <asteps id="A4" start="S3" continue="S6">
+            <step id="A4S1">PluginLedgerConnectorPolkadot throws Error: Unrecognized Web3SigningCredentialType.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

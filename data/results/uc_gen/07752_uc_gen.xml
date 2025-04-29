@@ -1,0 +1,19 @@
+<useCase id="UC001">
+    <name>Retrieve Projects</name>
+    <actors>
+        <actor>Project Leader</actor>
+        <actor>System</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>Project Leader is authenticated</precondition>
+        <precondition>System is operational</precondition>
+    </preconditions>
+    <trigger>Project Leader requests to retrieve all projects by signId</trigger>
+    <mainSequence>
+        <step id="S1">Project Leader requests all projects by signId from System</step>
+        <step id="S2">System validates the signId of the Project Leader</step>
+        <step id="S3">System retrieves all projects associated with the signId from Database</step>
+        <step id="S4">System sends the list of ProjectResponseDto to Project Leader</step>
+    </mainSequence>
+</useCase>

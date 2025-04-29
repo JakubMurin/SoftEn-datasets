@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Display List of Customers</name>
+    <description>User opens the customers list page and requests all customers to be displayed.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User interface is accessible.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>List of customers is successfully displayed.</condition>
+    </successEndConditions>
+    <trigger>User requests all customers to be displayed.</trigger>
+    <mainSequence>
+        <step id="S1">User opens customers list page and sees loading message.</step>
+        <step id="S2">User requests all customers.</step>
+        <step id="S3">Router directs request to getAllCustomers() method in CustomersController.</step>
+        <step id="S4">Controller forwards request to Repository to retrieve all customers.</step>
+        <step id="S5">Repository fetches all customers from Database through CustomersModel.</step>
+        <step id="S6">Repository sends all customers data to Controller.</step>
+        <step id="S7">Controller responds with all customers data with 200 OK status.</step>
+        <step id="S8">Router sends all customers data with 200 OK status to User interface.</step>
+        <step id="S9">User interface displays the list of customers.</step>
+    </mainSequence>
+</useCase>

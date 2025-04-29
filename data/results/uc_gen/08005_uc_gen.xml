@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Access Repository Information</name>
+    <description>Depositor accesses repository information through the web interface.</description>
+    <actors>
+        <actor>Depositor</actor>
+    </actors>
+    <preconditions>
+        <precondition>Depositor is logged in and has access to the web interface.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Depositor successfully views accepted items and formats.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Depositor is unable to view accepted items and formats.</condition>
+    </failureEndConditions>
+    <trigger>Depositor initiates the action to access repository information.</trigger>
+    <mainSequence>
+        <step id="S1">Depositor accesses the repository information through the web interface.</step>
+        <step id="S2">Web interface requests accepted items and formats from EDRMS.</step>
+        <step id="S3">EDRMS retrieves item types and formats.</step>
+        <step id="S4">Format and Type Management retrieves types and recommended formats.</step>
+        <step id="S5">EDRMS displays the information to the web interface.</step>
+        <step id="S6">Web interface shows accepted item types and formats to the Depositor.</step>
+    </mainSequence>
+</useCase>

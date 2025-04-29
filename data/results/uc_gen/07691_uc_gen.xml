@@ -1,0 +1,27 @@
+<useCase id="UC001">
+    <name>Reconnect to Main Server</name>
+    <actors>
+        <actor>Client</actor>
+        <actor>Registry</actor>
+        <actor>Main Server</actor>
+        <actor>Client Handler</actor>
+        <actor>Main Controller</actor>
+        <actor>Available Games Message</actor>
+    </actors>
+    <preconditions>
+        <precondition>Client is disconnected from the Main Server</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Main Server is successfully reconnected to the Client</condition>
+    </successEndConditions>
+    <trigger>Client requests to reconnect to Main Server</trigger>
+    <mainSequence>
+        <step id="S1">Client sends a reconnect request</step>
+        <step id="S2">Registry looks up the Main Server</step>
+        <step id="S3">Registry provides the remotereference to the Main Server</step>
+        <step id="S4">Main Server receives the request and interacts with Client Handler</step>
+        <step id="S5">Main Controller is created for updating Available Games Message</step>
+        <step id="S6">Available Games Message is updated</step>
+        <step id="S7">Main Server pushes the update to the Client</step>
+    </mainSequence>
+</useCase>

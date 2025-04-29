@@ -1,0 +1,32 @@
+<useCase id="1">
+    <name>Booking Course</name>
+    <description>As a User, I want to book a course.</description>
+    <actors>
+        <actor>User</actor>
+        <actor>System</actor>
+        <actor>Database</actor>
+    </actors>
+    <preconditions>
+        <precondition>The user must select a course.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The reservation is successfully confirmed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Insufficient credits for reservation.</condition>
+    </failureEndConditions>
+    <trigger>User selects a course.</trigger>
+    <mainSequence>
+        <step id="S1">User selects a course.</step>
+        <step id="S2">System verifies subscription and credits requirements.</step>
+        <step id="S3">Database provides subscription and credit details.</step>
+        <step id="S4">System saves the reservation.</step>
+        <step id="S5">Database confirms the reservation.</step>
+        <step id="S6">System gives booking confirmation to the user.</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S4">
+            <step id="A1S1">System indicates credits are insufficient.</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

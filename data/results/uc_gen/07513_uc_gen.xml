@@ -1,0 +1,20 @@
+<useCase id="UC1">
+    <name>Complete ticket process</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User completes client service and ticket information</step>
+        <step id="S2">CMO review completed</step>
+        <step id="S3">Professional ticket gets CMO report</step>
+        <step id="S4">Professional ticket obtains category</step>
+        <step id="S5">Ticket Transitions sends message to User to select a category if Category is 0</step>
+        <step id="S6">Ticket Transitions sends message to User to enter report accuracy comments if Category is not 1 and Accuracy Comments are empty</step>
+        <step id="S7">Professional ticket calculates report quality</step>
+        <step id="S8">Ticket Transitions sends message to User to enter Report Quality Comments if Report quality is not 100 and no comments</step>
+        <step id="S9">Professional ticket retrieves additional fact findings from CMO Report</step>
+        <step id="S10">Ticket Transitions sets CMO user, report quality, and time</step>
+        <step id="S11">Client Rest Service saves completed ticket, Dicom Study, and Professional Ticket updates</step>
+        <step id="S12">Ticket Transitions generates PRCMO response letter and sends message to User</step>
+    </mainSequence>
+</useCase>

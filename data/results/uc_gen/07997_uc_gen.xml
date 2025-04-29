@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Custom Administrative Operation Execution</name>
+    <actors>
+        <actor>DatasetDeveloper</actor>
+        <actor>Dataset Management System</actor>
+        <actor>Dataset Type Interface</actor>
+        <actor>Specific Dataset Implementation</actor>
+        <actor>DataSetDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>Developer requests a Custom Operation (Compaction/Rebalance)</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">Developer requests Custom Operation (Compaction/Rebalance) from Dataset Management System</step>
+        <step id="S2">Dataset Management System determines Operation Support</step>
+        <step id="S3">Dataset Type Interface invokes Custom Operation</step>
+        <step id="S4">Specific Dataset Implementation validates Operation</step>
+        <step id="S5">Specific Dataset Implementation executes Operation on Dataset in DataSetDB</step>
+        <step id="S6">Operation success/failure status is returned from DataSetDB to Specific Dataset Implementation</step>
+        <step id="S7">Status is returned from Specific Dataset Implementation to Dataset Type Interface</step>
+        <step id="S8">Execution confirmation and status are sent from Dataset Type Interface to Dataset Management System</step>
+        <step id="S9">Operation Completion Notification is sent from Dataset Management System to Developer</step>
+    </mainSequence>
+</useCase>

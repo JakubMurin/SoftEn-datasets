@@ -1,0 +1,39 @@
+<useCase id="123">
+    <name>Actor Pickup Item</name>
+    <description>Actor picking up an item</description>
+    <actors>
+        <actor>Controller</actor>
+        <actor>B</actor>
+        <actor>C</actor>
+        <actor>D</actor>
+        <actor>E</actor>
+        <actor>I</actor>
+    </actors>
+    <preconditions>
+        <precondition>Actor must be able to interact with items</precondition>
+        <precondition>Actor must be within the same location as the item</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Item successfully added to inventory</condition>
+    </successEndConditions>
+    <trigger>pickUp(item)</trigger>
+    <mainSequence>
+        <step id="S1">Actor picks up the item</step>
+        <step id="S2">Actor retrieves the current location</step>
+        <step id="S3">Actor removes item from the room</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Actor checks if the item is sticky</step>
+            <step id="A1S2">Actor gets inventory</step>
+            <step id="A1S3">Actor adds item to inventory</step>
+            <step id="A1S4">Actor checks if inventory is full</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="A1S1">
+            <description>Actor fails to add item to inventory</description>
+            <step id="E1S1">Actor tries to add item back to room</step>
+        </esteps>
+    </errorSteps>
+</useCase>

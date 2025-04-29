@@ -1,0 +1,25 @@
+<useCase id="UC1">
+    <name>Accessing Information from CDN</name>
+    <description>Users are able to get information from CDN through a series of requests.</description>
+    <actors>
+        <actor>Attacker</actor>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>CDN exists and is accessible.</precondition>
+        <precondition>Backend server is connected to Proxy server.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Attacker successfully obtains response from CDN upon POST request.</condition>
+        <condition>User successfully receives response from CDN upon GET request.</condition>
+    </successEndConditions>
+    <trigger>POST request /foo sent to CDN by the Attacker.</trigger>
+    <mainSequence>
+        <step id="S1">Attacker sends a POST request /foo to CDN.</step>
+        <step id="S2">CDN forwards the POST request /foo to Proxy.</step>
+        <step id="S3">Proxy forwards the POST request /foo to Backend.</step>
+        <step id="S4">Backend processes the POST request /foo and responds with status 200 to Proxy.</step>
+        <step id="S5">Proxy forwards the response with status 200 to CDN.</step>
+        <step id="S6">CDN responds with status 200 to the Attacker.</step>
+    </mainSequence>
+</useCase>

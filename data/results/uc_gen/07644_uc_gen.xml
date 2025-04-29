@@ -1,0 +1,31 @@
+<useCase id="UC001">
+  <name>Validate Access to Endpoint</name>
+  <description>Validate if a client has permission to access the specified endpoint</description>
+  <actors>
+    <actor>Client</actor>
+    <actor>Servlet</actor>
+    <actor>ContainerRequestFilter</actor>
+    <actor>AuthorizationCheck</actor>
+    <actor>JWT Validator</actor>
+    <actor>Database</actor>
+    <actor>Endpoint</actor>
+  </actors>
+  
+  <preconditions>
+    <precondition>The client launches a request to access an endpoint</precondition>
+  </preconditions>
+  
+  <successEndConditions>
+    <condition>The client is successfully granted access to the endpoint</condition>
+  </successEndConditions>
+  
+  <failureEndConditions>
+    <condition>The client is denied access to the endpoint</condition>
+  </failureEndConditions>
+  
+  <mainSequence>
+    <step id="S1">Pre-process request by Servlet</step>
+    <step id="S2">Perform endpoint operations in Endpoint.</step>
+    <step id="S3">Send response to the client through Servlet</step>
+  </mainSequence>  
+</useCase>

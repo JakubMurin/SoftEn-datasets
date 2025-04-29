@@ -1,0 +1,24 @@
+<useCase id="UC1">
+    <name>Verify Booking By OTP</name>
+    <actors>
+        <actor>Customer</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">Customer Requests to verify booking by OTP through UI</step>
+        <step id="S2">UI Sends GET request /bookings/{bookingId}/verify-otp to BookingRouter</step>
+        <step id="S3">Router invokes method verifyBookingOTP(bookingId, otp) on BookingController</step>
+        <step id="S4">Controller fetches booking details using getBookingDetails(bookingId) from Repository</step>
+        <step id="S5">Repository queries and retrieves booking data by ID and sends it back</step>
+        <step id="S6">Controller verifies the OTP using the OTPService and decides</step>
+        <step id="S7">If OTP is valid, updates booking status to "verified" in DB</step>
+        <step id="S8">If OTP is invalid, delivers error response to UI</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S7" continue="S9">
+            <step id="S9">OTP is valid: Successfully updates booking status to "verified" in DB, 200 OK response sent</step>
+        </asteps>
+        <asteps id="A2" start="S8">
+            <step id="S10">OTP is invalid: Error response is delivered to UI with status 400 and Display</step>
+        </asteps>
+    </alternativeSteps>
+</useCase>

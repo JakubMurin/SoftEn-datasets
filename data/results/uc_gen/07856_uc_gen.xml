@@ -1,0 +1,23 @@
+<useCase id="UC1">
+    <name>Access Post Detail</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Router</actor>
+        <actor>View</actor>
+        <actor>Model</actor>
+        <actor>DB</actor>
+        <actor>Comment</actor>
+        <actor>Form</actor>
+        <actor>Template</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User requests /blog/ endpoint</step>
+        <step id="S2">Router routes request to post_detail View</step>
+        <step id="S3">View retrieves requested Post</step>
+        <step id="S4">Model retrieves Post from DB</step>
+        <step id="S5">View retrieves comments for the Post</step>
+        <step id="S6">View initializes the CommentForm</step>
+        <step id="S7">View sends data to Template to render</step>
+        <step id="S8">Template renders /blog/post/list.html</step>
+    </mainSequence>
+</useCase>

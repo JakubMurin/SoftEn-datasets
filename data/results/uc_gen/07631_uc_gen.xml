@@ -1,0 +1,12 @@
+<useCase id="UC003">
+    <name>DevSecOps Process for Build</name>
+    <actors>
+        <actor>DevSecOpsManager</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">DevSecOpsManager creates a new build in the Deployment Service Orchestrator by specifying the name as "hello" and file as "./templates/build.yml"</step>
+        <step id="S2">Provisioner service receives the request from DevSecOpsManager to create new build</step>
+        <step id="S3">The provisioner creates the build with provided specifications</step>
+        <step id="S4">The build creation operation is confirmed and acknowledged by the EventBus</step>
+    </mainSequence>
+</useCase>

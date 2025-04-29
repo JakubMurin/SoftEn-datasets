@@ -1,0 +1,27 @@
+<useCase id="UC1">
+    <name>View Customers List</name>
+    <description>As a User, I want to view a list of all customers in the system.</description>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has access to the system.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The list of customers is displayed successfully.</condition>
+    </successEndConditions>
+    <trigger>User opens the customers list page.</trigger>
+    <mainSequence>
+        <step id="S1">User opens the customers list page.</step>
+        <step id="S2">User sees the loading message displayed on the interface.</step>
+        <step id="S3">User requests to view all customers.</step>
+        <step id="S4">The Router receives a GET request for all customers.</step>
+        <step id="S5">The Controller calls the getAllCustomers() method.</step>
+        <step id="S6">The Repository finds all customers.</step>
+        <step id="S7">The Model fetches all customers from the database.</step>
+        <step id="S8">The list of customers is returned to the Controller.</step>
+        <step id="S9">The Controller responds with all customers to the Router.</step>
+        <step id="S10">The Router sends a 200 OK response with all customers to the UI.</step>
+        <step id="S11">The UI displays the list of customers to the User.</step>
+    </mainSequence>
+</useCase>

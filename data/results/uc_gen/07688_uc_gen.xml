@@ -1,0 +1,29 @@
+<useCase id="UC1">
+    <name>Submit Session Form</name>
+    <description>As an AuthenticatedUser, I want to be able to navigate to a page where I can fill in details to submit a session for review.</description>
+    <actors>
+        <actor>AuthenticatedUser</actor>
+        <actor>Web Interface</actor>
+        <actor>Session Database</actor>
+        <actor>Session Review System</actor>
+        <actor>Notification Service</actor>
+    </actors>
+    <preconditions>
+        <precondition>The AuthenticatedUser is logged into the system</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The session submission form is successfully completed and submitted</condition>
+    </successEndConditions>
+    <trigger>User initiates the process to navigate to 'Submit Session'</trigger>
+    <mainSequence>
+        <step id="S1">User navigates to 'Submit Session' page</step>
+        <step id="S2">Web Interface displays 'Session Submission Form' to the user</step>
+        <step id="S3">User fills in and submits the session details</step>
+        <step id="S4">Web Interface saves the session details in the database</step>
+        <step id="S5">Session Database triggers the session review process in Session Review System</step>
+        <step id="S6">Session Review System sets the Session Status as Under Review in the database</step>
+        <step id="S7">Notification service triggers notification about the session submission</step>
+        <step id="S8">User receives an email notification about the session submission</step>
+        <step id="S9">User goes to check their email</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Activate Voice Plan</name>
+    <description>User activating their voice plan subscription</description>
+    <actors>
+        <actor>User</actor>
+        <actor>Application</actor>
+        <actor>Auto SDK Engine</actor>
+        <actor>Alexa</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged into the application</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Voice plan subscription activated successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failure in activating voice plan subscription</condition>
+    </failureEndConditions>
+    <trigger>User initiates activation of voice plan subscription</trigger>
+    <mainSequence>
+        <step id="S1">User clicks `Activate` button to begin voice plan activation</step>
+        <step id="S2">Application sends SendConnectivityEvent message to Auto SDK Engine with `ACTIVATE_VOICE_PLAN` event</step>
+        <step id="S3">Auto SDK Engine sends InitiateDataPlanSubscription event to Alexa</step>
+        <step id="S4">Auto SDK Engine receives SendConnectivityEventReply</step>
+    </mainSequence>
+</useCase>

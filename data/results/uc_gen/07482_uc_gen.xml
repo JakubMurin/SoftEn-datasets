@@ -1,0 +1,31 @@
+<useCase id="1">
+  <name>Connect Sonic Device</name>
+  <description>As a User, I want to connect the Sonic Device to ensure proper communication with other devices.</description>
+  <actors>
+    <actor>User</actor>
+  </actors>
+  <successEndConditions>
+    <condition>The Sonic Device is successfully connected.</condition>
+  </successEndConditions>
+  <failureEndConditions>
+    <condition>An error occurred while attempting to connect the Sonic Device.</condition>
+  </failureEndConditions>
+  <trigger>User selects the port and starts the connection process.</trigger>
+  <mainSequence>
+    <step id="S1">User selects a port from the Connection view.</step>
+    <step id="S2">The Connection view binds the selected port property.</step>
+    <step id="S3">The Sonic Controller sets the chosen port in the Connection Model.</step>
+    <step id="S4">The Connection Model updates the Connection view with the selected port information.</step>
+    <step id="S5">User presses the "Connect" button on the Connection view.</step>
+    <step id="S6">The Connection view triggers the CONNECTION_ATTEMPT event to the Sonic Controller.</step>
+    <step id="S7">The Sonic Controller retrieves the port from the Connection Model.</step>
+    <step id="S8">The Communication Builder generates a connection using the selected endpoint information.</step>
+    <step id="S9">The Communication Builder builds the communication using the generated endpoint.</step>
+    <step id="S10">The Sonic Controller obtains the communicator from the Communication Builder.</step>
+    <step id="S11">The Sonic Controller communicates with the Sonic Device Builder.</step>
+    <step id="S12">The Sonic Device Builder retrieves the SonicDevice data from the communicator.</step>
+    <step id="S13">The Sonic Controller receives the SonicDevice data from the Sonic Device Builder.</step>
+    <step id="S14">The Sonic Controller triggers the Connection Model to update.</step>
+    <step id="S15">The Connection Model updates the Main view.</step>
+  </mainSequence>
+</useCase>

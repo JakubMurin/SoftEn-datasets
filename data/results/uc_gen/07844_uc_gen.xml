@@ -1,0 +1,19 @@
+<useCase id="UC1">
+    <name>Update User Profile</name>
+    <actors>
+        <actor>User</actor>
+        <actor>Service</actor>
+        <actor>Message Broker</actor>
+        <actor>Replica</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">User updates profile</step>
+        <step id="S2">Service receives profile update request</step>
+        <step id="S3">Message Broker receives profile update</step>
+        <step id="S4">Service confirms successful profile update</step>
+        <step id="S5">User requests profile from Replica</step>
+        <step id="S6">(stale) Profile retrieved from Replica</step>
+        <step id="S7">User faces confusion</step>
+        <step id="S8">Message Broker sends updated profile to Replica</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,20 @@
+<useCase id="UC002">
+  <name>Change Marketing Campaign</name>
+  <description>Allows a user to modify marketing activities</description>
+    <actors>
+      <actor>ump</actor>
+    </actors>
+    <preconditions>
+      <precondition>User is authenticated and has necessary permissions</precondition>
+    </preconditions>
+  <trigger>User decides to change the marketing campaign</trigger>
+  <mainSequence>
+    <step id="S1">User initiates the campaign change process</step>
+    <step id="S2">UMP receives the request to change marketing activity</step>
+    <step id="S3">Retail-UMP identifies and processes the type of change needed (add, invalidate, edit, delete)</step>
+    <step id="S4">Retail-UMP synchronously/asynchronously sends a message to Customer</step>
+    <step id="S5">Return to Retail-UMP after sending</step>
+    <step id="S6">Retail-UMP communicates the status update back to UMP</step>
+    <step id="S7">UMP informs the user about the changes</step>
+  </mainSequence>
+</useCase>

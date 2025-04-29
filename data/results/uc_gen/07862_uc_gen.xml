@@ -1,0 +1,26 @@
+<useCase id="UC1">
+    <name>Like Attendee</name>
+    <actors>
+        <actor>Recruiter</actor>
+    </actors>
+    <preconditions>
+        <precondition>The Recruiter wants to like an Attendee.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The Attendee is liked successfully.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The Attendee is already liked.</condition>
+    </failureEndConditions>
+    <trigger>POST /attendees/{attendeeId}/like</trigger>
+    <mainSequence>
+        <step id="S1">Recruiter selects an Attendee to like.</step>
+        <step id="S2">Check if the Recruiter is valid.</step>
+        <step id="S3">Retrieve the Recruiter information.</step>
+        <step id="S4">Check if the Attendee is valid.</step>
+        <step id="S5">Retrieve the Attendee information.</step>
+        <step id="S6">Check if the Recruiter has already liked the Attendee.</step>
+        <step id="S7">Save the like action by the Recruiter for the Attendee.</step>
+        <step id="S8">Confirmation response sent to the Recruiter.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,30 @@
+<useCase id="UC001">
+  <name>Edit Embargo Length</name>
+  <actors>
+    <actor>DigitalRecords Archivist</actor>
+  </actors>
+  <mainSequence>
+    <step id="S1">Archivist selects embargoed item</step>
+    <step id="S2">Request embargo details</step>
+    <step id="S3">Retrieve embargo info from database</step>
+    <step id="S4">Display embargo details to archivist</step>
+    <step id="S5">Archivist inputs new embargo length</step>
+    <step id="S6">Update embargo length request sent to Embargo Management System</step>
+    <step id="S7">Update embargo info in database</step>
+    <step id="S8">Confirmation of the update received from the database</step>
+    <step id="S9">Display success message to the archivist</step>
+    <step id="S10">Confirmation of the operation displayed to the archivist</step>
+    <step id="S11">Cancel operation</step>
+    <step id="S12">Operation canceled</step>
+  </mainSequence>
+  <alternativeSteps>
+    <asteps id="A1" start="S5" continue="S6">
+      <step id="A1S1">Archivist inputs new embargo length</step>
+      <step id="A1S2">Update embargo length request sent to Embargo Management System</step>
+    </asteps>
+    <asteps id="A2" start="S11">
+      <step id="A2S1">Cancel operation</step>
+      <step id="A2S2">Operation canceled</step>
+    </asteps>
+  </alternativeSteps>
+</useCase>

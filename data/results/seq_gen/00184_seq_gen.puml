@@ -1,0 +1,16 @@
+@startuml "Victim Confirmation Sequence Diagram"
+Semi_Autonomous_UAV -> DroneResponse: [victim_found] alert
+DroneResponse --> Semi_Autonomous_UAV: Acknowledgment
+DroneResponse --> "UI" : Raise [victim_found] alert
+DroneCommander --> "Video Stream" : Inspect
+DroneCommander --> "Video Stream" : Confirm victim found
+DroneResponse --> Semi_Autonomous_UAV : [victim_found] confirmation message
+"E1" -> DroneCommander : Refute victim sighting
+DroneResponse --> Semi_Autonomous_UAV : [victim_NOT_found] message
+"E2" -> DroneCommander : Unable to confirm/refute sighting
+DroneCommander --> Semi_Autonomous_UAV : Request additional imagery
+"UI" -> Semi_Autonomous_UAV : Autonomous flight, collect imagery
+DroneCommander --> "UI" : Confirm found / refute
+E3 -> Semi_Autonomous_UAV : No acknowledgment received
+Semi_Autonomous_UAV -> "Other Drones" : Resend alert
+@enduml

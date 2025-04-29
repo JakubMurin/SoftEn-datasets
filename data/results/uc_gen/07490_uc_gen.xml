@@ -1,0 +1,25 @@
+<useCase id="UC001">
+    <name>User Creates or Updates Report Definition</name>
+    <description>As a UI user, I want to manage report definitions</description>
+    <actors>
+        <actor>Reporting Dashboards</actor>
+        <actor>UI</actor>
+        <actor>Notifications OpenSearch Plugin</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is authorized to manage report definitions</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Report Definition saved successfully</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Failed to save Report Definition</condition>
+    </failureEndConditions>
+    <trigger>User initiates to create or update a report definition through UX</trigger>
+    <mainSequence>
+        <step id="S1">UI actor creates or updates report definitions through UX</step>
+        <step id="S2">Reporting Dashboards retrieve available channels for notification</step>
+        <step id="S3">Notification feature channel list response provided</step>
+        <step id="S4">UI actor saved the report definition</step>
+    </mainSequence>
+</useCase>

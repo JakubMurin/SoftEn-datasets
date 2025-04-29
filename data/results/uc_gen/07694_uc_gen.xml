@@ -1,0 +1,34 @@
+<useCase id="bookingUseCase">
+	<name>Create Booking</name>
+	<actors>
+		<actor>Receptionist</actor>
+	</actors>
+	<mainSequence>
+		<step id="S1">Receptionist requests to create booking through UI</step>
+		<step id="S2">UI sends GET request to Router for /booking/create</step>
+		<step id="S3">Router invokes showCreateBookingForm() in Controller</step>
+		<step id="S4">Controller displays booking form on UI</step>
+		<step id="S5">Receptionist fills in booking details on UI</step>
+		<step id="S6">UI sends POST request to Router for /booking/create</step>
+		<step id="S7">Router createsBooking(bookingData) in Controller</step>
+		<step id="S8">Controller delegates booking creation to Repository</step>
+		<step id="S9">Repository checks room availability in RoomModel</step>
+		<step id="S10">RoomModel queries room availability from DB</step>
+		<step id="S11">If room is available</step>
+		<step id="S12">Repository creates new booking in BookingModel</step>
+		<step id="S13">BookingModel inserts new booking data in DB</step>
+		<step id="S14">Controller, Router, and UI display success message</step>
+		<step id="S15">If room is not available, show error message on UI</step>
+	</mainSequence>
+	<alternativeSteps>
+		<asteps id="A1" start="S11" continue="S15">
+			<step id="A1S1">Handle room not available case</step>
+		</asteps>
+	</alternativeSteps>
+	<errorSteps>
+		<esteps id="E1" start="S12">
+			<description>Show error for booking creation failure</description>
+			<step id="E1S1">Handle booking creation failure</step>
+		</esteps>
+	</errorSteps>
+</useCase>

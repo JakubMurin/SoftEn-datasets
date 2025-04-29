@@ -1,0 +1,43 @@
+<useCase id="UC1">
+    <name>Like/Dislike Entity</name>
+    <actors>
+        <actor>User</actor>
+    </actors>
+    <preconditions>
+        <precondition>User is logged in and viewing an entity</precondition>
+    </preconditions>
+    <trigger>User clicks "Like/Dislike" button</trigger>
+    <mainSequence>
+        <step id="S1">User opens the entity page (post, comment, event)</step>
+        <step id="S2">User views entity details and like button on UI</step>
+        <step id="S3">User clicks "Like/Dislike" button</step>
+        <step id="S4">UI toggles Like on entity</step>
+        <step id="S5">LikeController toggles Like on entity</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S5">
+            <step id="A1S1">Entity is already liked</step>
+            <step id="A1S2">LikeController processes dislike operation</step>
+            <step id="A1S3">LikeService removes like from entity</step>
+            <step id="A1S4">LikeRepo removes like data</step>
+            <step id="A1S5">LikeRepo removes like data from respective database</step>
+            <step id="A1S6">Success: UI displays like removed successfully message</step>
+            <step id="A1S7">UI updates like count on entity</step>
+        </asteps>
+        <asteps id="A2" start="S5">
+            <step id="A2S1">Entity is not yet liked</step>
+            <step id="A2S2">LikeController processes like operation</step>
+            <step id="A2S3">LikeService saves like on entity</step>
+            <step id="A2S4">LikeRepo saves like data</step>
+            <step id="A2S5">LikeRepo inserts like data in respective database</step>
+            <step id="A2S6">Success: UI displays entity liked successfully message</step>
+            <step id="A2S7">UI updates like count on entity</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S5">
+            <description>Failure in like/dislike operation</description>
+            <step id="E1S1">Display error message on UI</step>
+        </esteps>
+    </errorSteps>
+</useCase>

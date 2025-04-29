@@ -1,0 +1,17 @@
+<useCase id="UC1">
+    <name>User Login</name>
+    <actors>
+        <actor>User Agent</actor>
+        <actor>Login API</actor>
+        <actor>User Database</actor>
+    </actors>
+    <trigger>User attempts to log in using the Login API</trigger>
+    <mainSequence>
+        <step id="S1">User Agent sends a Login request (HTTP POST), containing a tuple of (username, password, CSRF token) to Login API</step>
+        <step id="S2">Login API validates the login request</step>
+        <step id="S3">Login API sends an HTTP status code signaling validation failure to User Agent, if the request is invalid</step>
+        <step id="S4">Login API authenticates User information (ID, role, password hash, salt) from User Database</step>
+        <step id="S5">Login API sends the authentication result to User Agent</step>
+        <step id="S6">In case of successful authentication, Login API sends HTTP 200 OK and sets an encrypted session cookie to User Agent</step>
+    </mainSequence>
+</useCase>

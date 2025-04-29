@@ -1,0 +1,23 @@
+<useCase id="UC01">
+    <name>Login</name>
+    <preconditions>
+        <precondition>Admin requests to log in.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Dashboard displayed.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error message shown for invalid credentials.</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">Admin requests to log in.</step>
+        <step id="S2">UI sends a POST request to /login to AuthRouter with login credentials.</step>
+        <step id="S3">AuthRouter directs the request to AuthController.</step>
+        <step id="S4">AuthController calls AuthRepository to validate credentials.</step>
+        <step id="S5">AuthRepository fetches admin data from AdminModel by username using Database.</step>
+        <step id="S6">AuthRepository sends the validation result to AuthController.</step>
+        <step id="S7">AuthController sends success or unauthorized response to AuthRouter.</step>
+        <step id="S8">AuthRouter returns response to UI.</step>
+        <step id="S9">UI displays dashboard for successful login or error message for invalid credentials to Admin.</step>
+    </mainSequence>
+</useCase>

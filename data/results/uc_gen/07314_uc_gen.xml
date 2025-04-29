@@ -1,0 +1,30 @@
+<useCase id="UC1">
+    <name>Update Canvas</name>
+    <description>As a User, I want to update the canvas with my changes.</description>
+    <actors>
+        <actor>Users</actor>
+        <actor>Client</actor>
+        <actor>Canvas</actor>
+        <actor>Websocket</actor>
+    </actors>
+    <preconditions>
+        <precondition>The User has made changes to the canvas.</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>The canvas is successfully updated and changes are broadcasted.</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>The session is invalid and an error message is displayed.</condition>
+    </failureEndConditions>
+    <trigger>Changes are made to the canvas.</trigger>
+    <mainSequence>
+        <step id="S1">User changes the canvas.</step>
+        <step id="S2">Client updates the canvas.</step>
+        <step id="S3">Canvas sends changes via WebSocket.</step>
+        <step id="S4">WebSocket validates the session.</step>
+        <step id="S5">WebSocket broadcasts changes if session is valid.</step>
+        <step id="S6">Canvas updates the canvas.</step>
+        <step id="S7">Client updates the canvas.</step>
+        <step id="S8">User sees the changes on the canvas.</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,39 @@
+<useCase id="UC1">
+    <name>Login enduser</name>
+    <actors>
+        <actor>End user</actor>
+        <actor>Envoy (with WASM oicd filter)</actor>
+        <actor>ID-provider</actor>
+        <actor>TokenDings</actor>
+        <actor>API1</actor>
+        <actor>API2</actor>
+        <actor>Session Cache</actor>
+    </actors>
+    <preconditions>
+        <precondition>End user requests a resource</precondition>
+    </preconditions>
+    <mainSequence>
+        <step id="S1">End user requests a resource</step>
+        <step id="S2">Envoy redirects to ID-provider</step>
+        <step id="S3">End user performs login and gives consent/authorization to the application</step>
+        <step id="S4">ID-provider sends callback/redirect with authorization_code</step>
+        <step id="S5">End user sends authorization code to defined callback (e.g., /callback)</step>
+        <step id="S6">Envoy sends authorization_code, client_id, and client_secret/client_assertion to ID-provider</step>
+        <step id="S7">ID-provider returns id_token, access_token, and optionally refresh_token</step>
+        <step id="S8">Envoy validates id_token according to OpenID Connect</step>
+        <step id="S9">Envoy stores the session in the cache</step>
+        <step id="S10">Envoy redirects to end user with cookies (id_token, session?)</step>
+        <step id="S11">API1 attempts to call API2</step>
+        <step id="S12">Envoy checks for cached token</step>
+        <step id="S13">Cache misses (no token for (API1, API2))</step>
+        <step id="S14">Envoy gets token for API2 based on ID-provider token</step>
+        <step id="S15">TokenDings verifies token and checks access policy</step>
+        <step id="S16">TokenDings issues a new token for API2</step>
+        <step id="S17">Envoy caches the token for later calls</step>
+        <step id="S18">Envoy calls API2 with token from TokenDings</step>
+        <step id="S19">API2 verifies token and access control based on end user</step>
+        <step id="S20">API2 returns information</step>
+        <step id="S21">Envoy returns information to API1</step>
+        <step id="S22">API1 displays information to end user</step>
+    </mainSequence>
+</useCase>

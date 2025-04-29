@@ -1,0 +1,17 @@
+<useCase id="UC001">
+    <name>Compile Primary Resource</name>
+    <actors>
+        <actor>Resource_provider</actor>
+        <actor>Compilation_Manager</actor>
+        <actor>KieCompilerService</actor>
+    </actors>
+    <trigger>Resource_provider initiates the compilation process</trigger>
+    <mainSequence>
+        <step id="S1">Resource_provider requests Compilation_Manager to compile Primary Resource</step>
+        <step id="S2">Compilation_Manager finds specific KieCompilerService for Primary Resource</step>
+        <step id="S3">Compilation_Manager processes Primary Resource</step>
+        <step id="S4">KieCompilerService provides Compiled Class to Compilation_Manager</step>
+        <step id="S5">Compilation_Manager sends IndexFile to Resource_provider</step>
+        <step id="S6">Resource_provider consumes IndexFile</step>
+    </mainSequence>
+</useCase>

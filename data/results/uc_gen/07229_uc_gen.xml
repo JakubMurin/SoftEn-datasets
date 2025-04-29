@@ -1,0 +1,42 @@
+<useCase id="UC001">
+    <name>Registration</name>
+    <actors>
+        <actor>User</actor>
+        <actor>RegistrationPage</actor>
+        <actor>AuthControl</actor>
+        <actor>UserEntity</actor>
+        <actor>UserDB</actor>
+    </actors>
+    <preconditions>
+        <precondition>User accesses the registration page</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Successful user registration</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Email already registered</condition>
+        <condition>Email not yet registered</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User inputs email and password</step>
+        <step id="S2">Registration page sends data to AuthControl</step>
+        <step id="S3">AuthControl verifies if email is already registered</step>
+    </mainSequence>
+    <alternativeSteps>
+        <asteps id="A1" start="S3">
+            <step id="A1S1">Email is already registered</step>
+            <step id="A1S2">AuthControl sends error message to RegistrationPage</step>
+            <step id="A1S3">RegistrationPage displays error message</step>
+        </asteps>
+    </alternativeSteps>
+    <errorSteps>
+        <esteps id="E1" start="S3">
+            <description>Error in saving user data to database</description>
+            <step id="E1S1">User data is saved to UserEntity</step>
+            <step id="E1S2">UserEntity data is saved to UserDB</step>
+            <step id="E1S3">UserDB confirms successful saving</step>
+            <step id="E1S4">AuthControl confirms successful registration</step>
+            <step id="E1S5">RegistrationPage displays successful registration status</step>
+        </esteps>
+    </errorSteps>
+</useCase>

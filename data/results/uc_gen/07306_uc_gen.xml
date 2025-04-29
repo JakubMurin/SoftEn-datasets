@@ -1,0 +1,42 @@
+<useCase id="UC010">
+    <name>积分流转</name>
+    <actors>
+        <actor>用户</actor>
+    </actors>
+    <mainSequence>
+        <step id="S1">测试接口调用积分合约部署</step>
+        <step id="S2">应用层部署PointController</step>
+        <step id="S3">JAVA_SDK返回合约地址</step>
+        <step id="S4">应用层记录合约地址</step>
+        <step id="S5">获取平台管理员用户信息</step>
+        <step id="S6">JAVA_SDK调用PointController.addDAO</step>
+        <step id="S7">MySQL记录交易明细</step>
+        <step id="S8">定时器触发年度积分结余</step>
+        <step id="S9">PointController.daoTransfer处理积分结余</step>
+        <step id="S10">MySQL记录交易明细</step>
+        <step id="S11">用户注册账户</step>
+        <step id="S12">PointController.register注册账户</step>
+        <step id="S13">MySQL记录交易明细</step>
+        <step id="S14">用户添加电池</step>
+        <step id="S15">根据DAO计算需缴纳积分</step>
+        <step id="S16">PointController.pay缴纳积分</step>
+        <step id="S17">MySQL记录交易明细</step>
+        <step id="S18">用户登记车辆电池信息</step>
+        <step id="S19">根据DAO计算需缴纳积分</step>
+        <step id="S20">PointController.pay缴纳积分</step>
+        <step id="S21">MySQL记录交易明细</step>
+        <step id="S22">消费者获取积分</step>
+        <step id="S23">计算应发积分</step>
+        <step id="S24">PointController.daoTransfer派发积分</step>
+        <step id="S25">MySQL记录交易明细</step>
+        <step id="S26">用户推送电池拆解检测信息</step>
+        <step id="S27">计算应发积分</step>
+        <step id="S28">PointController.daoTransfer派发积分</step>
+        <step id="S29">MySQL记录交易明细</step>
+        <step id="S30">用户发起卖方积分交易申请</step>
+        <step id="S31">准备交易合约</step>
+        <step id="S32">冻结卖方积分</step>
+        <step id="S33">用户达成买方积分交易</step>
+        <step id="S34">处理买卖双方积分交易</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,26 @@
+<useCase id="1">
+    <name>User interacts with post page and comments section</name>
+    <actors>
+        <actor>User</actor>
+        <actor>UserInterface</actor>
+        <actor>CommentController</actor>
+        <actor>CommentService</actor>
+        <actor>CommentRepo</actor>
+    </actors>
+    <trigger>User goes to post page</trigger>
+    <mainSequence>
+        <step id="S1">User displays post details and comment form</step>
+        <step id="S2">User enters comment content in text form</step>
+        <step id="S3">User submits comment</step>
+        <step id="S4">UI captures User comment and calls createComment method in CommentController</step>
+        <step id="S5">CommentController validates input comment content</step>
+        <step id="S6">CommentService validates and creates a new comment instance based on the request</step>
+        <step id="S7">CommentRepo saves the new comment to the database</step>
+        <step id="S8">UI displays "Invalid comment content" message if invalid content supplied</step>
+        <step id="S9">In case of successful validation</step>
+        <step id="S10">CommentRepo stores the Comment entity in the database</step>
+        <step id="S11">Comment created successfully</step>
+        <step id="S12">Create a success message and Update post comments section in UI</step>
+        <step id="S13">Perform cleanup operations (if any)</step>
+    </mainSequence>
+</useCase>

@@ -1,0 +1,28 @@
+<useCase id="UC1">
+    <name>Retrieve Account Search Preferences</name>
+    <description>User selects list of pending accounts and retrieves the search preferences for the selected account.</description>
+    <actors>
+        <actor>Zarządca</actor>
+        <actor>Nawigator</actor>
+        <actor>AccountController</actor>
+        <actor>AccountEndpoint</actor>
+        <actor>AccountService</actor>
+        <actor>AccountFacade</actor>
+        <actor>ListSearchPreferencesFacade</actor>
+    </actors>
+    <preconditions>
+        <precondition>User must be logged in</precondition>
+        <precondition>User must have selected a pending account</precondition>
+    </preconditions>
+    <successEndConditions>
+        <condition>Account search preferences successfully retrieved for the selected account</condition>
+    </successEndConditions>
+    <failureEndConditions>
+        <condition>Error occurred while retrieving account search preferences</condition>
+    </failureEndConditions>
+    <mainSequence>
+        <step id="S1">User selects list of pending accounts</step>
+        <step id="S2">User sends request to fetch search preferences for an account</step>
+        <step id="S3">Account search preferences successfully retrieved for the selected account</step>
+    </mainSequence>
+</useCase>
