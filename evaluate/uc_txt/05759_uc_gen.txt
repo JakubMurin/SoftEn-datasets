@@ -1,0 +1,17 @@
+1. Librarian sends a request to the Lending Controller to retrieve monthly lending information through the endpoint GET /api/lendings/monthly-lending.
+2. Lending Controller activates.
+3. Lending Controller requests all readers from Reader Service.
+4. Reader Service activates.
+5. Reader Service retrieves all readers using Reader Repository.
+6. Reader Repository activates and returns a list of readers to Reader Service.
+7. For each reader, Reader Service gets the monthly lending information.
+8. Reader Service retrieves monthly lending information from Reader Repository and sets the lents.
+9. Reader Service updates the reader with the retrieved lents.
+10. Loop continues for each reader.
+11. Reader Service deactivates.
+12. Lending Controller maps the reader lents to a view using Reader Lents View Mapper.
+13. Reader Lents View Mapper activates.
+14. Reader Lents View Mapper converts the reader lents to an iterable of reader lents views.
+15. Reader Lents View Mapper deactivates.
+16. Lending Controller responds with HTTP 200 OK containing the iterable of reader lents views to the Librarian.
+17. Lending Controller deactivates.

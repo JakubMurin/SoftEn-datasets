@@ -1,0 +1,14 @@
+1. Business User registers as a listener for FaultManagementJobNotification and FaultManagementReportNotification with Hub.
+2. Business User creates a FaultManagementJob with SOF:FaultManagement.
+3. FaultManagementJob is created successfully, and response is received by Business User.
+4. FaultManagementJob creates an event with Hub.
+5. Hub notifies listeners, including Business User, about faultManagementJobCreateEvent.
+6. FaultManagementJob generates data.
+7. Reporting period elapses, and the FaultManagementReport is created.
+8. FaultManagementReport is created successfully, and response is received by Business User.
+9. FaultManagementReport collects data and changes its state to completed.
+10. FaultManagementJob is notified that the report is completed.
+11. Schedule elapses and the FaultManagementJob state changes to completed or scheduled.
+12. Hub notifies listeners, including Business User, about the faultManagementJobReportReadyEvent.
+13. Business User retrieves the created FaultManagementReport.
+14. Business User receives the response including the FaultManagementReport.

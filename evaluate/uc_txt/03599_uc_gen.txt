@@ -1,0 +1,13 @@
+1. El Colaborador solicita la consulta de su perfil.
+2. El sistema responde con la página "/myprofile".
+3. El Colaborador visualiza la página "/myprofile".
+4. El Colaborador realiza una solicitud GET a la ruta "/myprofile".
+5. El controlador user.routes llama a la función "getProfile(req, res)".
+6. El controlador user.controller se activa.
+7. El controlador user.controller llama a user.model para obtener el perfil.
+8. El model user.model activa la consulta del perfil del usuario en la base de datos mysql.
+9. mysql ejecuta la consulta SELECT * FROM users WHERE userId = ?.
+10. mysql devuelve los datos del perfil al model user.model.
+11. El model user.model transmite los datos al controlador user.controller.
+12. El controlador user.controller renderiza la vista myprofile.ejs con los datos.
+13. La vista myprofile.ejs muestra la información en formato HTML.

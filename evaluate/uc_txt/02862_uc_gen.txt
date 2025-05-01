@@ -1,0 +1,12 @@
+1. Client sends a request to API to create, read, or update user profile information.
+2. API forwards the request to CommandHandler to handle the command.
+3. CommandHandler requests the entity from Repository.
+4. Repository executes the SQL command on Database to fetch raw data.
+5. Repository transforms raw data to Entity using Factory.
+6. CommandHandler applies business logic to the DomainEntity.
+7. CommandHandler instructs Repository to save the entity.
+8. Repository triggers SQL commands to detect changes in the entity and save them to the Database.
+9. Database saves the changes and sends the result back to Repository.
+10. CommandHandler prepares NotificationObject and sends it to API.
+11. API communicates the result with QueryHandler.
+12. QueryHandler responds with Data Transfer Object (DTO) to Client.

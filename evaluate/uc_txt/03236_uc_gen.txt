@@ -1,0 +1,11 @@
+1. Customer opens refund request page.
+2. UI displays refund request form to Customer.
+3. Customer submits refund request with customerId, orderId, reason, and amount.
+4. Router receives POST request /refunds with customerId, orderId, reason, and amount.
+5. Controller creates refund request for customerId, orderId, reason, and amount.
+6. Controller finds customer details by customerId.
+7. Controller creates new Refund with customerId, orderId, reason, amount, and status: pending.
+8. RefundModel saves refund request.
+9. Controller notifies AdminService of refund request with refundId, customerId, orderId, reason, and amount.
+10. Router responds with 201 Created for refund request submitted.
+11. UI displays success message to Customer.

@@ -1,0 +1,8 @@
+1. User sends a DELETE request to the TaskController at endpoint /api/tasks/{id}.
+2. TaskController activates the TaskService.
+3. TaskService deletes the task by calling deleteTask method.
+4. TaskService activates TaskRepository to delete the task by calling deleteById method.
+5. TaskRepository deletes the task.
+6. TaskRepository informs TaskService.
+7. TaskService informs TaskController.
+8. TaskController informs User that the task has been successfully deleted.

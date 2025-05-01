@@ -1,0 +1,14 @@
+1. User sends POST request to AccessController for signup.
+2. AccessController calls AccessService function signUp(req.body).
+3. AccessService searches for an existing user by email.
+4. AccessService receives foundUser from User.
+5. AccessService checks if User already exists.
+6. If User already exists then return an error message to User.
+7. If User does not exist, generate salt.
+8. Get salt from bcrypt.
+9. Call bcrypt hash function with password and salt.
+10. Get hashed password from bcrypt.
+11. Create a new user with email, hashPassword, role.
+12. Receive newUser from User creation.
+13. Return { user } from AccessService to AccessController.
+14. Registered OK message is sent from AccessController to User.

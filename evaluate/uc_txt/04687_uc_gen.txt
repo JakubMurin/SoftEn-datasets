@@ -1,0 +1,9 @@
+1. User submits a message.
+2. MainMessageInput gets messages with MessageAction.REQUEST.
+3. ChatClient processes messages with MessageAction.REQUEST.
+4. MessagesService sends user request to UnixSocketServer.
+5. UnixSocketServer handles user request and sends a message to AiResponse.
+6. AiResponse receives AI response from UnixSocketServer.
+7. MessagesService receives AI response and returns Flux of Object to ChatClient.
+8. ChatClient gets messages with MessageAction.RESPONSE.
+9. ResponseArea displays AI response.

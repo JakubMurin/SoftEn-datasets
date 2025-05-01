@@ -1,0 +1,13 @@
+1. Client triggers a health check request.
+2. Health checks sender IP and requested IP.
+3. IP denies service check for sender IP.
+4. IP adds request count for sender IP.
+5. If request count is greater than 5.
+6. IP blocks requests for sender IP.
+7. ServiceRemovalHandler denies the request.
+8. Health denies the request.
+9. Client receives denial message.
+10. If request count is not greater than 5.
+11. IP accepts the request for sender IP.
+12. Health provides API health status.
+13. Client receives API health status.

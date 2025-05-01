@@ -1,0 +1,17 @@
+1. User sends a request to the Gateway.
+2. Gateway checks if the request is from a User or a Service.
+3. If the request is from a User:.
+4. Gateway validates the token received from the User.
+5. If the token is valid, Gateway forwards the request to the appropriate service.
+6. ServiceA processes the request and responds to Gateway.
+7. Gateway sends the response back to the User.
+8. If the token is invalid, Gateway denies access to the User.
+9. If the request is from a Service:.
+10. Gateway checks the 'x-server-name' header in the request.
+11. If the 'x-server-name' header is present:.
+12. Gateway validates the service token.
+13. If the service token is valid, Gateway forwards the request to ServiceB.
+14. ServiceB processes the request and responds to Gateway.
+15. Gateway sends the response back to ServiceA.
+16. If the service token is invalid, Gateway denies access to ServiceA.
+17. If the 'x-server-name' header is absent, Gateway denies access to ServiceA.

@@ -1,0 +1,9 @@
+1. Client makes an HTTP Request to the API Gateway/Lambda.
+2. API Gateway/Lambda forwards GetTranslationCaseRequest to GetTranslationCaseActivity.
+3. GetTranslationCaseActivity invokes TranslationCaseDao's getTranslationCase(translationCaseId) method.
+4. TranslationCaseDao loads translationCaseId data from DynamoDB.
+5. DynamoDB returns translationCase data to TranslationCaseDao.
+6. TranslationCaseDao checks for matching customer ID.
+7. TranslationCaseDao returns TranslationCase object to GetTranslationCaseActivity.
+8. GetTranslationCaseActivity returns GetTranslationCaseResult to API Gateway/Lambda.
+9. API Gateway/Lambda returns 200 response with GetTranslationCaseResult data to the Client.

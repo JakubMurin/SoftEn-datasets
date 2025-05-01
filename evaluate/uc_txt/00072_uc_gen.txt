@@ -1,0 +1,6 @@
+1. Admin creates storage class.
+2. User creates persistent volume claim.
+3. Kubernetes sends ControllerCreateVolume request to CSI driver.
+4. CSI driver forwards CreateVolume request to storage target.
+5. Storage target processes request and responds with volume details.
+6. CSI driver sends CreateVolumeResponse to Kubernetes.

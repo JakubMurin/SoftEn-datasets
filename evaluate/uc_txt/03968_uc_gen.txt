@@ -1,0 +1,15 @@
+1. ClientRequest sends a request to Servlet specifying the endpoint.
+2. Servlet pre-processes the request using Filter.
+3. If the endpoint is for guests only, allow access and proceed with request.
+4. Perform endpoint operations if authorized role is required.
+5. Check if the Servlet session Principal is valid for the required role and authorization is not expired.
+6. Allow access and perform endpoint operations for authorized role.
+7. In case of no session or expired authorization, the AuthorizationCheck is performed.
+8. Check for JSESSIONIDSSO cookie in AuthorizationCheck.
+9. Request database specific roles for Single Sign-On principal in Database.
+10. Validate JWT in Authorization header in AuthCheck.
+11. Extract subject if JWT is valid in AuthCheck.
+12. Request user roles based on JWT subject in Database.
+13. Validate roles in Filter against endpoint roles.
+14. Perform endpoint operations if roles are valid.
+15. Reject access if roles are invalid.

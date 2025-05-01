@@ -1,0 +1,22 @@
+1. User swipes ID tag.
+2. Core authorizes the transaction.
+3. User plugs in the cable.
+4. Core starts the transaction and informs CSMS.
+5. Core inserts transaction details into the database.
+6. User pauses charging of car.
+7. Core updates charging state with Libocpp.
+8. Libocpp updates CSMS with charging state change.
+9. Libocpp updates database with charging state change and sequence number.
+10. Core constructs ChargePoint in case of power outage or crash.
+11. Libocpp gets transaction details from the database for each evse_id.
+12. Libocpp re-initializes transaction for evse_id.
+13. Libocpp continues normal operations.
+14. User continues charging of car.
+15. Core updates charging state with Libocpp.
+16. Libocpp prints a warning if no known transaction is found.
+17. Libocpp updates CSMS and database with charging state change and sequence number.
+18. User swipes ID tag to finish transaction.
+19. Core informs Libocpp that the transaction has finished.
+20. Libocpp prints a warning if no known transaction is found.
+21. Libocpp informs CSMS that the transaction has ended.
+22. Libocpp deletes the transaction from the database.

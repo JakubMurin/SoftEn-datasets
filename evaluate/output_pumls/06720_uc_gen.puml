@@ -1,0 +1,26 @@
+@startuml
+actor cli_forwards_modification_request
+actor web_forwards_modification_request
+actor customer_manager
+actor user
+participant publishjobopeningcontroller
+activate publishjobopeningcontroller
+customer_manager -> publishjobopeningcontroller: ask_display_job_openings_in_results_phase()
+activate customer_manager
+participant getjobopenings
+publishjobopeningcontroller -> getjobopenings: execute()
+activate getjobopenings
+deactivate getjobopenings
+participant job_openings_from_jobopeningrepository
+publishjobopeningcontroller -> job_openings_from_jobopeningrepository: get()
+activate job_openings_from_jobopeningrepository
+deactivate job_openings_from_jobopeningrepository
+participant job_openings_to
+publishjobopeningcontroller -> job_openings_to: send()
+activate job_openings_to
+deactivate job_openings_to
+participant job_openings
+publishjobopeningcontroller -> job_openings: display()
+activate job_openings
+deactivate job_openings
+@enduml

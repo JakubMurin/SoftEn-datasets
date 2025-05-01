@@ -1,0 +1,20 @@
+1. Actor connects to Bootstrap.
+2. Bootstrap validates connection.
+3. Bootstrap resolves and connects.
+4. Bootstrap initializes and registers.
+5. Bootstrap initializes by creating pipeline, adding handlers, setting channel options, and attributes.
+6. Bootstrap registers with SingleThreadEventLoop.
+7. SingleThreadEventLoop registers with AbstractChannel.AbstractUnsafe.
+8. AbstractChannel.AbstractUnsafe registers with AbstractNioChannel.
+9. AbstractNioChannel registers with SelectableChannel.
+10. AbstractChannel.AbstractUnsafe invokes handler added if needed.
+11. AbstractChannel.AbstractUnsafe fires channel registered event.
+12. AbstractChannel.AbstractUnsafe fires channel active event if active and first registration.
+13. Bootstrap resolves and connects asynchronously with Future.
+14. AbstractChannel does connect operation.
+15. DefaultChannelPipeline connects.
+16. AbstractChannelHandlerContext connects.
+17. AbstractChannelHandlerContext invokes connect.
+18. AbstractNioChannel.AbstractNioUnsafe connects.
+19. AbstractNioChannel.AbstractNioUnsafe fires channel active event if first connect.
+20. AbstractNioChannel.AbstractNioUnsafe adds connection timeout callback if not connected.

@@ -1,0 +1,8 @@
+1. Customer Requests to verify booking by OTP through UI.
+2. UI Sends GET request /bookings/{bookingId}/verify-otp to BookingRouter.
+3. Router invokes method verifyBookingOTP(bookingId, otp) on BookingController.
+4. Controller fetches booking details using getBookingDetails(bookingId) from Repository.
+5. Repository queries and retrieves booking data by ID and sends it back.
+6. Controller verifies the OTP using the OTPService and decides.
+7. If OTP is valid, updates booking status to "verified" in DB.
+8. If OTP is invalid, delivers error response to UI.

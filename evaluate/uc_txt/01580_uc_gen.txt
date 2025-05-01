@@ -1,0 +1,8 @@
+1. User sends a GET request to CatalogDao to initiate the removal of a book.
+2. CatalogDao sends a RemoveBookFromCatalogRequest to RemoveBookFromCatalogActivity.
+3. RemoveBookFromCatalogActivity executes the removeBookFromCatalog() method.
+4. RemoveBookFromCatalogActivity invokes the RemoveBookFromCatalogResponse.
+5. CatalogDao invokes RemoveBookFromCatalogActivity to handle the book removal.
+6. User is informed by the RemoveBookService about the book not found.
+7. RemoveBookFromCatalogActivity handles the BookNotFoundException and notifies RemoveBookFromCatalogResponse.
+8. CatalogDao detects BookNotFoundException and redirects to RemoveBookFromCatalogActivity.

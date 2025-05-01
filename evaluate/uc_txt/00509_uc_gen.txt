@@ -1,0 +1,22 @@
+1. Customer initiates the purchase process via WeChat client.
+2. Merchant system backend generates the platform order.
+3. Merchant system backend requests WeChat Payment System to create the order.
+4. WeChat Payment System generates the prepay order.
+5. WeChat Payment System sends back the prepay order identifier to the Merchant system backend.
+6. Merchant system backend creates signed payment information.
+7. Customer initiates the payment process through the Merchant system backend.
+8. Customer invokes WeChat payment via the WeChat client.
+9. WeChat client initiates the payment request to WeChat Payment System.
+10. WeChat Payment System validates payment authorization.
+11. WeChat Payment System returns payment authorization to the WeChat client.
+12. Customer confirms payment and enters password.
+13. WeChat Payment System submits the authorization.
+14. WeChat Payment System verifies the authorization.
+15. WeChat Payment System notifies the Merchant system backend of payment status asynchronously.
+16. Merchant system backend saves the payment notification.
+17. Merchant system backend informs successful reception and processing to WeChat Payment System.
+18. WeChat Payment System returns payment result to the WeChat client and sends a message notification.
+19. WeChat client queries payment status to the Merchant system backend.
+20. Merchant system backend calls the order query interface to check payment status with WeChat Payment System.
+21. WeChat Payment System returns the payment result to the Merchant system backend.
+22. WeChat Payment System displays the payment message to the WeChat client.

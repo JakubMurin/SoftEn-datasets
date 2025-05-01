@@ -1,0 +1,79 @@
+@startuml
+actor user
+actor caller
+participant knex_queries_node_postgres_to
+activate knex_queries_node_postgres_to
+user -> knex_queries_node_postgres_to: initiate_application_running_npm_start_command()
+activate user
+participant knex_library
+knex_queries_node_postgres_to -> knex_library: require()
+activate knex_library
+deactivate knex_library
+participant connection_to_node_postgres
+knex_queries_node_postgres_to -> connection_to_node_postgres: establish()
+activate connection_to_node_postgres
+deactivate connection_to_node_postgres
+participant with_postgresdb
+knex_queries_node_postgres_to -> with_postgresdb: authenticate()
+activate with_postgresdb
+deactivate with_postgresdb
+participant connection_with_postgresdb
+knex_queries_node_postgres_to -> connection_with_postgresdb: confirm()
+activate connection_with_postgresdb
+deactivate connection_with_postgresdb
+participant connections_to_pool
+knex_queries_node_postgres_to -> connections_to_pool: add()
+activate connections_to_pool
+deactivate connections_to_pool
+participant knex_instance
+knex_queries_node_postgres_to -> knex_instance: create()
+activate knex_instance
+deactivate knex_instance
+participant bookshelf_passing_knex_instance
+knex_queries_node_postgres_to -> bookshelf_passing_knex_instance: require()
+activate bookshelf_passing_knex_instance
+deactivate bookshelf_passing_knex_instance
+participant recipes_using_bookshelf
+knex_queries_node_postgres_to -> recipes_using_bookshelf: fetch()
+activate recipes_using_bookshelf
+deactivate recipes_using_bookshelf
+participant recipes_from_recipe_table
+knex_queries_node_postgres_to -> recipes_from_recipe_table: select()
+activate recipes_from_recipe_table
+deactivate recipes_from_recipe_table
+participant connection_from_pool
+knex_queries_node_postgres_to -> connection_from_pool: acquire()
+activate connection_from_pool
+deactivate connection_from_pool
+participant connection1
+knex_queries_node_postgres_to -> connection1: successfully_acquire()
+activate connection1
+deactivate connection1
+participant recipes_using_connection1
+knex_queries_node_postgres_to -> recipes_using_connection1: select()
+activate recipes_using_connection1
+deactivate recipes_using_connection1
+participant recipes_from_postgresdb
+knex_queries_node_postgres_to -> recipes_from_postgresdb: retrieve()
+activate recipes_from_postgresdb
+deactivate recipes_from_postgresdb
+participant retrieved_recipes_to_knex
+knex_queries_node_postgres_to -> retrieved_recipes_to_knex: send()
+activate retrieved_recipes_to_knex
+deactivate retrieved_recipes_to_knex
+participant connection1_back_to_pool
+knex_queries_node_postgres_to -> connection1_back_to_pool: release()
+activate connection1_back_to_pool
+deactivate connection1_back_to_pool
+participant fetched_recipes_to_bookshelf
+knex_queries_node_postgres_to -> fetched_recipes_to_bookshelf: return()
+activate fetched_recipes_to_bookshelf
+deactivate fetched_recipes_to_bookshelf
+participant fetched_recipes_to_code
+knex_queries_node_postgres_to -> fetched_recipes_to_code: return()
+activate fetched_recipes_to_code
+deactivate fetched_recipes_to_code
+knex_queries_node_postgres_to -> user: display()
+activate user
+deactivate user
+@enduml

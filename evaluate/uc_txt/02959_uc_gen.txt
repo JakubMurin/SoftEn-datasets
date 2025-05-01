@@ -1,0 +1,15 @@
+1. User completes ticket transition with client service, ticket, and user.
+2. TicketTransitions processes on CMO Review completion with client service, ticket, and user.
+3. TicketTransitions requests CMO Report from ProfessionalTicket.
+4. ProfessionalTicket retrieves category from CMO Report.
+5. ProfessionalTicket calculates report quality.
+6. TicketTransitions prompts User to select a category.
+7. TicketTransitions prompts User to enter report accuracy comments.
+8. TicketTransitions prompts User to enter report quality comments.
+9. TicketTransitions requests CMO Report from ProfessionalTicket.
+10. ProfessionalTicket retrieves additional fact findings from CMO Report.
+11. TicketTransitions sets CMO, report quality, and report time in ProfessionalTicket.
+12. ClientRestService saves completed ticket with client service, ticket, and user.
+13. ClientRestService creates or updates Dicom Study.
+14. ClientRestService creates or updates Professional Ticket.
+15. TicketTransitions generates PRCMO Response Letter with client service, ticket, and user.

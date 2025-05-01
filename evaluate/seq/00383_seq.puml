@@ -1,0 +1,44 @@
+@startuml
+actor ContentEditor as "Content Editor"
+participant CMS as "Content Management System"
+participant VideoManagementSubsystem as "Video Management\nSubsystem (Brightcove API)"
+participant NSFDatabase as "NSF Beta Site Database"
+participant NSFBetaSite as "NSF Beta Site"
+
+ContentEditor -> CMS : Log in to CMS
+activate CMS
+
+CMS -> ContentEditor : Display dashboard
+ContentEditor -> CMS : Select option to \nadd new video content
+activate CMS 
+
+ContentEditor -> CMS : Upload Video information\n(Title, Description, Tags)
+
+CMS -> VideoManagementSubsystem : API Call: Upload video file
+activate VideoManagementSubsystem
+
+VideoManagementSubsystem --> CMS : Return Video ID from Brightcove
+deactivate VideoManagementSubsystem
+
+CMS -> NSFDatabase : Store video metadata\n(including Brightcove Video ID)
+activate NSFDatabase
+
+NSFDatabase --> CMS : Confirm video metadata stored
+deactivate NSFDatabase
+
+CMS --> ContentEditor : Display success message\n(Video added)
+deactivate CMS
+
+ContentEditor -> NSFBetaSite : Verify video appears on the site
+activate NSFBetaSite
+
+NSFBetaSite -> NSFDatabase : Query video details\nby Brightcove Video ID
+activate NSFDatabase
+
+NSFDatabase --> NSFBetaSite : Return video details
+deactivate NSFDatabase
+
+NSFBetaSite --> ContentEditor : Display the video content
+deactivate NSFBetaSite
+
+@enduml

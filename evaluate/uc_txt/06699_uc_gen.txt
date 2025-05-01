@@ -1,0 +1,9 @@
+1. User A triggers transaction for Keychain Entry.
+2. API Client sends request to API Server.
+3. API Server sets key-value pair in AWS Secrets Manager.
+4. AWS Secrets Manager gets AWS client.
+5. Try to describe secret using AWS client.
+6. If successful, AWS Secrets Manager responds with true.
+7. If error, AWS Secrets Manager responds with error message.
+8. API Server responds with the formatted response.
+9. API Client sends Set Keychain Entry Response to User A.

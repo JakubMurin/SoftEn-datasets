@@ -1,0 +1,6 @@
+1. The user initiates the process to add a new business monitoring configuration.
+2. The system checks the legality of the data.
+3. The system stores the configuration in the database.
+4. The system updates the current timestamp in redis as the client's heartbeat time and updates the client's heartbeat timeout time in redis.
+5. The tdm, after acquiring ACTIVE, initializes the HeartBeatControlService using doInit().
+6. The tdm executes initCache() to clear the timeout configuration from redis and delete the heartbeat time from the cache.

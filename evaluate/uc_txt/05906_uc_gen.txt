@@ -1,0 +1,10 @@
+1. Client invokes POST /accounts to create an account.
+2. AccountController passes createAccount request to AccountService.
+3. AccountService creates a new Account using provided ID and owner details.
+4. Account generates the creation event.
+5. AccountService returns the AccountCreatedEvent.
+6. EventStore saves the AccountCreatedEvent.
+7. AccountProjection handles the AccountCreatedEvent.
+8. AccountViewRepository saves the updated AccountView.
+9. AccountService marks creation as complete.
+10. AccountController responds with 201 Created.

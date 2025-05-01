@@ -1,0 +1,24 @@
+1. UserX queries Server A for data.
+2. Server A queries Distributed Cache for data.
+3. Distributed Cache returns data to Server A.
+4. Server A returns data to UserX.
+5. UserX stores version in local storage.
+6. UserX queries Server A for data with version.
+7. Server A checks local cache and returns data to UserX.
+8. UserY queries Server B for data.
+9. Server B queries Distributed Cache for data.
+10. Distributed Cache returns data to Server B.
+11. Server B returns data to UserY.
+12. UserY stores version in local storage.
+13. UserY queries Server B for data with version.
+14. Server B checks local cache and returns data to UserY.
+15. UserY queries Server A for data with new version.
+16. Server A checks local cache (version=12:00).
+17. Server A queries Distributed Cache for latest data.
+18. Distributed Cache returns latest data to Server A.
+19. Server A returns latest data to UserY.
+20. UserY stores new version in local storage.
+21. UserX queries Server A for data with latest version.
+22. Server A checks local cache (version=12:10).
+23. Server A returns data from local cache to UserX.
+24. UserX stores latest version in local storage.

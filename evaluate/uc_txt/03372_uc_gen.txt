@@ -1,0 +1,11 @@
+1. Admin provisions the server through terraform/ansible.
+2. If not enrolled:.
+3. Admin generates password and wireguard private key.
+4. Admin enrolls the gateway by sending EnrollGateway request to apiserver.
+5. Apiserver allocates a private IP and inserts/updates gateway information in the database.
+6. Apiserver sends EnrollGatewayResponse back to admin.
+7. Admin generates GatewayConfiguration.
+8. Admin establishes an SSH connection with the gateway-agent.
+9. Gateway-agent inserts the configuration as an environment variable into a file.
+10. When enrolled:.
+11. Gateway-agent establishes a secure connection with apiserver.

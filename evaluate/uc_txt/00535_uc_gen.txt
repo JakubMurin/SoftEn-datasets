@@ -1,0 +1,9 @@
+1. Security Engineer enables the Security Profile.
+2. Enable Security Profile.
+3. Create security profile (name: secProfileESP, file: ./templates/secprofile.yml) on Storage Resource.
+4. storageresource communicates with EventBus by sending securityprofile.create event.
+5. Disable security profile (name: secProfileESP) on Security Profile Manager.
+6. Security Profile Manager communicates with EventBus by sending securityprofile.disable event.
+7. Enable security profile (name: secProfileESP) on Security Profile Manager.
+8. Security Profile Manager communicates with EventBus by sending securityprofile.enable event.
+9. All attached identities in the system re-evaluate the policies.

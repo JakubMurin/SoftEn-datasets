@@ -1,0 +1,8 @@
+1. The DatasetDeveloper requests an upgrade check by providing datasetInstanceId and newVersion to Dataset Version Control.
+2. Dataset Version Control gets dataset type information for the new version from Dataset Registry. Dataset Registry returns datasetTypeDetails.
+3. Dataset Version Control gets existing version details for the given datasetInstanceId from Dataset Instance. Dataset Instance returns existingVersionDetails.
+4. Dataset Version Control compares the datasetTypeDetails with existingVersionDetails.
+5. Dataset Version Control retrieves upgrade compatibility rules for the datasetTypeDetails from Dataset Registry. Dataset Registry returns compatibilityRules.
+6. Dataset Version Control applies compatibility rules to determine the upgrade compatibility between existingVersionDetails and newVersion.
+7. If the upgrade is compatible, Dataset Version Control notifies the DatasetDeveloper, who confirms the upgrade. Then, Dataset Version Control upgrades the Dataset Instance to the new version and informs about the successful upgrade.
+8. If the upgrade is not compatible, Dataset Version Control informs the DatasetDeveloper about the incompatibility reasoning.

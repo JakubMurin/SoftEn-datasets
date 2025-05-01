@@ -1,0 +1,18 @@
+1. Aktivera "Rehabstöd".
+2. Anrop till "listSickLeavesForPerson" i "Intygstjänsten" för att läsa upp patientens samtliga intyg.
+3. Hämta vårdgivarnamn för varje intyg mha "GetUnit v1".
+4. Anrop till "GetPerson" i "PU" för patienten.
+5. Filtrera intyg beroende på patientens sekretssmarkeringsstatus.
+6. Kontrollera spärr via "CheckBlocks v4" om patient ej är sekretssmarkerad.
+7. Uppdatera intygen med spärrstatus.
+8. Skicka in intyg till "Sjukfallsmotor" för bruttosjukfall.
+9. Kontrollera samtyckesstatus för att visa intyg utanför vårdgivaren.
+10. Filtrera intyg baserat på samtyckesstatus.
+11. Sammanställ klientsvar med sjukfall och metadata.
+12. Skicka in nettolistan av intyg för verkliga sjukfall.
+13. Uppdatera lista med namn och sekretessstatus.
+14. Anrop till "GetCertificateAdditions" för varje intyg.
+15. Uppdatera sjukfallens intyg med kompletteringsstatus.
+16. För varje intyg, hämta riskprediktion om SRS-stöd är aktiverat.
+17. Logga faktisk visad information i "Loggtjänsten".
+18. Visa patientens sjukfallshistorik inklusive SJF.

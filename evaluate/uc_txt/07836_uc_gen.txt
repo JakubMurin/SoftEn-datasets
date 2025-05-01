@@ -1,0 +1,18 @@
+1. User initiates Excel upload through GUI CMS.
+2. GUI CMS forwards the request to the Batch API Server for Excel upload.
+3. Batch API Server saves the uploaded Excel in the MySQL database.
+4. Batch API Server stores job metadata in the database.
+5. Completion response sent for the upload.
+6. Job Processing Batch polls for job metadata updates in the database.
+7. Job Processing Batch updates job status to "start".
+8. Job Processing Batch acquires Excel file(s).
+9. Excel Extraction Batch transforms job list extracted from Excel.
+10. Job Processing Batch saves job list obtained from Excel in the database.
+11. Job Processing Batch removes Excel file(s).
+12. Job Processing Batch updates job status to "end".
+13. Job Processing Batch polls for job metadata updates in the database.
+14. Job Processing Batch updates job status to "start".
+15. Job Processing Batch acquires job list.
+16. External Infrastructure Server interacts with Job Processing Batch for job preparation.
+17. Results notification sent from External Infrastructure Server to Job Processing Batch.
+18. Job Processing Batch updates job status to "end".

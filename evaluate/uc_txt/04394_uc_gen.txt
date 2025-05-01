@@ -1,0 +1,21 @@
+1. Receptionist enters login credentials (username, password) on UI/Interface.
+2. UI/Interface sends POST request /login to AuthRouter.
+3. AuthRouter forwards request to AuthController.
+4. AuthController calls validateCredentials() on AuthRepository.
+5. AuthRepository fetches user data by username from UserModel.
+6. UserModel queries user data by username from Database.
+7. UserModel retrieves user data.
+8. AuthRepository receives user data from UserModel.
+9. AuthController verifies password.
+10. AuthController sends 200 OK (login success) to UI/Interface if login successful.
+11. UI/Interface displays login result to Receptionist.
+12. UI/Interface sends GET request /dashboard to AuthRouter.
+13. AuthRouter sends request to AuthController to getDashboard().
+14. AuthController queries dashboard data from Repository.
+15. Repository fetches dashboard data from Database.
+16. Repository receives dashboard data from Database.
+17. AuthController receives dashboard data from Repository.
+18. AuthRouter sends 200 OK (dashboard data) to UI/Interface.
+19. UI/Interface displays dashboard to Receptionist.
+20. AuthController sends 401 Unauthorized (invalid credentials) to UI/Interface if login failed.
+21. UI/Interface displays error message to Receptionist.

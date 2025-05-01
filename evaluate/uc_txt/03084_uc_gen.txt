@@ -1,0 +1,15 @@
+1. Dev sends query request to JSEngine.
+2. JSEngine activates.
+3. JSEngine forwards query to QueryEngine in SQL++ format.
+4. QueryEngine activates.
+5. QueryEngine processes query and sends back result to JSEngine.
+6. QueryEngine deactivates.
+7. JSEngine sends result back to Dev.
+8. JSEngine deactivates.
+9. For each document in the query result:.
+10. Dev performs operations on the document.
+11. JSEngine requests to get document from QueryEngine.
+12. QueryEngine retrieves the document from Bucket.
+13. Bucket sends the document to QueryEngine.
+14. QueryEngine sends the retrieved document to JSEngine.
+15. Loop continues for next document.

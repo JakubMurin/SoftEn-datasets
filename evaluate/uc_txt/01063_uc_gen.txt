@@ -1,0 +1,10 @@
+1. Send HTTP Request to API Gateway/Lambda.
+2. API Gateway/Lambda forwards the request to GetTranslationCaseActivity.
+3. GetTranslationCaseActivity calls TranslationCaseDao to get the translation case by ID.
+4. TranslationCaseDao loads the translation case data from DynamoDB.
+5. TranslationCaseDao checks for matching customer ID.
+6. If the translation case does not exist, return with no item data.
+7. If the customer ID does not match, throw SecurityException.
+8. Return the TranslationCase object to GetTranslationCaseActivity.
+9. GetTranslationCaseActivity returns the GetTranslationCaseResult to API Gateway/Lambda.
+10. API Gateway/Lambda returns a 200 response with GetTranslationCaseResult data to the Client.

@@ -1,0 +1,9 @@
+1. API Client receives the "Request" from User A for the transaction.
+2. API Server sends "set(key,value)" request to AWS SM to set key-value pair.
+3. AWS SM gets the AWS client.
+4. AWS SM awaits to describe the secret using the AWS client.
+5. If successful, AWS SM responds "True" to API Server.
+6. If an error occurs, AWS SM sends the error message "Secrets Manager can't find the specified secret" to API Server.
+7. API Server sends the "Response" to API Client.
+8. API Client formats the response.
+9. API Client sets the keychain entry and responds with "SetKeychainEntryResponse" to User A.

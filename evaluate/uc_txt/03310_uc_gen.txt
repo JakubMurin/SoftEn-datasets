@@ -1,0 +1,18 @@
+1. User executes UpdateUserRequest with JSON object and mutex.
+2. UpdateUserRequest activates.
+3. UpdateUserRequest locks mutex using QMutexLocker.
+4. UpdateUserRequest extracts email, account number, and new data from JSON object.
+5. JSON object returns user data to UpdateUserRequest.
+6. UpdateUserRequest checks if DB connection is valid.
+7. UpdateUserRequest creates DB connection error response and returns it to User.
+8. UpdateUserRequest queries DB for user role.
+9. UpdateUserRequest creates error response for user not found and returns it to User.
+10. UpdateUserRequest checks if user is admin.
+11. UpdateUserRequest creates error response for unauthorized user and returns it to User.
+12. UpdateUserRequest queries DB for account data.
+13. UpdateUserRequest creates error response for account not found and returns it to User.
+14. UpdateUserRequest queries DB for user data with new email.
+15. UpdateUserRequest creates error response for email in use and returns it to User.
+16. UpdateUserRequest updates user information in DB.
+17. UpdateUserRequest creates error response for update failure and returns it to User.
+18. UpdateUserRequest constructs success response and returns it to User.

@@ -1,0 +1,17 @@
+1. User proposes VC revocation with vcId.
+2. Certified App retrieves VC meta from blockchain.
+3. TAS confirms issuer DID.
+4. TAS inspects and prepares to propose revocation with vcId.
+5. Issuer checks if revocation is possible, generates issuerNonce, and retrieves authentication type.
+6. User prepares ECDH data and signs (ReqEcdh)reqEcdh.
+7. Wallet signs provided ECDH request.
+8. Certified App sends ECDH request and receives acceptance.
+9. Certified App performs ECDH for session key establishment.
+10. Wallet validates wallet information and signs, then requests the creation of a server token.
+11. Server verifies signatures, generates and stores server token, encrypts response information and sends back the IV and encrypted data.
+12. Certified App decrypts and calculates the server token.
+13. Certified App requests VC revocation using wallet token, server token, vcId, issuerNonce, and authType.
+14. Wallet validates information and prepares revocation data, finally authenticaing user.
+15. Sever validates tokens, carries out VC revocation, updates VC status, and returns result.
+16. TAS confirms VC revocation.
+17. Issuer completes VC revocation.

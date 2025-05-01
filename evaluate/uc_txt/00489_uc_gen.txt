@@ -1,0 +1,18 @@
+1. Inviter creates new connection by sending a POST request to Invitee Cloud Agent with label "Bob".
+2. Invitee Cloud Agent generates a new pairwise Peer DID.
+3. Invitee Cloud Agent creates a connection state record.
+4. Inviter receives the connection record {id, invitation, state}.
+5. Inviter packs the connection invitation into a QR code.
+6. Inviter sends the invitation to Invitee using Out-of-band (OOB) mechanism via email with instructions and QR code.
+7. Inviter checks the connection state by sending a GET request to Inviter Cloud Agent.
+8. Inviter receives the connection state {state=InvitationGenerated}.
+9. Invitee parses the invitation message by scanning the QR code.
+10. Invitee reviews the invitation.
+11. Invitee receives and accepts the invitation by sending a POST request to Invitee Cloud Agent with the invitation.
+12. Invitee Cloud Agent creates a pairwise DID.
+13. Invitee Cloud Agent creates a connection state record.
+14. Invitee receives the connection record {id, invitation, state}.
+15. Invitee Cloud Agent sends a "ConnectionRequest" message to Inviter Cloud Agent with invitee's Peer DID.
+16. Inviter Cloud Agent responds with "OK" to Invitee Cloud Agent.
+17. Inviter Cloud Agent sends a "ConnectionResponse" message to Invitee Cloud Agent with inviter's Peer DID.
+18. Invitee Cloud Agent responds with "OK" to Inviter Cloud Agent.

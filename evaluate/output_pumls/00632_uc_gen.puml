@@ -1,0 +1,19 @@
+@startuml
+actor client
+actor object_server
+actor user_clicks
+actor backend_server
+actor player
+actor player_clicks
+actor game_controller
+actor rpc_server_forwards
+actor user_is
+participant system
+activate system
+client -> system: initiate_object_upload_request()
+activate client
+rpc_server_forwards -> system: upload_object_server()
+activate rpc_server_forwards
+object_server -> system: check_quota_for_object_upload()
+activate object_server
+@enduml

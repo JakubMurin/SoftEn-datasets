@@ -1,0 +1,11 @@
+1. Recipient requests to claim a mail by providing its ID.
+2. MailController checks if the Recipient is authorized to claim mail.
+3. MailController invokes the MailService to claim the mail.
+4. MailService begins a transaction.
+5. MailService retrieves the mail by ID from the MailRepository.
+6. MailService retrieves the recipient's information from the UserRepository.
+7. MailService updates the mail with transactional support in the MailRepository.
+8. MailService creates an email notification in the EmailNotificationRepository.
+9. MailService commits the transaction.
+10. MailService returns a successful response to the MailController.
+11. MailController responds to the Recipient with 200 OK.

@@ -1,0 +1,13 @@
+1. Alice performs agent recovery by completing all steps in Offline Recovery diagram or Social Recovery diagram.
+2. Alice generates policy registry address P' and stores it.
+3. Alice revokes all her claims that include the old agent policy address P as a blinded attribute and petitions the Issuers to reissue her claims.
+4. Alice revokes a claim.
+5. Alice sends a revoke claim message to her Cloud Agent.
+6. Cloud Agent forwards the revoke claim message to Issuers Agent.
+7. Issuer verifies Alice's identity.
+8. Issuer revokes the claim and updates the non-revocation accumulator.
+9. Ledger updates the accumulator and forwards the result to Issuers Agent.
+10. Issuers Agent acknowledges the result to Cloud Agent.
+11. Cloud Agent acknowledges the result to Edge Agent.
+12. Edge Agent acknowledges the result to Alice.
+13. Alice completes Issue Claim diagram for each claim with new policy address P.

@@ -1,0 +1,15 @@
+1. User instructs the system to create a course.
+2. UI is activated to facilitate course creation.
+3. UI directs Controller to start course creation process.
+4. Actor provides course details: name, description, edition.
+5. Controller receives course information from UI.
+6. Controller uses CourseBuilder to create a course entity in the correct state.
+7. Controller seeks necessary information to complete course data.
+8. Builder creates Course entity with provided data from Domain.
+9. Builder hands created Course back to Controller.
+10. Persistence module is called to determine repository choices.
+11. Controller selects Factory to instantiate a CourseRepository.
+12. Factory generates a Course object, ready for storage.
+13. Factory prepares the CourseRepository object in Controller.
+14. Controller uses the Repository to save the Course object.
+15. Controller provides the final Course back to the UI for successful creation.

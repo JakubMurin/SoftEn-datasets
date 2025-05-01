@@ -1,0 +1,14 @@
+1. Navegador requests GET /oneToOne/:sessionID.
+2. Routes calls Controller to getCheck(request, response).
+3. Controller fetches session data from OneToOne model.
+4. Controller uses MySQL to execute query for session data.
+5. Rows retrieved from MySQL.
+6. Controller redirects to error page if rows length is 0.
+7. Controller redirects to error page if role is not 'Human Resources' or oneOnOneUserIDFK does not match userID.
+8. Controller fetches data from Question model.
+9. Controller fetches answers from MySQL.
+10. Controller displays oneToOneCheck page if answers are missing.
+11. Controller fetches data from Measurable model.
+12. Controller fetches measures from MySQL.
+13. Controller renders oneToOneCheck page.
+14. Ejs renders HTML to Navegador.

@@ -1,0 +1,8 @@
+1. User interacts with DropdownItem to remove effect.
+2. DropdownItem directs request to AudioEffectAction.
+3. The AudioEffectAction executes closeEffectPanel.
+4. AudioEffectAction calls removeEffectSaga from AudioController.
+5. AudioController communicates with EventEmitter by calling removeEffect.
+6. EventEmitter emits event 'EFFECT_DELETE_EFFECT'.
+7. AudioController removes effect in AudioController.
+8. AudioEffectAction completes the removal of the effect.

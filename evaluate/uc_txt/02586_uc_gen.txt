@@ -1,0 +1,16 @@
+1. User sends a POST request to CDN for /foo with a GET request for /poison.
+2. CDN forwards the request to Proxy.
+3. Proxy forwards the request to Backend.
+4. Backend responds to Proxy with a 200 status for /foo.
+5. Proxy forwards the response to CDN with a 200 status for /foo.
+6. CDN responds to Attacker with a 200 status for /foo.
+7. Proxy sends a GET request to Backend for /poison.
+8. Backend responds to Proxy with a 200 status for /poison.
+9. Proxy fails to forward the response to CDN due to the closed connections.
+10. CDN drops the smuggled response.
+11. User sends a GET request to CDN for /bar.
+12. CDN forwards the request to Proxy.
+13. Proxy forwards the request to Backend.
+14. Backend responds to Proxy with a 200 status for /bar.
+15. Proxy forwards the response to CDN with a 200 status for /bar.
+16. CDN responds to User with a 200 status for /bar.

@@ -1,0 +1,12 @@
+1. User submits new history data to UI.
+2. UI sends POST request /histories with data to Router.
+3. Router invokes Controller to create history from submitted data.
+4. Controller requests Repository to create history.
+5. Repository creates new History object from data.
+6. Model interacts with Database to save the new History object.
+7. Model confirms successful save to DB.
+8. Model sends saved History object back to Repository.
+9. Repository acknowledges save completion to Controller.
+10. Controller sends HTTP response 201 Created (saved History) to Router.
+11. Router responds with HTTP 201 to UI.
+12. UI displays success message to User.

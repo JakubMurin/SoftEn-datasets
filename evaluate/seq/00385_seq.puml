@@ -1,0 +1,13 @@
+@startuml
+actor Reader
+participant "League Alerts System" as LAS
+
+Reader -> LAS: createAccount(accountData)
+activate LAS
+alt Valid information
+    LAS -> LAS: Store Account information
+    LAS --> Reader: returnSuccessMessage(HttpStatusCode.Created)
+
+deactivate LAS
+@enduml
+

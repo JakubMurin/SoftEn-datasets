@@ -1,0 +1,8 @@
+1. Apache input filter receives HTTP Request from HTTPRequest actor.
+2. Context enrichment is performed by mod_dup entity.
+3. mod_dup entity applies filters to match the request.
+4. Delegation to next handler (WS, mod_rewrite..) by PNS_WS entity.
+5. PNS_WS entity collects the answer.
+6. mod_dup prepares the request for duplication.
+7. mod_dup sends the request back to the client via HTTPRequest actor.
+8. duplicator prepares and sends the duplicated request to mod_compare.

@@ -1,0 +1,11 @@
+1. HTTP Request actor sends an Apache input filter request to mod_duplicator.
+2. mod_duplicator receives the request and performs context enrichment.
+3. mod_duplicator runs filters to match the specified criteria.
+4. mod_duplicator delegates the request to the next handler, the PNS_WS Delegator.
+5. PNS_WS Delegator collects the answer.
+6. mod_duplicator prepares the request for duplication.
+7. mod_duplicator sends the processed request back to the HTTP Request.
+8. duplicator receives the prepared request for duplication from mod_duplicator.
+9. duplicator sends the duplicated request to mod_compare.
+10. mod_duplicator completes its task and deactivates.
+11. duplicator completes the duplication process and deactivates.

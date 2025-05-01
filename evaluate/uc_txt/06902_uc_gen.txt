@@ -1,0 +1,14 @@
+1. User clicks "Edit Task".
+2. tasks_table_interactions.js initiates modal and fetches task data.
+3. Flask Backend fetches task data with GET /api/tasks/<taskId>.
+4. Task model retrieves task using Task.query.get(taskId).
+5. Task data is sent back to User.
+6. User populates modal fields.
+7. User submits "Save Task" form.
+8. Flask Backend handles POST request to save the task.
+9. Task model creates or updates the task.
+10. Task validation ensures hierarchy constraints are respected.
+11. Task service checks for circular references.
+12. Task data is inserted/updated into the database.
+13. Logger logs the save event.
+14. User interface is updated or error message is shown.

@@ -1,0 +1,12 @@
+1. User requests to create a Post.
+2. UI receives the request to create a Post.
+3. PostController sends PostDto to the PostController.
+4. PostController validates the PostDto.
+5. PostController gets the User from the security context.
+6. PostService creates the Post with the PostDto and UserId.
+7. PostMapper transforms the PostDto into a Post entity.
+8. PostService creates the Post in the PostRepository.
+9. PostRepository saves the created Post.
+10. PostService returns an Optional<Post> to the PostController.
+11. PostController returns ResponseEntity with a 201 status code to UI.
+12. UI displays the message "Post created!" to the User.

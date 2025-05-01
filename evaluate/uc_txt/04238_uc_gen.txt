@@ -1,0 +1,22 @@
+1. User writes a new draft message with or without participants.
+2. User throttles save.
+3. Draft message is created: [POST: /api/vx/messages]\n{ message_id: String, participants: [Opt] Array }.
+4. API acknowledges message creation [status 204].
+5. User retrieves message details: [GET: /api/vx/messages/{message_id}].
+6. API responds with message details [status 200]\n{ message_id: String}.
+7. User edits the draft message with or without participants.
+8. User throttles save.
+9. Draft message is patched: [PATCH: /api/vx/messages/{message_id}]\n{ current_state: object, participants: [Opt] Array }.
+10. API acknowledges patching [status 204].
+11. User retrieves message details: [GET: /api/vx/messages/{message_id}].
+12. API responds with message details [status 200]\n{ message_id: String}.
+13. User sends the message.
+14. User hits "Send".
+15. User sends the message: [POST: /api/vx/messages/{message_id}/actions]\n{ actions: ["send"] }.
+16. API validates participants and discussion_id.
+17. Discussion ID is calculated.
+18. Patch is acknowledged [status 204].
+19. User retrieves sent message details: [GET: /api/vx/messages/{message_id}].
+20. API responds with sent message details [status 200].
+21. Message discussion is rendered.
+22. Discussion is displayed to the user.

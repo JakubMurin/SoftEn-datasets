@@ -1,0 +1,12 @@
+1. DroneResponse decomposes the entire flight path into a series of flight legs, each one with its own target waypoint.
+2. DroneResponse establishes an initial altitude of the flight and assigns it as the starting altitude of each individual leg.
+3. DroneResponse checks the starting flight leg to ensure that it does not pass through any prohibited airspace whilst maintaining its starting altitude.
+4. DroneResponse uses a terrain map to check the altitude of the flight leg's terrain to ensure that the UAV maintains minimum terrain separation whilst maintaining the starting altitude of the current leg.
+5. Steps 3-4 are repeated for each flight leg.
+6. Given the flight plan, the UAV checks that it has sufficient battery power to reach its destination and determines that it has sufficient power to continue.
+7. The UAV leases airspace for the current flight leg.
+8. The UAV ascends or descends to the target altitude of the current flight leg.
+9. The UAV flies to the destination waypoint of the current flight leg.
+10. The UAV reports its arrival at the flight leg's destination waypoint.
+11. Steps 6-8 are repeated until the UAV reaches its final destination.
+12. The use case finishes when the UAV assumes the task assigned for it to do at its final destination.

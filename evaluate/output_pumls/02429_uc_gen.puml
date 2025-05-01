@@ -1,0 +1,36 @@
+@startuml
+actor user
+actor controller
+actor ads_controller
+actor controller_updates_article_page
+participant articleservice_queries_article
+activate articleservice_queries_article
+user -> articleservice_queries_article: navigate_to_article_page()
+activate user
+controller -> articleservice_queries_article: receive_request_add_comment()
+activate controller
+controller -> articleservice_queries_article: retrieve_article_details()
+participant slug
+articleservice_queries_article -> slug: by()
+activate slug
+deactivate slug
+participant article_details
+articleservice_queries_article -> article_details: receive()
+activate article_details
+deactivate article_details
+controller -> articleservice_queries_article: add_comment_to_article()
+participant comment
+articleservice_queries_article -> comment: save()
+activate comment
+deactivate comment
+participant success_response
+articleservice_queries_article -> success_response: send()
+activate success_response
+deactivate success_response
+controller_updates_article_page -> articleservice_queries_article: with_new_comment()
+activate controller_updates_article_page
+participant article_page_with_comment
+articleservice_queries_article -> article_page_with_comment: update()
+activate article_page_with_comment
+deactivate article_page_with_comment
+@enduml

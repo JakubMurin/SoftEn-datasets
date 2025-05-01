@@ -1,0 +1,20 @@
+1. User requests to reroute.
+2. Reroute the flow.
+3. Get the flow from DB.
+4. Find a path for the flow.
+5. Allocate resources for the found path.
+6. Save the found path with IN_PROGRESS status.
+7. Update ISLs available bandwidth.
+8. Create switch rules and build commands.
+9. Install egress/transit rules.
+10. Validate installed egress/transit rules.
+11. Validate ingress rules.
+12. Update the flow to reference the found path as active.
+13. Change the found path status to INSTALLED.
+14. Change the flow status to UP.
+15. Change the status of the old path to IN_PROGRESS.
+16. Remove rules of the old flow.
+17. Validate removed rules.
+18. Release used meter if rule is absent on a switch.
+19. Deallocate resources of the old path.
+20. Remove the old path.

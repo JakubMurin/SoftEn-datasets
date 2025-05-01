@@ -1,0 +1,27 @@
+1. Адміністратор платформи запускає інсталлер.
+2. Інсталлер активує шифрування etcd.
+3. Інсталлер активує catalog-source (Redhat репозиторії).
+4. Інсталлер встановлює storage в Ceph.
+5. Інсталлер встановлює logging.
+6. Інсталлер встановлює service-mesh.
+7. Інсталлер встановлює control-plane-nexus в Nexus.
+8. Інсталлер встановлює platform-vault.
+9. Інсталлер встановлює platform-minio.
+10. Інсталлер завантажує докер імеджі в Nexus.
+11. Інсталлер встановлює user-management в Keycloak.
+12. Інсталлер запускає control-plane-installer.
+13. Інсталлер завантажує nexus ресурси (*.xsd) в Nexus.
+14. Інсталлер створює backup-credentials.
+15. Control-plane-installer встановлює CP компоненти.
+16. CP компоненти встановлюють jenkins-operator та jenkins.
+17. CP компоненти встановлюють codebase-operator.
+18. CP компоненти встановлюють keycloak-operator.
+19. CP компоненти встановлюють gerrit-operator та gerrit.
+20. CP компоненти встановлюють codebase cluster-mgmt в gerrit.
+21. Jenkins створює gitops job для cluster-mgmt.
+22. Jenkins запускає gitops job для cluster-mgmt.
+23. Jenkins checkout helmfile в gerrit.
+24. Jenkins запускає helmfile.
+25. Jenkins встановлює інші компоненти.
+26. CP створює realm для Control Plane в Keycloak.
+27. CP інтегрує всі компоненти з keycloak.

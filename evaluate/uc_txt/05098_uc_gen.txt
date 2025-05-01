@@ -1,0 +1,8 @@
+1. User deletes a task.
+2. Frontend sends task to backend.
+3. Backend sends task to Service Bus Queue for deletion.
+4. KEDA servicebus-remover removes task from queue.
+5. KEDA servicebus-remover removes task from running queue.
+6. KEDA servicebus-remover sends a volcano job for deletion to Kubernetes API.
+7. User interface reads tasks from Service Bus Running Queue.
+8. User interface shows running tasks to the User.

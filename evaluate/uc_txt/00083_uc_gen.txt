@@ -1,0 +1,8 @@
+1. Staker initiates the unstaking process by calling the "unstake" function in the Staking contract with unstakeInfo.
+2. Staking contract transfers the staked amount to the Staker.
+3. RewardMaster triggers the "onAction" function.
+4. AdvancedStakeController retrieves reward advice by calling the "getRewardAdvice" function.
+5. MASP v.1 (w/ proxy) executes early unstaking by calling the "earlyUnstake" function in the AdvancedStakeController.
+6. PublicLeaf generates a leaf hash based on preimage data.
+7. PublicLeaf generates a nullifier hash based on preimage data.
+8. MASP v.1 (w/ proxy) transfers the reward amount to the Staker.

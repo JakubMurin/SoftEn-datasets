@@ -1,0 +1,10 @@
+1. Admin clicks on "Block User" button in the UI.
+2. UI sends blockUser(userId) request to UserController.
+3. UserController forwards blockUser(userId) request to UserService.
+4. UserService retrieves user information by calling findById(userId) on UserRepository.
+5. UserRepository returns the User object.
+6. UserService sets the status of the User to BLOCKED.
+7. UserService saves the updated User in the UserRepository.
+8. UserRepository returns the updated User.
+9. UserService sends the updated UserDTO to UserController.
+10. UserController sends the updated UserDTO (BLOCKED) back to the UI.

@@ -1,0 +1,23 @@
+1. Create Transaction UUID for reference and maintaining correct state.
+2. Set lock_height for transaction kernel at current chain height.
+3. Select inputs using desired selection strategy.
+4. Calculate sum of inputs blinding factors xI.
+5. Create change_output.
+6. Select blinding factor xC for change_output.
+7. Create lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS linking inputs + outputs (Not executed at this point)  (Slate will be passed).
+8. Calculate tx_weight: MAX(-1 * num_inputs + 4 * (num_change_outputs + 1), 1) (1 covers a single output on the receiver's side).
+9. Calculate fee: tx_weight * 1_000_000 nG.
+10. Calculate total blinding excess sum for all inputs and outputs xS1 = xC - xI (private scalar).
+11. Select a random nonce kS (private scalar).
+12. Subtract random kernel offset oS from xS1. Calculate xS = xS1 - oS.
+13. Multiply xS and kS by generator G to create public curve points xSG and kSG.
+14. Add values to Slate for passing to other participants: UUID, inputs, change_outputs, fee, amount, lock_height, kSG, xSG, oS.
+15. Sender sends Slate to Recipient.
+16. Recipient ensures fee and creates receiver_output.
+17. Recipient chooses random blinding factor for receiver_output xR.
+18. Recipient sends back signature data to Sender in the Slate.
+19. Recipient executes wallet output function rF if all is Okay.
+20. Sender finalizes transaction by constructing excess signatures, including Schnorr challenges, and verifies signatures.
+21. Sender creates final transaction tx from Slate.
+22. Sender posts tx to mempool.
+23. Sender and Epic Node process finalization of the transaction.

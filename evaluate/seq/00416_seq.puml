@@ -1,0 +1,30 @@
+@startuml
+actor DonorRepresentative as donor
+entity "Digital Archive\nManagement System" as archive
+database "Archive Database" as db
+
+activate donor
+donor -> archive : Log in via secure authentication
+activate archive
+archive -> db : Validate donor credentials
+activate db
+db -> archive : Credentials validated
+deactivate db
+archive -> donor : Authentication successful\nDisplay donor dashboard
+deactivate archive
+donor -> archive : Select "Supply Accruals" option
+activate archive
+archive -> donor : Display form to select\ncollection or create new one
+donor -> archive : Fill form with accrual details\nand select existing collection
+archive -> db : Check for existing collection details
+activate db
+db -> archive : Collection details retrieved
+archive -> donor : Confirm collection to supply accruals
+donor -> archive : Upload files and metadata
+archive -> db : Create/update record for incremental accrual\nGenerate unique identifiers for new files
+db -> archive : Accrual recorded in database
+archive -> donor : Display success message\n"Accrual added successfully"
+deactivate db
+deactivate archive
+donor -> archive : Log out
+@enduml

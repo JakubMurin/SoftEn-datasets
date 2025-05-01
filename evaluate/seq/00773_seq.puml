@@ -1,0 +1,38 @@
+@startuml
+actor Buyer
+participant Market
+actor Seller
+
+opt
+    Buyer -> Market: Registers itself as a observer 
+end
+loop Until seller has sold all it's items
+    Seller -> Market: Puts item up for sale
+    Buyer <- Market: Notifies buyer of new items
+    |||
+    opt Buyer is registered after Market already has items on sale 
+        |||
+        Buyer -> Market: Registers itself as a observer
+        Buyer <-- Market: Notifies buyer of new items
+        |||
+        alt Buyer has money to buy item
+            |||
+            Buyer -> Seller: Buys item from seller
+            Seller -> Market: Removes item from market
+            Buyer <-- Seller: Transfers item
+            |||
+        end
+        |||
+    end
+    |||
+    alt Buyer has money to buy item
+        |||
+        Buyer -> Seller: Buys item from seller
+        Seller -> Market: Removes item from market
+        Buyer <-- Seller: Transfers item
+        |||
+    end
+end
+
+
+@enduml

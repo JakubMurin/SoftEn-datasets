@@ -1,0 +1,19 @@
+1. Admin sends a request to delete an existing other service.
+2. UI receives the request and triggers GET request to delete {serviceId}.
+3. Router redirects the request to Controller for confirmation.
+4. Controller delegates to Repository to fetch service details.
+5. Repository communicates with OtherServiceModel to fetch service by ID.
+6. OtherServiceModel queries Database for service data.
+7. OtherServiceModel retrieves the service data from the database.
+8. Repository sends service data to Controller.
+9. Controller displays delete confirmation form on UI.
+10. Admin confirms the delete request on UI.
+11. UI sends a POST request to delete {serviceId}.
+12. Router forwards the request to Controller for deletion operation.
+13. Controller instructs Repository to delete the service.
+14. Repository communicates with OtherServiceModel to delete the service by ID.
+15. OtherServiceModel deletes the service record from the Database.
+16. Repository provides success message to the Controller.
+17. Controller responds to Router with 200 OK status.
+18. Router relays the success status to UI.
+19. UI displays a success message to the Admin .

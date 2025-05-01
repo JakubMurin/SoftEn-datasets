@@ -1,0 +1,8 @@
+1. User selects a dataset to explore.
+2. User Interface sends a request to API Gateway to retrieve the properties of the selected dataset (GET /datasets/{id}/properties).
+3. API Gateway forwards the request to Dataset Management Service to fetch the properties of the dataset using fetchDatasetProperties(id) operation.
+4. Dataset Management Service retrieves the dataset type from Dataset Type Registry by calling getDatasetType(datasetId) operation.
+5. Dataset Management Service gets the properties of the dataset instance from Dataset Instance by using getProperties(datasetType) operation.
+6. Dataset Management Service provides the dataset properties to API Gateway.
+7. API Gateway shows the updatable properties to the User Interface.
+8. User Interface displays the properties to the user for exploration.

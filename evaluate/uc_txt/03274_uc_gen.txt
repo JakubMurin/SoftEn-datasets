@@ -1,0 +1,12 @@
+1. User enters the registration page.
+2. Browser generates a random string s.
+3. Browser requests and receives a captcha image based on s.
+4. User inputs registration information, captcha, and s.
+5. User clicks the submit button.
+6. Browser sends the registration request to UserService.
+7. UserService validates the captcha.
+8. UserService generates a tokenID.
+9. UserService inserts user information into the Mysql user table.
+10. UserService inserts user-resource relationship data into the Mysql user_resource table.
+11. UserService sets token-related information in Redis.
+12. Browser sets a cookie and redirects to the login homepage.

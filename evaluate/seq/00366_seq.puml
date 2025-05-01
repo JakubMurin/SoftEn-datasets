@@ -1,0 +1,33 @@
+@startuml
+actor "Broker Team Member" as member
+participant "Broker UI" as ui
+participant "Validation Rules API" as rulesApi
+database "Validation Rules DB" as rulesDb
+participant "Derivation Logic Module" as derivationLogic
+
+== Add New PPoPCode Cases to Derivation Logic ==
+
+member -> ui : Selects option to add PPoPCode cases
+ui -> rulesApi : Request to add new PPoPCode cases (00*****, 00FORGN)
+activate rulesApi
+
+rulesApi -> rulesDb : Update derivation rules
+activate rulesDb
+rulesDb -->> rulesApi : Confirmation of rule update
+deactivate rulesDb
+
+rulesApi -> derivationLogic : Integrate new PP codes into logic
+activate derivationLogic
+derivationLogic -> rulesDb : Retrieve updated rules
+activate rulesDb
+rulesDb -->> derivationLogic : Returns updated rules
+deactivate rulesDb
+
+derivationLogic -->> rulesApi : Confirmation of logic update
+deactivate derivationLogic
+rulesApi -->> ui : Display success message
+deactivate rulesApi
+
+ui -->> member : Show confirmation of PPoPCode addition
+
+@enduml

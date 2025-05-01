@@ -1,0 +1,12 @@
+1. Admin_PL initiates the removal of a member from a project by providing the signId, projectId, and removeMemberId.
+2. System checks if the member to be removed exists.
+3. System displays an error message to Admin_PL: "The user does not exist" if the member is not found.
+4. System checks if the project exists.
+5. System displays an error message to Admin_PL: "The project does not exist" if the project is not found.
+6. System checks if the member to be removed exists.
+7. System displays an error message to Admin_PL: "The user does not exist" if the member is not found.
+8. System checks if the member to be removed is a project leader.
+9. System sets the project leader to null if the member to be removed is a project leader.
+10. System removes the member from the project.
+11. System displays an error message to Admin_PL: "Project leaders cannot remove themselves" if the member to be removed is a project leader.
+12. System returns the ProjectResponseDto containing the updated project details (id, name, members, issues, leaderId) to Admin_PL.

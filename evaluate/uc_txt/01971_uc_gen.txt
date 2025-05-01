@@ -1,0 +1,19 @@
+1. Activate Navegador.
+2. Navegador calls Delete operation.
+3. Activate Delete entity.
+4. Delete entity requests confirmation from ConfirmDeleteHol boundary.
+5. Activate ConfirmDeleteHol boundary.
+6. ConfirmDeleteHol confirms deletion request by calling DELETE on Holiday.routes.js.
+7. Activate Holiday.routes.js.
+8. Holiday.routes.js forwards delete request to Holiday.controller.js.
+9. Activate Holiday.controller.js.
+10. Holiday.controller.js initiates deletion of Holiday.model data.
+11. Activate Holiday.model.
+12. Holiday.model executes SQL command to delete from database.
+13. SQL command completes successfully.
+14. Holiday.model sends query success response to Holiday.controller.js.
+15. Holiday.controller.js returns response to ConfirmDeleteHol boundary.
+16. ConfirmDeleteHol processes response and sends HTML back to Navegador.
+17. Deactivate ConfirmDeleteHol.
+18. Activate Navegador.
+19. Deactivate Navegador.

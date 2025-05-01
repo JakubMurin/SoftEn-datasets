@@ -1,0 +1,17 @@
+1. User initiates a request to rate a book.
+2. Gateway forwards the request to Keycloak for JWT verification.
+3. Keycloak verifies the JWT.
+4. If JWT is valid:.
+5. Gateway forwards the request to Catalog to update the book rating.
+6. Catalog finds the book by ID in Postgres.
+7. If the book exists:.
+8. Catalog saves or updates the user rate for the book in Postgres.
+9. Catalog responds to Gateway with HttpStatus 200.
+10. Gateway responds to User with HttpStatus 200.
+11. If the book does not exist:.
+12. Catalog responds to Gateway with HttpStatus 404.
+13. Gateway responds to User with HttpStatus 404.
+14. If JWT is absent:.
+15. Gateway responds to User with HttpStatus 401.
+16. If JWT is not valid:.
+17. Gateway responds to User with HttpStatus 403.

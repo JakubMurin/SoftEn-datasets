@@ -1,0 +1,7 @@
+1. 读取本地的config、update文件的配置,处理本地已有插件.
+2. 获取bucket信息（api/bucket/list）.
+3. 检测是否需要升级（api/client/version）.
+4. 把json中的版本version和插件version与本地的update文件进行比较，不同就需要升级，覆盖本地update文件.
+5. 读取config、update文件，对比本地已有插件，下载本地不存在的插件.
+6. 获取插件下载地址（api/filekey/plugin）.
+7. 通过准备流程中的bucket信息拼出下载地址进行下载.

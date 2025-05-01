@@ -1,0 +1,9 @@
+1. User presses Signup with invalid credentials. SignupController receives the request.
+2. SignupController calls handleSignin to process the invalid credentials.
+3. RemoteModelAccess receives the request and attempts to post user, resulting in a Null response returned.
+4. SignupController handles the Null response and notifies User about the error.
+5. User sees an error message.
+6. User presses Signup with valid credentials. SignupController receives the request.
+7. SignupController calls handleSignin to process the valid credentials.
+8. RemoteModelAccess receives the request and successfully posts the user, returning User.
+9. SignupController handles the User response and directs User to the MainMenu screen.

@@ -1,0 +1,8 @@
+1. Certified App sends User Registration Start Request to TAS.
+2. Certified App prepares ECDH data and signs, sends ECDH Request to TAS.
+3. Certified App generates server token seed and sends Server Token Creation Request to TAS.
+4. Wallet receives User DID Key Creation Request, generates keys for key exchange, and validates wallet token.
+5. Wallet processes User Registration Request, creates DID Document, signs it, and sends it to TAS.
+6. TAS validates server token, verifies signatures, registers DID, and stores user mapping information in DB.
+7. Certified App sends User Registration Completion Request to TAS.
+8. TAS validates server token, deletes session information, and closes the transaction.

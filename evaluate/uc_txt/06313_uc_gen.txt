@@ -1,0 +1,9 @@
+1. Create Transaction **UUID**.
+2. Set **lock_height** for transaction kernel (current chain height).
+3. Select **inputs** using desired selection strategy.
+4. Calculate sum **inputs** blinding factors **xI**.
+5. Create **change_output**.
+6. Select blinding factor **xC** for **change_output**.
+7. Create lock function **sF** that locks **inputs** and stores **change_output** in the wallet and identifies wallet transaction log entry **TS** linking **inputs + outputs** (Not executed at this point).
+8. Calculate **tx_weight**: MAX(-1 * **num_inputs** + 4 * (**num_change_outputs** + 1), 1).
+9.  Remaining steps in Round 1 omitted for brevity .

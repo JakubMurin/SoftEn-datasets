@@ -1,0 +1,9 @@
+1. User selects question difficulty (Hard/Medium/Easy).
+2. User clicks submit.
+3. Frontend sends POST request to API Gateway with payload: {user, difficulty}.
+4. API Gateway forwards the request to Controller.
+5. Controller calls Service to store the match request.
+6. Service creates MatchRequest and saves it to the database.
+7. Service returns the generated requestId to Controller.
+8. Controller responds with 200 OK to API Gateway with payload: {requestId}.
+9. API Gateway responds with 200 OK Accepted to Frontend with payload: {requestId}.

@@ -1,0 +1,6 @@
+1. 用户新增业务监控配置.
+2. 系统检查数据的合法性.
+3. 系统将数据落库.
+4. 系统更新当前时间戳到redis，作为客户端心跳时间，并更新心跳超时时间.
+5. tdm抢到ACTIVE后进行doInit()和HeartBeatControlService的初始化.
+6. tdm执行initCache()，清空redis中的超时时间配置，删除缓存中的心跳时间.

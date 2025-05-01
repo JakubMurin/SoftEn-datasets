@@ -1,0 +1,8 @@
+1. User selects a request ID and provides a status (Accept/Reject).
+2. ConsoleUI calls update_request_status(request_id, status) on RequestController.
+3. RequestController executes a SELECT query to fetch request details from DBManager.
+4. DBManager returns the request data to RequestController.
+5. RequestController executes UPDATE queries for requests and books (if accepted) in DBManager.
+6. DBManager returns success/failure status to RequestController.
+7. RequestController returns the result to ConsoleUI.
+8. ConsoleUI shows a success or failure message to the User.

@@ -1,0 +1,10 @@
+1. User sends a GET request to the API_Controller with a medical condition name parameter.
+2. API_Controller validates the path parameter.
+3. If the name is invalid, API_Controller responds with a 400 Bad Request message to the User.
+4. If the name is valid, API_Controller calls AllergyService to retrieve all medical conditions.
+5. AllergyService requests Repository to fetch the medical conditions.
+6. If the allergy is not found, AllergyService throws an exception "Medical Condition not found" to API_Controller.
+7. API_Controller responds with a 404 Not Found message to the User.
+8. If the allergy is found, Repository provides a list of medical conditions to AllergyService.
+9. AllergyService sends the list of medical conditions to API_Controller.
+10. API_Controller responds with a 200 OK message along with the medical condition data to the User.

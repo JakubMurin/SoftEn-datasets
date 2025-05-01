@@ -1,0 +1,27 @@
+1. Health Workers search for patient (created before if needed).
+2. User Interface searches for patient.
+3. Engine searches for available CarePlan using PlanDefinition/$Apply.
+4. Engine evaluates the condition of available PlanDefinitions and creates CarePlan.
+5. Engine sends a list of CarePlans to User Interface.
+6. Health Workers select a CarePlan.
+7. User Interface sends the selected CarePlan to Engine.
+8. Engine saves the PlanDefinition for guideline-based-care, determine-diagnosis, dispense-medications, and provide-counseling.
+9. Engine creates the encounter.
+10. Engine applies PlanDefinition/EmCareDXX/$Apply and receives CarePlan.
+11. Health Workers fill and submit questionnaires.
+12. Engine runs structureMap on QuestionnaireResponse.
+13. Engine saves created bundle.
+14. Engine applies PlanDefinition/EmCareDXX/$Apply and receives classification questionnaire.
+15. User Interface displays classification questionnaire.
+16. Health Workers agree or disagree with classification and add classification.
+17. User Interface sends questionnaire response to Engine.
+18. Engine runs structureMap on QuestionnaireResponse.
+19. Engine saves created bundle.
+20. Engine applies PlanDefinition/EmCareDXX/$Apply and receives medication questionnaire.
+21. User Interface displays medication questionnaire.
+22. Health Workers document medication availability.
+23. User Interface sends questionnaire response to Engine.
+24. Engine runs structureMap on QuestionnaireResponse.
+25. Engine saves created bundle.
+26. Engine applies PlanDefinition/EmCareDXX/$Apply and receives counseling questionnaire.
+27. User Interface displays counseling questionnaire.

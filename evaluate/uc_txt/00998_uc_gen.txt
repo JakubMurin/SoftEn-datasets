@@ -1,0 +1,10 @@
+1. ProblemSolver sends an encrypted session key and encrypted data to DataServer through a POST request.
+2. DataServer decrypts the encrypted session key.
+3. DataServer decrypts the encrypted data.
+4. DataServer checks if a random number function should use UniformRandomDistribution or NormalRandomDistribution based on the decrypted data.
+5. If the random choice equals 0:.
+6. DataServer calls UniformRandomDistribution to get the numbers with specified parameters, producing response data.
+7. Otherwise, if the random choice equals 1:.
+8. DataServer calls NormalRandomDistribution to get the numbers with specified parameters, producing response data.
+9. DataServer encrypts the response data with session key.
+10. DataServer sends the encrypted session key and encrypted data back to ProblemSolver with a 200 OK status.

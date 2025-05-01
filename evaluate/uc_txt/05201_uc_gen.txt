@@ -1,0 +1,13 @@
+1. User activates the subscription process.
+2. SubscriptionController receives the activation request.
+3. SubscriptionController forwards the request to SubscriptionFacadeImpl.
+4. SubscriptionFacadeImpl communicates with SubscriptionRepository to handle the request.
+5. SubscriptionRepository interacts with SubscriptionJpaPersistenceAdapter to access data.
+6. SubscriptionJpaPersistenceAdapter calls SubscriptionJpaRepository to fetch data from the Datastore.
+7. Datastore retrieves the requested data.
+8. Datastore sends the data to SubscriptionJpaRepository.
+9. SubscriptionJpaRepository returns the data to SubscriptionJpaPersistenceAdapter.
+10. SubscriptionJpaPersistenceAdapter processes the data and sends it back to SubscriptionRepository.
+11. SubscriptionRepository provides the processed data to SubscriptionFacadeImpl.
+12. SubscriptionFacadeImpl sends the response back to SubscriptionController.
+13. SubscriptionController returns the response to the User.

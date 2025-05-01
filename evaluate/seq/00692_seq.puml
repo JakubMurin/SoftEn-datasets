@@ -1,0 +1,23 @@
+@startuml
+actor Member
+entity "CLMS\nFront End" as FrontEnd
+control "Payment Service" as PaymentService
+entity "Database\nManagement" as Database
+participant "Mobile Banking\nSystem" as MobileBanking
+
+Member -> FrontEnd : Selects payment option
+FrontEnd -> PaymentService : Initiates payment request
+PaymentService -> MobileBanking : Request payment processing
+activate MobileBanking
+
+MobileBanking -> MobileBanking : Process transaction
+MobileBanking -> Member : Send transaction authentication
+Member -> MobileBanking : Authorizes transaction
+
+deactivate MobileBanking
+MobileBanking -> PaymentService : Confirm transaction success
+PaymentService -> Database : Update payment status
+Database -> PaymentService : Confirm update
+PaymentService -> FrontEnd : Display success message
+FrontEnd -> Member : Show confirmation
+@enduml

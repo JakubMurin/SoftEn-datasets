@@ -1,0 +1,6 @@
+1. User initiates the addition of a new monitoring configuration in the system.
+2. System checks the validity of the data.
+3. System stores the monitoring configuration in PostgreSQL.
+4. System updates the timestamp in Redis as the heartbeat time received from the client and updates the client heartbeat timeout in Redis.
+5. TD Manager, upon receiving ACTIVE status, initializes the HeartBeatControlService by executing doInit().
+6. TD Manager executes initCache() to clear the timeout configuration in Redis and delete the heartbeat time from the cache.

@@ -1,0 +1,6 @@
+1. Admin creates storage class with mgmt-endpoint: 10.10.10.40:80,10.10.10.41:80,10.10.10.42:80, replica-count: "3", and compression disabled.
+2. User requests creation of persistent volume claim (PVC).
+3. Kubernetes triggers the ControllerCreateVolume operation in the CSI driver.
+4. The CSI driver sends a CreateVolume request to the target storage system.
+5. The target storage system responds with the volume ID and capacity.
+6. The CSI driver sends the CreateVolumeResponse back to Kubernetes.

@@ -1,0 +1,9 @@
+1. Client triggers a check on the health of the IP.
+2. HealthMonitorAPI denies or accepts the service check based on request counts.
+3. IpHandler increments the request count for the sender IP.
+4. If request count is above 5:.
+5. IpHandler requests ServiceRemovalHandler to block the sender IP.
+6. ServiceRemovalHandler blocks the request from the sender IP and denies the message.
+7. If request count is below or equal to 5:.
+8. IpHandler allows the request to pass to HealthMonitorAPI.
+9. HealthMonitorAPI sends API health status to the Client.

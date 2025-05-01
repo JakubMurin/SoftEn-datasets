@@ -1,0 +1,16 @@
+1. Customer requests to verify booking by OTP.
+2. UI receives the request and sends GET /bookings/{bookingId}/verify-otp to BookingRouter.
+3. Router forwards the request to BookingController to verify booking OTP.
+4. Controller retrieves booking details from Repository using bookingId.
+5. Repository fetches booking details from BookingModel by ID.
+6. BookingModel queries the Database for booking data.
+7. BookingModel returns booking data to Repository.
+8. Repository provides booking data to Controller.
+9. Controller verifies OTP using OTPService.
+10. OTPService validates the OTP.
+11. If OTP is valid, Controller updates booking status to "verified".
+12. Router responds with 200 OK (Booking verified) to UI.
+13. UI displays success message to Customer.
+14. If OTP is invalid, Controller responds with 400 Bad Request (Invalid OTP) to UI.
+15. Router responds with 400 Bad Request (Invalid OTP) to UI.
+16. UI displays error message to Customer.

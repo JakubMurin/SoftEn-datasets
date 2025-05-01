@@ -1,0 +1,11 @@
+1. Admin requests to update receptionist information via UI/Interface.
+2. UI/Interface sends a GET request to Router for /admin/receptionists/update/{receptionistId}.
+3. Router triggers Controller to show update receptionist form.
+4. Controller fetches receptionist details by calling getReceptionistById on Repository.
+5. Repository searches for receptionist data using ReceptionistModel and Database for receptionistId.
+6. Controller and Router display update form with current data.
+7. Admin fills in updated receptionist details, submits the form.
+8. UI/Interface sends a POST request to Router for /admin/receptionists/update/{receptionistId}.
+9. Router triggers Controller to update receptionist using saveUpdatedReceptionist in Repository.
+10. ReceptionistModel updates receptionist data in Database.
+11. Controller informs Router about successful receptionist update.

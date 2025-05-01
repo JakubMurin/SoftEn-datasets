@@ -1,0 +1,9 @@
+1. Recruiter likes an attendee by sending a POST request to the Controller.
+2. Controller forwards the request to the Service to like the attendee.
+3. Service retrieves the recruiter information by calling RecruiterRepository's findById method.
+4. Service retrieves the attendee information by calling AttendeeRepository's findById method.
+5. Service checks if the recruiter has already liked the attendee by calling LikeRepo's existsByRecruiterAndAttendee method.
+6. If the recruiter has already liked the attendee, a DuplicateLikeException is thrown.
+7. If the recruiter has not liked the attendee before, the like information is saved in LikeRepo.
+8. Service responds with a completion message to the Controller.
+9. Controller sends a 200 OK response to the Recruiter.

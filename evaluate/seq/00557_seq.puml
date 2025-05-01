@@ -1,0 +1,35 @@
+@startuml
+actor Profesor
+boundary "VerificarFormacionView" as View
+control "ProfesoresController" as Controller
+entity "Profesores" as Formacion
+database "ProfesoresRepository" as Repository
+control "Verificacion" as Verificacion
+
+== Flujo principal ==
+Profesor -> View : Acceder a la opción para solicitar verificación
+activate View
+View -> Controller : Solicitar formulario de verificación
+activate Controller
+Controller -> Formacion : Obtener nueva formación académica
+activate Formacion
+Formacion --> Controller : Retornar formación académica
+deactivate Formacion
+Controller -> View : Mostrar formulario de verificación
+deactivate Controller
+View -> Controller : Enviar solicitud de verificación
+activate Controller
+Controller -> Verificacion : Crear solicitud de verificación
+activate Verificacion
+Controller -> Repository : Guardar solicitud de verificación
+activate Repository
+Repository --> Controller : Confirmación de guardado
+deactivate Repository
+Verificacion --> Controller : Confirmación de verificación
+deactivate Verificacion
+Controller --> View : Mostrar mensaje de confirmación
+deactivate Controller
+deactivate View
+
+@enduml
+

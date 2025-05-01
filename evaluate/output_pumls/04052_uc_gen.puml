@@ -1,0 +1,22 @@
+@startuml
+actor photographer
+actor exchange_adapter_contract
+actor access_control
+participant system_updates_portfolio
+activate system_updates_portfolio
+photographer -> system_updates_portfolio: open_portfolio()
+activate photographer
+participant photos_from_portfolio
+system_updates_portfolio -> photos_from_portfolio: retrieve()
+activate photos_from_portfolio
+deactivate photos_from_portfolio
+photographer -> system_updates_portfolio: click_add_photo_in_portfolio()
+system_updates_portfolio -> photographer: of()
+activate photographer
+deactivate photographer
+photographer -> system_updates_portfolio: send_details_of_photo()
+participant new_photo
+system_updates_portfolio -> new_photo: with()
+activate new_photo
+deactivate new_photo
+@enduml

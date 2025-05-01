@@ -1,0 +1,11 @@
+1. Recruiter selects to like an attendee with a specific ID.
+2. Controller receives a POST request to like the attendee.
+3. Controller delegates the request to the service layer.
+4. Service layer retrieves the recruiter's details by ID from the repository.
+5. Service layer receives the Recruiter entity from the repository.
+6. Service layer retrieves the attendee's details by ID from the repository.
+7. Service layer receives the Attendee entity from the repository.
+8. Service layer checks if the recruiter has already liked this attendee.
+9. Service layer detects a DuplicateLikeException when the like already exists.
+10. Controller receives a successful response from the service layer upon creating a new like.
+11. Controller sends a 200 OK response to the Recruiter confirming the action.

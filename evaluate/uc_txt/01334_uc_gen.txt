@@ -1,0 +1,11 @@
+1. anybody calls vestRewards() on RewardPool.
+2. RewardPool activates and releases vested rewards by calling release() on Vesting.
+3. Vesting mints tokens to RewardPool by calling mint() on $ZKP Token.
+4. RewardPool retrieves balance by calling getBalance(RewardPool) on $ZKP Token.
+5. $ZKP Token responds with the balance to RewardPool.
+6. RewardPool deposits tokens to Bridge by calling depositFor() on Bridge (PoS).
+7. Bridge transfers tokens from RewardPool to Bridge and locks them.
+8. Bridge notifies staker about the new deposit.
+9. Polygon Bridge deposits p$ZKP tokens to RewardBroker by calling deposit() on Bridge (PoS).
+10. p$ZKP tokens are minted to RewardBroker on Polygon.
+11. p$ZKP Token invokes ??? onTokenTransfer() on Broker.

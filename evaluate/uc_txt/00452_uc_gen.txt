@@ -1,0 +1,15 @@
+1. HydratorUser selects option to create new pipeline.
+2. Web UI displays pipeline creation form.
+3. HydratorUser fills in pipeline details and specifies new dataset instance.
+4. Web UI sends filled details to Pipeline Service to initiate creation.
+5. Pipeline Service requests dataset type check to Dataset Management Service.
+6. Dataset Management Service verifies dataset type and version with Version Control.
+7. Version Control provides dataset type specifications to Dataset Management Service.
+8. Dataset Management Service confirms dataset type to Pipeline Service.
+9. Pipeline Service requests creation of a new dataset instance to Dataset Instance Creator.
+10. Dataset Instance Creator creates a new dataset instance via Dataset Management Service.
+11. Dataset Management Service registers the new dataset instance version with Version Control.
+12. Version Control confirms registration and provides version details to Dataset Management Service.
+13. Dataset Instance Creator informs Pipeline Service about successful dataset instance creation.
+14. Pipeline Service reports successful pipeline and dataset instance creation to Web UI.
+15. Web UI displays success message and pipeline details to HydratorUser.

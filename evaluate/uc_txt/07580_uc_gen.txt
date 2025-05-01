@@ -1,0 +1,8 @@
+1. Admin provisions server through terraform/ansible.
+2. Admin generates password and wireguard private key.
+3. Admin enrolls gateway by sending EnrollGatewayRequest to API Server with passhash, wg public key, and public IP.
+4. API Server allocates private IP, updates gateway info in Database, and sends EnrollGatewayResponse to Admin.
+5. Admin generates GatewayConfiguration.
+6. Admin SSH into Gateway Agent.
+7. Gateway Agent inserts configuration as env into a file.
+8. Gateway Agent establishes a secure connection with API Server.

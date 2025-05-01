@@ -1,0 +1,12 @@
+1. Request to Delete Teacher is initiated by Manager.
+2. FrontEnd forwards Delete Teacher Request received from Manager to TeacherController.
+3. TeacherController processes the Delete Teacher Request.
+4. TeacherService marks the Teacher as Deleted using TeacherRepository.
+5. TeacherRepository confirms the Deletion to TeacherService.
+6. TeacherService archives the Teacher Data by forwarding it to ArchiveService.
+7. ArchiveService saves the Teacher Data in ArchiveRepository.
+8. ArchiveRepository confirms the Archiving to ArchiveService.
+9. ArchiveService notifies TeacherService about the archived Teacher Data.
+10. TeacherService notifies TeacherController about the Deletion and Archiving.
+11. TeacherController sends a Confirmation Message to FrontEnd.
+12. FrontEnd displays the Confirmation Message to Manager.

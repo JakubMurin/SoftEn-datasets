@@ -1,0 +1,20 @@
+1. User sends a GET request to retrieve a file from a book.
+2. Gateway forwards the request to Keycloak to verify the JWT.
+3. Keycloak verifies the JWT.
+4. Gateway receives the verification status.
+5. If JWT is valid:.
+6. Gateway forwards the request to Books Service to retrieve the file.
+7. Books Service fetches the file link from the Postgres Database.
+8. Postgres Database returns the file link to Books Service.
+9. If file data exists:.
+10. Books Service requests the file from Minio Service using the link.
+11. Minio Service provides the file to Books Service.
+12. Books Service sends the file to Gateway.
+13. Gateway forwards the file to User.
+14. If file data does not exist:.
+15. Books Service informs Gateway about the absence of file data.
+16. Gateway responds with HTTP Status 404 to User.
+17. If JWT is absent:.
+18. Gateway responds with HTTP Status 401 to User.
+19. If JWT is not valid:.
+20. Gateway responds with HTTP Status 403 to User.

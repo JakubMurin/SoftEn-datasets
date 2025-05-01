@@ -1,0 +1,24 @@
+1. User calls Payment Create Scheduler.
+2. Request for tenents from MDMS.
+3. Receive tenants list from MDMS.
+4. Search bills where bills are not created.
+5. Receive list of bills from Expense_Service.
+6. Process bills and generate payment.
+7. Create payments with Expense_Service.
+8. Return payment response from Expense_Service.
+9. Push payment details to create topic in KAFKA.
+10. Listen payment create topic from KAFKA.
+11. Process payment.
+12. Fetch bills details from Expense_Service.
+13. Return bill details from Expense_Service.
+14. Process Bill for each line item.
+15. Fetch organisation details from ORG_SERVICE.
+16. Return organisation details from ORG_SERVICE.
+17. Fetch individual details from IND_SERVICE.
+18. Return individual details from IND_SERVICE.
+19. Fetch bank account details from BANK_ACC_SERVICE.
+20. Return bank account details from BANK_ACC_SERVICE.
+21. Create disburse request.
+22. Generate one disbursement request for one bill.
+23. Call /program/disbuse/_create in PROGRAM_SERVICE.
+24. Return ACK from PROGRAM_SERVICE.

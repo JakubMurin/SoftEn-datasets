@@ -1,0 +1,12 @@
+1. Requestor submits a project.
+2. addproject.py adds the project.
+3. performaddproject.py checks add permission with authutils.py.
+4. performaddproject.py receives add permission.
+5. performaddproject.py validates content with valutils.py.
+6. performaddproject.py receives validation result.
+7. performaddproject.py displays failure page with error info if Requestor is not authorized or content is invalid.
+8. performaddproject.py adds project with status "approved" and gets project_id from Database when Requestor is an approver.
+9. performaddproject.py displays success page when Requestor is an approver.
+10. performaddproject.py adds project with status "awaiting_approval" and gets project_id from Database when Requestor is not an approver.
+11. performaddproject.py sends email to Approvers when Requestor is not an approver.
+12. performaddproject.py displays success page with message that project is pending approval when Requestor is not an approver.

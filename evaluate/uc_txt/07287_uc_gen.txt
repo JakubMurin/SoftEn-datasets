@@ -1,0 +1,11 @@
+1. Client-Service creates and stores correlationId.
+2. Client-Service calls Service with correlationId.
+3. Service finds correlationId.
+4. Service checks if correlationId exists.
+5. Service accepts the request.
+6. Service responds asynchronously with the answer.
+7. Callback finds correlationId.
+8. Callback sets state if not yet answered.
+9. Callback notifies Client-Service.
+10. Callback handles the already answered case.
+11. Callback informs Service of an unknown correlationId.

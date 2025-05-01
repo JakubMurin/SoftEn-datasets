@@ -1,0 +1,13 @@
+1. User executes: pomogo --task "programuj pomodoro" using CLI.
+2. TaskStartHandler registers a new task.
+3. TaskStartHandler saves new task "programuj pomodoro" with start date and other details in sqlite.
+4. TimeTrigger triggers refresh.
+5. Renderer gets tasks from sqlite.
+6. Renderer renders a progress bar with animations and unicorns for the user.
+7. TimeTrigger triggers TaskStateChangeHandler for refresh.
+8. TaskStateChangeHandler saves new state as resting and increments rest marker, triggers sound notification.
+9. TaskStateChangeHandler saves new state as deep resting and zeroes rest marker, triggers sound notification.
+10. TaskStateChangeHandler saves new state as resting and increments rest marker, triggers sound notification.
+11. TaskStateChangeHandler marks task as paused, triggers sound notification.
+12. TimeTrigger eventually triggers Renderer.
+13. Renderer renders finish message with unicorns for the user.

@@ -1,0 +1,13 @@
+1. Game creates an instance.
+2. StatsTrackingSystem loads stats.
+3. For each stat in statsStorage:.
+4. StatsTrackingSystem creates a stat tracker for numBlocksPlaced.
+5. NumBlocksPlacedStatTracker initializes with eventManager and stat.
+6. EventManager registers closure for BlockPlacedEvent.
+7. StatsTrackingSystem registers the stat tracker.
+8. Game fires GameEndedEvent.
+9. EventManager triggers GameEndedEvent.
+10. StatsTrackingSystem saves stats.
+11. StorageManager saves stats.
+12. StorageManager converts StatTrackers to StatStorage.
+13. StorageManager writes to disk.

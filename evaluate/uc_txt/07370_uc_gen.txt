@@ -1,0 +1,27 @@
+1. Instructor opens Manage Offerings Page.
+2. OfferingsPage queries available offerings for instructor.
+3. OfferingsPage displays available offerings.
+4. Instructor selects "Accept Offering" (lessonId).
+5. OfferingValidator validates offering acceptance for instructor.
+6. DatabaseManager checks specialization and availability.
+7. Validator returns validation status.
+8. Validator handles Validation Failed (Does not meet requirements).
+9. OfferingsPage displays error: "Cannot accept this offering".
+10. Validator handles Validation Passed.
+11. OfferingsPage updates lesson status to "assigned" for instructor.
+12. DatabaseManager updates lesson status successfully.
+13. OfferingsPage displays offering successfully accepted.
+14. Instructor selects "Drop Offering" (lessonId).
+15. OfferingValidator validates offering drop for instructor.
+16. DatabaseManager checks lesson ownership.
+17. Validator returns ownership status.
+18. Validator handles Validation Failed (Instructor not assigned to lesson).
+19. OfferingsPage displays error: "Cannot drop this offering".
+20. Validator handles Validation Passed.
+21. OfferingsPage updates lesson status to "pending" with no instructor.
+22. DatabaseManager updates lesson status successfully.
+23. OfferingsPage displays offering successfully dropped.
+24. Instructor views offering details for lessonId.
+25. OfferingsPage fetches lesson details.
+26. DatabaseManager returns lesson details.
+27. OfferingsPage displays lesson details.

@@ -1,0 +1,14 @@
+1. User sends a request to delete their account with email and token.
+2. API_Controller validates the provided email and token.
+3. API_Controller responds with a 400 Bad Request if email or token is missing.
+4. API_Controller triggers validation of the delete token in Service_Layer.
+5. Service_Layer retrieves the user by email from Repository.
+6. Service_Layer checks if the user exists.
+7. Service_Layer validates the token.
+8. Service_Layer responds with an exception if the token is invalid.
+9. Service_Layer initiates the account deletion process.
+10. Service_Layer removes the user from the Repository.
+11. Service_Layer logs the account deletion in Logging_Service.
+12. Service_Layer commits the changes in Unit_of_Work.
+13. Service_Layer responds with SystemUserDto to API_Controller.
+14. API_Controller sends a 200 OK response with a success message to User.

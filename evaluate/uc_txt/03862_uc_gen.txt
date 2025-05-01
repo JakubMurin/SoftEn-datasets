@@ -1,0 +1,16 @@
+1. Application initiates status check.
+2. CowboyPlug forwards request to Cowboy.
+3. CowboyPlug forwards request to Plug.
+4. Supervisor starts the monitoring process.
+5. Supervisor initializes Timer.
+6. Supervisor monitors the Timer.
+7. Timer wakes up.
+8. Timer retrieves status from Monitored Server.
+9. (Updates state if successful).
+10. Timer crashes in case of failure.
+11. Supervisor restarts Timer.
+12. Alice checks the status.
+13. Cowboy forwards request to Plug for status retrieval.
+14. Plug retrieves status from Timer.
+15. Plug responds to Cowboy.
+16. Cowboy responds to Alice.

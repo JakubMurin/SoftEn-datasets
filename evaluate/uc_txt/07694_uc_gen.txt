@@ -1,0 +1,15 @@
+1. Receptionist requests to create booking through UI.
+2. UI sends GET request to Router for /booking/create.
+3. Router invokes showCreateBookingForm() in Controller.
+4. Controller displays booking form on UI.
+5. Receptionist fills in booking details on UI.
+6. UI sends POST request to Router for /booking/create.
+7. Router createsBooking(bookingData) in Controller.
+8. Controller delegates booking creation to Repository.
+9. Repository checks room availability in RoomModel.
+10. RoomModel queries room availability from DB.
+11. If room is available.
+12. Repository creates new booking in BookingModel.
+13. BookingModel inserts new booking data in DB.
+14. Controller, Router, and UI display success message.
+15. If room is not available, show error message on UI.

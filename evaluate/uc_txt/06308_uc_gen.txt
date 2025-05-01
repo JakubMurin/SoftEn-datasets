@@ -1,0 +1,40 @@
+1. Create Transaction UUID (for reference and maintaining correct state).
+2. Set lock_height for transaction kernel (current chain height).
+3. Select inputs using desired selection strategy.
+4. Calculate sum inputs blinding factors xI.
+5. Create change_output.
+6. Select blinding factor xC for change_output.
+7. Create lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS linking inputs + outputs (Not executed at this point).
+8. Calculate tx_weight: MAX(-1 * num_inputs + 4 * (num_change_outputs + 1), 1) (+1 covers a single output on the receiver's side).
+9. Calculate fee: tx_weight * 1_000_000 nG.
+10. Calculate total blinding excess sum for all inputs and outputs xS1 = xC - xI (private scalar).
+11. Select a random nonce kS (private scalar).
+12. Subtract random kernel offset oS from xS1. Calculate xS = xS1 - oS.
+13. Multiply xS and kS by generator G to create public curve points xSG and kSG.
+14. Add values to Slate for passing to other participants: UUID, inputs, change_outputs, fee, amount, lock_height, kSG, xSG, oS.
+15. Check fee against number of inputs, change_outputs +1 * receiver_output.
+16. Create receiver_output.
+17. Choose random blinding factor for receiver_output xR (private scalar).
+18. Calculate message M = fee | lock_height.
+19. Choose random nonce kR (private scalar).
+20. Multiply xR and kR by generator G to create public curve points xRG and kRG.
+21. Compute Schnorr challenge e = SHA256(kRG + kSG | xRG + xSG | M).
+22. Compute Recipient Schnorr signature sR = kR + e * xR.
+23. Add sR, xRG, kRG to Slate.
+24. Create wallet output function rF that stores receiver_output in wallet with status "Unconfirmed" and identifying transaction log entry TR linking receiver_output with transaction.
+25. Calculate message M = fee | lock_height.
+26. Compute Schnorr challenge e = SHA256(kRG + kSG | xRG + xSG | M).
+27. Verify sR by verifying kRG + e * xRG = sRG.
+28. Compute Sender Schnorr signature sS = kS + e * xS.
+29. Calculate final signature s = (kSG+kRG, sS+sR).
+30. Calculate public key for s: xG = xRG + xSG.
+31. Verify s against excess values in final transaction using xG.
+32. Create Transaction Kernel Containing: Excess signature s, Public excess xG, fee, lock_height.
+33. Create final transaction tx from Slate.
+34. Post tx to mempool.
+35. Confirm receiver_output.
+36. Change status of receiver_output to "Confirmed".
+37. Change status of inputs to "Spent".
+38. Change status of change_output to "Confirmed".
+39. Manually remove receiver_output from wallet using transaction log entry TR.
+40. Unlock inputs and delete change_output identified in transaction log entry TS.

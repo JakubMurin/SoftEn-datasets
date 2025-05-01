@@ -1,0 +1,15 @@
+1. User sends a POST request to sign up.
+2. AccessController forwards the request to AccessService.
+3. AccessService processes the request by signing up the user.
+4. AccessService queries for an existing user with the provided email.
+5. User is found.
+6. AccessService throws an error as account is already registered.
+7. AccessController sends an error message to the User.
+8. bcrypt generates a salt.
+9. Salt is generated.
+10. bcrypt hashes the password with the salt.
+11. Password is hashed.
+12. AccessService creates a new user with email, hashed password, and role.
+13. New user is created.
+14. AccessService returns the user to AccessController.
+15. AccessController responds with "Registered OK" to the User.

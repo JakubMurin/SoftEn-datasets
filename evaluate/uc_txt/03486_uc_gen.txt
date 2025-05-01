@@ -1,0 +1,10 @@
+1. sidetree-core-go invokes handler1 to subscribe to the operation queue.
+2. Handler1 successfully subscribes and acknowledges the subscription completion to sidetree-core-go.
+3. sidetree-core-go sends operation op1 to be added by handler1.
+4. Handler1 adds op1 to the queue, publishes it, and acknowledges the addition to sidetree-core-go.
+5. Handler1 processes op2 retrieved from the queue by communicating with opQueueDB.
+6. sidetree-core-go invokes handler2 to subscribe to the operation queue.
+7. Handler2 successfully subscribes and acknowledges the subscription to sidetree-core-go.
+8. sidetree-core-go sends operation op2 to be added by handler2.
+9. Handler2 adds op2 to the queue, publishes it, and acknowledges the addition to sidetree-core-go.
+10. Handler2 processes op1 fetched from the queue by communicating with opQueueDB.

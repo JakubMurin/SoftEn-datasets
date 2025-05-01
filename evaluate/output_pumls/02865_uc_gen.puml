@@ -1,0 +1,27 @@
+@startuml
+actor caller
+actor ads_controller
+actor controller_updates_article_page
+actor user
+actor controller
+actor receiver
+actor user_requests_job_status_.
+actor router
+participant phone_booth
+activate phone_booth
+caller -> phone_booth: add_money_to_phone_booth()
+activate caller
+caller -> phone_booth: use_phone_booth()
+phone_booth -> receiver: connect()
+activate receiver
+deactivate receiver
+receiver -> phone_booth: hang_up_call_after_completion()
+activate receiver
+participant remaining_money
+phone_booth -> remaining_money: remove()
+activate remaining_money
+deactivate remaining_money
+phone_booth -> caller: return()
+activate caller
+deactivate caller
+@enduml

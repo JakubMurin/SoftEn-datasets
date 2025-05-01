@@ -1,0 +1,14 @@
+1. Professor clicks on "connect as host" button in UIDocument.
+2. UIDocument triggers connectHost() in ConnectBoxManager.
+3. ConnectBoxManager creates a relay for the room size.
+4. TestRelay requests allocation of a server for the room.
+5. RelayService creates an allocation request to UnityServers.
+6. UnityServers reserves an allocated server for the room.
+7. UnityServers provides the IP and Port to AllocatedRelayServer.
+8. RelayService receives the allocation details from UnityServers.
+9. TestRelay gets the join code asynchronously from RelayService.
+10. RelayService retrieves the join code asynchronously from UnityServers.
+11. TestRelay sets the transport to use the allocated IP and Port.
+12. TestRelay starts hosting the room using NetworkManager.
+13. ConnectBoxManager receives the join code from TestRelay.
+14. ConnectBoxManager sets the join code in the textbox of UIDocument.

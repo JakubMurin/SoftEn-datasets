@@ -1,0 +1,12 @@
+1. User clicks "Edit Task".
+2. 'tasks_table_interactions.js' opens the edit modal and fetches task data.
+3. 'tasks_table_interactions.js' populates modal fields.
+4. User submits the "Save Task" form.
+5. 'api_routes.py' handles the POST request to create or update a task.
+6. 'models.py' ensures task hierarchy constraints are respected.
+7. 'models.py' checks for circular dependencies in the task hierarchy.
+8. 'models.py' commits the database changes and logs the save event for auditing.
+9. 'tasks_table_interactions.js' updates the UI or shows an error based on the response.
+10. Error handling: If response status is not 200, appropriate actions are taken and an error message is displayed.
+11. 'models.py' rolls back DB changes if needed and returns an error message.
+12. 'tasks_table_interactions.js' shows an error alert to the user.

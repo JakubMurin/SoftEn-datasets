@@ -1,0 +1,12 @@
+1. User requests tracking information for a specific transaction.
+2. TrackingController activates to handle the request.
+3. TrackingController retrieves the transaction details using getTransaction(transId) method.
+4. TransactionController activates to fetch the transaction.
+5. TransactionController sends the Shipping order details to TrackingController.
+6. TrackingController calls ShippoTrackingService to get tracking information.
+7. ShippoTrackingService activates to fetch tracking information.
+8. ShippoTrackingService calls shippo.model.Track to get tracking info.
+9. shippo.model.Track activates to track the shipment.
+10. shippo.model.Track sends the tracking information back to ShippoTrackingService.
+11. ShippoTrackingService sends the tracked DTO back to TrackingController.
+12. TrackingController sends the tracked DTO back to User.

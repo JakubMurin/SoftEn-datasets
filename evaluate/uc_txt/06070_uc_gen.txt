@@ -1,0 +1,11 @@
+1. Enqueue object A from ApplicationA.
+2. Get 8 byte unique Id for A from CorfuGuidGeneratorA via CorfuRuntimeA.
+3. Write object A with unique Id to CorfuCluster via CorfuRuntimeA.
+4. Receive unique Id for A and confirm enqueue to ApplicationA.
+5. Enqueue object B from ApplicationB.
+6. Get 8 byte unique Id for B from CorfuGuidGeneratorB via CorfuRuntimeB.
+7. Write object B with unique Id to CorfuCluster via CorfuRuntimeB.
+8. Receive unique Id for B and confirm enqueue to ApplicationB.
+9. Corfu State Machine Replication: Update maps in CorfuCluster and nodes based on commit order.
+10. ApplicationA entryList: Receive map [100+0002 => B, 200+0001 => A] from CorfuRuntimeA.
+11. ApplicationB entryList: Receive map [100+0002 => B, 200+0001 => A] from CorfuRuntimeB.

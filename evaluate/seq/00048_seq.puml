@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant "Interviews Page" as InterviewsPage
+participant "Backend Server" as BackendServer
+database Database
+
+User -> InterviewsPage: Request list of interviews
+InterviewsPage -> BackendServer: Fetch list of interviews
+BackendServer -> Database: Query list of interviews
+Database --> BackendServer: Return list of interviews
+BackendServer --> InterviewsPage: Return list of interviews
+InterviewsPage --> User: Display list of interviews
+@enduml
+

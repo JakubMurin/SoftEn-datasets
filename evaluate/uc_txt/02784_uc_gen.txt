@@ -1,0 +1,21 @@
+1. Agent requests to see an ordered list of candidates using job interview points.
+2. UI receives request and calls findAllJobOpeningInResult().
+3. Controller finds all job openings in the result.
+4. Application Service retrieves all job openings.
+5. Job Opening Repository gets job openings from persistence.
+6. Application Service receives openings and sends them to Controller.
+7. Controller receives openings and sends them to UI.
+8. UI shows the list of job openings to the Agent.
+9. Agent selects a job opening.
+10. UI lists candidates for the selected opening.
+11. Controller gets applications by job opening.
+12. Application Service retrieves all candidates.
+13. Candidate Management Service finds all candidates.
+14. Application Service receives candidates and sends them to Controller.
+15. Controller receives candidates and calls getAllJobInterviewsOfApplications().
+16. Application Service retrieves all job interviews of applications.
+17. Interview Repository finds all interviews.
+18. Application Service receives interviews and sends them to Controller.
+19. Controller sorts the interviews.
+20. Controller sends sorted interviews to UI.
+21. UI shows the list of candidates related to the selected job opening with their grades.

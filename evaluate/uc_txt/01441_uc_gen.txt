@@ -1,0 +1,9 @@
+1. Client sends a POST request to Video Service with video URL.
+2. Video Service fetches video information from External Video Hosting.
+3. Video Service stores video information in DynamoDB and returns a UUID.
+4. Video Service invokes Download Lambda asynchronously with video payload and UUID.
+5. Download Lambda updates video status to 'downloading' in DynamoDB.
+6. Download Lambda downloads the video file from Video Hosting.
+7. Download Lambda uploads the video file to S3.
+8. Download Lambda updates video status to 'downloaded' in DynamoDB.
+9. Client receives response from Video Service with status and data.

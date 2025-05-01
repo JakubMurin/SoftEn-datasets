@@ -1,0 +1,18 @@
+1. User requests to show all rows.
+2. API activates and calls lexorank to retrieve rows.
+3. Lexorank requests a snapshot of rows and ranks from storage.
+4. Storage provides a snapshot to lexorank.
+5. Lexorank orders rows by rank.
+6. API sends back rows ordered by rank to the user.
+7. User requests to insert a new row.
+8. API activates and calls lexorank to insert the new row at a position.
+9. Lexorank locks a snapshot from storage and proposes a new row.
+10. In case of rank collision, lexorank applies updates in cascade.
+11. Lexorank inserts the new record and receives the newly created row.
+12. API sends the new row back to the user.
+13. User requests to update an existing row.
+14. API activates and calls lexorank to change the position of the row.
+15. Lexorank locks a snapshot from storage and proposes the rank change.
+16. In case of rank collision, lexorank applies updates in cascade.
+17. Lexorank changes the rank of the row and receives the updated row.
+18. API sends the updated row back to the user.

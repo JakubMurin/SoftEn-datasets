@@ -1,0 +1,18 @@
+1. User clicks login into Adgangsplatformen.
+2. DPL_CMS gets authorization URL and return URL from OpenidConnect.
+3. OpenidConnect creates OAuth state hash.
+4. User is redirected to the authorization URL which contains return URL, state hash, and agency ID.
+5. User is redirected to the external site for authentication.
+6. Internal authentication is performed on Adgangsplatformen.
+7. User is redirected to the return URL.
+8. User sends Adgangsplatform response to DPL_CMS.
+9. Validation of values from the response by OpenidConnect.
+10. OpenidConnect requests access token.
+11. Access token with expiry time is returned by Adgangsplatformen.
+12. User info is requested by OpenidConnect.
+13. User info (UUID) is returned by Adgangsplatformen.
+14. New user is created in DPL_CMS with an encrypted UUID and assigned the role Patron (If first time login).
+15. If recurrent login, user details are updated in DPL_CMS.
+16. Drupal user session is started by OpenidConnect.
+17. Access token is saved in the user session by OpenidConnect.
+18. Logged-in user is redirected to the front page.

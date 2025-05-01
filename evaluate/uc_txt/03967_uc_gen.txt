@@ -1,0 +1,32 @@
+1. ClientRequest sends a request to Servlet.
+2. Servlet pre-processes the request.
+3. Filter allows access if endpoint is for guest role only.
+4. Servlet proceeds with the request.
+5. Endpoint performs endpoint operations.
+6. Endpoint responds to Servlet.
+7. Servlet responds to ClientRequest.
+8. Filter allows access if session Principal is valid for role and authorization is not expired.
+9. Servlet proceeds with the request.
+10. Endpoint performs endpoint operations.
+11. Endpoint responds to Servlet.
+12. Servlet responds to ClientRequest.
+13. AuthCheck performs Authorization check.
+14. AuthCheck checks for JSESSIONIDSSO cookie in the database.
+15. AuthCheck requests db specific roles for SSO principal.
+16. Database provides database specific roles to AuthCheck.
+17. AuthCheck validates JWT in Authorization header.
+18. AuthCheck extracts subject if JWT is valid.
+19. AuthCheck requests user roles based on JWT subject from Database.
+20. Database provides database specific roles to AuthCheck.
+21. AuthCheck rejects access if JWT is invalid.
+22. Filter rejects access if ClientRequest is not authorized.
+23. Servlet responds with Error response: 401 Status to ClientRequest.
+24. AuthCheck provides SecurityContext with Principal and normalized OpenDCS Roles to Filter.
+25. Filter checks SecurityContext against endpoint roles.
+26. Filter allows access if roles are valid.
+27. Servlet proceeds with the request.
+28. Endpoint performs endpoint operations.
+29. Endpoint responds to Servlet.
+30. Servlet responds to ClientRequest.
+31. Filter rejects access if roles are invalid.
+32. Servlet responds with Error response: 403 Status to ClientRequest.

@@ -1,0 +1,14 @@
+1. Client sends a request to access a specific endpoint.
+2. Servlet receives the request and forwards it to the ContainerRequestFilter for preprocessing.
+3. ContainerRequestFilter checks if the client has access based on the endpoint role.
+4. If the endpoint allows guest role only, access is granted and the endpoint operations are performed.
+5. If the endpoint requires an authorized role, the authorization check process is initiated.
+6. AuthorizationCheck checks the validity of the session principal and the expiration of authorization.
+7. If the session is valid, the endpoint operations are performed based on the roles assigned.
+8. If the session is invalid or authorization has expired, various authorization checks are performed based on different scenarios.
+9. AuthorizationCheck validates the JWT provided in the Authorization header.
+10. If the JWT is valid, the database is queried for user roles based on the JWT subject.
+11. If the JWT is invalid, the client request is not authorized and an error response is sent.
+12. The SecurityContext with Principal and normalized OpenDCS Roles is checked against the endpoint roles.
+13. If the roles are valid, the client request is authorized and endpoint operations are performed.
+14. If the roles are invalid, access is rejected and an error response is sent.

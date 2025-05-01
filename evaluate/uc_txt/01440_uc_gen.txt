@@ -1,0 +1,8 @@
+1. REST API Client sends a POST request containing the video URL to Video Service.
+2. Video Service fetches video information from External Video Hosting.
+3. Video Service stores video information in DynamoDB and receives a UUID as a response.
+4. Video Service invokes the Asynchronous Download Lambda with the video payload and UUID.
+5. Asynchronous Download Lambda updates the video status to 'downloading' in DynamoDB.
+6. Asynchronous Download Lambda downloads the video file from External Video Hosting.
+7. Asynchronous Download Lambda uploads the video file to S3.
+8. Asynchronous Download Lambda updates the video status to 'downloaded' in DynamoDB.

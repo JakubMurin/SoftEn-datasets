@@ -1,0 +1,17 @@
+@startuml
+actor teacher
+actor student
+actor sentient_agent_bundle_manager_lists_sabr
+participant devopsengineer
+activate devopsengineer
+participant sentient_agent_bundle_manager
+devopsengineer -> sentient_agent_bundle_manager: manage()
+activate sentient_agent_bundle_manager
+deactivate sentient_agent_bundle_manager
+sentient_agent_bundle_manager_lists_sabr -> devopsengineer: use_bin()
+activate sentient_agent_bundle_manager_lists_sabr
+participant request_rest_for_sabundle_list
+devopsengineer -> request_rest_for_sabundle_list: send()
+activate request_rest_for_sabundle_list
+deactivate request_rest_for_sabundle_list
+@enduml

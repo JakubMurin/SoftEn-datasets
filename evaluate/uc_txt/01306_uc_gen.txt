@@ -1,0 +1,16 @@
+1. User goes to the post page.
+2. UserInterface displays post details and comment form to User.
+3. User enters comment content (text) into the form.
+4. User clicks on the "Submit" button to submit the comment.
+5. UserInterface calls CommentController's createComment(CommentDTO commentDTO) method.
+6. CommentController receives the comment DTO and processes the request.
+7. CommentController calls CommentService to validate and create the comment.
+8. CommentService validates the comment content and initiates the creation process.
+9. CommentService persists the comment data through CommentRepository.
+10. CommentRepository retrieves CommentsDatabase to insert comment data.
+11. CommentRepository saves the comment data successfully to the database.
+12. CommentsDatabase confirms the successful insertion of data and returns the response.
+13. CommentRepository returns the saved comment to CommentService.
+14. CommentService constructs the comment response and returns it to CommentController.
+15. CommentController processes the response and returns the success message to UserInterface.
+16. UserInterface displays "Comment created successfully" and updates the post comments section.

@@ -1,0 +1,27 @@
+1. User requests to reroute.
+2. NB reroutes the flow.
+3. FlowManager starts flow rerouting.
+4. FlowManager gets the flow from DB.
+5. FlowManager validates the flow.
+6. FlowManager starts Flow Reroute workflow.
+7. FlowManager finds a path for the flow.
+8. FlowManager allocates resources for the found path.
+9. FlowManager saves the found path with IN_PROGRESS status.
+10. FlowManager updates ISLs available bandwidth.
+11. CommandBuilder creates switch rules.
+12. SpeakerWorker installs rules.
+13. RulesValidator validates installed egress/transit rules.
+14. SpeakerWorker dumps egress/transit rules.
+15. SpeakerWorker installs an ingress rule.
+16. SpeakerWorker dumps ingress rules.
+17. DAO updates the flow to reference the found path as active.
+18. DAO changes the found path status to INSTALLED.
+19. DAO changes the flow status to UP.
+20. DAO changes the status of the old path to IN_PROGRESS.
+21. SpeakerWorker removes rules.
+22. RulesValidator validates removed rules.
+23. SpeakerWorker dumps rules.
+24. ResourcePool releases used meter.
+25. DAO releases used meter.
+26. ResourcePool deallocates resources of the old path.
+27. DAO removes the old path.

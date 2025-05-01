@@ -1,0 +1,22 @@
+1. End user requests a resource.
+2. Envoy redirects to ID-provider.
+3. End user performs login and gives consent/authorization to the application.
+4. ID-provider sends callback/redirect with authorization_code.
+5. End user sends authorization code to defined callback (e.g., /callback).
+6. Envoy sends authorization_code, client_id, and client_secret/client_assertion to ID-provider.
+7. ID-provider returns id_token, access_token, and optionally refresh_token.
+8. Envoy validates id_token according to OpenID Connect.
+9. Envoy stores the session in the cache.
+10. Envoy redirects to end user with cookies (id_token, session?).
+11. API1 attempts to call API2.
+12. Envoy checks for cached token.
+13. Cache misses (no token for (API1, API2)).
+14. Envoy gets token for API2 based on ID-provider token.
+15. TokenDings verifies token and checks access policy.
+16. TokenDings issues a new token for API2.
+17. Envoy caches the token for later calls.
+18. Envoy calls API2 with token from TokenDings.
+19. API2 verifies token and access control based on end user.
+20. API2 returns information.
+21. Envoy returns information to API1.
+22. API1 displays information to end user.

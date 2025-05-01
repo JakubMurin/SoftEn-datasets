@@ -1,0 +1,10 @@
+1. ApiClient sends a request to /add?datafile&datasetId.
+2. Datasets activates and receives the request.
+3. Datasets calls AddFileHelper's addFileToDataset() method.
+4. AddFileHelper activates and calls FileUtil to createDataFiles.
+5. FileUtil determines file type and creates a single data file.
+6. AddFileHelper receives a list of Datafiles from FileUtil.
+7. AddFileHelper calls ISB to add files to the dataset.
+8. AddFileHelper calls ISB to ingest files as tabular data.
+9. AddFileHelper returns a JsonObjectBuilder object to Datasets.
+10. ApiClient receives a JSON object response from Datasets.

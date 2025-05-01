@@ -1,0 +1,22 @@
+1. Librarian requests monthly lending statistics from the system.
+2. System activates Lending Controller.
+3. Lending Controller requests all readers from Reader Service.
+4. System activates Reader Service.
+5. Reader Service retrieves all readers from the Reader Repository.
+6. System activates Reader Repository.
+7. Reader Repository returns a list of Readers to the Reader Service.
+8. System deactivates Reader Repository.
+9. For each reader:.
+10. Reader Service fetches the monthly lending stats for the reader from the Reader Repository.
+11. System activates Reader Repository.
+12. Reader Repository returns the number of items lent by the reader.
+13. System deactivates Reader Repository.
+14. Reader Service sets the number of items lent for the current reader.
+15. Reader Service repeats the process for each reader.
+16. System deactivates Reader Service.
+17. Lending Controller maps Reader information to Reader Lents View.
+18. System activates Reader Lents View Mapper.
+19. Reader Lents View Mapper transforms Reader data to Reader Lents View objects.
+20. System deactivates Reader Lents View Mapper.
+21. Lending Controller responds with HTTP status 200 OK including the Reader Lents Views.
+22. System deactivates Lending Controller.

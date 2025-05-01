@@ -1,0 +1,12 @@
+1. User initiates the task "programuj pomodoro" using the CLI.
+2. TaskStartHandler registers the new task.
+3. TaskStartHandler saves the new task "programuj pomodoro" with start date and other details in the sqlite database.
+4. TimeTrigger triggers a screen refresh.
+5. Renderer retrieves tasks from the sqlite database.
+6. Renderer renders a progress bar with animations and unicorns for the user.
+7. TimeTrigger triggers TaskStateChangeHandler for state update.
+8. TaskStateChangeHandler saves the new state as resting and increments the rest marker if work mode finishes.
+9. TaskStateChangeHandler triggers a sound notification using NotificationPlayer.
+10. If work mode finishes and resting mode starts, saving new state as resting and triggering notification occurs.
+11. If deep rest mode finishes, task is marked as paused, and a sound notification is triggered.
+12. TimeTrigger may eventually trigger Renderer to display the finish message with unicorns.

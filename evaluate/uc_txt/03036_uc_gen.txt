@@ -1,0 +1,14 @@
+1. Requestor submits a new project.
+2. addproject.py attempts to add project.
+3. performaddproject.py checks for add permission.
+4. authutils.py returns add permission.
+5. performaddproject.py validates the content.
+6. valutils.py returns validation result.
+7. performaddproject.py displays a failure page with error info (alt path).
+8. performaddproject.py adds project to Database with status "approved" and returns project_id (alt path).
+9. Database returns project_id to performaddproject.py.
+10. performaddproject.py displays a success page (alt path).
+11. performaddproject.py adds project to Database with status "awaiting_approval" and returns project_id (alt path).
+12. Database returns project_id to performaddproject.py.
+13. performaddproject.py sends email to Approvers.
+14. performaddproject.py displays a success page with message that project is pending approval (alt path).

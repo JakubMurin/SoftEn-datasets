@@ -1,0 +1,9 @@
+1. User sends a GET request to Gateway to retrieve a file for a book.
+2. Gateway verifies the JWT with Keycloak.
+3. Gateway forwards the request to Books Service to retrieve the file.
+4. Books Service retrieves the file link from Postgres Database.
+5. Books Service checks if the file data exists.
+6. Books Service requests Minio to get the file by link.
+7. Minio provides the file to Books Service.
+8. Books Service sends the file to Gateway.
+9. Gateway sends the file to User.

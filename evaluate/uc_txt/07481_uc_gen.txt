@@ -1,0 +1,17 @@
+1. User application gets EphemerisGenerator.
+2. Propagator creates EphemerisGenerator.
+3. User application propagates.
+4. Propagator feeds EphemerisGenerator.
+5. User application gets generated Ephemeris.
+6. EphemerisGenerator creates BoundedPropagator.
+7. User application grabs AdapterPropagator through BoundedPropagator.
+8. User application creates small maneuver.
+9. User application adds direct maneuver effect through AdapterPropagator.
+10. User application creates J₂ due to maneuver.
+11. User application adds indirect J₂ effect through AdapterPropagator.
+12. User application registers SK monitor in AdapterPropagator.
+13. User application propagates through AdapterPropagator.
+14. AdapterPropagator propagates reference through BoundedPropagator.
+15. AdapterPropagator applies maneuvers.
+16. AdapterPropagator handles step through StationKeepingMonitorHandler.
+17. User application checks Station Keeping goals in StationKeepingMonitorHandler.

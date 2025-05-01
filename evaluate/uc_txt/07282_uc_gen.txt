@@ -1,0 +1,18 @@
+1. Invånare väljer att skapa / öppna ett utkast av typen A.
+2. GUI aktiveras.
+3. GUI hämtar utkastJson via UtkastModuleAPiController.
+4. Webcert aktiveras.
+5. Webcert hämtar utkast A från DB.
+6. Webcert hämtar CandidateCriteriaForCopy från ModuleApi.
+7. Webcert matchar kandidatintyg B att kopiera från baserat på kriterier.
+8. Webcert filtrerar bruttolistan över kandidatintyg B.
+9. Webcert skickar UtkastJson (med ev matchande kandidatmetadata) till GUI.
+10. GUI visar UtkastJson för Invånare.
+11. GUI visar bekräftelsedialog för kopiering om kandidat finns.
+12. Invånare godkänner kopiering.
+13. GUI skickar begäran om kopiering info från intyg B till Webcert.
+14. Webcert hämtar utkast A och B från DB.
+15. Webcert uppdaterar Utlatande A från Utlatande B via ModuleApi.
+16. Webcert sparar uppdaterat utkast i DB.
+17. Webcert skickar uppdaterad UtkastJson till GUI.
+18. GUI visar det uppdaterade utkastet för Invånare.

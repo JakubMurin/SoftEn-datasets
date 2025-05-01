@@ -1,0 +1,7 @@
+1. Activate the Caller.
+2. Caller sends transact(RunTransactionRequest) to PluginLedgerConnectorPolkadot.
+3. If web3SigningCredential == CACTUSKEYCHAINREF, PluginLedgerConnectorPolkadot performs transactCactusKeychainRef(RunTransactionRequest) and returns RunTransactionResponse.
+4. If web3SigningCredential == MNEMONICSTRING, PluginLedgerConnectorPolkadot performs transactMnemonicString(RunTransactionRequest) and returns RunTransactionResponse.
+5. If web3SigningCredential == NONE and req.transactionConfig.transferSubmittable is defined, PluginLedgerConnectorPolkadot performs transactSigned(RunTransactionRequest) and returns RunTransactionResponse.
+6. If web3SigningCredential == NONE and req.transactionConfig.transferSubmittable is not defined, PluginLedgerConnectorPolkadot throws Error: Expected pre-signed raw transaction.
+7. If web3SigningCredential does not match any defined types, PluginLedgerConnectorPolkadot throws Error: Unrecognized Web3SigningCredentialType.

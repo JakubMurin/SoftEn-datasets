@@ -1,0 +1,9 @@
+1. The Receptionist enters login credentials (username, password).
+2. The UI forwards the login request to the AuthRouter via POST /login.
+3. The AuthRouter calls the login() method of AuthController.
+4. The AuthController invokes the validateCredentials() method of AuthRepository.
+5. The AuthRepository fetches user data by username from UserModel.
+6. The UserModel queries user data by username from the Database.
+7. The UserModel sends the user data back to the Repository.
+8. The Repository receives the user data and passes it back to the Controller.
+9. The Controller checks whether the entered password matches the database.

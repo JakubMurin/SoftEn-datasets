@@ -1,0 +1,14 @@
+1. User arms the partition.
+2. Panel receives arming request and forwards to PAI.
+3. PAI changes state to armed (arm=True).
+4. PAI signals MQTT with state change "/arm=True".
+5. Exit delay process starts at the Panel.
+6. Interval status request sent by PAI to Panel.
+7. Panel responds back to PAI.
+8. PAI changes exit_delay state to ON (exit_delay=True).
+9. PAI signals MQTT with state change "/exit_delay=True".
+10. Exit delay ended, panel officially armed.
+11. Interval status request sent by PAI to Panel compelete.
+12. Panel responds back to PAI with status is updated.
+13. PAI changes exit_delay state back to OFF (exit_delay=False).
+14. PAI signals MQTT with state change "/exit_delay=False".

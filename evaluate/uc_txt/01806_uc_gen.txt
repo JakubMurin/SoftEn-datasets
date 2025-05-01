@@ -1,0 +1,15 @@
+1. User sends a DELETE request to /api/tasks/{id}.
+2. TaskController activates.
+3. TaskController calls TaskService to deleteTask.
+4. TaskService activates.
+5. TaskService calls TaskRepository to deleteById.
+6. TaskRepository activates.
+7. TaskRepository deletes the task by id.
+8. TaskRepository responds with void.
+9. TaskRepository deactivates.
+10. TaskService receives void from TaskRepository.
+11. TaskService responds with void to TaskController.
+12. TaskService deactivates.
+13. TaskController receives void from TaskService.
+14. TaskController responds with void to User.
+15. TaskController deactivates.

@@ -1,0 +1,12 @@
+1. Archivist selects "Associate Instance".
+2. The UI processes the request to associate an instance with a container.
+3. The Controller queries the Service to associate the instance with the container.
+4. The Service retrieves the instance details from the ModelInstance through a query to Database.
+5. The Service fetches the container's details from the ModelContainer through database hit.
+6. The Service verifies instance and container compatibility.
+7. The ModelInstance updates the instance with the selected container.
+8. The ModelInstance provides confirmation after updating the instance.
+9. The Service signals the associateInstanceWithContainer method in the Controller on successful association.
+10. 
+      The Controller notifies the UI about the successful association step and request display its results.
+(note Shows an association message to the Archivist in UI on a successful association).

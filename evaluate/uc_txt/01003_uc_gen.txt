@@ -1,0 +1,16 @@
+1. Developer changes smart contracts and commits.
+2. Developer creates a changeset using 'npx changeset' and commits it.
+3. Developer pushes changes and opens a PR to LocalBranch.
+4. Reviewer approves the PR.
+5. Developer deploys new/updated smart contracts to all chains.
+6. Developer updates addresses json files in LocalBranch.
+7. Developer pushes updated addresses json files.
+8. Developer merges changes to main.
+9. ReleaseGithubAction includes changes to main.
+10. VersionPackagesPR creates a PR with new versions applied to package.jsons.
+11. AnotherDeveloper pushes a new changeset.
+12. ReleaseGithubAction includes the new changeset.
+13. VersionPackagesPR updates the PR with new versions.
+14. Developer merges changes to main in VersionPackagesPR.
+15. ReleaseGithubAction includes new versions in package.jsons.
+16. ReleaseGithubAction builds and publishes packages via npm.

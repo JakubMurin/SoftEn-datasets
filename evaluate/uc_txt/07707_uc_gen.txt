@@ -1,0 +1,52 @@
+1. PSU initiates payment.
+2. TPP initiates payment via XS2A.
+3. XS2A saves payment.
+4. XS2A responds to TPP with payment initiation response.
+5. TPP starts authorization process.
+6. XS2A starts authorization request to ASPSP.
+7. ASPSP responds to XS2A with authorization details.
+8. XS2A saves authorization details.
+9. XS2A responds to TPP with start authorization response.
+10. TPP requests PSU for user-id and password.
+11. PSU provides user-id and password to TPP.
+12. TPP updates PSU data with authentication details via XS2A.
+13. XS2A calls SPI for payment authorization.
+14. SPI communicates with ASPSP for authorization.
+15. ASPSP responds to SPI with authorization status.
+16. SPI responds to XS2A with authorization result.
+17. XS2A updates authorization status in CMS.
+18. TPP requests PSU to select SCA method.
+19. PSU selects SCA method and informs TPP.
+20. TPP updates PSU authentication method via XS2A.
+21. XS2A calls SPI to select SCA method.
+22. SPI communicates with ASPSP for SCA method selection.
+23. ASPSP provides SCA authentication data.
+24. SPI responds to XS2A with SCA method selection result.
+25. XS2A updates SCA method selection status in CMS.
+26. PSU provides authentication data to TPP.
+27. TPP authorizes the transaction via XS2A.
+28. XS2A executes the payment via SPI.
+29. SPI communicates with ASPSP for payment authorization.
+30. ASPSP responds to SPI with payment authorization status.
+31. SPI responds to XS2A with payment execution result.
+32. XS2A updates transaction status in CMS.
+33. TPP informs PSU about payment authorization.
+34. TPP checks payment status via XS2A.
+35. XS2A retrieves payment status from SPI.
+36. SPI communicates with ASPSP to get payment status.
+37. ASPSP responds to SPI with transaction status.
+38. SPI responds to XS2A with transaction status.
+39. XS2A updates transaction status in CMS.
+40. TPP retrieves payment details via XS2A.
+41. XS2A retrieves payment details from SPI.
+42. SPI communicates with ASPSP to get payment details.
+43. ASPSP responds to SPI with payment details.
+44. SPI responds to XS2A with payment details.
+45. XS2A updates payment details in CMS.
+46. TPP retrieves authorization status via XS2A.
+47. XS2A retrieves authorization status from CMS.
+48. XS2A communicates with SPI to get SCA status.
+49. SPI communicates with ASPSP to get SCA status.
+50. ASPSP responds to SPI with SCA status.
+51. SPI responds to XS2A with SCA status.
+52. XS2A updates authorization status in CMS.

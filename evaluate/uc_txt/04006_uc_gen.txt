@@ -1,0 +1,29 @@
+1. PSU initiates Payment Cancellation.
+2. TPP initiates REST Call to Cancel payment.
+3. XS2A performs Java Call to get Payment by ID.
+4. XS2A initiates Java Call to SPI for payment cancellation.
+5. XS2A updates payment status in CMS.
+6. TPP returns message to PSU if payment cannot be cancelled.
+7. XS2A proceeds with cancellation without SCA if not mandated.
+8. XS2A initiates authorisation request with SPI if SCA mandated.
+9. PSU redirects to Online_banking for authorisation.
+10. Online_banking performs REST Call to CMS to get payment information.
+11. Online_banking updates PSU data with CMS.
+12. Online_banking receives authorisation process response.
+13. PSU authorises the cancellation.
+14. Online_banking updates authorisation status in CMS.
+15. Online_banking executes payment cancellation with ASPSP.
+16. Online_banking updates payment status in CMS.
+17. PSU receives confirmation of cancellation.
+18. PSU redirects back to TPP.
+19. TPP performs REST Call to get payment status.
+20. XS2A retrieves payment status from CMS.
+21. XS2A retrieves transaction status from SPI.
+22. XS2A updates transaction status in CMS.
+23. TPP retrieves payment request from XS2A.
+24. XS2A retrieves payment information from CMS and SPI.
+25. XS2A updates payment information in CMS.
+26. TPP retrieves cancellation authorisation sub-resources from XS2A.
+27. XS2A retrieves cancellation authorisation details from CMS.
+28. TPP retrieves specific cancellation authorisation from XS2A.
+29. XS2A retrieves SCA status for cancellation authorisation from CMS.

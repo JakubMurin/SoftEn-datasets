@@ -1,0 +1,9 @@
+1. Create Transaction UUID (for reference and maintaining correct state) - Sender.
+2. Set lock_height for transaction kernel (current chain height) - Sender.
+3. Select inputs using desired selection strategy - Sender.
+4. Calculate sum inputs blinding factors xI - Sender.
+5. Create change_output - Sender.
+6. Select blinding factor xC for change_output - Sender.
+7. Create lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS linking inputs + outputs (Not executed at this point) - Sender.
+8. Calculate tx_weight: MAX(-1 * num_inputs + 4 * (num_change_outputs + 1), 1) (+1 covers a single output on the receiver's side) - Sender.
+9.  More steps can be added here .

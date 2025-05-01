@@ -1,0 +1,10 @@
+1. User initiates match request through the frontend in the app.
+2. Frontend sends the request to the API Gateway with the payload containing the requestId.
+3. API Gateway directs the request to the Controller using PUT /api/find/match.
+4. Controller interacts with the Service to check for matches.
+5. Service finds the User's MatchRequest using the requestId provided thus initiating the matching process.
+6. Service generates a random question from the Matching Database.
+7. Service creates a sessionInfo and attaches it to both MatchRequests involved in the match.
+8. The MatchRequests are updated with the newly generated sessionInfo.
+9. Respond with 200 OK message containing the user's MatchRequest to the frontend.
+10. Frontend receives the response and switches to the session page.

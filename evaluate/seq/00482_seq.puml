@@ -1,0 +1,25 @@
+@startuml
+actor Archivist as archivist
+participant "Authentication\nSystem" as Auth
+participant "User Management\nSystem" as UserMgmt
+participant "File Management\nSystem" as FileManager
+participant "Access Restriction\nControls" as AccessControl
+database XDrive as xdrive
+
+== Authentication Process ==
+archivist -> Auth: Submits Credentials
+Auth -> UserMgmt: Validates Credentials
+UserMgmt --> Auth: Authentication Success
+Auth --> archivist: Access Granted
+
+== Accessing Files ==
+archivist -> FileManager : Requests Access to X-drive
+FileManager -> AccessControl: Verify Permissions
+AccessControl -> UserMgmt: Retrieve Archivist Permissions
+UserMgmt --> AccessControl: Permissions Details
+AccessControl --> FileManager: Access Permitted
+FileManager -> xdrive: Fetch Files
+xdrive --> FileManager: Returns Requested Files
+FileManager --> archivist: Displays Files
+
+@enduml

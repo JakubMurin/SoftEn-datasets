@@ -1,0 +1,16 @@
+1. User gibt Messenger-Service ein.
+2. TI-Messenger-Client sendet GET /_matrix/client/login an Messenger Proxy.
+3. Messenger Proxy leitet HTTP(S) Forward an Matrix-Homeserver weiter.
+4. Matrix-Homeserver unterstützt Authentifizierungsverfahren.
+5. Messenger Proxy leitet HTTP(S) Forward an TI-Messenger-Client zurück.
+6. TI-Messenger-Client zeigt Authentifizierungsmaske an User.
+7. User startet die Authentifizierung.
+8. User meldet sich an.
+9. TI-Messenger-Client sendet POST /_matrix/client/login an Messenger Proxy.
+10. Messenger Proxy leitet HTTP(S) Forward an Matrix-Homeserver weiter.
+11. Matrix-Homeserver prüft Client-Credentials.
+12. Matrix-Homeserver erstellt Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN.
+13. Matrix-Homeserver sendet Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN an Messenger Proxy.
+14. Messenger Proxy leitet HTTP(S) Forward an TI-Messenger-Client zurück.
+15. TI-Messenger-Client speichert Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN.
+16. Anmeldung des Users ist erfolgreich.

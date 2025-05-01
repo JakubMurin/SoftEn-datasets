@@ -1,0 +1,9 @@
+1. Operations installs Component.
+2. Component is created by ComponentOperator.
+3. PublishedNotification resource is created.
+4. ComponentOperator creates separate publishedNotification resource for each notification category.
+5. PublishedNotification is created by EventPublishingEnablementOperator.
+6. EventPublishingEnablementOperator searches for matching topic in TMFC019.
+7. EventPublishingEnablementOperator configures Event Hub for the topic.
+8. EventPublishingEnablementOperator updates PublishedNotification.
+9. ComponentOperator updates Component.

@@ -1,0 +1,32 @@
+@startuml
+actor "Green Spaces Manager" as GSM
+participant "AssignVehiclesToAgendaEntryGUIController" as UI
+participant "AssignVehiclesToAgendaEntryController" as CTRL
+participant "VehicleRepository" as VR
+participant "Repositories" as Repositories
+
+activate UI
+loop Until no more vehicles to add
+    UI --> GSM: showAvailableVehicles(vehicle DTOs)
+
+    GSM -> UI: selects a vehicle
+    activate UI
+    UI -> CTRL: assignVehicleToEntry(entryId, vehicleId)
+    deactivate UI
+    activate CTRL
+
+    CTRL -> VR: assignVehicleToAgendaEntry(entryId, vehicleId)
+    activate VR
+    VR -> Repositories: update vehicle assignment
+    activate Repositories
+    Repositories --> VR: return success
+    deactivate Repositories
+    VR --> CTRL: return success
+    deactivate VR
+
+    CTRL --> UI: showSuccessMessage(vehicleId assigned to entryId)
+    deactivate CTRL
+    activate UI
+end
+@enduml
+

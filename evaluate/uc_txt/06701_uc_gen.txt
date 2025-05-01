@@ -1,0 +1,11 @@
+1. User A initiates "Tx HasKeychainEntryV1".
+2. API Client sends request to API Server.
+3. API Server sets key with corresponding value in AWS Secrets Manager.
+4. AWS Secrets Manager retrieves AWS client.
+5. In a try block:.
+6. - If AWS client describes the secret, return true.
+7. In a catch block:.
+8. - If an error occurs, return "Secrets Manager can't find the specified secret".
+9. API Server responds to API Client.
+10. API Client formats the response.
+11. API Client sets the keychain entry and responds accordingly to User A.

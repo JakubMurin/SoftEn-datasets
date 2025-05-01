@@ -1,0 +1,14 @@
+1. User selects dataset instance and specifies property to remove.
+2. UI Interface sends request to remove property from dataset instance to API Gateway.
+3. API Gateway validates the dataset instance ID.
+4. DatasetManagementService validates the dataset instance ID.
+5. DatasetInstanceService retrieves dataset instance details.
+6. DatasetInstanceService fetches current properties of the instance from DatasetStore.
+7. DatasetInstanceService provides dataset instance metadata to DatasetManagementService.
+8. DatasetManagementService requests PropertyManagementService to remove specified property.
+9. PropertyManagementService removes property from DatasetStore.
+10. PropertyManagementService confirms property removal to DatasetStore.
+11. PropertyManagementService returns success message to DatasetManagementService.
+12. DatasetManagementService acknowledges successful property removal to API Gateway.
+13. API Gateway displays success message to UI Interface.
+14. UI Interface shows confirmation of property removal to User.

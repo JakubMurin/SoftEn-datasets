@@ -1,0 +1,12 @@
+1. Browser posts a request to HttpServer at /api/listQuestions.
+2. HttpServer receives the POST request.
+3. HttpServer forwards the request to controllers.
+4. controllers retrieve the list of questions.
+5. ListQuestionsController handles the request.
+6. ListQuestionsController parses the survey ID from the request.
+7. QuestionDao retrieves questions for the specified survey ID.
+8. OptionDao retrieves options for the retrieved questions.
+9. QUESTION_DB is queried for retrieving questions based on survey_id.
+10. QUESTION_DB is queried for retrieving options based on question_id.
+11. ListQuestionsController responds with a success code 200 to HttpServer.
+12. HttpServer sends the HTTP response back to the Browser.

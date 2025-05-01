@@ -1,0 +1,13 @@
+1. User asks a question to the Lightspeed Service.
+2. Lightspeed Service forwards the question to the Redactor for redaction.
+3. Redactor redacts the query and sends it back to the Lightspeed Service.
+4. Lightspeed Service retrieves conversation history from the cache.
+5. Lightspeed Service retrieves attachments from the request.
+6. Attachments are redacted by the Redactor.
+7. Lightspeed Service validates the question using the Question Validator.
+8. If the question is invalid, Lightspeed Service informs the user that the question is not valid.
+9. If the question is valid, Lightspeed Service proceeds to answer generation.
+10. Document Summarizer summarizes the document.
+11. Document Summarizer reads the vector database for additional information.
+12. Document Summarizer queries LLM for the answer.
+13. Document Summarizer provides the summary and answer to the user through Lightspeed Service.

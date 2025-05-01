@@ -1,0 +1,10 @@
+1. User completes client service and ticket information.
+2. TicketTransitions receives 'onTechERPReviewCompleted' action.
+3. TicketTransitions checks if the tech ticket category is valid.
+4. Incorrect category: TicketTransitions informs user to select a valid category.
+5. Valid category: ProfessionalTicket calculates report quality.
+6. Report quality improper or no comments: User prompted to enter Technical Image Quality Comments.
+7. Valid report quality: ProfessionalTicket retrieves tech report.
+8. ProfessionalTicket sets report quality and completion time, associates user with reporting.
+9. ClientRestService saves ticket with TECH_COMPLETED status, handles study creation or updates.
+10. ClientRestService handles CRUD operations for Professional Ticket including letter generation.

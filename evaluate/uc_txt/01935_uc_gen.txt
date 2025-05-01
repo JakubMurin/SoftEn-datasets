@@ -1,0 +1,7 @@
+1. User sends a POST request to TenantsController with Tenant data.
+2. TenantsController validates the model.
+3. TenantsController checks if the Tenant exists by calling TenantService.
+4. TenantService validates if the Tenant exists in the TenantDbContext.
+5. TenantService creates a new Tenant if it does not exist in the database.
+6. TenantService updates the Tenant context using ITenantContextService.
+7. TenantsController returns the created Tenant to the User.

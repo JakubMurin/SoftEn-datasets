@@ -1,0 +1,22 @@
+1. Business User registers listeners for Fault Management Job and Report notifications with Hub.
+2. System Operator Framework creates a Fault Management Job.
+3. Fault Management Job is created and a response is sent to Business User.
+4. Fault Management Job generates data.
+5. Fault Management Job creates an event.
+6. Fault Management Job notifies listeners about the job creation event.
+7. Fault Management Job changes state to 'inProgress'.
+8. Fault Management Job schedules reporting period.
+9. Fault Management Job creates a Fault Management Report.
+10. Fault Management Report is created and a response is sent to Business User.
+11. Fault Management Report creates an event.
+12. Fault Management Report notifies listeners about the report creation event.
+13. Fault Management Report collects data.
+14. Fault Management Report changes state to 'inProgress'.
+15. Fault Management Report changes state to 'completed'.
+16. Fault Management Report notifies listeners about the report completion.
+17. Fault Management Job receives the completed report.
+18. Fault Management Job changes state to 'completed' or 'scheduled'.
+19. Fault Management Job notifies listeners about the job state change.
+20. Business User requests the Fault Management Report.
+21. System Operator Framework retrieves the Fault Management Report.
+22. Fault Management Report is retrieved and a response is sent to Business User.

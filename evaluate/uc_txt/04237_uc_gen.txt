@@ -1,0 +1,17 @@
+1. User writes a new draft with or without participants.
+2. Throttle save the draft.
+3. API receives POST request to create a new message.
+4. API acknowledges creation with status 204.
+5. API responds with message details.
+6. User edits the draft.
+7. Throttle save the edited draft.
+8. API receives PATCH request to update the message.
+9. API acknowledges patch with status 204.
+10. API responds with updated message details.
+11. User hits "Send".
+12. API receives POST request to send the message.
+13. API validates participants and calculates discussion ID.
+14. API acknowledges the send action with status 204.
+15. API responds with message and discussion details.
+16. Compose UI renders the discussion.
+17. Compose UI notifies the user.

@@ -1,0 +1,9 @@
+1. User requests volume change by pressing the volume button.
+2. A2DP Sink detects the volume button press event.
+3. A2DP Sink informs Source's AVRCP event handler about the volume change.
+4. Source's AVRCP event handler forwards the volume change event to Service Bluetooth.
+5. Service Bluetooth processes and sends the "Volume changed" message to Service Audio.
+6. Service Audio regulates the actual volume level based on the received message.
+7. Service Audio notifies the appropriate volume modification to Settings.
+8. Service Audio reports the volume alteration to Application.
+9. Application updates and displays the current volume level to the User.

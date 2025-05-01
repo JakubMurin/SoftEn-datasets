@@ -1,0 +1,26 @@
+1. Адміністратор платформи запускає інсталлер.
+2. Баш-інсталер активує шифрування etcd.
+3. Баш-інсталер активує catalog-source (Redhat репозиторії).
+4. Баш-інсталер встановлює storage в Ceph.
+5. Баш-інсталер встановлює logging.
+6. Баш-інсталер встановлює service-mesh.
+7. Баш-інсталер встановлює control-plane-nexus в Nexus Registry.
+8. Баш-інсталер встановлює platform-vault.
+9. Баш-інсталер встановлює platform-minio.
+10. Баш-інсталер завантажує докер імеджі в Nexus Registry.
+11. Баш-інсталер встановлює user-management в Keycloak.
+12. Баш-інсталер запускає control-plane-installer.
+13. Баш-інсталер завантажує nexus ресурси (*.xsd) в Nexus Registry.
+14. Баш-інсталер створює backup-credentials.
+15. ControlPlane installer встановлює CP компоненти.
+16. CP встановлює jenkins-operator та jenkins.
+17. CP встановлює codebase-operator та keycloak-operator.
+18. CP встановлює gerrit-operator та gerrit.
+19. CP встановлює codebase cluster-mgmt в gerrit.
+20. Jenkins створює gitops job для cluster-mgmt.
+21. Jenkins запускає gitops job для cluster-mgmt.
+22. Jenkins checkout helmfile в gerrit.
+23. Jenkins запускає helmfile.
+24. Jenkins встановлює інші компоненти.
+25. CP створює realm для Control Plane в Keycloak.
+26. CP інтегрує всі компоненти з Keycloak.

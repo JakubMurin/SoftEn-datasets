@@ -1,0 +1,7 @@
+1. User sends a request to rate a book.
+2. Gateway receives the request and verifies the JWT with Keycloak.
+3. Gateway forwards the request to Catalog to rate the book.
+4. Catalog searches for the book in Postgres.
+5. Catalog updates the user's rating for the book in Postgres.
+6. Catalog responds with HTTP status 200 to Gateway.
+7. Gateway responds with HTTP status 200 to User.

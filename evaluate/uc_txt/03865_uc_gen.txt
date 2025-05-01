@@ -1,0 +1,15 @@
+1. Application sends start signal to CowboyPlug.
+2. CowboyPlug forwards start signal to Cowboy.
+3. CowboyPlug forwards start signal to Plug.
+4. Application sends start signal to Supervisor.
+5. Supervisor initializes Timer.
+6. Supervisor monitors Timer.
+7. Timer wakes up.
+8. Timer sends GET request to Monitored Server.
+9. Timer updates its state.
+10. Supervisor restarts Timer.
+11. Alice checks Cowboy status.
+12. Cowboy calls Plug.
+13. Plug requests status from Timer.
+14. Plug responds to Cowboy.
+15. Cowboy responds to Alice.

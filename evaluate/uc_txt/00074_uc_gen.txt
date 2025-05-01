@@ -1,0 +1,7 @@
+1. Admin or User triggers volume creation.
+2. Kubernetes creates StorageClass.
+3. User creates PersistentVolumeClaim.
+4. Kubernetes sends a request to the CSI driver (lb_csi) to create a volume.
+5. lb_csi communicates with lb_target to create the volume.
+6. lb_target responds with the volume information to lb_csi.
+7. lb_csi sends the volume creation response to Kubernetes.

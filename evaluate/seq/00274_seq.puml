@@ -1,0 +1,12 @@
+@startuml 
+actor Tester as test
+participant "Usuario" as usuario
+participant "Usuario" as referido
+
+test -> usuario : instanciar usuario("Juan")
+test -> referido : instanciar referido("Pedro")
+test -> usuario : agregar_referido(referido)
+usuario -> usuario : referidos.append(referido)
+usuario -> usuario : balance += 100
+test -> usuario : verificar balance
+@enduml

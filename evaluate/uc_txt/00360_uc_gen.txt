@@ -1,0 +1,23 @@
+1. User schedules payment creation.
+2. MUKTA_ADAPTER requests tenants from MDMS.
+3. MDMS provides the list of tenants to MUKTA_ADAPTER.
+4. MUKTA_ADAPTER searches for bills where payments are not created.
+5. Expense_Service returns the list of bills to MUKTA_ADAPTER.
+6. MUKTA_ADAPTER processes bills and generates payments.
+7. MUKTA_ADAPTER requests Expense_Service to create payments.
+8. Expense_Service creates payments and returns the payment response to MUKTA_ADAPTER.
+9. MUKTA_ADAPTER pushes payment details to create topic in KAFKA.
+10. MUKTA_ADAPTER listens to the payment create topic in KAFKA.
+11. MUKTA_ADAPTER processes payments.
+12. MUKTA_ADAPTER fetches bill details from Expense_Service.
+13. Expense_Service returns bill details to MUKTA_ADAPTER.
+14. MUKTA_ADAPTER processes each bill line item.
+15. MUKTA_ADAPTER fetches organization details from ORG_SERVICE.
+16. MUKTA_ADAPTER returns organization details from ORG_SERVICE.
+17. MUKTA_ADAPTER fetches individual details from IND_SERVICE.
+18. MUKTA_ADAPTER returns individual details from IND_SERVICE.
+19. MUKTA_ADAPTER fetches bank account details from BANK_ACC_SERVICE.
+20. MUKTA_ADAPTER returns bank account details from BANK_ACC_SERVICE.
+21. MUKTA_ADAPTER creates disburse request for each bill.
+22. MUKTA_ADAPTER sends disburse request to PROGRAM_SERVICE.
+23. PROGRAM_SERVICE acknowledges the disburse request.

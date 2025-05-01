@@ -1,0 +1,12 @@
+1. User requests gateway.
+2. Gateway forwards request to UserSecurityService for token validation.
+3. UserSecurityService validates the token.
+4. Token is valid - Gateway forwards request to ServiceA and receives a response.
+5. Gateway sends response to User.
+6. Token is invalid - Gateway denies access to User.
+7. Gateway checks x-server-name header.
+8. x-server-name header is present - Gateway validates the service token.
+9. Service token is valid - Gateway forwards request to ServiceB and gets a response.
+10. Gateway sends the response from ServiceB to ServiceA.
+11. Service token is invalid - Gateway denies access to ServiceA.
+12. x-server-name header is absent - Gateway denies access to ServiceA.

@@ -1,0 +1,8 @@
+1. User deletes task.
+2. REACT FRONTEND sends task to DJANGO BACKEND.
+3. DJANGO BACKEND sends task to Service Bus Queue: Delete.
+4. KEDA: servicebus-remover removes task from queue.
+5. KEDA: servicebus-remover removes task from Service Bus Queue: Running.
+6. KEDA: servicebus-remover sends volcano job for deletion to Kubernetes API.
+7. UI reads tasks from Service Bus Queue: Running.
+8. UI shows running tasks to User.

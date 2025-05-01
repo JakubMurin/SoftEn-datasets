@@ -1,0 +1,21 @@
+@startuml
+actor LibraryStaff as "Library Staff"
+participant BrowserInterface as "Web Interface"
+participant ServerSideApplication as "Server Application"
+participant Database as "Database"
+
+LibraryStaff -> BrowserInterface : Access collection creation form
+BrowserInterface -> ServerSideApplication : Request collection creation form
+ServerSideApplication -> BrowserInterface : Return collection creation form
+
+LibraryStaff -> BrowserInterface : Fill and submit form with custom metadata fields
+BrowserInterface -> ServerSideApplication : Submit collection creation request with custom metadata
+ServerSideApplication -> Database : Validate and save collection data
+activate Database
+Database --> ServerSideApplication : Confirm collection saved
+deactivate Database
+
+ServerSideApplication -> BrowserInterface : Display success message to Library Staff
+BrowserInterface -> LibraryStaff : Show success message & collection details
+
+@enduml

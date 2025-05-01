@@ -1,0 +1,11 @@
+1. User logs in.
+2. Rehab Support validates SAML token and exchanges for Access Token/Refresh Token.
+3. Rehab Support builds form with certificate ID, care unit, and Access Token for POST to Web Certificate.
+4. Patient view is rendered.
+5. User clicks 'View Certificate' initiating a POST request to Web Certificate.
+6. Web Certificate validates Access Token and creates a session.
+7. Web Certificate sets care unit in the session.
+8. User is redirected to certificate view.
+9. Certificate data is rendered to the browser.
+10. User closes patient view triggering local logout.
+11. Web Certificate ends session and returns HTTP 200 with empty page to hidden iframe.

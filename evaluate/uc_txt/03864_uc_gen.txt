@@ -1,0 +1,12 @@
+1. Application sends startup signal to CowboyPlug.
+2. CowboyPlug initiates startup process, triggering Cowboy and Plug.
+3. Supervisor receives startup signal and initializes Timer.
+4. Supervisor begins monitoring Timer's state.
+5. Timer awakens and sends GET request to Monitored Server.
+6. If successful, Timer updates its state.
+7. If unsuccessful, Timer crashes and Supervisor restarts it.
+8. Alice queries Cowboy for status information.
+9. Cowboy communicates with Plug to fetch status from Timer.
+10. Plug requests status from Timer.
+11. Plug responds to Cowboy with the Timer's status.
+12. Cowboy relays the status response to Alice.

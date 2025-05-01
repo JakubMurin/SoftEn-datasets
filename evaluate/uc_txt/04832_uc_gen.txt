@@ -1,0 +1,9 @@
+1. Admin sends a POST request to /api/Patient/Register endpoint with CreatePatientDto.
+2. PatientController receives the request and activates.
+3. PatientController calls PatientService's AddAsync method with CreatePatientDto.
+4. PatientService activates and calls IPatientRepository's IsEmailUniqueAsync and IsPhoneNumberUniqueAsync methods.
+5. PatientService generates a unique medical number and creates a new Patient object.
+6. PatientService adds the new Patient to IPatientRepository and commits the changes using IUnitOfWork.
+7. PatientService sends an email notification using IEmailService.
+8. PatientService deactivates and returns the PatientDto to PatientController.
+9. PatientController deactivates and responds with 200 OK (PatientDto) to Admin.

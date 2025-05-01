@@ -1,0 +1,11 @@
+1. Attacker performs length extension attack at SHA1.
+2. Attacker extracts the message.
+3. Message Extraction Facility parses the message.
+4. Attacker computes SHA1 padding for the message.
+5. Attacker tampers with the message.
+6. Message Extraction Facility converts message MAC to byte format.
+7. Attacker extracts SHA1 internal state from MAC byte format.
+8. Attacker hashes the message with different key lengths.
+9. Server validates the MAC and checks for equality.
+10. If server reply is true, attacker breaks the loop and returns true.
+11. Attacker returns false if no suitable key length is found.

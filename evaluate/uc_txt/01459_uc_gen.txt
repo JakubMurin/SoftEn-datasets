@@ -1,0 +1,20 @@
+1. Faber requests to create a DID from FaberIndyWallet.
+2. FaberIndyWallet creates Faber DID using ED25519.
+3. FaberAnonCreds stores Faber DID.
+4. Faber creates a SCHEMA using Faber DID.
+5. FaberAnonCreds stores the SCHEMA.
+6. FaberPythonDiem creates Diem Identifier and ED25519 keys.
+7. FaberMiniWallet stores the Diem Identifier.
+8. Faber publishes the identifier to the DiemLedger.
+9. Acme requests to create a Diem Identifier and ED25519 keys from AcmePythonDiem.
+10. AcmePythonDiem creates the Diem Identifier and ED25519 keys.
+11. AcmeMiniWallet stores the Diem Identifier.
+12. Acme publishes the identifier to the DiemLedger.
+13. FaberPythonDiem creates a payment transaction for TrustedInstitution.
+14. Faber sends the payment transaction to the DiemLedger with the SCHEMA.
+15. The DiemLedger accepts or denies the payment.
+16. Faber pulls the SCHEMA from Acme payments on the ledger.
+17. Faber creates a CRED_DEF using Faber DID and the pulled SCHEMA.
+18. FaberAnonCreds stores the CRED_DEF.
+19. FaberPythonDiem sends the payment transaction to the DiemLedger with the CRED_DEF.
+20. The DiemLedger accepts or denies the payment.

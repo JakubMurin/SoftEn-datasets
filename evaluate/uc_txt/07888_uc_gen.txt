@@ -1,0 +1,16 @@
+1. User initializes database.
+2. DataStorage creates database structure.
+3. User crawls GitLab data.
+4. GitLabCrawler returns GitLab data to DataStorage.
+5. User crawls TD data.
+6. TDCrawler returns TD data to DataStorage.
+7. DataStorage preprocesses data.
+8. Preprocessor returns preprocessed data to DataStorage.
+9. DataStorage stores data to SQLite.
+10. DataStorage updates index in Database.
+11. User initiates search request.
+12. SearchEngine performs search.
+13. VectorSearch returns top N results to SearchEngine.
+14. SearchEngine fetches complete bug info from Database based on id.
+15. Database returns complete bug info to SearchEngine.
+16. SearchEngine returns bug list to User.

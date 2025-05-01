@@ -1,0 +1,10 @@
+1. Apache input filter receives incoming HTTP request from HTTPRequest.
+2. mod_dup is activated.
+3. mod_dup enriches the context of the request.
+4. mod_dup performs filtering and finds a match.
+5. mod_dup delegates handling to PNS_WS.
+6. PNS_WS collects the response data.
+7. mod_dup prepares the request for duplication.
+8. mod_dup sends the response back to HTTPRequest.
+9. duplicator is activated.
+10. duplicator sends the duplicated request to mod_compare.

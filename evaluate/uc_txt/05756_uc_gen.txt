@@ -1,0 +1,16 @@
+1. Librarian sends a request to the LendingController to get the monthly lending report.
+2. LendingController activates and processes the request.
+3. LendingController calls ReaderService to retrieve all readers.
+4. ReaderService activates and fetches all readers from ReaderRepository.
+5. ReaderRepository provides a list of readers to ReaderService.
+6. For each reader, ReaderService retrieves the monthly lending information from ReaderRepository.
+7. ReaderRepository calculates the number of items lent to the reader.
+8. ReaderService updates the reader's lending information.
+9. ReaderService sets the lending information for the reader.
+10. ReaderService repeats the process for each reader.
+11. ReaderService deactivates after processing all readers.
+12. LendingController maps the reader lending information to a view.
+13. ReaderLentsViewMapper activates and processes the mapping.
+14. ReaderLentsViewMapper provides an iterable of ReaderLentsView to LendingController.
+15. LendingController deactivates after receiving the mapped views.
+16. LendingController sends an HTTP 200 OK response with the ReaderLentsView to the Librarian.

@@ -63,14 +63,14 @@ class XmlFiles:
         
         url_date = []
         if url_date_path:
-            with open(url_date_path, "r") as file:
+            with open(url_date_path, "r", encoding="utf-8") as file:
                 for l in file:
                     url_date.append(l.strip().split())
         
         
         for i, file_path in enumerate(get_all_files(dir_path)):
         
-            with open(file_path, "r") as uc_file:
+            with open(file_path, "r", encoding="utf-8") as uc_file:
                 usecase = uc_file.read()
 
                 url, create_date = url_date[i] if len(url_date) > i else ("", "")

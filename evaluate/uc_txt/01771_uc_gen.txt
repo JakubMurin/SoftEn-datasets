@@ -1,0 +1,17 @@
+1. HTTP Request is sent by the Client to the Load Balancer/ECS.
+2. RemoveBookFromCatalogActivity gets activated to execute the removeBookRequest.
+3. CatalogDao gets activated to remove the specific book from Catalog for the given bookId.
+4. Query for the latest version of the book is made to DynamoDB by CatalogDao.
+5. DynamoDB returns the book data back to CatalogDao.
+6. Book data is received, deactivated DynamoDB.
+7. RemoveBookFromCatalogActivity::throw BookNotFoundException if book not found or inactive.
+8. Transform the exception to KindlePublishingClientException and return a 400 response back to the client.
+9. Continue with processing if the book exists and is active.
+10. The data in dynamoDB is returned to CatalogDao.
+11. Deactivate CatalogDao after removing book from the catalog.
+12. Convert CatalogItemVersion to Coral Model Book within RemoveBookFromCatalogActivity.
+13. Create a RemoveBookFromCatalogResponse.
+14. Set book content for further processing in RemoveBookFromCatalogActivity.
+15. Return the RemoveBookFromCatalogResponse back to the Load Balancer/ECS.
+16. Deactivate the RemoveBookFromCatalogActivity after completion of the process.
+17. Return a 200 response back to the client along with the resulting data.

@@ -1,0 +1,10 @@
+1. Actor initiates reconnection.
+2. ClientRMI performs RMI lookup in Registry.
+3. Registry provides remote reference to MainServer to ClientRMI.
+4. ClientRMI reconnects to MainServerRMI.
+5. MainServerRMI interrupts ClientHandlerRMI.
+6. ClientHandlerRMI is created.
+7. MainServerRMI creates and starts ClientHandlerRMI.
+8. MainServerRMI reconnects to MainController.
+9. MainController updates AvailableGamesMessage.
+10. MainServerRMI sends update to ClientRMI through ClientHandlerRMI.

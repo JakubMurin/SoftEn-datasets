@@ -1,0 +1,12 @@
+1. User loads composition specifications from a new XML file via Karaf Console.
+2. Karaf Console reads the content of the XML file.
+3. Karaf Console sets configuration value (composition, xml content).
+4. Karaf Configuration reloads OSGi module.
+5. core.caos retrieves configuration related to the composition.
+6. core.caos creates CompositionSpecification and loads it.
+7. core.caos receives a list of required modules from CompositionSpecification.
+8. core.caos requests all current backends from BackendManager.
+9. BackendManager provides currently connected backends to core.caos.
+10. core.caos checks if all required modules are present based on the provided backends.
+11. core.caos finishes the reconfiguration process.
+12. core.caos logs successful reconfiguration via Karaf Console.

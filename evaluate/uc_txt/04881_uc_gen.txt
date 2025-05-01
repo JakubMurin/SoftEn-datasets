@@ -1,0 +1,16 @@
+1. Workflow Administrator initiates a new workflow creation by sending a POST request to Api Gateway.
+2. Api Gateway forwards the request to Workflow Service to create the workflow.
+3. Workflow Service updates the Workflow Db with the new workflow details and publishes a new-workflow-allocated event to NATS Event Relay.
+4. Workflow Service responds to Api Gateway with the created workflow ID.
+5. Workflow Administrator polls the status of the workflow by sending a GET request to Api Gateway.
+6. Api Gateway retrieves the workflow details from Workflow Service.
+7. Workflow Administrator receives the workflow details in the response.
+8. ZKP Manager Service subscribes to the new-workflow-allocated event in NATS.
+9. ZKP Manager Service generates a signature circuit, saves it in the Circuit Db, compiles the circuit, and publishes a circuit-compiled event to NATS.
+10. Workflow Service subscribes to the circuit-compiled event in NATS.
+11. Workflow Service updates the Workflow Db, publishes a workflow-status-updated event to NATS.
+12. ZKP Manager Service subscribes to the workflow-status-updated event with the filter circuit-compiled in NATS.
+13. ZKP Manager Service sets up the circuit and publishes a circuit-setup event to NATS.
+14. Workflow Service subscribes to the circuit-setup event in NATS.
+15. Workflow Service updates the Workflow Db, publishes a workflow-status-updated event to NATS.
+16. ZKP Manager Service subscribes to the workflow-status-updated event with the filter circuit-setup in NATS.

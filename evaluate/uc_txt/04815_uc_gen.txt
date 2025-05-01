@@ -1,0 +1,21 @@
+1. User initiates changes configuration and requests data to Sarad App.
+2. Sarad App attempts to reserve a device through the rest api.
+3. rest api relays the reservation request to the device Actor.
+4. device Actor forwards the request to the device with Instrument Server.
+5. The device accepts the request and relays port information back to the device Actor.
+6. device Actor establishes a connection with the device with Instrument Server.
+7. device Actor opens a port for data transfer.
+8. device Actor relays port information back to the rest api.
+9. rest api sends the port information back to Sarad App.
+10. The user initiates changes and requests data again.
+11. The device Actor reconnects.
+12. Sarad App sends data to the device Actor.
+13. The device Actor relays the data to the device.
+14. The device responds back to the device Actor.
+15. The device Actor sends the response to Sarad App.
+16. Sarad App displays the response to the user.
+17. Sarad App disconnects from the device Actor.
+18. Sarad App frees the reserved device through the rest api.
+19. The rest api relays the free device information to the device Actor.
+20. The device Actor relays the freed status to the device with Instrument Server.
+21. The device with Instrument Server confirms the free status.

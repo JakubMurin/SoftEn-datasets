@@ -1,0 +1,16 @@
+1. User initiates application by running 'npm start'.
+2. Code requires Knex.
+3. Knex connects to node_postgres.
+4. node_postgres authenticates with postgresDB.
+5. node_postgres connection established.
+6. Knex adds connections to pool.
+7. Knex creates knex instance.
+8. Code requires Bookshelf passing knex instance.
+9. Bookshelf fetches all recipes.
+10. Knex selects from 'recipe'.
+11. Tarn acquires connection from pool.
+12. Knex selects from 'recipe' using connection1.
+13. postgresDB returns recipe data.
+14. Knex releases connection1 to pool.
+15. Knex retrieves recipes from Bookshelf.
+16. Code displays retrieved recipes to User.

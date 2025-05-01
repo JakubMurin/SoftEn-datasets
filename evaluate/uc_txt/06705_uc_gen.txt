@@ -1,0 +1,10 @@
+1. User A triggers the transaction with the keychain entry request.
+2. API Client sends the request to API Server.
+3. API Server sets the key-value pair in AWS Secrets Manager.
+4. AWS Secrets Manager retrieves AWS client.
+5. AWS Secrets Manager describes the secret.
+6. If successful, API Server responds with 'True' status.
+7. If an error occurs, API Server responds with a message: "Secrets Manager can't find the specified secret".
+8. API Server sends the response back to API Client.
+9. API Client formats the response.
+10. API Client sets the keychain entry response.

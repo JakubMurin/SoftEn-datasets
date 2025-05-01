@@ -1,0 +1,11 @@
+1. Admin requests to log in through the UI.
+2. UI sends a POST request to /login to the AuthRouter.
+3. AuthRouter forwards the login request to the AuthController.
+4. AuthController validates the credentials in the request.
+5. AuthRepository fetches the Admin data based on the username.
+6. AdminModel queries the database to retrieve Admin data.
+7. AdminModel sends the admin data back to AuthRepository.
+8. AuthRepository sends the validation result back to AuthController.
+9. AuthController responds to AuthRouter with success or failure status.
+10. AuthRouter sends the response to the UI.
+11. UI displays the dashboard upon successful login, or shows an error message for invalid credentials.

@@ -1,0 +1,12 @@
+1. User sends a GET request to /api/v1/subscriptions.
+2. Gateway receives the request.
+3. Keycloak verifies the JWT.
+4. If JWT is valid.
+5. Gateway sends a request to Subscription service.
+6. Subscription service retrieves the user's subscription configuration from MongoDB.
+7. Subscription service sends the subscription configuration to Gateway.
+8. Gateway sends the subscription configuration to User.
+9. If JWT is absent.
+10. Gateway sends HTTP status 401 to User.
+11. If JWT is not valid.
+12. Gateway sends HTTP status 403 to User.

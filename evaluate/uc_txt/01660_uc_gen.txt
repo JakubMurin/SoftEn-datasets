@@ -1,0 +1,11 @@
+1. Attacker sends a POST request to Proxy server with payload [GET /poison].
+2. Proxy server activates.
+3. Proxy server forwards the request to Backend server.
+4. Backend server activates.
+5. Backend server processes the POST request and responds with /foo 200.
+6. Proxy server forwards the response to Attacker.
+7. Proxy server deactivates.
+8. Backend server deactivates.
+9. Backend server receives a GET request for /poison.
+10. Backend server processes the request and responds with /poison 200.
+11. Backend server deactivates.

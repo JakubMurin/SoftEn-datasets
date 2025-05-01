@@ -1,0 +1,19 @@
+1. Zarządca wybiera listę kont oczekujących.
+2. Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta.
+3. AccountController otrzymuje żądanie i wywołuje getAccountSearchPreferences w AccountEndpoint.
+4. AccountEndpoint wywołuje AccountService do pobrania preferencji wyszukiwania dla konta.
+5. AccountService sprawdza istnienie konta.
+6. Jeśli konto istnieje, AccountService pobiera preferencje wyszukiwania dla konta.
+7. Jeśli preferencje dla konta istnieją, pobierane są preferencje wyszukiwania.
+8. Jeśli preferencje dla konta nie istnieją, tworzone są nowe preferencje wyszukiwania.
+9. AccountService zwraca informację zwrotną do AccountEndpoint.
+10. AccountEndpoint zwraca informację zwrotną do AccountController.
+11. AccountController wysyła żądanie pobrania listy niepotwierdzonych kont.
+12. AccountEndpoint pobiera listę niepotwierdzonych kont.
+13. AccountService sprawdza istnienie konta.
+14. Jeśli konto istnieje, pobierane są preferencje wyszukiwania.
+15. Jeśli preferencje dla konta istnieją, aktualizowane są.
+16. Jeśli preferencje dla konta nie istnieją, tworzone są nowe.
+17. AccountService zwraca listę kont niepotwierdzonych.
+18. AccountEndpoint zwraca listę kont niepotwierdzonych do AccountController.
+19. AccountController zwraca listę kont niepotwierdzonych do Nawigatora.

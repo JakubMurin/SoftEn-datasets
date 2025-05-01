@@ -1,0 +1,10 @@
+1. Manager adds new material information.
+2. ManagerPage initiates the addition of new material information by calling addMaterial(newMaterialInfo) on ManagerMaterialController.
+3. ManagerMaterialController receives the request and calls addMaterial(newMaterialInfo) on MaterialService.
+4. MaterialService adds the new material information by calling save(newMaterialInfo) on MaterialRepository.
+5. MaterialRepository executes the insert query on the Database to save newMaterialInfo.
+6. Database confirms the successful insert execution.
+7. MaterialRepository confirms the insert to MaterialService.
+8. MaterialService informs ManagerMaterialController about the successful insert.
+9. ManagerMaterialController confirms the successful insert to ManagerPage.
+10. ManagerPage displays the add confirmation message to the Manager.

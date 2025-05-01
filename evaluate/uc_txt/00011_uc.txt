@@ -1,0 +1,7 @@
+1. The RPIC visually inspects all UAVs prior to takeoff to ensure their flight-worthiness.
+2. The RPIC checks weather conditions for visibility (3 miles), temperature (must be within operating range of the UAV), and other conditions such as wind and precipitation to ensure safe flight.
+3. For each UAV flying in FAA controlled airspace, DroneResponse prepares an authorization request containing the UAV's registration, flight time, and flight region.
+4. DroneResponse connects to an authorization service provider (e.g., AirMap) and requests authorization for a UAV's valid flight plan.
+5. The authorization service provider returns permission to fly, including airspace constraints such as altitude limits and no-fly zones.
+6. DroneResponse marks all airspace restrictions on the map. All subsequent flight paths are checked against these restrictions prior to, and during, each flight.
+7. DroneResponse establishes a geofence that matches the outer boundary of the region for which flight authorization has been received.

@@ -1,0 +1,9 @@
+1. User requests to generate a secret key.
+2. SecretKey requests SecureRandom to generate 32 bytes.
+3. SecureRandom creates a new instance.
+4. SecureRandom generates 32 random bytes.
+5. SecureRandom sends the request to NativeCrypto.
+6. NativeCrypto generates random bytes.
+7. NativeCrypto sends the bytes back to SecureRandom.
+8. SecureRandom sends the bytes to SecretKey.
+9. SecretKey receives the secret key.

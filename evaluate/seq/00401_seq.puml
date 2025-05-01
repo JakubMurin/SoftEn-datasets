@@ -1,0 +1,16 @@
+@startuml
+actor User
+participant "Web Interface" as UI
+participant "Backend Service" as Backend
+database "File Storage" as Storage
+
+User -> UI: Select file version revert option
+UI -> Backend: Request to revert file (fileID, version)
+Backend -> Storage: Fetch older file version (fileID, version)
+Storage --> Backend: Return older file version
+Backend -> Storage: Update current file with older version
+Storage --> Backend: Confirm update
+Backend --> UI: Confirm successful revert to user
+UI --> User: Display revert success message
+
+@enduml

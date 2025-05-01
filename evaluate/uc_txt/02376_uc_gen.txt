@@ -1,0 +1,16 @@
+1. Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet.
+2. Rehabstöd listar patientens samtliga intyg över alla VG.
+3. Hämta vårdgivarnamn för varje intyg mha GetUnit v1.
+4. PU får PersonSvar för patienten.
+5. Filtrera bort alla intyg som inte ligger på den aktiva enheten om patienten är sekretssmarkerad.
+6. Kontrollera spärr via CheckBlocks v4 och uppdatera intygen med spärrstatus om patienten ej är sekretssmarkerad.
+7. Skicka in ALLA intyg oavsett spärr/samtyckesstatus för Bruttosjukfall.
+8. Kontrollera samtyckesstatus för enheten/läkaren mot patienten för att visa intyg utanför vårdgivaren via CheckConsent v2.
+9. Filtrera bort intyg från andra vårdgivare om samtycke saknas.
+10. Sammanställ klientsvar med sjukfall och metadataobjekt.
+11. Skicka in nettolistan av intyg för Nettosjukfall.
+12. Uppdatera lista med namn och sekretessstatus för patienten.
+13. GetCertificateAdditions för varje intyg och uppdatera sjukfallens ingående intyg med kompletteringsstatus.
+14. GetRiskPredictionForCertificate för varje intyg om SRS-stöd är aktiverat.
+15. PDL loggning av faktisk visad information.
+16. Läkare visar patientens sjukfallshistorik inkl SJF.

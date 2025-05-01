@@ -1,0 +1,17 @@
+1. User called the Payment Create Scheduler.
+2. MUKTA_ADAPTER requested for tenents from MDMS.
+3. MDMS provided the tenants list to MUKTA_ADAPTER.
+4. MUKTA_ADAPTER searched for bills where bills are not created.
+5. Expense_Service returned the list of bills to MUKTA_ADAPTER.
+6. MUKTA_ADAPTER processed bills and generated payments.
+7. MUKTA_ADAPTER created payments with Expense_Service.
+8. Expense_Service returned payment response to MUKTA_ADAPTER.
+9. MUKTA_ADAPTER pushed payment details to Kafka for creating topic.
+10. MUKTA_ADAPTER listened to payment create topic from Kafka.
+11. MUKTA_ADAPTER processed payments.
+12. MUKTA_ADAPTER fetched bill details from Expense_Service.
+13. Expense_Service returned bill details to MUKTA_ADAPTER.
+14. MUKTA_ADAPTER processed each bill by fetching org, ind, and bank account details.
+15. MUKTA_ADAPTER created disburse request for each individual bill.
+16. MUKTA_ADAPTER sent a disburse request to PROGRAM_SERVICE.
+17. PROGRAM_SERVICE provided an acknowledgement to MUKTA_ADAPTER.

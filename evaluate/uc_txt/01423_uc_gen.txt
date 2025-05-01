@@ -1,0 +1,15 @@
+1. User executes npm start command.
+2. Code requires Knex module.
+3. Knex connects to node_postgres.
+4. Node_postgres authenticates the connection with the database.
+5. Node_postgres confirms successful connection.
+6. Knex adds connections to pool and creates the Knex instance.
+7. Code requires Bookshelf module and passes Knex instance.
+8. Bookshelf fetches all recipes using Knex.
+9. Knex acquires connection from pool.
+10. Knex performs select operation using connection1 on node_postgres.
+11. Node_postgres retrieves recipes from the database.
+12. Knex releases connection1 to the pool.
+13. Knex returns fetched recipes to Bookshelf.
+14. Bookshelf provides recipes back to the Code module.
+15. Code displays the fetched recipes to the User.

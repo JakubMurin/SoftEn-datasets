@@ -1,0 +1,15 @@
+1. Resource Request (no access token) is sent by the client to the resource server.
+2. Client receives a 401 response containing an initial permission ticket and the authorization server location.
+3. Client requests an Access token (RPT) from the authorization server with the permission ticket and claim token (push claims).
+4. Authorization server assesses the request.
+5. Authorization server sends a 403 response to the client with a new permission ticket, need_info error, and redirect_user hint.
+6. Client redirects the user with the permission ticket.
+7. Requester follows the redirect to the authorization server.
+8. Interactive claims gathering occurs between the authorization server and the requester.
+9. Authorization server redirects back to the requester with a new permission ticket.
+10. Requester follows the redirect back to the client.
+11. Client requests an RPT from the authorization server with the permission ticket.
+12. Authorization server assesses the request.
+13. Authorization server responds to the client with the RPT and PCT.
+14. Client sends a Resource request with the RPT to the resource server.
+15. Resource server provides the Protected Resource to the client.

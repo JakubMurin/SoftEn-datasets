@@ -1,0 +1,12 @@
+1. Customer places an order through the ConfirmOrderPanel.
+2. ConfirmOrderPanel invokes SubscriptionService's create method.
+3. SubscriptionService calls IntegrationService's publish method.
+4. IntegrationService uses Connector to publish a non-interactive event to ISV for asynchronous subscription.
+5. ISV responds with event information to Connector indicating successful event processing.
+6. Connector notifies IntegrationService that ISV has been successfully informed.
+7. IntegrationService acknowledges Connector's message.
+8. SubscriptionService performs pending provisioning with IntegrationService.
+9. SubscriptionService attempts to generate and pay invoices via JBillingApi but the invoices are not generated due to the order status not being ACTIVE.
+10. SubscriptionService communicates that the subscription is pending due to invoice generation.
+11. ConfirmOrderPanel receives confirmation of the pending subscription from SubscriptionService.
+12. Customer is notified of the pending subscription by ConfirmOrderPanel.

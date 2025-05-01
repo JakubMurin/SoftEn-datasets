@@ -1,0 +1,10 @@
+1. End user requests a resource from Envoy.
+2. Envoy redirects end user to ID-provider.
+3. End user accesses ID-provider for authorization.
+4. ID-provider responds with authorization code to end user.
+5. End user sends authorization code to Envoy.
+6. Envoy sends authorization code to ID-provider for token exchange.
+7. ID-provider responds with id_token, access_token, and refresh_token to Envoy.
+8. Envoy validates id_token according to OpenID Connect.
+9. Envoy stores the session in the cache.
+10. Envoy redirects end user with appropriate cookies.

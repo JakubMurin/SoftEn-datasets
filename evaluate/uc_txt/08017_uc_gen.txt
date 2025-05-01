@@ -1,0 +1,14 @@
+1. Librarian sends a GET request to '/api/lendings/top-readers/{genreId}'.
+2. LendingController receives the request.
+3. LendingController calls GenreService's getGenreById method with genreId.
+4. GenreService retrieves the genre from GenreRepository.
+5. GenreRepository sends back the retrieved genre to GenreService.
+6. GenreService sends the genre to LendingController.
+7. LendingController proceeds to get top readers per genre.
+8. LendingController calls ReaderService's getTopReadersperGenre method with specified parameters.
+9. ReaderService fetches top readers per genre from ReaderRepository.
+10. ReaderRepository returns a list of readers to ReaderService.
+11. ReaderService sends an iterable of readers to LendingController.
+12. LendingController maps the returned readers to ReaderViews using ReaderViewMapper.
+13. ReaderViewMapper transforms the list of readers to ReaderViews.
+14. LendingController responds with HTTP 200 OK containing the Iterable of ReaderViews.

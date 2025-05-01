@@ -1,0 +1,15 @@
+1. Developer requests dataset instance upgrade information from ManagementSystem.
+2. ManagementSystem queries available dataset type versions from VersionControl.
+3. VersionControl returns available versions to ManagementSystem.
+4. ManagementSystem displays versions with upgrade impacts to Developer.
+5. Developer selects a new version for upgrade.
+6. ManagementSystem initiates the upgrade process for the dataset instance with VersionControl.
+7. VersionControl checks application dependencies with AppDeployment.
+8. AppDeployment confirms compatibility with VersionControl.
+9. VersionControl prepares dataset instance upgrade with DB.
+10. DB executes the upgrade to the new version and confirms readiness.
+11. VersionControl updates pipeline configuration.
+12. Pipeline validates new dataset version compatibility.
+13. VersionControl receives configuration validation status from Pipeline.
+14. ManagementSystem receives upgrade completion status from VersionControl.
+15. Developer receives upgrade success notification from ManagementSystem.

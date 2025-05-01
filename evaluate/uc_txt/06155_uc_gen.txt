@@ -1,0 +1,12 @@
+1. Staker stakes using zZKPspendPubKey and zZKPcipherText, PRPspendPubKey and PRPcipherText.
+2. Staking service creates a stake (_createStake()).
+3. Transfers stakedAmount from Staker to Staking.
+4. Checks if _terms.isRewarded.
+5. If rewarded, sends stakedAmount affirmation (_sendStakedMsg()).
+6. RewardMaster receives onAction().
+7. AdvancedStakeController gets RewardAdvice.
+8. AdvancedStakeController checks if amount is valid.
+9. Transfers rewardAmount from treasury to MASP via ZKPToken.
+10. Deposits for features of zZKP and PRP encryption.
+11. RewardTreasury forwards rewardAmount to pool.
+12. Pool deposits and generates ZKP and PRP UTXOs.

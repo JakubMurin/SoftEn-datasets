@@ -1,0 +1,18 @@
+1. User executes the UpdateUserRequest with JSON object and mutex.
+2. UpdateUserRequest acquires a mutex lock.
+3. UpdateUserRequest extracts email, account number, and new data from JSON object.
+4. JSON object returns user data to UpdateUserRequest.
+5. UpdateUserRequest checks if the database connection is valid.
+6. UpdateUserRequest handles the case of an invalid database connection and returns an error response to the User.
+7. UpdateUserRequest queries the database for the user's role.
+8. UpdateUserRequest handles the case where the user is not found and returns an error response to the User.
+9. UpdateUserRequest checks if the user is an admin.
+10. UpdateUserRequest handles the case where the user is not an admin and returns an error response to the User.
+11. UpdateUserRequest queries the database for the account associated with the account number.
+12. UpdateUserRequest handles the case where the account is not found and returns an error response to the User.
+13. UpdateUserRequest queries the database for the user associated with the new email.
+14. UpdateUserRequest handles the case where the email is already in use and returns an error response to the User.
+15. UpdateUserRequest updates the user information in the database.
+16. UpdateUserRequest handles the case where the update fails and returns an error response to the User.
+17. UpdateUserRequest constructs a success response using JSON object.
+18. JSON object returns the success response to the User.

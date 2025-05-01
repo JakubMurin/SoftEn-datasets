@@ -1,0 +1,30 @@
+1. Akteur A sucht Akteur B.
+2. Send POST /_matrix/client/user_directory/search to Messenger-Proxy.
+3. Messenger-Proxy forwards request to Matrix-Homeserver.
+4. Matrix-Homeserver searches user directory and provides MXID.
+5. Messenger-Proxy receives MXID and forwards response to Client A.
+6. Akteur A lädt Akteur B ein.
+7. Send POST /_matrix/client/v3/rooms/{roomId}/invite to Messenger-Proxy.
+8. Berechtigungsprüfung durchführen.
+9. Matrix-Homeserver verarbeitet Invite.
+10. Matrix-Homeserver bestätigt HTTP 200 an Messenger-Proxy.
+11. Messenger-Proxy forwards response to Client A.
+12. Push-Benachrichtigung senden.
+13. Notify Push-Gateway with POST /_matrix/push/notify.
+14. Push-Gateway delivers Notification to Client B.
+15. Push-Gateway receives status and acknowledges to Matrix-Homeserver.
+16. Client B sends Sync Request to Messenger-Proxy.
+17. Messenger-Proxy forwards request to Matrix-Homeserver.
+18. Matrix-Homeserver sends Sync Response back to Messenger-Proxy.
+19. Messenger-Proxy forwards Sync Response to Client B.
+20. Client B views invitation and confirms.
+21. Send join command to Messenger-Proxy.
+22. Messenger-Proxy forwards join request to Matrix-Homeserver.
+23. Matrix-Homeserver processes join and provides Room ID.
+24. Messenger-Proxy receives Room ID and forwards to Client B.
+25. Client B receives Room ID and confirms user has joined room.
+26. Client A sends Sync Request to Messenger-Proxy.
+27. Messenger-Proxy forwards request to Matrix-Homeserver.
+28. Matrix-Homeserver sends Sync Response to Messenger-Proxy.
+29. Messenger-Proxy forwards Sync Response to Client A.
+30. Client A receives confirmation that Akteur B has joined the room.

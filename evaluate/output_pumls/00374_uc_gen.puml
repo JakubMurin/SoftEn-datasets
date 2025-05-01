@@ -1,0 +1,25 @@
+@startuml
+actor user_requests_list
+actor backend_server_queries_list
+actor game_controller
+actor backend_server
+actor player
+actor player_clicks
+actor interviews_page
+actor interviews_page_displays_list
+participant database
+activate database
+user_requests_list -> database: of_interviews_page()
+activate user_requests_list
+interviews_page -> database: fetch_backend_server()
+activate interviews_page
+backend_server_queries_list -> database: of_interviews_from_database()
+activate backend_server_queries_list
+database -> backend_server: return()
+activate backend_server
+deactivate backend_server
+backend_server -> database: return_interviews_page()
+activate backend_server
+interviews_page_displays_list -> database: of_interviews_to_user()
+activate interviews_page_displays_list
+@enduml

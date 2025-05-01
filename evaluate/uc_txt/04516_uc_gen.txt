@@ -1,0 +1,14 @@
+1. The Creator creates a Cointag with CointagFactory.
+2. The Creator sets the creator reward recipient address in the Cointag.
+3. The Caller requests the Minter to mint a post.
+4. The Minter retrieves the creator reward recipient address from 1155.
+5. The Minter deposits rewards in ProtocolRewards with Cointag as the recipient.
+6. The Caller triggers the reward distribution by pulling them from the Cointag.
+7. The Cointag withdraws rewards in ETH from ProtocolRewards.
+8. The Cointag calculates the split between creator and buyburn rewards.
+9. The Cointag wraps ETH as WETH.
+10. The Cointag swaps WETH for ERC20 tokens on Uniswap.
+11. Uniswap transfers ERC20 tokens to Cointag.
+12. The Cointag burns the current balance of ERC20 tokens.
+13. The Cointag deposits the remaining ETH rewards in ProtocolRewards.
+14. The Creator withdraws their rewards in ETH from ProtocolRewards.

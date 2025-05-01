@@ -1,0 +1,30 @@
+@startuml
+actor user
+actor web_client
+actor content_query_processor
+actor forward_cancellation_request
+actor content_query_processor_queries
+actor user_logs
+participant speech_recognition_module_processes_and
+activate speech_recognition_module_processes_and
+user -> speech_recognition_module_processes_and: speak_into_device()
+activate user
+participant audio_input
+speech_recognition_module_processes_and -> audio_input: capture()
+activate audio_input
+deactivate audio_input
+participant speech_to_text
+speech_recognition_module_processes_and -> speech_to_text: convert()
+activate speech_to_text
+deactivate speech_to_text
+speech_recognition_module_processes_and -> content_query_processor: send()
+activate content_query_processor
+deactivate content_query_processor
+content_query_processor_queries -> speech_recognition_module_processes_and: for_match_content_items_in_database()
+activate content_query_processor_queries
+content_query_processor -> speech_recognition_module_processes_and: display_user()
+activate content_query_processor
+speech_recognition_module_processes_and -> user: show()
+activate user
+deactivate user
+@enduml

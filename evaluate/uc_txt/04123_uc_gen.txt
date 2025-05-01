@@ -1,0 +1,8 @@
+1. User runs the reflection and refinement process by providing input text.
+2. ReflectionAndRefinementAgent retrieves relevant memories based on the input text.
+3. ReflectionAndRefinementAgent invokes the LLM for agent prompt and receives a response.
+4. ReflectionAndRefinementAgent decides to either use a tool or finish the process.
+5. If a tool is used, ReflectionAndRefinementAgent executes the tool, observes the outcome, and saves episodic memory.
+6. If the process is finished, ReflectionAndRefinementAgent saves the interaction record in episodic memory.
+7. If a reflection phase is triggered, ReflectionAndRefinementAgent invokes ReflectionLLM for reflection and RefinementLLM for refinement, saving semantic and procedural memories respectively.
+8. The final result of the process is sent to the User.

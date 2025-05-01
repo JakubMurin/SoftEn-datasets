@@ -1,0 +1,16 @@
+1. Eingabe Messenger-Service durch den Akteur in der Rolle User.
+2. Der TI-Messenger-Client sendet GET /_matrix/client/login an den Messenger Proxy.
+3. Der Messenger Proxy leitet die Anfrage per HTTP(S) an den Matrix-Homeserver weiter.
+4. Der Matrix-Homeserver sendet die unterstützten Authentifizierungsverfahren zurück an den Messenger Proxy.
+5. Der Messenger Proxy gibt die unterstützten Authentifizierungsverfahren an den TI-Messenger-Client zurück.
+6. Der TI-Messenger-Client zeigt die Authentifizierungsmaske an den Akteur in der Rolle User.
+7. Der Akteur in der Rolle User startet die Authentifizierung.
+8. Der Akteur in der Rolle User meldet sich an.
+9. Der TI-Messenger-Client sendet POST /_matrix/client/login an den Messenger Proxy.
+10. Der Messenger Proxy leitet die Anfrage per HTTP(S) an den Matrix-Homeserver weiter.
+11. Der Matrix-Homeserver prüft die Client-Credentials.
+12. Der Matrix-Homeserver erstellt Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN.
+13. Der Matrix-Homeserver gibt die erstellten Tokens an den Messenger Proxy zurück.
+14. Der Messenger Proxy gibt die Tokens an den TI-Messenger-Client zurück.
+15. Der TI-Messenger-Client speichert die Matrix-ACCESS_TOKEN und Matrix-REFRESH_TOKEN.
+16. Der TI-Messenger-Client zeigt dem Akteur in der Rolle User an, dass die Anmeldung erfolgreich war.

@@ -1,0 +1,12 @@
+1. DroneResponse responds to the `[APPROACHING_GEOFENCE]` alarm.
+2. The runtime monitoring system detects that the UAV is approaching the geofence.
+3. The runtime monitoring system raises an alert.
+4. The current flight route is canceled.
+5. The alert is displayed in the UI to notify the RPIC of the geofence warning.
+6. The system either:.
+7. Reroutes the UAV so that it avoids flying close to the geofence.
+8. The RPIC intervenes and issues a new flight command to the UAV.
+9. The UAV detects a `[GEOFENCE_BREACH]`.
+10. The failsafe mechanism is activated, based on the UAV's preconfiguration (e.g., RTL or land in place).
+11. The RPIC maintains visual line of sight with the UAV until it completes RTL or lands.
+12. If necessary, the UAV suspends the remainder of the mission or manually moves other UAVs out of the way of the returning UAV.

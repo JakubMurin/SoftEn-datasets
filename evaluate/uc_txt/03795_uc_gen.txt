@@ -1,0 +1,11 @@
+1. User initiates User Registration Start Request to Certified App.
+2. Certified App prepares ECDH data and sign. If Key Agreement Signature is ON, Wallet signs the request.
+3. Certified App sends ECDH Request to TAS Provider, who verifies and performs ECDH.
+4. Certified App performs ECDH and validates it.
+5. Certified App generates and sends Server Token Creation Request to TAS Provider.
+6. TAS Provider validates the request, generates and stores a server token, and encrypts the response information.
+7. After user KYC, certain identifiers are registered (not covered in this specification).
+8. Certified App sends User Registration Request to Wallet, who validates and creates a DID Document, signs it, and sends it to TAS Provider.
+9. TAS Provider validates various signatures, registers in Blockchain, stores user mapping information, and sends the User Registration Response.
+10. Certified App sends User Registration Completion Request to TAS, which validates the serverToken and closes the transaction effectively.
+11. Certified App receives User Registration Completion Response, completing the process successfully.

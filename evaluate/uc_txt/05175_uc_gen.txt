@@ -1,0 +1,12 @@
+1. User enters updated profile information.
+2. User submits the profile update form.
+3. Profile Page sends HTTP POST /profile/update with updated info to Profile Controller.
+4. Profile Controller calls UserService to updateUserProfile with updated info.
+5. UserService validates the updated info.
+6. If validation fails, UserService returns validation errors to Profile Controller, which displays them on Profile Page.
+7. If validation succeeds, UserService saves the updated user info to UserRepository.
+8. UserRepository updates the user information in the Database.
+9. UserRepository returns the update confirmation to UserService.
+10. UserService returns the update confirmation to Profile Controller.
+11. Profile Controller redirects to the profile page.
+12. Profile Page displays the updated profile information to the User.

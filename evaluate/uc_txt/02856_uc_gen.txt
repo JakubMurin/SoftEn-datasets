@@ -1,0 +1,17 @@
+1. Client initiates create/read/update operation.
+2. API forwards the command to CommandHandler.
+3. CommandHandler processes the command.
+4. CommandHandler requests the entity from Repository.
+5. Repository executes the SQL to fetch data from Database.
+6. Repository receives raw data from Database.
+7. Repository maps raw data to Entity using Factory.
+8. Repository sends Entity back to CommandHandler.
+9. CommandHandler implements business logic on the Entity.
+10. CommandHandler saves the Entity in Repository.
+11. Repository detects changes in the Entity and generates SQL.
+12. Repository saves the changes to the Database.
+13. Database confirms the changes were saved.
+14. CommandHandler creates NotificationObject and sends it to API.
+15. API forwards the NotificationObject to QueryHandler.
+16. API receives DTO from QueryHandler.
+17. Client receives DTO from QueryHandler.

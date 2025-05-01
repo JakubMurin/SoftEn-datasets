@@ -1,0 +1,11 @@
+1. Caller activates the transaction.
+2. Caller sends a RunTransactionRequest to PluginLedgerConnectorPolkadot.
+3. PluginLedgerConnectorPolkadot checks the web3SigningCredential.
+4. PluginLedgerConnectorPolkadot transacts using CactusKeychainRef if web3SigningCredential is CACTUSKEYCHAINREF.
+5. PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller.
+6. PluginLedgerConnectorPolkadot transacts using MnemonicString if web3SigningCredential is MNEMONICSTRING.
+7. PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller.
+8. PluginLedgerConnectorPolkadot transacts using Signed transaction if web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is defined.
+9. PluginLedgerConnectorPolkadot returns RunTransactionResponse to Caller.
+10. PluginLedgerConnectorPolkadot throws an error if web3SigningCredential is NONE and req.transactionConfig.transferSubmittable is not defined.
+11. PluginLedgerConnectorPolkadot throws an error if web3SigningCredential is unrecognized.

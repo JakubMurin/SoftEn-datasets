@@ -1,0 +1,12 @@
+1. User submits new history data through the interface.
+2. The UI forwards the data to the HistoryRouter.
+3. The HistoryRouter directs the data to the HistoryController to create a new history.
+4. The HistoryController instructs the HistoryRepository to create a new history with the submitted data.
+5. The HistoryRepository creates a new History object with the provided data.
+6. The History object is saved in the Database by calling the save method.
+7. The saved History object is confirmed by the Database.
+8. The saved History object is returned to the HistoryRepository.
+9. The saved History object is returned to the HistoryController with a success response.
+10. The HistoryController sends a 201 Created response with the saved History object to the HistoryRouter.
+11. The HistoryRouter sends a 201 Created response with the saved History object back to the UI.
+12. The UI displays a success message to the User.

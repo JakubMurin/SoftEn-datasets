@@ -1,0 +1,14 @@
+1. Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet.
+2. Rehabstöd listar patientens samtliga intyg över alla VG.
+3. HSA hämtar vårdgivarnamn för varje intyg via GetUnit v1.
+4. PU utför GetPerson för patienten.
+5. Rehabstöd filtrerar bort alla intyg som inte ligger på den aktiva enheten om patienten är sekretssmarkerad.
+6. Spärrtjänsten kontrollerar spärr via CheckBlocks v4 om patienten ej är sekretssmarkerad.
+7. Uppdatera intygen med spärrstatus och skicka in ALLA intyg oavsett spärr/samtyckesstatus.
+8. Samtyckestjänsten kontrollerar samtyckesstatus och filtrerar bort intyg från andra vårdgivare om samtycke saknas.
+9. Rehabstöd sammanställer klientsvar med sjukfall och metadataobjekt samt filtrerar bort intyg enligt kraven.
+10. Skicka in nettolistan av intyg till Sjukfallsmotor för att få verkliga sjukfall.
+11. Uppdatera lista med namn och sekretessstatus och hämta ytterligare information om intygen via GetCertificateAdditions.
+12. Kontrollera riskprediktion för varje intyg via SRS-tjänsten om SRS-stöd är aktiverat.
+13. PDL-loggning av sjukfallshistorik sker via Loggtjänsten.
+14. Läkare får resultatet av visad patientens sjukfallshistorik inklusive SJF.

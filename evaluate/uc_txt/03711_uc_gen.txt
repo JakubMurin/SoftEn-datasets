@@ -1,0 +1,16 @@
+1. Receptionist requests to create a booking through the UI.
+2. UI sends a GET request to the BookingRouter to display the booking form.
+3. Controller shows the booking form on the UI.
+4. Receptionist fills in the booking details on the UI.
+5. UI sends a POST request to the BookingRouter to create the booking.
+6. Router calls the createBooking method in the Controller.
+7. Controller creates a new booking in the Repository.
+8. Repository checks room availability using RoomModel.
+9. RoomModel queries the Database for room availability.
+10. If room is available, BookingModel creates a new booking in the Database.
+11. If room is available, Controller receives booking creation success from Repository.
+12. If room is available, Router sends 200 OK response to the UI.
+13. If room is available, UI displays a booking success message to the Receptionist.
+14. If room is not available, Controller sends a 400 Bad Request response to the UI.
+15. If room is not available, Router sends a 400 Bad Request response to the UI.
+16. If room is not available, UI displays an error message to the Receptionist.

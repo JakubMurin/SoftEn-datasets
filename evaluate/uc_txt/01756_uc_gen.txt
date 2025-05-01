@@ -1,0 +1,19 @@
+1. User logs in.
+2. Identity Provider exchanges SAML token for AccessToken/RefreshToken upon successful login.
+3. Identity Provider ensures SAML certificate validity and exchanges for tokens.
+4. Identity Provider returns AccessToken/RefreshToken to Rehab support system.
+5. User is successfully logged in.
+6. User chooses to view patient view.
+7. Rehab support system gets new AccessToken if current is expiring.
+8. Rehab support system builds form with patient ID, medical unit, and AccessToken for POST to Webcert.
+9. Patient view is rendered.
+10. User clicks 'View Certificate' which posts a form to Webcert and opens result in an iFrame.
+11. Webcert validates AccessToken and creates session.
+12. Webcert calls GetCertificateType to get certificate type from Certificate service.
+13. Webcert sets medical unit in the session.
+14. Webcert redirects to certificate view.
+15. Certificate is opened in a readonly mode in Webcert’s iFrame.
+16. User closes the patient view.
+17. Rehab support system redirects to localized logout in Webcert via hidden iFrame.
+18. Local logout at Webcert:.
+19. Webcert terminates session and returns HTTP 200 with an empty page to the hidden iFrame.

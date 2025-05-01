@@ -1,0 +1,20 @@
+1. One Consumer starts connection with Consumer Server.
+2. Consumer Server creates a new Consumer.
+3. Consumer Supervisor creates the Consumer.
+4. One Consumer logs in with a username.
+5. Consumer acknowledges successful login.
+6. One Consumer subscribes to a topic.
+7. Consumer subscribes via Exchanger.
+8. Exchanger creates a topic if not present.
+9. Topic Supervisor creates the topic.
+10. Exchanger adds or checks subscriber pointers.
+11. One Publisher starts connection with Publisher Server.
+12. Publisher Server creates a new Publisher.
+13. Publisher Supervisor creates the Publisher.
+14. One Publisher sends a topic and message.
+15. Publisher sends a topic and message via Exchanger.
+16. Exchanger sends the message to the topic.
+17. Topic sends the message to each subscriber.
+18. One Consumer unsubscribes from the topic.
+19. Consumer unsubscribes via Exchanger.
+20. Exchanger moves the subscriber pointer to the Unsubscribe list.

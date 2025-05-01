@@ -1,0 +1,19 @@
+@startuml
+actor tester
+actor ads_controller
+participant system
+activate system
+tester -> system: instantiate_user_named_juan()
+activate tester
+tester -> system: instantiate_referred_user_named_pedro()
+tester -> system: add_pedro_as_referral_to_juan()
+participant pedro_to_list_of_referrals
+system -> pedro_to_list_of_referrals: append()
+activate pedro_to_list_of_referrals
+deactivate pedro_to_list_of_referrals
+participant balance_by
+system -> balance_by: increase()
+activate balance_by
+deactivate balance_by
+tester -> system: verify_balance_of_juan()
+@enduml

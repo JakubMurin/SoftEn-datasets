@@ -1,0 +1,38 @@
+1. Create Transaction UUID (for reference and maintaining correct state).
+2. Set lock_height for transaction kernel (current chain height).
+3. Select inputs using desired selection strategy.
+4. Calculate sum inputs blinding factors xI.
+5. Create change_output.
+6. Select blinding factor xC for change_output.
+7. Create lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS linking inputs + outputs (Not executed at this point).
+8. Calculate tx_weight: MAX(-1 * num_inputs + 4 * (num_change_outputs + 1), 1) (+1 covers a single output on the receiver's side).
+9. Calculate fee: tx_weight * 1_000_000 nG.
+10. Calculate total blinding excess sum for all inputs and outputs xS1 = xC - xI (private scalar).
+11. Select a random nonce kS (private scalar).
+12. Subtract random kernel offset oS from xS1. Calculate xS = xS1 - oS.
+13. Multiply xS and kS by generator G to create public curve points xSG and kSG.
+14. Add values to Slate for passing to other participants: UUID, inputs, change_outputs, fee, amount, lock_height, kSG, xSG, oS.
+15. Sender sends Slate to Recipient.
+16. Recipient checks fee against number of inputs, change_outputs +1 * receiver_output.
+17. Recipient creates receiver_output.
+18. Recipient chooses random blinding factor for receiver_output xR (private scalar).
+19. Recipient calculates message M = fee | lock_height.
+20. Recipient chooses random nonce kR (private scalar).
+21. Recipient multiplies xR and kR by generator G to create public curve points xRG and kRG.
+22. Recipient computes Schnorr challenge e = SHA256(kRG + kSG | xRG + xSG | M).
+23. Recipient computes Recipient Schnorr signature sR = kR + e * xR.
+24. Recipient adds sR, xRG, kRG to Slate.
+25. Recipient creates wallet output function rF that stores receiver_output in wallet with status "Unconfirmed" and identifying transaction log entry TR linking receiver_output with transaction.
+26. Recipient confirms receiver_output.
+27. Recipient changes status of receiver_output to "Confirmed".
+28. Sender creates final transaction tx from Slate.
+29. Sender posts tx to mempool.
+30. Grin Node confirms and sends "Ok" to Recipient.
+31. Recipient sends "Ok" - UUID to Sender.
+32. Sender executes wallet lock function sF.
+33. Recipient confirms receiver_output.
+34. Recipient changes status of receiver_output to "Confirmed".
+35. Sender confirms change_output.
+36. Sender changes status of inputs to "Spent".
+37. Sender changes status of change_output to "Confirmed".
+38. Sender unlocks inputs and deletes change_output identified in transaction log entry TS.

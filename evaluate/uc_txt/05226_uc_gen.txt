@@ -1,0 +1,7 @@
+1. User requests a secret key generation.
+2. SecretKey object invokes SecureRandom's constructor.
+3. SecureRandom generates a SecureRandom instance.
+4. SecretKey object requests SecureRandom to generate 32 random bytes.
+5. SecureRandom invokes NativeCrypto to generate the random bytes.
+6. NativeCrypto returns Uint8List of 32 random bytes to SecureRandom.
+7. SecretKey receives the Uint8List and returns it as the secret key.

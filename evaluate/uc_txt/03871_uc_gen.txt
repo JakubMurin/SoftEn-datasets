@@ -1,0 +1,8 @@
+1. User A initiates transaction to get keychain entry through API Client.
+2. API Client sends a request to API Server.
+3. API Server forwards the request to AWS SM Connector to retrieve the key and value.
+4. AWS SM Connector gets the AWS client.
+5. AWS SM Connector attempts to get the secret value from AWS SecretsManager.
+6. If successful, AWS SM Connector responds with the retrieved value to API Server.
+7. API Server sends the formatted response back to API Client.
+8. API Client provides the GetKeychainEntryResponse to User A.

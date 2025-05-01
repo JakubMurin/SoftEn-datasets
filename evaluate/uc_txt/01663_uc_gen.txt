@@ -1,0 +1,11 @@
+1. Attacker sends POST request with GET /poison payload to Proxy.
+2. Proxy forwards POST request to Backend.
+3. Backend processes POST request and responds with status 200 to Proxy.
+4. Proxy forwards response with status 200 to Attacker.
+5. Backend receives GET /poison request.
+6. Backend sends /poison response with status 200 to Proxy.
+7. The "extra" response poisons the response queue.
+8. User sends GET request to Proxy for /bar.
+9. Proxy forwards GET request to Backend.
+10. Backend responds with /poison response and status 200 to User.
+11. Proxy receives /bar 200 response from Backend.

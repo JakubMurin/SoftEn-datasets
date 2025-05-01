@@ -1,0 +1,13 @@
+1. User sends payment request to PaymentController.
+2. PaymentController forwards payment processing request to PaymentFacade.
+3. PaymentFacade checks user existence with UserReader.
+4. UserReader retrieves user information from UserRepository.
+5. PaymentFacade verifies seat temporary reservation with ReservationFacade.
+6. ReservationFacade confirms reservation state with ReservationRepository.
+7. PaymentFacade initiates payment process with PaymentService.
+8. PaymentService deducts user balance with UserRepository.
+9. PaymentService saves payment details in PaymentRepository.
+10. PaymentFacade allocates final seat via ReservationFacade.
+11. SeatRepository updates seat status with ReservationFacade instructions.
+12. PaymentFacade sends payment success response to PaymentController.
+13. PaymentController acknowledges payment completion with User.

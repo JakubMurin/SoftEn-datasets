@@ -60,7 +60,7 @@ def save_error(save_path: str, given_data: dict, temp: float, top_p: float, type
 # xml_validator = XmlValidation(DTD_SCHEME_PATH)
 # sequence_git = open(SEQUENCE_GIT_URLS_PATH, "r", encoding="utf-8")
 
-# with open("test.json", "w") as file:
+# with open("test.json", "w", encoding="utf-8") as file:
 #     for url in sequence_git:
 #         start = time.time()
 #         result = httpx.get(url.strip())
@@ -87,7 +87,7 @@ def seq_uc():
     output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
     usecase_file = open(os.path.join(RESULT_DATA_PATH, "uc.jsonl"), "a", encoding="utf-8")
 
-    with open(DTD_SCHEME_PATH, "r") as file:
+    with open(DTD_SCHEME_PATH, "r", encoding="utf-8") as file:
         dtd = file.read()
         
     price = 0
@@ -154,7 +154,7 @@ def wrong_seq_uc(wrong_uc_data_path: str):
     output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
     usecase_file = open(os.path.join(RESULT_DATA_PATH, "uc.jsonl"), "a", encoding="utf-8")
 
-    with open(DTD_SCHEME_PATH, "r") as file:
+    with open(DTD_SCHEME_PATH, "r", encoding="utf-8") as file:
         dtd = file.read()
         
     price = 0
@@ -390,10 +390,10 @@ def uc_seq_wrong(wrong_sequence_data_path: str):
 # end
 # @enduml"""
 
-# with open(os.path.join(WORKING_DIR, "data\\usecases\\01.xml"), "r") as file:
+# with open(os.path.join(WORKING_DIR, "data\\usecases\\01.xml"), "r", encoding="utf-8") as file:
 #     example_use_case = file.read()
 
-# with open(DTD_SCHEME_PATH, "r") as file:
+# with open(DTD_SCHEME_PATH, "r", encoding="utf-8") as file:
 #     dtd = file.read()
     
 # promt_ctx = [

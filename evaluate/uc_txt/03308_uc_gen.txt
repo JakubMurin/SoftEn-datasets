@@ -1,0 +1,23 @@
+1. User initiates the update user request.
+2. UpdateUserRequest executes the request with given parameters.
+3. QMutexLocker is activated to handle thread safety.
+4. QJsonObject extracts the required user data from the request.
+5. UpdateUserRequest receives the extracted user data from QJsonObject.
+6. UpdateUserRequest checks the validity of the database connection.
+7. UpdateUserRequest creates a database connection error response if the connection is invalid.
+8. UpdateUserRequest queries the database to select the user's role.
+9. DB::DatabaseManager returns the user's role.
+10. UpdateUserRequest creates an error response if the user is not found in the database.
+11. UpdateUserRequest checks if the user is an admin.
+12. UpdateUserRequest creates an error response if the user is not an admin.
+13. UpdateUserRequest queries the database to select account data.
+14. DB::DatabaseManager returns the account data.
+15. UpdateUserRequest creates an error response if the account is not found.
+16. UpdateUserRequest queries the database to select user data based on the new email.
+17. DB::DatabaseManager returns the user data for the new email.
+18. UpdateUserRequest creates an error response if the new email is already associated with another account.
+19. UpdateUserRequest updates the user details in the database.
+20. DB::DatabaseManager returns the success status after updating user details.
+21. UpdateUserRequest creates an error response if the update process fails.
+22. UpdateUserRequest constructs a success response with updated user details.
+23. QJsonObject returns the success response to the User.

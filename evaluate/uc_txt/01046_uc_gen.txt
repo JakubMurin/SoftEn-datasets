@@ -1,0 +1,12 @@
+1. Navegador accesses the OneToOne session check route by sending a GET request to /oneToOne/:sessionID.
+2. Routes forwards the request to the Controller to retrieve the OneToOne session data.
+3. Controller fetches the OneToOne session data from MySQL.
+4. Controller checks if there are retrieved rows of data.
+5. If no rows are found, Controller redirects to the error page.
+6. Controller verifies user permissions and redirects to error page if necessary.
+7. Controller retrieves data related to questions for the session from MySQL.
+8. Controller checks if there are any answers associated with the questions.
+9. If there are no answers, Controller renders the oneToOneCheck page with the response.
+10. Controller retrieves measurable data for the session from MySQL.
+11. Controller renders the oneToOneCheck page with the fetched data.
+12. Ejs sends the HTML response back to Navegador.

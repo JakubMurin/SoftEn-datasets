@@ -1,0 +1,5 @@
+1. Workflow Administrator sends a POST request to Api Gateway to create a new workflow.
+2. Api Gateway forwards the request to Workflow Service to create the workflow.
+3. Workflow Service updates the Workflow Db with the new workflow details.
+4. Workflow Service publishes a new-workflow-allocated event to NATS Event Relay.
+5. Workflow Service responds to Workflow Administrator with a 201 workflowCreateResponse.

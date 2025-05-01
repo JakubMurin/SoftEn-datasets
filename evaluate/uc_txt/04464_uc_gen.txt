@@ -1,0 +1,13 @@
+1. User requests deletion of a task by sending a DELETE request to /task/{id}.
+2. TaskController activates to handle the DELETE request.
+3. TaskController calls TaskService to delete the task.
+4. TaskService activates to process the deletion.
+5. TaskService calls TaskRepository to delete the task by id.
+6. TaskRepository activates to perform the deletion operation.
+7. TaskRepository successfully deletes the task.
+8. TaskRepository deactivates after successful deletion.
+9. TaskService receives confirmation of successful deletion.
+10. TaskService deactivates after completion.
+11. TaskController receives confirmation from TaskService.
+12. TaskController deactivates after completion.
+13. User receives a ResponseEntity with status NO_CONTENT.

@@ -1,0 +1,8 @@
+1. Client sends HTTP Request to Load Balancer.
+2. Load Balancer activates and executes removeBookRequest in RemoveBookFromCatalogActivity.
+3. RemoveBookFromCatalogActivity activates and calls RemoveBookFromCatalog(bookId) in CatalogDao.
+4. CatalogDao activates and queries DynamoDB for latest version of the book.
+5. DynamoDB returns book data to CatalogDao.
+6. CatalogDao removes book from catalog, converts CatalogItemVersion to Coral Model Book, and creates RemoveBookFromCatalogResponse.
+7. RemoveBookFromCatalogActivity sends RemoveBookFromCatalogResponse to Load Balancer.
+8. Load Balancer sends 200 response with data to Client.

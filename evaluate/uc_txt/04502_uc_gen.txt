@@ -1,0 +1,10 @@
+1. Manager requests a list of orders that have been delivered successfully.
+2. ManagerPage forwards the request to ManagerOrderController.
+3. ManagerOrderController calls OrderService's getOrdersByStatus("DELIVERED").
+4. OrderService queries OrderRepository for orders with status "DELIVERED".
+5. OrderRepository queries the database for orders with status "DELIVERED".
+6. Database returns the orders data to OrderRepository.
+7. OrderRepository returns the orders data to OrderService.
+8. OrderService returns the orders data to ManagerOrderController.
+9. ManagerOrderController returns the orders data to ManagerPage.
+10. ManagerPage displays the list of orders delivered successfully to Manager.

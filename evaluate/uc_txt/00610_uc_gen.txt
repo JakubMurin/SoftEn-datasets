@@ -1,0 +1,11 @@
+1. Client-Service calls Client Persistence to create and store correlationId.
+2. Client Persistence returns correlationId cId1 to Client-Service.
+3. Client-Service calls Service to perform service with cId1.
+4. Service checks if cId1 exists in Service Persistence.
+5. Service finds cId1 in Service Persistence.
+6. Service sends accepted response to Client-Service.
+7. Service sends async answer with cId1 to Callback.
+8. Callback finds cId1 in Client Persistence and returns state.
+9. Callback sets cId1 as answered in Client Persistence.
+10. Callback sends done response to Client-Service.
+11. Callback sends unknown correlationId response to Service.

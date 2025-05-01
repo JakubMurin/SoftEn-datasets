@@ -1,0 +1,16 @@
+1. Organization 1 Client initiates an Exchange assets request.
+2. Frontend receives the Asset exchange request.
+3. Organization 1 Backend parses and forwards the exchange request.
+4. HLF Organization 1 SDK forwards the request to Org1 Peer for endorsement.
+5. HLF Organization 1 SDK forwards the request to Org2 Peer for endorsement.
+6. Org1 Peer endorses and generates Read Write set.
+7. Org2 Peer endorses and generates Read Write set.
+8. Org1 Peer endorses the transaction.
+9. Org2 Peer endorses the transaction.
+10. HLF Organization 1 SDK orders transaction into block.
+11. HLF Orderer processes and commits the transaction to the ledger for Org1 Peer.
+12. HLF Orderer processes and commits the transaction to the ledger for Org2 Peer.
+13. HLF Organization 1 SDK captures commit event received from Org1 Peer.
+14. HLF Organization 1 SDK captures commit event received from Org2 Peer.
+15. Organization 1 Backend relays the commit event to the client.
+16. Frontend informs client about the appropriate status.

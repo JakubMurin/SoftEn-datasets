@@ -1,0 +1,11 @@
+1. User selects treatment, date, and enters contact information through the UI: PrimaryController.
+2. UI: PrimaryController calls Core: BookingService to create a booking.
+3. Core: BookingService persists the booking using Persistence: BookingRepository by saving it to a file.
+4. Core: BookingService informs UI: PrimaryController that the booking is created.
+5. User submits the booking through UI: PrimaryController.
+6. UI: PrimaryController sends a POST request to REST: BookingRestService for /bookings.
+7. REST: BookingRestService sends a request to Core: BookingService to add the booking.
+8. Core: BookingService persists the booking using Persistence: BookingRepository by saving it to a file.
+9. Core: BookingService informs REST: BookingRestService that the booking has been added.
+10. REST: BookingRestService confirms the booking to UI: PrimaryController.
+11. UI: PrimaryController displays a confirmation message to the User.

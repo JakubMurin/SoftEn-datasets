@@ -1,0 +1,27 @@
+1. Faber requests to create Faber DID from FaberIndyWallet.
+2. FaberAnonCreds creates Faber DID using ED25519.
+3. FaberAnonCreds stores Faber DID in FaberIndyWallet.
+4. Faber creates SCHEMA using Faber DID.
+5. FaberAnonCreds stores SCHEMA in FaberIndyWallet.
+6. Faber requests to create Diem Identifier and ED25519 keys from FaberPythonDiem.
+7. FaberMiniWallet stores Diem Identifier.
+8. Faber publishes identifier to Ledger.
+9. Acme requests to create Diem Identifier and ED25519 keys from AcmePythonDiem.
+10. AcmeMiniWallet stores Diem Identifier.
+11. Acme publishes identifier to Ledger.
+12. Faber creates payment transaction for Trusted Institution.
+13. FaberPythonDiem sends payment transaction to ledger with SCHEMA.
+14. DiemLedger accepts or denies payment.
+15. Faber pulls SCHEMA from Acme payments on ledger.
+16. Faber creates CRED_DEF using Faber DID and SCHEMA pulled.
+17. FaberAnonCreds stores CRED_DEF in FaberIndyWallet.
+18. FaberPythonDiem sends payment transaction to ledger with CRED_DEF.
+19. DiemLedger accepts or denies payment.
+20. Alice creates master secret.
+21. Faber creates credential offer.
+22. Faber sends credential offer to Alice.
+23. Alice creates credential request.
+24. Alice sends credential request to Faber.
+25. Faber creates credential with credential attributes.
+26. Faber sends credential to Alice.
+27. Alice stores credential in AliceIndyWallet.

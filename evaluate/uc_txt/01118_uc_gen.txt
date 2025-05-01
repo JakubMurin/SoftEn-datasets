@@ -1,0 +1,19 @@
+1. Consumer initiates Checkout Intent.
+2. Merchant creates Payment Request using Payment Request API.
+3. Merchant calls HasEnrolledInstruments to check supported SRC Payment Methods.
+4. Browser initiates CanMakePayment check for installed SRC Common Payment Handler.
+5. SRC Common Payment Handler verifies Long-lived Token in IndexDB.
+6. Merchant displays Pay Button.
+7. Consumer clicks Pay Button.
+8. Merchant launches Payment Request flow using Show.
+9. Browser checks Payment Handler eligibility.
+10. SRC Common Payment Handler invokes Payment Handler.
+11. SRC Common Payment Handler opens Window with Payment Handler Page URL.
+12. Payment Handler Page requests SRCI Web App.
+13. SRC Common Payment Handler sends data to SRCI Web App.
+14. SRCI handles checkout process and returns result to SRC Common Payment Handler.
+15. SRC Common Payment Handler sends data back to Payment Handler Page.
+16. Payment Handler closes Window.
+17. Payment Handler sends result to Browser.
+18. Browser sends result to Merchant.
+19. Merchant informs Consumer about Checkout Completion.

@@ -1,0 +1,18 @@
+1. PlayerA posts a battle request.
+2. BattleController receives the POST request.
+3. BattleController forwards the request to BattleService.
+4. BattleService initiates a battle for playerA.
+5. BattleService looks for open battles.
+6. BattleRepository finds no open battles.
+7. BattleService opens a battle for playerA.
+8. BattleService waits for the battle to start.
+9. PlayerB posts a battle request.
+10. BattleController receives the POST request from PlayerB.
+11. BattleService starts a battle for playerB.
+12. BattleService looks for open battles.
+13. BattleRepository finds an open battle.
+14. BattleLogic calculates battle results.
+15. BattleRepository updates the battle.
+16. BattleService notifies BattleController with the results.
+17. BattleController sends battle results to PlayerA.
+18. BattleController sends battle results to PlayerB.

@@ -1,0 +1,31 @@
+@startuml
+actor user_clicks
+participant snippetservice_checks_if_snippet
+activate snippetservice_checks_if_snippet
+user_clicks -> snippetservice_checks_if_snippet: on_delete_button_in_printscript_ui()
+activate user_clicks
+participant request_delete_snippet_to_snippetservice
+snippetservice_checks_if_snippet -> request_delete_snippet_to_snippetservice: send()
+activate request_delete_snippet_to_snippetservice
+deactivate request_delete_snippet_to_snippetservice
+participant in_snippetrepository
+snippetservice_checks_if_snippet -> in_snippetrepository: exist()
+activate in_snippetrepository
+deactivate in_snippetrepository
+participant snippet_by_id_in_snippetrepository
+snippetservice_checks_if_snippet -> snippet_by_id_in_snippetrepository: delete()
+activate snippet_by_id_in_snippetrepository
+deactivate snippet_by_id_in_snippetrepository
+participant snippet_asset_in_assetservice
+snippetservice_checks_if_snippet -> snippet_asset_in_assetservice: delete()
+activate snippet_asset_in_assetservice
+deactivate snippet_asset_in_assetservice
+participant success_message_to
+snippetservice_checks_if_snippet -> success_message_to: send()
+activate success_message_to
+deactivate success_message_to
+participant success_message_to_user
+snippetservice_checks_if_snippet -> success_message_to_user: display()
+activate success_message_to_user
+deactivate success_message_to_user
+@enduml

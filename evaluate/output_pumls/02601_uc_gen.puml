@@ -1,0 +1,30 @@
+@startuml
+actor user
+actor controller
+actor ads_controller
+actor controller_updates_article_page
+actor system_checks_if_developer_is_member
+participant dev_requests_to
+activate dev_requests_to
+participant developer_issues
+dev_requests_to -> developer_issues: get()
+activate developer_issues
+deactivate developer_issues
+participant member
+dev_requests_to -> member: validate()
+activate member
+deactivate member
+participant project
+dev_requests_to -> project: validate()
+activate project
+deactivate project
+system_checks_if_developer_is_member -> dev_requests_to: of_project()
+activate system_checks_if_developer_is_member
+dev_requests_to -> developer_issues: retrieve()
+activate developer_issues
+deactivate developer_issues
+participant list_of_issueresponsedto_to_dev
+dev_requests_to -> list_of_issueresponsedto_to_dev: return()
+activate list_of_issueresponsedto_to_dev
+deactivate list_of_issueresponsedto_to_dev
+@enduml

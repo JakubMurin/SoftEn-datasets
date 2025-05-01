@@ -1,0 +1,16 @@
+1. User initiates the update process by providing the necessary data.
+2. UpdateUserRequest executes with the provided JSON object and mutex.
+3. QMutexLocker is activated to handle the mutex.
+4. UpdateUserRequest extracts email, account number, and new data from the JSON object.
+5. If the DB connection is invalid, an error response is created and returned to the User.
+6. If the DB connection is valid, the user's role is retrieved from the database.
+7. If the user is not found, an error response is created and returned to the User.
+8. If the user is found, the system checks if the user is an admin.
+9. If the user is not an admin, an error response is created and returned to the User.
+10. If the user is an admin, the system retrieves the account data based on the account number.
+11. If the account is not found, an error response is created and returned to the User.
+12. If the account is found, the system checks if the new email is already associated with another account.
+13. If the email is in use, an error response is created and returned to the User.
+14. If the email is available, the user's information is updated in the database.
+15. If the update fails, an error response is created and returned to the User.
+16. If the update is successful, a success response is constructed and returned to the User.

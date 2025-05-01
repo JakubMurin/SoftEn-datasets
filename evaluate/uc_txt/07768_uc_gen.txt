@@ -1,0 +1,13 @@
+1. Admin performs a POST request to /api/Patient/Register with CreatePatientDto.
+2. PatientController activates to handle the request.
+3. PatientController adds the new patient asynchronously.
+4. PatientService is activated to deal with the patient addition.
+5. PatientService checks if the patient's email is unique in the repository through IPatientRepository.
+6. PatientService checks if the patient's phone number is unique in the repository through IPatientRepository.
+7. PatientService generates a unique medical number.
+8. Patient generates a new Patient object instance.
+9. PatientService adds the new patient to the repository asynchronously through IPatientRepository.
+10. PatientService commits the changes asynchronously with UnitOfWork.
+11. PatientService sends email notification via EmailService.
+12. PatientService response with patient information to PatientController.
+13. PatientController responds to Admin with 200 OK and the PatientDto.

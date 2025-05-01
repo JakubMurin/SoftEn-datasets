@@ -1,0 +1,18 @@
+@startuml
+actor Staff as staff
+participant "UI: Book Management" as ui
+participant "Controller: BookController" as controller
+participant "Service: BookService" as service
+database "Database: BookDB" as database
+
+== Delete Book Process ==
+staff -> ui: Select "Remove Book"
+ui -> controller: requestDeleteBook(bookId)
+controller -> service: deleteBook(bookId)
+service -> database: queryToDeleteBook(bookId)
+database --> service: confirmDeletion
+service --> controller: deletionSuccess
+controller --> ui: displaySuccessMessage
+ui --> staff: Show "Book Deleted Successfully"
+
+@enduml

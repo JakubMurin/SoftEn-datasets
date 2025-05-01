@@ -1,0 +1,8 @@
+1. Token Owner inputNotes.
+2. Token Owner executes JoinSplitProof passing the inputNotes, [], senderAddress, publicAmount, and tokenOwner.
+3. Token Owner encodes the proof with assetAddress.
+4. ACE executes publicApprove for assetAddress, proof.hash, and withdrawalAmount.
+5. Token Owner constructs proof signatures for assetAddress and InputNotePrivateKey.
+6. zero-knowledge asset carries out confidentialTransfer with proofData and proofSignatures.
+7. ACE updates Note Registry with proofId, proofOutput, and assetContractAddress.
+8. Note Registry updates ERC20 Token, transferring tokenOwner amount.

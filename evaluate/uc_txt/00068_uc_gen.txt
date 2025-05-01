@@ -1,0 +1,10 @@
+1. View list of orders being delivered (from ShipperDashboard).
+2. ShipperDashboard invokes getOrdersBeingDelivered() method in ShipperController.
+3. ShipperController calls getOrdersByStatus("IN_TRANSIT") in ShipperService.
+4. ShipperService queries ShipperRepository to retrieve orders with status "IN_TRANSIT".
+5. ShipperRepository executes database query to fetch orders.
+6. Database retrieves orders with status "IN_TRANSIT" and sends data to ShipperRepository.
+7. ShipperRepository returns order data to ShipperService.
+8. ShipperService returns order data to ShipperController.
+9. ShipperController provides order data to ShipperDashboard.
+10. ShipperDashboard displays the list of orders being delivered.

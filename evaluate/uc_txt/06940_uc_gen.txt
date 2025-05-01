@@ -1,0 +1,11 @@
+1. User chooses OAuth login.
+2. User is redirected to authorization on Client Application.
+3. User authorizes and grants access to OAuth Provider.
+4. OAuth Provider returns with OAuth token to Client Application.
+5. Client Application sends POST /oauth/login request with OAuth token to API Gateway.
+6. API Gateway forwards POST /oauth/login request with OAuth token to Auth Service.
+7. Auth Service verifies OAuth token with OAuth Provider.
+8. Auth Service verifies email in Auth DB.
+9. Auth Service sends login successful message with token to API Gateway.
+10. API Gateway sends login successful message with token to Client Application.
+11. Client Application displays successful login message to User.

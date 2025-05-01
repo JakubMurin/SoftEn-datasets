@@ -1,0 +1,22 @@
+1. User views boards.
+2. UI creates instance of socket with serverIp and serverPort, an input stream (inS) and output stream (outS).
+3. UI requests boards to view.
+4. Controller creates protocol.
+5. Controller sets code to VIEW_BOARDS.
+6. Controller sets token to AUTH_TOKEN.
+7. Controller sends protocol through outS.
+8. Controller creates protocol from inS.
+9. Controller gets content as string from inS.
+10. Controller splits content by "\0".
+11. UI shows boards.
+12. User chooses a board.
+13. UI requests history for the chosen board.
+14. Controller creates protocol.
+15. Controller sets code to LIST_HISTORY.
+16. Controller sets content from the chosen board.
+17. Controller sets token to AUTH_TOKEN.
+18. Controller sends protocol through outS.
+19. Controller creates protocol from inS.
+20. Controller gets content as string from inS.
+21. Controller splits content by "\r".
+22. UI shows history.

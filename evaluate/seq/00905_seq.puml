@@ -1,0 +1,20 @@
+@startuml
+actor "User Researcher" as researcher
+entity "Research Participant Database" as database
+entity "Research Recruitment Tool" as recruitmentTool
+actor "Educators and Science Influencers" as participants
+
+researcher -> recruitmentTool : Identify criteria for participants
+recruitmentTool -> database : Query potential participants
+database -> recruitmentTool : Return list of potential participants
+researcher <- recruitmentTool : Review list of participants
+researcher -> recruitmentTool : Select potential interviewees
+recruitmentTool -> participants : Send invitation for interview
+participants -> recruitmentTool : Respond to invitation
+recruitmentTool -> researcher : Report responses (accept/decline)
+researcher -> recruitmentTool : Schedule interviews with acceptees
+recruitmentTool -> participants : Confirm interview schedule
+participants -> recruitmentTool : Confirm attendance
+recruitmentTool -> researcher : Finalize list of interview participants
+
+@enduml

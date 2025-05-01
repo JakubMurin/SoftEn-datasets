@@ -1,0 +1,16 @@
+1. User opens the User Profile Popup.
+2. UserProfilePopup requests User Profile from Controller.
+3. Controller dispatches Prisma action (findUnique) to Model.
+4. Model queries user profile data from Database.
+5. Database returns user profile data to Model.
+6. Model returns user profile data to Controller.
+7. Controller returns user profile data to UserProfilePopup.
+8. UserProfilePopup displays user profile data to User.
+9. User submits updated profile or new avatar image.
+10. UserProfilePopup sends updated profile or avatar image (data, file) to Controller.
+11. Controller dispatches Prisma action (update or upload) to Model.
+12. Model updates user profile data or stores avatar image in Database.
+13. Database confirms update or upload to Model.
+14. Model returns updated profile data or avatar image URL to Controller.
+15. Controller confirms update or returns avatar image URL to UserProfilePopup.
+16. UserProfilePopup displays success message or new avatar image to User.

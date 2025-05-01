@@ -1,0 +1,10 @@
+1. Client sends HTTP Request to Load Balancer/ECS.
+2. Load Balancer/ECS executes the remove book request.
+3. RemoveBookFromCatalogActivity removes the book from the catalog.
+4. CatalogDao queries DynamoDB for the latest version of the book.
+5. DynamoDB returns the book data to CatalogDao.
+6. CatalogDao removes the book from the catalog.
+7. RemoveBookFromCatalogActivity converts CatalogItemVersion to Coral Model Book.
+8. RemoveBookFromCatalogActivity creates RemoveBookFromCatalogResponse.
+9. RemoveBookFromCatalogActivity sets the book.
+10. Load Balancer/ECS returns RemoveBookFromCatalogResponse to Client.

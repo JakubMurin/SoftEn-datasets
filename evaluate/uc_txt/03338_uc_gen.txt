@@ -1,0 +1,10 @@
+1. Game instantiates ExtendedVM by calling constructor.
+2. ExtendedVM calls base constructor in BaseVM.
+3. ExtendedVM initializes mixins associated with this VM.
+4. Game calls destructor in ExtendedVM.
+5. ExtendedVM calls original destructor in BaseVM.
+6. ExtendedVM destructs mixins associated with this VM.
+7. Game triggers OnFinalize in ExtendedVM.
+8. ExtendedVM calls original OnFinalize in BaseVM.
+9. ExtendedVM finalizes mixins associated with this VM.
+10. Game accesses methods and getters/setters in ExtendedVM.

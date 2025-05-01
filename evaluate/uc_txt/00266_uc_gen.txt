@@ -1,0 +1,14 @@
+1. Zarządca wybiera listę kont oczekujących.
+2. Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta.
+3. AccountController odbiera żądanie i wykonuje operację getAccountSearchPreferences.
+4. AccountEndpoint przesyła żądanie do AccountService o pobranie preferencji wyszukiwania.
+5. AccountService sprawdza istnienie konta, a następnie pobiera preferencje wyszukiwania.
+6. AccountService wysyła żądanie do AccountFacade o znalezienie konta.
+7. AccountFacade przekazuje informację o niepowodzeniu związaniu z kontem.
+8. AccountService wysyła żądanie do AccountFacade o znalezienie konta.
+9. AccountFacade zwraca informację o istniejącym koncie.
+10. AccountService wysyła żądanie do ListSearchPreferencesFacade o 'findByAccount'.
+11. ListSearchPreferencesFacade zwraca informację o braku preferencji dla konta.
+12. AccountService tworzy nowe preferencje dla konta.
+13. ListSearchPreferencesFacade zwraca aktualne preferencje dla konta.
+14. AccountService aktualizuje preferencje związane z kontem.

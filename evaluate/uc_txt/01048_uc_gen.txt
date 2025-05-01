@@ -1,0 +1,19 @@
+1. Navegador requests to view oneToOne data for specific session.
+2. Routes receive GET request for /oneToOne/:sessionID.
+3. Controller handles the getCheck request.
+4. Controller calls fetchSessionData with sessionID from request params on the OneToOne model.
+5. OneToOne executes query in MySQL to retrieve data.
+6. OneToOne retrieves rows from MySQL database.
+7. Controller gets rows from OneToOne model.
+8. Error: Redirect response to '/error' page if rows length is 0.
+9. Error: Redirect response to '/error' page if role is not "Human Resources" and oneOnOneUserIDFK does not match request session userID.
+10. Controller calls fetchSessionData with sessionID from request params on the Question model.
+11. Question executes query in MySQL to retrieve answers.
+12. Question retrieves answers from MySQL database.
+13. Controller gets answers from Question model.
+14. Error: Render 'oneToOneCheck' template with empty data evaluation when answers length is 0.
+15. Controller calls fetchSessionData with sessionID from request params on the Measurable model.
+16. Measurable executes query in MySQL to retrieve measures.
+17. Measurable retrieves measures from MySQL database.
+18. Controller gets measures from Measurable model.
+19. Render 'oneToOneCheck' template with fetched data.

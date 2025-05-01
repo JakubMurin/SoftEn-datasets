@@ -1,0 +1,12 @@
+1. Attacker performs lengthExtensionAttackAtSHA1.
+2. Attacker extracts the message.
+3. Attacker computes SHA1 padding for the message.
+4. Attacker tampers message to try.
+5. Attacker extracts SHA1 internal state.
+6. Attacker hashes the message with SHA1.
+7. Server validates the MAC.
+8. Server prepends server key to the message.
+9. Server hashes the key and new message.
+10. Server checks if the hash matches the new MAC.
+11. Attacker breaks the loop and returns true if server reply is true.
+12. Attacker returns false if no valid key length is found.

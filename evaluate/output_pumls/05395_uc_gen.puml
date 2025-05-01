@@ -1,0 +1,40 @@
+@startuml
+actor member
+actor researcher
+actor user
+actor md
+actor forward_cancellation_request
+actor web_client
+actor user_logs
+actor user_presses_signup
+participant paymentservice_requests_payment_processing
+activate paymentservice_requests_payment_processing
+member -> paymentservice_requests_payment_processing: select_payment_option()
+activate member
+participant payment_request_with_paymentservice
+paymentservice_requests_payment_processing -> payment_request_with_paymentservice: initiate()
+activate payment_request_with_paymentservice
+deactivate payment_request_with_paymentservice
+participant mobilebanking
+paymentservice_requests_payment_processing -> mobilebanking: from()
+activate mobilebanking
+deactivate mobilebanking
+paymentservice_requests_payment_processing -> member: process()
+activate member
+deactivate member
+member -> paymentservice_requests_payment_processing: authorize_transaction()
+participant transaction_success_with_database
+paymentservice_requests_payment_processing -> transaction_success_with_database: confirm()
+activate transaction_success_with_database
+deactivate transaction_success_with_database
+participant payment_status_confirms_with_paymentservice
+paymentservice_requests_payment_processing -> payment_status_confirms_with_paymentservice: update()
+activate payment_status_confirms_with_paymentservice
+deactivate payment_status_confirms_with_paymentservice
+paymentservice_requests_payment_processing -> member: display()
+activate member
+deactivate member
+paymentservice_requests_payment_processing -> member: show()
+activate member
+deactivate member
+@enduml

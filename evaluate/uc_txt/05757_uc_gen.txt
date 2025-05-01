@@ -1,0 +1,11 @@
+1. Librarian sends a GET request to /api/lendings/monthly-lending.
+2. LendingController is activated.
+3. LendingController calls getAllReaders() on ReaderService.
+4. ReaderService is activated and calls findAll() on ReaderRepository.
+5. ReaderRepository returns a list of readers to ReaderService.
+6. For each reader, ReaderService retrieves monthly lending details from ReaderRepository.
+7. ReaderRepository provides the monthly lending count to ReaderService.
+8. ReaderService updates the reader with the monthly lending count.
+9. ReaderLentsViewMapper converts reader data to ReaderLentsView.
+10. LendingController receives an Iterable of ReaderLentsView.
+11. LendingController responds with HTTP 200 OK along with the reader lending views.

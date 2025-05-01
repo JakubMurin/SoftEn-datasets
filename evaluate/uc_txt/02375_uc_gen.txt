@@ -1,0 +1,21 @@
+1. Läkare väljer att visa sjukfallshistorik för patient på Vårdenhet.
+2. Rehabstöd läser upp patientens samtliga intyg över alla VG.
+3. Rehabstöd listar av patientens samtliga intyg.
+4. Rehabstöd hämtar vårdgivarnamn för varje intyg mha GetUnit v1.
+5. Rehabstöd får GetUnitResponseType.
+6. Rehabstöd får PersonSvar genom GetPerson för patienten.
+7. Rehabstöd filtrerar bort alla intyg som inte ligger på den aktiva enheten om patienten är sekretssmarkerad.
+8. Rehabstöd kontrollerar spärr via CheckBlocks v4 om patienten ej är sekretssmarkerad.
+9. Rehabstöd uppdaterar intygen med spärrstatus.
+10. Rehabstöd skickar in ALLA intyg oavsett spärr/samtyckesstatus till Sjukfallsmotor.
+11. Rehabstöd kontrollerar samtyckesstatus för enheten/läkaren mot patienten för att visa intyg utanför vårdgivaren via CheckConsent v2.
+12. Rehabstöd filtrerar bort intyg från andra vårdgivare om samtycke saknas.
+13. Rehabstöd filtrerar bort intyg med spärr och utanför den nuvarande enhet där användaren inte aktivt valt att ta med vårdgivaren/enheten.
+14. Rehabstöd sammanställer klientsvar med sjukfall och metadataobjekt.
+15. Rehabstöd skickar in nettolistan av intyg för att få verkliga sjukfall.
+16. Rehabstöd uppdaterar lista med namn och sekretessstatus.
+17. Rehabstöd får GetCertificateAdditions för varje intyg utfärdade på nuvarande VG/VE.
+18. Rehabstöd uppdaterar sjukfallens ingående intyg med kompletteringsstatus.
+19. Rehabstöd får RiskPredictionForCertificate genom getRiskPredictionForCertificate för varje intyg om SRS-stöd är aktiverat.
+20. Rehabstöd loggar PDL loggning av faktisk visad information.
+21. Rehabstöd visar patientens sjukfallshistorik inkl. SJF till Läkare.

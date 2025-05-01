@@ -1,0 +1,9 @@
+1. User calls Payment Create Scheduler.
+2. MUKTA_ADAPTER requests for tenants from MDMS.
+3. MDMS provides tenants list to MUKTA_ADAPTER.
+4. MUKTA_ADAPTER searches for bills where bills are not created.
+5. Expense_Service returns a list of bills to MUKTA_ADAPTER.
+6. MUKTA_ADAPTER processes bills and generates payments.
+7. MUKTA_ADAPTER creates payments in Expense_Service.
+8. Expense_Service returns payment response to MUKTA_ADAPTER.
+9. MUKTA_ADAPTER pushes payment details to create topic in KAFKA.

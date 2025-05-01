@@ -1,0 +1,24 @@
+1. User changes config and requests data.
+2. App attempts to reserve device.
+3. API relays reservation request to device actor.
+4. Device actor relays request to device with instrument server.
+5. Device accepts request and relays port information.
+6. Device connects and opens port.
+7. Device actor accepts request and relays port information to API.
+8. API relays port to app.
+9. App connects to device.
+10. Start timeout.
+11. On unexpected disconnect, app reconnects and refreshes timeout.
+12. App sends data to device actor without response.
+13. Device actor relays data to device.
+14. App displays OK to user.
+15. App sends data to device actor with response.
+16. Device actor relays data to device.
+17. Device relays answer to device actor.
+18. Device actor relays answer to app.
+19. App displays answer to user.
+20. App disconnects from device actor.
+21. App frees device.
+22. API relays free to device actor.
+23. Device actor relays free to device.
+24. Device sends free as timeout reached.

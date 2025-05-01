@@ -1,0 +1,22 @@
+1. CustomerManager asks to display job openings in the results phase.
+2. PublishJobOpeningUI gets job openings.
+3. PublishJobOpeningController retrieves job openings from JobOpeningRepository.
+4. JobOpeningRepository returns jobOpenings to PublishJobOpeningController.
+5. PublishJobOpeningController sends jobOpenings to PublishJobOpeningUI.
+6. PublishJobOpeningUI displays job Openings to CustomerManager.
+7. CustomerManager selects a job opening to publish results.
+8. PublishJobOpeningUI requests to publish job opening results to PublishJobOpeningController.
+9. PublishJobOpeningController sends a result email request to FollowUpServerProxy.
+10. FollowUpServerProxy creates a client socket and connects to the FollowUpServer.
+11. FollowUpServerProxy sends the request to the server through the socket.
+12. FollowUpServer receives and processes the request.
+13. ResultEmailRequest is executed by FollowUpServer.
+14. CandidateSelectionService selects candidates for the job opening.
+15. EmailService sends emails to selected candidates.
+16. Notification is created and saved in NotificationRepository.
+17. EmailService notifies the ResultEmailRequest about the sent emails.
+18. ResultEmailRequest informs the FollowUpServer about the successful email sending.
+19. FollowUpServer sends a response to the FollowUpServerProxy.
+20. FollowUpServerProxy forwards the response to PublishJobOpeningController.
+21. PublishJobOpeningController sends the response to PublishJobOpeningUI.
+22. PublishJobOpeningUI confirms the success of the operation to CustomerManager.

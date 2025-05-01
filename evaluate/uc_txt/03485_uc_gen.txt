@@ -1,0 +1,16 @@
+1. Client (sidetree-core-go) adds operation op1 to handler1.
+2. Handler1 publishes operation op1 to the operation queue (opQueue).
+3. Handler1 receives acknowledgment for publishing operation op1.
+4. Client (sidetree-core-go) receives acknowledgment for adding operation op1 to handler1.
+5. Client (sidetree-core-go) adds operation op2 to handler2.
+6. Handler2 publishes operation op2 to the operation queue (opQueue).
+7. Handler2 receives acknowledgment for publishing operation op2.
+8. Client (sidetree-core-go) receives acknowledgment for adding operation op2 to handler2.
+9. Handler1 processes operation op2.
+10. Handler1 stores operation op2 in the operation queue database (opQueueDB).
+11. Handler1 receives acknowledgment for storing operation op2.
+12. Handler1 acknowledges the processing of operation op2 to the operation queue.
+13. Handler2 processes operation op1.
+14. Handler2 stores operation op1 in the operation queue database (opQueueDB).
+15. Handler2 receives acknowledgment for storing operation op1.
+16. Handler2 acknowledges the processing of operation op1 to the operation queue.

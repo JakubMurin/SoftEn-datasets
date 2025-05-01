@@ -1,0 +1,30 @@
+@startuml
+actor archivist
+actor user_management_system
+actor access_restriction_controls
+actor exchange_adapter_contract
+actor access_control
+participant file_management_system
+activate file_management_system
+archivist -> file_management_system: submit_credentials()
+activate archivist
+participant credentials
+file_management_system -> credentials: validate()
+activate credentials
+deactivate credentials
+user_management_system -> file_management_system: retrieve_archivist()
+activate user_management_system
+access_control -> file_management_system: verify_permissions()
+activate access_control
+participant files_from_x_drive
+file_management_system -> files_from_x_drive: fetch()
+activate files_from_x_drive
+deactivate files_from_x_drive
+participant files
+file_management_system -> files: request()
+activate files
+deactivate files
+file_management_system -> archivist: display()
+activate archivist
+deactivate archivist
+@enduml

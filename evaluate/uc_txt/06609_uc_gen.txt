@@ -1,0 +1,13 @@
+1. Receptionist requests to view the dashboard.
+2. UI receives the request to view the dashboard.
+3. UI sends a GET request to Router for /dashboard.
+4. Router activates and forwards the request to Controller.
+5. Controller activates and calls retrieveDashboardData() on Repository.
+6. Repository activates and fetches the dashboard data from DashboardModel.
+7. DashboardModel activates and queries the dashboard data from DB.
+8. DB responds with the dashboard data to DashboardModel.
+9. DashboardModel forwards the dashboard data to Repository.
+10. Repository forwards the dashboard data to Controller.
+11. Controller responds with 200 OK along with the dashboard data to Router.
+12. Router deactivates and sends 200 OK along with the dashboard data to UI.
+13. UI deactivates and displays the dashboard data to the Receptionist.

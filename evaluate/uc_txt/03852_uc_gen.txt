@@ -1,0 +1,8 @@
+1. User performs OAuth2 Authentication with the Frontend.
+2. Frontend sends OAuth2 Authentication request to UserService.
+3. UserService sends the OAuth2 Authentication request to OAuth2Server for user authentication.
+4. OAuth2Server authenticates the user and provides a token to UserService.
+5. UserService sends an Authentication Event (user_id) to NotificationService.
+6. NotificationService acknowledges the authentication event with success to UserService.
+7. UserService notifies Frontend about successful authentication along with the token.
+8. Frontend notifies the User about authentication success along with the token.

@@ -1,0 +1,14 @@
+1. CPS computes the delivery graph by sending a request to CM.
+2. CM initializes a TreeMap to store mapped routes.
+3. For each waypoint in the request, CM retrieves the start waypoint intersection from SWP.
+4. CM initializes arrays to store predecessors and durations.
+5. CM adds the start waypoint intersection to the greys set.
+6. CM finds the minimal grey intersection and updates predecessors and durations arrays.
+7. For each neighbor intersection of the minimal grey intersection, CM retrieves the ID.
+8. If the neighbor intersection is not in blacks set, CM gets the street section and updates arrays.
+9. If the neighbor intersection is in whites set, CM removes it from whites and adds it to greys.
+10. CM removes the minimal grey intersection from greys set.
+11. CM retrieves the minimal grey intersection ID from MGI.
+12. CM adds the minimal grey intersection to blacks set.
+13. CM creates the delivery graph DG with the mapped routes.
+14. CM sends the delivery graph back to CPS.

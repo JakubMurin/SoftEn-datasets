@@ -1,0 +1,12 @@
+1. Client sends HTTP Request to Load Balancer/ECS.
+2. Load Balancer/ECS executes removeBookRequest on RemoveBookFromCatalogActivity.
+3. RemoveBookFromCatalogActivity removes book from Catalog using CatalogDao.
+4. CatalogDao queries for the latest version of the book in DynamoDB.
+5. If book does not exist or is not active:.
+6. CatalogDao throws BookNotFoundException to RemoveBookFromCatalogActivity.
+7. RemoveBookFromCatalogActivity transforms to KindlePublishingClientException and Load Balancer/ECS returns 400 response to Client.
+8. Else, continue.
+9. DynamoDB returns book data to CatalogDao.
+10. CatalogDao removes the book from the Catalog and updates Coral Model Book.
+11. RemoveBookFromCatalogActivity creates and returns RemoveBookFromCatalogResponse to Load Balancer/ECS.
+12. Load Balancer/ECS returns 200 response with data to Client.

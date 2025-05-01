@@ -1,0 +1,23 @@
+1. SCHEDULER calls Payment Create Scheduler.
+2. Request for tenants from MDMS.
+3. MDMS provides tenants list.
+4. Search non-created bills with Expense_Service.
+5. Get list of bills from Expense_Service.
+6. Process bills and generate payments with MUKTA_ADAPTER.
+7. Create payments with Expense_Service.
+8. Return payment response from Expense_Service.
+9. Push payment details to create topic with KAFKA.
+10. Listen payment create topic in MUKTA_ADAPTER.
+11. Process payment in MUKTA_ADAPTER.
+12. Fetch bills details with Expense_Service.
+13. Return bill details from Expense_Service to MUKTA_ADAPTER.
+14. Process Bill for each bill lineitem.
+15. Fetch organisation details with ORG_SERVICE.
+16. Return organisation details from ORG_SERVICE.
+17. Fetch individual details with IND_SERVICE.
+18. Return individual details from IND_SERVICE.
+19. Fetch bank account details with BANK_ACC_SERVICE.
+20. Return bank account details from BANK_ACC_SERVICE.
+21. Create disburse request in MUKTA_ADAPTER.
+22. For each beneficiary, generate disbursement request.
+23. Program will create disbuse and provide ACK.

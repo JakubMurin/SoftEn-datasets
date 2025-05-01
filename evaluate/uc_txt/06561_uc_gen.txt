@@ -1,0 +1,25 @@
+1. User requests to make coffee with specified types and sweeteners.
+2. CoffeeFactory creates a CoffeeRequest based on the user's request.
+3. CoffeeFactory returns the CoffeeRequest.
+4. CoffeeHandlerBase sets up the handling chain starting with Milk.
+5. Milk sets the next handler as Chocolate.
+6. Chocolate sets the next handler as Cinnamon.
+7. Cinnamon sets the next handler as Sweetener.
+8. Sweetener sets the next handler as null.
+9. MakeCoffee handles the CoffeeRequest.
+10. CoffeeHandlerBase handles the CoffeeRequest.
+11. Milk handles the CoffeeRequest.
+12. CoffeeHandlerBase handles the CoffeeRequest.
+13. Chocolate handles the CoffeeRequest.
+14. CoffeeHandlerBase handles the CoffeeRequest.
+15. Cinnamon handles the CoffeeRequest.
+16. CoffeeHandlerBase handles the CoffeeRequest.
+17. Sweetener handles the CoffeeRequest.
+18. StirringStrategyFactory creates a StirringStrategy based on the sweetener type.
+19. StirringStrategy stirs the coffee.
+20. Sweetener returns to CoffeeHandlerBase.
+21. Cinnamon returns to Chocolate.
+22. Chocolate returns to Milk.
+23. Milk returns to Coffee.
+24. Coffee returns to make_coffee.
+25. MakeCoffee returns the ingredients to User.

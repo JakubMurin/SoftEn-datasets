@@ -1,0 +1,11 @@
+1. Dev sends a query operation request to JSEngine to select data.
+2. JSEngine activates to process the query operation.
+3. JSEngine forwards the query to QueryEngine for execution using SQL++.
+4. QueryEngine processes the query and returns the result to JSEngine.
+5. JSEngine returns the query result to Dev.
+6. For each document in the query result:.
+7. Dev operates on the document.
+8. JSEngine requests the document from QueryEngine.
+9. QueryEngine retrieves the document from Bucket.
+10. Bucket retrieves the document and sends it to QueryEngine.
+11. QueryEngine sends the retrieved document to JSEngine.

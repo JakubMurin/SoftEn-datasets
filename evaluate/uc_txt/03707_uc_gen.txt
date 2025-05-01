@@ -1,0 +1,6 @@
+1. User enters the join code for a diary room.
+2. Client sends a POST request to API endpoint /v1/rooms/<room_id>/join with the code provided by the user.
+3. API performs JSON validation on the code and retrieves the room code from the database.
+4. API verifies the user-entered code with the retrieved code.
+5. If verification is successful, API inserts the user's account into RoomMember and appends the AccountID to Room.Orders, then responds with a 201 Created status to the client.
+6. If verification fails, API responds with a 401 Unauthorized status.

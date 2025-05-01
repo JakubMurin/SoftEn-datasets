@@ -1,0 +1,9 @@
+1. User sends a GET request to the Gateway to retrieve their subscription.
+2. Gateway forwards the request to Keycloak to verify the JWT.
+3. Keycloak verifies the JWT and responds to the Gateway.
+4. Gateway checks if the JWT is valid.
+5. Gateway sends a GET request to the Subscription Service for the user's subscription.
+6. Subscription Service queries the Mongo Database to retrieve the user's subscription configuration.
+7. Mongo Database returns the subscription configuration to the Subscription Service.
+8. Subscription Service sends the subscription configuration to the Gateway.
+9. Gateway forwards the subscription configuration to the User.

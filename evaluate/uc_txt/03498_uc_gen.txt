@@ -1,0 +1,17 @@
+1. Cornell Faculty Member selects the data file for upload.
+2. BrowserGUI initiates the file upload process.
+3. UploadService stores the data file in the Repository.
+4. Repository saves the file metadata, including uploader information, in the Database.
+5. Database confirms the metadata storage.
+6. Repository confirms the file storage.
+7. UploadService displays the file upload success message.
+8. UploadService provides the file ID and upload confirmation to the Cornell Faculty Member.
+9. Cornell Faculty Member chooses a licensing option (CC-By or CC0) via the BrowserGUI.
+10. BrowserGUI sends the license choice and file ID to LicenseService.
+11. LicenseService applies the chosen license to the file.
+12. DRMService updates the file metadata with the license information.
+13. Database updates the file record with the license metadata.
+14. Database confirms the license update.
+15. Repository confirms the license application to the file.
+16. LicenseService displays the license application success message.
+17. Cornell Faculty Member confirms that the license has been set.

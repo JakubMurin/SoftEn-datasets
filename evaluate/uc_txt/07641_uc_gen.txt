@@ -1,0 +1,12 @@
+1. Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta.
+2. AccountController wysyła żądanie getAccountSearchPreferences do AccountEndpoint.
+3. AccountService otrzymuje żądanie getAccountSearchPreferences.
+4. AccountService szuka konta za pomocą findByLogin w AccountFacade.
+5. Jeśli konto nie istnieje, AccountFacade informuje AccountService.
+6. Jeśli konto istnieje, AccountFacade zwraca konto do AccountService.
+7. AccountService szuka preferencji konta w ListSearchPreferencesFacade.
+8. Jeśli preferencje nie istnieją, ListSearchPreferencesFacade informuje AccountService.
+9. Jeśli preferencje istnieją, ListSearchPreferencesFacade zwraca preferencje do AccountService.
+10. AccountService zwraca informację zwrotną do AccountEndpoint.
+11. AccountEndpoint przekazuje informację zwrotną do AccountController.
+12. AccountController przekazuje informację zwrotną do Nawigatora.

@@ -1,0 +1,13 @@
+1. org1_client initiates Exchange assets request.
+2. frontend processes Asset exchange request.
+3. org1_backend parses and forwards exchange request.
+4. hlf_org1_sdk forwards request to hlf_org1_peer for endorsement.
+5. hlf_org1_peer endorses and generates Read Write set.
+6. hlf_org2_peer endorses and generates Read Write set.
+7. Endorsed transaction for Org1.
+8. Endorsed transaction for Org2.
+9. hlf_org1_sdk orders transaction into block.
+10. hlf_orderer processes and commits to ledger for Org1.
+11. hlf_orderer processes and commits to ledger for Org2.
+12. hlf_org1_sdk captures and relays Commit event to org1_backend.
+13. org1_backend informs frontend on the appropriate status.

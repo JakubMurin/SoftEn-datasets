@@ -1,0 +1,9 @@
+1. Client sends a POST request to EditBalanceController with initial balance information.
+2. EditBalanceController forwards the request to UserService to get the authenticated user.
+3. UserService retrieves the user from the User Database.
+4. User Database returns the user information.
+5. If the user is authenticated, UserService returns the user to EditBalanceController.
+6. EditBalanceController sets the initial balance and saves the user in the AppUserRepository.
+7. AppUserRepository updates the user in the User Database.
+8. User Database confirms the save operation.
+9. EditBalanceController redirects the Client to the /premium page.

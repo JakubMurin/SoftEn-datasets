@@ -1,0 +1,8 @@
+1. API client sends a request to add a data file to a dataset.
+2. Datasets service activates and calls AddFileHelper to add the file to the dataset.
+3. AddFileHelper activates and calls FileUtil to create data files.
+4. FileUtil determines the file type and creates a single data file.
+5. AddFileHelper receives the list of data files from FileUtil.
+6. AddFileHelper calls ISB to add the files to the dataset.
+7. AddFileHelper receives the dataset from ISB.
+8. AddFileHelper calls ISB to ingest the files as tabular data.

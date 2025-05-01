@@ -1,0 +1,11 @@
+1. User sends a PUT request to API Gateway to find a match.
+2. API Gateway forwards the request to the Controller.
+3. Controller calls the Service method to check for a match using the requestId.
+4. Service locates the user's MatchRequest using the requestId in MatchRequests collection.
+5. Service retrieves another user's MatchRequest from the collection.
+6. Service fetches a random question from the Questions collection.
+7. Service creates sessionInfo and links it to the MatchRequests.
+8. Service updates both MatchRequests in the database.
+9. Controller receives and sends user's MatchRequest to the API Gateway.
+10. API Gateway responds with a 200 OK status and returns the user's MatchRequest to the Frontend.
+11. User is redirected to the session page on the Frontend application.

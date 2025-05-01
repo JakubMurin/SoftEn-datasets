@@ -1,0 +1,47 @@
+@startuml
+actor user
+actor researcher
+actor ci_integration_tool
+actor forward_cancellation_request
+actor web_client
+actor yml_._ci_integration_tool
+actor user_logs
+actor user_presses_signup
+participant historycontroller
+activate historycontroller
+user -> historycontroller: submit_new_history_data()
+activate user
+participant data_to_historyrouter
+historycontroller -> data_to_historyrouter: send()
+activate data_to_historyrouter
+deactivate data_to_historyrouter
+participant data_to_historycontroller
+historycontroller -> data_to_historycontroller: forward()
+activate data_to_historycontroller
+deactivate data_to_historycontroller
+participant new_history_entry
+historycontroller -> new_history_entry: create()
+activate new_history_entry
+deactivate new_history_entry
+participant new_history_entry_to_database
+historycontroller -> new_history_entry_to_database: save()
+activate new_history_entry_to_database
+deactivate new_history_entry_to_database
+historycontroller -> new_history_entry: successfully_save()
+activate new_history_entry
+deactivate new_history_entry
+participant successful_save
+historycontroller -> successful_save: confirm()
+activate successful_save
+deactivate successful_save
+historycontroller -> successful_save: confirm()
+activate successful_save
+deactivate successful_save
+participant with_created_status
+historycontroller -> with_created_status: respond()
+activate with_created_status
+deactivate with_created_status
+historycontroller -> user: display()
+activate user
+deactivate user
+@enduml

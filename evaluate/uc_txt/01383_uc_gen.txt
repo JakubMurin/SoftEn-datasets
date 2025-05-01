@@ -1,0 +1,12 @@
+1. Client initiates a GET request to /updateInitialBalance.
+2. EditBalanceController receives editbalance/edit-balance view.
+3. Client sends initial balance via POST request to /updateInitialBalance.
+4. EditBalanceController calls getAuthenticatedUser from UserService.
+5. UserService fetches user from User Database.
+6. User Database returns user.
+7. UserService returns user to EditBalanceController.
+8. EditBalanceController sets the initial balance.
+9. EditBalanceController saves the user via AppUserRepository.
+10. AppUserRepository updates the user in the User Database.
+11. User Database confirms the save operation.
+12. Client is redirected to /premium.

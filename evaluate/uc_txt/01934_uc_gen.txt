@@ -1,0 +1,23 @@
+1. User sends a POST request to create a new tenant.
+2. TenantsController validates the tenant data model.
+3. TenantsController checks if the tenant already exists.
+4. TenantService validates model.
+5. TenantService checks if the tenant exists in the database.
+6. TenantService queries for existing tenants in the database.
+7. If the tenant does not exist:.
+8. TenantService creates a new tenant.
+9. TenantService inserts the new tenant into the database.
+10. TenantService saves the changes to the database.
+11. If Isolated is true:.
+12. TenantService gets the connection string from IConfiguration.
+13. TenantService gets the ApplicationDbContext instance from IServiceProvider.
+14. IServiceProvider resolves the ApplicationDbContext instance.
+15. ApplicationDbContext sets the connection string.
+16. ApplicationDbContext checks for pending migrations.
+17. ApplicationDbContext applies migrations if any pending.
+18. TenantService updates the Tenant context.
+19. ITenantContextService sets the Tenant asynchronously.
+20. TenantService returns the newly created Tenant to TenantsController.
+21. If the Tenant already exists:.
+22. TenantService returns an error indicating that the Tenant already exists.
+23. TenantsController responds with a 201 Created status for the new Tenant creation.

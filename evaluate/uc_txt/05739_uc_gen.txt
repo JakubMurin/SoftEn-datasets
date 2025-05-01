@@ -1,0 +1,9 @@
+1. Recruiter sends a POST request to like an Attendee.
+2. Controller forwards the request to likeAttendee method in Service.
+3. Service retrieves Recruiter details from RecruiterRepository.
+4. Service retrieves Attendee details from AttendeeRepository.
+5. Service checks if the like relationship already exists.
+6. If like relationship exists, Service throws DuplicateLikeException.
+7. If like relationship doesn't exist, Service saves the like relationship in LikeRepo.
+8. Service responds with completion status.
+9. Controller sends a 200 OK response to the Recruiter.

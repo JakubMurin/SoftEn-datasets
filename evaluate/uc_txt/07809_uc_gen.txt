@@ -1,0 +1,9 @@
+1. API client seeks to upload data files to a specific dataset.
+2. Datasets service is activated.
+3. AddFileHelper.active(): Trigger addFileToDataset().
+4. AddFileHelper interacts with FileUtil.
+5. FileUtil executes determineFileType() and createSingleDataFile().
+6. FileUtil constructs Datafile List and sends to AddFileHelper.
+7. AddFileHelper calls ISB for uploading files to the dataset.
+8. Control returns to AddFileHelper from ISB after uploading datasets and ingesting them.
+9. AddFileHelper provides response object to API client as a JSON response.

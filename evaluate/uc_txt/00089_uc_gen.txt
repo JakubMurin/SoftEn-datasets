@@ -1,0 +1,14 @@
+1. Staker initiates the unstake operation with unstakeInfo data in the Staking platform.
+2. Staking database transfers stakedAmount to the Staker using ZKP Token.
+3. Staking returns stakedAmount to the Staker as confirmation of the transaction.
+4. RewardMaster triggers onAction event.
+5. AdvancedStakeController requests reward advice through getRewardAdvice.
+6. AdvancedStakeController calls earlyUnstake in the MAS Pool to release the funds.
+7. MAS Pool generates leaf by processing preimage parameters.
+8. MAS Pool returns the leafHash.
+9. MAS Pool generates nullifier using preimage.
+10. MAS Pool returns the nullifierHash.
+11. MAS Pool ensures Merkle proof verification, checks unspent nullifiers, and marks spent nullifier.
+12. MAS Pool transfers rewardAmount to the Staker using ZKP Token.
+13. MAS Pool returns rewardAmount to the Staker as confirmation.
+14. AdvancedStakeController emits an EarlyUnstake event.

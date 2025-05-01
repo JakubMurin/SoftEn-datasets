@@ -1,0 +1,11 @@
+1. ApplicationA enqueues object A to CorfuRuntimeA.
+2. CorfuGuidGeneratorA generates a unique ID 0001 for object A.
+3. CorfuRuntimeA writes object A with ID 0001 to CorfuCluster.
+4. ApplicationB enqueues object B to CorfuRuntimeB.
+5. CorfuGuidGeneratorB generates a unique ID 0002 for object B.
+6. CorfuRuntimeB writes object B with ID 0002 to CorfuCluster.
+7. CorfuCluster assigns addresses 100 to B and 200 to A based on commit order.
+8. CorfuCluster replicates object A to CorfuRuntimeB at address 200.
+9. CorfuCluster replicates object B to CorfuRuntimeA at address 100.
+10. ApplicationA retrieves the list of entries from CorfuRuntimeA.
+11. ApplicationB retrieves the list of entries from CorfuRuntimeB.

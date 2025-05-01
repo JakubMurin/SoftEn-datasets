@@ -1,0 +1,24 @@
+1. Zarządca wybiera listę kont oczekujących.
+2. Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta.
+3. AccountController odbiera żądanie i przekazuje je do AccountEndpoint.
+4. AccountEndpoint wykonuje getAccountSearchPreferences.
+5. AccountService wykonuje getAccountSearchPreferences.
+6. AccountService wykonuje findByLogin w przypadku braku konta.
+7. AccountService wykonuje findByLogin w przypadku istnienia konta.
+8. AccountService wykonuje findByAccount w przypadku braku preferencji dla konta.
+9. AccountService wykonuje findByAccount w przypadku istnienia preferencji dla konta.
+10. AccountService zwraca informację zwrotną do AccountEndpoint.
+11. AccountEndpoint przekazuje informację zwrotną do AccountController.
+12. AccountController przekazuje informację zwrotną do Nawigatora.
+13. Nawigator wysyła żądanie pobrania listy.
+14. AccountController odbiera żądanie i przekazuje je do AccountEndpoint.
+15. AccountEndpoint wykonuje getNotConfirmedAccounts.
+16. AccountService wykonuje getNotConfirmedAccounts.
+17. AccountService wykonuje findByLogin w przypadku braku konta.
+18. AccountService wykonuje findByLogin w przypadku istnienia konta.
+19. AccountService wykonuje findByAccount i create w przypadku braku preferencji dla konta.
+20. AccountService wykonuje findByAccount i update w przypadku istnienia preferencji dla konta.
+21. AccountService wykonuje findNotConfirmedAccounts.
+22. AccountService zwraca listę kont do AccountEndpoint.
+23. AccountEndpoint przekazuje listę kont do AccountController.
+24. AccountController przekazuje listę kont do Nawigatora.

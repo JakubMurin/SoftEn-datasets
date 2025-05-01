@@ -1,0 +1,11 @@
+1. Attacker initiates the length extension attack.
+2. Attacker extracts the message.
+3. Message is parsed successfully.
+4. Attacker computes the SHA1 padding of the parsed message.
+5. Attacker tampers with the message and attempts to modify it.
+6. Message's MAC is converted to byte format.
+7. Attacker extracts SHA1 internal state from MAC byte format.
+8. Attacker iterates over possible key lengths to find a valid MAC.
+9. Attacker validates the MAC with the server.
+10. Server prepends its key to the message and computes hash.
+11. Server checks the validity of the MAC.

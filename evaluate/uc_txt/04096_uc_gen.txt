@@ -1,0 +1,21 @@
+1. PSU initiates payment cancellation request to TPP.
+2. TPP forwards the request to XS2A through a REST Call.
+3. XS2A requests payment details from CMS.
+4. XS2A calls SPI to initialize payment cancellation.
+5. SPI calls ASPSP to initiate payment cancellation.
+6. SPI communicates back the payment cancellation status to XS2A.
+7. XS2A updates payment status in CMS.
+8. XS2A responds to TPP with an HTTP code 400 if payment status is blocked.
+9. TPP notifies PSU that payment cannot be cancelled.
+10. XS2A starts the authorisation request process if payment status is not finalized.
+11. SPI initiates cancellation authorisation request to ASPSP.
+12. ASPSP responds with cancellation authorisation details to SPI.
+13. SPI communicates back the authorisation response to XS2A.
+14. XS2A saves the authorisation in CMS.
+15. XS2A responds to TPP with a link for PSU to update authentication details.
+16. TPP requests PSU to enter User-id and password.
+17. PSU provides authentication details to TPP.
+18. TPP updates PSU data with authentication details.
+19. XS2A updates SCA status and payment status in CMS.
+20. XS2A responds to TPP with the updated PSU data and SCA status.
+21. TPP notifies PSU about the cancellation status.

@@ -1,0 +1,24 @@
+1. Enterprise submits data to Vue for admission application.
+2. Controller processes the application by calling /ent/apply.
+3. EntService submits admission data to MongoDB for file upload.
+4. EntService saves file association information in MySQL.
+5. Controller returns the application result to Vue.
+6. Enterprise receives the admission status from Vue.
+7. RegulatoryAgency queries the list of registered but not approved enterprises.
+8. Vue sends a request to Controller for fetching enterprise list.
+9. Controller retrieves the enterprise list through EntService from MySQL.
+10. Controller returns the list to Vue.
+11. RegulatoryAgency receives the list from Vue.
+12. RegulatoryAgency approves the enterprise admission.
+13. Vue sends approval request to Controller via /ent/pass.
+14. Controller approves the application in EntService.
+15. EntService deploys the admission contract using JAVA_SDK.
+16. EntService updates the admission details in MySQL.
+17. Controller returns the approval result to Vue.
+18. RegulatoryAgency receives the approval result.
+19. Enterprise queries the admission result.
+20. Vue requests Controller to fetch the admission result.
+21. Controller retrieves the admission details from MySQL using EntService.
+22. EntService fetches admission contract details using JAVA_SDK.
+23. Controller returns the result to Vue.
+24. Enterprise receives the admission result from Vue.

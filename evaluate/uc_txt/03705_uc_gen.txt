@@ -1,0 +1,8 @@
+1. User enters the diary room participation code.
+2. Client sends a POST request to /v1/rooms/:room_id/join with the entered code.
+3. API performs JSON validation of the code.
+4. API retrieves the room code from the database.
+5. API verifies the user-entered code with the retrieved code.
+6. API inserts the user account into RoomMember.
+7. API appends the AccountID to Room.Orders.
+8. API responds with '201 Created' to the client.

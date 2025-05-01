@@ -1,0 +1,15 @@
+@startuml
+actor user_logs
+participant backendserver
+activate backendserver
+user_logs -> backendserver: in_sign_up_on_frontend()
+activate user_logs
+participant credentials_to_backendserver
+backendserver -> credentials_to_backendserver: send()
+activate credentials_to_backendserver
+deactivate credentials_to_backendserver
+participant creates_user_on_firebase
+backendserver -> creates_user_on_firebase: authenticate()
+activate creates_user_on_firebase
+deactivate creates_user_on_firebase
+@enduml

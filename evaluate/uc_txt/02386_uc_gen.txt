@@ -1,0 +1,22 @@
+1. UserX queries Server A for data with version=null.
+2. Server A queries Distributed Cache for item 1 with version=null.
+3. Distributed Cache returns item 1, version=12:00, stock=10 to Server A.
+4. Server A returns data (item 1, version=12:00, stock=10) to UserX.
+5. UserX saves version=12:00 in cookie/local storage.
+6. UserX queries Server A for data with version=12:00.
+7. Server A checks local cache and returns data from local cache (item 1, version=12:00, stock=10) to UserX.
+8. UserY queries Server B for data with version=null.
+9. Server B queries Distributed Cache for item 1 with version=null.
+10. Distributed Cache returns item 1, version=12:05, stock=8 to Server B.
+11. Server B returns data (item 1, version=12:05, stock=8) to UserY.
+12. UserY saves version=12:05 in cookie/local storage.
+13. UserY queries Server B for data with version=12:05.
+14. Server B checks local cache and returns data from local cache (item 1, version=12:05, stock=8) to UserY.
+15. UserY queries Server A for data with version=12:05.
+16. Server A checks local cache (version=12:00) and queries Distributed Cache for the latest data (item 1, version=12:05).
+17. Distributed Cache returns item 1, version=12:10, stock=8 to Server A.
+18. Server A returns data (item 1, version=12:10, stock=8) to UserY.
+19. UserY saves version=12:10 in cookie/local storage.
+20. UserX queries Server A for data with version=12:00.
+21. Server A checks local cache (version=12:10) and returns data from local cache (item 1, version=12:10, stock=8) to UserX.
+22. UserX saves version=12:10 in cookie/local storage.

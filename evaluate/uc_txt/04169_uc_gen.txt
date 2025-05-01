@@ -1,0 +1,9 @@
+1. User Right Clicks on the Audio Channel to open context menu.
+2. AudioChannel activates and handles the context menu event.
+3. ContextMenu is rendered.
+4. User Clicks "Delete" in the ContextMenu.
+5. ContextMenu triggers deleteHandler in AudioChannel.
+6. AudioChannel delegates deleteChannel(index) action to ChannelAction.
+7. ChannelAction initiates deleteChannelSaga.
+8. ChannelSaga emits 'CHANNEL_DELETE_CHANNEL' event.
+9. EventEmitter notifies AudioController to remove the channel.

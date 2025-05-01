@@ -1,0 +1,10 @@
+1. User sends a request to retrieve the minimum and maximum winners.
+2. ProducerController receives the request to retrieve the minimum and maximum winners.
+3. ProducerController calls ProducerService to find the minimum and maximum winners.
+4. ProducerService calls MovieService to find the winners.
+5. MovieService queries MovieRepository to find movies with winners.
+6. MovieRepository returns a list of movies with winners to MovieService.
+7. MovieService sets the ProducerWinnerDto based on the retrieved movies.
+8. ProducerService maps the ProducerWinnerDto to Producer years.
+9. ProducerService builds the response for the minimum and maximum winners.
+10. ProducerController sends the ProducerWinnerResponse back to the User.

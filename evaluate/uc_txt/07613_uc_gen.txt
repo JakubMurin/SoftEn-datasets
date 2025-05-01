@@ -1,0 +1,22 @@
+1. User logs in.
+2. (Client) Retrieves JWT from API.
+3. (API) Validates JWT and fetches room code from DB.
+4. (API) Validates user's code.
+5. (API) Inserts Account to RoomMember entity in DB.
+6. (API) Appends AccountID to Room.Orders entity in DB.
+7. (API) Responds to Client with 201 Created.
+8. (User) Clicks Owner Settings screen.
+9. (Client) Accesses and renders settings screen using isMaster field from /v1/rooms/:room_id endpoint.
+10. (Client) Changes and completes access code reset.
+11. (API) Updates room information in the database.
+12. (API) Responds to Client with 204 No Content.
+13. (User) Clicks Owner Settings screen.
+14. (Client) Renders `period` from /v1/rooms endpoint.
+15. (Client) Modifies deadline and confirms new date.
+16. (API) Updates room details in the DB related to deadline.
+17. (API) Responds to Client with 204 No Content.
+18. (User) Clicks Owner Settings screen.
+19. (Client) Renders members list from /v1/rooms.
+20. (Client) Rearranges composing order and confirms completion.
+21. (API) Updates room data concerning the revised writing sequence.
+22. (API) Communicates success to Client with ANSI08 resolution.

@@ -1,0 +1,9 @@
+1. User selects the question difficulty (Hard/Medium/Easy).
+2. User clicks the submit button.
+3. Frontend sends a POST request to API Gateway (/api/match/submit) with payload containing user and selected difficulty.
+4. API Gateway forwards the request to Matching Service Controller.
+5. Matching Service Controller processes the request, passes it to the Matching Service, and stores the match request.
+6. Matching Service creates a MatchRequest object and saves it to the MatchRequests collection in the Matching Database.
+7. Matching Service generates a request identifier (requestId).
+8. Matching Service Controller responds with a 200 OK status to API Gateway along with the requestId.
+9. API Gateway returns a 200 OK status to the Frontend with the accepted requestId.

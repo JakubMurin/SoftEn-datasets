@@ -1,0 +1,8 @@
+1. User executes the application.
+2. LoadConfig() gets executed by main.
+3. InitializeDefaults() is called by config.
+4. Parse CLI flags (--file, --source, --language, etc.) by cobra.
+5. Determine config file path (either --file or pdfminion.cfg).
+6. Read config file and get Parsed config values from viper.
+7. Parse language tag (if applicable) by language.
+8. Use MinionConfig for application logic by domain.

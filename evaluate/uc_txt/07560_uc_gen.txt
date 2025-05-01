@@ -1,0 +1,11 @@
+1. User clicks delete account.
+2. Frontend activates.
+3. Frontend gets User's name and email.
+4. Frontend calls onDeleteAccount(User.email).
+5. AuthInterceptor prepares HTTP DELETE request.
+6. HttpClient forwards the request with Authorization header.
+7. Controller receives DeleteAcc request.
+8. Controller calls IUserAppService to delete the account.
+9. IUserAppService calls UserAppService to delete the account.
+10. UserAppService deletes the account from the UserManager.
+11. UserManager finds the user by Email in the database.

@@ -1,0 +1,14 @@
+1. Consumer initiates Checkout Intent.
+2. Merchant creates Payment Request using Payment Request API with SRC Payment Method URLs and SRCI URL.
+3. Merchant calls HasEnrolledInstruments to check if Consumer can be recognized locally.
+4. Browser and PH perform CanMakePayment check to verify Consumer recognition.
+5. Merchant displays Pay Button.
+6. Consumer clicks Pay Button.
+7. Merchant launches Payment Request flow using Show.
+8. Browser and PH perform CanMakePayment check for Payment Request execution.
+9. Browser invokes Payment Handler to handle checkout process.
+10. Payment Handler requests Payment Handler Page from Window.
+11. Payment Handler sends Payment Request Data to SRCI for checkout completion.
+12. SRCI handles checkout process and returns result to Payment Handler.
+13. Payment Handler sends result data back to Browser.
+14. Merchant completes checkout and notifies Consumer.

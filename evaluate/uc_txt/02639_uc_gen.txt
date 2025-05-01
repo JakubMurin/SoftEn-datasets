@@ -1,0 +1,21 @@
+1. User requests to reroute the flow.
+2. FlowManager reroutes the flow.
+3. FlowManager starts flow rerouting.
+4. FlowManager retrieves the flow from the database.
+5. FlowManager validates the flow existence.
+6. PathComputer finds a path for the flow.
+7. ResourcePool allocates resources for the found path.
+8. FlowManager persists path changes in the database.
+9. CommandBuilder creates switch rules.
+10. SpeakerWorker installs rules for the new path.
+11. RulesValidator validates installed egress/transit rules.
+12. SpeakerWorker installs ingress rules.
+13. RulesValidator validates installed ingress rules.
+14. DAO updates the flow to reference the active path.
+15. History marks flow as UP.
+16. FlowManager removes old flow rules.
+17. CommandBuilder removes rules from the old path.
+18. RulesValidator validates removed rules.
+19. ResourcePool deallocates resources of the old path.
+20. DAO removes the old path.
+21. History logs resources deallocation.

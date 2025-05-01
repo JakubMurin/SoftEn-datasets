@@ -1,0 +1,11 @@
+1. User A initiates a transaction to set a key-value pair in the keychain through API Client.
+2. API Client sends a request to API Server.
+3. API Server forwards the request to AWS SM Connector to set the key-value pair.
+4. AWS SM Connector retrieves the AWS client.
+5. AWS SM Connector attempts to describe the secret using the AWS client.
+6. If successful, AWS SM Connector responds to API Server with "True".
+7. If an error occurs, AWS SM Connector notifies API Server with the error message "Secrets Manager can't find the specified secret".
+8. AWS SM Connector sends the response to API Server.
+9. API Server formats the response.
+10. API Client receives the formatted response.
+11. API Client sets the keychain entry and sends the response to User A.

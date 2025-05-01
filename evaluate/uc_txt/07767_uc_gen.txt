@@ -1,0 +1,13 @@
+1. Admin sends a POST request to the PatientController to register a new patient by providing CreatePatientDto.
+2. PatientController activates to process the registration request.
+3. PatientController sends AddAsync(CreatePatientDto) request to PatientService.
+4. PatientService activates to handle the AddAsync operation.
+5. PatientService checks if the provided email in CreatePatientDto is unique by calling IsEmailUniqueAsync method in IPatientRepository.
+6. PatientService checks if the provided phone number in CreatePatientDto is unique by calling IsPhoneNumberUniqueAsync method in IPatientRepository.
+7. PatientService generates a unique medical number for the new patient record.
+8. PatientService creates a new instance of the Patient class with the provided details.
+9. PatientService calls AddAsync method in IPatientRepository to add the new patient.
+10. PatientService calls CommitAsync method in IUnitOfWork to commit the changes in the database.
+11. PatientService sends an asynchronous email using SendEmailAsync method in IEmailService.
+12. PatientService deactivates after successfully processing the registration and responding with PatientDto.
+13. PatientController responds with status code 200 OK along with the PatientDto to Admin.

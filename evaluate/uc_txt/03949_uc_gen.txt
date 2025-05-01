@@ -1,0 +1,16 @@
+1. Nawigator selects list of pending accounts.
+2. Nawigator sends request to fetch search preferences for account.
+3. AccountController requests search preferences from AccountEndpoint.
+4. AccountEndpoint calls getAccountSearchPreferences from AccountService.
+5. If account does not exist, call AccountFacade's findByLogin.
+6. If account exists, call AccountFacade's findByLogin and account is found.
+7. If preferences for account do not exist, call ListSearchPreferencesFacade's findByAccount.
+8. If preferences for account exist, call ListSearchPreferencesFacade's findByAccount and preferences are found.
+9. Nawigator sends request to fetch list.
+10. AccountController requests list from AccountEndpoint.
+11. AccountEndpoint calls getNotConfirmedAccounts from AccountService.
+12. If account does not exist, call AccountFacade's findByLogin.
+13. If account exists, call AccountFacade's findByLogin and account is found.
+14. If preferences for account do not exist, call ListSearchPreferencesFacade's findByAccount and create new preferences.
+15. If preferences for account exist, update preferences using ListSearchPreferencesFacade.
+16. Call AccountFacade's findNotConfirmedAccounts to get list.

@@ -1,0 +1,21 @@
+1. El Usuario Autenticado selecciona comprar sobre en la Interfaz de Usuario.
+2. La Interfaz de Usuario solicita la compra del paquete de cartas al Sistema de Compras.
+3. El Sistema de Compras inicia sesión de transacción en la Base de Datos.
+4. La Base de Datos confirma el inicio de sesión.
+5. El Sistema de Compras busca el paquete de cartas en la Base de Datos.
+6. La Base de Datos retorna los datos del paquete de cartas.
+7. El Sistema de Compras verifica la disponibilidad del paquete.
+8. Si el paquete no está disponible, se notifica al Usuario Autenticado y se muestra un mensaje de paquete agotado.
+9. Si el paquete está disponible, se verifica el saldo del usuario en la Base de Datos.
+10. Si el saldo es insuficiente, se notifica al Usuario Autenticado y se muestra un mensaje de saldo insuficiente.
+11. Si el saldo es suficiente, se generan las cartas y se actualiza el inventario en la Base de Datos.
+12. La Base de Datos confirma la generación de las cartas.
+13. Se actualiza el saldo del usuario en la Base de Datos.
+14. La Base de Datos confirma la actualización del saldo.
+15. Se registran las transacciones por cada carta generada en la Base de Datos.
+16. La Base de Datos confirma las transacciones registradas y añade las cartas generadas a la colección del usuario.
+17. La Base de Datos confirma la actualización de la colección.
+18. Se notifica al Usuario Autenticado el éxito de la compra y se muestran las cartas generadas.
+19. En caso de error durante el proceso, se aborta la transacción, se notifica al Usuario Autenticado y se muestra un mensaje de error.
+20. El Sistema de Compras cierra la sesión de transacción en la Base de Datos.
+21. La Base de Datos confirma el cierre de sesión.

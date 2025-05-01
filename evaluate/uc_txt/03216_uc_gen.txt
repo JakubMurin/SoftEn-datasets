@@ -1,0 +1,9 @@
+1. User clicks the button to trigger the operation.
+2. DirectoriesFiles triggers the operation.
+3. DirFileView handles the operation by passing operation, path, and file name to DirFileService.
+4. DirFileService delegates the operation handling to DirFileHandler.
+5. DirFileHandler creates or deletes the directory/file using CreateDirFileUtil or DestroyDirFileUtil based on the operation.
+6. DirFileHandler returns the result to DirFileService.
+7. DirFileService returns the result to DirFileView.
+8. DirFileView notifies DirectoriesFiles about the completion of the operation.
+9. DirectoriesFiles shows a notification to the User.

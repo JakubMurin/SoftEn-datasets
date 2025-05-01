@@ -1,0 +1,13 @@
+1. Recipient triggers POST /Mail/{id}/Claim.
+2. MailController checks if the user is authorized as a Receptionist.
+3. IMailService claims the mail with the provided Id.
+4. IMailService starts a transaction.
+5. IMailService retrieves the mail by Id from MailRepository.
+6. IMailRepository returns the mail.
+7. IMailService retrieves the user by the mail's RecipientId from UserRepository.
+8. IUserRepository returns the user.
+9. IMailService updates the mail information in MailRepository.
+10. IMailService creates an email notification in EmailNotificationRepository.
+11. IMailService commits the transaction in UnitOfWork.
+12. IMailService informs MailController about successful claiming.
+13. MailController responds to Recipient with a 200 OK status.

@@ -1,0 +1,14 @@
+1. User creates istiocsr CR.
+2. Operator reconciles istiocsr event.
+3. Operator prepares istio-csr manifests based on istiocsr config.
+4. Operator deploys istio-csr operand resources.
+5. Istiod requests certificate from IstioCSROperand.
+6. IstioCSROperand creates CSR resource.
+7. CertManagerOperand is notified of CSR creation.
+8. CA sends CSR for signing.
+9. CA returns signed certificate to CertManagerOperand.
+10. CertManagerOperand updates CSR with signed cert.
+11. API notifies IstioCSROperand of signed certificate availability.
+12. IstioCSROperand responds to Istiod with signed certificate.
+13. Istiod updates Proxy with cert.
+14. Proxy uses certificate for TLS.

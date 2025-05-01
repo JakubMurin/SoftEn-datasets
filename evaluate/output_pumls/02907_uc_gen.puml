@@ -1,0 +1,37 @@
+@startuml
+actor broker_team_member
+actor broker_ui
+actor controller_updates_article_page
+actor ads_controller
+actor user
+actor controller
+actor receiver
+actor user_requests_job_status_.
+actor router
+participant derivation_logic_module
+activate derivation_logic_module
+broker_team_member -> derivation_logic_module: select_option_add_ppopcode_cases()
+activate broker_team_member
+broker_ui -> derivation_logic_module: send_request_to_validation_rules_api_add_new_ppopcode_cases_forgn()
+activate broker_ui
+participant derivation_rules
+derivation_logic_module -> derivation_rules: update()
+activate derivation_rules
+deactivate derivation_rules
+participant new_pp_codes_into_logic
+derivation_logic_module -> new_pp_codes_into_logic: integrate()
+activate new_pp_codes_into_logic
+deactivate new_pp_codes_into_logic
+participant updated_rules_from_rules_database
+derivation_logic_module -> updated_rules_from_rules_database: retrieve()
+activate updated_rules_from_rules_database
+deactivate updated_rules_from_rules_database
+participant logic_update_to_validation_rules_api
+derivation_logic_module -> logic_update_to_validation_rules_api: confirm()
+activate logic_update_to_validation_rules_api
+deactivate logic_update_to_validation_rules_api
+derivation_logic_module -> broker_ui: display()
+activate broker_ui
+deactivate broker_ui
+broker_ui -> derivation_logic_module: show_broker_team_member()
+@enduml

@@ -1,0 +1,20 @@
+1. User selects map path and type using hadmapconnect.
+2. MapEngine parses data and performs map file analysis.
+3. MapImport transforms data into data model and constructs geometric map data.
+4. MapImport inserts map data into R-tree for storage.
+5. MapImport returns status code to MemSearch.
+6. MapImport returns status code to MapEngine.
+7. MapEngine returns status code to Application.
+8. Application requests road information using getRoads.
+9. MapEngine searches for roads in R-tree using searchRoads.
+10. MemSearch searches for lanes in R-tree using searchLanes.
+11. MemSearch returns road pointers to MapEngine.
+12. MapEngine returns road pointers to Application.
+13. Application requests lane links information using getLaneLinks.
+14. MapEngine searches for lane links in R-tree using searchLaneLinks.
+15. MemSearch returns lane links information to MapEngine.
+16. MapEngine returns lane links information to Application.
+17. Application requests objects information on roads using getObjects.
+18. MapEngine searches for objects on roads in R-tree using searchObjects.
+19. MemSearch returns objects information on roads to MapEngine.
+20. MapEngine returns objects information on roads to Application.

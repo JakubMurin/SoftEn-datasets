@@ -1,0 +1,19 @@
+1. ClientRequest sends a request to Servlet for a specific endpoint.
+2. Servlet pre-processes the request.
+3. Filter allows access if the endpoint is for guest role only.
+4. Servlet proceeds with the request.
+5. Endpoint performs operations for the guest role.
+6. Endpoint responds to the request.
+7. Servlet sends the response back to the ClientRequest.
+8. Filter checks if the session Principal is valid for the authorized role and the authorization is not expired.
+9. Filter allows access if session Principal is valid and authorization is not expired.
+10. Servlet proceeds with the request.
+11. Endpoint performs operations for the authorized role.
+12. Endpoint responds to the request.
+13. Servlet sends the response back to the ClientRequest.
+14. Filter checks SecurityContext against endpoint roles.
+15. Filter allows access if roles are valid.
+16. Servlet proceeds with the request.
+17. Endpoint performs operations for the authorized roles.
+18. Endpoint responds to the request.
+19. Servlet sends the response back to the ClientRequest.

@@ -1,0 +1,19 @@
+1. BUS actor registers as a listener for FaultManagementJobNotification and FaultManagementReportNotification with Hub.
+2. BUS actor creates a Fault Management Job.
+3. Fault Management Job is created successfully.
+4. Fault Management Job generates data.
+5. Fault Management Job state changes to inProgress.
+6. Fault Management Job creates an event.
+7. Fault Management Job notifies listeners about the faultManagementJobCreateEvent.
+8. Fault Management Job creates a Fault Management Report.
+9. Fault Management Report is created successfully.
+10. Fault Management Report collects data.
+11. Fault Management Report state changes to inProgress.
+12. Fault Management Report state changes to completed.
+13. Fault Management Report notifies listeners about the faultManagementReportStateChangeEvent.
+14. Fault Management Job notifies listeners about the faultManagementJobReportReadyEvent.
+15. Fault Management Job state changes to completed or scheduled.
+16. Fault Management Job notifies listeners about the faultManagementJobStateChangeEvent.
+17. BUS actor requests a Fault Management Report.
+18. Fault Management Report is retrieved successfully.
+19. Fault Management Report notifies listeners about the faultManagementReportStateChangeEvent.

@@ -1,0 +1,17 @@
+1. Business users register for fault management notifications on Fault Management Job and Report.
+2. SOF creates a Fault Management Job upon requested activity.
+3. SOF responds back to Business with a Fault Management Job.
+4. The Fault Management Job creates an event.
+5. The Hub notifies registered Business users about Fault Management Job creation event.
+6. Upon a scheduled date, Fault Management Job changes to 'in progress' state.
+7. The Fault Management Job generates data as needed.
+8. A specified reporting period elapses triggering Fault Management Report creation.
+9. A Fault Management Report receieves a command and is created.
+10. Registered Business users are notified about the creation of the Fault Management Report.
+11. During data collection process, the status of the report becomes 'in progress'.
+12. Data collection completes, and report status transitions to 'completed'.
+13. Once the report is completed, communication informs the respective Fault Management Job.
+14. A readiness signal triggers publication readiness of a fault management job's report.
+15. When the scheduled date comes, the status changes as planned, triggering the report completion/closing of fault management job events.
+16. Notified changes in state events is dispatched to relevant parties based on reporting schedules.
+17. The Business request gets a fault management report yielded by interaction with Fault Management Component.

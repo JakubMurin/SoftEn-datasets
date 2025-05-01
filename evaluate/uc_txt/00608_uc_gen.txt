@@ -1,0 +1,11 @@
+1. Admin_PL requests to remove a member (signId, projectId, removeMemberId).
+2. System checks if the member exists.
+3. System sends an error message to Admin_PL: "Member does not exist".
+4. System proceeds to check if the project exists.
+5. System sends an error message to Admin_PL: "Project does not exist".
+6. System checks if the member is a project leader.
+7. System sets project leader as null if the member is a project leader.
+8. System checks if the member is not a project leader.
+9. System sends an error message to Admin_PL: "Project leader cannot remove themselves".
+10. System proceeds to remove the member from the project.
+11. System sends ProjectResponseDto (id, name, members, issues, leaderId) to Admin_PL.

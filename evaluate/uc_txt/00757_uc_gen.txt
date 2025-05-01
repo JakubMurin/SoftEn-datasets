@@ -1,0 +1,18 @@
+1. User invokes Liba.create(App).
+2. Liba creates cInstance.
+3. Liba passes cInstance to renderC.
+4. renderC receives cInstance from Liba.
+5. renderC sends props and renderLiba to App.
+6. App creates 'button' element.
+7. App receives bElement.
+8. App creates UserCard element.
+9. UserCard calls createChildren with UserCard, props, AppCInstance, and key.
+10. createChildren gets instances from cache if already rendered.
+11. Liba receives request to create UserCard.
+12. renderC receives UserCInstance from Liba.
+13. UserCard sends props and renderLiba to renderC.
+14. UserCard creates 'div' element.
+15. UserCard creates 'div' element.
+16. renderLiba passes back element to UserCard.
+17. UserCard returns element to renderC.
+18. renderC updates instance.element with element.

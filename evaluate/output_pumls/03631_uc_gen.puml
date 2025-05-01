@@ -1,0 +1,20 @@
+@startuml
+actor option_holder
+actor exchange_adapter_contract
+participant option_serie
+activate option_serie
+option_holder -> option_serie: initiate_operation_transferring_option_tokens_to_smart_contract()
+activate option_holder
+participant contract_price_more_than_strike_transfers_corresponding_amount_of_underlying_tokens
+option_serie -> contract_price_more_than_strike_transfers_corresponding_amount_of_underlying_tokens: smart_check()
+activate contract_price_more_than_strike_transfers_corresponding_amount_of_underlying_tokens
+deactivate contract_price_more_than_strike_transfers_corresponding_amount_of_underlying_tokens
+exchange_adapter_contract -> option_serie: put_underlying_tokens()
+activate exchange_adapter_contract
+participant basis_token
+option_serie -> basis_token: get()
+activate basis_token
+deactivate basis_token
+exchange_adapter_contract -> option_serie: check_received_amount_sufficient()
+exchange_adapter_contract -> option_serie: transfer_option_holder()
+@enduml

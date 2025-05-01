@@ -1,0 +1,14 @@
+1. Librarian sends a request to LendingController to retrieve top readers per genre.
+2. LendingController calls GenreService to get the genre by ID.
+3. GenreService queries GenreRepository for the genre by ID.
+4. GenreRepository returns the genre to GenreService.
+5. GenreService provides the genre to LendingController.
+6. LendingController checks if the genre is found or not.
+7. If genre not found, LendingController notifies Librarian with HTTP 404 Not Found.
+8. If genre found, LendingController requests ReaderService to get top readers per genre.
+9. ReaderService queries ReaderRepository for top readers per genre.
+10. ReaderRepository returns a list of top readers to ReaderService.
+11. ReaderService provides the list of top readers to LendingController.
+12. LendingController maps the readers to ReaderView using ReaderViewMapper.
+13. ReaderViewMapper returns an iterable of ReaderViews to LendingController.
+14. LendingController responds to Librarian with HTTP 200 OK along with the iterable of ReaderViews.

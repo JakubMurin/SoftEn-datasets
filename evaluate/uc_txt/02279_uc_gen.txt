@@ -1,0 +1,11 @@
+1. OtherWeb -> AuthApp: Initiate login using Dapp with the provided app-key.
+2. AuthApp -> AuthServer: Retrieve the application information using the app-key.
+3. AuthServer -> AuthApp: Provide application information like name, URL, logo, etc.
+4. AuthApp -> Nami: Connect to Nami Wallet SDK.
+5. AuthApp -> AuthServer: Get a random number for token generation.
+6. AuthServer -> AuthApp: Provide the random number and set access_cookie in the header.
+7. AuthApp -> Nami: Request a signature from Nami Wallet using selected address.
+8. Nami -> AuthApp: Provide the Nami signature.
+9. AuthApp -> AuthServer: Initiate login request with the provided data and signature.
+10. AuthServer -> AuthApp: Authorization response with the access token in the header.
+11. AuthApp -> OtherWeb: Redirect to Dapp return URL using the obtained access token.

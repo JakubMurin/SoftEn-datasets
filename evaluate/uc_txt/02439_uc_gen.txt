@@ -1,0 +1,15 @@
+1. Web UI клик "Создать коллбек".
+2. Web UI отправляет запрос на создание коллбека с параметрами callback_name, description.
+3. Callback GW получает запрос на создание коллбека.
+4. Callback GW отправляет запрос на Token API для валидации API ключа access_token.
+5. Token API возвращает статус true.
+6. Callback GW отправляет запрос на CMA для получения состояния клиента с customer_id.
+7. CMA возвращает статус активный.
+8. Callback GW отправляет запрос на Resource Inventory для создания коллбека с application_uuid, callback.
+9. Resource Inventory возвращает идентификатор созданного коллбека callback_resource_id.
+10. Callback GW отправляет запрос на Resource Inventory для получения атрибутов приложения с application_uuid.
+11. Resource Inventory возвращает ApplicationResource.
+12. Callback GW отправляет запрос на Action History для добавления записи.
+13. Action History возвращает 200 OK.
+14. Callback GW отправляет идентификатор созданного коллбека callback_resource_id на Web UI.
+15. Web UI выводит информацию о новом коллбеке.

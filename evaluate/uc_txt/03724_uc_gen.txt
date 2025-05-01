@@ -1,0 +1,9 @@
+1. Admin sends a request to the admin-api to create a product.
+2. Admin-api calls the payment-processor to create a product with the provided SKU.
+3. Payment-processor sends a request to Stripe to create a product with the SKU.
+4. Stripe processes the request and responds with the product ID.
+5. Payment-processor receives the product ID from Stripe.
+6. Payment-processor sends the product ID back to admin-api.
+7. Admin-api saves the product with the received product ID in the DAO.
+8. DAO saves the product in the system and sends the SKU back to admin-api.
+9. Admin-api responds to the Admin with the SKU of the created product.

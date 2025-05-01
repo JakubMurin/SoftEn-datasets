@@ -1,0 +1,11 @@
+1. Client sends an HTTP request.
+2. API Gateway/Lambda receives the HTTP request and forwards it to CreateTranslationClientActivity.
+3. CreateTranslationClientActivity calls TranslationClientDao to create a new translation client.
+4. TranslationClientDao loads all existing clients for the customer ID from DynamoDB.
+5. TranslationClientDao checks for the existence of an identical translation client name and type.
+6. If an identical translation client name and type exist, an exception is thrown and handled.
+7. If no identical translation client name and type exist, a new translation client is saved in DynamoDB.
+8. DynamoDB saves the new translation client and returns a success response.
+9. TranslationClientDao returns the new translation client object to CreateTranslationClientActivity.
+10. CreateTranslationClientActivity returns the CreateTranslationClientResult to API Gateway/Lambda.
+11. API Gateway/Lambda returns a 200 response with the CreateTranslationClientResult data to the Client.

@@ -1,0 +1,23 @@
+1. User initiates a request to show all existing rows.
+2. API processes the request and calls Lexorank's "getRows()" function.
+3. Lexorank requests a snapshot of rows and ranks from Storage by calling "getSnapshot()".
+4. Storage provides Lexorank with a snapshot of rows and ranks.
+5. Lexorank orders the rows by rank and returns them to API.
+6. API sends the ordered rows back to the user.
+7. User receives the rows ordered by rank.
+8. User decides to insert a new row.
+9. API processes the insert request and calls Lexorank's "insertAt()" function.
+10. Lexorank requests a snapshot of rows and ranks from Storage by calling "lockSnapshot()".
+11. Storage provides Lexorank with a snapshot of rows and ranks.
+12. Lexorank inserts the new row into the system.
+13. Lexorank returns the new row to API.
+14. API sends the new row back to the user.
+15. User receives the newly inserted row.
+16. User decides to update an existing row.
+17. API processes the update request and calls Lexorank's "changePosition()" function.
+18. Lexorank requests a snapshot of rows and ranks from Storage by calling "lockSnapshot()".
+19. Storage provides Lexorank with a snapshot of rows and ranks.
+20. Lexorank updates the existing row with a new position.
+21. Lexorank returns the updated row to API.
+22. API sends the updated row back to the user.
+23. User receives the updated row.

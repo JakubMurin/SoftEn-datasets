@@ -1,0 +1,24 @@
+1. User lists Passage Between 2 Buildings.
+2. listPassageBetween2BuildingsComponentHTML receives user request.
+3. listPassageBetween2BuildingsComponent calls BuildingServiceFE to get Buildings.
+4. BuildingServiceFE calls BuildingController to get list of buildings.
+5. BuildingController calls BuildingServiceBE to find all buildings.
+6. BuildingServiceBE queries database to get list of buildings.
+7. BuildingServiceBE retrieves list of buildings.
+8. BuildingServiceBE sends list of buildings to BuildingController.
+9. BuildingController responds with HTTP 200 OK and list of buildings to BuildingServiceFE.
+10. BuildingServiceFE logs buildings in console.
+11. listPassageBetween2BuildingsComponent returns buildings to user interface.
+12. User asks for 2 buildings.
+13. User selects 2 buildings.
+14. User interface calls ListPassageBetween2Buildings in component.
+15. ListPassageBetween2Buildings calls FloorServiceFE to list floors from building.
+16. FloorServiceFE checks passage in building.
+17. ListPassageBetween2Buildings calls FloorController to find passage.
+18. FloorController calls FloorServiceBE to query database for passage.
+19. FloorServiceBE queries database to find passage in buildings.
+20. FloorServiceBE retrieves passage and sends to FloorController.
+21. FloorController sends passage to FloorServiceFE.
+22. FloorServiceFE returns passage to ListPassageBetween2Buildings component.
+23. ListPassageBetween2Buildings returns passage to user interface.
+24. User sees the Passage Between Buildings.

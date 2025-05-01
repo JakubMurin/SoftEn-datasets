@@ -1,0 +1,36 @@
+1. User initiates the GET request to retrieve producers over the designated API endpoint.
+            Actors Involved: User, ProducerController
+        .
+2. ProducerController requests ProducerService to find minimum and maximum winners.
+            Actors Involved: ProducerController, ProducerService
+        .
+3. ProducerService delegates the task to MovieService to find the winners.
+            Actors Involved: ProducerService, MovieService
+        .
+4. MovieService utilizes MovieRepository to fetch the records where winner is true.
+            Actors Involved: MovieService, MovieRepository
+        .
+5. MovieRepository returns List of Movies to MovieService.
+            Actors Involved: MovieRepository, MovieService
+        .
+6. MovieService processes the data and prepares a set of ProducerWinnerDto.
+            Actors Involved: MovieService, ProducerMapper
+        .
+7. ProducerMapper maps the data into a suitable entity format for downstream processing.
+            Actors Involved: ProducerMapper, ProducerService
+        .
+8. ProducerService constructs a response by setting with ProducerWinnerDto values.
+            Actors Involved: ProducerService, ProducerResponseBuilder
+        .
+9. ProducerResponseBuilder builds final response incorporating the details provided..
+            Actors Involved: ProducerResponseBuilder, ProducerService
+        .
+10. ProducerService converts the ProducerWinnerResponseDto into acceptable format.
+            Actors Involved: ProducerService, ProducerResponseBuilder
+        .
+11. ProducerService crafts a successful response and sends results promptly.
+            Actors Involved: ProducerService, ProducerResponseBuilder   
+        .
+12. ProducerController receives ProducerWinnerResponse and quickly dispatched
+            Actors Involved: ProducerController, User
+        .

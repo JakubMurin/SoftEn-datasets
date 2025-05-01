@@ -1,0 +1,24 @@
+1. Zarządca selects list of pending accounts.
+2. Nawigator sends request to retrieve search preferences for account.
+3. AccountController sends getAccountSearchPreferences request to AccountEndpoint.
+4. AccountEndpoint invokes getAccountSearchPreferences on AccountService.
+5. AccountService calls findByLogin on AccountFacade.
+6. AccountFacade responds with failure information to AccountService.
+7. AccountService calls findByAccount on ListSearchPreferencesFacade.
+8. ListSearchPreferencesFacade responds with failure information to AccountService.
+9. AccountService responds to AccountEndpoint.
+10. AccountEndpoint responds to AccountController.
+11. AccountController responds to Nawigator.
+12. Nawigator sends request to retrieve list.
+13. AccountController sends getNotConfirmedAccounts request to AccountEndpoint.
+14. AccountEndpoint invokes getNotConfirmedAccounts on AccountService.
+15. AccountService calls findByLogin on AccountFacade.
+16. AccountFacade responds with failure information to AccountService.
+17. AccountService calls findByAccount on ListSearchPreferencesFacade.
+18. ListSearchPreferencesFacade responds with no preferences info to AccountService.
+19. AccountService calls create on ListSearchPreferencesFacade.
+20. AccountService calls findNotConfirmedAccounts on AccountFacade.
+21. AccountFacade responds with list of accounts to AccountService.
+22. AccountService responds with list of accounts to AccountEndpoint.
+23. AccountEndpoint responds with list of accounts to AccountController.
+24. AccountController responds with list of accounts to Nawigator.

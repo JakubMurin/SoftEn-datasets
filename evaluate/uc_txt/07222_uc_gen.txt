@@ -1,0 +1,9 @@
+1. Admin creates storage class and specifies management endpoint, replica count, and compression settings.
+2. User requests to create a persistent volume claim (PVC) in Kubernetes.
+3. Kubernetes sends request to CSI driver to create volume.
+4. CSI driver delegates volume creation to target system which responds with unique volume identifier and capacity.
+5. CSI driver provides volume creation response to Kubernetes.
+6. Or.
+7. Admin manually creates volume in target system using LBCLI which generates a volumeId.
+8. Admin creates a PV specifying the volume handle based on the volumeId or management endpoint.
+9. User creates a PVC in Kubernetes.

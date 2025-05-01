@@ -1,0 +1,13 @@
+1. User clicks on the payment button.
+2. Frontend adds course selection record.
+3. Frontend sends order information to order service to create an order.
+4. Order service creates product order, order details, and payment transaction records in the order database.
+5. Order service generates a QR code based on the payment record ID.
+6. User scans the QR code using Alipay.
+7. Frontend requests payment using the payment record ID.
+8. Order service checks the payment record status in the order database.
+9. User inputs password for payment.
+10. User clicks on the complete payment button for active payment query.
+11. Order service updates the order and payment record status based on the payment callback result.
+12. Order service sends a course payment success message to the message queue.
+13. Learning service adds the course to the user's course list for learning.

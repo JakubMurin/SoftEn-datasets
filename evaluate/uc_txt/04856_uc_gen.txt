@@ -1,0 +1,8 @@
+1. El médico inicia el proceso de generación de la orden de evaluación.
+2. El frontend recibe la solicitud de generación de la orden.
+3. El tRPC envía los datos de la orden al Prisma.
+4. El Prisma registra la orden de evaluación en la base de datos.
+5. La base de datos confirma la inserción de la orden.
+6. El Prisma mapea la confirmación y la envía a OrdenCtrl.
+7. OrdenCtrl confirma el registro y notifica al tRPC.
+8. El tRPC notifica al frontend sobre el registro exitoso.

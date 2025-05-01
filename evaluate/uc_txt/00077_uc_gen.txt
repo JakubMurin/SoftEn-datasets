@@ -1,0 +1,6 @@
+1. Admin creates storage class in Kubernetes with management endpoint 10.10.10.40:80, 10.10.10.41:80, 10.10.10.42:80, replica count 3, and compression disabled.
+2. User creates persistent volume claim in Kubernetes.
+3. Kubernetes requests volume creation from CSI plugin.
+4. CSI plugin instructs the target system to create the volume.
+5. Target system acknowledges the creation request and provides the volume ID and capacity to the CSI plugin.
+6. CSI plugin notifies Kubernetes about the successful volume creation.

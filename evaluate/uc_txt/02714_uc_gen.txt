@@ -1,0 +1,26 @@
+1. BUS registers listeners for FaultManagementJobNotification and FaultManagementReportNotification with Hub.
+2. BUS creates a FaultManagementJob.
+3. SOF creates a FaultManagementJob.
+4. SOF responds with FaultManagementJob to BUS.
+5. FaultManagementJob object is activated.
+6. FaultManagementJob creates an event.
+7. Hub notifies listeners about faultManagementJobCreateEvent.
+8. FaultManagementJob generates data.
+9. Reporting period elapses.
+10. FaultManagementJob generates a FaultManagementReport.
+11. FaultManagementReport object is activated.
+12. FaultManagementReport creates an event.
+13. Hub notifies listeners about faultManagementReportCreateEvent.
+14. FaultManagementReport collects data.
+15. FaultManagementReport changes state to "inProgress".
+16. FaultManagementReport changes state to "completed".
+17. Hub notifies listeners about faultManagementReportStateChangeEvent.
+18. FaultManagementJob receives report completed notification.
+19. FaultManagementJob generates a report ready event.
+20. Hub notifies listeners about faultManagementJobReportReadyEvent.
+21. Schedule elapses for FaultManagementJob.
+22. FaultManagementJob changes state to "completed" or "scheduled".
+23. Hub notifies listeners about faultManagementJobStateChangeEvent.
+24. BUS requests for the report.
+25. SOF retrieves the FaultManagementReport.
+26. SOF responds with the FaultManagementReport to BUS.

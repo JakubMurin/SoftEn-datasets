@@ -1,0 +1,18 @@
+1. Developer changes smart contracts and commits to LocalBranch.
+2. Developer creates a changeset using 'npx changeset' command and commits it.
+3. Developer pushes changes and opens a PR on LocalBranch.
+4. Reviewer approves the PR on RemotePR.
+5. Developer deploys changes to all chains from LocalBranch.
+6. Blockchain receives updated or new smart contracts.
+7. Addresses json files are updated in LocalBranch.
+8. Developer pushes updated addresses json files to LocalBranch.
+9. Updated addresses json files are sent to RemotePR.
+10. Developer merges changes to main from RemotePR.
+11. ReleaseGithubAction incorporates changes into main branch.
+12. VersionPackagesPR creates a PR with new versions applied to package.jsons.
+13. AnotherDeveloper pushes a new changeset to main.
+14. ReleaseGithubAction processes new changeset.
+15. VersionPackagesPR updates PR with new versions applied to package.jsons.
+16. Developer merges changes to main in VersionPackagesPR.
+17. Updated versions in packages are reflected in main branch.
+18. ReleaseGithubAction initiates building and publishing of packages through npm.

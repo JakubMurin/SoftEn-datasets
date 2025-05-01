@@ -1,0 +1,17 @@
+1. CA triggers User Registration Start Request to TAS++.
+2. CA prepares ECDH data and signs it.
+3. CA performs ECDH.
+4. CA generates server token seed.
+5. CA prepares to create server token.
+6. CA sends Server Token Creation Request to TAS++.
+7. TAS verifies signatures and generates server token.
+8. TAS encrypts and stores response information.
+9. User KYC process occurs.
+10. CA sends User DID Key Creation Request to WALLET.
+11. WALLET generates keys for key exchange.
+12. CA sends User Registration Request to WALLET.
+13. WALLET creates DID Document and sends User Registration Request to TAS++.
+14. TAS validates serverToken and user mapping information.
+15. TAS stores user mapping information in DB.
+16. CA sends User Registration Completion Request to TAS++.
+17. TAS validates serverToken and closes the transaction.

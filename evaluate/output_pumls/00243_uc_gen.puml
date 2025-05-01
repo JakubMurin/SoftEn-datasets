@@ -1,0 +1,56 @@
+@startuml
+actor player
+actor game_controller
+actor player_clicks
+participant game_interface_requests_to
+activate game_interface_requests_to
+player -> game_interface_requests_to: open_game_interface()
+activate player
+participant map_robot_positions
+game_interface_requests_to -> map_robot_positions: load()
+activate map_robot_positions
+deactivate map_robot_positions
+game_controller -> game_interface_requests_to: initialize_game_state()
+activate game_controller
+game_controller -> game_interface_requests_to: display_initial_map_robot_positions()
+player_clicks -> game_interface_requests_to: on_edit_instructions_button()
+activate player_clicks
+participant instruction_editing_interface
+game_interface_requests_to -> instruction_editing_interface: enter()
+activate instruction_editing_interface
+deactivate instruction_editing_interface
+player -> game_interface_requests_to: select_instruction()
+participant selected_instruction
+game_interface_requests_to -> selected_instruction: add()
+activate selected_instruction
+deactivate selected_instruction
+player -> game_interface_requests_to: continue_selecting_adding_instructions()
+participant selecting_adding_instructions
+game_interface_requests_to -> selecting_adding_instructions: continue()
+activate selecting_adding_instructions
+deactivate selecting_adding_instructions
+player -> game_interface_requests_to: select_instruction()
+game_interface_requests_to -> selected_instruction: add()
+activate selected_instruction
+deactivate selected_instruction
+player -> game_interface_requests_to: continue_selecting_adding_instructions()
+participant instruction_editing
+game_interface_requests_to -> instruction_editing: complete()
+activate instruction_editing
+deactivate instruction_editing
+player_clicks -> game_interface_requests_to: on_start_button()
+participant game
+game_interface_requests_to -> game: start()
+activate game
+deactivate game
+participant executing_instruction_sequence
+game_interface_requests_to -> executing_instruction_sequence: begin()
+activate executing_instruction_sequence
+deactivate executing_instruction_sequence
+game_controller -> game_interface_requests_to: update_game_status()
+player -> game_interface_requests_to: exit_game()
+participant game_exit
+game_interface_requests_to -> game_exit: handle()
+activate game_exit
+deactivate game_exit
+@enduml

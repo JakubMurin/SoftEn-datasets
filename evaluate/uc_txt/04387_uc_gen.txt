@@ -1,0 +1,9 @@
+1. User initiates the stock data fetch request by providing the stock symbol.
+2. StockService fetches stock data information from the designated URL using RestTemplate.
+3. RestTemplate retrieves a JSON response with stock details.
+4. StockService validates if the response is a JSON object.
+5. ObjectMapper parses the JSON response to a JsonNode object.
+6. StockFactory creates a Stock object based on the JSON data obtained.
+7. StockPublisher notifies StockObservers about the new stock data.
+8. StockObserver updates its state with the new stock data.
+9. StockRepository saves the stock data into the database.

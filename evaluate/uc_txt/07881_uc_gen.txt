@@ -1,0 +1,8 @@
+1. Client creates an account by sending a POST request to the AccountController.
+2. AccountController forwards the request to AccountService.
+3. AccountService initializes a new Account.
+4. Account creates a new event.
+5. AccountService returns an AccountCreatedEvent.
+6. EventStore saves the AccountCreatedEvent.
+7. AccountProjection handles the AccountCreatedEvent.
+8. AccountProjection saves the new AccountView in AccountViewRepository.

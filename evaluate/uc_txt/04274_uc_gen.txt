@@ -1,0 +1,7 @@
+1. Apache input filter is triggered by the HTTPRequest actor.
+2. Context enrichment is performed by mod_dup.
+3. Filters are matched in mod_dup.
+4. Delegation to the next handler (WS, mod_rewrite) in PNS_WS.
+5. PNS_WS collects the answer.
+6. Request is prepared for duplication by duplicator.
+7. Duplicated request is sent to mod_compare.

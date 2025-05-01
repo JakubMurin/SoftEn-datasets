@@ -1,0 +1,26 @@
+1. User makes a request to make coffee with specific coffee and sweetener requests.
+2. CoffeeFactory creates a CoffeeRequest based on the provided requests.
+3. CoffeeFactory returns the created CoffeeRequest.
+4. Make_coffee receives the CoffeeRequest.
+5. Make_coffee sets the next ingredient to Milk.
+6. Milk sets the next ingredient to Chocolate.
+7. Chocolate sets the next ingredient to Cinnamon.
+8. Cinnamon sets the next ingredient to Sweetener.
+9. Sweetener sets the next ingredient to NULL.
+10. Make_coffee starts handling the CoffeeRequest.
+11. CoffeeHandlerBase starts handling the CoffeeRequest.
+12. Milk starts handling the CoffeeRequest.
+13. CoffeeHandlerBase continues handling the CoffeeRequest.
+14. Chocolate starts handling the CoffeeRequest.
+15. CoffeeHandlerBase continues handling the CoffeeRequest.
+16. Cinnamon starts handling the CoffeeRequest.
+17. CoffeeHandlerBase continues handling the CoffeeRequest.
+18. Sweetener starts handling the CoffeeRequest.
+19. StirringStrategyFactory creates a StirringStrategy based on the sweetener type.
+20. StirringStrategy stirs the mixture.
+21. Sweetener returns to CoffeeHandlerBase.
+22. Cinnamon returns to CoffeeHandlerBase.
+23. Chocolate returns to Milk.
+24. Milk returns to Coffee.
+25. Coffee returns to make_coffee.
+26. Make_coffee returns the ingredients of the created coffee to the User.

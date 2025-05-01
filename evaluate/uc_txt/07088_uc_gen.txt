@@ -1,0 +1,26 @@
+1. Client creates a new user by sending a POST request to UserController.
+2. UserController forwards the request to UsersService to create the user.
+3. UsersService creates and saves the user in UsersRepository.
+4. UsersService returns the created user to UserController.
+5. UserController responds to the Client with the created user.
+6. Client retrieves all users by sending a GET request to UserController.
+7. UserController requests UsersService to find all users.
+8. UsersService retrieves all users from UsersRepository.
+9. UsersService returns the list of users to UserController.
+10. UserController responds to the Client with the list of users.
+11. Client retrieves a specific user by sending a GET request with user ID to UserController.
+12. UserController requests UsersService to find the user by ID.
+13. UsersService retrieves the user from UsersRepository.
+14. UsersService returns the user to UserController.
+15. UserController responds to the Client with the retrieved user.
+16. Client updates a user by sending a PUT request with user ID to UserController.
+17. UserController requests UsersService to update the user with the specified ID.
+18. UsersService checks if the user exists in UsersRepository.
+19. UsersService updates the user if it exists or throws an exception if not found.
+20. UserController responds to the Client with the updated user or exception message.
+21. Client deletes a user by sending a DELETE request with user ID to UserController.
+22. UserController requests UsersService to remove the user by ID.
+23. UsersService checks if the user exists in UsersRepository.
+24. UsersService handles user removal and related validations/error checks.
+25. UsersService successfully removes the user if conditions are met, or throws exceptions if not.
+26. UserController responds to the Client with success message or exception regarding user deletion.

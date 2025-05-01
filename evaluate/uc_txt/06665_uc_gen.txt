@@ -1,0 +1,17 @@
+1. User clicks login into Adgangsplatformen.
+2. CMS gets authorization URL and return URL from OpenidConnect.
+3. OpenidConnect generates OAuth state hash.
+4. User is redirected to authorization URL.
+5. User is redirected to external site using the full authorization URL.
+6. Internal authentication on Adgangsplatformen.
+7. User is redirected to return URL.
+8. Adgangsplatformen sends response to CMS.
+9. CMS validates values from the Adgangsplatformen response.
+10. OpenidConnect requests access token from Adgangsplatformen.
+11. Adgangsplatformen returns access token with expire timestamp.
+12. OpenidConnect requests user info from Adgangsplatformen.
+13. Adgangsplatformen returns user info (UUID).
+14. OpenidConnect creates or updates user in CMS based on user existence.
+15. OpenidConnect begins Drupal user session.
+16. OpenidConnect saves access token in active user session.
+17. User is redirected to the frontpage.

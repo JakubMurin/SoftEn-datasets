@@ -1,0 +1,9 @@
+1. End user requests a resource from Envoy.
+2. Envoy redirects the end user to ID-provider.
+3. End user performs login and provides consent/authorization to the application.
+4. ID-provider sends callback with authorization code to end user.
+5. End user sends authorization code to Envoy.
+6. Envoy exchanges authorization code for tokens with ID-provider.
+7. Envoy validates id_token according to OpenID Connect.
+8. Envoy stores the session in cache.
+9. Envoy redirects end user with cookies (id_token, session).

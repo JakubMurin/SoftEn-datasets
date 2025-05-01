@@ -1,0 +1,9 @@
+1. Bob pushes a commit to the master branch of the Repository.
+2. Repository triggers the "Awesome pipeline" on receiving the webhook.
+3. "Awesome pipeline" performs the build.
+4. "Awesome pipeline" triggers the "Sync pipeline".
+5. "Sync pipeline" creates an integration_config.yml file.
+6. "Sync pipeline" runs the sync command on the "CI Integration tool".
+7. "CI Integration tool" adds the newly built data to Firestore.
+8. "Sync pipeline" finishes the sync command.
+9. Bob receives the notification that the build data export has finished.

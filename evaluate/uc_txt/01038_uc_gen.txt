@@ -1,0 +1,30 @@
+1. Generate a client keypair via facilitator sdk.
+2. Send job details and the public key to the facilitator.
+3. Choose Validator and Miner.
+4. Send job details to the Validator.
+5. Send initial job details to the Miner.
+6. Check for a free executor and possibly spin up a new one.
+7. Pass initial job details to the Executor.
+8. Report readiness (initial preparations done) to the Miner.
+9. Report readiness (initial preparations done) to the Validator.
+10. Send all job details to the Miner.
+11. Send all job details to the Executor.
+12. Fetch data from the Storage.
+13. Start Job process.
+14. Attempt connecting to a predefined websocket route.
+15. Report readiness for serving requests to the Executor.
+16. Report readiness for serving requests to the Miner.
+17. Report readiness for serving requests, provide Job IP address, port, and Job public key to the Validator.
+18. Report readiness for serving requests, provide Job IP address, port, and Job public key to the Facilitator.
+19. Report readiness for serving requests, provide Job IP address, port, and Job public key to the Client.
+20. Send request to the Job, signed using the client keypair.
+21. Reply to the Client, sign input/output digest with the private counterpart of Job public key.
+22. Assess validity of the response if it is a cross-validation request.
+23. Send info about malicious miner, signed with a validator hotkey if the response is invalid.
+24. Report finish to the Executor.
+25. Upload data to the Storage if the job requires uploading data.
+26. Upload stdout and stderr to the Storage.
+27. Report job done to the Miner.
+28. Report job done to the Validator.
+29. Report job done to the Facilitator.
+30. Report job done to the Client.

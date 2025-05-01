@@ -1,0 +1,13 @@
+1. Game initiates instantiation by calling the constructor of ExtendedVM.
+2. ExtendedVM calls the base constructor of BaseVM.
+3. ViewModelComponent initializes all mixins associated with this VM.
+4. Game destroys the VM instance.
+5. ExtendedVM triggers the base destructor of BaseVM.
+6. ViewModelComponent destructs all mixins associated with this VM.
+7. Game triggers OnFinalize method.
+8. ExtendedVM invokes the original OnFinalize method of BaseVM.
+9. ViewModelComponent finalizes all mixins associated with this VM.
+10. Game accesses methods and getters/setters of ExtendedVM.
+11. ExtendedVM accesses properties through BaseVM.
+12. ExtendedVM accesses properties through MixinInstanceForVMInstance.
+13. Mixin accesses properties and sends response to ExtendedVM.

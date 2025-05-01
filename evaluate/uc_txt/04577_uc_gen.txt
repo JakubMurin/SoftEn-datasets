@@ -1,0 +1,15 @@
+1. Customer places an order through the Confirm Order Panel.
+2. The Confirm Order Panel activates and initiates the creation process.
+3. The Subscription Service is activated to create the subscription.
+4. The Subscription Service triggers the Integration Service to publish the subscription.
+5. The Integration Service interacts with the Connector to publish the event.
+6. The Connector communicates with the ISV to retrieve event information.
+7. The ISV acknowledges the request and responds with event details.
+8. The Connector receives notifications from the ISV and continues the flow.
+9. The Integration Service is informed that the ISV has been notified about the event.
+10. The Subscription Service remains pending for provisioning.
+11. The Subscription Service requests the JBilling API to generate and pay invoices.
+12. The JBilling API fails to generate the invoice due to OrderStatus not being ACTIVE.
+13. The Subscription Service is left with pending subscription status.
+14. The Confirm Order Panel receives the pending subscription status.
+15. The Customer receives notification about the pending subscription.

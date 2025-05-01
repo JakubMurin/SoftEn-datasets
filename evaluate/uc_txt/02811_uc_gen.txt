@@ -1,0 +1,24 @@
+1. User creates a job with UUID.
+2. Scheduler stores SecHub job in SchedulerDB.
+3. User uploads a zip file.
+4. Scheduler stores the zip file in Storage.
+5. User requests job status.
+6. Scheduler reads the SecHub job report status in SchedulerDB.
+7. User marks job as ready to start.
+8. ProductExecution triggers batch job which leads to Analyzer execution.
+9. Analyzer triggers REST call to fetch analyzer queue ID.
+10. Analyzer fetches zip data from Storage.
+11. Analyzer stores file in FileSystem.
+12. Analyzer stores result in AnalyzerDB.
+13. ProductExecution calls ProductExecutor which uses ProductAdapter to interact with SecurityProductXYZ.
+14. ProductAdapter returns a string result.
+15. ProductAdapter returns a product result.
+16. ProductAdapter returns a list.
+17. ProductExecution collects one report from SerecoProductExecutor.
+18. ProductExecution receives Sereco result.
+19. ProductExecution filters report results based on given meta data.
+20. ProductExecution filters report by given meta data and returns filtered report.
+21. Scheduler stores SecHub job report in SchedulerDB.
+22. User fetches SecHub report from Scheduler.
+23. Scheduler reads SecHub job report status from SchedulerDB.
+24. User fetches filtered SecHub report from Scheduler.

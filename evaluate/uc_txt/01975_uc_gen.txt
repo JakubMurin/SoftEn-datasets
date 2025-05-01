@@ -1,0 +1,10 @@
+1. The user selects to delete a holiday.
+2. Confirmation prompt for deletion is displayed to the user.
+3. The user confirms the delete action.
+4. HTTP DELETE request is sent (/nuclea/holiday/delete/idDiaFeriado).
+5. Delete request is forwarded to the holiday controller (Delete(req,res)).
+6. Holiday controller processes the delete action (Delete(req.params.idDiaFeriado)).
+7. Delete query executed in the database (DELETE FROM DiasFeriados WHERE idDiaFeriado=?[id]).
+8. Response is sent as a Promise to the holiday controller.
+9. Response is formatted and sent back (return res.JSON).
+10. Confirmation data is returned in html format to the user.

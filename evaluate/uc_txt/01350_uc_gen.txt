@@ -1,0 +1,8 @@
+1. Cluster Admin initiates RF install iso on BMC_x86.
+2. Operator starts Daemonset via OpenShift API.
+3. Daemon detects DPU type.
+4. Daemon labels node via OpenShift API.
+5. OpenShift API reconciles changes to node spec and gets label.
+6. Operator starts vendor plugin (pod) via OpenShift API.
+7. Vendor Plugin starts grpc.
+8. Daemon initializes vendor plugin and returns ip:port.

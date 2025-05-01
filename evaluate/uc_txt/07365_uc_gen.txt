@@ -1,0 +1,8 @@
+1. Client sends a POST request to API Gateway containing the video URL.
+2. API Gateway fetches video information from External Video Hosting.
+3. API Gateway stores video information in DynamoDB and returns a UUID.
+4. API Gateway invokes the Asynchronous Download Lambda with video payload and UUID.
+5. Asynchronous Download Lambda updates video status to 'downloading' in DynamoDB.
+6. Asynchronous Download Lambda downloads video file from External Video Hosting.
+7. Asynchronous Download Lambda uploads video file to S3.
+8. Asynchronous Download Lambda updates video status to 'downloaded' in DynamoDB.

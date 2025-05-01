@@ -1,0 +1,14 @@
+@startuml
+actor teacher
+actor student
+participant system
+activate system
+teacher -> system: apply_for_github_account()
+activate teacher
+student -> system: apply_for_github_account()
+activate student
+teacher -> system: create_teacher()
+student -> system: create_student()
+student -> system: send_teacher()
+teacher -> system: approve_student()
+@enduml

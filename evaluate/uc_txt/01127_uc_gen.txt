@@ -1,0 +1,11 @@
+1. Recipient sends a request to claim a mail.
+2. MailController checks if the Recipient is authorized as a Receptionist.
+3. MailController instructs MailService to claim the mail.
+4. MailService begins a transaction with UnitOfWork.
+5. MailService retrieves the mail from MailRepository.
+6. MailService retrieves the Recipient user from UserRepository.
+7. MailService updates the mail in MailRepository.
+8. MailService creates an email notification in EmailNotificationRepository.
+9. MailService commits the transaction with UnitOfWork.
+10. MailService responds to MailController with success.
+11. MailController responds to Recipient with 200 OK.

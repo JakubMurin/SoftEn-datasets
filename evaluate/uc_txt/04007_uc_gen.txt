@@ -1,0 +1,14 @@
+1. PSU initiates Payment Cancellation.
+2. TPP checks cancellation possibility based on payment type and ASPSP requirements.
+3. TPP calls XS2A to Cancel payment.
+4. XS2A retrieves payment details from CMS.
+5. XS2A communicates with SPI to initiate payment cancellation.
+6. SPI receives payment cancellation call and processes it.
+7. XS2A updates payment status with CMS.
+8. If payment status is finalized, return 400 error; else proceed without SCA if available.
+9. If SCA is not required, SPI cancels payment without further confirmation.
+10. Responses sent accordingly back to TPP and PSU.
+11. If SCA is required, redirect PSU for authorisation at ASPSP.
+12. PSU authorizes the cancellation through Online Banking interface.
+13. Confirmation of cancellation sent back to BSP and PSU.
+14. Continuous retrieval of payment status and further external API calls.

@@ -1,0 +1,14 @@
+1. User swipes ID tag to start transaction.
+2. Core System authorizes the transaction.
+3. User plugs in the cable.
+4. Libocpp sends TransactionEventRequest::Started to CSMS.
+5. Libocpp inserts transaction details into the database.
+6. User pauses charging of the car.
+7. Libocpp updates transaction charging state and sequence number in the database.
+8. Core System constructs ChargePoint in case of power outage or libocpp crash.
+9. Libocpp gets and re-initializes transaction details for each evse_id.
+10. Libocpp continues normal operations.
+11. User resumes charging of the car.
+12. Libocpp updates transaction charging state and sequence number in the database.
+13. Libocpp prints a warning if there is no known transaction.
+14. Libocpp sends TransactionEventRequest::Ended to CSMS and deletes the transaction from the database.

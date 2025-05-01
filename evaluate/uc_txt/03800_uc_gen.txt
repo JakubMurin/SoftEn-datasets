@@ -1,0 +1,13 @@
+1. User requests private file list from User subservice API router.
+2. User subservice API router forwards the request to User subservice REST API.
+3. Metadata Service retrieves User 1 metadata from Lookup DFS.
+4. Lookup DFS Service reads private store for User 1 using password.
+5. Lookup DFS Service provides a map of [s3:bucket1 : access1, minio:bucket2 : access2] to Metadata Service.
+6. Metadata Service receives user data paths and credentials from Lookup DFS Service.
+7. For each path, Metadata Service accesses private storage using access credentials.
+8. Storage Service reads keystore from Storage adapter.
+9. Storage Service decrypts keystore using password.
+10. Storage adapter lists all private files.
+11. Storage Service decrypts file paths using keystore: path secret.
+12. Metadata Service receives the file list.
+13. User receives a list of all files across all known user DFS's.

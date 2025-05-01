@@ -1,0 +1,47 @@
+@startuml
+actor user_presses_signup
+actor web_client
+actor user
+actor content_query_processor
+actor forward_cancellation_request
+actor content_query_processor_queries
+actor user_logs
+participant remotemodelaccess
+activate remotemodelaccess
+user_presses_signup -> remotemodelaccess: with_invalid_credentials()
+activate user_presses_signup
+participant sign_in_request
+remotemodelaccess -> sign_in_request: handle()
+activate sign_in_request
+deactivate sign_in_request
+remotemodelaccess -> user: post()
+activate user
+deactivate user
+participant null
+remotemodelaccess -> null: return()
+activate null
+deactivate null
+participant null_informs_signupcontroller
+remotemodelaccess -> null_informs_signupcontroller: receive()
+activate null_informs_signupcontroller
+deactivate null_informs_signupcontroller
+remotemodelaccess -> user: display()
+activate user
+deactivate user
+user_presses_signup -> remotemodelaccess: with_valid_credentials()
+remotemodelaccess -> sign_in_request: handle()
+activate sign_in_request
+deactivate sign_in_request
+remotemodelaccess -> user: post()
+activate user
+deactivate user
+remotemodelaccess -> user: return()
+activate user
+deactivate user
+remotemodelaccess -> user: receive()
+activate user
+deactivate user
+remotemodelaccess -> user: change()
+activate user
+deactivate user
+@enduml

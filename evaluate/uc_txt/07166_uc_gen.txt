@@ -1,0 +1,13 @@
+1. Librarian triggers GET request "/api/lendings/top-readers/{genreId}".
+2. LendingController activates and calls GenreService's getGenreById(genreId) method.
+3. GenreService activates and queries GenreRepository to findGenreById(genreId).
+4. GenreRepository retrieves the genre data.
+5. GenreService returns the genre to LendingController.
+6. If genre is not found, LendingController returns HTTP 404 Not Found to Librarian.
+7. If genre is found, LendingController calls ReaderService to getTopReadersperGenre.
+8. ReaderService activates and queries ReaderRepository for top readers per genre.
+9. ReaderRepository retrieves the top readers.
+10. ReaderService returns the readers to LendingController.
+11. LendingController activates ReaderViewMapper to convert readers into reader views.
+12. ReaderViewMapper returns the reader views to LendingController.
+13. LendingController returns HTTP 200 OK with the reader views to Librarian.

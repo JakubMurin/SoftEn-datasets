@@ -1,0 +1,48 @@
+1. PSU initiates payment through TPP.
+2. TPP initiates payment by calling XS2A to start the process.
+3. XS2A sends SPI a request to initiate the payment.
+4. SPI processes the payment initiation request.
+5. SPI sends the payment initiation response back to XS2A.
+6. XS2A saves the payment information.
+7. XS2A sends the payment initiation response back to TPP.
+8. TPP starts the authorization process.
+9. XS2A sends an authorization request to ASPSP.
+10. ASPSP responds with the authorization details.
+11. XS2A saves the authorization details.
+12. XS2A sends the authorization response back to TPP.
+13. TPP requests PSU for authentication.
+14. PSU provides user-id and password.
+15. TPP updates PSU data with authentication details.
+16. XS2A processes the PSU data update.
+17. XS2A sends the updated details to SPI for payment authorization.
+18. SPI processes the payment authorization.
+19. SPI responds with the authorization status.
+20. XS2A updates the authorization status in the system.
+21. TPP requests PSU to select an SCA method.
+22. PSU selects the SCA method.
+23. TPP updates PSU data with the selected SCA method.
+24. XS2A processes the updated SCA method.
+25. XS2A sends the SCA method selection to SPI for authorization.
+26. SPI processes the SCA method selection.
+27. SPI responds with the authorization code result.
+28. XS2A updates the authorization status based on the SCA method.
+29. PSU provides authentication data.
+30. TPP sends the authentication data to XS2A for transaction authorization.
+31. XS2A processes the transaction authorization request.
+32. XS2A sends the transaction authorization request to SPI.
+33. SPI processes the transaction authorization request.
+34. SPI responds with the authorized payment.
+35. XS2A updates the payment status.
+36. TPP informs PSU that payment is authorized.
+37. TPP requests payment status from XS2A.
+38. XS2A retrieves payment status from SPI and ASPSP.
+39. XS2A updates the transaction status.
+40. TPP receives the transaction status response.
+41. TPP requests payment details from XS2A.
+42. XS2A retrieves payment details from SPI and ASPSP.
+43. XS2A updates the payment details.
+44. TPP receives the payment details response.
+45. TPP requests SCA status from XS2A.
+46. XS2A retrieves SCA status from SPI and ASPSP.
+47. XS2A updates the SCA status.
+48. TPP receives the SCA status response.

@@ -1,0 +1,26 @@
+@startuml
+actor user_clicks
+actor inspector
+actor customer_logs
+actor customer
+participant backend_returns_confirmation
+activate backend_returns_confirmation
+user_clicks -> backend_returns_confirmation: on_call_trash_icon._todolist_on_todowrapper()
+activate user_clicks
+participant deletetodo_on_backend
+backend_returns_confirmation -> deletetodo_on_backend: call()
+activate deletetodo_on_backend
+deactivate deletetodo_on_backend
+participant todowrapper
+backend_returns_confirmation -> todowrapper: to()
+activate todowrapper
+deactivate todowrapper
+participant task_from_list
+backend_returns_confirmation -> task_from_list: remove()
+activate task_from_list
+deactivate task_from_list
+participant task_list_for_user
+backend_returns_confirmation -> task_list_for_user: update()
+activate task_list_for_user
+deactivate task_list_for_user
+@enduml

@@ -1,0 +1,16 @@
+1. User requests to make a coffee with specified ingredients and sweeteners.
+2. CoffeeFactory creates a CoffeeRequest based on the specified ingredients.
+3. CoffeeFactory sends CoffeeRequest to make_coffee participant.
+4. make_coffee sets next participant to add Milk.
+5. Milk sets next participant to add Chocolate.
+6. Chocolate sets next participant to add Cinnamon.
+7. Cinnamon sets next participant to add Sweetener.
+8. Sweetener sets null next participant in the chain.
+9. make_coffee delegates the coffee making handling to CoffeeHandlerBase.
+10. CoffeeHandlerBase forwards the request to add Milk based on the CoffeeRequest.
+11. Milk forwards the CoffeeRequest to add Chocolate.
+12. CoffeeHandlerBase forwards the request to add Cinnamon based on the CoffeeRequest.
+13. Cinnamon forwards the CoffeeRequest to add Sweetener.
+14. CoffeeHandlerBase processes the request to add Sweetener.
+15. Sweetener creates a stirring strategy based on the sweetener type.
+16. Sweetener stirs the mixture.

@@ -1,0 +1,30 @@
+1. Customer Manager asks Publish Job Opening UI to display job openings in the results phase.
+2. Publish Job Opening UI gets job openings.
+3. Publish Job Opening Controller gets job openings from Job Opening Repository.
+4. Job Opening Repository sends job openings back to Controller.
+5. Controller sends job openings to UI.
+6. UI displays job openings to Customer Manager.
+7. Customer Manager selects a job opening to publish results.
+8. UI requests Controller to publish job opening results.
+9. Controller sends a request to Follow Up Server Proxy to send a result email request for the job opening.
+10. Follow Up Server Proxy creates and connects a Client Socket.
+11. Proxy sends a request to Socket for the connection.
+12. Socket writes the request to Follow Up Server.
+13. Follow Up Server parses the request.
+14. Follow Up Server creates a Result Email Request.
+15. Result Email Request service executes the request.
+16. Result Email Request service selects candidates for the job opening.
+17. Selected candidates and rejected candidates lists are returned to Result Email Request service.
+18. Email Service sends emails to selected candidates.
+19. Email Service creates a Notification.
+20. Notification Repository saves the notification.
+21. Notification Repository sends the notification to Email Service.
+22. Email Service confirms the emails were sent.
+23. Result Email Request service confirms the emails were sent.
+24. Follow Up Server writes a response to Socket.
+25. Client Socket receives the response.
+26. Follow Up Server closes the connection with Socket.
+27. Socket sends the response to Follow Up Server Proxy.
+28. Proxy sends the response to Controller.
+29. Controller sends the response to UI.
+30. UI confirms the successful operation to Customer Manager.

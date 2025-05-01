@@ -1,0 +1,19 @@
+1. navegador accesses /fault/add.
+2. fault.routes handles GET /fault/add.
+3. fault.controller retrieves faultAdd form.
+4. faultAdd.ejs displays fault form.
+5. navegador validates fields.
+6. navegador submits fault data.
+7. fault.routes handles POST /fault/add.
+8. fault.controller validates fields.
+9. fault.controller creates new FaultModel instance.
+10. faultModelInstance saves data.
+11. mysql executes SELECT userID FROM user WHERE mail = ?.
+12. faultModelInstance receives Result.
+13. faultModelInstance checks if user exists.
+14. faultModelInstance handles error.
+15. faultModelInstance inserts fault data.
+16. mysql executes INSERT INTO fault.
+17. faultModelInstance receives Insert OK.
+18. fault.controller handles registered fault.
+19. fault.controller redirects to /fault, info.

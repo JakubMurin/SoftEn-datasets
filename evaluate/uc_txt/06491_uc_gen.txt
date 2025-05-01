@@ -1,0 +1,14 @@
+1. User sends a POST request to sign up.
+2. AccessController receives the sign-up request.
+3. AccessService processes the sign-up request.
+4. AccessService checks if the user already exists.
+5. User already exists: AccessService throws an error.
+6. User already exists: AccessController sends an error message to User.
+7. User does not exist: AccessService generates a salt.
+8. User does not exist: bcrypt receives the salt.
+9. User does not exist: bcrypt hashes the password with the salt.
+10. User does not exist: AccessService receives the hashed password.
+11. User does not exist: AccessService creates a new user with email, hashed password, and role.
+12. User does not exist: AccessService sends the new user to AccessController.
+13. AccessController returns the user to User.
+14. AccessController sends a success message to User.

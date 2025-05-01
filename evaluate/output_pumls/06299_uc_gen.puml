@@ -1,0 +1,19 @@
+@startuml
+actor actor_actorname
+actor inspector
+actor app_server
+actor web_server
+actor customer
+participant system
+activate system
+actor_actorname -> system: update_edgeville_application_through_cli()
+activate actor_actorname
+participant application_update_request_to_edgeville
+system -> application_update_request_to_edgeville: send()
+activate application_update_request_to_edgeville
+deactivate application_update_request_to_edgeville
+actor_actorname -> system: update_application_through_web()
+system -> application_update_request_to_edgeville: send()
+activate application_update_request_to_edgeville
+deactivate application_update_request_to_edgeville
+@enduml

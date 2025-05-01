@@ -1,0 +1,7 @@
+1. User Agent sends a login request (HTTP POST) to Login API containing a tuple of (username, password, CSRF token).
+2. Login API validates the login request.
+3. If validation fails, Login API returns an HTTP status code signaling validation failure.
+4. If the request is valid, Login API attempts to retrieve user information from the User Database.
+5. User Database returns the result of the request to Login API.
+6. If user information exists in the database and authentication against the password hash succeeds, Login API returns HTTP 200 OK to User Agent and sets an encrypted session cookie containing the user id and session timeout.
+7. If user information does not exist or authentication against the password hash fails, Login API returns HTTP 401 Unauthorized to User Agent.

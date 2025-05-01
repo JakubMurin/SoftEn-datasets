@@ -1,0 +1,20 @@
+1. Administrator adds service using an order via Management UI.
+2. Management UI forwards request to Management API.
+3. Management API checks if service name matches with the service name in the order.
+4. Management API stores the service in the Management database.
+5. Inway requests configuration from Management API.
+6. Management API retrieves services and orders for Inway from the Management database.
+7. Management API returns services and orders to Inway.
+8. Inway returns configuration to Saas Organization.
+9. Inway requests claim for publishing the service from Inway in Municipality.
+10. Inway in Municipality retrieves claim for publishing the service from Management API in Municipality.
+11. Management API in Municipality gets order from Management database in Municipality.
+12. Management API in Municipality validates the order.
+13. Management API in Municipality creates a publication-claim.
+14. Management API in Municipality returns the publication-claim to Inway in Municipality.
+15. Inway in Municipality returns the publication-claim to Saas Organization.
+16. Inway in Saas Organization stores the publication-claim in memory.
+17. Inway in Saas Organization registers the service with the publication-claim in Directory API.
+18. Directory API retrieves the public key of the municipality from Inway in Municipality.
+19. Directory API validates the publication-claim.
+20. Directory API registers the service in Directory DB.

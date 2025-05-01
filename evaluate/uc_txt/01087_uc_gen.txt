@@ -1,0 +1,14 @@
+1. Archivist selects files on the File Selection Interface.
+2. File Selection Interface initiates the upload process to the Upload Service.
+3. Upload Service validates the files with FileManager.
+4. FileManager extracts metadata with MetadataService.
+5. MetadataService stores the extracted metadata in the Database.
+6. MetadataService confirms the successful storage of metadata in the Database.
+7. MetadataService informs the Upload Service about the successful storage of metadata.
+8. Upload Service saves the files in the Digital Archive.
+9. Digital Archive confirms the successful saving of files to the Upload Service.
+10. Upload Service sends a success notification to the UserNotificationService.
+11. UserNotificationService displays a success message to the Archivist.
+12. FileManager returns an error message to the Upload Service due to invalid files.
+13. Upload Service sends a failure notification to the UserNotificationService.
+14. UserNotificationService displays an error message to the Archivist.

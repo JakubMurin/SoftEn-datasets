@@ -1,0 +1,9 @@
+1. User A triggers Tx GetKeychainEntryV1.
+2. API Client sends a Request to API Server.
+3. API Server sends a get(key, value) request to AWS SM.
+4. AWS SM gets awsClient by calling getAwsClient().
+5. In try block: await awsClient.getSecretValue().
+6. AWS SM successfully returns True response to API Server.
+7. API Server responds to API Client.
+8. API Client formats the Response.
+9. API Client responds to User A with GetKeychainEntryResponse.

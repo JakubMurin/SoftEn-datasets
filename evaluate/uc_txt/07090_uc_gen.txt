@@ -1,0 +1,28 @@
+1. Client sends POST request to create a user.
+2. UsersController forwards the request to UsersService to create the user.
+3. UsersService interacts with UsersRepository to create and save the user.
+4. UsersService sends back the created user to UsersController.
+5. UsersController responds to the Client with the created user.
+6. Client sends GET request to retrieve all users.
+7. UsersController forwards the request to UsersService to find all users.
+8. UsersService interacts with UsersRepository to find all users.
+9. UsersService sends back the list of users to UsersController.
+10. UsersController responds to the Client with the list of users.
+11. Client sends GET request to retrieve a specific user by id.
+12. UsersController forwards the request to UsersService to find the user.
+13. UsersService interacts with UsersRepository to find the specific user.
+14. UsersService sends back the found user to UsersController.
+15. UsersController responds to the Client with the specific user.
+16. Client sends PUT request to update a user.
+17. UsersController forwards the request to UsersService to update the user.
+18. UsersService interacts with UsersRepository to check and update the user.
+19. UsersService updates the user if found, otherwise raises UserNotFoundException.
+20. UsersService responds with the updated user or exception to UsersController.
+21. UsersController responds to the Client with the updated user or exception.
+22. Client sends DELETE request to remove a user.
+23. UsersController forwards the request to UsersService to remove the user.
+24. UsersService interacts with UsersRepository to check and remove the user.
+25. UsersService performs multiple checks based on the user's associations with products, bids, and orders.
+26. UsersService removes the user if all checks pass, otherwise raises respective exceptions.
+27. UsersService responds with 'success' message or exception to UsersController.
+28. UsersController responds to the Client with the success message or exception.

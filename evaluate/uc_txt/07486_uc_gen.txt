@@ -1,0 +1,9 @@
+1. Attacker sends a POST request to CDN with path /foo and method GET /poison.
+2. CDN forwards the request to the Proxy.
+3. Proxy forwards the request to the Backend.
+4. Backend sends a /foo 200 response to Proxy.
+5. Proxy responds with /foo 200 to CDN.
+6. CDN sends /foo 200 response to Attacker.
+7. Proxy fetches data from the Backend with a GET method on /poison.
+8. Backend responds to Proxy with /poison 200.
+9. Proxy drops the smuggled response as BE/FE connections are closed.

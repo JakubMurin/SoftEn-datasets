@@ -1,0 +1,21 @@
+1. actor connects to Bootstrap.
+2. Bootstrap validates and resolves connection.
+3. Bootstrap initializes and registers with AbstractBootstrap.
+4. AbstractBootstrap creates a new channel with ChannelFactory.
+5. AbstractBootstrap initializes the channel by creating a pipeline, adding handlers, setting channel options, and attributes.
+6. AbstractBootstrap registers with SingleThreadEventLoop.
+7. SingleThreadEventLoop registers with AbstractChannel.AbstractUnsafe.
+8. AbstractChannel.AbstractUnsafe registers the channel with AbstractNioChannel.
+9. AbstractNioChannel registers with AbstractNioChannel and invokes necessary handlers.
+10. AbstractNioChannel performs necessary operations for registration and event triggering.
+11. AbstractChannel.AbstractUnsafe invokes necessary handler methods in DefaultChannelPipeline.
+12. AbstractChannel.AbstractUnsafe fires channel registered event.
+13. AbstractChannel.AbstractUnsafe fires channel active event if needed.
+14. Bootstrap proceeds with connection initialization and resolution.
+15. Bootstrap connects to AbstractChannel for further connection setup.
+16. AbstractChannel connects to DefaultChannelPipeline.
+17. DefaultChannelPipeline connects to AbstractChannelHandlerContext.
+18. AbstractChannelHandlerContext handles connection invocation.
+19. AbstractChannelHandlerContext triggers connection handling in AbstractNioChannel.AbstractNioUnsafe.
+20. AbstractNioChannel.AbstractNioUnsafe handles connection process.
+21. AbstractNioChannel.AbstractNioUnsafe finishes the connection process and fires channel active event.

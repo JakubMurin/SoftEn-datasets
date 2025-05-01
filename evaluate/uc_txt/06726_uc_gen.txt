@@ -1,0 +1,14 @@
+1. The attacker performs a length extension attack at SHA1.
+2. The attacker extracts the message.
+3. The extracted message is returned.
+4. The attacker computes SHA1 padding for the message.
+5. The padded message is returned.
+6. The attacker tampers the message and tries.
+7. The message's MAC in byte format is obtained.
+8. Internal state of SHA1 is extracted from the MAC.
+9. The attacker attempts to hash the message varying key lengths.
+10. The new MAC is generated.
+11. The server validates the new MAC.
+12. The server's key is prepended to the message.
+13. The combined key and message are hashed.
+14. The server confirms if the hash equals the new MAC.

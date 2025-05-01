@@ -1,0 +1,39 @@
+1. Create Transaction UUID for reference.
+2. Set lock_height for transaction kernel.
+3. Select inputs using desired selection strategy.
+4. Calculate sum inputs blinding factors xI.
+5. Create change_output.
+6. Select blinding factor xC for change_output.
+7. Create lock function sF that locks inputs and stores change_output in wallet.
+8. Calculate tx_weight based on the number of inputs and change outputs.
+9. Calculate fee based on tx_weight.
+10. Calculate total blinding excess sum for all inputs and outputs.
+11. Select a random nonce kS.
+12. Calculate xS and oS.
+13. Multiply xS and kS by generator G to create public curve points.
+14. Add values to Slate for passing to other participants.
+15. Check fee against the number of inputs, change outputs, and receiver output.
+16. Create receiver_output.
+17. Choose a random blinding factor for receiver_output.
+18. Calculate message M.
+19. Choose random nonce kR.
+20. Multiply xR and kR by generator G to create public curve points.
+21. Compute Schnorr challenge e.
+22. Compute Recipient Schnorr signature sR.
+23. Add sR, xRG, kRG to Slate.
+24. Create wallet output function rF.
+25. Calculate message M.
+26. Compute Schnorr challenge e.
+27. Verify sR by verifying kRG + e * xRG = sRG.
+28. Compute Sender Schnorr signature sS.
+29. Calculate final signature s.
+30. Calculate public key for s.
+31. Verify s against excess values in final transaction using xG.
+32. Create Transaction Kernel Containing Excess signature s.
+33. Create final transaction tx from Slate.
+34. Post tx to mempool.
+35. Confirm receiver_output.
+36. Change status of receiver_output to Confirmed.
+37. Confirm change_output.
+38. Change status of inputs to Spent.
+39. Change status of change_output to Confirmed.

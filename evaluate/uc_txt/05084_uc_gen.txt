@@ -1,0 +1,10 @@
+1. Developer launches the application.
+2. Application Orchestrator invokes the 'app-launch' function on the binary with specified parameters.
+3. Binary triggers the 'stack/select' function from sailsjs to select the stack with specified configurations.
+4. Developer checks the health of the application.
+5. Application Analyzer requests the Application Orchestrator to check the health of the application.
+6. Application Orchestrator forwards the request to the binary to check the health of the application with specified environment.
+7. Binary executes the 'app-check' function from sailsjs to check the application health with specified name.
+8. Application Analyzer asks the Application Orchestrator to rebalance the application instance.
+9. Application Orchestrator initiates the 'app-rebalance' function on the binary to rebalance the specified application instance.
+10. Binary interacts with sailsjs to select the environment for the specified appInstance.

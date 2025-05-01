@@ -1,0 +1,10 @@
+1. User submits a message.
+2. MainMessageInput gets messages by requesting.
+3. ChatClient processes messages by requesting.
+4. MessagesService sends a user request to UnixSocketServer.
+5. UnixSocketServer handles user request and sends a message to UserRequest.
+6. UnixSocketServer receives AI response from LLM and sends it to AiResponse.
+7. AiResponse receives AI response from UnixSocketServer and sends it to MessagesService.
+8. MessagesService returns the flux object to ChatClient.
+9. ChatClient gets messages by responding with the AI response.
+10. ResponseArea displays the AI response.

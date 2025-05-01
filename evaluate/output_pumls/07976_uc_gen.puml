@@ -1,0 +1,40 @@
+@startuml
+actor customer_manager
+actor job_opening_repository
+actor designer
+actor ui_requests_controller_to
+actor proxy
+actor notification_repository
+actor client_socket
+actor controller
+actor user_research
+participant design_guidelines
+activate design_guidelines
+design_guidelines -> user_research: query()
+activate user_research
+deactivate user_research
+user_research -> design_guidelines: provide_user_insights()
+activate user_research
+participant brand_guidelines_from_design_guidelines
+design_guidelines -> brand_guidelines_from_design_guidelines: request()
+activate brand_guidelines_from_design_guidelines
+deactivate brand_guidelines_from_design_guidelines
+participant brand_guidelines
+design_guidelines -> brand_guidelines: provide()
+activate brand_guidelines
+deactivate brand_guidelines
+designer -> design_guidelines: analyze_user_insights_brand_guidelines()
+activate designer
+designer -> design_guidelines: create_wireframe_draft()
+designer -> design_guidelines: submit_wireframe_for_feedback_from_project_team()
+design_guidelines -> designer: provide()
+activate designer
+deactivate designer
+designer -> design_guidelines: revise_wireframe_based_on_feedback()
+designer -> design_guidelines: resubmit_revised_wireframe_to_project_team()
+participant wireframe
+design_guidelines -> wireframe: approve()
+activate wireframe
+deactivate wireframe
+designer -> design_guidelines: start_design_implementation_based_on_approved_wireframe_with_cms()
+@enduml

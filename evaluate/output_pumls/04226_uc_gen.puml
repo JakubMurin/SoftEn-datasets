@@ -1,0 +1,34 @@
+@startuml
+actor user
+actor login_page
+actor auth_controller
+actor user_repository
+actor home_page_loads
+actor home_page_is
+participant authservice
+activate authservice
+user -> authservice: enter_user()
+activate user
+user -> authservice: submit_login_form()
+login_page -> authservice: send_auth_controller()
+activate login_page
+auth_controller -> authservice: call_user()
+activate auth_controller
+authservice -> user: verify()
+activate user
+deactivate user
+user_repository -> authservice: query_user()
+activate user_repository
+authservice -> user: return()
+activate user
+deactivate user
+user_repository -> authservice: send_user()
+authservice -> user: send()
+activate user
+deactivate user
+auth_controller -> authservice: redirect_user()
+home_page_loads -> authservice: for_user()
+activate home_page_loads
+home_page_is -> authservice: display_user()
+activate home_page_is
+@enduml

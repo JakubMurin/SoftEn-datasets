@@ -1,0 +1,17 @@
+1. Invånare chooses to create/open a draft of type A.
+2. GUI requests draftJson via UtkastModuleAPiController from Webcert.
+3. Webcert retrieves draft A from DB.
+4. Webcert retrieves CandidateCriteriaForCopy.
+5. Webcert searches for candidate certificate B to copy based on criteria.
+6. DB provides a gross list of candidate certificates.
+7. Webcert filters the gross list based on criteria.
+8. Webcert sends draftJson (with possibly matching candidate metadata) to GUI.
+9. GUI receives and displays draftJson to Invånare.
+10. If candidate is detected, GUI shows confirmation dialog.
+11. Invånare chooses to copy.
+12. GUI requests copy info from certificate B to Webcert.
+13. Webcert retrieves drafts A and B from DB.
+14. Webcert updates Draft A from Draft B.
+15. Webcert saves the updated draft.
+16. Webcert sends updated draftJson to GUI.
+17. GUI displays updated draft to Invånare.

@@ -1,0 +1,11 @@
+1. User creates ISTIO-CSR CR.
+2. Operator prepares Istio-CSR manifests based on CR configurations.
+3. Operator deploys Istio-CSR resources.
+4. ISTIOD requests a certificate from IstioCSROperand.
+5. IstioCSROperand creates CSR resource.
+6. CertManaherOperand notifies the CSR creation.
+7. CA receives and signs the CSR.
+8. CertManagerOperand updates CSR with signed certificate.
+9. ISTIO-CSROperand is informed about the signed certificate.
+10. Istiod handles the CSR response with the signed certificate.
+11. Proxy is updated with the validated certificate .

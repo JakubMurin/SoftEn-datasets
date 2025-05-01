@@ -1,0 +1,11 @@
+1. Attacker sends a POST request to Proxy with data [GET /poison].
+2. Proxy activates.
+3. Proxy forwards the POST request to Backend with data /foo.
+4. Backend activates.
+5. Backend responds to Proxy with /foo 200.
+6. Proxy forwards /foo 200 response to Attacker.
+7. Proxy deactivates.
+8. Backend deactivates.
+9. Backend sends a GET request to itself for /poison.
+10. Backend responds to Proxy with /poison 200.
+11. Backend deactivates.

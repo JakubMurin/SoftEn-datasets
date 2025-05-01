@@ -1,0 +1,13 @@
+1. GameEngine calls GameBoundaryDelegate to getBoundary().
+2. GameBoundaryDelegate activates.
+3. GameBoundaryDelegate calls Boundary to get boundary.
+4. Boundary returns boundary.
+5. GameEngine calls Ball onCollision(with: boundary, deltaTime: Double).
+6. Ball activates.
+7. Ball will collide with boundary.
+8. Ball calls onCollision(with: boundary).
+9. Ball activates.
+10. Ball gets safe position from boundary.
+11. Ball calls FreeBody onCollision with collisionPoint, deltaTime, and boundary restitutionCoefficient.
+12. Ball deactivates.
+13. Ball returns new ball.

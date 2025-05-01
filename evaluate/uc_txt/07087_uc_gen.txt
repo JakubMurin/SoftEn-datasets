@@ -1,0 +1,31 @@
+1. Client sends POST request to create a new user.
+2. Controller activates and forwards request to Service.
+3. Service creates and saves the user in UsersRepo.
+4. Service returns the created user to Controller.
+5. Controller sends the user back to the Client.
+6. Client receives the created user.
+7. Client sends GET request to retrieve all users.
+8. Controller activates and requests Service to find all users.
+9. Service retrieves users from UsersRepo.
+10. Service returns the list of users to Controller.
+11. Controller sends the list of users back to the Client.
+12. Client receives the list of users.
+13. Client sends GET request to retrieve a specific user.
+14. Controller activates and requests Service to find the user by ID.
+15. Service retrieves the user from UsersRepo.
+16. Service returns the specific user to Controller.
+17. Controller sends the specific user back to the Client.
+18. Client receives the specific user.
+19. Client sends PUT request to update a user.
+20. Controller activates and requests Service to update the user.
+21. Service checks if the user exists.
+22. Service updates the user if it exists, else throws an exception.
+23. Controller sends the updated user or exception back to the Client.
+24. Client receives the updated user or exception.
+25. Client sends DELETE request to remove a user.
+26. Controller activates and requests Service to remove the user.
+27. Service checks if the user exists.
+28. Service checks for associated products, bids, and orders.
+29. Service removes the user if no associated data found, else throws exceptions.
+30. Controller sends success or exception response back to the Client.
+31. Client receives success or exception response.

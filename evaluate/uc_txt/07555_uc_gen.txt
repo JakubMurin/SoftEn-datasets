@@ -1,0 +1,12 @@
+1. Client initiates a checkHealth request.
+2. Health Monitor API receives the checkHealth request.
+3. IP Handler denies service check using senderIp.
+4. IP Handler adds request count using senderIp and requestCount.
+5. If requestCount > 5.
+6. IP Handler blocks request using senderIp.
+7. Service Removal Handler sends deny message.
+8. IP sends deny message to Health Monitor API.
+9. Health Monitor API sends deny message to Client.
+10. If requestCount <= 5.
+11. IP Handler accepts request using senderIp.
+12. Health Monitor API sends API health status to Client.

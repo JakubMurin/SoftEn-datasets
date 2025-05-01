@@ -1,0 +1,10 @@
+1. Operations installs Component.
+2. Component triggers creation of publishedNotification resource.
+3. ComponentOperator creates a separate publishedNotification resource for each published notification.
+4. PublishedNotification resources created trigger EventPublishingEnablementOperator.
+5. EventPublishingEnablementOperator searches for a matching topic.
+6. If the topic exists, EventPublishingEnablementOperator retrieves Topic URL from TMFC019.
+7. If the topic does not exist, EventPublishingEnablementOperator requests approval for topic creation.
+8. EventPublishingEnablementOperator configures Topic Event Hub and retrieves Topic URL from TMFC019.
+9. EventPublishingEnablementOperator configures event publishing URL for Component.
+10. Update is triggered as PublishedNotification is updated by ComponentOperator.

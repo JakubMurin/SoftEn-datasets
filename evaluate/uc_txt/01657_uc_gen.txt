@@ -1,0 +1,6 @@
+1. Attacker sends a POST request to Proxy with payload [GET /poison].
+2. Proxy forwards the request to Backend.
+3. Backend processes the request and responds with /foo 200.
+4. Proxy forwards the response to Attacker.
+5. Backend retrieves /poison by sending GET request to itself.
+6. Backend responds with /poison 200 to Proxy.

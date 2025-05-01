@@ -1,0 +1,41 @@
+1. Sender creates Transaction UUID.
+2. Sender sets lock_height for transaction kernel.
+3. Sender selects inputs using desired selection strategy.
+4. Sender calculates sum inputs blinding factors xI.
+5. Sender creates change_output.
+6. Sender selects blinding factor xC for change_output.
+7. Sender creates lock function sF that locks inputs and stores change_output in wallet and identifying wallet transaction log entry TS.
+8. Sender calculates tx_weight.
+9. Sender calculates fee.
+10. Sender calculates total blinding excess sum for all inputs and outputs xS1.
+11. Sender selects a random nonce kS.
+12. Sender subtracts random kernel offset from xS1.
+13. Sender multiplies xS and kS by generator G to create public curve points xSG and kSG.
+14. Sender adds values to Slate for passing to other participants.
+15. Recipient checks fee against number of inputs.
+16. Recipient creates receiver_output.
+17. Recipient chooses random blinding factor for receiver_output xR.
+18. Recipient calculates message M.
+19. Recipient chooses random nonce kR.
+20. Recipient multiplies xR and kR by generator G to create public curve points xRG and kRG.
+21. Recipient computes Schnorr challenge e.
+22. Recipient computes Recipient Schnorr signature sR.
+23. Recipient adds sR, xRG, kRG to Slate.
+24. Recipient creates wallet output function rF.
+25. Sender calculates message M.
+26. Sender computes Schnorr challenge e.
+27. Sender verifies sR.
+28. Sender computes Sender Schnorr signature sS.
+29. Sender calculates final signature s.
+30. Sender calculates public key for s.
+31. Sender verifies s against excess values in final transaction using xG.
+32. Sender creates Transaction Kernel Containing.
+33. Sender creates final transaction tx from Slate.
+34. Sender posts tx to mempool.
+35. Recipient confirms receiver_output.
+36. Recipient changes status of receiver_output to Confirmed.
+37. Sender confirms change_output.
+38. Sender changes status of inputs to Spent.
+39. Sender changes status of change_output to Confirmed.
+40. Recipient manually removes receiver_output from wallet.
+41. Sender unlocks inputs and deletes change_output identified in transaction log entry TS.

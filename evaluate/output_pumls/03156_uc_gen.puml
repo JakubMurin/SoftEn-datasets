@@ -1,0 +1,34 @@
+@startuml
+actor user
+participant web_interface_displays
+activate web_interface_displays
+user -> web_interface_displays: select_file_version_revert_option()
+activate user
+participant request_backend_revert_file_fileid_version
+web_interface_displays -> request_backend_revert_file_fileid_version: send()
+activate request_backend_revert_file_fileid_version
+deactivate request_backend_revert_file_fileid_version
+participant older_file_version_fileid_version_from_storage
+web_interface_displays -> older_file_version_fileid_version_from_storage: fetch()
+activate older_file_version_fileid_version_from_storage
+deactivate older_file_version_fileid_version_from_storage
+participant older_file_version_backend
+web_interface_displays -> older_file_version_backend: return()
+activate older_file_version_backend
+deactivate older_file_version_backend
+participant file_with_older_version_in_storage
+web_interface_displays -> file_with_older_version_in_storage: current()
+activate file_with_older_version_in_storage
+deactivate file_with_older_version_in_storage
+participant update_backend
+web_interface_displays -> update_backend: confirm()
+activate update_backend
+deactivate update_backend
+participant successful_revert_to_web_interface
+web_interface_displays -> successful_revert_to_web_interface: confirm()
+activate successful_revert_to_web_interface
+deactivate successful_revert_to_web_interface
+web_interface_displays -> user: revert()
+activate user
+deactivate user
+@enduml

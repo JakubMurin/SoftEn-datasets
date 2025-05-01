@@ -1,0 +1,20 @@
+1. User sends registration request to UserController with details (UserName, Email, and Password).
+2. UserController gets Tenant information from the header.
+3. UserController checks if the Tenant exists by communicating with TenantDbContext and handles the response.
+4. UserController requests UserManager to check if the email already exists in the specified Tenant.
+5. UserManager responds with the email status to UserController.
+6. UserController instructs UserManager to create a new user (AppUser).
+7. UserManager provides feedback to UserController about the user creation process.
+8. UserController directs UserManager to assign a role (ADMIN or MEMBER) to the user.
+9. UserManager assigns the role to the user and informs UserController.
+10. UserController communicates with TokenService to generate a JWT token for the user.
+11. TokenService generates the JWT token and responds to UserController.
+12. UserController sends UserDto (Token, Email, UserName) to the User.
+13. User sends a login request to UserController with specified details (Email, Password).
+14. ...
+15.  steps for User Login continue here .
+16. UserController instructs UserManager to assign a role to the new user.
+17. ...
+18.  more steps for User Registration and Login continue .
+19. ...
+20.  sequence of steps continues here .

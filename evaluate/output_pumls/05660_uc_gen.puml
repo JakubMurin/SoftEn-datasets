@@ -1,0 +1,20 @@
+@startuml
+actor inspector
+actor customer_logs
+actor customer
+participant system
+activate system
+inspector -> system: log_in_to_inspection_portal()
+activate inspector
+inspector -> system: select_assigned_inspections()
+inspector -> system: select_inspection_conduct()
+inspector -> system: validate_compliance_for_item_in_checklist()
+inspector -> system: submit_inspection_results()
+system -> customer: notify()
+activate customer
+deactivate customer
+customer_logs -> system: in_view_inspection_results()
+activate customer_logs
+customer -> system: acknowledge_receipt_of_inspection_results()
+activate customer
+@enduml

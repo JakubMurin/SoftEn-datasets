@@ -1,0 +1,10 @@
+1. User A triggers the transaction with Tx HasKeychainEntryV1.
+2. API Client sends a request to API Server.
+3. API Server sets the key and value in AWS Secrets Manager.
+4. AWS Secrets Manager retrieves the AWS client.
+5. AWS Secrets Manager describes the secret.
+6. If secret is found, API Server responds with true.
+7. If secret is not found, API Server responds with an error message.
+8. API Server sends a response to API Client.
+9. API Client formats the response.
+10. API Client sends SetKeychainEntryResponse to User A.

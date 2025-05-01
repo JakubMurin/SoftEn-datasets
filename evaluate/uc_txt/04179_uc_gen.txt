@@ -1,0 +1,14 @@
+1. User creates istiocsr Custom Resource.
+2. cert-manager-operator reconciles istiocsr event.
+3. cert-manager-operator prepares istio-csr manifests based on istiocsr config.
+4. cert-manager-operator deploys istio-csr operand resources.
+5. Istiod requests certificate from IstioCSROperand.
+6. IstioCSROperand creates CSR resource.
+7. cert-manager notifies CSR created.
+8. CertManagerOperand sends CSR to Certificate Authority for signing.
+9. Certificate Authority returns signed certificate to CertManagerOperand.
+10. CertManagerOperand updates CSR with signed certificate.
+11. OpenShift API Server notifies IstioCSROperand of signed certificate availability.
+12. IstioCSROperand responds to Istiod with signed certificate.
+13. Istiod updates Istio Proxy with certificate.
+14. Istio Proxy uses certificate for TLS communication.

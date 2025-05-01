@@ -1,0 +1,19 @@
+1. Navegador accesses the fault registration page.
+2. Fault Routes receives GET /fault/add request.
+3. Fault Controller gets the fault registration form.
+4. Fault Add.ejs displays the fault registration form to the user.
+5. Navegador validates the form fields.
+6. Navegador submits the fault registration form.
+7. Fault Routes receives POST /fault/add request.
+8. Fault Controller validates the form fields.
+9. Fault Controller creates a new instance of Fault Model.
+10. Fault Model Instance saves the fault data.
+11. Fault Model Instance checks if the user exists in the database.
+12. MySQL executes SELECT userID FROM user WHERE mail = ? [this.email].
+13. MySQL returns the result to Fault Model Instance.
+14. Fault Model Instance handles the case where the user does not exist.
+15. Fault Model Instance handles the case where the user exists.
+16. MySQL executes INSERT INTO fault (faultID, summary, doneDate, faultUserIDFK) VALUES (?, ?, ?, ?), [faultID, this.reason, this.doneDate, rows[0].userID].
+17. MySQL confirms the successful insertion.
+18. Fault Model Instance confirms the fault registration.
+19. Fault Controller redirects to /fault, info for successful registration.

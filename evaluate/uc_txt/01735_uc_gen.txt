@@ -1,0 +1,19 @@
+1. User requests to retrieve producer winners.
+2. ProducerController receives the request.
+3. ProducerController forwards request to ProducerService.
+4. ProducerService finds minimum and maximum winners.
+5. ProducerService queries MovieService to find winners.
+6. MovieService searches MovieRepository for winners.
+7. MovieRepository returns list of movies to MovieService.
+8. MovieService sets ProducerWinnerDto.
+9. ProducerService maps ProducerWinnerDto to producer years.
+10. ProducerMapper maps producer years.
+11. ProducerResponseBuilder constructs response.
+12. ProducerResponseBuilder builds ProducerResponseDto list.
+13. ProducerResponseBuilder builds ProducerWinnerResponse.
+14. ProducerService returns ProducerWinnerResponse to ProducerController.
+15. ProducerController responds with ProducerWinnerResponse to User.
+16. SpringBoot notifies MovieService of ApplicationReadyEvent.
+17. MovieService imports CSV using CsvReader.
+18. CsvReader returns list of MovieDto to MovieService.
+19. MovieService saves all movies to MovieRepository.

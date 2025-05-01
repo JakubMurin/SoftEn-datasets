@@ -1,0 +1,11 @@
+1. User interacts with the interface.
+2. Interface sends PUT request /staff/{id} with data to StaffRouter.
+3. StaffRouter forwards the request to StaffController for updating staff with id and data.
+4. StaffController passes update command to StaffRepository.
+5. StaffRepository updates staff information using Staff Model.
+6. Staff Model performs a findByIdAndUpdate method using Database.
+7. Database updates.
+8. Model receives the updated Staff from Database.
+9. Repository receives the updated Staff from Model.
+10. Controller acknowledges success with a 200 OK response with the updated Staff.
+11. Router sends 200 OK response with the updated Staff back to User through the UI.

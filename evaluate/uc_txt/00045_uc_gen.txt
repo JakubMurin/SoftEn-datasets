@@ -1,0 +1,10 @@
+1. Librarian sends a request to retrieve the average lending duration per book.
+2. LendingController receives the request for average lending duration per book.
+3. LendingController activates LendingService to get the average lending duration per book.
+4. LendingService fetches the average lending duration per book from LendingRepository.
+5. LendingRepository provides the list of lending duration results to LendingService.
+6. LendingService maps the results to LendingAvgPerBookView objects using LendingAvgPerBookViewMapper.
+7. LendingAvgPerBookViewMapper converts each result to LendingAvgPerBookView.
+8. LendingAvgPerBookViewMapper returns the Iterable of LendingAvgPerBookView to LendingService.
+9. LendingService sends the Iterable of LendingAvgPerBookView to LendingController.
+10. LendingController responds to the Librarian with the fetched Iterable of LendingAvgPerBookView.

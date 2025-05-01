@@ -1,0 +1,16 @@
+1. User arms partition.
+2. Panel initiates Live event to arm with user code.
+3. PAI processes event and changes arm status to true.
+4. PAI sends payload to MQTT indicating "arm=True".
+5. Panel starts exit delay countdown.
+6. Panel polls PAI for current status.
+7. PAI sends status request to Panel.
+8. Panel responds with the current status.
+9. PAI updates the current status and sets exit delay to true.
+10. PAI notifies MQTT with the data "/exit_delay=True".
+11. Panel completes the exit delay time, and the partition gets armed.
+12. Panel sends request to PAI for status fetch.
+13. PAI forwards the status request to Panel.
+14. Panel responds with the current updated status.
+15. Panel notifies PAI to update exit delay to false.
+16. PAI sends the updated status data "/exit_delay=False" to MQTT.

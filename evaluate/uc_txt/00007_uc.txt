@@ -1,0 +1,6 @@
+1. The UAV positions itself in tracking_position, i.e., in the near vicinity of the victim but not directly overhead.
+2. The UAV uses image capture and analysis to continually tag the victim in the image stream.
+3. Based on the UAV's position (pitch, roll, yaw), the onboard tracker continually calculates the relative position of the victim with respect to the UAV.
+4. The onboard tracker generates appropriate velocity vectors to fly towards the victim, without flying directly over the victim and maintaining victim_separation_distance and always flying at an altitude greater than minimum_altitude.
+5. The velocity vector is sent to the UAV's autopilot and executed to enable the UAV to track the victim.
+6. Steps 2-5 are repeated until the UAV receives a stop_tracking command.

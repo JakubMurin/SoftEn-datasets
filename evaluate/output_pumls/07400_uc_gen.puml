@@ -1,0 +1,23 @@
+@startuml
+actor actor
+actor web_forwards_modification_request
+actor user
+participant gameengine
+activate gameengine
+participant boundary
+gameengine -> boundary: get()
+activate boundary
+deactivate boundary
+participant collision_with_boundary
+gameengine -> collision_with_boundary: on()
+activate collision_with_boundary
+deactivate collision_with_boundary
+participant safe_position_from_boundary
+gameengine -> safe_position_from_boundary: get()
+activate safe_position_from_boundary
+deactivate safe_position_from_boundary
+participant collision_with_values
+gameengine -> collision_with_values: on_calculate()
+activate collision_with_values
+deactivate collision_with_values
+@enduml

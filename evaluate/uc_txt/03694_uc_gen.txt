@@ -1,0 +1,11 @@
+1. CPS computes delivery graph by sending a request to CM.
+2. CM initializes mappedRoutes.
+3. For each startPoint in request, CM gets startWaypointIntersection from SWP.
+4. CM initializes predecessors, durations arrays, and adds startWaypointIntersection to greys.
+5. While greys is not empty, CM finds minimalGreyIntersection.
+6. For each successor of minimalGreyIntersection, CM gets successorId from S.
+7. If successorId is not in blacks, CM gets streetSection, updates arrays, and adds successor to greys.
+8. CM removes minimalGreyIntersection from greys and adds it to blacks.
+9. CM uses predecessors array to fill mappedRoutes.
+10. CM creates DeliveryGraph with mappedRoutes.
+11. CPS receives deliveryGraph from CM.

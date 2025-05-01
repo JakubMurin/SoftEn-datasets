@@ -1,0 +1,20 @@
+1. User selects map path and type in Application.
+2. MapEngine parses data and performs map file analysis.
+3. MapImport transforms data to data model for building map geometry.
+4. MapImport inserts map data into R-tree.
+5. MemSearch returns status code to MapImport.
+6. MapImport returns status code to MapEngine.
+7. MapEngine returns status code to Application.
+8. Application requests road information from MapEngine.
+9. MapEngine searches roads in R-tree using MemSearch.
+10. MemSearch searches lanes in R-tree.
+11. MemSearch transmits road pointers back to MapEngine.
+12. MapEngine transmits road pointers back to Application.
+13. Application requests lane links information from MapEngine.
+14. MapEngine searches lane links in R-tree using MemSearch.
+15. MemSearch transmits lane links information back to MapEngine.
+16. MapEngine transmits lane links information back to Application.
+17. Application requests object information from MapEngine.
+18. MapEngine searches objects on roads in R-tree using MemSearch.
+19. MemSearch transmits object information back to MapEngine.
+20. MapEngine transmits object information back to Application.

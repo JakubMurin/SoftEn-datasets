@@ -1,0 +1,15 @@
+1. User selects port in ConnectionView.
+2. ConnectionView binds properties with SonicController.
+3. SonicController sets the selected port in ConnectionModel.
+4. ConnectionModel updates the view in ConnectionView.
+5. User presses the "Connect" button in ConnectionView.
+6. ConnectionView generates a CONNECTION_ATTEMPT event to SonicController.
+7. SonicController retrieves the port from ConnectionModel.
+8. CommunicationBuilder generates a Communicator for the specified endpoint.
+9. Communicator is built by CommunicationBuilder.
+10. SonicController receives the Communicator from CommunicationBuilder.
+11. SonicController builds an amplifier using the Communicator.
+12. SonicDeviceBuilder retrieves SonicDevice data from the Communicator.
+13. SonicDeviceBuilder returns the SonicDevice to SonicController.
+14. SonicController updates the ConnectionModel.
+15. ConnectionModel updates the MainView.

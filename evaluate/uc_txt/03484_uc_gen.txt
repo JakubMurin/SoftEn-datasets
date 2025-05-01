@@ -1,0 +1,10 @@
+1. Client subscribes to Operation Queue.
+2. Client adds operation op1 to handler1.
+3. Handler1 publishes op1 to opQueue.
+4. Handler1 receives acknowledgment for publishing op1.
+5. Handler1 receives op2 from opQueue.
+6. Handler1 puts op2 with handler1 ID and expiry to opQueueDB.
+7. Handler1 acknowledges op2 to opQueue.
+8. Handler2 receives op1 from opQueue.
+9. Handler2 puts op1 with handler2 ID and expiry to opQueueDB.
+10. Handler2 acknowledges op1 to opQueue.

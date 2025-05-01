@@ -1,0 +1,11 @@
+1. User initiates a top-level reboot request.
+2. User commands Host to cordon the node.
+3. User instructs Host to perform the reboot.
+4. User directs Host to uncordon the node.
+5. Host checks liveness and triggers a go routine for cordon.
+6. Host prepares for reboot by cordon-ing the node.
+7. Host signals DPU about the reboot readiness.
+8. DPU updates PDB and executes the reboot process.
+9. Host reconnects to DPU post reboot.
+10. DPU updates PDB post-reboot completion.
+11. Host uncordons the node after reboot completion.

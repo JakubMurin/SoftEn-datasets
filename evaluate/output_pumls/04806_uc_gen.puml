@@ -1,0 +1,18 @@
+@startuml
+actor researcher_logs
+actor researcher
+actor server
+actor forward_cancellation_request
+actor web_client
+actor user_logs
+actor user_presses_signup
+participant system
+activate system
+researcher_logs -> system: in_to_edrms_system()
+activate researcher_logs
+researcher -> system: authenticate_in_edrms_system()
+activate researcher
+researcher -> system: navigate_to_my_deposited_items()
+researcher -> system: select_item_edit()
+researcher -> system: edit_metadata_of_selected_item()
+@enduml

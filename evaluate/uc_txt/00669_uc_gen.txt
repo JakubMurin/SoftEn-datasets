@@ -1,0 +1,9 @@
+1. User selects question difficulty (Hard/Medium/Easy).
+2. User clicks submit.
+3. Webapp handles the submission, sending payload {user, difficulty} to the API Gateway.
+4. API Gateway receives the payload and forwards it to the Controller.
+5. Controller retrieves the data and forwards it to the Service for processing.
+6. Service creates a MatchRequest entity and saves it to the MatchRequests collection.
+7. Service generates a requestId and sends it back to the Controller.
+8. Controller sends back a 200 OK response along with the requestId to the API Gateway.
+9. API Gateway responds with 200 OK Accepted and the requestId to the Webapp.

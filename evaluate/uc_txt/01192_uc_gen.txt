@@ -1,0 +1,12 @@
+1. User completes the ticket with client service, ticket, and user details.
+2. TicketTransitions processes the completion of technical ERP review for the ticket.
+3. TicketTransitions checks the category of the ticket.
+4. If the category is invalid, inform the User to select a valid category.
+5. If the category is valid, ProfessionalTicket calculates the report quality.
+6. If report quality is not 100 and no comments, inform the User to enter Technical Image Quality Comments.
+7. If report quality is valid, ProfessionalTicket gets the technical report.
+8. ProfessionalTicket sets the report quality, completion time, and ERP details.
+9. ClientRestService saves the ticket status as TECH_COMPLETED and performs related actions.
+10. ClientRestService creates or updates Dicom study for the ticket.
+11. ClientRestService creates or updates the professional ticket with user details.
+12. TicketTransitions generates TRERP response letter for the client.

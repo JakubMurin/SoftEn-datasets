@@ -1,0 +1,29 @@
+1. Organization A self-issues URA VC and Service VC.
+2. Organization A publishes URA VP and Service VP to the registry.
+3. Organization B self-issues URA VC and Service VC.
+4. Organization B publishes URA VP and Service VP to the registry.
+5. Organization C self-issues URA VC and Service VC.
+6. Organization C publishes URA VP and Service VP to the registry.
+7. All services are now registered in the registry.
+8. Organization A looks up B service.
+9. Organization A creates a task for a Patient with requester A and performer B.
+10. Organization A issues VC (A->B) with Task, Patient to B.
+11. Organization B signs VP (A->B).
+12. Organization B accepts/update task with VP (A->B).
+13. Organization B publishes VP (A->B).
+14. The registry now has relevant task information.
+15. Organization B looks up C service.
+16. Organization B creates a task for a Patient with requester B and performer C.
+17. Organization B issues VC (B->C) with Task, Patient to C.
+18. Organization C signs VP (B->C).
+19. Organization C accepts/update task with VP (B->C).
+20. Organization C publishes VP (B->C).
+21. The registry now has updated task information.
+22. Organization C queries the registry for patient X and use case Y.
+23. The registry responds with relevant VPs for connections to Organization A and B.
+24. Organization C locates "Organization A" within the network.
+25. Organization C looks up A service.
+26. Organization C requests data (VP (B->C)) from Organization A.
+27. Organization A queries for "Organization B".
+28. The registry returns VP (A->B) to Organization A.
+29. Organization A provides the necessary data.

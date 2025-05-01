@@ -1,0 +1,18 @@
+1. Attacker sends a POST request to /foo.
+2. Proxy activates.
+3. Proxy forwards the request to Backend.
+4. Backend activates.
+5. Backend processes the request and responds with a 200 status to Proxy.
+6. Proxy forwards the response to Attacker.
+7. Backend sends a GET request to /poison to itself.
+8. Backend processes the request and responds with a 200 status to Proxy.
+9. Proxy deactivates.
+10. Backend deactivates.
+11. User sends a GET request to /bar.
+12. Proxy activates.
+13. Proxy forwards the request to Backend.
+14. Backend activates.
+15. Proxy responds with a 200 status to User.
+16. Proxy deactivates.
+17. Backend responds with a 200 status to Proxy.
+18. Backend deactivates.

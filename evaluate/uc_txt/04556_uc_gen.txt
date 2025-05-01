@@ -1,0 +1,8 @@
+1. User sends request to TrackingController through the /api/tracking/{transId} API endpoint.
+2. TrackingController activates and calls getTransaction(transId) from TransactionController.
+3. TransactionController responds and provides Shipping order details.
+4. TrackingController requests tracking information from ShippoTrackingService using order's carrier and tracking number.
+5. ShippoTrackingService activates and invokes getTrackingInfo() from shippo.model.Track.
+6. shippo.model.Track responses with tracking details.
+7. ShippoTrackingService provides the tracking details to TrackingController.
+8. TrackingController responds back with trackingDTO to the User.

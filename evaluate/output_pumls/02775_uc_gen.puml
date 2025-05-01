@@ -1,0 +1,56 @@
+@startuml
+actor user
+actor controller
+actor ads_controller
+actor controller_updates_article_page
+actor system_checks_if_developer_is_member
+actor router_forwards_request
+actor router
+participant customerscontroller
+activate customerscontroller
+user -> customerscontroller: open_customers_list_page()
+activate user
+participant loading_message
+customerscontroller -> loading_message: display()
+activate loading_message
+deactivate loading_message
+user -> customerscontroller: request_customers()
+participant get_request_to_customers
+customerscontroller -> get_request_to_customers: send()
+activate get_request_to_customers
+deactivate get_request_to_customers
+router_forwards_request -> customerscontroller: to_controller()
+activate router_forwards_request
+participant getallcustomers
+customerscontroller -> getallcustomers: call()
+activate getallcustomers
+deactivate getallcustomers
+participant customers_from_customersrepository
+customerscontroller -> customers_from_customersrepository: request()
+activate customers_from_customersrepository
+deactivate customers_from_customersrepository
+participant customers
+customerscontroller -> customers: find()
+activate customers
+deactivate customers
+participant customers_from_database
+customerscontroller -> customers_from_database: fetch()
+activate customers_from_database
+deactivate customers_from_database
+participant customers_to_customersrepository
+customerscontroller -> customers_to_customersrepository: return()
+activate customers_to_customersrepository
+deactivate customers_to_customersrepository
+customerscontroller -> controller: return()
+activate controller
+deactivate controller
+participant with_ok_customers
+customerscontroller -> with_ok_customers: respond()
+activate with_ok_customers
+deactivate with_ok_customers
+router -> customerscontroller: send_ok_customers_to_ui()
+activate router
+customerscontroller -> customers: of()
+activate customers
+deactivate customers
+@enduml

@@ -1,0 +1,14 @@
+1. Start Scanner job initiated by Admin User.
+2. Admin sends os2ds_scan_specs to RabbitMQ.
+3. Scanner job started.
+4. Explorer consumes os2ds_scan_specs from RabbitMQ.
+5. Explorer processes the message received.
+6. Worker receives and processes message based on type (processor/explorer/matcher/tagger).
+7. Worker updates status.
+8. Exporter consumes data and handles the message.
+9. Exporter sends results to RabbitMQ.
+10. Checkup Collector updates checkup.
+11. Status Collector updates scanner status.
+12. Event Collector updates document report.
+13. Result Collector handles tag and updates document report.
+14. Report User checks for matches in Document Report.

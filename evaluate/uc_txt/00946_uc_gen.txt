@@ -1,0 +1,11 @@
+1. User loads the new composition file using the command "netide:loadcomposition new.xml".
+2. Karaf Console reads the content of the XML file.
+3. Karaf Console sets the configuration value based on the composition and XML content.
+4. Karaf Configuration reloads the OSGi module.
+5. core.caos retrieves the configuration for the composition.
+6. core.caos creates a CompositionSpecification and loads it.
+7. core.caos receives a list of required modules from CompositionSpecification.
+8. core.caos gets the list of currently connected backends from BackendManager.
+9. core.caos checks if all required modules are present.
+10. core.caos finishes the reconfiguration process.
+11. core.caos logs the successful reconfiguration to Karaf Console.

@@ -1,0 +1,8 @@
+1. User sends a request to Gateway to get reviews for a specific book.
+2. Gateway verifies the JWT with Keycloak.
+3. Gateway receives confirmation that JWT is valid.
+4. Gateway sends a request to Review Service to get reviews for the book.
+5. Review Service queries Mongo Database to find reviews for the book.
+6. Mongo Database returns the list of reviews to Review Service.
+7. Review Service sends the review list to Gateway.
+8. Gateway forwards the review list to the User.

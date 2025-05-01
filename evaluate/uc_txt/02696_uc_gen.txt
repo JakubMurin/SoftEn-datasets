@@ -1,0 +1,13 @@
+1. User sends command to Labgrid Client to acquire a place.
+2. Labgrid Client forwards the request to Labgrid Coordinator to acquire the place.
+3. Labgrid Coordinator checks if the place can be acquired.
+4. Place confirms the acquisition to Labgrid Coordinator.
+5. Labgrid Coordinator confirms the acquisition to Labgrid Client.
+6. Labgrid Client informs the User that the place has been acquired.
+7. User sends command to Labgrid Client to access the acquired place console.
+8. Labgrid Client opens a connection to the Boss Publisher.
+9. Boss Publisher establishes a session with the User.
+10. User subscribes to changes for LEDs led_1 and led_2 with mode 'only_changes'.
+11. Boss Publisher sends a notification that led_1 has changed its color to green.
+12. User polls for setting changes for led_1 and led_2 at an interval of 1 second.
+13. Boss Publisher periodically sends the current state of led_1 and led_2 to the User.

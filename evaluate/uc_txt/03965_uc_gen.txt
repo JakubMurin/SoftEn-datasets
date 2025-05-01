@@ -1,0 +1,25 @@
+1. Pre-process request at the Servlet.
+2. Allow access if endpoint is for guest role only.
+3. Proceed with request at the Endpoint.
+4. Perform endpoint operations.
+5. Send response back to the ClientRequest.
+6. Check if Servlet session Principal is valid for role and authorization is not expired.
+7. Allow access if session Principal is valid.
+8. Proceed with request at the Endpoint.
+9. Perform endpoint operations.
+10. Send response back to the ClientRequest.
+11. Check for JSESSIONIDSSO cookie in AuthorizationCheck.
+12. Request database specific roles for SSO principal.
+13. Retrieve database specific roles.
+14. Request user roles based on session Principal set from authentication endpoint.
+15. Retrieve database specific roles.
+16. Validate JWT in Authorization header.
+17. Extract subject from JWT.
+18. Request user roles based on JWT subject.
+19. Retrieve database specific roles.
+20. Check SecurityContext against endpoint roles.
+21. Roles are valid, proceed with request.
+22. Perform endpoint operations.
+23. Send response back to the ClientRequest.
+24. Roles are invalid, reject access.
+25. Send error response: 403 Status to the ClientRequest.

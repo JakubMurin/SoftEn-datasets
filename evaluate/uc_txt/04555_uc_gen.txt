@@ -1,0 +1,8 @@
+1. User sends a request to the TrackingController for tracking information for a specific transaction.
+2. TrackingController retrieves the transaction details using the TransactionController.
+3. TransactionController obtains the shipping order details.
+4. TrackingController queries the ShippoTrackingService for tracking information using the order's carrier and tracking number.
+5. ShippoTrackingService fetches the tracking information from shippo.model.Track using the carrier, tracking number, and shippoApiKey.
+6. shippo.model.Track tracks the shipment.
+7. ShippoTrackingService returns the tracking details to TrackingController.
+8. TrackingController provides the tracking details to the User.

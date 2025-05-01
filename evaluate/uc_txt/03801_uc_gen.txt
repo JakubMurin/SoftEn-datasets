@@ -1,0 +1,12 @@
+1. User requests their private file list via User subservice API router.
+2. User subservice API router forwards the request to User subservice REST API.
+3. Metadata for User 1 is fetched from Lookup DFS.
+4. Lookup DFS Service reads private store for User 1 using provided credentials.
+5. Mapping of file paths and access credentials is retrieved from Lookup DFS Service.
+6. User data paths and credentials are processed.
+7. Access to private storage is obtained using access credentials.
+8. Keystore is read from Storage adapter.
+9. User keystore is decrypted using provided password.
+10. All private files are listed.
+11. File paths are decrypted using keystore.
+12. List of all files across all known user DFS's is sent back to the User.

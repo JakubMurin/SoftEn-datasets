@@ -1,0 +1,21 @@
+1. Caller initiates the computation of the delivery graph by sending a request.
+2. CityMap creates a new TreeMap of mappedRoutes.
+3. For each AbstractWaypoint in the request:.
+4. CityMap retrieves the startWaypointIntersection.
+5. CityMap initializes predecessors and durations arrays.
+6. CityMap adds startWaypointIntersection to the greys list.
+7. While greys list is not empty:.
+8. CityMap identifies the minimalGreyIntersection.
+9. For each successor of the minimalGreyIntersection:.
+10. CityMap retrieves the successorId.
+11. If successor is not in blacks:.
+12. CityMap obtains the streetSection between minimalGreyIntersection and successor.
+13. CityMap updates the predecessors and durations arrays.
+14. If successor is in whites:.
+15. CityMap removes the successor from whites and adds it to greys.
+16. CityMap removes minimalGreyIntersection from greys.
+17. CityMap identifies the minimalGreyIntersectionId.
+18. CityMap adds minimalGreyIntersection to blacks.
+19. CityMap uses predecessors array to fill mappedRoutes.
+20. DeliveryGraph is created with mappedRoutes.
+21. CityMap returns the deliveryGraph to the Caller.

@@ -1,0 +1,12 @@
+1. User sends a POST request for signing up.
+2. AccessController calls AccessService's signUp method with request body.
+3. AccessService finds the user in database by email.
+4. AccessService found the user.
+5. AccessService generates a salt using 'bcrypt'.
+6. bcrypt provides the generated salt.
+7. AccessService hashes the password with the generated salt using 'bcrypt'.
+8. bcrypt provides the hashed password.
+9. AccessService creates a new entry with email, hashed password, and role.
+10. User's account created successfully.
+11. AccessService returns the user details after creation.
+12. AccessController returns user registration success response to the User.

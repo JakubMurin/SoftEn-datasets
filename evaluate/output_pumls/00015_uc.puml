@@ -1,0 +1,33 @@
+@startuml
+actor use_case
+participant uav_requests_permission
+activate uav_requests_permission
+participant airspace_needed_for_next_action
+uav_requests_permission -> airspace_needed_for_next_action: calculate()
+activate airspace_needed_for_next_action
+deactivate airspace_needed_for_next_action
+participant atc_airspace_identified
+uav_requests_permission -> atc_airspace_identified: from_reserve()
+activate atc_airspace_identified
+deactivate atc_airspace_identified
+participant airspace_reserved
+uav_requests_permission -> airspace_reserved: determine()
+activate airspace_reserved
+deactivate airspace_reserved
+participant airspace
+uav_requests_permission -> airspace: reserve()
+activate airspace
+deactivate airspace
+participant airspace_reservations_previously_held_by_uav
+uav_requests_permission -> airspace_reservations_previously_held_by_uav: release()
+activate airspace_reservations_previously_held_by_uav
+deactivate airspace_reservations_previously_held_by_uav
+participant uav_exclusive_lease_of_airspace
+uav_requests_permission -> uav_exclusive_lease_of_airspace: grant()
+activate uav_exclusive_lease_of_airspace
+deactivate uav_exclusive_lease_of_airspace
+participant action_goes_to_step
+uav_requests_permission -> action_goes_to_step: complete()
+activate action_goes_to_step
+deactivate action_goes_to_step
+@enduml

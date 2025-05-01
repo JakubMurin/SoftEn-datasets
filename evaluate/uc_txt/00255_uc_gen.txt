@@ -1,0 +1,14 @@
+1. Exchange assets request received by frontend from org1_client.
+2. Asset exchange request parsed and forwarded by frontend to org1_backend.
+3. Request forwarded by org1_backend to hlf_org1_sdk for endorsement.
+4. Request forwarded by hlf_org1_sdk to hlf_org1_peer for endorsement.
+5. Endorsement and generation of Read Write set by hlf_org1_peer.
+6. Request forwarded by hlf_org1_sdk to hlf_org2_peer for endorsement.
+7. Endorsement and generation of Read Write set by hlf_org2_peer.
+8. Transaction ordered into block by hlf_org1_sdk.
+9. Transaction processed and committed to ledger by hlf_orderer for org1.
+10. Transaction processed and committed to ledger by hlf_orderer for org2.
+11. Commit event captured by hlf_org1_sdk for org1.
+12. Commit event captured by hlf_org1_sdk for org2.
+13. Event relayed to client by org1_backend.
+14. Client informed about the appropriate status by frontend.

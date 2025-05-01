@@ -1,0 +1,18 @@
+1. User opens booking details page.
+2. UI receives request.
+3. Router POSTs /bookings/{bookingId}/other-services (otherServiceId, data).
+4. Controller adds other service to booking.
+5. Repository adds other service to booking.
+6. Repository finds booking by id.
+7. Booking Model fetches booking from the Database.
+8. Booking Model sends booking details to the Repository.
+9. Repository finds other service by id.
+10. OtherService Repository fetches other service from the Database.
+11. OtherService Repository sends other service details to the Repository.
+12. Repository adds other service to the Booking Model.
+13. Booking Model saves updated booking with other service to the Database.
+14. Booking Model sends updated booking details to the Repository.
+15. Repository sends updated booking with other service to the Controller.
+16. Controller responds with 200 OK (updated booking with other service).
+17. Router responds with 200 OK (updated booking with other service).
+18. UI displays confirmation of added service.

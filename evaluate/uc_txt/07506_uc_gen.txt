@@ -1,0 +1,8 @@
+1. User requests GetAllMedicalConditions(name) through GET /medicalCondition/{name}.
+2. Path Parameter is validated by API_Controller.
+3. Repository fetches list of medical conditions from Database.
+4. Allergy Not Found: API_Controller notifies User of "Medical Condition not found".
+5. API_Controller notifies User of 404 Not Found.
+6. Repository sends list of medical conditions to AllergyService.
+7. AllergyService sends the list back to API_Controller.
+8. API_Controller sends successful 200 OK response to User with medicalCondition data.

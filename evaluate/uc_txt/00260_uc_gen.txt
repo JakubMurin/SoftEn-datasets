@@ -1,0 +1,12 @@
+1. Nawigator wysyła żądanie do AccountController.
+2. AccountController wykonuje getAccountSearchPreferences na AccountEndpoint.
+3. AccountEndpoint wykonuje getAccountSearchPreferences na AccountService.
+4. AccountService wykonuje findByLogin na AccountFacade.
+5. AccountFacade zwraca informację o niepowodzeniu do AccountService.
+6. AccountService wykonuje findByAccount na ListSearchPreferencesFacade.
+7. ListSearchPreferencesFacade zwraca informację o niepowodzeniu do AccountService.
+8. ListSearchPreferencesFacade wykonuje findByAccount na ListSearchPreferences.
+9. ListSearchPreferencesFacade zwraca ListSearchPreferences do AccountService.
+10. AccountService zwraca informację zwrotną do AccountEndpoint.
+11. AccountEndpoint zwraca informację zwrotną do AccountController.
+12. AccountController zwraca informację zwrotną do Nawigatora.

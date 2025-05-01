@@ -1,0 +1,15 @@
+1. User opens the customers list page.
+2. User requests to view all customers.
+3. UI displays loading message.
+4. UI sends request to Router to GET /customers.
+5. Router forwards request to CustomersController.
+6. CustomersController calls getAllCustomers().
+7. CustomersController delegates request to CustomersRepository.
+8. CustomersRepository executes findAll().
+9. CustomersRepository communicates with CustomersModel to find all customers.
+10. CustomersModel fetches all customer data from database.
+11. CustomersModel sends all customers data to CustomersRepository.
+12. CustomersRepository sends all customers data to CustomersController.
+13. CustomersController responds with 200 OK to Router.
+14. Router forwards the successful response to UI.
+15. UI displays the list of customers to the User.

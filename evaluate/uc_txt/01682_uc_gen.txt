@@ -1,0 +1,10 @@
+1. Ayeesha requests to register her chequing account from DFSP A using the PISP App.
+2. DFSP A generates a random UUID and saves it internally.
+3. DFSP A sends the random UUID to PISP: "1111-2222" to refer to Ayeesha's linked account.
+4. PISP associates Ayeesha's chequing account with "1111-2222".
+5. DFSP A sends a POST request to the Switch: "/participants/ASSOCIATION/1111-2222".
+6. Switch responds with "201 Accepted".
+7. Switch creates a new key/value pair: "{'ASSOCIATION/1111-2222': 'DFSPA'}".
+8. ALS confirms the creation of the association.
+9. Switch notifies DFSP A about the successful association creation.
+10. DFSP A informs PISP that the association has been successfully created.

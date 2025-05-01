@@ -1,0 +1,10 @@
+1. Recruiter initiates POST /attendees/{attendeeId}/like action.
+2. Controller receives the request to like the attendee.
+3. Service invokes likeAttendee() with recruiterId and attendeeId.
+4. Service fetches the recruiter information by Id.
+5. Service fetches the attendee information by Id.
+6. Service checks if the recruiter has already liked the attendee.
+7. If already liked, DuplicateLikeException is thrown.
+8. If not already liked, the like record is saved in LikeRepo.
+9. Service responds with completion.
+10. Controller sends a 200 OK response to the recruiter.

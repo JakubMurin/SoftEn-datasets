@@ -1,0 +1,9 @@
+1. Navegador accesses the route GET /oneToOne/:sessionID.
+2. Routes forwards the request to Controller for getCheck.
+3. Controller fetches session data from OneToOne using request.params.sessionID.
+4. Controller redirects to /error if no data found.
+5. Controller redirects to /error if role is not "Human Resources" and oneOnOneUserIDFK does not match userID.
+6. Controller fetches answers from Question using request.params.sessionID.
+7. Controller renders "oneToOneCheck" if no answers found.
+8. Controller fetches measures from Measurable using request.params.sessionID.
+9. Controller renders "oneToOneCheck" with data.

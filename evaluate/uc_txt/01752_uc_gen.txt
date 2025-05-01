@@ -1,0 +1,25 @@
+1. Användaren loggar in.
+2. SAML-intyg växlas mot AccesToken/RefreshToken vid lyckad inloggning.
+3. IdP säkerställer att SAML-intyg är giltigt och får biljettväxlas.
+4. IdP returnerar AccessToken/RefreshToken.
+5. Användaren är inloggad.
+6. Väljer att visa patientvy.
+7. Hämta ny AccessToken mha RefreshToken om AccessToken är på väg att gå ut.
+8. Bygger upp formulär med intygsid, vårdenhet och AccessToken för POST till Webcert.
+9. Patientvy renderas.
+10. Klickar Visa intyg som gör POST-en till Webcert.
+11. Validerar AccessToken och skapar session i Webcert.
+12. Anropa GetCertificateType i Intygstjänst.
+13. Svarar med intygstypen från Intygstjänst.
+14. Ställer vårdenhet på sessionen i Webcert.
+15. Omdirigerar till intygsvyn.
+16. Öppnar intygsvyn i Webcert.
+17. GetCertificate för att hämta intyget från Intygstjänst.
+18. IntygData returneras från Intygstjänst.
+19. Renderar intyget till Webbläsaren via UV-ramverket i Webcert.
+20. Intyget visas i Webcerts Readonly-läge (med eventuell information).
+21. Användaren stänger patientvyn.
+22. Redirect till lokal logout i Webcert via dold iFrame.
+23. Lokal logout i Webcert.
+24. Avslutar sessionen i Webcert.
+25. HTTP 200 med tom sida returneras till dolda iframen av Webbläsaren.

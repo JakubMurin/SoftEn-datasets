@@ -1,0 +1,13 @@
+1. Alice initiates the Application Start process.
+2. CowboyPlug starts the process by interacting with Cowboy and Plug components.
+3. Application communicates with Supervisor to start the process.
+4. Supervisor initializes the Timer for monitoring.
+5. Supervisor monitors the Timer state.
+6. Timer wakes up and sends a GET request to the Monitored Server.
+7. In case of successful response, Timer updates its state.
+8. In case of failure, Timer crashes and Supervisor restarts the Timer.
+9. Alice checks the status by sending a request to Cowboy.
+10. Cowboy forwards the request to Plug.
+11. Plug retrieves the status from Timer.
+12. Plug responds to Cowboy.
+13. Cowboy sends the response back to Alice.

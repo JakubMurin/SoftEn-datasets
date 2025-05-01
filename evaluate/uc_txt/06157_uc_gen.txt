@@ -1,0 +1,10 @@
+1. Staker stakes with zZKPspendPubKey, zZKPcipherText, PRPspendPubKey, and PRPcipherText.
+2. Staking contract's \_createStake() is triggered.
+3. Transfers stakedAmount from Staker to Staking.
+4. If isRewarded flag is true.
+5. Staking triggers _sendStakedMsg().
+6. RewardMaster's onAction() function is called.
+7. AdvancedStakeController retrieves reward advice by calling getRewardAdvice().
+8. Checks the reward amount.
+9. Transfers rewardAmount from treasury to MASP via ZKP token.
+10. Deposits for zZKPspendPubKey, zZKPcipherText, PRPspendPubKey, and PRIEncoderPresenceSplitMSPlaintext cipherText in the pool.

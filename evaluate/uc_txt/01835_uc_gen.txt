@@ -1,0 +1,16 @@
+1. GameEngine requests the boundary from the GameBoundaryDelegate.
+2. GameBoundaryDelegate activates to get the boundary.
+3. GameBoundaryDelegate requests the boundary from the Boundary.
+4. Boundary activates to return the boundary.
+5. Boundary returns the boundary to the GameBoundaryDelegate.
+6. GameBoundaryDelegate returns the boundary to the GameEngine.
+7. GameEngine calls onCollision method on Ball with boundary and deltaTime.
+8. Ball activates to handle the collision.
+9. Ball checks if it will collide with the boundary.
+10. Ball activates to handle the collision with the boundary.
+11. Ball calls onCollision method on itself with the boundary.
+12. Ball activates to handle the collision with the boundary.
+13. Ball gets the safe position from the boundary.
+14. Ball calls onCollision method on FreeBody with collisionPoint, deltaTime, and restitutionCoefficient.
+15. Ball deactivates after handling the collision.
+16. GameEngine returns the newBall after collision handling.

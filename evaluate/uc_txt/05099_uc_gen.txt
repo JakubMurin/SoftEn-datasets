@@ -1,0 +1,8 @@
+1. User deletes task.
+2. FRONTEND sends task to BACKEND.
+3. BACKEND sends task to SB_Delete.
+4. KEDA_Remover removes task from queue.
+5. KEDA_Remover removes task from SB_Running.
+6. KEDA_Remover sends volcano job for deletion to K8S_API.
+7. UI reads tasks from SB_Running.
+8. UI shows running tasks to User.

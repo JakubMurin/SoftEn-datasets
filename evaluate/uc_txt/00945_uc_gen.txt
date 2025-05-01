@@ -1,0 +1,11 @@
+1. User sends a request to load the composition from the new.xml file.
+2. Karaf Console forwards the request to LoadComposition.
+3. LoadComposition reads the content of the XML file.
+4. LoadComposition sets the configuration value based on the XML content.
+5. Karaf Configuration triggers ReloadOSGIModule in core.caos.
+6. core.caos loads the CompositionSpecification.
+7. core.caos retrieves the list of required modules from the CompositionSpecification.
+8. core.caos requests BackendManager to get the available backends.
+9. BackendManager provides the list of currently connected backends to core.caos.
+10. core.caos checks if all required modules are present.
+11. core.caos logs successful reconfiguration.

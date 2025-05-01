@@ -1,0 +1,16 @@
+1. Client interacts with API to create, read, or update information.
+2. API forwards command to CommandHandler.
+3. CommandHandler handles the command.
+4. Repository is requested to fetch the entity.
+5. Database executes the SQL query and provides raw data to Repository.
+6. Entity is successfully mapped by the Repository as per the Factory pattern.
+7. Repository sends the Entity back to CommandHandler.
+8. CommandHandler implements business logic on the DomainEntity.
+9. CommandHandler requests Repository to save the Entity.
+10. Repository detects entity changes and updates the SQL.
+11. Database saves the changes.
+12. Repository receives and confirms the success result of saving changes.
+13. CommandHandler notifies API about the updated Entity.
+14. API forwards the Entity to QueryHandler.
+15. QueryHandler processes the data and returns the Data Transfer Object (DTO) to the API.
+16. QueryHandler provides the DTO back to the Client.

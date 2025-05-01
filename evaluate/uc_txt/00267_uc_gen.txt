@@ -1,0 +1,33 @@
+1. Zarządca wybiera listę kont oczekujących.
+2. Nawigator wysyła żądanie do pobrania preferencji wyszukiwania dla konta.
+3. AccountController odbiera żądanie.
+4. AccountEndpoint otrzymuje żądanie getAccountSearchPreferences.
+5. AccountService otrzymuje żądanie getAccountSearchPreferences.
+6. AccountService wywołuje findByLogin w AccountFacade.
+7. AccountService otrzymuje informację o niepowodzeniu.
+8. AccountService wywołuje findByLogin w AccountFacade.
+9. AccountService otrzymuje Account z AccountFacade.
+10. AccountService wywołuje findByAccount w ListSearchPreferencesFacade.
+11. AccountService otrzymuje informację o niepowodzeniu.
+12. AccountService wywołuje findByAccount w ListSearchPreferencesFacade.
+13. AccountService otrzymuje ListSearchPreferences z ListSearchPreferencesFacade.
+14. AccountService odsyła informację zwrotną do AccountEndpoint.
+15. AccountEndpoint odsyła informację zwrotną do AccountController.
+16. AccountController odsyła informację zwrotną do Nawigatora.
+17. Nawigator wysyła żądanie pobrania listy.
+18. AccountController otrzymuje żądanie.
+19. AccountEndpoint otrzymuje żądanie getNotConfirmedAccounts.
+20. AccountService otrzymuje żądanie getNotConfirmedAccounts.
+21. AccountService wywołuje findByLogin w AccountFacade.
+22. AccountService otrzymuje Account z AccountFacade.
+23. AccountService wywołuje findByAccount w ListSearchPreferencesFacade.
+24. AccountService otrzymuje informację o braku preferencji.
+25. ListSearchPreferencesFacade tworzy preferencje.
+26. AccountService otrzymuje ListSearchPreferences z ListSearchPreferencesFacade.
+27. AccountService ustawia parametry preferencji.
+28. ListSearchPreferencesFacade aktualizuje preferencje.
+29. AccountService wywołuje findNotConfirmedAccounts w AccountFacade.
+30. AccountService otrzymuje listę kont z AccountFacade.
+31. AccountService odsyła listę kont do AccountEndpoint.
+32. AccountEndpoint odsyła listę kont do AccountController.
+33. AccountController odsyła listę kont do Nawigatora.
