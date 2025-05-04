@@ -124,8 +124,6 @@ class XmlValidation:
 
             <!ELEMENT step (#PCDATA)>
             <!ATTLIST step id ID #REQUIRED>
-
-            <!ELEMENT description (#PCDATA)>
         """
         # print(dtd_template)
         self.custom_scheme = etree.DTD(StringIO(dtd_template))

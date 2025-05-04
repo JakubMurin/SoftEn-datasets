@@ -244,7 +244,7 @@ def uc_seq():
 
                 promt_ctx = [
                     {"role": "user", "content": "Based on the following use case, create a sequence diagram in plantuml without any comments."},
-                    {"role": "user", "content": "In sequence diagram if name of element is multiple words, put it in quotation marks and give diagram title"},
+                    {"role": "user", "content": "In sequence diagram if name of element contains multiple words, put it in quotation marks and give diagram title"},
                     ]
                 query = f"Here is use case {useCase}"
                 

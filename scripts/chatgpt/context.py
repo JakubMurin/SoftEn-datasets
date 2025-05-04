@@ -70,7 +70,7 @@ end note
     
     result = context.execute_query(query)[0]
     # print("Single query:", repr(result))
-    print(result.choices[0].message.content)
+    print(result["choices"][0]["message"]["content"])
     
     # result = context.execute_query(multi_query)
     # print("Multiple query:", result)

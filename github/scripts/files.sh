@@ -25,7 +25,7 @@
 #     # gh api search/code?q=@startuml+repo:$repo+extension:uml --jq ".items[:1] | .[].html_url" | \
 #     # gh api search/code?q=@startuml+repo:$repo+extension:uml --jq ".items[].html_url" | \
 #     gh api search/code?q=@startuml+repo:$repo+extension:puml --jq ".items[].html_url" | \
-#     sed 's|https://github.com|https://raw.githubusercontent.com|' | \
+#     sed 's|github.com|raw.githubusercontent.com|' | \
 #     sed 's|/blob||' >> output_puml.txt
 
 #     s=$((s + 1))
