@@ -36,13 +36,14 @@ def calculate_price(prompt_tokens: int, completion_tokens: int) -> float:
     
     return prompt_tokens * input_price + completion_tokens * output_price
 
-def merge_metadata(uc_data: dict, seq_data: dict, name: str="") -> dict:
+def merge_metadata(uc_data: dict, seq_data: dict, id: int, name: str="") -> dict:
     """
     Returns final representation of dataset entry
     """
     uc_data = {"uc_" + key: value for key, value in uc_data.items()}
     seq_data = {"seq_" + key: value for key, value in seq_data.items()}
     return {
+        "id": id,
         "name": name,
         "origin": "semi-synthetic",
         **uc_data,
@@ -87,12 +88,14 @@ def seq_uc():
     output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
     usecase_file = open(os.path.join(RESULT_DATA_PATH, "uc.jsonl"), "a", encoding="utf-8")
 
+    id = get_next_id(output_file)
+
     with open(DTD_SCHEME_PATH, "r", encoding="utf-8") as file:
         dtd = file.read()
         
     price = 0
-    start = time.perf_counter()
     counter = 0
+    start = time.perf_counter()
 
     with open(seq_data_path, "r", encoding="utf-8") as seq_entry:
         for seq in seq_entry:
@@ -138,8 +141,8 @@ def seq_uc():
                     
                 name = seq_data["title"] if seq_data["title"] else uc_data["title"]
                 print(json.dumps(uc_data), file=usecase_file)
-                print(json.dumps(merge_metadata(uc_data, seq_data, name=name)), file=output_file)
-
+                print(json.dumps(merge_metadata(uc_data, seq_data, id=id, name=name)), file=output_file)
+                id += 1
             
     output_file.close()
     usecase_file.close()
@@ -156,10 +159,12 @@ def wrong_seq_uc(wrong_uc_data_path: str):
 
     with open(DTD_SCHEME_PATH, "r", encoding="utf-8") as file:
         dtd = file.read()
-        
+    
+    id = get_next_id(output_file)    
+    
     price = 0
-    start = time.perf_counter()
     counter = 0
+    start = time.perf_counter()
 
     with open(wrong_uc_data_path, "r", encoding="utf-8") as wrong_uc_entry:
         for wrong_uc in wrong_uc_entry:
@@ -202,8 +207,8 @@ def wrong_seq_uc(wrong_uc_data_path: str):
                 
             name = seq_data["title"] if seq_data["title"] else uc_data["title"]
             print(json.dumps(uc_data), file=usecase_file)
-            print(json.dumps(merge_metadata(uc_data, seq_data, name=name)), file=output_file)
-
+            print(json.dumps(merge_metadata(uc_data, seq_data, id=id, name=name)), file=output_file)
+            id += 1
             
     output_file.close()
     usecase_file.close()
@@ -220,10 +225,12 @@ def uc_seq():
     usecase_data_path = os.path.join(RESULT_DATA_PATH, "uc.jsonl")
     output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
     seq_file = open(os.path.join(RESULT_DATA_PATH, "seq.jsonl"), "a", encoding="utf-8")
+    
+    id = get_next_id(output_file)
 
     price = 0
-    start = time.perf_counter()
     counter = 0
+    start = time.perf_counter()
 
     with open(usecase_data_path, "r", encoding="utf-8") as usecases_data_file:
         for uc in usecases_data_file:            
@@ -240,13 +247,13 @@ def uc_seq():
                 
                 uc_path = os.path.join(RESULT_DATA_PATH, uc_data["file"])
                 with open(uc_path, "r", encoding="utf-8") as file:
-                    useCase = file.read()
+                    use_case = file.read()
 
                 promt_ctx = [
                     {"role": "user", "content": "Based on the following use case, create a sequence diagram in plantuml without any comments."},
                     {"role": "user", "content": "In sequence diagram if name of element contains multiple words, put it in quotation marks and give diagram title"},
                     ]
-                query = f"Here is use case {useCase}"
+                query = f"Here is use case {use_case}"
                 
                 result = context.execute_query(query, promt_ctx, temp, top_p)[0]
                 content = result["choices"][0]["message"]["content"]
@@ -267,8 +274,8 @@ def uc_seq():
                     
                 name = uc_data["title"] if uc_data["title"] else seq_data["title"]
                 print(json.dumps(seq_data), file=seq_file)
-                print(json.dumps(merge_metadata(uc_data, seq_data, name=name)), file=output_file)
-                
+                print(json.dumps(merge_metadata(uc_data, seq_data, id=id, name=name)), file=output_file)
+                id += 1
         
     output_file.close()
     seq_file.close()
@@ -284,9 +291,11 @@ def uc_seq_wrong(wrong_sequence_data_path: str):
     output_file = open(os.path.join(RESULT_DATA_PATH, "all.jsonl"), "a", encoding="utf-8")
     seq_file = open(os.path.join(RESULT_DATA_PATH, "seq.jsonl"), "a", encoding="utf-8")
 
+    id = get_next_id(output_file)
+    
     price = 0
-    start = time.perf_counter()
     counter = 0
+    start = time.perf_counter()
 
     with open(wrong_sequence_data_path, "r", encoding="utf-8") as wrong_sequence_data_file:
         for wrong_seq in wrong_sequence_data_file:            
@@ -300,13 +309,13 @@ def uc_seq_wrong(wrong_sequence_data_path: str):
             
             uc_path = os.path.join(RESULT_DATA_PATH, uc_data["file"])
             with open(uc_path, "r", encoding="utf-8") as file:
-                useCase = file.read()
+                use_case = file.read()
 
             promt_ctx = [
                 {"role": "user", "content": "Based on the following use case, create a sequence diagram in plantuml without any comments."},
                 {"role": "user", "content": "In sequence diagram if name of element is multiple words, put it in quotation marks and give diagram title"},
                 ]
-            query = f"Here is use case {useCase}"
+            query = f"Here is use case {use_case}"
             
             result = context.execute_query(query, promt_ctx, temp, top_p)[0]
             content = result["choices"][0]["message"]["content"]
@@ -327,8 +336,8 @@ def uc_seq_wrong(wrong_sequence_data_path: str):
                 
             name = uc_data["title"] if uc_data["title"] else seq_data["title"]
             print(json.dumps(seq_data), file=seq_file)
-            print(json.dumps(merge_metadata(uc_data, seq_data, name=name)), file=output_file)
-                
+            print(json.dumps(merge_metadata(uc_data, seq_data, id=id, name=name)), file=output_file)
+            id += 1
         
     output_file.close()
     seq_file.close()
@@ -341,13 +350,13 @@ def uc_seq_wrong(wrong_sequence_data_path: str):
 
 # Using temperature
 # with open(os.path.join(WORKING_DIR, "data\\usecases\\01.xml"), "r", encoding="utf-8") as file:
-#     useCase = file.read()
+#     use_case = file.read()
 
 # for i in [0.6, 0.8, 1, 1.2, 1.4]:
 
 #     promt_ctx = [{"role": "user", "content": "Based on the following use case, create a sequence diagram in plantuml without any comments."},
 #                  {"role": "user", "content": "In sequence diagram if name of element is multiple words, put it in quotation marks and give diagram title"}]
-#     query = f"Here is use case {useCase}"
+#     query = f"Here is use case {use_case}"
     
 #     result = context.execute_query(query, promt_ctx, temperature=i)[0]
 #     content = result["choices"][0]["message"]["content"]

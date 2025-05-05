@@ -40,6 +40,22 @@ def get_next_file_index(folder_path: str, extension: str | None=None) -> int:
     
     return int(last_number) + 1
 
+def get_next_id(file_path: str) -> int:
+    """
+    :Returns: next available id
+    """
+    id = 1
+    
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            for line in file:
+                data = json.loads(line)
+                if data["id"] + 1 > id: 
+                    id = data["id"] + 1
+            return id
+    except FileNotFoundError:
+        return id
+
 def get_all_files(path: str, folder_name: str="") -> list[str]:
     folder_path = os.path.join(path, folder_name)
     files = os.listdir(folder_path)

@@ -11,6 +11,7 @@ ALL_FLAT_JSON_PATH = os.path.join(WORKING_DIR, "data", "results", "all.jsonl")
 ALL_CSV_PATH = os.path.join(WORKING_DIR, "all.csv")
 
 columns = [
+    # "id",   #
     # "name",   #
     # "origin", #
     # "uc_id",  #
