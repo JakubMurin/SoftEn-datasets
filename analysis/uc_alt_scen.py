@@ -26,6 +26,7 @@ axs.yaxis.grid(True)
 axs.set_ylabel("Počet alternatívnych scenárov")
 axs.bar_label(plots, fmt='{:,.0f}')
 
+plt.xticks(range(9))
 plt.ylim(0, max(freq.values()) * 2.5)
 axs.set_yscale('symlog')
 plt.tight_layout(pad=1)

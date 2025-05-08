@@ -9,7 +9,6 @@ fig, axs = plt.subplots()
 labels = ["Sekvenčný\ndiagram", "Prípad\npoužitia"]
 uc_data = pd.read_csv(UC_CSV_PATH, usecols=["origin"])
 seq_data = pd.read_csv(SEQ_CSV_PATH, usecols=["origin"])
-# temp_data = data[(data.temperature != 1) & (data.top_p == 1)]
 
 uc_gpt, uc_github = uc_data.value_counts("origin")
 seq_github, seq_gpt = seq_data.value_counts("origin")
