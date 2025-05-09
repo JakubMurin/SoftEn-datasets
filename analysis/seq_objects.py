@@ -23,7 +23,8 @@ freq = dict(sorted(freq.items()))
 plots = axs.bar(freq.keys(), freq.values())
 
 axs.yaxis.grid(True)
-axs.set_ylabel("Počet objektov")
+axs.set_xlabel("Počet objektov")
+axs.set_ylabel("Počet výskytov")
 
 plt.tight_layout(pad=1)
 plt.savefig(os.path.join(WORKING_DIR, "analysis", "img", "seq_objects.png"), dpi=300)

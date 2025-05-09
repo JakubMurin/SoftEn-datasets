@@ -20,7 +20,8 @@ print(f"Q1: {info[0]["q1"]}, Q3: {info[0]["q3"]}")
 plots = axs.hist(graph_values, bins=30)
 
 axs.yaxis.grid(True)
-axs.set_ylabel("Počet krokov")
+axs.set_xlabel("Počet krokov")
+axs.set_ylabel("Počet výskytov")
 
 plt.tight_layout(pad=1)
 plt.savefig(os.path.join(WORKING_DIR, "analysis", "img", "uc_steps.png"), dpi=300)

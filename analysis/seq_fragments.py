@@ -43,6 +43,7 @@ axs.bar(np.array(list(loop_data.keys()))+0.2, loop_data.values(), width=0.2, ali
 plt.xticks(range(1, 13))
 
 axs.yaxis.grid(True)
+axs.set_xlabel("Počet fragmentov")
 axs.set_ylabel('Počet výskytov')
 axs.set_yscale('log')
 

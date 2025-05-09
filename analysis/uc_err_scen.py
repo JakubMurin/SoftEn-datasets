@@ -23,7 +23,8 @@ freq = dict(sorted(freq.items()))
 plots = axs.bar(freq.keys(), freq.values(), color="C1")
 
 axs.yaxis.grid(True)
-axs.set_ylabel("Počet výnimkových scenárov")
+axs.set_xlabel("Počet výnimkových scenárov")
+axs.set_ylabel("Počet výskytov")
 axs.bar_label(plots, fmt='{:,.0f}')
 
 plt.ylim(0, max(freq.values()) * 2.5)

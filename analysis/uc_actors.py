@@ -23,7 +23,9 @@ freq = dict(sorted(freq.items()))
 plots = axs.bar(freq.keys(), freq.values())
 
 axs.yaxis.grid(True)
-axs.set_ylabel("Počet aktérov")
+axs.set_xlabel("Počet aktérov")
+axs.set_ylabel("Počet výskytov")
+
 
 plt.tight_layout(pad=1)
 plt.savefig(os.path.join(WORKING_DIR, "analysis", "img", "uc_actors.png"), dpi=300)

@@ -46,6 +46,7 @@ plots = axs.bar(names, graph_data, color=colors)
 axs.bar_label(plots, fmt='{:,.0f}%')
 axs.set_xticks(range(9), names)
 axs.yaxis.grid(True)
+axs.set_xlabel("Hodnota parametra")
 axs.set_ylabel('Úspešnosť')
 
 plt.ylim(top=100)

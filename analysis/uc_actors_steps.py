@@ -19,8 +19,8 @@ scatter = axs.scatter(count_data["seq_num_of_participats"], count_data["uc_actor
 
 cbar = plt.colorbar(scatter)
 
-axs.set_xlabel('Objekty sekvenčného diagramu')
-axs.set_ylabel('Aktéri prípadu použitia')
+axs.set_xlabel('Počet objektov sekvenčného diagramu')
+axs.set_ylabel('Počet aktérov prípadu použitia')
 axs.set_xticks(range(0, 19, 3), range(0, 19, 3))
 axs.set_yticks(range(0, 19, 3), range(0, 19, 3))
 

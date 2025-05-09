@@ -44,6 +44,7 @@ for pc, color in zip(plots['bodies'], colors):
 axs.set_xticks(range(1, 10), names)
 
 axs.yaxis.grid(True)
+axs.set_xlabel("Hodnota parametra")
 axs.set_ylabel('Počet krokov')
 axs.set_ylim(top=25)
 axs.set_ybound(0)

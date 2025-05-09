@@ -23,7 +23,8 @@ freq = dict(sorted(freq.items()))
 plots = axs.bar(freq.keys(), freq.values())
 
 axs.yaxis.grid(True)
-axs.set_ylabel("Počet alternatívnych scenárov")
+axs.set_xlabel("Počet alternatívnych scenárov")
+axs.set_ylabel("Počet výskytov")
 axs.bar_label(plots, fmt='{:,.0f}')
 
 plt.xticks(range(9))

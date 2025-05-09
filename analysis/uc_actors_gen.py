@@ -42,6 +42,7 @@ for pc, color in zip(plots['bodies'], colors):
 
 axs.set_xticks(range(1, 10), names)
 axs.yaxis.grid(True)
+axs.set_xlabel("Hodnota parametra")
 axs.set_ylabel('Počet aktérov')
 
 plt.savefig(os.path.join(WORKING_DIR, "analysis", "img", "uc_actors_gen.png"), dpi=300)

@@ -25,6 +25,7 @@ labels = list(map(lambda x: x.strftime('%F Q%q'), date_counts.index))
 axs.bar(labels, date_counts.values)
 
 axs.yaxis.grid(True)
+axs.set_xlabel("Časová os (kvartály)")
 axs.set_ylabel("Počet súborov")
 
 plt.xticks(rotation=80)
