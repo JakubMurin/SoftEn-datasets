@@ -7,7 +7,8 @@ plt.rc('font', size=12)
 
 fig, axs = plt.subplots()
 
-data = pd.read_csv(UC_CSV_PATH, usecols=["temperature", "top_p", "num_of_steps"])
+data = pd.read_csv(UC_CSV_PATH, usecols=["temperature", "top_p", "num_of_steps", "origin"])
+deta = data[data.origin == "chatgpt"]
 temp_data = data[(data.temperature != 1) & (data.top_p == 1)]
 top_data = data[(data.temperature == 1) & (data.top_p != 1)]
 def_data = data[(data.temperature == 1) & (data.top_p == 1)]

@@ -29,7 +29,6 @@ defau = len(def_data.values)
 graph_data = np.array([te_06, te_08, te_12, te_14, to_02, to_04, to_06, to_08]) / 948 * 100
 graph_data = np.append(graph_data, [100 * defau / (2 * 948)])
 print(graph_data)
-estim_data = np.array(9 * [100]) - graph_data
 
 colors = ["C0", "C0", "C0", "C0", "C1", "C1", "C1", "C1", "C2"]
 names = ["0.6", "0.8", "1.2", "1.4", "0.2", "0.4", "0.6 ", "0.8 ", "1"]

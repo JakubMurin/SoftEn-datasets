@@ -6,7 +6,8 @@ from utils import *
 
 fig, axs = plt.subplots()
 
-data = pd.read_csv(UC_CSV_PATH, usecols=["temperature", "top_p", "actors"])
+data = pd.read_csv(UC_CSV_PATH, usecols=["temperature", "top_p", "actors", "origin"])
+deta = data[data.origin == "chatgpt"]
 temp_data = data[(data.temperature != 1) & (data.top_p == 1)]
 top_data = data[(data.temperature == 1) & (data.top_p != 1)]
 def_data = data[(data.temperature == 1) & (data.top_p == 1)]
